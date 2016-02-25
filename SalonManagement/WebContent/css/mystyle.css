@@ -1,0 +1,105 @@
+::-webkit-input-placeholder {
+    color:    #616161;
+}
+:-moz-placeholder {
+    color:   #616161;
+}
+::-moz-placeholder {
+    color:    #616161;
+}
+:-ms-input-placeholder {
+    color:    #616161;
+}
+
+
+
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+html, body {
+    height: 100%;
+     margin: 0;
+     padding: 0;
+ }
+
+
+
+
+.navigation {
+  width: 0;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  transition: width 0.3s ease-in-out;
+  -webkit-transition: width .3s ease-in-out;
+  -moz-transition: width .3s ease-in-out;
+  -o-transition: width .3s ease-in-out;
+}
+
+
+
+.page-wrap {
+  float: right;
+  width: 100%;
+
+
+  transition: width 0.3s ease-in-out;
+  -webkit-transition: width .3s ease-in-out;
+  -moz-transition: width .3s ease-in-out;
+  -o-transition: width .3s ease-in-out;
+}
+
+
+.close-menu {
+  display: none;
+}
+.open-menu {
+    color: #212121;
+}
+.open-menu:hover {
+    color: #757575;
+}
+
+#main-navigation:target {
+  width: 20%;
+}
+
+#main-navigation:target + .page-wrap {
+  width: 80%;
+}
+#main-navigation:target + .page-wrap .open-menu {
+  display: none;
+}
+#main-navigation:target + .page-wrap .close-menu {
+  display: block;
+  color: #212121;
+}
+
+
+
+/*#main-navigation:target + .page-wrap .main-header {
+  width: 100%;
+  left: 18%;
+}
+*/
+
+#nav-head {
+    margin: 30px 15px;
+
+
+}
+
+#nav-head:after {
+  content: ".";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0;
+}
