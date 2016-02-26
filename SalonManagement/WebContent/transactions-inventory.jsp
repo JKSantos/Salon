@@ -18,7 +18,7 @@
                           <div class="center">
                               <img src="./img/anon.jpg" class="circle" style="width: 150px; height: 150px; margin-top: 40px; margin-bottom: 20px;">
                             </div>
-                          <li><a href="admin-home.jsp" class="waves-effect waves-orange"><b>Home</b></a></li>
+                          <li><a href="admin-home.jsp" class="waves-effect"><b>Home</b></a></li>
                          <!--  <li class="no-padding"> -->
                             <ul class="collapsible" data-collapsible="accordion">
                               <li>
@@ -30,7 +30,8 @@
                                       <li><a href="maintenance-promo.jsp">Promo</a></li>
                                       <li><a href="maintenance-discount.jsp">Discount</a></li>
                                       <li><a href="maintenance-package.jsp">Package</a></li>
-                                      <li><a href="maintenance-catalogue.jsp">Catalouge</a></li>
+                                      <li><a href="maintenance-catalogue.jsp">Catalogue</a></li>
+                                      <li><a href="maintenance-extra.jsp">Extra Charge</a></li>
                                     </ul>
                                   </div>
                               </li>
@@ -46,7 +47,7 @@
                                   </div>
                               </li>
                             </ul>
-                          <li><a href="utilities.jsp" class="waves-effect waves-orange"><b>Utilities</b></a></li>
+                          <li><a href="utilities.jsp" class="waves-effect"><b>Utilities</b></a></li>
                         </ul>
 
                 
@@ -67,7 +68,8 @@
                                          <li><a href="maintenance-promo.jsp">Promo</a></li>
                                          <li><a href="maintenance-discount.jsp">Discount</a></li>
                                          <li><a href="maintenance-package.jsp">Package</a></li>
-                                         <li><a href="maintenance-catalogue.jsp">Catalouge</a></li>
+                                         <li><a href="maintenance-catalogue.jsp">Catalogue</a></li>
+                                         <li><a href="maintenance-extra.jsp">Extra Charge</a></li>
                                        </ul>
                                      </div>
                                  </li>

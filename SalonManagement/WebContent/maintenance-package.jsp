@@ -27,9 +27,9 @@
                                     <ul>
                                       <li><a href="maintenance-emp.jsp">Employee</a></li>
                                       <li><a href="maintenance-prodsvc.jsp">Product & Service</a></li>
-                                      <li class="orange"><a href="maintenance-promo.jsp">Promo</a></li>
+                                      <li><a href="maintenance-promo.jsp">Promo</a></li>
                                       <li><a href="maintenance-discount.jsp">Discount</a></li>
-                                      <li><a href="maintenance-package.jsp">Package</a></li>
+                                      <li class="orange"><a href="maintenance-package.jsp">Package</a></li>
                                       <li><a href="maintenance-catalogue.jsp">Catalogue</a></li>
                                       <li><a href="maintenance-extra.jsp">Extra Charge</a></li>
 
@@ -66,9 +66,9 @@
                                        <ul>
                                          <li><a href="maintenance-emp.jsp">Employee</a></li>
                                          <li><a href="maintenance-prodsvc.jsp">Product & Service</a></li>
-                                         <li class="orange"><a href="maintenance-promo.jsp">Promo</a></li>
+                                         <li><a href="maintenance-promo.jsp">Promo</a></li>
                                          <li><a href="maintenance-discount.jsp">Discount</a></li>
-                                         <li><a href="maintenance-package.jsp">Package</a></li>
+                                         <li class="orange"><a href="maintenance-package.jsp">Package</a></li>
                                          <li><a href="maintenance-catalogue.jsp">Catalogue</a></li>
                                          <li><a href="maintenance-extra.jsp">Extra Charge</a></li>
                                        </ul>
@@ -96,63 +96,82 @@
           <div class="wrapper">
             
                     <div class="aside aside1 z-depth-barts"> <!--main aside1-->
-                    <div class="container">
-                    <header><h4>Create Promo</h4></header>
+                    <header><h4>Package Maintenance</h4></header>
                         <div class="row">
                             <form class="col s12">
-
-                                <div class="input-field col s12" style="margin-bottom: 30px;">
-                                    <label class="red-text"> (*) Indicates required field</label>
+                                <div class="input-field col s12">
+                                  <p class="left-align red-text">(*) Indicates required field</p>
                                 </div>
-                                <div class="input-field col s12" style="margin-bottom: 5px;">
-
-                                <label>Availability <span class="red-text">*</span></label>
+                                <div class="input-field col s12">
+                                  <input type="text" class="validate" id="packname" name="packname">
+                                  <label for="packname">Package Name <span class="red-text">*</span></label>
+                                </div>
+                                <div class="input-field col s12">
+                                    <textarea id="packdesc" name="packdesc" class="materialize-textarea"></textarea>
+                                    <label for="packdesc">Description <span class="red-text">*</span></label>
+                                </div>
+                                <div class="col s3">
+                                <p>Type <span class="red-text">*</span></p>
+                                </div>
+                                <div class="col s4">
+                                          <input class="with-gap" name="eventhome" type="radio" id="event" />
+                                          <label for="event">Event</label>
+                                </div>
+                                <div class="col s5">
+                                          <input class="with-gap" name="eventhome" type="radio" id="home" />
+                                          <label for="home">Home Service</label>
                                 </div>
                                 <div class="input-field col s6">
-                                <p class="center">
-                                  <input type="checkbox" class="filled-in" id="unli"/>
-                                  <label for="unli">Non-Expiry</label>
-                                </p>
+                                    <select id="package-list" class="browser-default">
+                                          <option value="" disabled selected>Product</option>
+                                    </select>
                                 </div>
-                                <div class="input-field col s6">
-                                     <input type="date" class="datepicker" id="promoend" placeholder="Expiration"/>
-                                </div>
-                                <div class="input-field col s12">
-                                    <input type="text" class="validate" id="promoname">
-                                    <label for="promoname">Promo Name <span class="red-text">*</span></label>
-                                </div>
-                                <div class="input-field col s12">
-                                    <textarea id="promodetails" class="materialize-textarea" length="120"></textarea>
-                                    <label for="promodetails">Description</label>
-                                </div>
-                                <div class="input-field col s12">
-                                    <select multiple id="promo-services-included">
-                                          <option value="" disabled selected>Choose your option</option>
+                                    <div class="input-field col s3">
+                                        <input type="number" class="validate" id="package_quantity">
+                                        <label for="package_quantity">Quantity</label>
+                                    </div>
+
+                                    <div class="input-field col s3">
+                                      <button class="waves-effect waves-light btn" onclick="myFunction()"><i class="material-icons">add</i></button>
+                                    </div>
+
+                                    <div class="row">
+                                      <table class="center-aligned highlight" id="packageTable">
+
+                                      </table>
+                                    </div>
+                                  <div class="input-field col s6">
+                                      <select id="servicelist" class="browser-default">
+                                            <option value="" disabled selected>Service</option>
                                       </select>
-                                      <label>Service/s Included</label>
-                                </div>
-                                <div class="input-field col s12">
-                                    <select multiple id="promo-product-included">
-                                          <option value="" disabled selected>Choose your option</option>
-                                      </select>
-                                      <label>Product/s Included</label>
-                                </div>
-                                <div class="input-field col s5">
-                                <p class="center">
-                                    <input type="checkbox" class="filled-in" id="free"/>
-                                    <label for="free">Free</label>
-                                </p>
-                                </div>
-                                <div class="input-field col s6 offset-s1">
-                                    <input type="text" class="validate right-align" id="promoprice" maxlength="8">
-                                    <label for="promoprice">Promo Price</label>
-                                </div>
-                                <div class="input-field col s12 center">
-                                    <button class="waves-effect waves-light orange btn-flat" type="submit" value="Submit" id="promobtn">CREATE</button>
-                                    <button class="waves-effect waves-orange transparent btn-flat white" type="reset" value="Submit">CLEAR</button>
-                                </div>
+                                  </div>
+                                      <div class="input-field col s3">
+                                          <input type="number" class="validate" id="package_quantity">
+                                          <label for="service_quantity">Quantity</label>
+                                      </div>
+
+                                      <div id="div1">
+                                        
+                                      </div>
+
+                                      <div class="input-field col s3">
+                                        <a class="waves-effect waves-light btn"><i class="material-icons">add</i></a>
+                                      </div>
+
+                                      <div class="row">
+                                        <table class="center highlight">
+                                              </table>
+                                        </div>
+
+                                      <div class="input-field col s4 offset-s8">
+                                        <input type="text" class="validate right-align" id="packprice" name="packprice">
+                                        <label for="packprice">Price <span class="red-text">*</span></label>
+                                      </div>
+                                      <div class="input-field col s12">
+                                        <button class="waves-effect waves-light orange btn-flat" type="submit" value="Submit" id="packsubmit">Create</button>
+                                        <button class="waves-effect waves-orange transparent btn-flat" type="reset" value="Reset">Clear</button>
+                                      </div>
                               </form>
-                        </div>
                         </div>
                     </div>
                                         
@@ -170,30 +189,34 @@
                               </nav>
                     <div class="row">
                           <div class="col s12">
-                              <h5>Promo List</h5>
+                              <h5>Package List</h5>
                           </div>
                           <div class="col s12">
-                              <table class="ui sortable celled table responsive-table" ng-init="promo=[{id: '1',name: 'Pogi', service: 'foot spa', product: 'hair color', price: 'Free', availability: 'Non-Expiry'},{id: '2',name: 'Maganda', service: 'foot spa', product: 'hair color', price: '10.00', availability: '03/01/2016'}]">
+                              <table class="ui sortable celled table responsive-table" ng-init="package=[{id: '1',name: 'Package', type: 'event', service: 'massage', servqty: '3', product: 'hair color', prodqty: '2', price: '800.00'}]">
                                                     <thead>
                                                       <tr>
                                                         <th data-sort="int" class="orange lighten-5">ID</th>
                                                         <th data-sort="string" class="orange lighten-5">Name</th>
+                                                        <th data-sort="string" class="orange lighten-5">Type</th>
                                                         <th data-sort="string" class="orange lighten-5">Service</th>
-                                                        <th data-sort="int" class="orange lighten-5">Product</th>
-                                                        <th data-sort="string" class="orange lighten-5">Price</th>
-                                                        <th data-sort="string" class="orange lighten-5">Availability</th>
+                                                        <th data-sort="int" class="orange lighten-5">Qty</th>
+                                                        <th data-sort="string" class="orange lighten-5">Product</th>
+                                                        <th data-sort="int" class="orange lighten-5">Qty</th>
+                                                        <th data-sort="int" class="orange lighten-5">Price</th>
                                                         <th class="no-sort orange lighten-5">Actions</th>
                                                       </tr>
                                                     </thead>
                                                       <tbody >
-                                                         <tr ng-repeat="pr in promo | filter:name | filter: service | filter: product | filter: price | filter: availability | orderBy: 'id'">
-                                                          <td>{{ pr.id }}</td>
-                                                            <td>{{pr.name}}</td>
-                                                            <td>{{pr.service}}</td>
-                                                            <td>{{pr.product}}</td>
-                                                            <td>{{pr.price}}</td>
-                                                            <td>{{pr.availability}}</td>
-                                                            <td style="padding:0px;"><a href="#update" style="padding: 0px;" class="waves-effect waves-orange modal-trigger transparent btn-flat"><i class="material-icons">edit</i></a><button style="padding: 0px; margin-left:15px;" class="waves-effect waves-orange transparent btn-flat"><i class="material-icons">delete</i></button></td>
+                                                         <tr ng-repeat="pack in package | filter: name | filter: type | filter: service | filter: product | filter: price | orderBy: 'id'">
+                                                          <td>{{ pack.id }}</td>
+                                                            <td>{{pack.name}}</td>
+                                                            <td>{{pack.type}}</td>
+                                                            <td>{{pack.service}}</td>
+                                                            <td>{{pack.servqty}}</td>
+                                                            <td>{{pack.product}}</td>
+                                                            <td>{{pack.prodqty}}</td>
+                                                            <td>{{pack.price}}</td>
+                                                            <td style="padding: 0px;"><a href="#update" style="padding: 0px; margin-left: 5px;" class="waves-effect waves-orange modal-trigger transparent btn-flat"><i class="material-icons">edit</i></a><button style="padding: 0px; margin-left:15px;" class="waves-effect waves-orange transparent btn-flat"><i class="material-icons">delete</i></button></td>
                                                             </tr>
                                                       </tbody>
                                                     </table>
@@ -273,7 +296,7 @@
           border-radius: 3px;
           margin: 10px;
           text-align: center;
-          width: 120px;
+          width: 80px;
           height: 30%;
         }
 
@@ -303,7 +326,7 @@
           background: transparent;
           margin-right: 0;
           text-align: center;
-          width: 120px;
+          width: 210px;
           height: 30%
         }
 

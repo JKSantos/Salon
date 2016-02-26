@@ -15,7 +15,7 @@
                           <div class="center">
                               <img src="./img/anon.jpg" class="circle" style="width: 150px; height: 150px; margin-top: 40px; margin-bottom: 20px;">
                             </div>
-                          <li><a href="admin-home.jsp" class="waves-effect waves-orange"><b>Home</b></a></li>
+                          <li><a href="admin-home.jsp" class="waves-effect"><b>Home</b></a></li>
                          <!--  <li class="no-padding"> -->
                             <ul class="collapsible" data-collapsible="accordion">
                               <li>
@@ -28,6 +28,7 @@
                                       <li><a href="maintenance-discount.jsp">Discount</a></li>
                                       <li><a href="maintenance-package.jsp">Package</a></li>
                                       <li><a href="maintenance-catalogue">Catalogue</a></li>
+                                      <li><a href="maintenance-extra.jsp">Extra Charge</a></li>
                                     </ul>
                                   </div>
                               </li>
@@ -43,7 +44,7 @@
                                   </div>
                               </li>
                             </ul>
-                          <li><a href="utilities.jsp" class="waves-effect waves-orange"><b>Utilities</b></a></li>
+                          <li><a href="utilities.jsp" class="waves-effect"><b>Utilities</b></a></li>
                         </ul>
 
                 
@@ -64,7 +65,8 @@
                                          <li><a href="maintenance-promo.jsp">Promo</a></li>
                                          <li><a href="maintenance-discount.jsp">Discount</a></li>
                                          <li><a href="maintenance-package.jsp">Package</a></li>
-                                         <li><a href="maintenance-catalouge.jsp">Catalouge</a></li>
+                                         <li><a href="maintenance-catalouge.jsp">Catalogue</a></li>
+                                         <li><a href="maintenance-extra.jsp">Extra Charge</a></li>
                                        </ul>
                                      </div>
                                  </li>
@@ -93,7 +95,7 @@
                       <div class="row">
                           <form class="col s12">
                               <div class="input-field col s12">
-                                  <h4>Walk-In</h4>
+                                  <h4>Walk-In Maintenance</h4>
                               </div>
                                 <div class="input-field col s6">
                                     <select id="reserve_eventhome" onchange="enableService(this);">
@@ -151,7 +153,7 @@
                               </div>
                           
                               <div class="col s12">
-                                  <button id="reservetn" type="submit" value="Submit" class="waves-effect waves-light orange btn-flat  modal-trigger" style="margin-top:10px;" data-target="summaryModal">ADD</button>
+                                  <button id="reservetn" type="submit" value="Submit" class="waves-effect waves-light orange btn-flat  modal-trigger" style="margin-top:10px;" data-target="summaryModal">CREATE</button>
                                   <button id="reserveclear" type="reset" value="Reset" class="waves-effect waves-orange white btn-flat" style="margin-top:10px;">CLEAR</button>
                               </div>
 
