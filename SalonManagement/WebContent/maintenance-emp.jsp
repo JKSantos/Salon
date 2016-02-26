@@ -265,6 +265,8 @@
                                               <td>{{employee.position}}</td>
                                               <td><a href="#update" style="padding: 0px;" class="waves-effect waves-orange modal-trigger transparent btn-flat"><i class="material-icons">edit</i></a><button style="padding: 0px; margin-left:15px;" class="waves-effect waves-orange transparent btn-flat"><i class="material-icons">delete</i></button></td>
                                               </tr>
+                                        </tbody>
+                                        </table>
                                         
                                            <!-- <c:forEach items="${empList}" var="employee">
                                            <tr>
