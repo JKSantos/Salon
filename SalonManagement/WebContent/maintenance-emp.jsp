@@ -8,8 +8,6 @@
   <link type="text/css" rel="stylesheet" href="./css/materialize.css"/>
   <link type="text/css" rel="stylesheet" href="./css/mystyle.css"/>
   <link type="text/css" rel="stylesheet" href="./css/mtnc-emp.css"/>
-  <link rel="stylesheet" type="text/css" href="./css/datepicker.min.css">
-  <link rel="stylesheet" type="text/css" href="./css/datepicker.css">
   <link rel="stylesheet" type="text/css" href="./css/table.css">
   <link rel="stylesheet" type="text/css" href="./css/table.min.css">
 
@@ -35,6 +33,8 @@
                               <li><a href="maintenance-prodsvc.jsp">Product & Service</a></li>
                               <li><a href="maintenance-promo.jsp">Promo</a></li>
                               <li><a href="maintenance-discount.jsp">Discount</a></li>
+                              <li><a href="maintenance-package.jsp">Package</a></li>
+                              <li><a href="maintenance-catalogue.jsp">Catalogue</a></li>
                             </ul>
                           </div>
                       </li>
@@ -67,14 +67,10 @@
                                <ul>
                                  <li class="orange"><a href="maintenance-emp.jsp">Employee</a></li>
                                  <li><a href="maintenance-prodsvc.jsp">Product & Service</a></li>
-<<<<<<< HEAD
-                                 <li><a href="maintenance-promdisc.jsp">Promo</a></li>
-                                 <li><a href="maintenance-package.jsp">Discount</a></li>
-                                 <li><a href="maintenance-catalouge.jsp">Catalouge</a></li>
-=======
                                  <li><a href="maintenance-promo.jsp">Promo</a></li>
                                  <li><a href="maintenance-discount.jsp">Discount</a></li>
->>>>>>> 3746e4da13037a69519f0ac6c9f3bef5bb77afd8
+                                 <li><a href="maintenance-package.jsp">Package</a></li>
+                                 <li><a href="maintenance-catalogue.jsp">Catalogue</a></li>
                                </ul>
                              </div>
                          </li>
@@ -84,7 +80,7 @@
                                <ul>
                                  <li><a href="transactions-reservation.jsp">Reservation</a></li>
                                  <li><a href="transactions-productorder.jsp">Product Order</a></li>
-                                 <li><a href="transaction-walkin.jsp">Walk-In</a></li>
+                                 <li><a href="#!">Walk-In</a></li>
                                </ul>
                              </div>
                          </li>
@@ -350,11 +346,11 @@
                                                   <label for="month">Month</label>
                                               </div>
                                               <div class="input-field col s1">
-                                                  <input type="number" name="strDay" id="day" class="validate" maxlength="2">
+                                                  <input type="text" name="strDay" id="day" class="validate" maxlength="2">
                                                   <label for="day">Day</label>
                                               </div>
                                               <div class="input-field col s3">
-                                                  <input type="number" name="strYear" maxlength="4" class="validate" id="year">
+                                                  <input type="text" name="strYear" maxlength="4" class="validate" id="year">
                                                   <label for="year">Year</label>
                                               </div>
                                               <div class="input-field col s2 offset-s2">
@@ -373,7 +369,7 @@
                                                 <p style="margin-top: 12px; margin-left: -7px;">(+63)</p>
                                               </div>
                                               <div class="input-field col s4">
-                                                  <input name="strEmpContactNo" type="number" id="number" class="validate" maxlength="10">
+                                                  <input name="strEmpContactNo" type="text" id="number" class="validate" maxlength="10">
                                                   <label for="number">Contact Number</label>
                                               </div>
                                               <div class="input-field col s12">
@@ -460,109 +456,7 @@
         $("table").stupidtable();
     </script>
 
-    <script type="text/javascript">
-      $(function () {
-
-        'use strict';
-
-        var $date = $('.docs-date');
-        var $container = $('.docs-datepicker-container');
-        var $trigger = $('.docs-datepicker-trigger');
-        var options = {
-              show: function (e) {
-                console.log(e.type, e.namespace);
-              },
-              hide: function (e) {
-                console.log(e.type, e.namespace);
-              },
-              pick: function (e) {
-                console.log(e.type, e.namespace, e.view);
-              }
-            };
-
-        $date.on({
-          'show.datepicker': function (e) {
-            console.log(e.type, e.namespace);
-          },
-          'hide.datepicker': function (e) {
-            console.log(e.type, e.namespace);
-          },
-          'pick.datepicker': function (e) {
-            console.log(e.type, e.namespace, e.view);
-          }
-        }).datepicker(options);
-
-        $('.docs-options, .docs-toggles').on('change', function (e) {
-          var target = e.target;
-          var $target = $(target);
-          var name = $target.attr('name');
-          var value = target.type === 'checkbox' ? target.checked : $target.val();
-          var $optionContainer;
-
-          switch (name) {
-            case 'container':
-              if (value) {
-                value = $container;
-                $container.show();
-              } else {
-                $container.hide();
-              }
-
-              break;
-
-            case 'trigger':
-              if (value) {
-                value = $trigger;
-                $trigger.prop('disabled', false);
-              } else {
-                $trigger.prop('disabled', true);
-              }
-
-              break;
-
-            case 'inline':
-              $optionContainer = $('input[name="container"]');
-
-              if (!$optionContainer.prop('checked')) {
-                $optionContainer.click();
-              }
-
-              break;
-
-            case 'language':
-              $('input[name="format"]').val($.fn.datepicker.languages[value].format);
-              break;
-          }
-
-          options[name] = value;
-          $date.datepicker('reset').datepicker('destroy').datepicker(options);
-        });
-
-        $('.docs-actions').on('click', 'button', function (e) {
-          var data = $(this).data();
-          var args = data.arguments || [];
-          var result;
-
-          e.stopPropagation();
-
-          if (data.method) {
-            if (data.source) {
-              $date.datepicker(data.method, $(data.source).val());
-            } else {
-              result = $date.datepicker(data.method, args[0], args[1], args[2]);
-
-              if (result && data.target) {
-                $(data.target).val(result);
-              }
-            }
-          }
-        });
-
-        $('[data-toggle="datepicker"]').datepicker();
-
-      });
-
-    </script>
+    
 
     <script type="text/javascript">
       $( document ).ready(function(){

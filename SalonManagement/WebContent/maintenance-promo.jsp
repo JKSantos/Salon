@@ -25,9 +25,10 @@
                                     <ul>
                                       <li><a href="maintenance-emp.jsp">Employee</a></li>
                                       <li><a href="maintenance-prodsvc.jsp">Product & Service</a></li>
-                                     <li class="orange"><a href="maintenance-promo.jsp">Promo</a></li>
+                                      <li class="orange"><a href="maintenance-promo.jsp">Promo</a></li>
                                       <li><a href="maintenance-discount.jsp">Discount</a></li>
-                                      <li><a href="maintenance-catalouge.jsp">Catalouge</a></li>
+                                      <li><a href="maintenance-package.jsp">Package</a></li>
+                                      <li><a href="maintenance-catalogue.jsp">Catalouge</a></li>
 
                                     </ul>
                                   </div>
@@ -56,13 +57,15 @@
                              <li><a href="admin-home.jsp" class="waves-effect waves-orange"><b>Home</b></a>
                                <ul class="collapsible collapsible-accordion">
                                  <li>
-                                   <a class="waves-effect waves-orange collapsible-header"><b>Maintenance</b></a>
+                                   <a class="collapsible-header active"><b>Maintenance</b></a>
                                      <div class="collapsible-body">
                                        <ul>
                                          <li><a href="maintenance-emp.jsp">Employee</a></li>
                                          <li><a href="maintenance-prodsvc.jsp">Product & Service</a></li>
                                          <li class="orange"><a href="maintenance-promo.jsp">Promo</a></li>
-                                         <li><a href="maintenance-discount.jsp">Package</a></li>
+                                         <li><a href="maintenance-discount.jsp">Discount</a></li>
+                                         <li><a href="maintenance-package.jsp">Package</a></li>
+                                         <li><a href="maintenance-catalogue.jsp">Catalogue</a></li>
                                        </ul>
                                      </div>
                                  </li>
