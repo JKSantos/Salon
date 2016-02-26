@@ -56,18 +56,11 @@
                                    <a class="waves-effect waves-orange collapsible-header"><b>Maintenance</b></a>
                                      <div class="collapsible-body">
                                        <ul>
-<<<<<<< HEAD
                                          <li><a href="maintenance-emp.jsp">Employees</a></li>
                                          <li><a href="maintenance-prodsvc.jsp">Products & Services</a></li>
                                          <li><a href="maintenance-promdisc.jsp">Promos & Discounts</a></li>
                                          <li><a href="maintenance-package.jsp">Packages</a></li>
                                          <li><a href="maintenance-catalouge.jsp">Catalouge</a></li>
-=======
-                                         <li><a href="maintenance-emp.jsp">Employee</a></li>
-                                         <li><a href="maintenance-prodsvc.jsp">Product & Service</a></li>
-                                         <li><a href="maintenance-promo.jsp">Promo</a></li>
-                                         <li><a href="maintenance-discount.jsp">Discount</a></li>
->>>>>>> 3746e4da13037a69519f0ac6c9f3bef5bb77afd8
                                        </ul>
                                      </div>
                                  </li>
@@ -77,7 +70,7 @@
                                        <ul>
                                          <li class="orange"><a href="transactions-reservation.jsp">Reservation</a></li>
                                          <li><a href="transactions-productorder.jsp">Product Order</a></li>
-                                         <li><a href="transaction-walkin.jsp">Walk-In</a></li>
+                                         <li><a href="transactions-walkin.jsp">Walk-In</a></li>
                                        </ul>
                                      </div>
                                  </li>
@@ -129,14 +122,14 @@
                                   <label for="reserve_venue">Venue</label>
                               </div>
                               <div class="input-field col s6">
-                                  <select id="package-list">
+                                  <select id="package-list" class="browser-default">
                                         <option value="" disabled selected>Choose your option</option>
-                                        <option value="1">Package 1</option>
-                                        <option value="2">Package 2</option>
-                                        <option value="3">Package 3</option>
+                                        <option value="Package 1">Package 1</option>
+                                        <option value="Package 2">Package 2</option>
+                                        <option value="Package 3">Package 3</option>
                                         <option value="customize">Custom</option>
                                   </select>
-                                  <label>Package Available</label>
+                                  <!-- <label>Package Available</label> -->
                               </div>
                                   <div class="input-field col s6">
                                       <input type="number" class="validate" id="package_quantity">
@@ -144,7 +137,13 @@
                                   </div>
 
                                   <div class="col s12">
-                                    <a class="waves-effect waves-light btn" onclick="addElement()">ADD</a>
+                                    <button class="waves-effect waves-light btn" onclick="myFunction()">ADD</button>
+                                  </div>
+
+                                  <div class="row">
+                                    <table class="center-aligned highlight" id="packageTable">
+
+                                    </table>
                                   </div>
                               
                               <div class="input-field col s6" stype="margin-top: -10px;">
@@ -168,6 +167,18 @@
                                   <div class="col s12">
                                     <a class="waves-effect waves-light btn">ADD</a>
                                   </div>
+
+                                  <div class="row">
+                                    <table class="center highlight">
+                                            <tbody>
+                                              <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                              </tr>                                  
+                                            </tbody>
+                                          </table>
+                                    </div>
                               
                               <div class="input-field col s12">
                                   <input type="number" class="validate" id="reserve_headcount" maxlength="4">
@@ -175,11 +186,8 @@
                               </div>
                           
                               <div class="col s12">
-<<<<<<< HEAD
                                   <button id="reservetn" type="submit" value="Submit" class="waves-effect waves-light orange btn-flat  modal-trigger" style="margin-top:10px;" data-target="summaryModal">ADD</button>
-=======
-                                  <button id="reservetn" type="submit" value="Submit" class="waves-effect waves-light orange btn-flat" style="margin-top:10px;">CREATE</button>
->>>>>>> 3746e4da13037a69519f0ac6c9f3bef5bb77afd8
+
                                   <button id="reserveclear" type="reset" value="Reset" class="waves-effect waves-orange white btn-flat" style="margin-top:10px;">CLEAR</button>
                               </div>
 

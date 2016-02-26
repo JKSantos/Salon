@@ -24,14 +24,10 @@
                                     <ul>
                                       <li><a href="maintenance-emp.jsp">Employee</a></li>
                                       <li><a href="maintenance-prodsvc.jsp">Product & Service</a></li>
-<<<<<<< HEAD:SalonManagement/WebContent/maintenance-package.jsp
                                       <li><a href="maintenance-promdisc.jsp">Promo</a></li>
                                       <li class="orange"><a href="maintenance-package.jsp">Discount</a></li>
                                       <li><a href="maintenance-catalouge.jsp">Catalouge</a></li>
-=======
-                                      <li><a href="maintenance-promo.jsp">Promo</a></li>
-                                      <li class="orange"><a href="maintenance-discount.jsp">Discount</a></li>
->>>>>>> 3746e4da13037a69519f0ac6c9f3bef5bb77afd8:SalonManagement/WebContent/maintenance-discount.jsp
+
                                     </ul>
                                   </div>
                               </li>

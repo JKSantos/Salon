@@ -1,20 +1,30 @@
-function addElement() { 
-  // create a new div element 
-  // and give it some content 
-  var newDiv = document.createElement("div"); 
-  var newSelect =  document.createElement("select");
-  var newOption = document.createElement("option");
-  var node1 = document.createTextNode("Package 1");
 
+function myFunction() {
+    var table = document.getElementById("packageTable");
+    var packageType = $("#package-list").val();
+    var packageQuant = $("#package_quantity").val();
+    var removeBtn = document.createElement('button');
+   
+    var row = table.insertRow(0);
+    var cell1 = row.insertCell(0);
+    var cell2 = row.insertCell(1);
+    var cell3 = row.insertCell(2); 
+    cell1.innerHTML = packageType;
+    cell2.innerHTML = packageQuant;
+    cell3.innerHTML = '<input id="Button" type="button" value="Remove" class = "waves-effect waves-light btn red" onclick="deleteRow(this)" />';
+    var x = document.getElementById("package-list");
+        x.remove(x.selectedIndex);
+}
 
-  newDiv.setAttribute('class', input-field col s6);
-  newSelect.setAttribute('id', newpackage-list);
+function deleteRow(row)
+{
+    var i=row.parentNode.parentNode.rowIndex;
+    document.getElementById('packageTable').deleteRow(i);
+    var packageText = document.getElementById("packageTable").rows[i].cells[0].innerHTML;
+    alert(packageText);
+    var y = document.getElementById("package-list");
+    var option = document.createElement("option");
+    option.text = packageText;
 
-
-  newSelect.appendChild(newOption);
-  newDiv.appendChild(newSelect); //add the text node to the newly created div. 
-
-  // add the newly created element and its content into the DOM 
-  var currentDiv = document.getElementById("div1"); 
-  document.body.insertBefore(newDiv, currentDiv); 
+    y.add(option);
 }
