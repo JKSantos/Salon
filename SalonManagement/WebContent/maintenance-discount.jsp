@@ -99,7 +99,7 @@
             
                     <div class="aside aside1 z-depth-barts"> <!--main aside1-->
                           <div class="row">
-                              <form class="col s12">
+                              <form class="col s12" method="post" action="createDiscount">
                                   <h4>Discount Maintenance</h4>
                                   <div class="input-field col s12" style="margin-bottom: 30px;">
                                       <label class="red-text"> (*) Indicates required field</label>

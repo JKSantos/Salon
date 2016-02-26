@@ -43,6 +43,13 @@
 			<result name="success">maintenance-discount.jsp</result>
 		</action>
 
+		<action name="createDiscount" class="com.gss.actions.CreateDiscountAction" method="execute">
+			<result name="success">redirect-maintenance-discount.jsp</result>
+			<result name="failed">redirect-maintenance-discount.jsp</result>
+		</action>
 
+		<action name="extraChargeMaintenance" class="com.gss.actions.ExtraChargeMaintenanceAction" method="execute">
+			<result name="success">maintenance-extra.jsp</result>
+		</action>
 	</package>
 </struts>

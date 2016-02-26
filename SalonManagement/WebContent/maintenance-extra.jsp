@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html ng-app>
+
+  <%@ taglib uri="/struts-tags" prefix="s" %>
+  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
   <head>
   <link rel="stylesheet" href="./css/materialize.min.css"  media="screen,projection"/>
   <link type="text/css" rel="stylesheet" href="./css/materialize.css"/>
@@ -32,7 +35,7 @@
                                       <li><a href="maintenance-package.jsp">Package</a></li>
                                       <li><a href="maintenance-catalogue.jsp">Catalogue</a></li>
                                       <li class="orange"><a href="maintenance-extra.jsp">Extra Charge</a></li>
-                                    </ul>
+
                                   </div>
                               </li>
                               <li>
@@ -98,7 +101,7 @@
                     <div class="container">
                     <header><h4>Extra Charge Maintenance</h4></header>
                         <div class="row">
-                            <form class="col s12">
+                            <form class="col s12" >
                                   <div class="input-field col s12">
                                     <input type="text" class="validate" required name="extraname" id="extraid">
                                     <label for="extraid">Name <span class="red-text">*</span></label>
@@ -143,12 +146,14 @@
                                   </tr>
                                 </thead>
                                   <tbody >
+                                    <c:forEach items="${ecList}" var="extra">
                                      <tr ng-repeat="ex in extra | filter:name | orderBy: 'id'">
-                                      <td>{{ ex.id }}</td>
-                                        <td>{{ex.name}}</td>
-                                        <td>{{ex.description}}</td>
+                                      <td>${extra.intECID }</td>
+                                        <td>{extra.strECName}</td>
+                                        <td>{extra.strECDetails}</td>
                                         <td><a href="#update" style="padding: 0px;" class="waves-effect waves-orange modal-trigger transparent btn-flat"><i class="material-icons">edit</i></a><button style="padding: 0px; margin-left:15px;" class="waves-effect waves-orange transparent btn-flat"><i class="material-icons">delete</i></button></td>
                                         </tr>
+                                      </c:forEach>
                                   </tbody>
                                 </table>
                                 
