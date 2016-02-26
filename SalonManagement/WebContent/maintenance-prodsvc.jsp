@@ -27,17 +27,10 @@
                                     <ul>
                                       <li><a href="maintenance-emp.jsp">Employee</a></li>
                                       <li class="orange"><a href="maintenance-prodsvc.jsp">Product & Service</a></li>
-<<<<<<< HEAD
-                                      <li><a href="maintenance-promdisc.jsp">Promo & Discount</a></li>
-                                      <li><a href="maintenance-package.jsp">Package</a></li>
-                                      <li><a href="maintenance-catalouge.jsp">Catalouge</a></li>
-
-=======
                                       <li><a href="maintenance-promo.jsp">Promo</a></li>
                                       <li><a href="maintenance-discount.jsp">Discount</a></li>
                                       <li><a href="maintenance-package.jsp">Package</a></li>
                                       <li><a href="maintenance-catalogue.jsp">Catalouge</a></li>
->>>>>>> b66c5ac38598e197ee7badcabec341ada6739944
                                     </ul>
                                   </div>
                               </li>
@@ -108,20 +101,6 @@
                                             <header><h4>Product & Service Maintenance</h4></header>
                                                 <div class="row">
                                                     <form class="col s12">
-<<<<<<< HEAD
-
-                                                        <div class="input-field col s12">
-                                                            <label class="red-text" id="label">(*) Indicates required field</label>
-                                                        </div><br><br><br>
-                                                        <div class="input-field col s12 center">
-                                                          <div>
-                                                            <img  id="serviceimg" width="120" height="120" 
-                                                             src="./img/product.png" alt="Image"/>
-                                                          </div>
-                                                                
-                                                        </div>
-                                                       
-=======
                                                         <div class="input-field col s12 left">
                                                             <label class="red-text center">(*) Indicates required field</label>
                                                         </div><br><br>
@@ -130,7 +109,6 @@
                                                                 <img  id="serviceimg" style="width: 120px; height: 120px;" src="./img/packIcon.png" alt="Image"/>
                                                             </div>                                                    
                                                         </div>
->>>>>>> b66c5ac38598e197ee7badcabec341ada6739944
                                                         <div class="input-field col s12" style="margin-top: 30px;">
                                                             <div class="file-field">
                                                                   <div class="btn orange">
@@ -142,13 +120,7 @@
                                                                   </div>
                                                               </div>
                                                         </div>
-<<<<<<< HEAD
-
-                                                         <div class="input-field col s12" style="margin-top: 10px;">
-
-=======
                                                         <div class="input-field col s12" style="margin-top: 10px;">
->>>>>>> b66c5ac38598e197ee7badcabec341ada6739944
                                                               <select id="typeid">
                                                                 <option value="Product" selected>Product</option>
                                                                 <option value="Service">Service</option>
@@ -177,15 +149,8 @@
                                                             <input type="text" id="add-optname" class="validate">
                                                             <label for="add-optname">Another</label>
                                                         </div>
-<<<<<<< HEAD
-                                                        <div class="input-field col s12">
-                                                            <input type="number" class="validate right-align" id="serviceprice" maxlength="8">
-
-=======
-
                                                         <div class="input-field col s12">
                                                             <input type="number" class="validate right-align" id="serviceprice" maxlength="8" required>
->>>>>>> b66c5ac38598e197ee7badcabec341ada6739944
                                                             <label for="serviceprice">Price <span class="red-text">*</span></label>
                                                         </div>
 
@@ -195,74 +160,6 @@
                                                         </div>
                                                       </form>
                                                 </div>
-<<<<<<< HEAD
-
-                                                </div>
-                      </div>
-                    
-                    <div class="aside asidecontainer z-depth-0">
-                      <div class="aside aside3 z-depth-barts">
-                              <nav class="z-depth-0">
-                                <div class="nav-wrapper grey lighten-3 grey-text text-darken-4">
-                                  <form>
-                                    <div class="input-field col s12 z-depth-0">
-                                      <input class="grey lighten-1" id="search" type="search" required>
-                                      <label for="search"><i class="material-icons grey-text text-darken-3">search</i></label>
-                                    </div>
-                                  </form>
-                                </div>
-                              </nav>
-                        <div class="row">
-                          <div class="col s12">
-                              <h5>Product List</h5>
-                          </div>
-                          <div class="col s12">
-                              <ul class="collapsible z-depth-0" data-collapsible="accordion" id="productList">
-                                  <li>
-                                    <div class="collapsible-header"><i class="material-icons green-text">info</i>Green Hair Color</div>
-                                    <div class="collapsible-body blue-grey lighten-5">
-                                      <a class="waves-effect waves-orange btn-flat">Update</a>
-                                      <a class="waves-effect waves-orange btn-flat red-text">Deactivate</a>
-                                    </div>
-                                  </li>
-                                </ul>
-                          </div>
-                        </div>
-                      </div>
-                        <div class="aside aside4 z-depth-barts">
-                                  <nav class="z-depth-0">
-                                    <div class="nav-wrapper grey lighten-3 grey-text text-darken-4">
-                                      <form>
-                                        <div class="input-field col s12 z-depth-0">
-                                          <input class="grey lighten-1" id="search" type="search" required>
-                                          <label for="search"><i class="material-icons grey-text text-darken-3">search</i></label>
-                                        </div>
-                                      </form>
-                                    </div>
-                                  </nav>
-                            <div class="row">
-                              <div class="col s12">
-                                  <h5>Service List</h5>
-                              </div>
-                              <div class="col s12">
-                                  <ul class="collapsible z-depth-0" data-collapsible="accordion">
-                                      <li>
-                                        <div class="collapsible-header"><i class="material-icons green-text">info</i>Clean Cut</div>
-                                        <div class="collapsible-body blue-grey lighten-5">
-                                          <a class="waves-effect waves-orange btn-flat">Update</a>
-                                          <a class="waves-effect waves-orange btn-flat red-text">Deactivate</a>
-                                        </div>
-                                      </li>
-                                    </ul>
-                              </div>
-                            </div>
-                          </div>
-                    </div>
-               
-        </article>
-  </div>
-                
-=======
                                               </div>
                                         </div>
               
@@ -331,8 +228,6 @@
               </div>
         </article>
   </div>
-
->>>>>>> b66c5ac38598e197ee7badcabec341ada6739944
   <!--Import jQuery before materialize.js-->
     <script type="text/javascript" src="./js/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="./js/jquery-latest.min.js"></script>
