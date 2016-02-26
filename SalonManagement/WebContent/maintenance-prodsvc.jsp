@@ -38,6 +38,7 @@
                                 <a class="collapsible-header"><b>Transaction</b></a>
                                   <div class="collapsible-body">
                                     <ul>
+                                      <li><a href="transactions-inventory.jsp">Inventory</a></li>
                                       <li><a href="transactions-reservation.jsp">Reservation</a></li>
                                       <li><a href="transactions-productorder.jsp">Product Order</a></li>
                                       <li><a href="transaction-walkin.jsp">Walk-In</a></li>
@@ -74,6 +75,7 @@
                                    <a class="waves-effect waves-orange collapsible-header"><b>Transaction</b></a>
                                      <div class="collapsible-body">
                                        <ul>
+                                         <li><a href="transactions-inventory.jsp">Inventory</a></li>
                                          <li><a href="transactions-reservation.jsp">Reservation</a></li>
                                          <li><a href="transactions-productorder.jsp">Product Order</a></li>
                                          <li><a href="#!">Walk-In</a></li>

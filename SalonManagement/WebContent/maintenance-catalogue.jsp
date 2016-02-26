@@ -38,6 +38,7 @@
                                 <a class="collapsible-header"><b>Transaction</b></a>
                                   <div class="collapsible-body">
                                     <ul>
+                                      <li><a href="transactions-inventory.jsp">Inventory</a></li>
                                       <li><a href="transactions-reservation.jsp">Reservation</a></li>
                                       <li><a href="transactions-productorder.jsp">Product Order</a></li>
                                       <li><a href="transaction-walkin.jsp">Walk-In</a></li>
@@ -74,6 +75,7 @@
                                    <a class="waves-effect waves-orange collapsible-header"><b>Transaction</b></a>
                                      <div class="collapsible-body">
                                        <ul>
+                                         <li><a href="transactions-inventory.jsp">Inventory</a></li>
                                          <li><a href="transactions-reservation.jsp">Reservation</a></li>
                                          <li><a href="transactions-productorder.jsp">Product Order</a></li>
                                          <li><a href="#!">Walk-In</a></li>
@@ -158,61 +160,62 @@
                       </div>
                     
                       <div class="aside aside2 z-depth-barts">
-                              <nav class="z-depth-0">
-                                <div class="nav-wrapper grey lighten-3 grey-text text-darken-4">
-                                  <form>
-                                    <div class="input-field col s12 z-depth-0">
-                                      <input class="grey lighten-1" id="search" type="search" required>
-                                      <label for="search"><i class="material-icons grey-text text-darken-3">search</i></label>
-                                    </div>
-                                  </form>
-                                </div>
-                              </nav>
-                        <div class="row">
-                          <div class="col s12">
-                              <h5>Catalogue List</h5>
-                          </div>
-                          <table class="ui sortable celled table" ng-init="prodsvc=[{id: '1',name: 'Razer', category: 'Product', price: 'P99.99'},{id: '2',name: 'Massage', category: 'Service', price: 'P300.00'}]">
-                            <thead>
-                              <tr>
-                                <th data-sort="int" class="orange lighten-5">ID</th>
-                                <th data-sort="string" class="orange lighten-5">Name</th>
-                                <th data-sort="string" class="orange lighten-5">Category</th>
-                                <th data-sort="int" class="orange lighten-5">Price</th>
-                                <th class="no-sort orange lighten-5">Actions</th>
-                              </tr>
-                            </thead>
-                              <tbody >
-                                 <tr ng-repeat="ps in prodsvc | filter:name | filter: category | filter: price | orderBy: 'id'">
-                                  <td>{{ ps.id }}</td>
-                                    <td>{{ps.name}}</td>
-                                    <td>{{ps.category}}</td>
-                                    <td>{{ps.price}}</td>
-                                    <td><a href="#update" style="padding: 0px;" class="waves-effect waves-orange modal-trigger transparent btn-flat"><i class="material-icons">edit</i></a><button style="padding: 0px; margin-left:15px;" class="waves-effect waves-orange transparent btn-flat"><i class="material-icons">delete</i></button></td>
-                                    </tr>
-                              </tbody>
-                            </table>
-                            
-                               <!-- <c:forEach items="${empList}" var="employee">
-                               <tr>
-                                <td>${employee.intEmpID}</td>
-                                  <td>${employee.strEmpFirstName} ${employee.strEmpLastName}</td>
-                                  <td>Cashier</td>
-                                  <td><a href="#update" style="padding: 0px;" class="waves-effect waves-orange modal-trigger transparent btn-flat"><i class="material-icons">edit</i></a><button style="padding: 0px; margin-left:15px;" class="waves-effect waves-orange transparent btn-flat"><i class="material-icons">delete</i></button></td>
-                                  </tr>
-                                </c:forEach>  -->
-                              
-                          
+                                             <nav class="z-depth-0">
+                                               <div class="nav-wrapper orange lighten-3 grey-text text-darken-4">
+                                                 <form>
+                                                   <div class="input-field col s12 z-depth-0">
+                                                     <input class="orange lighten-3" id="search" type="search" ng-model="name" placeholder="Search...">
+                                                     <label for="search"><i class="material-icons grey-text text-darken-3">search</i></label>
+                                                   </div>
+                                                 </form>
+                                               </div>
+                                             </nav>
+                              <div class="row">
+                                  <div class="col s12">
+                                      <div class="row">
+                                             <h5>Catalogue List</h5>
 
-                          <ul class="pagination right">
-                                <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
-                                <li class="active orange"><a href="#!">1</a></li>
-                                <li class="waves-effect"><a href="#!">2</a></li>
-                                <li class="waves-effect"><a href="#!">3</a></li>
-                                <li class="waves-effect"><a href="#!">4</a></li>
-                                <li class="waves-effect"><a href="#!">5</a></li>
-                                <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
-                              </ul>  
+
+                                               <table class="ui sortable celled table" ng-init="catalogue=[{id: '1',name: 'Mohawk', price: '50.00'},{id: '2',name: 'Kalbo', price: '40.00'}]">
+                                                 <thead>
+                                                   <tr>
+                                                     <th data-sort="int" class="orange lighten-5">ID</th>
+                                                     <th data-sort="string" class="orange lighten-5">Name</th>
+                                                     <th data-sort="int" class="orange lighten-5">Price (Peso)</th>
+                                                     <th class="no-sort orange lighten-5">Actions</th>
+                                                   </tr>
+                                                 </thead>
+                                                 <tbody >
+                                                    <tr ng-repeat="cata in catalogue | filter:name | filter:price | orderBy: 'id'">
+                                                     <td>{{cata.id}}</td>
+                                                       <td>{{cata.name}}</td>
+                                                       <td>{{cata.price}}</td>
+                                                       <td><a href="#update" style="padding: 0px;" class="waves-effect waves-orange modal-trigger transparent btn-flat"><i class="material-icons">edit</i></a><button style="padding: 0px; margin-left:15px;" class="waves-effect waves-orange transparent btn-flat"><i class="material-icons">delete</i></button></td>
+                                                       </tr>
+                                                 </tbody>
+                                                 </table>
+                                                 
+                                                    <!-- <c:forEach items="${empList}" var="employee">
+                                                    <tr>
+                                                     <td>${employee.intEmpID}</td>
+                                                       <td>${employee.strEmpFirstName} ${employee.strEmpLastName}</td>
+                                                       <td>Cashier</td>
+                                                       <td><a href="#update" style="padding: 0px;" class="waves-effect waves-orange modal-trigger transparent btn-flat"><i class="material-icons">edit</i></a><button style="padding: 0px; margin-left:15px;" class="waves-effect waves-orange transparent btn-flat"><i class="material-icons">delete</i></button></td>
+                                                       </tr>
+                                                     </c:forEach>  -->
+                                                   
+                              
+
+                                               <ul class="pagination right">
+                                                     <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+                                                     <li class="active orange"><a href="#!">1</a></li>
+                                                     <li class="waves-effect"><a href="#!">2</a></li>
+                                                     <li class="waves-effect"><a href="#!">3</a></li>
+                                                     <li class="waves-effect"><a href="#!">4</a></li>
+                                                     <li class="waves-effect"><a href="#!">5</a></li>
+                                                     <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+                                                   </ul>
+ 
                         </div>
                       </div>
                
