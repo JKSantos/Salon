@@ -22,15 +22,15 @@
                                 <a class="collapsible-header"><b>Maintenance</b></a>
                                   <div class="collapsible-body">
                                     <ul>
-                                      <li><a href="maintenance-emp.jsp">Employees</a></li>
-                                      <li><a href="maintenance-prodsvc.jsp">Products & Services</a></li>
-                                      <li><a href="maintenance-promdisc.jsp">Promos & Discounts</a></li>
-                                      <li><a href="maintenance-package.jsp">Packages</a></li>
+                                      <li><a href="maintenance-emp.jsp">Employee</a></li>
+                                      <li><a href="maintenance-prodsvc.jsp">Product & Service</a></li>
+                                      <li><a href="maintenance-promo.jsp">Promo</a></li>
+                                      <li><a href="maintenance-discount.jsp">Discount</a></li>
                                     </ul>
                                   </div>
                               </li>
                               <li>
-                                <a class="collapsible-header"><b>Transactions</b></a>
+                                <a class="collapsible-header"><b>Transaction</b></a>
                                   <div class="collapsible-body">
                                     <ul>
                                       <li><a href="transactions-reservation.jsp">Reservation</a></li>
@@ -56,15 +56,15 @@
                                    <a class="waves-effect waves-orange collapsible-header"><b>Maintenance</b></a>
                                      <div class="collapsible-body">
                                        <ul>
-                                         <li><a href="maintenance-emp.jsp">Employees</a></li>
-                                         <li><a href="maintenance-prodsvc.jsp">Products & Services</a></li>
-                                         <li><a href="maintenance-promdisc.jsp">Promos & Discounts</a></li>
-                                         <li><a href="maintenance-package.jsp">Packages</a></li>
+                                         <li><a href="maintenance-emp.jsp">Employee</a></li>
+                                         <li><a href="maintenance-prodsvc.jsp">Product & Service</a></li>
+                                         <li><a href="maintenance-promo.jsp">Promo</a></li>
+                                         <li><a href="maintenance-discount.jsp">Discount</a></li>
                                        </ul>
                                      </div>
                                  </li>
                                  <li>
-                                   <a class="waves-effect waves-orange collapsible-header"><b>Transactions</b></a>
+                                   <a class="waves-effect waves-orange collapsible-header"><b>Transaction</b></a>
                                      <div class="collapsible-body">
                                        <ul>
                                          <li><a href="transactions-reservation.jsp">Reservation</a></li>

@@ -43,7 +43,7 @@
           border-radius: 3px;
           margin: 10px;
           text-align: center;
-          width: 200px;
+          width: 140px;
           height: 30%;
         }
 
@@ -52,29 +52,8 @@
           border-radius: 3px;
           margin: 10px;
           text-align: center;
-          width: 200px;
-          height: 30%
-        }
-        .aside3 {
-          background: white;
-          border-radius: 3px;
-          margin: 10px;
-          text-align: center;
-          height: 30%
-        }
-        .aside4 {
-          background: white;
-          border-radius: 3px;
-          margin: 10px;
-          text-align: center;
-          height: 30%
-        }
-        .asidecontainer {
-          background: transparent;
-          margin-right: 0;
-          text-align: center;
-          width: 120px;
-          height: 30%
+          width: 100px;
+          height: 30%;
         }
 
 

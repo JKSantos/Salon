@@ -23,16 +23,23 @@
                                 <a class="collapsible-header"><b>Maintenance</b></a>
                                   <div class="collapsible-body">
                                     <ul>
+<<<<<<< HEAD
                                       <li><a href="maintenance-emp.jsp">Employees</a></li>
                                       <li><a href="maintenance-prodsvc.jsp">Products & Services</a></li>
                                       <li><a href="maintenance-promdisc.jsp">Promos & Discounts</a></li>
                                       <li><a href="maintenance-package.jsp">Packages</a></li>
                                       <li><a href="maintenance-catalouge.jsp">Catalouge</a></li>
+=======
+                                      <li><a href="maintenance-emp.jsp">Employee</a></li>
+                                      <li><a href="maintenance-prodsvc.jsp">Product & Service</a></li>
+                                      <li><a href="maintenance-promo.jsp">Promo</a></li>
+                                      <li><a href="maintenance-discount.jsp">Discount</a></li>
+>>>>>>> 3746e4da13037a69519f0ac6c9f3bef5bb77afd8
                                     </ul>
                                   </div>
                               </li>
                               <li>
-                                <a class="collapsible-header"><b>Transactions</b></a>
+                                <a class="collapsible-header active"><b>Transaction</b></a>
                                   <div class="collapsible-body">
                                     <ul>
                                       <li><a href="transactions-reservation.jsp">Reservation</a></li>
@@ -48,7 +55,7 @@
                 
                        <nav class="z-depth-0">
                          <div class="nav-wrapper orange">
-                           <a href="#!" class="brand-logo white-text" style="margin-left: 30px;">Generic Salon System</a>
+                           <a href="#!" class="brand-logo white-text" style="margin-left: 30px;">Salon Management System</a>
                          
                            <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
                            <ul class="side-nav" id="mobile-demo">
@@ -58,15 +65,15 @@
                                    <a class="waves-effect waves-orange collapsible-header"><b>Maintenance</b></a>
                                      <div class="collapsible-body">
                                        <ul>
-                                         <li><a href="maintenance-emp.jsp">Employees</a></li>
-                                         <li><a href="maintenance-prodsvc.jsp">Products & Services</a></li>
-                                         <li><a href="maintenance-promdisc.jsp">Promos & Discounts</a></li>
-                                         <li><a href="maintenance-package.jsp">Packages</a></li>
+                                         <li><a href="maintenance-emp.jsp">Employee</a></li>
+                                         <li><a href="maintenance-prodsvc.jsp">Product & Service</a></li>
+                                         <li><a href="maintenance-promo.jsp">Promo</a></li>
+                                         <li><a href="maintenance-discount.jsp">Discount</a></li>
                                        </ul>
                                      </div>
                                  </li>
                                  <li>
-                                   <a class="waves-effect waves-orange collapsible-header"><b>Transactions</b></a>
+                                   <a class="waves-effect waves-orange collapsible-header"><b>Transaction</b></a>
                                      <div class="collapsible-body">
                                        <ul>
                                          <li><a href="transactions-reservation.jsp">Reservation</a></li>
