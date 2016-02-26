@@ -69,6 +69,7 @@
                                  <li><a href="maintenance-prodsvc.jsp">Product & Service</a></li>
                                  <li><a href="maintenance-promdisc.jsp">Promo</a></li>
                                  <li><a href="maintenance-package.jsp">Discount</a></li>
+                                 <li><a href="maintenance-catalouge.jsp">Catalouge</a></li>
                                </ul>
                              </div>
                          </li>
@@ -78,7 +79,7 @@
                                <ul>
                                  <li><a href="transactions-reservation.jsp">Reservation</a></li>
                                  <li><a href="transactions-productorder.jsp">Product Order</a></li>
-                                 <li><a href="#!">Walk-In</a></li>
+                                 <li><a href="transaction-walkin.jsp">Walk-In</a></li>
                                </ul>
                              </div>
                          </li>
@@ -336,11 +337,11 @@
                                                   <label for="month">Month</label>
                                               </div>
                                               <div class="input-field col s1">
-                                                  <input type="text" name="strDay" id="day" class="validate" maxlength="2">
+                                                  <input type="number" name="strDay" id="day" class="validate" maxlength="2">
                                                   <label for="day">Day</label>
                                               </div>
                                               <div class="input-field col s3">
-                                                  <input type="text" name="strYear" maxlength="4" class="validate" id="year">
+                                                  <input type="number" name="strYear" maxlength="4" class="validate" id="year">
                                                   <label for="year">Year</label>
                                               </div>
                                               <div class="input-field col s2 offset-s2">
@@ -359,7 +360,7 @@
                                                 <p style="margin-top: 12px; margin-left: -7px;">(+63)</p>
                                               </div>
                                               <div class="input-field col s4">
-                                                  <input name="strEmpContactNo" type="text" id="number" class="validate" maxlength="10">
+                                                  <input name="strEmpContactNo" type="number" id="number" class="validate" maxlength="10">
                                                   <label for="number">Contact Number</label>
                                               </div>
                                               <div class="input-field col s12">

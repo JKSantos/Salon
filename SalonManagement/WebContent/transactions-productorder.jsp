@@ -27,6 +27,7 @@
                                       <li><a href="maintenance-prodsvc.jsp">Products & Services</a></li>
                                       <li><a href="maintenance-promdisc.jsp">Promos & Discounts</a></li>
                                       <li><a href="maintenance-package.jsp">Packages</a></li>
+                                      <li><a href="maintenance-catalouge.jsp">Catalouge</a></li>
                                     </ul>
                                   </div>
                               </li>
@@ -36,7 +37,7 @@
                                     <ul>
                                       <li><a href="transactions-reservation.jsp">Reservation</a></li>
                                       <li class="orange"><a href="transactions-productorder.jsp">Product Order</a></li>
-                                      <li><a href="#!">Walk-In</a></li>
+                                      <li><a href="transaction-walkin.jsp">Walk-In</a></li>
                                     </ul>
                                   </div>
                               </li>

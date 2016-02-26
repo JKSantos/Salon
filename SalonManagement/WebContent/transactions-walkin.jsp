@@ -131,15 +131,6 @@
                                   </select>
                                   <label>Package Available</label>
                               </div>
-                                  <div class="input-field col s6">
-                                      <input type="number" class="validate" id="package_quantity">
-                                      <label for="package_quantity">Quantity</label>
-                                  </div>
-
-                                  <div class="col s12">
-                                    <a class="waves-effect waves-light btn" onclick="addElement()">ADD</a>
-                                  </div>
-                              
                               <div class="input-field col s6" stype="margin-top: -10px;">
                                   <select id="servicelist" disabled="disabled" multiple>
                                         <option value="" disabled selected>Choose your option</option>
@@ -149,21 +140,8 @@
                                   </select>
                                   <label>Service Available</label>
                               </div>
-                                  <div class="input-field col s6">
-                                      <input type="number" class="validate" id="package_quantity">
-                                      <label for="service_quantity">Quantity</label>
-                                  </div>
-
-                                  <div id="div1">
-                                    
-                                  </div>
-
-                                  <div class="col s12">
-                                    <a class="waves-effect waves-light btn">ADD</a>
-                                  </div>
-                              
-                              <div class="input-field col s12">
-                                  <input type="number" class="validate" id="reserve_headcount" maxlength="4">
+                              <div class="input-field col s5">
+                                  <input type="text" class="validate" id="reserve_headcount" maxlength="4">
                                   <label for="reserve_headcount">Head Count</label>
                               </div>
                           
@@ -248,7 +226,6 @@
   <!--Import jQuery before materialize.js-->
     <script type="text/javascript" src="./js/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="./js/materialize.min.js"></script>
-    <script type="text/javascript" src="./js/addPackage.js"></script>
 
     <script type="text/javascript">
       $( document ).ready(function(){
