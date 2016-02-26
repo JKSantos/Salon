@@ -17,7 +17,7 @@ public class CreatePromo {
 		PromoServiceImpl service = new PromoServiceImpl();
 		
 		Product product = new Product(8, "Grips Wax 150mL", "Hair Wax", "For styling your hair", 0, null, 90.00, "resource/jeff.jpg");
-		Service serv = new Service(28, "Under Cut", "Hair Cut", 1, "SAMPLE DESCRIPTION", null, "resource/jeff.jpg");
+		Service serv = new Service(28, "Under Cut", "Hair Cut", 1, "SAMPLE DESCRIPTION",20, null, "resource/jeff.jpg");
 		serv.setDblServicePrice(20.00);
 		
 		ProductPackage packageProd = new ProductPackage(1, product, 5, 1);

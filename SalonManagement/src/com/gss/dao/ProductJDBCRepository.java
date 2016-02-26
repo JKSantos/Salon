@@ -168,4 +168,34 @@ public class ProductJDBCRepository implements ProductRepository{
 		}
 	}
 
+	@Override
+	public List<String> getAllCategory() {
+	
+		List<String> categoryList = new ArrayList<String>();
+		Connection con = new JDBCConnection().getConnection();
+		String query = "SELECT strProdCategory FROM tblProductCategory;";
+		
+		try{
+			
+			PreparedStatement pre = con.prepareStatement(query);
+			ResultSet set = pre.executeQuery();
+			
+			while(set.next()){
+				categoryList.add(set.getString(1));
+			}
+			
+			pre.close();
+			set.close();
+			con.close();
+			
+			return categoryList;
+		}
+		catch(Exception e)
+		{
+			System.out.println(e.fillInStackTrace());
+			return null;
+		}
+		
+	}
+
 }

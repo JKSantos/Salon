@@ -31,4 +31,13 @@ public class ProductServiceImpl implements ProductService{
 		return repo.getAllProducts();
 	}
 
+
+	@Override
+	public List<String> getAllCategory() {
+
+		ProductRepository repo = new ProductJDBCRepository();
+		
+		return repo.getAllCategory();
+	}
+
 }

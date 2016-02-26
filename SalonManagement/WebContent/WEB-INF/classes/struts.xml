@@ -21,7 +21,6 @@
 		</action>
 		
 		<action name="employeeList" class="com.gss.actions.employeeListAction" method="execute">
-			
 		</action>
 		
 		<action name="createEmployee" class="com.gss.actions.CreateEmployeeAction" method="execute">
@@ -29,5 +28,17 @@
 			<result name="failed">maintenance-emp.jsp</result>
 			<result name="input">empMaintenanceRedirect.jsp</result>
 		</action>
+		
+		
+		<action name="productServiceMaintenance" class="com.gss.actions.CreateProductServiceAction" method="execute">
+			<result name="success">maintenance-prodsvc.jsp</result>
+		</action>
+		
+		<action name="createProdServ" class="com.gss.actions.CreateServProdAction" method="execute">
+			<result name="success">redirect-maintenance-product.jsp</result>
+			<result name="failed">maintenance-prodsvc.jsp</result>
+		</action>
+		
+		
 	</package>
 </struts>

@@ -11,4 +11,6 @@ public interface ServiceService {
 	public boolean createService(Service service);
 	
 	public boolean updateService(Service service);
+	
+	public List<String> getAllCategory();
 }

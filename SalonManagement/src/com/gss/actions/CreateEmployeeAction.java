@@ -48,8 +48,8 @@ public class CreateEmployeeAction extends ActionSupport{
 			jobList.add(job);
 		}
 		
-		//strBirthDate = strYear + "-" + strMonth + "-" + strDay; 
-		this.datEmpBirthdate = DateHelper.parseDate(strEmpBirthdate);
+		strBirthDate = strYear + "-" + strMonth + "-" + strDay; 
+		this.datEmpBirthdate = DateHelper.parseDate(strBirthDate);
 		
 		Employee emp = new Employee(1, strEmpLastName, strEmpFirstName, strEmpMiddleName, datEmpBirthdate, strEmpGender, strEmpAddress, strEmpContactNo, "A", strEmpUsername, strEmpPassword, path, null, jobList);
 		EmployeeServiceImpl empService = new EmployeeServiceImpl();

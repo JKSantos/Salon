@@ -11,5 +11,7 @@ public interface ServiceRepository {
 	public boolean createService(Service service);
 	
 	public boolean updateService(Service service);
+	
+	public List<String> getAllCategory();
 
 }

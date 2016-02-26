@@ -31,4 +31,13 @@ public class ServiceServiceImpl implements ServiceService{
 		return repo.updateService(service);
 	}
 
+
+	@Override
+	public List<String> getAllCategory() {
+		
+		ServiceRepository repo = new ServiceJDBCRepository();
+		
+		return repo.getAllCategory();
+	}
+
 }

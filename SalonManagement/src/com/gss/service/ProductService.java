@@ -11,5 +11,7 @@ public interface ProductService {
 	public boolean updateProduct(Product product);
 
 	public List<Product> getAllProducts();
+	
+	public List<String> getAllCategory();
 
 }

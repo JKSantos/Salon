@@ -11,7 +11,7 @@ public class Service {
 	private double dblServicePrice;
 	private String strPhotoPath;
 	
-	public Service(int intServiceID, String strServiceName, String strServiceCategory, int strServiceStatus, String strServiceDesc, byte[] productPhoto, String strPhotoPath){
+	public Service(int intServiceID, String strServiceName, String strServiceCategory, int strServiceStatus, String strServiceDesc, double dblServicePrice, byte[] productPhoto, String strPhotoPath){
 		
 		this.intServiceID = intServiceID;
 		this.strServiceName = strServiceName;
@@ -20,6 +20,7 @@ public class Service {
 		this.strServiceDesc = strServiceDesc;
 		this.setProductPhoto(productPhoto);
 		this.strPhotoPath = strPhotoPath;
+		this.dblServicePrice = dblServicePrice;
 	}
 
 	public int getIntServiceID() {

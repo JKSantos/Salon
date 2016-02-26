@@ -1,5 +1,9 @@
 <!DOCTYPE html>
 <html ng-app>
+
+<%@ taglib uri="/struts-tags" prefix="s" %>
+  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
   <head>
   <link rel="stylesheet" href="./css/materialize.min.css"  media="screen,projection"/>
   <link type="text/css" rel="stylesheet" href="./css/materialize.css"/>
@@ -102,7 +106,7 @@
                                   <div class="container">
                                             <header><h4>Product & Service Maintenance</h4></header>
                                                 <div class="row">
-                                                    <form class="col s12">
+                                                    <form class="col s12" action="createProdServ" method="post" enctype="multipart/form-data">
                                                         <div class="input-field col s12 left">
                                                             <label class="red-text center">(*) Indicates required field</label>
                                                         </div><br><br>
@@ -115,7 +119,7 @@
                                                             <div class="file-field">
                                                                   <div class="btn orange">
                                                                     <span class="">Image</span>
-                                                                    <input type="file" accept="image/*" onchange="ServiceImage(this)">
+                                                                    <input name="upload" type="file" accept="image/*" onchange="ServiceImage(this)">
                                                                   </div>
                                                                   <div class="file-path-wrapper">
                                                                     <input class="file-path validate" type="text">
@@ -123,7 +127,7 @@
                                                               </div>
                                                         </div>
                                                         <div class="input-field col s12" style="margin-top: 10px;">
-                                                              <select id="typeid">
+                                                              <select name="strItemCate" id="typeid">
                                                                 <option value="Product" selected>Product</option>
                                                                 <option value="Service">Service</option>
                                                               </select>
@@ -131,16 +135,22 @@
                                                         </div>
 
                                                         <div class="input-field col s12">
-                                                            <input type="text" class="validate" id="servicename" required>
+                                                            <input name="strItemName" type="text" class="validate" id="servicename" required>
                                                             <label for="servicename">Name <span class="red-text">*</span></label>
                                                         </div>
                                                         <div class="input-field col s12">
-                                                            <textarea id="servicedetails" class="materialize-textarea" length="120"></textarea>
+                                                            <textarea name="strItemDetails" id="servicedetails" class="materialize-textarea" length="120"></textarea>
                                                             <label for="servicedetails">Details</label>
                                                         </div>
                                                         <div class="input-field col s5">
-                                                            <select id="servicecategory">
+                                                            <select name="strItemCategory" id="servicecategory">
                                                                   <option value="" disabled selected>Choose your option</option>
+                                                                  <c:forEach items="${serviceCategory}" var="category">
+                                                                      <option value="${category}">${category}</option>
+                                                                  </c:forEach>
+                                                                  <c:forEach items="${productCategory}" var="category">
+                                                                      <option value="${category}">${category}</option>
+                                                                  </c:forEach>
                                                               </select>
                                                               <label>Category <span class="red-text">*</span></label>
                                                         </div>
@@ -152,7 +162,7 @@
                                                             <label for="add-optname">Another</label>
                                                         </div>
                                                         <div class="input-field col s12">
-                                                            <input type="number" class="validate right-align" id="serviceprice" maxlength="8" required>
+                                                            <input name="dblItemPrice" type="number" class="validate right-align" id="serviceprice" maxlength="8" required>
                                                             <label for="serviceprice">Price <span class="red-text">*</span></label>
                                                         </div>
 
@@ -194,12 +204,23 @@
                                                     </thead>
                                                       <tbody >
                                                          <tr ng-repeat="ps in prodsvc | filter:name | filter: category | filter: price | orderBy: 'id'">
-                                                          <td>{{ ps.id }}</td>
-                                                            <td>{{ps.name}}</td>
-                                                            <td>{{ps.category}}</td>
-                                                            <td>{{ps.price}}</td>
+                                                         <c:forEach items="${productList}" var="product">
+                                                          <td>${product.intProductID}</td>
+                                                            <td>${product.strProductName}</td>
+                                                            <td>Product</td>
+                                                            <td>${product.dblProductPrice}</td>
                                                             <td><a href="#update" style="padding: 0px;" class="waves-effect waves-orange modal-trigger transparent btn-flat"><i class="material-icons">edit</i></a><button style="padding: 0px; margin-left:15px;" class="waves-effect waves-orange transparent btn-flat"><i class="material-icons">delete</i></button></td>
                                                             </tr>
+                                                          </c:forEach>
+
+                                                          <c:forEach items="${serviceList}" var="service">
+                                                          <td>${service.intServiceID}</td>
+                                                            <td>${service.strServiceName}</td>
+                                                            <td>Service</td>
+                                                            <td>${service.dblServicePrice}</td>
+                                                            <td><a href="#update" style="padding: 0px;" class="waves-effect waves-orange modal-trigger transparent btn-flat"><i class="material-icons">edit</i></a><button style="padding: 0px; margin-left:15px;" class="waves-effect waves-orange transparent btn-flat"><i class="material-icons">delete</i></button></td>
+                                                            </tr>
+                                                          </c:forEach>
                                                       </tbody>
                                                     </table>
                                                     

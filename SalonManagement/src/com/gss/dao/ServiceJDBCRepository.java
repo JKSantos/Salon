@@ -50,8 +50,7 @@ public class ServiceJDBCRepository implements ServiceRepository{
 				
 				while(set2.next()){
 					double price = set2.getDouble(1);
-					service = new Service(intServiceID, strServiceName, strServiceCate, intServiceStatus, strServiceDesc, actualPhoto, strPhotoPath);
-					service.setDblServicePrice(price);
+					service = new Service(intServiceID, strServiceName, strServiceCate, intServiceStatus, strServiceDesc, price, actualPhoto, strPhotoPath);
 					serviceList.add(service);
 					System.out.println(service.getIntServiceID() + "....");
 				}
@@ -173,6 +172,34 @@ public class ServiceJDBCRepository implements ServiceRepository{
 			
 			System.out.println(e.getMessage() + " ...." + e.fillInStackTrace() );
 			return false;
+		}
+	}
+
+	@Override
+	public List<String> getAllCategory() {
+		
+		List<String> categoryList = new ArrayList<String>();
+		Connection con = new JDBCConnection().getConnection();
+		String query = "SELECT strServiceCategory FROM tblServiceCategory;";
+		
+		try{
+			PreparedStatement pre = con.prepareStatement(query);
+			ResultSet set = pre.executeQuery();
+			
+			while(set.next()){
+				categoryList.add(set.getString(1));
+			}
+			
+			pre.close();
+			set.close();
+			con.createStatement();
+			
+			return categoryList;
+			
+		}
+		catch(Exception e){
+			System.out.println(e.fillInStackTrace());
+			return null;
 		}
 	}
 

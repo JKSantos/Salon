@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html ng-app>
+  <link type="text/css" rel="stylesheet" href="./css/materialize.css"/>
 
   <head>
   <%@ taglib uri="/struts-tags" prefix="s" %>
   <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
   <link rel="stylesheet" href="./css/materialize.min.css"  media="screen,projection"/>
-  <link type="text/css" rel="stylesheet" href="./css/materialize.css"/>
   <link type="text/css" rel="stylesheet" href="./css/mystyle.css"/>
   <link type="text/css" rel="stylesheet" href="./css/mtnc-emp.css"/>
   <link rel="stylesheet" type="text/css" href="./css/table.css">
@@ -137,7 +137,7 @@
                                       <label for="lname">Last Name<span class="red-text">*</span></label>
                                   </div>
                                       <div class="input-field col s3">
-                                          <select id="month" name="strMonth">
+                                          <select id="strMonth" name="strMonth">
                                               <option value="1">January</option>
                                               <option value="2">February</option>
                                               <option value="3">March</option>
@@ -265,12 +265,15 @@
                                           </tr>
                                         </thead>
                                         <tbody >
+                                           
+                                            <c:forEach items="${empList}" var="employee">
                                            <tr ng-repeat="employee in emp | filter:name | orderBy: 'id'">
-                                            <td>{{ employee.id }}</td>
-                                              <td>{{employee.name}}</td>
-                                              <td>{{employee.position}}</td>
+                                            <td>${employee.intEmpID}</td>
+                                              <td>${employee.strEmpFirstName} ${employee.strEmpLastName}</td>
+                                              <td>Cashier</td>
                                               <td><a href="#update" style="padding: 0px;" class="waves-effect waves-orange modal-trigger transparent btn-flat"><i class="material-icons">edit</i></a><button style="padding: 0px; margin-left:15px;" class="waves-effect waves-orange transparent btn-flat"><i class="material-icons">delete</i></button></td>
                                               </tr>
+                                              </c:forEach>
                                         </tbody>
                                         </table>
                                         
@@ -281,6 +284,10 @@
                                               <td>Cashier</td>
                                               <td><a href="#update" style="padding: 0px;" class="waves-effect waves-orange modal-trigger transparent btn-flat"><i class="material-icons">edit</i></a><button style="padding: 0px; margin-left:15px;" class="waves-effect waves-orange transparent btn-flat"><i class="material-icons">delete</i></button></td>
                                               </tr>
+                                              <td>{{ employee.id }}</td>
+                                              <td>{{employee.name}}</td>
+                                              <td>{{employee.position}}</td>
+                                              <td><a href="#update" style="padding: 0px;" class="waves-effect waves-orange modal-trigger transparent btn-flat"><i class="material-icons">edit</i></a><button style="padding: 0px; margin-left:15px;" class="waves-effect waves-orange transparent btn-flat"><i class="material-icons">delete</i></button></td>
                                             </c:forEach>  -->
                                           
                     

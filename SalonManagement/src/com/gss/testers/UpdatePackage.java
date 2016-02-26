@@ -14,13 +14,13 @@ public class UpdatePackage {
 	
 	public static void main(String[] args){
 		
-		Service serv = new Service(27, "Under Cut", "Hair Cut", 1, "SAMPLE DESCRIPTION", null, "resource/jeff.jpg");
+		Service serv = new Service(27, "Under Cut", "Hair Cut", 1, "SAMPLE DESCRIPTION",20,null, "resource/jeff.jpg");
 		serv.setDblServicePrice(20.00);
 		
-		Service serv2 = new Service(28, "Under Cut", "Hair Cut", 1, "SAMPLE DESCRIPTION", null, "resource/jeff.jpg");
+		Service serv2 = new Service(28, "Under Cut", "Hair Cut", 1, "SAMPLE DESCRIPTION",20, null, "resource/jeff.jpg");
 		serv2.setDblServicePrice(20.00);
 		
-		Service serv3 = new Service(28, "Under Cut", "Hair Cut", 1, "SAMPLE DESCRIPTION", null, "resource/jeff.jpg");
+		Service serv3 = new Service(28, "Under Cut", "Hair Cut", 1, "SAMPLE DESCRIPTION", 20,null, "resource/jeff.jpg");
 		serv3.setDblServicePrice(20.00);
 		
 		ServicePackage servPack = new ServicePackage(72, serv, 1);
