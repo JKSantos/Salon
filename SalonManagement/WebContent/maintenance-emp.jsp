@@ -8,8 +8,9 @@
   <link rel="stylesheet" href="./css/materialize.min.css"  media="screen,projection"/>
   <link type="text/css" rel="stylesheet" href="./css/mystyle.css"/>
   <link type="text/css" rel="stylesheet" href="./css/mtnc-emp.css"/>
-  <link rel="stylesheet" type="text/css" href="./css/table.css">
-  <link rel="stylesheet" type="text/css" href="./css/table.min.css">
+  <link rel="stylesheet" type="text/css" href="./css/datatables.min.css"/>
+  <link rel="stylesheet" type="text/css" href="./css/datatables.material.min.css"/>
+  <link rel="stylesheet" type="text/css" href="./css/material.min.css">
 
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -239,70 +240,32 @@
 
 
                     <div class="aside aside2 z-depth-barts">
-                                    <nav class="z-depth-0">
-                                      <div class="nav-wrapper orange lighten-3 grey-text text-darken-4">
-                                        <form>
-                                          <div class="input-field col s12 z-depth-0">
-                                            <input class="orange lighten-3" id="search" type="search" ng-model="name" placeholder="Search...">
-                                            <label for="search"><i class="material-icons grey-text text-darken-3">search</i></label>
-                                          </div>
-                                        </form>
-                                      </div>
-                                    </nav>
                      <div class="row">
                          <div class="col s12">
                              <div class="row">
                                     <h5>Employee List</h5>
+                                      <table id="example" class="mdl-data-table" cellspacing="0" width="100%">
+                                              <thead>
+                                                  <tr>
+                                                      <th>ID</th>
+                                                      <th>Name</th>
+                                                      <th>Position</th>
+                                                      <th>Actions</th>
+                                                  </tr>
+                                              </thead>
+                                              <tbody>
+                                                  <tr>
+                                                      <td>1</td>
+                                                      <td>John Angelo Castillo</td>
+                                                      <td>Cashier</td>
+                                                      <td><a href="#update" class="modal-trigger"><i class="material-icons green-text">edit</i></a>
+                                                      <a href="#!"><i class="material-icons red-text">delete</i></a>
+                                                      </td>
+                                                  </tr>
+                                              </tbody>
+                                          </table>
 
 
-                                      <table class="ui sortable celled table" ng-init="emp=[{id: '1',name: 'John Angelo', position: 'Cashier'},{id: '2',name: 'Angelo John', position: 'Manager'}]">
-                                        <thead>
-                                          <tr>
-                                            <th data-sort="int" class="orange lighten-5">ID</th>
-                                            <th data-sort="string" class="orange lighten-5">Name</th>
-                                            <th data-sort="string" class="orange lighten-5">Position</th>
-                                            <th class="no-sort orange lighten-5">Actions</th>
-                                          </tr>
-                                        </thead>
-                                        <tbody >
-                                           
-                                            <c:forEach items="${empList}" var="employee">
-                                           <tr ng-repeat="employee in emp | filter:name | orderBy: 'id'">
-                                            <td>${employee.intEmpID}</td>
-                                              <td>${employee.strEmpFirstName} ${employee.strEmpLastName}</td>
-                                              <td>Cashier</td>
-                                              <td><a href="#update" style="padding: 0px;" class="waves-effect waves-orange modal-trigger transparent btn-flat"><i class="material-icons">edit</i></a><button style="padding: 0px; margin-left:15px;" class="waves-effect waves-orange transparent btn-flat"><i class="material-icons">delete</i></button></td>
-                                              </tr>
-                                              </c:forEach>
-                                        </tbody>
-                                        </table>
-                                        
-                                           <!-- <c:forEach items="${empList}" var="employee">
-                                           <tr>
-                                            <td>${employee.intEmpID}</td>
-                                              <td>${employee.strEmpFirstName} ${employee.strEmpLastName}</td>
-                                              <td>Cashier</td>
-                                              <td><a href="#update" style="padding: 0px;" class="waves-effect waves-orange modal-trigger transparent btn-flat"><i class="material-icons">edit</i></a><button style="padding: 0px; margin-left:15px;" class="waves-effect waves-orange transparent btn-flat"><i class="material-icons">delete</i></button></td>
-                                              </tr>
-                                              <td>{{ employee.id }}</td>
-                                              <td>{{employee.name}}</td>
-                                              <td>{{employee.position}}</td>
-                                              <td><a href="#update" style="padding: 0px;" class="waves-effect waves-orange modal-trigger transparent btn-flat"><i class="material-icons">edit</i></a><button style="padding: 0px; margin-left:15px;" class="waves-effect waves-orange transparent btn-flat"><i class="material-icons">delete</i></button></td>
-                                            </c:forEach>  -->
-                                          
-                    
-
-                                      <ul class="pagination right">
-                                            <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
-                                            <li class="active orange"><a href="#!">1</a></li>
-                                            <li class="waves-effect"><a href="#!">2</a></li>
-                                            <li class="waves-effect"><a href="#!">3</a></li>
-                                            <li class="waves-effect"><a href="#!">4</a></li>
-                                            <li class="waves-effect"><a href="#!">5</a></li>
-                                            <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
-                                          </ul>
-
-                                    
 
                                      <div id="update" class="modal modal-fixed-footer">
                                         <form>
@@ -424,7 +387,7 @@
                                            </div>
                                          </div>
                                          <div class="modal-footer">
-                                            <a href="#" class="modal-action modal-close waves-orange btn-flat transparent">Cancel</a>
+                                            <a href="#!" class="modal-action modal-close waves-orange btn-flat transparent">Cancel</a>
                                            <button class="modal-action waves-effect waves-light orange btn-flat ">Confirm</button>
                                          </div>
                                          </form>
@@ -447,14 +410,32 @@
     <script type="text/javascript" src="./js/materialize.min.js"></script>
     <script type="text/javascript" src="./js/angular.min.js"></script>
     <script type="text/javascript" src="./js/package.js"></script>
-    <script type="text/javascript" src="./js/stupidtable.js"></script>
-    <script type="text/javascript" src="./js/stupidtable.min.js"></script>
+    <script type="text/javascript" src="./js/datatables.min.js"></script>
+    <script type="text/javascript" src="./js/datatables.material.min.js"></script>
+
 
     <script type="text/javascript">
       $(document).ready(function() {
-          $('select').material_select();
-        });
+          $('#example').DataTable( {
+            "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+              columnDefs: [
+                  {
+                      targets: [ 0, 1, 2 ],
+                      className: 'mdl-data-table__cell--non-numeric',
+
+                  },
+              ]
+          } );
+      } );
     </script>
+
+    <script type="text/javascript">
+      $(document).ready(function() {
+          $('#example').DataTable();
+      } );
+    </script>
+
+
 
     <script type="text/javascript">
     $(document).ready(function(){
@@ -463,9 +444,6 @@
       });
     </script>
 
-    <script type="text/javascript">
-        $("table").stupidtable();
-    </script>
 
     
 
