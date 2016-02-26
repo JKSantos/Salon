@@ -24,14 +24,10 @@
                                     <ul>
                                       <li><a href="maintenance-emp.jsp">Employee</a></li>
                                       <li><a href="maintenance-prodsvc.jsp">Product & Service</a></li>
-<<<<<<< HEAD:SalonManagement/WebContent/maintenance-package.jsp
-                                      <li><a href="maintenance-promdisc.jsp">Promo</a></li>
-                                      <li class="orange"><a href="maintenance-package.jsp">Discount</a></li>
-                                      <li><a href="maintenance-catalouge.jsp">Catalouge</a></li>
-=======
                                       <li><a href="maintenance-promo.jsp">Promo</a></li>
                                       <li class="orange"><a href="maintenance-discount.jsp">Discount</a></li>
->>>>>>> 3746e4da13037a69519f0ac6c9f3bef5bb77afd8:SalonManagement/WebContent/maintenance-discount.jsp
+                                      <li><a href="maintenance-package.jsp">Package</a></li>
+                                      <li><a href="maintenance-catalogue.jsp">Catalouge</a></li>
                                     </ul>
                                   </div>
                               </li>
@@ -52,7 +48,7 @@
                 
                        <nav class="z-depth-0">
                          <div class="nav-wrapper orange">
-                           <a href="#!" class="brand-logo white-text" style="margin-left: 30px;">Generic Salon System</a>
+                           <a href="#!" class="brand-logo white-text" style="margin-left: 30px;">Salon Management System</a>
                          
                            <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
                            <ul class="side-nav" id="mobile-demo">
@@ -66,11 +62,13 @@
                                          <li><a href="maintenance-prodsvc.jsp">Product & Service</a></li>
                                          <li><a href="maintenance-promo.jsp">Promo</a></li>
                                          <li class="orange"><a href="maintenance-discount.jsp">Discount</a></li>
+                                         <li><a href="maintenance-package.jsp">Package</a></li>
+                                         <li><a href="maintenance-catalogue.jsp">Catalogue</a></li>
                                        </ul>
                                      </div>
                                  </li>
                                  <li>
-                                   <a class="waves-effect waves-orange collapsible-header"><b>Transactions</b></a>
+                                   <a class="waves-effect waves-orange collapsible-header"><b>Transaction</b></a>
                                      <div class="collapsible-body">
                                        <ul>
                                          <li><a href="transactions-reservation.jsp">Reservation</a></li>

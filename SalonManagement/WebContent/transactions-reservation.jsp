@@ -26,6 +26,8 @@
                                       <li><a href="maintenance-prodsvc.jsp">Product & Service</a></li>
                                       <li><a href="maintenance-promo.jsp">Promo</a></li>
                                       <li><a href="maintenance-discount.jsp">Discount</a></li>
+                                      <li><a href="maintenance-package.jsp">Package</a></li>
+                                      <li><a href="maintenance-catalogue.jsp">Catalogue</a></li>
                                     </ul>
                                   </div>
                               </li>
@@ -56,18 +58,12 @@
                                    <a class="waves-effect waves-orange collapsible-header"><b>Maintenance</b></a>
                                      <div class="collapsible-body">
                                        <ul>
-<<<<<<< HEAD
-                                         <li><a href="maintenance-emp.jsp">Employees</a></li>
-                                         <li><a href="maintenance-prodsvc.jsp">Products & Services</a></li>
-                                         <li><a href="maintenance-promdisc.jsp">Promos & Discounts</a></li>
-                                         <li><a href="maintenance-package.jsp">Packages</a></li>
-                                         <li><a href="maintenance-catalouge.jsp">Catalouge</a></li>
-=======
                                          <li><a href="maintenance-emp.jsp">Employee</a></li>
                                          <li><a href="maintenance-prodsvc.jsp">Product & Service</a></li>
                                          <li><a href="maintenance-promo.jsp">Promo</a></li>
                                          <li><a href="maintenance-discount.jsp">Discount</a></li>
->>>>>>> 3746e4da13037a69519f0ac6c9f3bef5bb77afd8
+                                         <li><a href="maintenance-package.jsp">Package</a></li>
+                                         <li><a href="maintenance-catalouge.jsp">Catalouge</a></li>
                                        </ul>
                                      </div>
                                  </li>
@@ -175,11 +171,7 @@
                               </div>
                           
                               <div class="col s12">
-<<<<<<< HEAD
-                                  <button id="reservetn" type="submit" value="Submit" class="waves-effect waves-light orange btn-flat  modal-trigger" style="margin-top:10px;" data-target="summaryModal">ADD</button>
-=======
-                                  <button id="reservetn" type="submit" value="Submit" class="waves-effect waves-light orange btn-flat" style="margin-top:10px;">CREATE</button>
->>>>>>> 3746e4da13037a69519f0ac6c9f3bef5bb77afd8
+                                  <button id="reservetn" type="submit" value="Submit" class="waves-effect waves-light orange btn-flat modal-trigger" style="margin-top:10px;" data-target="summaryModal">CREATE</button>
                                   <button id="reserveclear" type="reset" value="Reset" class="waves-effect waves-orange white btn-flat" style="margin-top:10px;">CLEAR</button>
                               </div>
 

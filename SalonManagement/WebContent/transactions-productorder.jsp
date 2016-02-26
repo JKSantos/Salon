@@ -23,18 +23,12 @@
                                 <a class="collapsible-header"><b>Maintenance</b></a>
                                   <div class="collapsible-body">
                                     <ul>
-<<<<<<< HEAD
-                                      <li><a href="maintenance-emp.jsp">Employees</a></li>
-                                      <li><a href="maintenance-prodsvc.jsp">Products & Services</a></li>
-                                      <li><a href="maintenance-promdisc.jsp">Promos & Discounts</a></li>
-                                      <li><a href="maintenance-package.jsp">Packages</a></li>
-                                      <li><a href="maintenance-catalouge.jsp">Catalouge</a></li>
-=======
                                       <li><a href="maintenance-emp.jsp">Employee</a></li>
                                       <li><a href="maintenance-prodsvc.jsp">Product & Service</a></li>
                                       <li><a href="maintenance-promo.jsp">Promo</a></li>
                                       <li><a href="maintenance-discount.jsp">Discount</a></li>
->>>>>>> 3746e4da13037a69519f0ac6c9f3bef5bb77afd8
+                                      <li><a href="maintenance-package.jsp">Package</a></li>
+                                      <li><a href="maintenance-catalouge.jsp">Catalouge</a></li>
                                     </ul>
                                   </div>
                               </li>
@@ -69,6 +63,8 @@
                                          <li><a href="maintenance-prodsvc.jsp">Product & Service</a></li>
                                          <li><a href="maintenance-promo.jsp">Promo</a></li>
                                          <li><a href="maintenance-discount.jsp">Discount</a></li>
+                                         <li><a href="maintenance-package.jsp">Package</a></li>
+                                         <li><a href="maintenance-catalogue.jsp">Catalogue</a></li>
                                        </ul>
                                      </div>
                                  </li>
