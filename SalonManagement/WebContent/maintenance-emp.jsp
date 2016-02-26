@@ -33,8 +33,8 @@
                             <ul>
                               <li class="orange"><a href="employeeMaintenance.action">Employee</a></li>
                               <li><a href="maintenance-prodsvc.jsp">Product & Service</a></li>
-                              <li><a href="maintenance-promdisc.jsp">Promo</a></li>
-                              <li><a href="maintenance-package.jsp">Discount</a></li>
+                              <li><a href="maintenance-promo.jsp">Promo</a></li>
+                              <li><a href="maintenance-discount.jsp">Discount</a></li>
                             </ul>
                           </div>
                       </li>
@@ -67,8 +67,8 @@
                                <ul>
                                  <li class="orange"><a href="maintenance-emp.jsp">Employee</a></li>
                                  <li><a href="maintenance-prodsvc.jsp">Product & Service</a></li>
-                                 <li><a href="maintenance-promdisc.jsp">Promo</a></li>
-                                 <li><a href="maintenance-package.jsp">Discount</a></li>
+                                 <li><a href="maintenance-promo.jsp">Promo</a></li>
+                                 <li><a href="maintenance-discount.jsp">Discount</a></li>
                                </ul>
                              </div>
                          </li>
@@ -131,7 +131,7 @@
                                       <label for="lname">Last Name<span class="red-text">*</span></label>
                                   </div>
                                       <div class="input-field col s3">
-                                          <select id="strMonth" name="strMonth">
+                                          <select id="month" name="strMonth">
                                               <option value="1">January</option>
                                               <option value="2">February</option>
                                               <option value="3">March</option>
@@ -158,6 +158,7 @@
                                       <div class="input-field col s4">
                                           <input type="text" class="validate" disabled value="">
                                           <label style="color: #9e9e9e;">Age: <span id="age"></span></label>
+ 
                                       </div>
                                   <div class="input-field col s6" >
                                       <select name="strEmpGender" required>
@@ -185,7 +186,7 @@
                                       <select id="slct1" name="selectedJob" multiple="multiple">
                                           <option value="" disabled selected> </option>
                                           <c:forEach items="${empCategory}" var="name">
-                                          	<option value="${name.strCategoryName}">${name.strCategoryName }</option>
+                                            <option value="${name.strCategoryName}">${name.strCategoryName }</option>
                                           </c:forEach>
                                       </select>
                                   </div>
@@ -246,10 +247,9 @@
                          <div class="col s12">
                              <div class="row">
                                     <h5>Employee List</h5>
-                                      </ul>
 
 
-                                      <table class="ui sortable celled table">
+                                      <table class="ui sortable celled table" ng-init="emp=[{id: '1',name: 'John Angelo', position: 'Cashier'},{id: '2',name: 'Angelo John', position: 'Manager'}]">
                                         <thead>
                                           <tr>
                                             <th data-sort="int" class="orange lighten-5">ID</th>
@@ -258,18 +258,24 @@
                                             <th class="no-sort orange lighten-5">Actions</th>
                                           </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody >
+                                           <tr ng-repeat="employee in emp | filter:name | orderBy: 'id'">
+                                            <td>{{ employee.id }}</td>
+                                              <td>{{employee.name}}</td>
+                                              <td>{{employee.position}}</td>
+                                              <td><a href="#update" style="padding: 0px;" class="waves-effect waves-orange modal-trigger transparent btn-flat"><i class="material-icons">edit</i></a><button style="padding: 0px; margin-left:15px;" class="waves-effect waves-orange transparent btn-flat"><i class="material-icons">delete</i></button></td>
+                                              </tr>
                                         
-                                        
-                                        	 <c:forEach items="${empList}" var="employee">
-                                        	 <tr>
-                                        	 	<td>${employee.intEmpID}</td>
-                                          		<td>${employee.strEmpFirstName} ${employee.strEmpLastName}</td>
-                                            	<td>Cashier</td>
-                                            	<td><a href="#update" style="padding: 0px;" class="waves-effect waves-orange modal-trigger transparent btn-flat"><i class="material-icons">edit</i></a><button style="padding: 0px; margin-left:15px;" class="waves-effect waves-orange transparent btn-flat"><i class="material-icons">delete</i></button></td>
-                                          		</tr>
-                                          	</c:forEach> 
+                                           <!-- <c:forEach items="${empList}" var="employee">
+                                           <tr>
+                                            <td>${employee.intEmpID}</td>
+                                              <td>${employee.strEmpFirstName} ${employee.strEmpLastName}</td>
+                                              <td>Cashier</td>
+                                              <td><a href="#update" style="padding: 0px;" class="waves-effect waves-orange modal-trigger transparent btn-flat"><i class="material-icons">edit</i></a><button style="padding: 0px; margin-left:15px;" class="waves-effect waves-orange transparent btn-flat"><i class="material-icons">delete</i></button></td>
+                                              </tr>
+                                            </c:forEach>  -->
                                           
+                    
 
                                       <ul class="pagination right">
                                             <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
@@ -650,7 +656,7 @@
       }
    </script>
 
-  <script type="text/javascript">
+   <script type="text/javascript">
    // var month = document.getElementById('month').value;
    // var day = document.getElementById('day').value;
    // var year = document.getElementById('year').value;
@@ -706,12 +712,6 @@
              document.getElementById('savebtn').disabled = true;
            }
          }
-   </script>
-
-   <script type="text/javascript">
-      function success(){
-        alert("Successfully Created");
-      }
    </script>
 
   </body>

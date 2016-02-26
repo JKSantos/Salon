@@ -20,13 +20,13 @@
                          <!--  <li class="no-padding"> -->
                             <ul class="collapsible" data-collapsible="accordion">
                               <li>
-                                <a class="collapsible-header"><b>Maintenance</b></a>
+                                <a class="collapsible-header active"><b>Maintenance</b></a>
                                   <div class="collapsible-body">
                                     <ul>
                                       <li><a href="maintenance-emp.jsp">Employee</a></li>
                                       <li><a href="maintenance-prodsvc.jsp">Product & Service</a></li>
-                                      <li class="orange"><a href="maintenance-promdisc.jsp">Promo</a></li>
-                                      <li><a href="maintenance-package.jsp">Discount</a></li>
+                                      <li class="orange"><a href="maintenance-promo.jsp">Promo</a></li>
+                                      <li><a href="maintenance-discount.jsp">Discount</a></li>
                                     </ul>
                                   </div>
                               </li>
@@ -59,8 +59,8 @@
                                        <ul>
                                          <li><a href="maintenance-emp.jsp">Employee</a></li>
                                          <li><a href="maintenance-prodsvc.jsp">Product & Service</a></li>
-                                         <li class="orange"><a href="maintenance-promdisc.jsp">Promo</a></li>
-                                         <li><a href="maintenance-package.jsp">Package</a></li>
+                                         <li class="orange"><a href="maintenance-promo.jsp">Promo</a></li>
+                                         <li><a href="maintenance-discount.jsp">Package</a></li>
                                        </ul>
                                      </div>
                                  </li>

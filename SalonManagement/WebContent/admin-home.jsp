@@ -29,8 +29,8 @@
                                     <ul>
                                       <li><a href="employeeMaintenance.action">Employee</a></li>
                                       <li><a href="maintenance-prodsvc.jsp">Product & Service</a></li>
-                                      <li><a href="maintenance-promdisc.jsp">Promo</a></li>
-                                      <li><a href="maintenance-package.jsp">Discount</a></li>
+                                      <li><a href="maintenance-promo.jsp">Promo</a></li>
+                                      <li><a href="maintenance-discount.jsp">Discount</a></li>
                                     </ul>
                                   </div>
                               </li>
@@ -63,8 +63,8 @@
                                        <ul>
                                          <li><a href="maintenance-emp.jsp">Employee</a></li>
                                          <li><a href="maintenance-prodsvc.jsp">Product & Service</a></li>
-                                         <li><a href="maintenance-promdisc.jsp">Promo</a></li>
-                                         <li><a href="maintenance-package.jsp">Discount</a></li>
+                                         <li><a href="maintenance-promo.jsp">Promo</a></li>
+                                         <li><a href="maintenance-discount.jsp">Discount</a></li>
                                        </ul>
                                      </div>
                                  </li>
