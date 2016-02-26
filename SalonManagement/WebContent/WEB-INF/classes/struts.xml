@@ -51,5 +51,10 @@
 		<action name="extraChargeMaintenance" class="com.gss.actions.ExtraChargeMaintenanceAction" method="execute">
 			<result name="success">maintenance-extra.jsp</result>
 		</action>
+
+		<action name="createExtraCharge" class="com.gss.actions.CreateExtraChargeAction" method="execute">
+			<result name="success">redirect-maintenance-extra.jsp</result>
+			<result name="failed">redirect-maintenance-extra.jsp</result>
+		</action>
 	</package>
 </struts>

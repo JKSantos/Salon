@@ -101,13 +101,13 @@
                     <div class="container">
                     <header><h4>Extra Charge Maintenance</h4></header>
                         <div class="row">
-                            <form class="col s12" >
+                            <form class="col s12" method="post" action="createExtraCharge">
                                   <div class="input-field col s12">
-                                    <input type="text" class="validate" required name="extraname" id="extraid">
+                                    <input type="text" class="validate" required name="strECName" id="extraid">
                                     <label for="extraid">Name <span class="red-text">*</span></label>
                                   </div>
                                   <div class="input-field col s12">
-                                      <textarea id="extradesc" name="extradesc" class="materialize-textarea"></textarea>
+                                      <textarea id="extradesc" name="strECDetails" class="materialize-textarea"></textarea>
                                       <label for="extradesc">Description <span class="red-text">*</span></label>
                                    </div>
                                    <div class="input-field col s12">
@@ -149,8 +149,8 @@
                                     <c:forEach items="${ecList}" var="extra">
                                      <tr ng-repeat="ex in extra | filter:name | orderBy: 'id'">
                                       <td>${extra.intECID }</td>
-                                        <td>{extra.strECName}</td>
-                                        <td>{extra.strECDetails}</td>
+                                        <td>${extra.strECName}</td>
+                                        <td>${extra.strECDetails}</td>
                                         <td><a href="#update" style="padding: 0px;" class="waves-effect waves-orange modal-trigger transparent btn-flat"><i class="material-icons">edit</i></a><button style="padding: 0px; margin-left:15px;" class="waves-effect waves-orange transparent btn-flat"><i class="material-icons">delete</i></button></td>
                                         </tr>
                                       </c:forEach>
