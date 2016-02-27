@@ -1,5 +1,9 @@
 <!DOCTYPE html>
 <html ng-app>
+
+  <%@ taglib uri="/struts-tags" prefix="s" %>
+  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+  <%@ page import="com.gss.model.Discount" %>
   <head>
   <link rel="stylesheet" href="./css/materialize.min.css"  media="screen,projection"/>
   <link type="text/css" rel="stylesheet" href="./css/materialize.css"/>
@@ -95,28 +99,28 @@
             
                     <div class="aside aside1 z-depth-barts"> <!--main aside1-->
                           <div class="row">
-                              <form class="col s12">
+                              <form class="col s12" method="post" action="createDiscount">
                                   <h4>Discount Maintenance</h4>
                                   <div class="input-field col s12" style="margin-bottom: 30px;">
                                       <label class="red-text"> (*) Indicates required field</label>
                                   </div>
                                   <div class="input-field col s12">
-                                      <input type="text" class="validate" id="discountname">
+                                      <input name="strDiscountName" type="text" class="validate" id="discountname">
                                       <label for="discountname">Discount Name <span class="red-text">*</span></label>
                                   </div>
                                   <div class="input-field col s12">
-                                      <textarea id="discountdetails" class="materialize-textarea" length="120"></textarea>
+                                      <textarea name="strDiscountDetails" id="discountdetails" class="materialize-textarea" length="120"></textarea>
                                       <label for="discountdetails">Description <span class="red-text">*</span></label>
                                   </div>
                                   <div class="input-field col s6">
-                                    <select id="amounttype">
-                                      <option value="Percent">Percentage</option>
-                                      <option value="Fixed">Fixed Amount</option>
+                                    <select id="amounttype" name="strDiscountType">
+                                      <option value="1">Percentage</option>
+                                      <option value="2">Fixed Amount</option>
                                     </select>
                                     <label>Type <span class="red-text">*</span></label>
                                   </div>
                                   <div class="input-field col s6">
-                                    <input type="text" class="validate right-align" id="discprice" name="discprice">
+                                    <input type="text" class="validate right-align" id="discprice" name="dblDiscountPrice">
                                     <label for="discprice">Price <span class="red-text">*</span></label>
                                   </div>
                                   <div class="input-field col s12 center">
@@ -154,17 +158,37 @@
                                                         </tr>
                                                       </thead>
                                                         <tbody >
+                                                        <c:forEach items="${discountList}" var="discount">
+                                                            <%! String type = null; %>
+                                                          	<%
+                                                          		Discount discount = (Discount)pageContext.getAttribute("discount");
+                                                            	if(discount.getIntDiscountType() == 1)
+                                                            		type = "Percentage";
+                                                            	else if(discount.getIntDiscountType() == 2)
+                                                                	type = "Fixed Amount";
+
+                                                                System.out.println("hey");
+                                                          	%>
                                                            <tr ng-repeat="disc in discount | filter:name | filter: type | filter: price | orderBy: 'id'">
-                                                            <td>{{ disc.id }}</td>
+                                                            <td>${discount.intDiscountID}</td>
+                                                              <td>${discount.strDiscountName}</td>
+                                                              <td><%= type %></td>
+                                                              <td>${discount.dblDiscountAmount}</td>
+                                                              <td style="padding:0px;"><a href="#update" style="padding: 0px;" class="waves-effect waves-orange modal-trigger transparent btn-flat"><i class="material-icons">edit</i></a><button style="padding: 0px; margin-left:15px;" class="waves-effect waves-orange transparent btn-flat"><i class="material-icons">delete</i></button></td>
+                                                              </tr>
+                                                            </c:forEach>
+                                                        </tbody>
+                                                      </table>
+                                                      
+                                                         <!-- <c:forEach items="${empList}" var="employee">
+                                                         <td>{{ disc.id }}</td>
                                                               <td>{{disc.name}}</td>
                                                               <td>{{disc.type}}</td>
                                                               <td>{{disc.price}}</td>
                                                               <td style="padding:0px;"><a href="#update" style="padding: 0px;" class="waves-effect waves-orange modal-trigger transparent btn-flat"><i class="material-icons">edit</i></a><button style="padding: 0px; margin-left:15px;" class="waves-effect waves-orange transparent btn-flat"><i class="material-icons">delete</i></button></td>
                                                               </tr>
-                                                        </tbody>
-                                                      </table>
-                                                      
-                                                         <!-- <c:forEach items="${empList}" var="employee">
+
+
                                                          <tr>
                                                           <td>${employee.intEmpID}</td>
                                                             <td>${employee.strEmpFirstName} ${employee.strEmpLastName}</td>

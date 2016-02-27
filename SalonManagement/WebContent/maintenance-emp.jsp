@@ -254,14 +254,17 @@
                                                   </tr>
                                               </thead>
                                               <tbody>
+                                                  <c:forEach items="${empList}" var="employee">
+
                                                   <tr>
-                                                      <td>1</td>
-                                                      <td>John Angelo Castillo</td>
+                                                      <td>${employee.intEmpID}</td>
+                                                      <td>${employee.strEmpFirstName} ${employee.strEmpLastName}</td>
                                                       <td>Cashier</td>
                                                       <td><a href="#update" class="modal-trigger"><i class="material-icons green-text">edit</i></a>
                                                       <a href="#!"><i class="material-icons red-text">delete</i></a>
                                                       </td>
                                                   </tr>
+                                                  </c:forEach>
                                               </tbody>
                                           </table>
 
@@ -325,7 +328,7 @@
                                               </div>
                                               <div class="input-field col s3">
                                                   <input type="text" name="strYear" maxlength="4" class="validate" id="year">
-                                                  <label for="year">Year</label>
+                                                  <label for="strYear">Year</label>
                                               </div>
                                               <div class="input-field col s2 offset-s2">
                                                   <input type="text" name="age" maxlength="3" class="validate" id="age" disabled="disabled">
