@@ -239,8 +239,22 @@
                               </div>   
 
                                <div class="row">
-                                <h5 class="thin col s6">Down Payment: </h5>
-                                <h5 class="thin col s6">Php 1,250.00</h5>
+                                <form class="col s12">
+                                  <div class="input-field col s12">
+                                      <select>
+                                        <option value="" disabled selected>Choose your option</option>
+                                        <option value="1">Down Payment</option>
+                                        <option value="2">Full Payment</option>
+                                      </select>
+                                      <label>Payment Type</label>
+                                  </div>
+                                  <div class="input-field col s6 offset-s6">
+                                      <input type="text" class="validate right-align" id="reserve-amount" name="reserve-amount">
+                                      <label for="reserve-amount">Amount</label>
+                                  </div>
+                                <!-- <h5 class="thin col s6">Down Payment: </h5>
+                                <h5 class="thin col s6">Php 1,250.00</h5> -->
+                                </form>
                               </div>
         
                             </div>
@@ -258,8 +272,8 @@
 
                     <div class="aside aside2 z-depth-barts">
                       <div class="row">
-                          <div class="col s12">
-                              <h4 style="margin-top: 30px;">Reservation Calendar</h4>
+                          <div class="input-field col s12">
+                              <a href="transactions-reservation-view.jsp" class="waves-effect waves-light orange btn">View</a>
                           </div>
                       </div>
                     </div>
