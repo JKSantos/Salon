@@ -25,13 +25,13 @@
                                 <a class="collapsible-header active"><b>Maintenance</b></a>
                                   <div class="collapsible-body">
                                     <ul>
-                                      <li><a href="maintenance-emp.jsp">Employee</a></li>
-                                      <li><a href="maintenance-prodsvc.jsp">Product & Service</a></li>
+                                      <li><a href="employeeMaintenance.action">Employee</a></li>
+                                      <li><a href="productServiceMaintenance.action">Product & Service</a></li>
                                       <li class="orange"><a href="maintenance-promo.jsp">Promo</a></li>
-                                      <li><a href="maintenance-discount.jsp">Discount</a></li>
+                                      <li><a href="discountMaintenance.action">Discount</a></li>
                                       <li><a href="maintenance-package.jsp">Package</a></li>
                                       <li><a href="maintenance-catalogue.jsp">Catalogue</a></li>
-                                      <li><a href="maintenance-extra.jsp">Extra Charge</a></li>
+                                      <li><a href="extraChargeMaintenance.action">Extra Charge</a></li>
 
                                     </ul>
                                   </div>
@@ -42,6 +42,7 @@
                                     <ul>
                                       <li><a href="transactions-inventory.jsp">Inventory</a></li>
                                       <li><a href="transactions-reservation.jsp">Reservation</a></li>
+                                      <li><a href="transactions-vip.jsp">VIP</a></li>
                                       <li><a href="transactions-productorder.jsp">Product Order</a></li>
                                       <li><a href="transaction-walkin.jsp">Walk-In</a></li>
                                     </ul>
@@ -122,8 +123,8 @@
                                     <label for="promoname">Promo Name <span class="red-text">*</span></label>
                                 </div>
                                 <div class="input-field col s12">
-                                    <textarea id="promodetails" class="materialize-textarea" length="120"></textarea>
-                                    <label for="promodetails">Description</label>
+                                    <textarea id="promodetails" class="materialize-textarea" length="120" required></textarea>
+                                    <label for="promodetails">Description <span class="red-text">*</span></label>
                                 </div>
                                 <div class="input-field col s12">
                                     <select multiple id="promo-services-included">
@@ -173,7 +174,7 @@
                               <h5>Promo List</h5>
                           </div>
                           <div class="col s12">
-                              <table class="ui sortable celled table responsive-table" ng-init="promo=[{id: '1',name: 'Pogi', service: 'foot spa', product: 'hair color', price: 'Free', availability: 'Non-Expiry'},{id: '2',name: 'Maganda', service: 'foot spa', product: 'hair color', price: '10.00', availability: '03/01/2016'}]">
+                              <table class="ui sortable celled table responsive-table">
                                                     <thead>
                                                       <tr>
                                                         <th data-sort="int" class="orange lighten-5">ID</th>
@@ -187,12 +188,12 @@
                                                     </thead>
                                                       <tbody >
                                                          <tr ng-repeat="pr in promo | filter:name | filter: service | filter: product | filter: price | filter: availability | orderBy: 'id'">
-                                                          <td>{{ pr.id }}</td>
-                                                            <td>{{pr.name}}</td>
-                                                            <td>{{pr.service}}</td>
-                                                            <td>{{pr.product}}</td>
-                                                            <td>{{pr.price}}</td>
-                                                            <td>{{pr.availability}}</td>
+                                                          <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
                                                             <td style="padding:0px;"><a href="#update" style="padding: 0px;" class="waves-effect waves-orange modal-trigger transparent btn-flat"><i class="material-icons">edit</i></a><button style="padding: 0px; margin-left:15px;" class="waves-effect waves-orange transparent btn-flat"><i class="material-icons">delete</i></button></td>
                                                             </tr>
                                                       </tbody>

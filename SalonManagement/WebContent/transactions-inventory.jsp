@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html ng-app>
   <head>
+  <%@ taglib uri="/struts-tags" prefix="s" %>
+  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
   <link rel="stylesheet" href="./css/materialize.min.css"  media="screen,projection"/>
   <link type="text/css" rel="stylesheet" href="./css/materialize.css"/>
   <link type="text/css" rel="stylesheet" href="./css/mystyle.css"/>
@@ -25,13 +27,13 @@
                                 <a class="collapsible-header"><b>Maintenance</b></a>
                                   <div class="collapsible-body">
                                     <ul>
-                                      <li><a href="maintenance-emp.jsp">Employee</a></li>
-                                      <li><a href="maintenance-prodsvc.jsp">Product & Service</a></li>
+                                      <li><a href="employeeMaintenance.action">Employee</a></li>
+                                      <li><a href="productServiceMaintenance.action">Product & Service</a></li>
                                       <li><a href="maintenance-promo.jsp">Promo</a></li>
-                                      <li><a href="maintenance-discount.jsp">Discount</a></li>
+                                      <li><a href="discountMaintenance.action">Discount</a></li>
                                       <li><a href="maintenance-package.jsp">Package</a></li>
                                       <li><a href="maintenance-catalogue.jsp">Catalogue</a></li>
-                                      <li><a href="maintenance-extra.jsp">Extra Charge</a></li>
+                                      <li><a href="extraChargeMaintenance.action">Extra Charge</a></li>
                                     </ul>
                                   </div>
                               </li>
@@ -41,6 +43,7 @@
                                     <ul>
                                       <li class="orange"><a href="transactions-inventory.jsp">Inventory</a></li>
                                       <li><a href="transactions-reservation.jsp">Reservation</a></li>
+                                      <li><a href="transactions-vip.jsp">VIP</a></li>
                                       <li><a href="transactions-productorder.jsp">Product Order</a></li>
                                       <li><a href="transaction-walkin.jsp">Walk-In</a></li>
                                     </ul>
@@ -123,15 +126,19 @@
                                             </tr>
                                           </thead>
                                             <tbody >
+                                               
                                                <tr ng-repeat="invent in inventory | filter:name | filter: quantity | filter: markupprice | filter: sellingprice | filter: profit | orderBy: 'id'">
-                                                <td>{{ invent.id }}</td>
-                                                  <td>{{invent.name}}</td>
-                                                  <td><input style="width: 50px; color: black; margin-top: 10px;" id="{{invent.id}}" type="number" value="{{invent.quantity}}"/></td>
-                                                  <td>{{invent.markupprice}}</td>
-                                                  <td><input style="width: 70px; color: black; margin-top: 10px;" id="{{invent.id}}" type="text" value="{{invent.sellingprice}}"/></td>
-                                                  <td>{{invent.profit}}</td>
-                                                  <td><a href="#update" action="update();" id="edit" class="waves-effect waves-orange transparent btn-flat"><i class="material-icons" >edit</i></a></td>
-                                                  </tr>
+                                                <c:forEach items="${productList}" var="product">
+                                                          <td>${product.intProductID}</td>
+                                                          <td>${product.strProductName}</td>
+                                                          <td>${product.intProductQuantity}</td>
+                                                          <td></td>
+                                                            <td>${product.dblProductPrice}</td>
+                                                            <td></td>
+                                                            <td><a href="#update" style="padding: 0px;" class="waves-effect waves-orange modal-trigger transparent btn-flat"><i class="material-icons">edit</i></a><button style="padding: 0px; margin-left:15px;" class="waves-effect waves-orange transparent btn-flat"><i class="material-icons">delete</i></button></td>
+                                                         </tr> 
+                                                          </c:forEach>
+                                                    
                                             </tbody>
                                           </table>
                                           
