@@ -117,7 +117,7 @@
                                             <td>1</td>
                                             <td>January 1, 2016</td>
                                             <td>Manila Cathedral</td>
-                                            <th><button class="waves-effect waves-light orange btn">Click Me</button></th>
+                                            <th><button class="waves-effect waves-light orange btn-flat">Click Me</button></th>
                                             <td><a href="#update" class="modal-trigger"><i class="material-icons green-text">edit</i></a>
                                             <a href="#!"><i class="material-icons red-text">delete</i></a>
                                             </td>
