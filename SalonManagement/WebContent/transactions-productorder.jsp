@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
+  <%@ taglib uri="/struts-tags" prefix="s" %>
+  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
   <link rel="stylesheet" href="./css/materialize.min.css"  media="screen,projection"/>
   <link type="text/css" rel="stylesheet" href="./css/materialize.css"/>
   <link type="text/css" rel="stylesheet" href="./css/mystyle.css"/>
@@ -23,13 +25,13 @@
                                 <a class="collapsible-header"><b>Maintenance</b></a>
                                   <div class="collapsible-body">
                                     <ul>
-                                      <li><a href="maintenance-emp.jsp">Employee</a></li>
-                                      <li><a href="maintenance-prodsvc.jsp">Product & Service</a></li>
+                                      <li><a href="employeeMaintenance.action">Employee</a></li>
+                                      <li><a href="productServiceMaintenance.action">Product & Service</a></li>
                                       <li><a href="maintenance-promo.jsp">Promo</a></li>
-                                      <li><a href="maintenance-discount.jsp">Discount</a></li>
+                                      <li><a href="discountMaintenance.action">Discount</a></li>
                                       <li><a href="maintenance-package.jsp">Package</a></li>
-                                      <li><a href="maintenance-catalouge.jsp">Catalogue</a></li>
-                                      <li><a href="maintenance-extra.jsp">Extra Charge</a></li>
+                                      <li><a href="maintenance-catalogue.jsp">Catalogue</a></li>
+                                      <li><a href="extraChargeMaintenance.action">Extra Charge</a></li>
                                     </ul>
                                   </div>
                               </li>
@@ -39,6 +41,7 @@
                                     <ul>
                                       <li><a href="transactions-inventory.jsp">Inventory</a></li>
                                       <li><a href="transactions-reservation.jsp">Reservation</a></li>
+                                      <li><a href="transactions-vip.jsp">VIP</a></li>
                                       <li class="orange"><a href="transactions-productorder.jsp">Product Order</a></li>
                                       <li><a href="transactions-walkin.jsp">Walk-In</a></li>
                                     </ul>
@@ -105,6 +108,12 @@
                                           </select>
                                           <label>Order Type</label>
                                   </div>
+                                  
+                                  <div class="input-field col s12">
+                                  		<input type="text" class="validate" id="order_name">
+                                  		<label for="order_name">Name</label>
+                                  </div>
+                                  
                                   <div class="input-field col s12">
                                       <input type="text" class="validate" id="order_address" disabled="disabled">
                                       <label for="order_address">Address</label>
@@ -112,10 +121,11 @@
                                   <div class="input-field col s8">
                                       <select id="productlist" class="icons" onchange="enableQty(this);">
                                             <option value="" disabled selected>Choose Product</option>
-                                            <option value="Product1" data-icon="./img/ainan.jpg" class="left circle">Product 1</option>
-                                            <option value="Product2" data-icon="./img/ainan.jpg" class="left circle">Product 2</option>
-                                            <option value="Product3" data-icon="./img/ainan.jpg" class="left circle">Product 3</option>
-                                      </select>
+                                            <c:forEach items="${productList}" var="product">
+                                                          <option value="${product.intProductID}">${product.strProductName}</option>
+                                             </c:forEach>
+                                                            </select>
+                                            
                                       <label>Product List</label>
                                   </div>
                                   <div class="input-field col s4">
@@ -157,21 +167,15 @@
                           </thead>
 
                           <tbody>
-                            <tr>
-                              <td>Item 1</td>
-                              <td>99</td>
-                              <td>P100.00</td>
-                            </tr>
-                            <tr>
-                              <td>Item 2</td>
-                              <td>99</td>
-                              <td>P100.00</td>
-                            </tr>
-                            <tr>
-                              <td>Item 3</td>
-                              <td>99</td>
-                              <td>P100.00</td>
-                            </tr>
+                          <c:forEach items="${productList}" var="product">
+                          	<tr>
+                            <td>${product.intProductID}</td>
+                                                            <td>${product.strProductName}</td>
+                                                        
+                                                            <td>${product.dblProductPrice}</td>
+                                                            <td><a href="#update" style="padding: 0px;" class="waves-effect waves-orange modal-trigger transparent btn-flat"><i class="material-icons">edit</i></a><button style="padding: 0px; margin-left:15px;" class="waves-effect waves-orange transparent btn-flat"><i class="material-icons">delete</i></button></td>
+                                                            </tr>
+                                                          </c:forEach>
                           </tbody>
                         </table>
                       <!-- </div> -->
@@ -212,7 +216,8 @@
 
           if(selectorder.options[selectorder.selectedIndex].value=='delivery'){
             order_ad.disabled = false;
-          }else{
+          }
+          else{
             order_ad.disabled = true;
             order_ad.value = '';
           }

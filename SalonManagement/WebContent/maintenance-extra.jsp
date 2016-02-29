@@ -28,13 +28,13 @@
                                 <a class="collapsible-header active"><b>Maintenance</b></a>
                                   <div class="collapsible-body">
                                     <ul>
-                                      <li><a href="maintenance-emp.jsp">Employee</a></li>
-                                      <li><a href="maintenance-prodsvc.jsp">Product & Service</a></li>
+                                      <li><a href="employeeMaintenance.action">Employee</a></li>
+                                      <li><a href="productServiceMaintenance.action">Product & Service</a></li>
                                       <li><a href="maintenance-promo.jsp">Promo</a></li>
-                                      <li><a href="maintenance-discount.jsp">Discount</a></li>
+                                      <li><a href="discountMaintenance.action">Discount</a></li>
                                       <li><a href="maintenance-package.jsp">Package</a></li>
                                       <li><a href="maintenance-catalogue.jsp">Catalogue</a></li>
-                                      <li class="orange"><a href="maintenance-extra.jsp">Extra Charge</a></li>
+                                      <li  class="orange"><a href="extraChargeMaintenance.action">Extra Charge</a></li>
 
                                   </div>
                               </li>
@@ -44,6 +44,7 @@
                                     <ul>
                                       <li><a href="transactions-inventory.jsp">Inventory</a></li>
                                       <li><a href="transactions-reservation.jsp">Reservation</a></li>
+                                      <li><a href="transactions-vip.jsp">VIP</a></li>
                                       <li><a href="transactions-productorder.jsp">Product Order</a></li>
                                       <li><a href="transaction-walkin.jsp">Walk-In</a></li>
                                     </ul>
@@ -82,8 +83,9 @@
                                        <ul>
                                          <li><a href="transactions-inventory.jsp">Inventory</a></li>
                                          <li><a href="transactions-reservation.jsp">Reservation</a></li>
-                                         <li><a href="#!">Product Order</a></li>
-                                         <li><a href="#!">Walk-In</a></li>
+                                         <li><a href="transactions-vip.jsp">VIP</a></li>
+                                         <li><a href="transactions-productorder.jsp">Product Order</a></li>
+                                         <li><a href="transactions-walkin.jsp">Walk-In</a></li>
                                        </ul>
                                      </div>
                                  </li>
@@ -101,13 +103,13 @@
                     <div class="container">
                     <header><h4>Extra Charge Maintenance</h4></header>
                         <div class="row">
-                            <form class="col s12" >
+                            <form class="col s12" method="post" action="createExtraCharge">
                                   <div class="input-field col s12">
-                                    <input type="text" class="validate" required name="extraname" id="extraid">
+                                    <input type="text" class="validate" required name="strECName" id="extraid">
                                     <label for="extraid">Name <span class="red-text">*</span></label>
                                   </div>
                                   <div class="input-field col s12">
-                                      <textarea id="extradesc" name="extradesc" class="materialize-textarea"></textarea>
+                                      <textarea id="extradesc" name="strECDetails" class="materialize-textarea"></textarea>
                                       <label for="extradesc">Description <span class="red-text">*</span></label>
                                    </div>
                                    <div class="input-field col s12">
@@ -149,8 +151,8 @@
                                     <c:forEach items="${ecList}" var="extra">
                                      <tr ng-repeat="ex in extra | filter:name | orderBy: 'id'">
                                       <td>${extra.intECID }</td>
-                                        <td>{extra.strECName}</td>
-                                        <td>{extra.strECDetails}</td>
+                                        <td>${extra.strECName}</td>
+                                        <td>${extra.strECDetails}</td>
                                         <td><a href="#update" style="padding: 0px;" class="waves-effect waves-orange modal-trigger transparent btn-flat"><i class="material-icons">edit</i></a><button style="padding: 0px; margin-left:15px;" class="waves-effect waves-orange transparent btn-flat"><i class="material-icons">delete</i></button></td>
                                         </tr>
                                       </c:forEach>

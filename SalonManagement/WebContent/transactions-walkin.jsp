@@ -22,13 +22,13 @@
                                 <a class="collapsible-header"><b>Maintenance</b></a>
                                   <div class="collapsible-body">
                                     <ul>
-                                      <li><a href="maintenance-emp.jsp">Employee</a></li>
-                                      <li><a href="maintenance-prodsvc.jsp">Product & Service</a></li>
+                                      <li><a href="employeeMaintenance.action">Employee</a></li>
+                                      <li><a href="productServiceMaintenance.action">Product & Service</a></li>
                                       <li><a href="maintenance-promo.jsp">Promo</a></li>
-                                      <li><a href="maintenance-discount.jsp">Discount</a></li>
+                                      <li><a href="discountMaintenance.action">Discount</a></li>
                                       <li><a href="maintenance-package.jsp">Package</a></li>
-                                      <li><a href="maintenance-catalogue">Catalogue</a></li>
-                                      <li><a href="maintenance-extra.jsp">Extra Charge</a></li>
+                                      <li><a href="maintenance-catalogue.jsp">Catalogue</a></li>
+                                      <li><a href="extraChargeMaintenance.action">Extra Charge</a></li>
                                     </ul>
                                   </div>
                               </li>
@@ -37,9 +37,9 @@
                                   <div class="collapsible-body">
                                     <ul>
                                       <li><a href="transactions-inventory.jsp">Inventory</a></li>
-                                      <li class="orange"><a href="transactions-reservation.jsp">Reservation</a></li>
+                                      <li><a href="transactions-reservation.jsp">Reservation</a></li>
                                       <li><a href="transactions-productorder.jsp">Product Order</a></li>
-                                      <li><a href="#!">Walk-In</a></li>
+                                      <li class="orange"><a href="transactions-walkin.jsp">Walk-In</a></li>
                                     </ul>
                                   </div>
                               </li>
@@ -95,39 +95,10 @@
                       <div class="row">
                           <form class="col s12">
                               <div class="input-field col s12">
-                                  <h4>Walk-In Maintenance</h4>
+                                  <h4>Walk-In</h4>
                               </div>
-                                <div class="input-field col s6">
-                                    <select id="reserve_eventhome" onchange="enableService(this);">
-                                          <option value="choose" disabled selected>Choose...</option>
-                                          <option value="event">Event</option>
-                                          <option value="home">Home Service</option>
-                                    </select>
-                                    <label>Service</label>
-                                </div>
-                                <div class="input-field col s3">
-                                    <input type="date" class="datepicker" id="datetimestart" placeholder="Date Start" disabled="disabled">
-                                </div>
-                                <div class="input-field col s3">
-                                    <input type="date" class="datepicker" id="datetimeend" placeholder="Date End" disabled="disabled">
-                                </div>
-                              <div class="input-field col s12">
-                                  <select id="" onchange="enableVIP(this);">
-                                        <option value="1">VIP 1</option>
-                                        <option value="2">VIP 2</option>
-                                        <option value="3">VIP 3</option>
-                                        <option value="guest" Selected>Guest</option>
-                                  </select>
-                                  <label>VIP List</label>
-                              </div>
-                              <div class="input-field col s12">
-                                  <input type="text" class="validate" name="reserve_customername" id="reserve_customername" required>
-                                  <label for="reserve_customername">Guest Name</label>
-                              </div>
-                              <div class="input-field col s12">
-                                  <input type="text" class="validate" id="reserve_venue">
-                                  <label for="reserve_venue">Venue</label>
-                              </div>
+                                
+                             
                               <div class="input-field col s6">
                                   <select id="package-list">
                                         <option value="" disabled selected>Choose your option</option>
@@ -139,7 +110,7 @@
                                   <label>Package Available</label>
                               </div>
                               <div class="input-field col s6" stype="margin-top: -10px;">
-                                  <select id="servicelist" disabled="disabled" multiple>
+                                  <select id="servicelist"  multiple>
                                         <option value="" disabled selected>Choose your option</option>
                                         <option value="1">Service 1</option>
                                         <option value="2">Service 2</option>
@@ -147,9 +118,15 @@
                                   </select>
                                   <label>Service Available</label>
                               </div>
-                              <div class="input-field col s5">
-                                  <input type="text" class="validate" id="reserve_headcount" maxlength="4">
-                                  <label for="reserve_headcount">Head Count</label>
+                              
+                              <div class="input-field col s12" stype="margin-top: -10px;">
+                                  <select id="stylistlist"  multiple>
+                                        <option value="" disabled selected>Choose your option</option>
+                                        <option value="1">Service 1</option>
+                                        <option value="2">Service 2</option>
+                                        <option value="3">Service 3</option>
+                                  </select>
+                                  <label>Stylist Available</label>
                               </div>
                           
                               <div class="col s12">
@@ -221,7 +198,7 @@
                     <div class="aside aside2 z-depth-barts">
                       <div class="row">
                           <div class="col s12">
-                              <h4 style="margin-top: 30px;">Reservation Calendar</h4>
+                              <h4 style="margin-top: 30px;">List of Walk In</h4>
                           </div>
                       </div>
                     </div>

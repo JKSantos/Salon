@@ -25,13 +25,13 @@
                                 <a class="collapsible-header"><b>Maintenance</b></a>
                                   <div class="collapsible-body">
                                     <ul>
-                                      <li><a href="maintenance-emp.jsp">Employee</a></li>
-                                      <li><a href="maintenance-prodsvc.jsp">Product & Service</a></li>
+                                      <li><a href="employeeMaintenance.action">Employee</a></li>
+                                      <li><a href="productServiceMaintenance.action">Product & Service</a></li>
                                       <li><a href="maintenance-promo.jsp">Promo</a></li>
-                                      <li><a href="maintenance-discount.jsp">Discount</a></li>
+                                      <li><a href="discountMaintenance.action">Discount</a></li>
                                       <li><a href="maintenance-package.jsp">Package</a></li>
                                       <li><a href="maintenance-catalogue.jsp">Catalogue</a></li>
-                                      <li><a href="maintenance-extra.jsp">Extra Charge</a></li>
+                                      <li><a href="extraChargeMaintenance.action">Extra Charge</a></li>
                                     </ul>
                                   </div>
                               </li>
@@ -41,6 +41,7 @@
                                     <ul>
                                       <li><a href="transactions-inventory.jsp">Inventory</a></li>
                                       <li class="orange"><a href="transactions-reservation.jsp">Reservation</a></li>
+                                      <li><a href="transactions-vip.jsp">VIP</a></li>
                                       <li><a href="transactions-productorder.jsp">Product Order</a></li>
                                       <li><a href="#!">Walk-In</a></li>
                                     </ul>
@@ -117,7 +118,7 @@
                                             <td>1</td>
                                             <td>January 1, 2016</td>
                                             <td>Manila Cathedral</td>
-                                            <th><button class="waves-effect waves-light orange btn-flat">Click Me</button></th>
+                                            <th><button class="waves-effect waves-light orange btn-flat white-text">Details</button></th>
                                             <td><a href="#update" class="modal-trigger"><i class="material-icons green-text">edit</i></a>
                                             <a href="#!"><i class="material-icons red-text">delete</i></a>
                                             </td>

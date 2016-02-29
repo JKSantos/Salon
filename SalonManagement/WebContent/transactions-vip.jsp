@@ -27,10 +27,10 @@
                  <!--  <li class="no-padding"> -->
                     <ul class="collapsible" data-collapsible="accordion">
                       <li>
-                        <a class="collapsible-header active"><b>Maintenance</b></a>
+                        <a class="collapsible-header"><b>Maintenance</b></a>
                           <div class="collapsible-body">
                             <ul>
-                              <li class="orange"><a href="employeeMaintenance.action">Employee</a></li>
+                              <li><a href="employeeMaintenance.action">Employee</a></li>
                                       <li><a href="productServiceMaintenance.action">Product & Service</a></li>
                                       <li><a href="maintenance-promo.jsp">Promo</a></li>
                                       <li><a href="discountMaintenance.action">Discount</a></li>
@@ -41,12 +41,12 @@
                           </div>
                       </li>
                       <li>
-                        <a class="collapsible-header"><b>Transaction</b></a>
+                        <a class="collapsible-header active"><b>Transaction</b></a>
                           <div class="collapsible-body">
                             <ul>
                               <li><a href="transactions-inventory.jsp">Inventory</a></li>
                               <li><a href="transactions-reservation.jsp">Reservation</a></li>
-                              <li><a href="transactions-vip.jsp">VIP</a></li>
+                              <li class="orange"><a href="transactions-vip.jsp">VIP</a></li>
                               <li><a href="transactions-productorder.jsp">Product Order</a></li>
                               <li><a href="#!">Walk-In</a></li>
                             </ul>
@@ -69,7 +69,7 @@
                            <a class="waves-effect waves-orange collapsible-header"><b>Maintenance</b></a>
                              <div class="collapsible-body">
                                <ul>
-                                 <li class="orange"><a href="maintenance-emp.jsp">Employee</a></li>
+                                 <li><a href="maintenance-emp.jsp">Employee</a></li>
                                  <li><a href="maintenance-prodsvc.jsp">Product & Service</a></li>
                                  <li><a href="maintenance-promo.jsp">Promo</a></li>
                                  <li><a href="maintenance-discount.jsp">Discount</a></li>
@@ -85,7 +85,7 @@
                                <ul>
                                  <li><a href="transactions-inventory.jsp">Inventory</a></li>
                                  <li><a href="transactions-reservation.jsp">Reservation</a></li>
-                                 <li><a href="transactions-vip.jsp">VIP</a></li>
+                                 <li class="orange"><a href="transactions-vip.jsp">VIP</a></li>
                                  <li><a href="transactions-productorder.jsp">Product Order</a></li>
                                  <li><a href="#!">Walk-In</a></li>
                                </ul>
@@ -101,75 +101,27 @@
         <article>
           <div class="wrapper">
                     <div class="aside aside1 z-depth-barts">
-                      <header><h4>Employee Maintenance</h4><div class="divider"></div></header>
+                      <header><h4>VIP Registration</h4><div class="divider"></div></header>
 
                       <div class="row">
                           <form class="col s12" action="createEmployee" onsubmit="return passvalidation()" method="post" enctype="multipart/form-data">
                               <div class="row">
-                                  <div class="input-field col s4">
+                                  <div class="input-field col s12" style="margin-bottom: 40px;">
                                       <label class="red-text">(*) Indicates required field</label>
                                   </div>
-                                  <div class="input-field col s6 offset-s2">
-                                      <img  id="employeeimg" style="width: 120px; height: 120px;" src="./img/anon.jpg" alt=""/>
-                                  </div>
-                                  <div class="input-field col s4">
-                                      <input id="empid" type="text" disabled="disabled">
-                                      <label for="empid">Employee ID</label>
-                                  </div>
-                                  <div class="input-field col s7 offset-s1">
-                                      <div class="file-field">
-                                            <div class="btn orange">
-                                              <span class="">Image</span>
-                                              <input name="upload" type="file" accept="image/jpeg,image/png" onchange="loadFile(event)">
-                                            </div>
-                                            <div class="file-path-wrapper">
-                                              <input name="path" class="file-path validate" type="text" value="Image">
-                                            </div>
-                                        </div>
-                                  </div>
-                                  <div class="input-field col s4">
+                                  <div class="input-field col s4" style="margin-top: 15px;">
                                       <input name="strEmpFirstName" id="fname" type="text" class="validate active" required>
                                       <label for="fname">First Name<span class="red-text">*</span></label>
                                   </div>
-                                  <div class="input-field col s4">
+                                  <div class="input-field col s4" style="margin-top: 15px;">
                                       <input name="strEmpMiddleName" id="mname" type="text" class="validate">
                                       <label for="mname">Middle Name</label>
                                   </div>
-                                  <div class="input-field col s4">
+                                  <div class="input-field col s4" style="margin-top: 15px;">
                                       <input name="strEmpLastName" id="lname" type="text" class="validate" required>
                                       <label for="lname">Last Name<span class="red-text">*</span></label>
                                   </div>
-                                      <div class="input-field col s3">
-                                          <select id="strMonth" name="strMonth">
-                                              <option value="1">January</option>
-                                              <option value="2">February</option>
-                                              <option value="3">March</option>
-                                              <option value="4">April</option>
-                                              <option value="5">May</option>
-                                              <option value="6">June</option>
-                                              <option value="7">July</option>
-                                              <option value="8">August</option>
-                                              <option value="9">September</option>
-                                              <option value="10">October</option>
-                                              <option value="11">November</option>
-                                              <option value="12">December</option>
-                                          </select>
-                                          <label>Month <span class="red-text">*</span></label>
-                                        </div>
-                                        <div class="input-field col s2">
-                                          <input name="strDay" type="text" class="validate" id="day" maxlength="2">
-                                          <label for="day">Day <span class="red-text">*</span></label>
-                                        </div>
-                                        <div class="input-field col s3">
-                                          <input name="strYear" type="text" class="validate" id="year" maxlength="4">
-                                          <label for="year">Year <span class="red-text">*</span></label>
-                                        </div>
-                                      <div class="input-field col s4">
-                                          <input type="text" class="validate" disabled value="">
-                                          <label style="color: #9e9e9e;">Age: <span id="age"></span></label>
- 
-                                      </div>
-                                  <div class="input-field col s6" >
+                                    <div class="input-field col s6" >
                                       <select name="strEmpGender" required>
                                         <option value="" disabled selected></option>
                                         <option value="M">Male</option>
@@ -188,27 +140,9 @@
                                       <input name="strEmpAddress" type="text" id="address" class="validate">
                                       <label for="address">Address <span class="red-text">*</span></label>
                                   </div>
+                                  <div class="divider"></div>
                                   <div class="input-field col s12">
-                                      <p style="color:#9e9e9e;font-size:12px;">Position <span class="red-text">*</span></p>
-                                  </div>
-                                  <div class="input-field col s5" style="margin-top: -1px;">
-                                      <select id="slct1" name="selectedJob" multiple="multiple">
-                                          <option value="" disabled selected> </option>
-                                          <c:forEach items="${empCategory}" var="name">
-                                            <option value="${name.strCategoryName}">${name.strCategoryName }</option>
-                                          </c:forEach>
-                                      </select>
-                                  </div>
-                                  <div class="input-field col s2" style="margin-top: -0.2px;">
-                                      <p style="margin-top: 5px;" class="center"><a id="optionadd" class="waves-effect waves-light orange-btn"><i class="material-icons small">add</i></a><a class="waves-effect waves-light orange-btn" onclick="removeopt()"><i class="material-icons small">remove</i></a></p>
-                                  </div>
-                                  <div class="input-field col s4" style="margin-top: -4px;">
-                                      <input type="text" id="add-optname" class="validate">
-                                      <label for="add-optname">Another position</label>
-                                  </div>
-                                  <div class="divider col s12" style="margin-top: 20px;"></div>
-                                  <div class="col s12"  style="margin-top: 10px;">
-                                      <h4>Account</h4>
+                                    <h4>VIP Account</h4>
                                   </div>
                                   <div class="input-field col s6 offset-s3">
                                       <input name="strEmpUsername" type="text" class="validate" id="user" maxlength="15">
@@ -245,29 +179,24 @@
                      <div class="row">
                          <div class="col s12">
                              <div class="row">
-                                    <h5>Employee List</h5>
+                                    <h5>VIP List</h5>
                                       <table id="example" class="mdl-data-table" cellspacing="0" width="100%">
                                               <thead>
                                                   <tr>
                                                       <th>ID</th>
                                                       <th>Name</th>
-                                                      <th>Position</th>
                                                       <th>Actions</th>
                                                   </tr>
                                               </thead>
                                               <tbody>
-                                                  <c:forEach items="${empList}" var="employee">
 													
                                                   <tr>
-                                                      <td>${employee.intEmpID}</td>
-                                                      <td>${employee.strEmpFirstName} ${employee.strEmpLastName}</td>
-                                                      <td><c:forEach items="${jobList}" begin="0" end="1" var="job">${job.strJobDesc}</c:forEach></td>
-                                                      <td><a href="#update" class="modal-trigger" id="${employee.intEmpID}"><i class="material-icons green-text">edit</i></a>
+                                                      <td>1</td>
+                                                      <td>Ainan Ongsip</td>
+                                                      <td><a href="#update" class="modal-trigger"><i class="material-icons green-text">edit</i></a>
                                                       <a href="#!"><i class="material-icons red-text">delete</i></a>
-                                                      <input type="hidden" value="${employee.strEmpFirstName}">
                                                       </td>
                                                   </tr>
-                                                  </c:forEach>
                                               </tbody>
                                           </table>
 

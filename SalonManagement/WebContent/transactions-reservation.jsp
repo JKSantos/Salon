@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html>
+<%@ taglib uri="/struts-tags" prefix="s" %>
+  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
   <head>
   <link rel="stylesheet" href="./css/materialize.min.css"  media="screen,projection"/>
   <link type="text/css" rel="stylesheet" href="./css/materialize.css"/>
@@ -22,13 +24,13 @@
                                 <a class="collapsible-header"><b>Maintenance</b></a>
                                   <div class="collapsible-body">
                                     <ul>
-                                      <li><a href="maintenance-emp.jsp">Employee</a></li>
-                                      <li><a href="maintenance-prodsvc.jsp">Product & Service</a></li>
+                                      <li><a href="employeeMaintenance.action">Employee</a></li>
+                                      <li><a href="productServiceMaintenance.action">Product & Service</a></li>
                                       <li><a href="maintenance-promo.jsp">Promo</a></li>
-                                      <li><a href="maintenance-discount.jsp">Discount</a></li>
+                                      <li><a href="discountMaintenance.action">Discount</a></li>
                                       <li><a href="maintenance-package.jsp">Package</a></li>
                                       <li><a href="maintenance-catalogue.jsp">Catalogue</a></li>
-                                      <li><a href="maintenance-extra.jsp">Extra Charge</a></li>
+                                      <li><a href="extraChargeMaintenance.action">Extra Charge</a></li>
                                     </ul>
                                   </div>
                               </li>
@@ -38,8 +40,9 @@
                                     <ul>
                                       <li><a href="transactions-inventory.jsp">Inventory</a></li>
                                       <li class="orange"><a href="transactions-reservation.jsp">Reservation</a></li>
+                                      <li><a href="transactions-vip.jsp">VIP</a></li>
                                       <li><a href="transactions-productorder.jsp">Product Order</a></li>
-                                      <li><a href="#!">Walk-In</a></li>
+                                      <li><a href="transactions-walkin.jsp">Walk-In</a></li>
                                     </ul>
                                   </div>
                               </li>
@@ -97,13 +100,16 @@
                               <div class="input-field col s12">
                                   <h4>Create Reservation</h4>
                               </div>
+                              <div class="input-field col s12">
+                                <p class="red-text">(*) Includes required field</p>
+                              </div>
                                 <div class="input-field col s6">
                                     <select id="reserve_eventhome" onchange="enableService(this);">
                                           <option value="choose" disabled selected>Choose...</option>
                                           <option value="event">Event</option>
                                           <option value="home">Home Service</option>
                                     </select>
-                                    <label>Service</label>
+                                    <label>Service <span class="red-text">*</span></label>
                                 </div>
                                 <div class="input-field col s3">
                                     <input type="date" class="datepicker" id="datetimestart" placeholder="Date Start" disabled="disabled">
@@ -111,20 +117,31 @@
                                 <div class="input-field col s3">
                                     <input type="date" class="datepicker" id="datetimeend" placeholder="Date End" disabled="disabled">
                                 </div>
-                              <div class="input-field col s12">
+                              <div class="input-field col s6">
                                   <select id="" onchange="enableVIP(this);">
-                                        <option value="1">VIP</option>
-                                        <option value="guest" Selected>Guest</option>
+                                        <option value="vip1">VIP - Ainan Ongsip</option>
+                                        <option value="guest" selected>Guest</option>
                                   </select>
-                                  <label>VIP List</label>
+                                  <label>VIP List <span class="red-text">*</span></label>
+                              </div>
+                              <div class="input-field col s6">
+                                  <select id="guesttype" onchange="enableCompany(this);">
+                                    <option value="individual">Individual</option>
+                                    <option value="company">Company</option>
+                                  </select>
+                                  <label>Guest Type</label>
                               </div>
                               <div class="input-field col s12">
-                                  <input type="text" class="validate" name="reserve_customername" id="reserve_customername" required>
-                                  <label for="reserve_customername">Guest Name</label>
+                                  <input type="text" class="validate" name="reserve_companyname" id="reserve_companyname" disabled="disabled">
+                                  <label for="reserve_companyname">Company Name</label>
                               </div>
                               <div class="input-field col s12">
-                                  <input type="text" class="validate" id="reserve_venue">
-                                  <label for="reserve_venue">Venue</label>
+                                  <input type="text" class="validate" required name="reserve_customername" id="reserve_customername">
+                                  <label for="reserve_customername">Name <span class="red-text">*</span></label>
+                              </div>
+                              <div class="input-field col s12">
+                                  <input type="text" class="validate" id="reserve_venue" required>
+                                  <label for="reserve_venue">Venue <span class="red-text">*</span></label>
                               </div>
                               <div class="input-field col s6">
                                   <select id="package-list" class="browser-default">
@@ -154,9 +171,9 @@
                               <div class="input-field col s6" stype="margin-top: -10px;">
                                   <select id="servicelist" disabled="disabled" multiple>
                                         <option value="" disabled selected>Choose your option</option>
-                                        <option value="1">Service 1</option>
-                                        <option value="2">Service 2</option>
-                                        <option value="3">Service 3</option>
+                                        <c:forEach items="${productList}" var="product">
+                                        	<option value="${product.intProductName}">{product.intProductName}</option>
+                                        </c:forEach>
                                   </select>
                                   <label>Service Available</label>
                               </div>
@@ -184,10 +201,18 @@
                                             </tbody>
                                           </table>
                                     </div>
+                                    
+                              <div class="input-field col s12" stype="margin-top: -10px;">
+                                  <select id="stylistlist"  multiple required>
+                                        <option value="" disabled selected>Choose your option</option>
+                                        
+                                  </select>
+                                  <label>Stylist Available <span class="red-text">*</span></label>
+                              </div>
                               
                               <div class="input-field col s12">
-                                  <input type="number" class="validate" id="reserve_headcount" maxlength="4">
-                                  <label for="reserve_headcount">Head Count</label>
+                                  <input type="number" class="validate" required id="reserve_headcount" maxlength="4">
+                                  <label for="reserve_headcount">Head Count <span class="red-text">*</span></label>
                               </div>
                           
                               <div class="col s12">
@@ -250,18 +275,20 @@
                                   </div>
                                   <div class="input-field col s6 offset-s6">
                                       <input type="text" class="validate right-align" id="reserve-amount" name="reserve-amount">
-                                      <label for="reserve-amount">Amount</label>
+                                      <label for="reserve-amount">Payment Amount</label>
                                   </div>
                                 <!-- <h5 class="thin col s6">Down Payment: </h5>
                                 <h5 class="thin col s6">Php 1,250.00</h5> -->
                                 </form>
                               </div>
-        
+                                
                             </div>
                           </div>
                          <div class="modal-footer">
                             <a href="#" class="modal-action modal-close waves-orange btn-flat transparent">Cancel</a>
                            <button class="modal-action waves-effect waves-light orange btn-flat ">Confirm</button>
+                           <a href="#!" class="waves-effect waves-orange transparent btn-flat left">Print Contract</a>
+                           <a href="#!" class="waves-effect waves-orange transparent btn-flat left">Print Receipt</a>
                          </div>
                          </form>
                     </div>
@@ -329,7 +356,23 @@
           }
     </script>
 
-    
+ 
+ <script type="text/javascript">
+     function enableCompany(selectcompany){
+       companyname = document.getElementById('reserve_companyname');
+       custname = document.getElementById('reserve_customername');
+
+       if(selectcompany.options[selectcompany.selectedIndex].value=='company'){
+         companyname.disabled = false;
+         custname.disabled = false;
+       }else{
+         companyname.disabled = true;
+         companyname.value = '';
+       }
+       return;
+     }
+ </script>
+   
 
     <script type="text/javascript">
         $(function(){
@@ -353,12 +396,16 @@
     <script type="text/javascript">
         function enableVIP(selectguest){
           guest = document.getElementById('reserve_customername');
+          guesttype = document.getElementById('guesttype');
 
           if(selectguest.options[selectguest.selectedIndex].value=='guest'){
             guest.disabled = false;
+            guesttype.disabled = false;
           }else{
             guest.disabled = true;
             guest.value = '';
+            guesttype.disabled = true;
+            guesttype.value = '';
           }
           return;
         }

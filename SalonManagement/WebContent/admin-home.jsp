@@ -41,9 +41,9 @@
                                 <a class="collapsible-header"><b>Transaction</b></a>
                                   <div class="collapsible-body">
                                     <ul>
-                                      <li><a href="transactions-inventory.jsp">Inventory</a></li>
+                                      <li><a href="getInventory.action">Inventory</a></li>
                                       <li><a href="transactions-reservation.jsp">Reservation</a></li>
-                                      <li><a href="transactions-productorder.jsp">Product Order</a></li>
+                                      <li><a href="getProducts.action">Product Order</a></li>
                                       <li><a href="#!">Walk-In</a></li>
                                     </ul>
                                   </div>

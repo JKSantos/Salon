@@ -51,5 +51,19 @@
 		<action name="extraChargeMaintenance" class="com.gss.actions.ExtraChargeMaintenanceAction" method="execute">
 			<result name="success">maintenance-extra.jsp</result>
 		</action>
+
+		<action name="createExtraCharge" class="com.gss.actions.CreateExtraChargeAction" method="execute">
+			<result name="success">redirect-maintenance-extra.jsp</result>
+			<result name="failed">redirect-maintenance-extra.jsp</result>
+		</action>
+		
+		<action name="getProducts" class="com.gss.actions.ReservationTransactionAction" method="execute">
+			<result name="success">transactions-productorder.jsp</result>
+		</action>
+		
+		<action name="getInventory" class="com.gss.actions.InventoryTransactionAction" method="execute">
+			<result name="success">transactions-inventory.jsp</result>
+		</action>
+		
 	</package>
 </struts>

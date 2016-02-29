@@ -27,17 +27,17 @@
     <div class="wrapper">
             <aside class="aside aside-1 z-depth-barts">
                 <div class="row">
-                        <form class="col s12" action="admin-home.jsp">
+                        <form class="col s12" action="login">
                             <div class="row">
                                 <div class="center">
                                   <h3>Login</h3>
                                 </div>
                                 <div class="input-field col s8 offset-s2">
-                                  <input type="text" id="username" class="validate">
+                                  <input type="text" name="username" id="username" class="validate">
                                   <label for="id">Username</label>
                                 </div>
                                 <div class="input-field col s8 offset-s2">
-                                  <input type="password" id="pass" class="validate">
+                                  <input type="password" name="pass" id="pass" class="validate">
                                   <label for="pass">Password</label>
                                 </div>
                                 <div class="col s12" style="margin-top: 50px;">

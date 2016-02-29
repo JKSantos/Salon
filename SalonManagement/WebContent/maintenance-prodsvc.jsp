@@ -29,13 +29,13 @@
                                 <a class="collapsible-header active"><b>Maintenance</b></a>
                                   <div class="collapsible-body">
                                     <ul>
-                                      <li><a href="maintenance-emp.jsp">Employee</a></li>
-                                      <li class="orange"><a href="maintenance-prodsvc.jsp">Product & Service</a></li>
+                                      <li><a href="employeeMaintenance.action">Employee</a></li>
+                                      <li class="orange"><a href="productServiceMaintenance.action">Product & Service</a></li>
                                       <li><a href="maintenance-promo.jsp">Promo</a></li>
-                                      <li><a href="maintenance-discount.jsp">Discount</a></li>
+                                      <li><a href="discountMaintenance.action">Discount</a></li>
                                       <li><a href="maintenance-package.jsp">Package</a></li>
                                       <li><a href="maintenance-catalogue.jsp">Catalogue</a></li>
-                                      <li><a href="maintenance-extra.jsp">Extra Charge</a></li>
+                                      <li><a href="extraChargeMaintenance.action">Extra Charge</a></li>
                                     </ul>
                                   </div>
                               </li>
@@ -45,6 +45,7 @@
                                     <ul>
                                       <li><a href="transactions-inventory.jsp">Inventory</a></li>
                                       <li><a href="transactions-reservation.jsp">Reservation</a></li>
+                                      <li><a href="transactions-vip.jsp">VIP</a></li>
                                       <li><a href="transactions-productorder.jsp">Product Order</a></li>
                                       <li><a href="transactions-walkin.jsp">Walk-In</a></li>
                                     </ul>
@@ -83,6 +84,7 @@
                                        <ul>
                                          <li><a href="transactions-inventory.jsp">Inventory</a></li>
                                          <li><a href="transactions-reservation.jsp">Reservation</a></li>
+                                         <li><a href="transactions-vip.jsp">VIP</a></li>
                                          <li><a href="transactions-productorder.jsp">Product Order</a></li>
                                          <li><a href="#!">Walk-In</a></li>
                                        </ul>

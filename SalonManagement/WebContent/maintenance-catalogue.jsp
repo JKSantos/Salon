@@ -25,13 +25,13 @@
                                 <a class="collapsible-header active"><b>Maintenance</b></a>
                                   <div class="collapsible-body">
                                     <ul>
-                                      <li><a href="maintenance-emp.jsp">Employee</a></li>
-                                      <li><a href="maintenance-prodsvc.jsp">Product & Service</a></li>
+                                      <li><a href="employeeMaintenance.action">Employee</a></li>
+                                      <li><a href="productServiceMaintenance.action">Product & Service</a></li>
                                       <li><a href="maintenance-promo.jsp">Promo</a></li>
-                                      <li><a href="maintenance-discount.jsp">Discount</a></li>
+                                      <li><a href="discountMaintenance.action">Discount</a></li>
                                       <li><a href="maintenance-package.jsp">Package</a></li>
                                       <li class="orange"><a href="maintenance-catalogue.jsp">Catalogue</a></li>
-                                      <li><a href="maintenance-extra.jsp">Extra Charge</a></li>
+                                      <li><a href="extraChargeMaintenance.action">Extra Charge</a></li>
                                     </ul>
                                   </div>
                               </li>
@@ -41,6 +41,7 @@
                                     <ul>
                                       <li><a href="transactions-inventory.jsp">Inventory</a></li>
                                       <li><a href="transactions-reservation.jsp">Reservation</a></li>
+                                      <li><a href="transactions-vip.jsp">VIP</a></li>
                                       <li><a href="transactions-productorder.jsp">Product Order</a></li>
                                       <li><a href="transaction-walkin.jsp">Walk-In</a></li>
                                     </ul>
@@ -79,6 +80,7 @@
                                        <ul>
                                          <li><a href="transactions-inventory.jsp">Inventory</a></li>
                                          <li><a href="transactions-reservation.jsp">Reservation</a></li>
+                                         <li><a href="transactions-vip.jsp">VIP</a></li>
                                          <li><a href="transactions-productorder.jsp">Product Order</a></li>
                                          <li><a href="#!">Walk-In</a></li>
                                        </ul>
@@ -135,21 +137,8 @@
                                                             <textarea id="servicedetails" class="materialize-textarea" length="120"></textarea>
                                                             <label for="servicedetails">Details</label>
                                                         </div>
-                                                        <div class="input-field col s5">
-                                                            <select id="servicecategory">
-                                                                  <option value="" disabled selected>Choose your option</option>
-                                                              </select>
-                                                              <label>Category <span class="red-text">*</span></label>
-                                                        </div>
-                                                        <div class="input-field col s3" style="margin-top: -0.2px;">
-                                                            <p style="margin-top: 5px;" class="center"><a id="optionadd" class="waves-effect waves-light orange-btn"><i class="material-icons small">add</i></a><a class="waves-effect waves-light orange-btn" onclick="removeopt()"><i class="material-icons small">remove</i></a></p>
-                                                        </div>
-                                                        <div class="input-field col s4" style="margin-top: -4px;">
-                                                            <input type="text" id="add-optname" class="validate">
-                                                            <label for="add-optname">Another</label>
-                                                        </div>
-                                                        <div class="input-field col s12">
-                                                            <input type="number" class="validate right-align" id="serviceprice" maxlength="8">
+                                                        <div class="input-field col s4 offset-s8">
+                                                            <input type="text" class="validate right-align" id="serviceprice" maxlength="8">
                                                             <label for="serviceprice">Price <span class="red-text">*</span></label>
                                                         </div>
                                                         <div class="input-field col s12 center">
@@ -178,12 +167,12 @@
                                              <h5>Catalogue List</h5>
 
 
-                                               <table class="ui sortable celled table" ng-init="catalogue=[{id: '1',name: 'Mohawk', price: '50.00'},{id: '2',name: 'Kalbo', price: '40.00'}]">
+                                               <table class="ui sortable celled table">
                                                  <thead>
                                                    <tr>
                                                      <th data-sort="int" class="orange lighten-5">ID</th>
                                                      <th data-sort="string" class="orange lighten-5">Name</th>
-                                                     <th data-sort="int" class="orange lighten-5">Price (Peso)</th>
+                                                     <th data-sort="int" class="orange lighten-5">Price</th>
                                                      <th class="no-sort orange lighten-5">Actions</th>
                                                    </tr>
                                                  </thead>
