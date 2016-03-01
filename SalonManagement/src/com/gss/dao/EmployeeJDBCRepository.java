@@ -24,13 +24,14 @@ public class EmployeeJDBCRepository implements EmployeeRepository{
 	@Override
 	public List<Employee> getAllEmployee() {
 		
-		String strQuery1 = "SELECT * FROM tblEmployee;";
+		String strQuery1 = "CALL getAllEmployee()";
 		String strQuery2 = "CALL fetchJob(?)";
 		JDBCConnection jdbc = new JDBCConnection();
 		Connection con = jdbc.getConnection();
 		List<Employee> empList = new ArrayList<Employee>();
 		
 		int intEmpID;
+		String strJobDesc;
 		String strEmpLastName;
 		String strEmpFirstName;
 		String strEmpMiddleName;
@@ -54,31 +55,21 @@ public class EmployeeJDBCRepository implements EmployeeRepository{
 			
 			while(set.next()){
 				intEmpID = set.getInt(1);
-				strEmpLastName = set.getString(2);
-				strEmpFirstName = set.getString(3);
-				strEmpMiddleName = set.getString(4);
-				datEmpBirthdate = set.getDate(5);
-				strEmpGender = set.getString(6);
-				strEmpAddress = set.getString(7);
-				strEmpContactNo = set.getString(8);
-				strEmpStatus = set.getString(9);
-				strEmpUsername = set.getString(10);
-				strEmpPassword = set.getString(11);
+				String job = set.getString(2);
+				strEmpLastName = set.getString(3);
+				strEmpFirstName = set.getString(4);
+				strEmpMiddleName = set.getString(5);
+				datEmpBirthdate = set.getDate(6);
+				strEmpGender = set.getString(7);
+				strEmpAddress = set.getString(8);
+				strEmpContactNo = set.getString(9);
+				strEmpStatus = set.getString(10);
+				strEmpUsername = set.getString(11);
+				strEmpPassword = set.getString(12);
 				blobEmpPhoto = "Empty";
-				bytActualImage = set.getBytes(12);
-					
-				PreparedStatement pre2 = con.prepareStatement(strQuery2);
-				pre2.setInt(1, intEmpID);
-				ResultSet set2 = pre2.executeQuery();
-					
-				while(set2.next()){
-					Job job = new Job(set2.getString(1), set2.getInt(2));
-					strJobQualification.add(job);
-				}
+				bytActualImage = set.getBytes(13);
 				
-				Employee emp = new Employee(intEmpID, strEmpLastName, strEmpFirstName, strEmpMiddleName, datEmpBirthdate, strEmpGender, strEmpAddress, strEmpContactNo, strEmpStatus, strEmpUsername, strEmpPassword, blobEmpPhoto, bytActualImage, strJobQualification);
-				
-				emp.setStrJobQualification(strJobQualification);
+				Employee emp = new Employee(intEmpID, strEmpLastName, strEmpFirstName, strEmpMiddleName, datEmpBirthdate, strEmpGender, strEmpAddress, strEmpContactNo, strEmpStatus, strEmpUsername, strEmpPassword, blobEmpPhoto, bytActualImage, job);
 				
 				empList.add(emp);
 			}
@@ -98,79 +89,80 @@ public class EmployeeJDBCRepository implements EmployeeRepository{
 	@Override
 	public Employee getEmployeeByUserPass(String username, String password) {
 		
-		String strQuery1 = "CALL loginEmployee(?, ?)";
-		String strQuery2 = "CALL fetchJob(?)";
-		JDBCConnection jdbc = new JDBCConnection();
-		Connection con = jdbc.getConnection();
-		
-		Employee emp = null;
-		int intEmpID;
-		String strEmpLastName;
-		String strEmpFirstName;
-		String strEmpMiddleName;
-		Date datEmpBirthdate;
-		String strEmpGender;
-		String strEmpAddress;
-		String strEmpContactNo;
-		String strEmpStatus;
-		String strEmpUsername;
-		String strEmpPassword;
-		String blobEmpPhoto;
-		byte[] bytActualImage;
-		List<Job> strJobQualification = new ArrayList<Job>();
-		
-		
-		try{
-			PreparedStatement pre = con.prepareStatement(strQuery1);
-			pre.setString(1, username);
-			pre.setString(2, password);
-			
-			ResultSet set = pre.executeQuery();
-			System.out.print("Checking Account....");
-			
-			while(set.next()){
-				intEmpID = set.getInt(1);
-				strEmpLastName = set.getString(2);
-				strEmpFirstName = set.getString(3);
-				strEmpMiddleName = set.getString(4);
-				datEmpBirthdate = set.getDate(5);
-				strEmpGender = set.getString(6);
-				strEmpAddress = set.getString(7);
-				strEmpContactNo = set.getString(8);
-				strEmpStatus = set.getString(9);
-				strEmpUsername = set.getString(10);
-				strEmpPassword = set.getString(11);
-				blobEmpPhoto = "Empty";
-				bytActualImage = set.getBytes(12);
-				
-				emp = new Employee(intEmpID, strEmpLastName, strEmpFirstName, strEmpMiddleName, datEmpBirthdate, strEmpGender, strEmpAddress, strEmpContactNo, strEmpStatus, strEmpUsername, strEmpPassword, blobEmpPhoto, bytActualImage, strJobQualification);
-				System.out.println("Account found");
-			
-			}
-			
-			
-			System.out.print("Fetching jobs....");
-			
-			PreparedStatement pre2 = con.prepareStatement(strQuery2);
-			pre2.setInt(1, emp.getIntEmpID());
-			ResultSet set2 = pre2.executeQuery();
-				
-			while(set2.next()){
-				Job job = new Job(set2.getString(1), set2.getInt(2));
-				strJobQualification.add(job);
-			}
-			
-			emp.setStrJobQualification(strJobQualification);
-			System.out.println("jobs collected");
-			return emp;
-		}
-		catch(SQLException e){
-			System.out.println(e.getMessage());
-			return null;
-		}
-		catch(NullPointerException a){
-			return null;
-		}
+//		String strQuery1 = "CALL loginEmployee(?, ?)";
+//		String strQuery2 = "CALL fetchJob(?)";
+//		JDBCConnection jdbc = new JDBCConnection();
+//		Connection con = jdbc.getConnection();
+//		
+//		Employee emp = null;
+//		int intEmpID;
+//		String strEmpLastName;
+//		String strEmpFirstName;
+//		String strEmpMiddleName;
+//		Date datEmpBirthdate;
+//		String strEmpGender;
+//		String strEmpAddress;
+//		String strEmpContactNo;
+//		String strEmpStatus;
+//		String strEmpUsername;
+//		String strEmpPassword;
+//		String blobEmpPhoto;
+//		byte[] bytActualImage;
+//		List<Job> strJobQualification = new ArrayList<Job>();
+//		
+//		
+//		try{
+//			PreparedStatement pre = con.prepareStatement(strQuery1);
+//			pre.setString(1, username);
+//			pre.setString(2, password);
+//			
+//			ResultSet set = pre.executeQuery();
+//			System.out.print("Checking Account....");
+//			
+//			while(set.next()){
+//				intEmpID = set.getInt(1);
+//				strEmpLastName = set.getString(2);
+//				strEmpFirstName = set.getString(3);
+//				strEmpMiddleName = set.getString(4);
+//				datEmpBirthdate = set.getDate(5);
+//				strEmpGender = set.getString(6);
+//				strEmpAddress = set.getString(7);
+//				strEmpContactNo = set.getString(8);
+//				strEmpStatus = set.getString(9);
+//				strEmpUsername = set.getString(10);
+//				strEmpPassword = set.getString(11);
+//				blobEmpPhoto = "Empty";
+//				bytActualImage = set.getBytes(12);
+//				
+//				emp = new Employee(intEmpID, strEmpLastName, strEmpFirstName, strEmpMiddleName, datEmpBirthdate, strEmpGender, strEmpAddress, strEmpContactNo, strEmpStatus, strEmpUsername, strEmpPassword, blobEmpPhoto, bytActualImage, strJobQualification);
+//				System.out.println("Account found");
+//			
+//			}
+//			
+//			
+//			System.out.print("Fetching jobs....");
+//			
+//			PreparedStatement pre2 = con.prepareStatement(strQuery2);
+//			pre2.setInt(1, emp.getIntEmpID());
+//			ResultSet set2 = pre2.executeQuery();
+//				
+//			while(set2.next()){
+//				Job job = new Job(set2.getString(1), set2.getInt(2));
+//				strJobQualification.add(job);
+//			}
+//			
+//			emp.setStrJobQualification(strJobQualification);
+//			System.out.println("jobs collected");
+//			return emp;
+//		}
+//		catch(SQLException e){
+//			System.out.println(e.getMessage());
+//			return null;
+//		}
+//		catch(NullPointerException a){
+//			return null;
+//		}
+		return null;
 		
 	}
 
@@ -183,11 +175,8 @@ public class EmployeeJDBCRepository implements EmployeeRepository{
 	@Override
 	public boolean createEmployee(Employee emp) {
 		
-		String strQuery1 = "CALL `createEmp`(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		String strQuery1 = "CALL `createEmp`(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		String strQuery2 = "CALL `createJobQualification`(?, ?);";
-		
-		List<Job> jobList = emp.getStrJobQualification();
-		System.out.println(emp.getStrJobQualification().size());
 		
 				
 		JDBCConnection jdbc = new JDBCConnection();
@@ -201,32 +190,33 @@ public class EmployeeJDBCRepository implements EmployeeRepository{
 			FileInputStream fileInput = new FileInputStream(imageFile);
 			
 			PreparedStatement pre = con.prepareStatement(strQuery1);
-			pre.setString(1, emp.getStrEmpLastName());
-			pre.setString(2, emp.getStrEmpFirstName());
-			pre.setString(3, emp.getStrEmpMiddleName());
-			pre.setDate(4, sqlDate);
-			pre.setString(5, emp.getStrEmpGender());
-			pre.setString(6, emp.getStrEmpAddress());
-			pre.setString(7, emp.getStrEmpContactNo());
-			pre.setString(8, emp.getStrEmpStatus());
-			pre.setString(9, emp.getStrEmpUsername());
-			pre.setString(10, emp.getStrEmpPassword());
-			pre.setBinaryStream(11, (InputStream)fileInput, (int)imageFile.length());
+			pre.setString(1, emp.getStrJobQualification());
+			pre.setString(2, emp.getStrEmpLastName());
+			pre.setString(3, emp.getStrEmpFirstName());
+			pre.setString(4, emp.getStrEmpMiddleName());
+			pre.setDate(5, sqlDate);
+			pre.setString(6, emp.getStrEmpGender());
+			pre.setString(7, emp.getStrEmpAddress());
+			pre.setString(8, emp.getStrEmpContactNo());
+			pre.setString(9, emp.getStrEmpStatus());
+			pre.setString(10, emp.getStrEmpUsername());
+			pre.setString(11, emp.getStrEmpPassword());
+			pre.setBinaryStream(12, (InputStream)fileInput, (int)imageFile.length());
 			
 			ResultSet set = pre.executeQuery();
 			while(set.next())
 				intEmpID = set.getInt(1);
 			pre.close();
 			
-			for(int intCtr = 0; intCtr < jobList.size(); intCtr++){
-				
-				PreparedStatement pre2 = con.prepareStatement(strQuery2);
-				pre2.setInt(1, intEmpID);
-				pre2.setString(2, jobList.get(intCtr).getStrJobDesc());
-				
-				pre2.execute();
-				pre2.close();
-			}
+//			for(int intCtr = 0; intCtr < jobList.size(); intCtr++){
+//				
+//				PreparedStatement pre2 = con.prepareStatement(strQuery2);
+//				pre2.setInt(1, intEmpID);
+//				pre2.setString(2, jobList.get(intCtr).getStrJobDesc());
+//				
+//				pre2.execute();
+//				pre2.close();
+//			}
 			con.close();
 			
 			return true;
@@ -242,7 +232,7 @@ public class EmployeeJDBCRepository implements EmployeeRepository{
 	@Override
 	public boolean updateEmployee(Employee emp) {
 		
-		String strQuery1 = "CALL updateEmployee(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+		String strQuery1 = "CALL updateEmployee(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 		String strQuery2 = "CALL createJobQualification(?, ?);";
 		String strQuery3 = "CALL updateJobQualification(?, ?, ?);";
 		
@@ -254,38 +244,42 @@ public class EmployeeJDBCRepository implements EmployeeRepository{
 		try{
 			java.sql.Date sqlDate = new java.sql.Date(emp.getDatEmpBirthdate().getTime());
 			
-			File imageFile = new File(emp.getBlobEmpPhoto());
-			FileInputStream fileInput = new FileInputStream(imageFile);
-			
 			PreparedStatement pre = con.prepareStatement(strQuery1);
 			
-			if(emp.getBlobEmpPhoto().equals("Image")){
+			System.out.println(emp.getBlobEmpPhoto() + " " + emp.getStrEmpGender());
+			if(emp.getBlobEmpPhoto().equalsIgnoreCase("image")){
 				pre.setInt(1, emp.getIntEmpID());
-				pre.setString(2, emp.getStrEmpLastName());
-				pre.setString(3, emp.getStrEmpFirstName());
-				pre.setString(4, emp.getStrEmpMiddleName());
-				pre.setDate(5, sqlDate);
-				pre.setString(6, emp.getStrEmpGender());
-				pre.setString(7, emp.getStrEmpAddress());
-				pre.setString(8, emp.getStrEmpContactNo());
-				pre.setString(9, emp.getStrEmpStatus());
-				pre.setString(10, emp.getStrEmpUsername());
-				pre.setString(11, emp.getStrEmpPassword());
-				pre.setInt(11, 101);
+				pre.setString(2, emp.getStrJobQualification());
+				pre.setString(3, emp.getStrEmpLastName());
+				pre.setString(4, emp.getStrEmpFirstName());
+				pre.setString(5, emp.getStrEmpMiddleName());
+				pre.setDate(6, sqlDate);
+				pre.setString(7, emp.getStrEmpGender());
+				pre.setString(8, emp.getStrEmpAddress());
+				pre.setString(9, emp.getStrEmpContactNo());
+				pre.setString(10, emp.getStrEmpStatus());
+				pre.setString(11, emp.getStrEmpUsername());
+				pre.setString(12, emp.getStrEmpPassword());
+				pre.setInt(13, 101);
 			}
 			else{
+				
+				File imageFile = new File(emp.getBlobEmpPhoto());
+				FileInputStream fileInput = new FileInputStream(imageFile);
+				
 				pre.setInt(1, emp.getIntEmpID());
-				pre.setString(2, emp.getStrEmpLastName());
-				pre.setString(3, emp.getStrEmpFirstName());
-				pre.setString(4, emp.getStrEmpMiddleName());
-				pre.setDate(5, sqlDate);
-				pre.setString(6, emp.getStrEmpGender());
-				pre.setString(7, emp.getStrEmpAddress());
-				pre.setString(8, emp.getStrEmpContactNo());
-				pre.setString(9, emp.getStrEmpStatus());
-				pre.setString(10, emp.getStrEmpUsername());
-				pre.setString(11, emp.getStrEmpPassword());
-				pre.setBinaryStream(11, (InputStream)fileInput, (int)imageFile.length());
+				pre.setString(2, emp.getStrJobQualification());
+				pre.setString(3, emp.getStrEmpLastName());
+				pre.setString(4, emp.getStrEmpFirstName());
+				pre.setString(5, emp.getStrEmpMiddleName());
+				pre.setDate(6, sqlDate);
+				pre.setString(7, emp.getStrEmpGender());
+				pre.setString(8, emp.getStrEmpAddress());
+				pre.setString(9, emp.getStrEmpContactNo());
+				pre.setString(10, emp.getStrEmpStatus());
+				pre.setString(11, emp.getStrEmpUsername());
+				pre.setString(12, emp.getStrEmpPassword());
+				pre.setBinaryStream(13, (InputStream)fileInput, (int)imageFile.length());
 			}
 			
 			ResultSet set = pre.executeQuery();
@@ -295,42 +289,7 @@ public class EmployeeJDBCRepository implements EmployeeRepository{
 				Job job = new Job(strJobDesc, strJobStatus);
 				oldJobList.add(job);
 			}
-			
-			JobQualificationHelper helper = new JobQualificationHelper();
-			List<String[]> finalJobList = helper.checkChanges(emp.getStrJobQualification(), oldJobList);
 			pre.close();
-		
-			for(int intCtr = 0; intCtr < finalJobList.size() ; intCtr++){
-				
-				String[] newJob = finalJobList.get(intCtr);
-				System.out.print("Checking " + newJob[1] + " job");
-				
-				if(newJob[0].equals("same")){
-					//do nothing
-					System.out.println("\t...No Changes Detected");
-				}
-				else if(newJob[0].equals("update")){
-					PreparedStatement pre2 = con.prepareStatement(strQuery3);
-					pre2.setInt(1, intEmpID);
-					pre2.setString(2, newJob[1]);
-					pre2.setString(3, newJob[2]);
-					
-					System.out.println("\t...Updating " + newJob[1] + "....\n");
-					pre2.execute();
-					pre2.close();
-				}
-				else{
-					PreparedStatement pre2 = con.prepareStatement(strQuery2);
-					pre2.setInt(1, intEmpID);
-					pre2.setString(2, newJob[1]);
-					System.out.println("\t...Adding " + newJob[1] + "....\n");
-					pre2.execute();
-					pre2.close();
-				}
-				
-				
-			}
-
 			con.close();
 			
 			return true;

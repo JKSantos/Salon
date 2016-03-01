@@ -20,17 +20,17 @@ public class EmployeeMaintenanceAction {
 		this.empCategory = empService.getAllCategory();
 		this.empList = empService.getAllEmployees();
 		
-		for(int i=0; i<empList.size(); i++){
-			Employee emp = empList.get(i);
-			for(int j=0;j<emp.getStrJobQualification().size(); j++){
-				Job job = emp.getStrJobQualification().get(j);
-				
-				jobList.add(job);
-			}
-		}
+//		for(int i=0; i< empList.size(); i++){
+//			Employee emp = empList.get(i);
+//			for(int j=0;j<emp.getStrJobQualification().size(); j++){
+//				Job job = emp.getStrJobQualification().get(j);
+//				
+//				jobList.add(job);
+//			}
+//		}
 		
-		
-		System.out.println(empList.get(1).getStrEmpFirstName() + " " + empList.get(1).getStrJobQualification().get(0).getStrJobDesc());
+		System.out.print(empList.size());
+	//	System.out.println(empList.get(1).getStrEmpFirstName() + " " + empList.get(1).getStrJobQualification().get(0).getStrJobDesc());
 		
 		return "success";
 	}

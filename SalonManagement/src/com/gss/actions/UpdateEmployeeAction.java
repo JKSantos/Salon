@@ -14,6 +14,7 @@ import com.opensymphony.xwork2.ActionSupport;
 public class UpdateEmployeeAction extends ActionSupport{
 
 	private static final long serialVersionUID = 1L;
+	private int intEmpID;
 	private String strEmpLastName;
 	private String strEmpFirstName;
 	private String strEmpMiddleName;
@@ -31,32 +32,27 @@ public class UpdateEmployeeAction extends ActionSupport{
 	private File file;
 	private String contentType;
 	private String filename;
-	private List<String> selectedJob;
+	private String selectedJob;
+	private String imageName;
 	
 	public String execute(){
 		
-		List<Job> jobList = new ArrayList<Job>();
 		String strBirthDate = null;
-		String path = null;
+		System.out.println(intEmpID);
 		
 		EmployeeServiceImpl empService = new EmployeeServiceImpl();
 		Employee emp = null;
 		
-		for(int intCtr = 0; intCtr < selectedJob.size(); intCtr++){
-			
-			Job job = new Job(selectedJob.get(intCtr), 1);
-			jobList.add(job);
-		}
 		
 		strBirthDate = strYear + "-" + strMonth + "-" + strDay; 
 		this.datEmpBirthdate = DateHelper.parseDate(strBirthDate);
 		
-		if(strFileName.equals("Image")){
-			emp = new Employee(1, strEmpLastName, strEmpFirstName, strEmpMiddleName, datEmpBirthdate, strEmpGender, strEmpAddress, strEmpContactNo, "A", strEmpUsername, strEmpPassword, "Image", null, jobList);
+		if(imageName.equals("image")){
+			emp = new Employee(intEmpID, strEmpLastName, strEmpFirstName, strEmpMiddleName, datEmpBirthdate, strEmpGender, strEmpAddress, strEmpContactNo, "A", "NOT ASSIGNED", "NOT ASSIGNED", "Image", null, selectedJob);
 		}
 		else{
-			path = file.getAbsolutePath();
-			emp = new Employee(1, strEmpLastName, strEmpFirstName, strEmpMiddleName, datEmpBirthdate, strEmpGender, strEmpAddress, strEmpContactNo, "A", strEmpUsername, strEmpPassword, path, null, jobList);
+			imageName = file.getAbsolutePath();
+			emp = new Employee(intEmpID, strEmpLastName, strEmpFirstName, strEmpMiddleName, datEmpBirthdate, strEmpGender, strEmpAddress, strEmpContactNo, "A", "NOT ASSIGNED", "NOT ASSIGNED", imageName, null, selectedJob);
 		}
 		
 		if(empService.updateEmployee(emp) == true)
@@ -70,6 +66,17 @@ public class UpdateEmployeeAction extends ActionSupport{
 			return "failed";
 		}
 	}
+	
+
+	public int getIntEmpID() {
+		return intEmpID;
+	}
+
+
+	public void setIntEmpID(int intEmpID) {
+		this.intEmpID = intEmpID;
+	}
+
 
 	public String getStrEmpLastName() {
 		return strEmpLastName;
@@ -151,11 +158,11 @@ public class UpdateEmployeeAction extends ActionSupport{
 		this.strEmpPassword = strEmpPassword;
 	}
 
-	public List<String> getSelectedJob() {
+	public String getSelectedJob() {
 		return selectedJob;
 	}
 
-	public void setSelectedJob(List<String> selectedJob) {
+	public void setSelectedJob(String selectedJob) {
 		this.selectedJob = selectedJob;
 	}
 
@@ -205,5 +212,13 @@ public class UpdateEmployeeAction extends ActionSupport{
 
 	public void setUploadFilename(String filename) {
 		this.filename = filename;
+	}
+
+	public String getImageName() {
+		return imageName;
+	}
+
+	public void setImageName(String imageName) {
+		this.imageName = imageName;
 	}
 }

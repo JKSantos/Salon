@@ -31,27 +31,19 @@ public class CreateEmployeeAction extends ActionSupport{
 	private File file;
 	private String contentType;
 	private String filename;
-	private List<String> selectedJob;
+	private String selectedJob;
 	
 	public String execute(){
 		
-
-		List<Job> jobList = new ArrayList<Job>();
 		String strBirthDate = null;
 		String path = file.getAbsolutePath();
 		
-		System.out.println(path + " " + this.filename );
-		
-		for(int intCtr = 0; intCtr < selectedJob.size(); intCtr++){
-			
-			Job job = new Job(selectedJob.get(intCtr), 1);
-			jobList.add(job);
-		}
+		System.out.println(path + " " + strYear + "-"+strMonth+"-" + strDay );
 		
 		strBirthDate = strYear + "-" + strMonth + "-" + strDay; 
 		this.datEmpBirthdate = DateHelper.parseDate(strBirthDate);
 		
-		Employee emp = new Employee(1, strEmpLastName, strEmpFirstName, strEmpMiddleName, datEmpBirthdate, strEmpGender, strEmpAddress, strEmpContactNo, "A", strEmpUsername, strEmpPassword, path, null, jobList);
+		Employee emp = new Employee(1, strEmpLastName, strEmpFirstName, strEmpMiddleName, datEmpBirthdate, strEmpGender, strEmpAddress, strEmpContactNo, "A", "no account", "NO ACCOUNT", path, null, selectedJob);
 		EmployeeServiceImpl empService = new EmployeeServiceImpl();
 		
 		if(empService.create(emp) == true)
@@ -146,11 +138,11 @@ public class CreateEmployeeAction extends ActionSupport{
 		this.strEmpPassword = strEmpPassword;
 	}
 
-	public List<String> getSelectedJob() {
+	public String getSelectedJob() {
 		return selectedJob;
 	}
 
-	public void setSelectedJob(List<String> selectedJob) {
+	public void setSelectedJob(String selectedJob) {
 		this.selectedJob = selectedJob;
 	}
 

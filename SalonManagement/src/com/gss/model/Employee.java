@@ -18,10 +18,10 @@ public class Employee {
 	private String strEmpPassword;
 	private String blobEmpPhoto;
 	private byte[] bytActualImage;
-	private List<Job> strJobQualification;
+	private String strJobQualification;
 	
 	
-	public Employee(int intEmpID, String strEmpLastName, String strEmpFirstName, String strEmpMiddleName, Date datBirthdate, String strEmpGender, String strAddress, String strEmpContactNo, String strEmpStatus, String strUsername, String strPassword, String empPhoto, byte[] bytActualPhoto, List<Job> strJobQualification)
+	public Employee(int intEmpID, String strEmpLastName, String strEmpFirstName, String strEmpMiddleName, Date datBirthdate, String strEmpGender, String strAddress, String strEmpContactNo, String strEmpStatus, String strUsername, String strPassword, String empPhoto, byte[] bytActualPhoto, String strJobQualification)
 	{
 		this.setIntEmpID(intEmpID);
 		this.strEmpLastName = strEmpLastName;
@@ -143,12 +143,12 @@ public class Employee {
 		this.bytActualImage = bytActualImage;
 	}
 
-	public List<Job> getStrJobQualification() {
+	public String getStrJobQualification() {
 		return strJobQualification;
 	}
 
-	public void setStrJobQualification(List<Job> strJobQualification) {
-		this.strJobQualification = strJobQualification;
+	public void setStrJobQualification(String strJobQualification2) {
+		this.strJobQualification = strJobQualification2;
 	}
 
 }

@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html ng-app>
-  
+  <%@ taglib uri="/struts-tags" prefix="s" %>
+  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+  <%@ page import="com.gss.model.Product" %>
 
   <head>
   <link type="text/css" rel="stylesheet" href="./css/materialize.css"/>
@@ -119,15 +121,28 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                  <c:forEach items="${productList}" var="product">
                                     <tr>
-                                        <td>1</td>
-                                        <td>Hair Color</td>
+                                        <td>${product.intProductID}</td>
+                                        <td>${product.strProductName}</td>
                                         <td>Product</td>
-                                        <td>99.00</td>
+                                        <td>${product.dblProductPrice}</td>
                                         <td><a class="waves-effect waves-light modal-trigger btn-flat transparent black-text" title="Update" href="#update" style="padding: 0px;"><i class="material-icons">edit</i></a>
                                         <a class="waves-effect waves-light modal-trigger btn-flat transparent red-text text-accent-4" href="#delete" title="Deactivate"><i class="material-icons">delete</i></a>
                                         </td>
                                     </tr>
+                                  </c:forEach>
+                                  <c:forEach items="${serviceList}" var="service">
+                                    <tr>
+                                        <td>${service.intServiceID}</td>
+                                        <td>${service.strServiceName}</td>
+                                        <td>Service</td>
+                                        <td>${service.dblServicePrice}</td>
+                                        <td><a class="waves-effect waves-light modal-trigger btn-flat transparent black-text" title="Update" href="#update" style="padding: 0px;"><i class="material-icons">edit</i></a>
+                                        <a class="waves-effect waves-light modal-trigger btn-flat transparent red-text text-accent-4" href="#delete" title="Deactivate"><i class="material-icons">delete</i></a>
+                                        </td>
+                                    </tr>
+                                  </c:forEach>
 
 
                                     
@@ -138,7 +153,7 @@
 
                       <!-- Modal Structure -->
                         <div id="create" class="modal modal-fixed-footer">
-                        <form class="col s12">
+                        <form class="col s12" method="post" action="createProdServ">
                           <div class="modal-content">
                             <!-- <div class="container"> -->
                             <div class="row">
@@ -185,9 +200,11 @@
                                 <div class="input-field col s8 offset-s2" style="margin-top: -1px;">
                                     <select class="browser-default" id="slct1" name="selectedJob" required>
                                         <option value="" disabled selected> </option>
-                                        <c:forEach items="${empCategory}" var="name">
-                                          <option value="${name.strCategoryName}">${name.strCategoryName }</option>
+                                        <c:forEach items="${productCategory}" var="product">
+                                          <option value="${product}">${product}</option>
                                         </c:forEach>
+
+                                        
                                     </select>
                                 </div>
                                 <div class="input-field col s4 offset-s6" style="margin-top: 20px;">

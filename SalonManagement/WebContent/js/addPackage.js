@@ -19,8 +19,9 @@ function myFunction() {
 function deleteRow(row)
 {
     var i=row.parentNode.parentNode.rowIndex;
-    document.getElementById('packageTable').deleteRow(i);
     var packageText = document.getElementById("packageTable").rows[i].cells[0].innerHTML;
+    document.getElementById('packageTable').deleteRow(i);
+    
     alert(packageText);
     var y = document.getElementById("package-list");
     var option = document.createElement("option");
