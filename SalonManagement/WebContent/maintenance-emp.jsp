@@ -29,7 +29,7 @@
                         <a class="collapsible-header active"><b>Maintenance</b></a>
                           <div class="collapsible-body">
                             <ul>
-                              <li class="orange"><a href="maintenance-emp-view.jsp">Employee</a></li>
+                              <li class="orange"><a href="maintenance-emp.jsp">Employee</a></li>
                                       <li><a href="#">Product & Service</a></li>
                                       <li><a href="#">Promo</a></li>
                                       <li><a href="#">Discount</a></li>
@@ -68,7 +68,7 @@
                            <a class="waves-effect waves-orange collapsible-header"><b>Maintenance</b></a>
                              <div class="collapsible-body">
                                <ul>
-                                 <li class="orange"><a href="maintenance-emp-view.jsp">Employee</a></li>
+                                 <li class="orange"><a href="maintenance-emp.jsp">Employee</a></li>
                                  <li><a href="#">Product & Service</a></li>
                                  <li><a href="#">Promo</a></li>
                                  <li><a href="#">Discount</a></li>
@@ -98,18 +98,18 @@
         </header>
 
         <article>
-        <div class="container">
+        <!-- <div class="container"> -->
           <div class="wrapper">
 <!--                     <div class="aside aside1 z-depth-barts">
                     
                     </div> -->
 
-                    <div class="main z-depth-barts">
-                        <div class="col s12">
+                    <div class="main z-depth-barts" style="margin-left: 50px; margin-right: 50px;">
+                        <div class="col s12" style="margin-left: 50px; margin-right: 50px;">
                         <h3 class="grey-text text-darken-1">Employee Maintenance</h3>
-                        <a class="waves-effect waves-light modal-trigger btn-flat orange left white-text" href="#create" style="margin-top: 50px; margin-left: 20px;">CREATE</a>
-                        <table id="example" class="mdl-data-table " cellspacing="0" width="100%">
-                                <thead class="middle-align">
+                        <a class="waves-effect waves-light modal-trigger btn-flat orange left white-text" href="#create" style="margin-top: 50px; margin-left: 15px;">CREATE</a>
+                        <table id="example" class="display centered responsive-table highlight" cellspacing="0" width="100%" style="border: 1px solid #bdbdbd; padding: 10px;" rowspan="10">
+                                <thead>
                                     <tr>
                                         <th>ID</th>
                                         <th>Name</th>
@@ -123,9 +123,9 @@
                                         <td>1</td>
                                         <td>John Angelo Castillo</td>
                                         <td>Cashier</td>
-                                        <td>01/01/01</td>
+                                        <td class="center">01/01/01</td>
                                         <td><a class="waves-effect waves-light modal-trigger btn-flat transparent black-text" title="Update" href="#update" style="padding: 0px;"><i class="material-icons">edit</i></a>
-                                        <button class="waves-effect waves-light btn-flat transparent red-text" title="Deactivate"><i class="material-icons">delete</i></a>
+                                        <a class="waves-effect waves-light modal-trigger btn-flat transparent red-text" href="#delete" title="Deactivate"><i class="material-icons">delete</i></a>
                                         </td>
                                     </tr>
 
@@ -257,7 +257,7 @@
                           </div>
                           <div class="modal-footer">
                               <a href="#!" class=" modal-action modal-close waves-effect waves-orange transparent btn-flat">CANCEL</a>
-                              <button class="waves-effect waves-light orange btn-flat white-text" type="submit" value="Submit">CREATE</button>
+                              <button class="waves-effect waves-light orange btn-flat" type="submit" value="Submit">CREATE</button>
                           </div>
                           </form>
                     </div>
@@ -387,16 +387,32 @@
                           </div>
                           <div class="modal-footer">
                               <a href="#!" class=" modal-action modal-close waves-effect waves-orange transparent btn-flat">CANCEL</a>
-                              <button class="waves-effect waves-light orange btn-flat white-text" type="submit" value="Submit">CREATE</button>
+                              <button class="waves-effect waves-light orange btn-flat" type="submit" value="Submit">UPDATE</button>
                           </div>
                           </form>
                     </div>
 
+
+                          <div id="delete" class="modal">
+                          <div class="container">
+                            <div class="modal-content">
+                              <div class="row">
+                                <h5 class="red-text">Warning!</h5>
+                                <p>Are you sure you want to deactivate this account?</p>
+                              </div>
+                            </div>
+                              <div class="col s12 center" style="margin-bottom: 30px;">
+                                <button class="waves-effect waves-light orange btn-flat white-text">YES</button>
+                                <a href="#" class="modal-action modal-close waves-effect waves-light transparent btn-flat black-text">NO</a>
+                              </div>
+                            </div>
+                      </div>
 <!--                     <div class="aside aside2 z-depth-barts">
                      
                     </div> -->
-          </div>
+                </div>
         </div>
+      <!-- </div> -->
         </article>
 
         
@@ -404,10 +420,19 @@
   </div>
 
   <style type="text/css">
-  .modal {
+  #create {
     width: 55% !important;
     height: 80% !important;
     max-height: 100% !important;
+  }
+  #update{
+    width: 55% !important;
+    height: 80% !important;
+    max-height: 100% !important;
+  }
+
+  #delete {
+    width: 30% !important;
   }
   </style>
 
