@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html ng-app>
-  <link type="text/css" rel="stylesheet" href="./css/materialize.css"/>
+  
 
   <head>
-  <%@ taglib uri="/struts-tags" prefix="s" %>
-  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+  <link type="text/css" rel="stylesheet" href="./css/materialize.css"/>
   <link rel="stylesheet" href="./css/materialize.min.css"  media="screen,projection"/>
   <link type="text/css" rel="stylesheet" href="./css/mystyle.css"/>
   <link type="text/css" rel="stylesheet" href="./css/mtnc-emp.css"/>
-  <link rel="stylesheet" type="text/css" href="./css/datatables.min.css"/>
-  <link rel="stylesheet" type="text/css" href="./css/datatables.material.min.css"/>
-  <link rel="stylesheet" type="text/css" href="./css/material.min.css">
+
+  <link rel="stylesheet" type="text/css" href="./css/dataTables.material.min.css"/>
+  <link rel="stylesheet" type="text/css" href="./css/material.min.css"/>
 
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -30,13 +29,13 @@
                         <a class="collapsible-header active"><b>Maintenance</b></a>
                           <div class="collapsible-body">
                             <ul>
-                              <li class="orange"><a href="employeeMaintenance.action">Employee</a></li>
-                                      <li><a href="productServiceMaintenance.action">Product & Service</a></li>
-                                      <li><a href="maintenance-promo.jsp">Promo</a></li>
-                                      <li><a href="discountMaintenance.action">Discount</a></li>
-                                      <li><a href="maintenance-package.jsp">Package</a></li>
-                                      <li><a href="maintenance-catalogue.jsp">Catalogue</a></li>
-                                      <li><a href="extraChargeMaintenance.action">Extra Charge</a></li>
+                              <li class="orange"><a href="maintenance-emp-view.jsp">Employee</a></li>
+                                      <li><a href="#">Product & Service</a></li>
+                                      <li><a href="#">Promo</a></li>
+                                      <li><a href="#">Discount</a></li>
+                                      <li><a href="#">Package</a></li>
+                                      <li><a href="#">Catalogue</a></li>
+                                      <li><a href="#">Extra Charge</a></li>
                             </ul>
                           </div>
                       </li>
@@ -44,11 +43,11 @@
                         <a class="collapsible-header"><b>Transaction</b></a>
                           <div class="collapsible-body">
                             <ul>
-                              <li><a href="transactions-inventory.jsp">Inventory</a></li>
-                              <li><a href="transactions-reservation.jsp">Reservation</a></li>
-                              <li><a href="transactions-vip.jsp">VIP</a></li>
-                              <li><a href="transactions-productorder.jsp">Product Order</a></li>
-                              <li><a href="#!">Walk-In</a></li>
+                              <li><a href="#">Inventory</a></li>
+                              <li><a href="#">Reservation</a></li>
+                              <li><a href="#">VIP</a></li>
+                              <li><a href="#">Product Order</a></li>
+                              <li><a href="#">Walk-In</a></li>
                             </ul>
                           </div>
                       </li>
@@ -69,13 +68,13 @@
                            <a class="waves-effect waves-orange collapsible-header"><b>Maintenance</b></a>
                              <div class="collapsible-body">
                                <ul>
-                                 <li class="orange"><a href="maintenance-emp.jsp">Employee</a></li>
-                                 <li><a href="maintenance-prodsvc.jsp">Product & Service</a></li>
-                                 <li><a href="maintenance-promo.jsp">Promo</a></li>
-                                 <li><a href="maintenance-discount.jsp">Discount</a></li>
-                                 <li><a href="maintenance-package.jsp">Package</a></li>
-                                 <li><a href="maintenance-catalogue.jsp">Catalogue</a></li>
-                                 <li><a href="maintenance-extra.jsp">Extra Charge</a></li>
+                                 <li class="orange"><a href="maintenance-emp-view.jsp">Employee</a></li>
+                                 <li><a href="#">Product & Service</a></li>
+                                 <li><a href="#">Promo</a></li>
+                                 <li><a href="#">Discount</a></li>
+                                 <li><a href="#">Package</a></li>
+                                 <li><a href="#">Catalogue</a></li>
+                                 <li><a href="#">Extra Charge</a></li>
                                </ul>
                              </div>
                          </li>
@@ -83,11 +82,11 @@
                            <a class="waves-effect waves-orange collapsible-header"><b>Transaction</b></a>
                              <div class="collapsible-body">
                                <ul>
-                                 <li><a href="transactions-inventory.jsp">Inventory</a></li>
-                                 <li><a href="transactions-reservation.jsp">Reservation</a></li>
-                                 <li><a href="transactions-vip.jsp">VIP</a></li>
-                                 <li><a href="transactions-productorder.jsp">Product Order</a></li>
-                                 <li><a href="#!">Walk-In</a></li>
+                                 <li><a href="#">Inventory</a></li>
+                                 <li><a href="#">Reservation</a></li>
+                                 <li><a href="#">VIP</a></li>
+                                 <li><a href="#">Product Order</a></li>
+                                 <li><a href="#">Walk-In</a></li>
                                </ul>
                              </div>
                          </li>
@@ -99,518 +98,327 @@
         </header>
 
         <article>
+        <div class="container">
           <div class="wrapper">
-                    <div class="aside aside1 z-depth-barts">
-                      <header><h4>Employee Maintenance</h4><div class="divider"></div></header>
+<!--                     <div class="aside aside1 z-depth-barts">
+                    
+                    </div> -->
 
-                      <div class="row">
-                          <form class="col s12" action="createEmployee" onsubmit="return passvalidation()" method="post" enctype="multipart/form-data">
-                              <div class="row">
-                                  <div class="input-field col s4">
-                                      <label class="red-text">(*) Indicates required field</label>
-                                  </div>
-                                  <div class="input-field col s6 offset-s2">
-                                      <img  id="employeeimg" style="width: 120px; height: 120px;" src="./img/anon.jpg" alt=""/>
-                                  </div>
-                                  <div class="input-field col s4">
-                                      <input id="empid" type="text" disabled="disabled">
-                                      <label for="empid">Employee ID</label>
-                                  </div>
-                                  <div class="input-field col s7 offset-s1">
-                                      <div class="file-field">
-                                            <div class="btn orange">
-                                              <span class="">Image</span>
-                                              <input name="upload" type="file" accept="image/jpeg,image/png" onchange="loadFile(event)">
-                                            </div>
-                                            <div class="file-path-wrapper">
-                                              <input name="path" class="file-path validate" type="text" value="Image">
-                                            </div>
-                                        </div>
-                                  </div>
-                                  <div class="input-field col s4">
-                                      <input name="strEmpFirstName" id="fname" type="text" class="validate active" required>
-                                      <label for="fname">First Name<span class="red-text">*</span></label>
-                                  </div>
-                                  <div class="input-field col s4">
-                                      <input name="strEmpMiddleName" id="mname" type="text" class="validate">
-                                      <label for="mname">Middle Name</label>
-                                  </div>
-                                  <div class="input-field col s4">
-                                      <input name="strEmpLastName" id="lname" type="text" class="validate" required>
-                                      <label for="lname">Last Name<span class="red-text">*</span></label>
-                                  </div>
-                                      <div class="input-field col s3">
-                                          <select id="strMonth" name="strMonth">
-                                              <option value="1">January</option>
-                                              <option value="2">February</option>
-                                              <option value="3">March</option>
-                                              <option value="4">April</option>
-                                              <option value="5">May</option>
-                                              <option value="6">June</option>
-                                              <option value="7">July</option>
-                                              <option value="8">August</option>
-                                              <option value="9">September</option>
-                                              <option value="10">October</option>
-                                              <option value="11">November</option>
-                                              <option value="12">December</option>
-                                          </select>
-                                          <label>Month <span class="red-text">*</span></label>
-                                        </div>
-                                        <div class="input-field col s2">
-                                          <input name="strDay" type="text" class="validate" id="day" maxlength="2">
-                                          <label for="day">Day <span class="red-text">*</span></label>
-                                        </div>
-                                        <div class="input-field col s3">
-                                          <input name="strYear" type="text" class="validate" id="year" maxlength="4">
-                                          <label for="year">Year <span class="red-text">*</span></label>
-                                        </div>
-                                      <div class="input-field col s4">
-                                          <input type="text" class="validate" disabled value="">
-                                          <label style="color: #9e9e9e;">Age: <span id="age"></span></label>
- 
-                                      </div>
-                                  <div class="input-field col s6" >
-                                      <select name="strEmpGender" required>
-                                        <option value="" disabled selected></option>
-                                        <option value="M">Male</option>
-                                        <option value="F">Female</option>
-                                      </select>
-                                      <label>Gender <span class="red-text">*</span></label>
-                                  </div>
-                                  <div class="input-field col s1">
-                                    <p style="margin-top: 12px; margin-left: -7px;">(+63)</p>
-                                  </div>
-                                  <div class="input-field col s5">
-                                      <input name="strEmpContactNo" type="text" id="contact" class="validate" maxlength="10">
-                                      <label for="contact">Contact Number</label>
-                                  </div>
-                                  <div class="input-field col s12">
-                                      <input name="strEmpAddress" type="text" id="address" class="validate">
-                                      <label for="address">Address <span class="red-text">*</span></label>
-                                  </div>
-                                  <div class="input-field col s12">
-                                      <p style="color:#9e9e9e;font-size:12px;">Position <span class="red-text">*</span></p>
-                                  </div>
-                                  <div class="input-field col s5" style="margin-top: -1px;">
-                                      <select id="slct1" name="selectedJob" multiple="multiple">
-                                          <option value="" disabled selected> </option>
-                                          <c:forEach items="${empCategory}" var="name">
-                                            <option value="${name.strCategoryName}">${name.strCategoryName }</option>
-                                          </c:forEach>
-                                      </select>
-                                  </div>
-                                  <div class="input-field col s2" style="margin-top: -0.2px;">
-                                      <p style="margin-top: 5px;" class="center"><a id="optionadd" class="waves-effect waves-light orange-btn"><i class="material-icons small">add</i></a><a class="waves-effect waves-light orange-btn" onclick="removeopt()"><i class="material-icons small">remove</i></a></p>
-                                  </div>
-                                  <div class="input-field col s4" style="margin-top: -4px;">
-                                      <input type="text" id="add-optname" class="validate">
-                                      <label for="add-optname">Another position</label>
-                                  </div>
-                                  <div class="divider col s12" style="margin-top: 20px;"></div>
-                                  <div class="col s12"  style="margin-top: 10px;">
-                                      <h4>Account</h4>
-                                  </div>
-                                  <div class="input-field col s6 offset-s3">
-                                      <input name="strEmpUsername" type="text" class="validate" id="user" maxlength="15">
-                                      <label for="user">Username</label>
-                                  </div>
-                                  <div class="input-field col s6 offset-s3">
-                                      <input name="strEmpPassword" type="password" class="validate" id="pass" maxlength="20" onkeyup="checkPass(); return false;">
-                                      <label for="pass">Password <span id="pw1"></span></label>
-                                  </div>
-                                  <div class="input-field col s6 offset-s3">
-                                      <input name="strEmpPassword2" type="password" class="validate" id="conf-pass" maxlength="20" onkeyup="checkPass(); return false;">
-                                      <label for="conf-pass">Confirm Password <span id="pw2"></span></label>
-                                  </div>
-                                  <div class="input-field col s6 offset-s3">
-                                      <span id="confirmMsg" class="confirmMsg"></span>
-                                  </div>
+                    <div class="main z-depth-barts">
+                        <div class="col s12">
+                        <h3 class="grey-text text-darken-1">Employee Maintenance</h3>
+                        <a class="waves-effect waves-light modal-trigger btn-flat orange left white-text" href="#create" style="margin-top: 50px; margin-left: 20px;">CREATE</a>
+                        <table id="example" class="mdl-data-table " cellspacing="0" width="100%">
+                                <thead class="middle-align">
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Name</th>
+                                        <th>Position</th>
+                                        <th>Date of Creation</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>John Angelo Castillo</td>
+                                        <td>Cashier</td>
+                                        <td>01/01/01</td>
+                                        <td><a class="waves-effect waves-light modal-trigger btn-flat transparent black-text" title="Update" href="#update" style="padding: 0px;"><i class="material-icons">edit</i></a>
+                                        <button class="waves-effect waves-light btn-flat transparent red-text" title="Deactivate"><i class="material-icons">delete</i></a>
+                                        </td>
+                                    </tr>
 
-                                  <div class="input-field col s12"> 
-                                      <button class="waves-effect waves-white btn-flat orange" title="Create" type="submit" value="Submit" id="savebtn" disabled="disabled" onclick="success()">Create</button>
-                                      <button class="waves-effect waves-orange btn-flat white" type="reset" value="Reset" title="Clear">CLEAR</button>
-                                  </div>
-                              </div>
+                                    
+                                </tbody>
+                            </table>
 
-
-                              <!-- ADD OPTION POSITION -->
-                                
-
-                          </form>
                       </div>
-                    </div>
 
-
-                    <div class="aside aside2 z-depth-barts">
-                     <div class="row">
-                         <div class="col s12">
-                             <div class="row">
-                                    <h5>Employee List</h5>
-                                      <table id="example" class="mdl-data-table" cellspacing="0" width="100%">
-                                              <thead>
-                                                  <tr>
-                                                      <th>ID</th>
-                                                      <th>Name</th>
-                                                      <th>Position</th>
-                                                      <th>Actions</th>
-                                                  </tr>
-                                              </thead>
-                                              <tbody>
-                                                  <c:forEach items="${empList}" var="employee">
-													
-                                                  <tr>
-                                                      <td>${employee.intEmpID}</td>
-                                                      <td>${employee.strEmpFirstName} ${employee.strEmpLastName}</td>
-                                                      <td><c:forEach items="${jobList}" begin="0" end="1" var="job">${job.strJobDesc}</c:forEach></td>
-                                                      <td><a href="#update" class="modal-trigger" id="${employee.intEmpID}"><i class="material-icons green-text">edit</i></a>
-                                                      <a href="#!"><i class="material-icons red-text">delete</i></a>
-                                                      <input type="hidden" value="${employee.strEmpFirstName}">
-                                                      </td>
-                                                  </tr>
-                                                  </c:forEach>
-                                              </tbody>
-                                          </table>
-
-
-
-                                     <div id="update" class="modal modal-fixed-footer">
-                                        <form>
-                                         <div class="modal-content">
-                                           <h4>Update Employee</h4>
-                                           <div class="row">
-                                             <div class="input-field col s6 offset-s3">
-                                                <img name="upload" id="empupdateimg" style="width: 120px; height: 120px;" src="./img/anon.jpg" alt=""/>
-                                              </div>
-                                              <div class="input-field col s4">
-                                                <input type="text" id="emp_id" disabled="disabled">
-                                                <label for="emp_id">Employee ID</label>
-                                              </div>
-                                              <div class="input-field col s7 offset-s1">
-                                                  <div class="file-field">
-                                                        <div class="btn orange">
-                                                          <span class="">Image</span>
-                                                          <input name="upload" type="file" accept="image/.jpg, image/.png" onchange="loadPic(event)">
-                                                        </div>
-                                                        <div class="file-path-wrapper">
-                                                          <input name="strPath" value="image" class="file-path validate" type="text">
-                                                        </div>
-                                                    </div>
-                                              </div>
-                                              <div class="input-field col s4">
-                                                  <input name="strEmpFirstName" id="fname" type="text" class="validate active">
-                                                  <label for="fname">First Name</label>
-                                              </div>
-                                              <div class="input-field col s4">
-                                                  <input name="strEmpMiddleName" id="mname" type="text" class="validate">
-                                                  <label for="mname">Middle Name</label>
-                                              </div>
-                                              <div class="input-field col s4">
-                                                  <input name="strEmpLastName" id="lname" type="text" class="validate">
-                                                  <label for="lname">Last Name</label>
-                                              </div>
-                                              <div class="input-field col s3">
-                                                  <select name="strMonth" id="month">
-                                                    <option value="1">January</option>
-                                                    <option value="2">February</option>
-                                                    <option value="3">March</option>
-                                                    <option value="4">April</option>
-                                                    <option value="5">May</option>
-                                                    <option value="6">June</option>
-                                                    <option value="7">July</option>
-                                                    <option value="8">August</option>
-                                                    <option value="9">September</option>
-                                                    <option value="10">October</option>
-                                                    <option value="11">November</option>
-                                                    <option value="12">December</option>
-                                                  </select>
-                                                  <label for="month">Month</label>
-                                              </div>
-                                              <div class="input-field col s1">
-                                                  <input type="text" name="strDay" id="day" class="validate" maxlength="2">
-                                                  <label for="day">Day</label>
-                                              </div>
-                                              <div class="input-field col s3">
-                                                  <input type="text" name="strYear" maxlength="4" class="validate" id="year">
-                                                  <label for="strYear">Year</label>
-                                              </div>
-                                              <div class="input-field col s2 offset-s2">
-                                                  <input type="text" name="age" maxlength="3" class="validate" id="age" disabled="disabled">
-                                                  <label for="age">Age</label>
-                                              </div>
-                                              <div class="input-field col s6" >
-                                                  <select name="strEmpGender" required>
-                                                    <option value="" disabled selected>Choose...</option>
-                                                    <option value="1">Male</option>
-                                                    <option value="2">Female</option>
-                                                  </select>
-                                                  <label>Gender</label>
-                                              </div>
-                                              <div class="input-field col s1 offset-s1">
-                                                <p style="margin-top: 12px; margin-left: -7px;">(+63)</p>
-                                              </div>
-                                              <div class="input-field col s4">
-                                                  <input name="strEmpContactNo" type="text" id="number" class="validate" maxlength="10">
-                                                  <label for="number">Contact Number</label>
-                                              </div>
-                                              <div class="input-field col s12">
-                                                  <input name="strEmpAddress" type="text" id="adres" class="validate">
-                                                  <label for="adres">Address</label>
-                                              </div>
-                                              <div class="input-field col s12">
-                                                  <p style="color:#9e9e9e;font-size:12px;">Position</p>
-                                              </div>
-                                              <div class="input-field col s5" style="margin-top: -1px;">
-                                                  <select class="browser-default" id="slct1" name="selectedJob">
-                                                      <option value="" disabled selected>Choose Position</option>
-                                                      <c:forEach items="${empCategory}" var="name">
-                                                        <option value="${name.strCategoryName}">${name.strCategoryName }</option>
-                                                      </c:forEach>
-                                                  </select>
-                                              </div>
-                                              <div class="input-field col s2" style="margin-top: -0.2px;">
-                                                  <p style="margin-top: 5px;" class="center"><a id="optionadd" class="waves-effect waves-light orange-btn"><i class="material-icons small">add</i></a><a class="waves-effect waves-light orange-btn" onclick="removeopt()"><i class="material-icons small">remove</i></a></p>
-                                              </div>
-                                              <div class="input-field col s4" style="margin-top: -4px;">
-                                                  <input type="text" id="optname" class="validate">
-                                                  <label for="optname">Another position</label>
-                                              </div>
-                                              <div class="divider col s12" style="margin-top: 20px;"></div>
-                                              <div class="col s12"  style="margin-top: 10px;">
-                                                  <h4>Account</h4>
-                                              </div>
-                                              <div class="input-field col s6 offset-s3">
-                                                  <input name="strEmpUsername" type="text" class="validate" id="un" maxlength="15" disabled="disabled">
-                                                  <label for="strEmpUsername">Username</label>
-                                              </div>
-                                              <div class="input-field col s6 offset-s3">
-                                                  <input name="strEmpPassword" type="password" class="validate" id="pw" maxlength="20" disabled="disabled">
-                                                  <label for="strEmpPassword">Password <span id="pw1"></span></label>
-                                              </div>
-                                              <div class="input-field col s6 offset-s3">
-                                                  <input type="password" class="validate" id="conf-pw" maxlength="20" disabled="disabled">
-                                                  <label for="conf-pw">Confirm Password <span id="pw2"></span></label>
-                                              </div>
-                                           </div>
-                                         </div>
-                                         <div class="modal-footer">
-                                            <a href="#!" class="modal-action modal-close waves-orange btn-flat transparent">Cancel</a>
-                                           <button class="modal-action waves-effect waves-light orange btn-flat ">Confirm</button>
-                                         </div>
-                                         </form>
-                                    </div>
-
+                      <!-- Modal Structure -->
+                        <div id="create" class="modal modal-fixed-footer">
+                        <form class="col s12">
+                          <div class="modal-content">
+                            <!-- <div class="container"> -->
+                            <div class="row">
+                              
+                                <div class="input-field col s12">
+                                  <h3 class="grey-text text-darken-1">Create Employee</h3>
                                 </div>
+                                <div class="input-field col s12">
+                                   <div class="col s4">
+                                       <label class="red-text">(*) Indicates required field</label>
+                                   </div>
+                                   <div class="col s4 offset-s4">
+                                       <img name="upload" id="employeeimg" class="circle z-depth-1" style="width: 150px; height: 150px;" src="./img/anon.jpg" alt=""/>
+                                   </div>
+                                </div>
+                                <div class="input-field col s5 offset-s4">
+                                    <div class="file-field">
+                                          <div class="btn orange">
+                                            <span class="">Image</span>
+                                            <input name="upload" type="file" accept="image/.jpg, image/.png" onchange="loadFile(event)">
+                                          </div>
+                                          <div class="file-path-wrapper">
+                                            <input name="strPath" value="image" class="file-path validate" type="text">
+                                          </div>
+                                      </div>
+                                </div>
+                                <div class="input-field col s4">
+                                    <input nime="strEmpFirstName" d="strEmpFirstName" type="text" class="validate active" required>
+                                    <label for="strEmpFirstName">First Name<span class="red-text">*</span></label>
+                                </div>
+                                <div class="input-field col s4">
+                                    <input name="strEmpMiddleName" id="strEmpMiddleName" type="text" class="validate">
+                                    <label for="strEmpMiddleName">Middle Name</label>
+                                </div>
+                                <div class="input-field col s4">
+                                    <input name="strEmpLastName" id="strEmpLastName" type="text" class="validate" required>
+                                    <label for="strEmpLastName">Last Name<span class="red-text">*</span></label>
+                                </div>
+                                <div class="input-field col s3">
+                                  <select required>
+                                    <option value="" disabled selected>Month</option>
+                                    <option value="jan">January</option>
+                                    <option value="feb">February</option>
+                                    <option value="mar">March</option>
+                                    <option value="apr">April</option>
+                                    <option value="may">May</option>
+                                    <option value="jun">June</option>
+                                    <option value="jul">July</option>
+                                    <option value="aug">August</option>
+                                    <option value="sep">September</option>
+                                    <option value="oct">October</option>
+                                    <option value="nov">November</option>
+                                    <option value="dec">December</option>
+                                  </select>
+                                  <label>Birthday <span class="red-text">*</span></label>
+                                </div>
+                                <div class="input-field col s2">
+                                  <input type="text" maxlength="2" class="validate" required name="day" id="day">
+                                  <label for="day">Day</label>
+                                </div>
+                                <div class="input-field col s3">
+                                  <input type="text" maxlength="4" class="validate" required name="year" id="year">
+                                  <label for="year">Year</label>
+                                </div>
+                                <div class="input-field col s4">
+                                    <input type="text" class="validate" disabled value="" id="age">
+                                    <label style="color: #9e9e9e;">Age: </label>
+                                </div>
+                                <div class="input-field col s12" style="margin-left: 5px; padding: 0px;">
+                                    <p style="color:#9e9e9e;font-size:11px;">Gender<span class="red-text">*</span></p>
+                                </div>
+                                <div class="input-field col s5" style="margin-top: -1px;">
+                                    <select required class="browser-default">
+                                      <option value="" disabled selected></option>
+                                      <option value="1">Male</option>
+                                      <option value="2">Female</option>
+                                    </select>
+                                </div>
+                                <div class="input-field col s1 offset-s2" style="margin-top: -4px;">
+                                  <p style="margin-top: 12px; margin-left: -7px;">(+63)</p>
+                                </div>
+                                <div class="input-field col s4" style="margin-top: -4px;">
+                                    <input name="strEmpContactNo" type="text" id="contact" class="validate" maxlength="10">
+                                    <label for="contact">Contact Number</label>
+                                </div>
+                                <div class="input-field col s12">
+                                    <input name="strEmpAddress" type="text" id="address" class="validate" required>
+                                    <label for="address">Address <span class="red-text">*</span></label>
+                                </div>
+                                <div class="input-field col s12">
+                                    <p style="color:#9e9e9e;font-size:12px;">Position <span class="red-text">*</span></p>
+                                </div>
+                                <div class="input-field col s5" style="margin-top: -1px;">
+                                    <select class="browser-default" id="slct1" name="selectedJob" required>
+                                        <option value="" disabled selected> </option>
+                                        <c:forEach items="${empCategory}" var="name">
+                                          <option value="${name.strCategoryName}">${name.strCategoryName }</option>
+                                        </c:forEach>
+                                    </select>
+                                </div>
+                                <div class="input-field col s2" style="margin-top: -0.2px;">
+                                    <p style="margin-top: 5px;" class="center"><a id="optionadd" class="waves-effect waves-light orange-btn"><i class="material-icons small">add</i></a><a class="waves-effect waves-light orange-btn" onclick="removeopt()"><i class="material-icons small">remove</i></a></p>
+                                </div>
+                                <div class="input-field col s4" style="margin-top: -4px;">
+                                    <input type="text" id="add-optname" class="validate">
+                                    <label for="add-optname">Another position</label>
+                                </div>
+                                <div class="input-field col s12">
+                                  <p class="center">
+                                        <input type="checkbox" id="access" name="access" />
+                                        <label for="access">Grant Access</label>
+                                  </p>
+                                </div>
+                              
+                            <!-- </div> -->
                             </div>
-                        </div>
+                          </div>
+                          <div class="modal-footer">
+                              <a href="#!" class=" modal-action modal-close waves-effect waves-orange transparent btn-flat">CANCEL</a>
+                              <button class="waves-effect waves-light orange btn-flat white-text" type="submit" value="Submit">CREATE</button>
+                          </div>
+                          </form>
                     </div>
+
+                        <div id="update" class="modal modal-fixed-footer">
+                        <form class="col s12">
+                          <div class="modal-content">
+                            <!-- <div class="container"> -->
+                            <div class="row">
+                              
+                                <div class="input-field col s12">
+                                  <h3 class="grey-text text-darken-1">Create Employee</h3>
+                                </div>
+                                <div class="input-field col s12">
+                                   <div class="col s4">
+                                       <label class="red-text">(*) Indicates required field</label>
+                                   </div>
+                                   <div class="col s4 offset-s4">
+                                       <img name="upload" id="employeeimg" class="circle z-depth-1" style="width: 150px; height: 150px;" src="./img/anon.jpg" alt=""/>
+                                   </div>
+                                </div>
+                                <div class="input-field col s3">
+                                  <input type="text" disabled="disabled" name="empid" id="empid">
+                                  <label for="empid">ID</label>
+                                </div>
+                                <div class="input-field col s5 offset-s1">
+                                    <div class="file-field">
+                                          <div class="btn orange">
+                                            <span class="">Image</span>
+                                            <input name="upload" type="file" accept="image/.jpg, image/.png" onchange="loadFile(event)">
+                                          </div>
+                                          <div class="file-path-wrapper">
+                                            <input name="strPath" value="image" class="file-path validate" type="text">
+                                          </div>
+                                      </div>
+                                </div>
+                                <div class="input-field col s4">
+                                    <input nime="strEmpFirstName" d="strEmpFirstName" type="text" class="validate active" required>
+                                    <label for="strEmpFirstName">First Name<span class="red-text">*</span></label>
+                                </div>
+                                <div class="input-field col s4">
+                                    <input name="strEmpMiddleName" id="strEmpMiddleName" type="text" class="validate">
+                                    <label for="strEmpMiddleName">Middle Name</label>
+                                </div>
+                                <div class="input-field col s4">
+                                    <input name="strEmpLastName" id="strEmpLastName" type="text" class="validate" required>
+                                    <label for="strEmpLastName">Last Name<span class="red-text">*</span></label>
+                                </div>
+                                <div class="input-field col s3">
+                                  <select required>
+                                    <option value="" disabled selected>Month</option>
+                                    <option value="jan">January</option>
+                                    <option value="feb">February</option>
+                                    <option value="mar">March</option>
+                                    <option value="apr">April</option>
+                                    <option value="may">May</option>
+                                    <option value="jun">June</option>
+                                    <option value="jul">July</option>
+                                    <option value="aug">August</option>
+                                    <option value="sep">September</option>
+                                    <option value="oct">October</option>
+                                    <option value="nov">November</option>
+                                    <option value="dec">December</option>
+                                  </select>
+                                  <label>Birthday <span class="red-text">*</span></label>
+                                </div>
+                                <div class="input-field col s2">
+                                  <input type="text" maxlength="2" class="validate" required name="day" id="day">
+                                  <label for="day">Day</label>
+                                </div>
+                                <div class="input-field col s3">
+                                  <input type="text" maxlength="4" class="validate" required name="year" id="year">
+                                  <label for="year">Year</label>
+                                </div>
+                                <div class="input-field col s4">
+                                    <input type="text" class="validate" disabled value="" id="age">
+                                    <label style="color: #9e9e9e;">Age: </label>
+                                </div>
+                                <div class="input-field col s12" style="margin-left: 5px; padding: 0px;">
+                                    <p style="color:#9e9e9e;font-size:11px;">Gender<span class="red-text">*</span></p>
+                                </div>
+                                <div class="input-field col s5" style="margin-top: -1px;">
+                                    <select required class="browser-default">
+                                      <option value="" disabled selected></option>
+                                      <option value="1">Male</option>
+                                      <option value="2">Female</option>
+                                    </select>
+                                </div>
+                                <div class="input-field col s1 offset-s2" style="margin-top: -4px;">
+                                  <p style="margin-top: 12px; margin-left: -7px;">(+63)</p>
+                                </div>
+                                <div class="input-field col s4" style="margin-top: -4px;">
+                                    <input name="strEmpContactNo" type="text" id="contact" class="validate" maxlength="10">
+                                    <label for="contact">Contact Number</label>
+                                </div>
+                                <div class="input-field col s12">
+                                    <input name="strEmpAddress" type="text" id="address" class="validate" required>
+                                    <label for="address">Address <span class="red-text">*</span></label>
+                                </div>
+                                <div class="input-field col s12">
+                                    <p style="color:#9e9e9e;font-size:12px;">Position <span class="red-text">*</span></p>
+                                </div>
+                                <div class="input-field col s5" style="margin-top: -1px;">
+                                    <select class="browser-default" id="slct1" name="selectedJob" required>
+                                        <option value="" disabled selected> </option>
+                                        <c:forEach items="${empCategory}" var="name">
+                                          <option value="${name.strCategoryName}">${name.strCategoryName }</option>
+                                        </c:forEach>
+                                    </select>
+                                </div>
+                                <div class="input-field col s2" style="margin-top: -0.2px;">
+                                    <p style="margin-top: 5px;" class="center"><a id="optionadd" class="waves-effect waves-light orange-btn"><i class="material-icons small">add</i></a><a class="waves-effect waves-light orange-btn" onclick="removeopt()"><i class="material-icons small">remove</i></a></p>
+                                </div>
+                                <div class="input-field col s4" style="margin-top: -4px;">
+                                    <input type="text" id="add-optname" class="validate">
+                                    <label for="add-optname">Another position</label>
+                                </div>
+                                <div class="input-field col s12">
+                                  <p class="center">
+                                        <input type="checkbox" id="access" name="access" />
+                                        <label for="access">Grant Access</label>
+                                  </p>
+                                </div>
+                              
+                            <!-- </div> -->
+                            </div>
+                          </div>
+                          <div class="modal-footer">
+                              <a href="#!" class=" modal-action modal-close waves-effect waves-orange transparent btn-flat">CANCEL</a>
+                              <button class="waves-effect waves-light orange btn-flat white-text" type="submit" value="Submit">CREATE</button>
+                          </div>
+                          </form>
+                    </div>
+
+<!--                     <div class="aside aside2 z-depth-barts">
+                     
+                    </div> -->
           </div>
+        </div>
         </article>
 
         
 
   </div>
 
+  <style type="text/css">
+  .modal {
+    width: 55% !important;
+    height: 80% !important;
+    max-height: 100% !important;
+  }
+  </style>
+
   <!--Import jQuery before materialize.js-->
     <script type="text/javascript" src="./js/jquery-2.1.1.min.js"></script>
-    <script type="text/javascript" src="./js/jquery-latest.min.js"></script>
     <script type="text/javascript" src="./js/materialize.min.js"></script>
     <script type="text/javascript" src="./js/angular.min.js"></script>
-    <script type="text/javascript" src="./js/package.js"></script>
-    <script type="text/javascript" src="./js/datatables.min.js"></script>
-    <script type="text/javascript" src="./js/datatables.material.min.js"></script>
-
-
-    <script type="text/javascript">
-      $(document).ready(function() {
-          $('#example').DataTable( {
-            "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
-              columnDefs: [
-                  {
-                      targets: [ 0, 1, 2 ],
-                      className: 'mdl-data-table__cell--non-numeric',
-
-                  },
-              ]
-          } );
-      } );
-    </script>
-
-    <script type="text/javascript">
-      $(document).ready(function() {
-          $('#example').DataTable();
-      } );
-    </script>
-
-
-
-    <script type="text/javascript">
-    $(document).ready(function(){
-        // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
-        $('.modal-trigger').leanModal();
-      });
-    </script>
-
-
-    
-
-    <script type="text/javascript">
-      $( document ).ready(function(){
-        $(".button-collapse").sideNav();
-          // Initialize collapsible (uncomment the line below if you use the dropdown variation)
-        $('.collapsible').collapsible();
-      });
-    </script>
-    <!-- bday -->
-
-    <!-- Upload image -->
-
-    <script text="text/javascript">
-      var loadFile = function(event) {
-        var employeeimg = document.getElementById('employeeimg');
-        employeeimg.src = URL.createObjectURL(event.target.files[0]);
-      };
-    </script>
-
-    <script text="text/javascript">
-      var loadPic = function(event) {
-        var empupdateimg = document.getElementById('empupdateimg');
-        empupdateimg.src = URL.createObjectURL(event.target.files[0]);
-      };
-    </script>
-
-    <script text="text/javascript">
-      var loadFile = editFile(event) {
-        var output2 = document.getElementById('output2');
-        output2.src = URL.createObjectURL(event.target.files[0]);
-      };
-    </script>
-
-    
-
-    <script>
-      $(document).ready(function() {
-          $('select').material_select();
-        });
-      </script>
-
-    <!--- Modal -->
-
-    <script type="text/javascript">
-        $(document).ready(function(){
-            // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
-            $('.modal-trigger').leanModal();
-          }); 
-    </script>
-
-    <script type="text/javascript">
-          function checkPass(){
-            var pass1 = document.getElementById('password').value;
-            var pass2 = document.getElementById('conf-password').value;
-            var good = "#66cc66";
-            var bad = "#ff6666";
-
-            if(pass1 == pass2 && pass2 == pass1 && pass1 != null && pass2 != null) {
-              document.getElementById('confirmMsg').style.color = good;
-              document.getElementById('confirmMsg').innerHTML = "Password Match!";
-              document.getElementById('savebtn').disabled = false;
-            }else{
-              document.getElementById('confirmMsg').style.color = bad;
-              document.getElementById('confirmMsg').style.color = bad;
-              document.getElementById('confirmMsg').innerHTML = "Password Do Not Match!";
-              document.getElementById('savebtn').disabled = true;
-            }
-          }
-    </script>
-
-    <!-- add option -->
-    
-
-    <script>
-           $(document).ready(function(){
-              $("#optionadd").click(function(){
-                 var addopt = $("#add-optname").val();
-                 if(jQuery.trim(addopt).length > 0){
-                      var o = new Option(addopt, addopt, true);
-                      /// jquerify the DOM object 'o' so we can use the html method
-                      $(o).html(addopt);
-                      $("#slct1").append(o);
-                 }else{
-                  $("<div title='Error!'>Empty</div>").dialog();
-                 }
-                   
-                   });
-                  
-                });
-    </script>
-   
-   <script type="text/javascript">
-      function removeopt(){
-        var x = document.getElementById("slct1");
-        var y = document.getElementById("slct2");
-
-        x.remove(x.selectedIndex);
-        y.remove(y.selectedIndex);
-      }
-   </script>
-
-   <script type="text/javascript">
-   // var month = document.getElementById('month').value;
-   // var day = document.getElementById('day').value;
-   // var year = document.getElementById('year').value;
-
-   // var curday = new Date();
-   // var mm = curday.getMonth()+1;
-   // var dd = curday.getDate();
-   // var yyyy = curday.getFullYear();
-
-   // var bday = month+'/'+day+'/'+year;
-   // var today = mm+'/'+dd+'/'+yyyy;
-   
-   // if(day<32 && month!='' || day!='' || year!=''){
-   //       if(month<=mm && day<=dd && year<=yyyy && day!='' && year>0){
-   //             var myage = yyyy - year;
-   //             document.getElementById('age').innerHTML = myage;
-   //             document.getElementById('age').style.color = "black";
-   //       } else if(month>=mm && day>dd && year<yyyy && year>0){
-   //         var myage = yyyy-year;
-   //         document.getElementById('age').innerHTML = myage-1;
-   //         document.getElementById('age').style.color = "black";
-   //       } else if(month>=mm && day<dd && year<yyyy && year>0){
-   //         var myage = yyyy-year;
-   //         document.getElementById('age').innerHTML = myage-1;
-   //         document.getElementById('age').style.color = "black";
-   //       }else if(year=='' || day=='' || month==''){
-   //         document.getElementById('age').innerHTML = " ";
-   //       }else if(year>yyyy){
-   //         document.getElementById('age').innerHTML = "dpa buhay";
-   //         document.getElementById('age').style.color = "red";
-   //       }
-   //   }
-   //  else{
-   //       document.getElementById('age').innerHTML = "";
-   //  }
-   // </script>
-
-   <script type="text/javascript">
-         function checkPass(){
-           var pass1 = document.getElementById('pass').value;
-           var pass2 = document.getElementById('conf-pass').value;
-           var good = "#66cc66";
-           var bad = "#ff6666";
-
-           if(pass1 == pass2 && pass2 == pass1 && pass1 != "" && pass2 != "") {
-             document.getElementById('confirmMsg').style.color = good;
-             document.getElementById('confirmMsg').innerHTML = "Password Match!";
-             document.getElementById('savebtn').disabled = false;
-           }else{
-             document.getElementById('confirmMsg').style.color = bad;
-             document.getElementById('confirmMsg').style.color = bad;
-             document.getElementById('confirmMsg').innerHTML = "Password Do Not Match!";
-             document.getElementById('savebtn').disabled = true;
-           }
-         }
-   </script>
-
+    <script type="text/javascript" src="./js/maintenance-emp.js"></script>
+    <script type="text/javascript" src="./js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="./js/dataTables.material.min.js"></script>
   </body>
+
 
 </html>

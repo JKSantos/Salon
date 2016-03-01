@@ -2203,7 +2203,7 @@ html {
  * Remove default margin.
  */
 body {
-  margin: 0;
+  margin: 0px;
 }
 
 /* HTML5 display definitions
@@ -2623,12 +2623,12 @@ ul li {
   clear: both;
 }
 
-.z-depth-barts, nav, .card-panel, .card, .toast, .btn, .btn-large, .btn-floating, .dropdown-content, .collapsible, .side-nav {
-  box-shadow: 0 0px 1px  rgba(0, 0, 0, 0.2), 0 1px 2px 0 rgba(0, 0, 0, 0.2);
-}
-
 .z-depth-0 {
   box-shadow: none !important;
+}
+
+.z-depth-barts, nav, .card-panel, .card, .toast, .btn, .btn-large, .btn-floating, .dropdown-content, .collapsible, .side-nav {
+  box-shadow: 0 0px 1px  rgba(0, 0, 0, 0.2), 0 1px 2px 0 rgba(0, 0, 0, 0.2);
 }
 
 .z-depth-1, nav, .card-panel, .card, .toast, .btn, .btn-large, .btn-floating, .dropdown-content, .collapsible, .side-nav {
@@ -8545,7 +8545,7 @@ a.waves-effect .waves-ripple {
   border: none;
   line-height: inherit;
   height: inherit;
-  margin: 0 1rem;
+  margin: 0 0rem; /*0 1rem*/
 }
 
 .side-nav .collapsible-header i {
@@ -8558,7 +8558,7 @@ a.waves-effect .waves-ripple {
 }
 
 .side-nav .collapsible-body li a {
-  margin: 0 1rem 0 2rem;
+  margin: 0 1rem 0 2rem;  /* 0 1rem 0 2rem*/
 }
 
 .collapsible.popout {
@@ -9801,7 +9801,7 @@ select {
 
 .side-nav li {
   float: none;
-  padding: 0 15px;
+  padding: 0 0px; /*0 15px*/
   line-height: 64px;
 }
 
@@ -11258,6 +11258,10 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
     margin-bottom: 5em;
   }
 }
+
+/* ------------------------------------------ */
+
+
 
 @font-face {
   font-family: 'Material Icons';

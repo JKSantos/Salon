@@ -41,19 +41,28 @@
 
         .aside1 {
           background: white;
-          border-radius: 3px;
+          border-radius: 1px;
           margin: 10px;
           text-align: center;
-          width: 140px;
+          width: 0px;
+          height: 30%;
+        }
+
+        .main {
+          background: white;
+          border-radius: 1px;
+          margin: 10px;
+          text-align: center;
+          width: 100px;
           height: 30%;
         }
 
         .aside2 {
           background: white;
-          border-radius: 3px;
+          border-radius: 1px;
           margin: 10px;
           text-align: center;
-          width: 100px;
+          width: 0px;
           height: 30%
         }
 
