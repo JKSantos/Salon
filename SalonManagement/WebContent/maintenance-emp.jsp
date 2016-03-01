@@ -22,7 +22,9 @@
                   <div class="center">
                       <img src="./img/anon.jpg" class="circle" style="width: 150px; height: 150px; margin-top: 40px; margin-bottom: 20px;">
                     </div>
-                  <li><a href="admin-home.jsp" class="waves-effect"><b>Home</b></a></li>
+                  <li>
+                  <a href="admin-home.jsp" class="waves-effect"><b>Home</b></a>
+                  </li>
                  <!--  <li class="no-padding"> -->
                     <ul class="collapsible" data-collapsible="accordion">
                       <li>
@@ -30,7 +32,7 @@
                           <div class="collapsible-body">
                             <ul>
                               <li class="orange"><a href="maintenance-emp.jsp">Employee</a></li>
-                                      <li><a href="#">Product & Service</a></li>
+                                      <li><a href="maintenance-prodsvc.jsp">Product & Service</a></li>
                                       <li><a href="#">Promo</a></li>
                                       <li><a href="#">Discount</a></li>
                                       <li><a href="#">Package</a></li>
@@ -62,14 +64,17 @@
                  
                    <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
                    <ul class="side-nav" id="mobile-demo">
-                     <li><a href="admin-home.jsp" class="waves-effect waves-orange"><b>Home</b></a>
+                     <li>
+                     <a href="admin-home.jsp" class="waves-effect"><b>Home</b></a>
+                     </li>
                        <ul class="collapsible collapsible-accordion">
-                         <li>
-                           <a class="waves-effect waves-orange collapsible-header"><b>Maintenance</b></a>
+                          <li>
+                           <a class="waves-effect collapsible-header active"><b>Maintenance</b></a>
+                          
                              <div class="collapsible-body">
                                <ul>
                                  <li class="orange"><a href="maintenance-emp.jsp">Employee</a></li>
-                                 <li><a href="#">Product & Service</a></li>
+                                 <li><a href="maintenance-prodsvc.jsp">Product & Service</a></li>
                                  <li><a href="#">Promo</a></li>
                                  <li><a href="#">Discount</a></li>
                                  <li><a href="#">Package</a></li>
@@ -79,7 +84,7 @@
                              </div>
                          </li>
                          <li>
-                           <a class="waves-effect waves-orange collapsible-header"><b>Transaction</b></a>
+                           <a class="waves-effect collapsible-header"><b>Transaction</b></a>
                              <div class="collapsible-body">
                                <ul>
                                  <li><a href="#">Inventory</a></li>
@@ -91,7 +96,7 @@
                              </div>
                          </li>
                        </ul>
-                    <li><a href="utilities.jsp" class="waves-effect waves-orange"><b>Utilities</b></a></li>
+                    <li><a href="utilities.jsp" class="waves-effect"><b>Utilities</b></a></li>
                    </ul>
                  </div>
                </nav>
@@ -107,7 +112,7 @@
                     <div class="main z-depth-barts" style="margin-left: 50px; margin-right: 50px;">
                         <div class="col s12" style="margin-left: 50px; margin-right: 50px;">
                         <h3 class="grey-text text-darken-1">Employee Maintenance</h3>
-                        <a class="waves-effect waves-light modal-trigger btn-flat orange left white-text" href="#create" style="margin-top: 50px; margin-left: 15px;">CREATE</a>
+                        <a class="waves-effect waves-light modal-trigger btn-flat orange darken-3 left white-text" href="#create" style="margin-top: 50px; margin-left: 15px;">CREATE</a>
                         <table id="example" class="display centered responsive-table highlight" cellspacing="0" width="100%" style="border: 1px solid #bdbdbd; padding: 10px;" rowspan="10">
                                 <thead>
                                     <tr>
@@ -125,9 +130,10 @@
                                         <td>Cashier</td>
                                         <td class="center">01/01/01</td>
                                         <td><a class="waves-effect waves-light modal-trigger btn-flat transparent black-text" title="Update" href="#update" style="padding: 0px;"><i class="material-icons">edit</i></a>
-                                        <a class="waves-effect waves-light modal-trigger btn-flat transparent red-text" href="#delete" title="Deactivate"><i class="material-icons">delete</i></a>
+                                        <a class="waves-effect waves-light modal-trigger btn-flat transparent red-text text-accent-4" href="#delete" title="Deactivate"><i class="material-icons">delete</i></a>
                                         </td>
                                     </tr>
+
 
                                     
                                 </tbody>
@@ -257,7 +263,7 @@
                           </div>
                           <div class="modal-footer">
                               <a href="#!" class=" modal-action modal-close waves-effect waves-orange transparent btn-flat">CANCEL</a>
-                              <button class="waves-effect waves-light orange btn-flat" type="submit" value="Submit">CREATE</button>
+                              <button class="waves-effect waves-light orange darken-3 white-text btn-flat" type="submit" value="Submit">CREATE</button>
                           </div>
                           </form>
                     </div>
@@ -269,7 +275,7 @@
                             <div class="row">
                               
                                 <div class="input-field col s12">
-                                  <h3 class="grey-text text-darken-1">Create Employee</h3>
+                                  <h3 class="grey-text text-darken-1">Update Employee</h3>
                                 </div>
                                 <div class="input-field col s12">
                                    <div class="col s4">
@@ -293,6 +299,10 @@
                                             <input name="strPath" value="image" class="file-path validate" type="text">
                                           </div>
                                       </div>
+                                </div>
+                                <div class="input-field col s3">
+                                  <input type="text" disabled="disabled" name="empdoc" id="empdoc">
+                                  <label for="empdoc">Date of Creation</label>
                                 </div>
                                 <div class="input-field col s4">
                                     <input nime="strEmpFirstName" d="strEmpFirstName" type="text" class="validate active" required>
@@ -387,7 +397,7 @@
                           </div>
                           <div class="modal-footer">
                               <a href="#!" class=" modal-action modal-close waves-effect waves-orange transparent btn-flat">CANCEL</a>
-                              <button class="waves-effect waves-light orange btn-flat" type="submit" value="Submit">UPDATE</button>
+                              <button class="waves-effect waves-light orange darken-3 white-text btn-flat" type="submit" value="Submit">UPDATE</button>
                           </div>
                           </form>
                     </div>

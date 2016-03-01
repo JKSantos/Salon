@@ -1,338 +1,330 @@
 <!DOCTYPE html>
 <html ng-app>
-
-<%@ taglib uri="/struts-tags" prefix="s" %>
-  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+  
 
   <head>
-  <link rel="stylesheet" href="./css/materialize.min.css"  media="screen,projection"/>
   <link type="text/css" rel="stylesheet" href="./css/materialize.css"/>
+  <link rel="stylesheet" href="./css/materialize.min.css"  media="screen,projection"/>
   <link type="text/css" rel="stylesheet" href="./css/mystyle.css"/>
-  <link type="text/css" rel="stylesheet" href="./css/mtnc-productservice.css"/>
-  <link rel="stylesheet" type="text/css" href="./css/table.css">
-  <link rel="stylesheet" type="text/css" href="./css/table.min.css">
+  <link type="text/css" rel="stylesheet" href="./css/mtnc-emp.css"/>
+
+  <link rel="stylesheet" type="text/css" href="./css/dataTables.material.min.css"/>
+  <link rel="stylesheet" type="text/css" href="./css/material.min.css"/>
+
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   </head>
 
   <body class="blue-grey lighten-5">
   <div class="wrapper">
-        <header class="headnav">
-                        <ul id="slide-out" class="side-nav fixed z-depth-0">
-                          <div class="center">
-                              <img src="./img/anon.jpg" class="circle" style="width: 150px; height: 150px; margin-top: 40px; margin-bottom: 20px;">
-                            </div>
-                          <li><a href="admin-home.jsp" class="waves-effect"><b>Home</b></a></li>
-                         <!--  <li class="no-padding"> -->
-                            <ul class="collapsible" data-collapsible="accordion">
-                              <li>
-                                <a class="collapsible-header active"><b>Maintenance</b></a>
-                                  <div class="collapsible-body">
-                                    <ul>
-                                      <li><a href="employeeMaintenance.action">Employee</a></li>
-                                      <li class="orange"><a href="productServiceMaintenance.action">Product & Service</a></li>
-                                      <li><a href="maintenance-promo.jsp">Promo</a></li>
-                                      <li><a href="discountMaintenance.action">Discount</a></li>
-                                      <li><a href="maintenance-package.jsp">Package</a></li>
-                                      <li><a href="maintenance-catalogue.jsp">Catalogue</a></li>
-                                      <li><a href="extraChargeMaintenance.action">Extra Charge</a></li>
-                                    </ul>
-                                  </div>
-                              </li>
-                              <li>
-                                <a class="collapsible-header"><b>Transaction</b></a>
-                                  <div class="collapsible-body">
-                                    <ul>
-                                      <li><a href="transactions-inventory.jsp">Inventory</a></li>
-                                      <li><a href="transactions-reservation.jsp">Reservation</a></li>
-                                      <li><a href="transactions-vip.jsp">VIP</a></li>
-                                      <li><a href="transactions-productorder.jsp">Product Order</a></li>
-                                      <li><a href="transactions-walkin.jsp">Walk-In</a></li>
-                                    </ul>
-                                  </div>
-                              </li>
+            <header class="headnav">
+                <ul id="slide-out" class="side-nav fixed z-depth-0">
+                  <div class="center">
+                      <img src="./img/anon.jpg" class="circle" style="width: 150px; height: 150px; margin-top: 40px; margin-bottom: 20px;">
+                    </div>
+                  <li><a href="admin-home.jsp" class="waves-effect"><b>Home</b></a></li>
+                 <!--  <li class="no-padding"> -->
+                    <ul class="collapsible" data-collapsible="accordion">
+                      <li>
+                        <a class="collapsible-header active"><b>Maintenance</b></a>
+                          <div class="collapsible-body">
+                            <ul>
+                              <li><a href="maintenance-emp.jsp">Employee</a></li>
+                              <li class="orange"><a href="maintenance-prodsvc.jsp">Product & Service</a></li>
+                              <li><a href="#">Promo</a></li>
+                              <li><a href="#">Discount</a></li>
+                              <li><a href="#">Package</a></li>
+                              <li><a href="#">Catalogue</a></li>
+                              <li><a href="#">Extra Charge</a></li>
                             </ul>
-                          <li><a href="utilities.jsp" class="waves-effect"><b>Utilities</b></a></li>
-                        </ul>
+                          </div>
+                      </li>
+                      <li>
+                        <a class="collapsible-header"><b>Transaction</b></a>
+                          <div class="collapsible-body">
+                            <ul>
+                              <li><a href="#">Inventory</a></li>
+                              <li><a href="#">Reservation</a></li>
+                              <li><a href="#">VIP</a></li>
+                              <li><a href="#">Product Order</a></li>
+                              <li><a href="#">Walk-In</a></li>
+                            </ul>
+                          </div>
+                      </li>
+                    </ul>
+                  <li><a href="utilities.jsp" class="waves-effect"><b>Utilities</b></a></li>
+                </ul>
 
-                
-                       <nav class="z-depth-0">
-                         <div class="nav-wrapper orange">
-                           <a href="#!" class="brand-logo white-text" style="margin-left: 30px;">Salon Management System</a>
-                         
-                           <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-                           <ul class="side-nav" id="mobile-demo">
-                             <li><a href="admin-home.jsp" class="waves-effect waves-orange"><b>Home</b></a>
-                               <ul class="collapsible collapsible-accordion">
-                                 <li>
-                                   <a class="collapsible-header active"><b>Maintenance</b></a>
-                                     <div class="collapsible-body">
-                                       <ul>
-                                         <li><a href="maintenance-emp.jsp">Employee</a></li>
-                                         <li class="orange"><a href="maintenance-prodsvc.jsp">Product & Service</a></li>
-                                         <li><a href="maintenance-promo.jsp">Promo</a></li>
-                                         <li><a href="maintenance-discount.jsp">Discount</a></li>
-                                         <li><a href="maintenance-package.jsp">Package</a></li>
-                                         <li><a href="maintenance-catalogue.jsp">Catalogue</a></li>
-                                         <li><a href="maintenance-extra.jsp">Extra Charge</a></li>
-                                       </ul>
-                                     </div>
-                                 </li>
-                                 <li>
-                                   <a class="waves-effect waves-orange collapsible-header"><b>Transaction</b></a>
-                                     <div class="collapsible-body">
-                                       <ul>
-                                         <li><a href="transactions-inventory.jsp">Inventory</a></li>
-                                         <li><a href="transactions-reservation.jsp">Reservation</a></li>
-                                         <li><a href="transactions-vip.jsp">VIP</a></li>
-                                         <li><a href="transactions-productorder.jsp">Product Order</a></li>
-                                         <li><a href="#!">Walk-In</a></li>
-                                       </ul>
-                                     </div>
-                                 </li>
+        
+               <nav class="z-depth-0">
+                 <div class="nav-wrapper orange">
+                   <a href="#!" class="brand-logo white-text" style="margin-left: 30px;">Salon Management System</a>
+                 
+                   <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+                   <ul class="side-nav" id="mobile-demo">
+                     <li><a href="admin-home.jsp" class="waves-effect"><b>Home</b></a>
+                       <ul class="collapsible collapsible-accordion">
+                         <li>
+                           <a class="waves-effectcollapsible-header"><b>Maintenance</b></a>
+                             <div class="collapsible-body">
+                               <ul>
+                                 <li><a href="maintenance-emp.jsp">Employee</a></li>
+                                 <li class="orange"><a href="maintenance-prodsvc.jsp">Product & Service</a></li>
+                                 <li><a href="#">Promo</a></li>
+                                 <li><a href="#">Discount</a></li>
+                                 <li><a href="#">Package</a></li>
+                                 <li><a href="#">Catalogue</a></li>
+                                 <li><a href="#">Extra Charge</a></li>
                                </ul>
-                             <li><a href="utilities.jsp" class="waves-effect waves-orange"><b>Utilities</b></a></li>
-                           </ul>
-                         </div>
-                       </nav>
-                </header>
+                             </div>
+                         </li>
+                         <li>
+                           <a class="waves-effectcollapsible-header"><b>Transaction</b></a>
+                             <div class="collapsible-body">
+                               <ul>
+                                 <li><a href="#">Inventory</a></li>
+                                 <li><a href="#">Reservation</a></li>
+                                 <li><a href="#">VIP</a></li>
+                                 <li><a href="#">Product Order</a></li>
+                                 <li><a href="#">Walk-In</a></li>
+                               </ul>
+                             </div>
+                         </li>
+                       </ul>
+                    <li><a href="utilities.jsp" class="waves-effect"><b>Utilities</b></a></li>
+                   </ul>
+                 </div>
+               </nav>
+        </header>
 
         <article>
+        <!-- <div class="container"> -->
           <div class="wrapper">
-            <!-- 
-                    <div class="aside aside1 z-depth-barts"> main aside1
+<!--                     <div class="aside aside1 z-depth-barts">
                     
                     </div> -->
-                                <div class="aside aside1 z-depth-barts">
-                                  <!-- main aside2-->
-                                  <div class="container">
-                                            <header><h4>Product & Service Maintenance</h4></header>
-                                                <div class="row">
-                                                    <form class="col s12" action="createProdServ" method="post" enctype="multipart/form-data">
-                                                        <div class="input-field col s12 left">
-                                                            <label class="red-text center">(*) Indicates required field</label>
-                                                        </div><br><br>
-                                                        <div class="input-field col s12 center">
-                                                            <div class="center">
-                                                                <img  id="serviceimg" style="width: 120px; height: 120px;" src="./img/packIcon.png" alt="Image"/>
-                                                            </div>                                                    
-                                                        </div>
-                                                        <div class="input-field col s12" style="margin-top: 30px;">
-                                                            <div class="file-field">
-                                                                  <div class="btn orange">
-                                                                    <span class="">Image</span>
-                                                                    <input name="upload" type="file" accept="image/*" onchange="ServiceImage(this)">
-                                                                  </div>
-                                                                  <div class="file-path-wrapper">
-                                                                    <input class="file-path validate" type="text">
-                                                                  </div>
-                                                              </div>
-                                                        </div>
-                                                        <div class="input-field col s12" style="margin-top: 10px;">
-                                                              <select name="strItemCate" id="typeid">
-                                                                <option value="Product" selected>Product</option>
-                                                                <option value="Service">Service</option>
-                                                              </select>
-                                                              <label for="typeid">Type <span class="red-text">*</span></label>
-                                                        </div>
 
-                                                        <div class="input-field col s12">
-                                                            <input name="strItemName" type="text" class="validate" id="servicename" required>
-                                                            <label for="servicename">Name <span class="red-text">*</span></label>
-                                                        </div>
-                                                        <div class="input-field col s12">
-                                                            <textarea name="strItemDetails" id="servicedetails" class="materialize-textarea" length="120"></textarea>
-                                                            <label for="servicedetails">Details</label>
-                                                        </div>
-                                                        <div class="input-field col s5">
-                                                            <select name="strItemCategory" id="servicecategory">
-                                                                  <option value="" disabled selected>Choose your option</option>
-                                                                  <c:forEach items="${serviceCategory}" var="category">
-                                                                      <option value="${category}">${category}</option>
-                                                                  </c:forEach>
-                                                                  <c:forEach items="${productCategory}" var="category">
-                                                                      <option value="${category}">${category}</option>
-                                                                  </c:forEach>
-                                                              </select>
-                                                              <label>Category <span class="red-text">*</span></label>
-                                                        </div>
-                                                        <div class="input-field col s3" style="margin-top: -0.2px;">
-                                                            <p style="margin-top: 5px;" class="center"><a id="optionadd" class="waves-effect waves-light orange-btn"><i class="material-icons small">add</i></a><a class="waves-effect waves-light orange-btn" onclick="removeopt()"><i class="material-icons small">remove</i></a></p>
-                                                        </div>
-                                                        <div class="input-field col s4" style="margin-top: -4px;">
-                                                            <input type="text" id="add-optname" class="validate">
-                                                            <label for="add-optname">Another</label>
-                                                        </div>
-                                                        <div class="input-field col s12">
-                                                            <input name="dblItemPrice" type="number" class="validate right-align" id="serviceprice" maxlength="8" required>
-                                                            <label for="serviceprice">Price <span class="red-text">*</span></label>
-                                                        </div>
-
-                                                        <div class="input-field col s12 center">
-                                                            <button class="waves-effect waves-light orange btn-flat" type="submit" value="Submit" id="servicebtn">Create</button>
-                                                            <button class="waves-effect waves-light btn-flat" type="reset" value="Reset" id="productclear">CLEAR</button>
-                                                        </div>
-                                                      </form>
-                                                </div>
-                                              </div>
-                                        </div>
-              
-
-                                <div class="aside aside2 z-depth-barts">
-                                                <nav class="z-depth-0">
-                                                  <div class="nav-wrapper orange lighten-3 grey-text text-darken-4">
-                                                    <form>
-                                                      <div class="input-field col s12 z-depth-0">
-                                                        <input class="orange lighten-3" id="search" type="search" ng-model="name" placeholder="Search...">
-                                                        <label for="search"><i class="material-icons grey-text text-darken-3">search</i></label>
-                                                      </div>
-                                                    </form>
-                                                  </div>
-                                                </nav>
-                                 <div class="row">
-                                     <div class="col s12">
-                                                <h5>Product & Service List</h5>
+                    <div class="main z-depth-barts" style="margin-left: 50px; margin-right: 50px;">
+                        <div class="col s12" style="margin-left: 50px; margin-right: 50px;">
+                        <h3 class="grey-text text-darken-1">Product & Service Maintenance</h3>
+                        <a class="waves-effect waves-light modal-trigger btn-flat orange darken-3 left white-text" href="#create" style="margin-top: 50px; margin-left: 15px;">CREATE</a>
+                        <table id="example" class="display centered responsive-table highlight" cellspacing="0" width="100%" style="border: 1px solid #bdbdbd; padding: 10px;" rowspan="10">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Name</th>
+                                        <th>Category</th>
+                                        <th>Price</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Hair Color</td>
+                                        <td>Product</td>
+                                        <td>99.00</td>
+                                        <td><a class="waves-effect waves-light modal-trigger btn-flat transparent black-text" title="Update" href="#update" style="padding: 0px;"><i class="material-icons">edit</i></a>
+                                        <a class="waves-effect waves-light modal-trigger btn-flat transparent red-text text-accent-4" href="#delete" title="Deactivate"><i class="material-icons">delete</i></a>
+                                        </td>
+                                    </tr>
 
 
-                                                  <table class="ui sortable celled table" ng-init="prodsvc=[{id: '1',name: 'Razer', category: 'Product', price: 'P99.99'},{id: '2',name: 'Massage', category: 'Service', price: 'P300.00'}]">
-                                                    <thead>
-                                                      <tr>
-                                                        <th data-sort="int" class="orange lighten-5">ID</th>
-                                                        <th data-sort="string" class="orange lighten-5">Name</th>
-                                                        <th data-sort="string" class="orange lighten-5">Category</th>
-                                                        <th data-sort="int" class="orange lighten-5">Price</th>
-                                                        <th class="no-sort orange lighten-5">Actions</th>
-                                                      </tr>
-                                                    </thead>
-                                                      <tbody >
-                                                         <tr ng-repeat="ps in prodsvc | filter:name | filter: category | filter: price | orderBy: 'id'">
-                                                         <c:forEach items="${productList}" var="product">
-                                                          <td>${product.intProductID}</td>
-                                                            <td>${product.strProductName}</td>
-                                                            <td>Product</td>
-                                                            <td>${product.dblProductPrice}</td>
-                                                            <td><a href="#update" style="padding: 0px;" class="waves-effect waves-orange modal-trigger transparent btn-flat"><i class="material-icons">edit</i></a><button style="padding: 0px; margin-left:15px;" class="waves-effect waves-orange transparent btn-flat"><i class="material-icons">delete</i></button></td>
-                                                            </tr>
-                                                          </c:forEach>
+                                    
+                                </tbody>
+                            </table>
 
-                                                          <c:forEach items="${serviceList}" var="service">
-                                                          <td>${service.intServiceID}</td>
-                                                            <td>${service.strServiceName}</td>
-                                                            <td>Service</td>
-                                                            <td>${service.dblServicePrice}</td>
-                                                            <td><a href="#update" style="padding: 0px;" class="waves-effect waves-orange modal-trigger transparent btn-flat"><i class="material-icons">edit</i></a><button style="padding: 0px; margin-left:15px;" class="waves-effect waves-orange transparent btn-flat"><i class="material-icons">delete</i></button></td>
-                                                            </tr>
-                                                          </c:forEach>
-                                                      </tbody>
-                                                    </table>
-                                                    
-                                                       <!-- <c:forEach items="${empList}" var="employee">
-                                                       <tr>
-                                                        <td>${employee.intEmpID}</td>
-                                                          <td>${employee.strEmpFirstName} ${employee.strEmpLastName}</td>
-                                                          <td>Cashier</td>
-                                                          <td><a href="#update" style="padding: 0px;" class="waves-effect waves-orange modal-trigger transparent btn-flat"><i class="material-icons">edit</i></a><button style="padding: 0px; margin-left:15px;" class="waves-effect waves-orange transparent btn-flat"><i class="material-icons">delete</i></button></td>
-                                                          </tr>
-                                                        </c:forEach>  -->
-                                                      
-                                
+                      </div>
 
-                                                  <ul class="pagination right">
-                                                        <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
-                                                        <li class="active orange"><a href="#!">1</a></li>
-                                                        <li class="waves-effect"><a href="#!">2</a></li>
-                                                        <li class="waves-effect"><a href="#!">3</a></li>
-                                                        <li class="waves-effect"><a href="#!">4</a></li>
-                                                        <li class="waves-effect"><a href="#!">5</a></li>
-                                                        <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
-                                                      </ul>  
-                                        </div>
-                                    </div>
-                                  </div>
-                    
-              </div>
+                      <!-- Modal Structure -->
+                        <div id="create" class="modal modal-fixed-footer">
+                        <form class="col s12">
+                          <div class="modal-content">
+                            <!-- <div class="container"> -->
+                            <div class="row">
+                              
+                                <div class="input-field col s12">
+                                  <h3 class="grey-text text-darken-1">Create Product/Service</h3>
+                                </div>
+                                <div class="col s12">
+                                     <label class="red-text">(*) Indicates required field</label>
+                                </div>
+                                <div class="col s12">
+                                    <img name="upload" id="prodsvc" style="width: 150px; height: 150px; margin-top: 20px;" src="./img/packIcon.png" alt=""/>
+                                </div>
+                                <div class="input-field col s5 offset-s4">
+                                    <div class="file-field">
+                                          <div class="btn orange">
+                                            <span class="">Image</span>
+                                            <input name="upload" type="file" accept="image/.jpg, image/.png" onchange="loadFile(event)">
+                                          </div>
+                                          <div class="file-path-wrapper">
+                                            <input name="strPath" value="image" class="file-path validate" type="text">
+                                          </div>
+                                      </div>
+                                </div>
+                                <div class="input-field col s8 offset-s2">
+                                  <select class="browser-default" required>
+                                    <option value="" disabled="disabled" selected></option>
+                                    <option value="service">Service</option>
+                                    <option value="product">Product</option>
+                                  </select>
+                                  <label>Type <span class="red-text">*</span></label>
+                                </div>
+                                <div class="input-field col s8 offset-s2">
+                                  <input type="text" class="validate" required id="prodsvcName" name="prodsvcName">
+                                  <label for="prodsvcName">Name <span class="red-text">*</span></label>
+                                </div>
+                                <div class="input-field col s8 offset-s2">
+                                  <textarea id="prodsvcDetail" name="prodsvcDetail" class="materialize-textarea"></textarea>
+                                  <label for="prodsvcDetail">Details</label>
+                                </div>
+                                <div class="input-field col s8 offset-s2">
+                                    <p style="color:#9e9e9e;font-size:12px;">Category <span class="red-text">*</span></p>
+                                </div>
+                                <div class="input-field col s8 offset-s2" style="margin-top: -1px;">
+                                    <select class="browser-default" id="slct1" name="selectedJob" required>
+                                        <option value="" disabled selected> </option>
+                                        <c:forEach items="${empCategory}" var="name">
+                                          <option value="${name.strCategoryName}">${name.strCategoryName }</option>
+                                        </c:forEach>
+                                    </select>
+                                </div>
+                                <div class="input-field col s4 offset-s6" style="margin-top: 20px;">
+                                    <input type="text" class="validate right-align" id="prodsvcPrice" name="prodsvcPrice">
+                                    <label for="prodsvcPrice">Price <span class="red-text">*</span></label>
+                                </div>
+                              
+                            <!-- </div> -->
+                            </div>
+                          </div>
+                          <div class="modal-footer">
+                              <a href="#!" class=" modal-action modal-close waves-effect waves-orange transparent btn-flat">CANCEL</a>
+                              <button class="waves-effect waves-light orange darken-3 white-text btn-flat" type="submit" value="Submit">CREATE</button>
+                          </div>
+                          </form>
+                    </div>
+
+                        <div id="update" class="modal modal-fixed-footer">
+                        <form class="col s12">
+                          <div class="modal-content">
+                            <!-- <div class="container"> -->
+                            <div class="row">
+                              
+                                <div class="input-field col s12">
+                                  <h3 class="grey-text text-darken-1">Update Product/Service</h3>
+                                </div>
+                                <div class="col s12">
+                                     <label class="red-text">(*) Indicates required field</label>
+                                </div>
+                                <div class="col s12">
+                                    <img name="upload" id="prodsvc" style="width: 150px; height: 150px; margin-top: 20px;" src="./img/packIcon.png" alt=""/>
+                                </div>
+                                <div class="input-field col s5 offset-s4">
+                                    <div class="file-field">
+                                          <div class="btn orange">
+                                            <span class="">Image</span>
+                                            <input name="upload" type="file" accept="image/.jpg, image/.png" onchange="loadFile(event)">
+                                          </div>
+                                          <div class="file-path-wrapper">
+                                            <input name="strPath" value="image" class="file-path validate" type="text">
+                                          </div>
+                                      </div>
+                                </div>
+                                <div class="input-field col s8 offset-s2">
+                                  <select class="browser-default" required>
+                                    <option value="" disabled="disabled" selected></option>
+                                    <option value="service">Service</option>
+                                    <option value="product">Product</option>
+                                  </select>
+                                  <label>Type <span class="red-text">*</span></label>
+                                </div>
+                                <div class="input-field col s8 offset-s2">
+                                  <input type="text" class="validate" required id="prodsvcName" name="prodsvcName">
+                                  <label for="prodsvcName">Name <span class="red-text">*</span></label>
+                                </div>
+                                <div class="input-field col s8 offset-s2">
+                                  <textarea id="prodsvcDetail" name="prodsvcDetail" class="materialize-textarea"></textarea>
+                                  <label for="prodsvcDetail">Details</label>
+                                </div>
+                                <div class="input-field col s8 offset-s2">
+                                    <p style="color:#9e9e9e;font-size:12px;">Category <span class="red-text">*</span></p>
+                                </div>
+                                <div class="input-field col s8 offset-s2" style="margin-top: -1px;">
+                                    <select class="browser-default" id="slct1" name="selectedJob" required>
+                                        <option value="" disabled selected> </option>
+                                        <c:forEach items="${empCategory}" var="name">
+                                          <option value="${name.strCategoryName}">${name.strCategoryName }</option>
+                                        </c:forEach>
+                                    </select>
+                                </div>
+                                <div class="input-field col s4 offset-s6" style="margin-top: 20px;">
+                                    <input type="text" class="validate right-align" id="prodsvcPrice" name="prodsvcPrice">
+                                    <label for="prodsvcPrice" >Price <span class="red-text">*</span></label>
+                                </div>
+                              
+                            <!-- </div> -->
+                            </div>
+                          </div>
+                          <div class="modal-footer">
+                              <a href="#!" class=" modal-action modal-close waves-effect waves-orange transparent btn-flat">CANCEL</a>
+                              <button class="waves-effect waves-light orange darken-3 white-text btn-flat" type="submit" value="Submit">CREATE</button>
+                          </div>
+                          </form>
+                    </div>
+
+
+                          <div id="delete" class="modal">
+                          <div class="container">
+                            <div class="modal-content">
+                              <div class="row">
+                                <h5 class="red-text">Warning!</h5>
+                                <p>Are you sure you want to deactivate this product/service??</p>
+                              </div>
+                            </div>
+                              <div class="col s12 center" style="margin-bottom: 30px;">
+                                <button class="waves-effect waves-light orange btn-flat white-text">YES</button>
+                                <a href="#" class="modal-action modal-close waves-effect waves-light transparent btn-flat black-text">NO</a>
+                              </div>
+                            </div>
+                      </div>
+<!--                     <div class="aside aside2 z-depth-barts">
+                     
+                    </div> -->
+                </div>
+        </div>
+      <!-- </div> -->
         </article>
+
+        
+
   </div>
+
+  <style type="text/css">
+  #create {
+    width: 45% !important;
+    height: 80% !important;
+    max-height: 100% !important;
+  }
+  #update{
+    width: 45% !important;
+    height: 80% !important;
+    max-height: 100% !important;
+  }
+
+  #delete {
+    width: 30% !important;
+  }
+  </style>
+
   <!--Import jQuery before materialize.js-->
     <script type="text/javascript" src="./js/jquery-2.1.1.min.js"></script>
-    <script type="text/javascript" src="./js/jquery-latest.min.js"></script>
     <script type="text/javascript" src="./js/materialize.min.js"></script>
-    <script type="text/javascript" src="./js/addToProductList.js"></script>
     <script type="text/javascript" src="./js/angular.min.js"></script>
-    <script type="text/javascript" src="./js/package.js"></script>
-    <script type="text/javascript" src="./js/stupidtable.js"></script>
-    <script type="text/javascript" src="./js/stupidtable.min.js"></script>
-
-
-    <script type="text/javascript">
-      $(document).ready(function() {
-          $('select').material_select();
-        });
-    </script>
-
-    <script type="text/javascript">
-    $(document).ready(function(){
-        // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
-        $('.modal-trigger').leanModal();
-      });
-    </script>
-
-    <script type="text/javascript">
-        $("table").stupidtable();
-    </script>
-
-
-    <script type="text/javascript">
-      $( document ).ready(function(){
-        $(".button-collapse").sideNav();
-          // Initialize collapsible (uncomment the line below if you use the dropdown variation)
-        $('.collapsible').collapsible();
-      });
-    </script>
-
-    <!-- upload image -->
-    <script text="text/javascript">
-      var loadFile = function(event) {
-        var productimg = document.getElementById('productimg');
-        productimg.src = URL.createObjectURL(event.target.files[0]);
-      };
-    </script>
-
-    <script type="text/javascript">
-    function ServiceImage(input) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-
-                reader.onload = function (e) {
-                    $('#serviceimg')
-                        .attr('src', e.target.result)
-                };
-
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
-    </script>
-   
-    <script type="text/javascript">
-    function ProductImage(input) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-
-                reader.onload = function (e) {
-                    $('#productimg')
-                        .attr('src', e.target.result)
-                };
-
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
-    </script>
-
-    <script type="text/javascript">
-    function success(){
-      alert("Successfully Created!");
-    }
-    </script>
-
+    <script type="text/javascript" src="./js/maintenance-emp.js"></script>
+    <script type="text/javascript" src="./js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="./js/dataTables.material.min.js"></script>
   </body>
+
+
 </html>
