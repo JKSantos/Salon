@@ -33,7 +33,7 @@
                             <ul>
                               <li><a href="maintenance-emp.jsp">Employee</a></li>
                               <li class="orange"><a href="maintenance-prodsvc.jsp">Product & Service</a></li>
-                              <li><a href="#">Promo</a></li>
+                              <li><a href="maintenance-promo.jsp">Promo</a></li>
                               <li><a href="#">Discount</a></li>
                               <li><a href="#">Package</a></li>
                               <li><a href="#">Catalogue</a></li>
@@ -72,7 +72,7 @@
                                <ul>
                                  <li><a href="maintenance-emp.jsp">Employee</a></li>
                                  <li class="orange"><a href="maintenance-prodsvc.jsp">Product & Service</a></li>
-                                 <li><a href="#">Promo</a></li>
+                                 <li><a href="maintenance-promo.jsp">Promo</a></li>
                                  <li><a href="#">Discount</a></li>
                                  <li><a href="#">Package</a></li>
                                  <li><a href="#">Catalogue</a></li>
