@@ -115,6 +115,7 @@
                                         <th>Name</th>
                                         <th>Category</th>
                                         <th>Price</th>
+                                        <th>Date of Creation</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
@@ -124,6 +125,7 @@
                                         <td>Hair Color</td>
                                         <td>Product</td>
                                         <td>99.00</td>
+                                        <td>01/01/01</td>
                                         <td><a class="waves-effect waves-light modal-trigger btn-flat transparent black-text" title="Update" href="#update" style="padding: 0px;"><i class="material-icons">edit</i></a>
                                         <a class="waves-effect waves-light modal-trigger btn-flat transparent red-text text-accent-4" href="#delete" title="Deactivate"><i class="material-icons">delete</i></a>
                                         </td>
@@ -150,13 +152,13 @@
                                      <label class="red-text">(*) Indicates required field</label>
                                 </div>
                                 <div class="col s12">
-                                    <img name="upload" id="prodsvc" style="width: 150px; height: 150px; margin-top: 20px;" src="./img/packIcon.png" alt=""/>
+                                    <img name="prodsvcCreate" id="prodsvcCreate" style="width: 150px; height: 150px; margin-top: 20px;" src="./img/packIcon.png" alt=""/>
                                 </div>
                                 <div class="input-field col s5 offset-s4">
                                     <div class="file-field">
                                           <div class="btn orange">
                                             <span class="">Image</span>
-                                            <input name="upload" type="file" accept="image/.jpg, image/.png" onchange="loadFile(event)">
+                                            <input name="upload" type="file" accept="image/.jpg, image/.png" onchange="loadProdSvc(event)">
                                           </div>
                                           <div class="file-path-wrapper">
                                             <input name="strPath" value="image" class="file-path validate" type="text">
@@ -164,12 +166,14 @@
                                       </div>
                                 </div>
                                 <div class="input-field col s8 offset-s2">
-                                  <select class="browser-default" required>
+                                    <p style="color:#9e9e9e;font-size:12px;">Type <span class="red-text">*</span></p>
+                                </div>
+                                <div class="input-field col s8 offset-s2" style="margin-top: -1px;">
+                                  <select class="browser-default" required >
                                     <option value="" disabled="disabled" selected></option>
                                     <option value="service">Service</option>
                                     <option value="product">Product</option>
                                   </select>
-                                  <label>Type <span class="red-text">*</span></label>
                                 </div>
                                 <div class="input-field col s8 offset-s2">
                                   <input type="text" class="validate" required id="prodsvcName" name="prodsvcName">
@@ -215,16 +219,13 @@
                                   <h3 class="grey-text text-darken-1">Update Product/Service</h3>
                                 </div>
                                 <div class="col s12">
-                                     <label class="red-text">(*) Indicates required field</label>
-                                </div>
-                                <div class="col s12">
-                                    <img name="upload" id="prodsvc" style="width: 150px; height: 150px; margin-top: 20px;" src="./img/packIcon.png" alt=""/>
+                                    <img name="updateProdSvc" id="updateProdSvc" style="width: 150px; height: 150px; margin-top: 20px;" src="./img/packIcon.png" alt=""/>
                                 </div>
                                 <div class="input-field col s5 offset-s4">
                                     <div class="file-field">
                                           <div class="btn orange">
                                             <span class="">Image</span>
-                                            <input name="upload" type="file" accept="image/.jpg, image/.png" onchange="loadFile(event)">
+                                            <input name="upload" type="file" accept="image/.jpg, image/.png" onchange="loadUpdateProdSvc(event)">
                                           </div>
                                           <div class="file-path-wrapper">
                                             <input name="strPath" value="image" class="file-path validate" type="text">
@@ -232,23 +233,25 @@
                                       </div>
                                 </div>
                                 <div class="input-field col s8 offset-s2">
+                                    <p style="color:#9e9e9e;font-size:12px;">Type</p>
+                                </div>
+                                <div class="input-field col s8 offset-s2" style="margin-top: -1px;">
                                   <select class="browser-default" required>
                                     <option value="" disabled="disabled" selected></option>
                                     <option value="service">Service</option>
                                     <option value="product">Product</option>
                                   </select>
-                                  <label>Type <span class="red-text">*</span></label>
                                 </div>
                                 <div class="input-field col s8 offset-s2">
                                   <input type="text" class="validate" required id="prodsvcName" name="prodsvcName">
-                                  <label for="prodsvcName">Name <span class="red-text">*</span></label>
+                                  <label for="prodsvcName">Name</label>
                                 </div>
                                 <div class="input-field col s8 offset-s2">
                                   <textarea id="prodsvcDetail" name="prodsvcDetail" class="materialize-textarea"></textarea>
                                   <label for="prodsvcDetail">Details</label>
                                 </div>
                                 <div class="input-field col s8 offset-s2">
-                                    <p style="color:#9e9e9e;font-size:12px;">Category <span class="red-text">*</span></p>
+                                    <p style="color:#9e9e9e;font-size:12px;">Category</p>
                                 </div>
                                 <div class="input-field col s8 offset-s2" style="margin-top: -1px;">
                                     <select class="browser-default" id="slct1" name="selectedJob" required>
@@ -260,7 +263,7 @@
                                 </div>
                                 <div class="input-field col s4 offset-s6" style="margin-top: 20px;">
                                     <input type="text" class="validate right-align" id="prodsvcPrice" name="prodsvcPrice">
-                                    <label for="prodsvcPrice" >Price <span class="red-text">*</span></label>
+                                    <label for="prodsvcPrice" >Price</label>
                                 </div>
                               
                             <!-- </div> -->

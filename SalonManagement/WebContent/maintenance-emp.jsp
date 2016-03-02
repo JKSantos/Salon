@@ -278,11 +278,8 @@
                                   <h3 class="grey-text text-darken-1">Update Employee</h3>
                                 </div>
                                 <div class="input-field col s12">
-                                   <div class="col s4">
-                                       <label class="red-text">(*) Indicates required field</label>
-                                   </div>
                                    <div class="col s4 offset-s4">
-                                       <img name="upload" id="employeeimg" class="circle z-depth-1" style="width: 150px; height: 150px;" src="./img/anon.jpg" alt=""/>
+                                       <img name="empupdatedImg" id="empupdatedImg" class="circle z-depth-1" style="width: 150px; height: 150px;" src="./img/anon.jpg" alt=""/>
                                    </div>
                                 </div>
                                 <div class="input-field col s3">
@@ -293,7 +290,7 @@
                                     <div class="file-field">
                                           <div class="btn orange">
                                             <span class="">Image</span>
-                                            <input name="upload" type="file" accept="image/.jpg, image/.png" onchange="loadFile(event)">
+                                            <input name="upload" type="file" accept="image/.jpg, image/.png" onchange="loadUpdate(event)">
                                           </div>
                                           <div class="file-path-wrapper">
                                             <input name="strPath" value="image" class="file-path validate" type="text">
