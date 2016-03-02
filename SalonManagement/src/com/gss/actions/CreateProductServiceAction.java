@@ -26,6 +26,9 @@ public class CreateProductServiceAction {
 		this.productCategory = productService.getAllCategory();
 		this.serviceCategory = serviceService.getAllCategory();
 		
+		System.out.println(productList.get(0).getStrProductDesc());
+		System.out.println(serviceList.get(0).getStrServiceDesc());
+		
 		return "success";
 	}
 
