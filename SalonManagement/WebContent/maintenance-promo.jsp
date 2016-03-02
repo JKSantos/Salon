@@ -292,9 +292,6 @@
                                   <h3 class="grey-text text-darken-1">Update Product/Service</h3>
                                 </div>
                                 <div class="col s12">
-                                     <label class="red-text">(*) Indicates required field</label>
-                                </div>
-                                <div class="col s12">
                                     <img name="upload" id="prodsvc" style="width: 150px; height: 150px; margin-top: 20px;" src="./img/packIcon.png" alt=""/>
                                 </div>
                                 <div class="input-field col s5 offset-s4">
@@ -314,18 +311,18 @@
                                     <option value="service">Service</option>
                                     <option value="product">Product</option>
                                   </select>
-                                  <label>Type <span class="red-text">*</span></label>
+                                  <label>Type</label>
                                 </div>
                                 <div class="input-field col s8 offset-s2">
                                   <input type="text" class="validate" required id="prodsvcName" name="prodsvcName">
-                                  <label for="prodsvcName">Name <span class="red-text">*</span></label>
+                                  <label for="prodsvcName">Name</label>
                                 </div>
                                 <div class="input-field col s8 offset-s2">
                                   <textarea id="prodsvcDetail" name="prodsvcDetail" class="materialize-textarea"></textarea>
                                   <label for="prodsvcDetail">Details</label>
                                 </div>
                                 <div class="input-field col s8 offset-s2">
-                                    <p style="color:#9e9e9e;font-size:12px;">Category <span class="red-text">*</span></p>
+                                    <p style="color:#9e9e9e;font-size:12px;">Category</p>
                                 </div>
                                 <div class="input-field col s8 offset-s2" style="margin-top: -1px;">
                                     <select class="browser-default" id="slct1" name="selectedJob" required>
@@ -337,7 +334,7 @@
                                 </div>
                                 <div class="input-field col s4 offset-s6" style="margin-top: 20px;">
                                     <input type="text" class="validate right-align" id="prodsvcPrice" name="prodsvcPrice">
-                                    <label for="prodsvcPrice" >Price <span class="red-text">*</span></label>
+                                    <label for="prodsvcPrice" >Price</label>
                                 </div>
                               
                             <!-- </div> -->
