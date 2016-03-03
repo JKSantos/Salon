@@ -41,9 +41,10 @@ public class CreateEmployeeAction extends ActionSupport{
 		EmployeeServiceImpl empService;
 		Employee emp;
 		
-		System.out.println(path + " " + strYear + "-"+strMonth+"-" + strDay );
+		System.out.println(selectedJob);
 		
-		strBirthDate = strYear + "-" + strMonth + "-" + strDay; 
+		//strBirthDate = strYear + "-" + strMonth + "-" + strDay; 
+		strBirthDate = "1997-02-03";
 		this.datEmpBirthdate = DateHelper.parseDate(strBirthDate);
 		
 		if(grantAccess == true){

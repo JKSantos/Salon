@@ -266,7 +266,7 @@
                                             <input name="upload" type="file" accept="image/.jpg, image/.png" onchange="loadFile(event)">
                                           </div>
                                           <div class="file-path-wrapper">
-                                            <input name="strPath" value="image" class="file-path validate" type="text">
+                                            <input name="imageName" value="image" class="file-path validate" type="text">
                                           </div>
                                       </div>
                                 </div>

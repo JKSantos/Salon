@@ -43,8 +43,9 @@ public class UpdateEmployeeAction extends ActionSupport{
 		EmployeeServiceImpl empService = new EmployeeServiceImpl();
 		Employee emp = null;
 		
+		strBirthDate = "1997-01-02";
 		
-		strBirthDate = strYear + "-" + strMonth + "-" + strDay; 
+		//strBirthDate = strYear + "-" + strMonth + "-" + strDay; 
 		this.datEmpBirthdate = DateHelper.parseDate(strBirthDate);
 		
 		if(imageName.equals("image")){
