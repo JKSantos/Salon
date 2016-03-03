@@ -230,7 +230,7 @@
                                 <div class="input-field col s12">
                                     <p style="color:#9e9e9e;font-size:12px;">Position <span class="red-text">*</span></p>
                                 </div>
-                                <div class="input-field col s5" style="margin-top: -1px;">
+                                <div class="input-field col s4">
                                     <select class="browser-default" id="slct1" name="selectedJob" required>
                                         <option value="" disabled selected> </option>
                                         <c:forEach items="${empCategory}" var="name">
@@ -382,7 +382,7 @@
                                     <p style="color:#9e9e9e;font-size:12px;">Position <span class="red-text">*</span></p>
                                 </div>
                                 <div class="input-field col s4">
-                                  <select class="browser-default" id="position" name="selectedJob" autocomplete="off">
+                                  <select class="browser-default" id="updatePosition" name="selectedJob" autocomplete="off">
                                     <option value="" disabled selected>Choose...</option>
                                     <c:forEach items="${empCategory}" var="name">
                                           <%
@@ -402,9 +402,9 @@
                                   </select>
                                 </div>
                                 <div class="input-field col s2">
-                                  <button data-target="addOption" class="waves-effect waves-light btn-flat modal-option orange lighten-1">add</button>
+                                  <button data-target="updateOption" class="waves-effect waves-light btn-flat modal-optionUpdate orange lighten-1">add</button>
                                 </div>
-                                <div class="input-field col s12">
+                                <div class="input-field col s6">
                                   <p class="center">
                                         <input type="checkbox" id="access" name="access" />
                                         <label for="access">Grant Access</label>
@@ -458,6 +458,10 @@
     height: 150px !important;
   }
 
+  #updateOptionSelect {
+    height: 150px !important;
+  }
+
   #create {
     width: 55% !important;
     height: 80% !important;
@@ -477,6 +481,9 @@
     width: 40% !important;
   }
 
+  #updateAddOption {
+    width: 40% !important;
+  }
   </style>
 
   <!--Import jQuery before materialize.js-->
