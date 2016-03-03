@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html ng-app>
   
-  <%@ taglib uri="/struts-tags" prefix="s" %>
-  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-  <%@ page import="com.gss.model.Employee" %>
+
   <head>
   <link type="text/css" rel="stylesheet" href="./css/materialize.css"/>
   <link rel="stylesheet" href="./css/materialize.min.css"  media="screen,projection"/>
@@ -35,7 +33,7 @@
                             <ul>
                               <li class="orange"><a href="maintenance-emp.jsp">Employee</a></li>
                                       <li><a href="maintenance-prodsvc.jsp">Product & Service</a></li>
-                                      <li><a href="maintenance-promo.jsp">Promo</a></li>
+                                      <li><a href="#">Promo</a></li>
                                       <li><a href="#">Discount</a></li>
                                       <li><a href="#">Package</a></li>
                                       <li><a href="#">Catalogue</a></li>
@@ -77,7 +75,7 @@
                                <ul>
                                  <li class="orange"><a href="maintenance-emp.jsp">Employee</a></li>
                                  <li><a href="maintenance-prodsvc.jsp">Product & Service</a></li>
-                                 <li><a href="maintenance-promo.jsp">Promo</a></li>
+                                 <li><a href="#">Promo</a></li>
                                  <li><a href="#">Discount</a></li>
                                  <li><a href="#">Package</a></li>
                                  <li><a href="#">Catalogue</a></li>
@@ -126,22 +124,16 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-
-                                  <c:forEach items="${empList}" var="employee">
-                                    <%! String str=null; %>
-                                    <% Employee emp = (Employee)pageContext.getAttribute("employee");
-                                       str=String.valueOf(emp.getIntEmpID());
-                                    %>
                                     <tr>
-                                        <td>${employee.intEmpID}</td>
-                                        <td>${employee.strEmpFirstName} ${employee.strEmpLastName}</td>
-                                        <td>${employee.strJobQualification}</td>
+                                        <td>1</td>
+                                        <td>John Angelo Castillo</td>
+                                        <td>Cashier</td>
                                         <td class="center">01/01/01</td>
-                                        <td><a class="waves-effect waves-light modal-trigger btn-flat transparent black-text" title="Update" href="#emp<%=str%>" style="padding: 0px;"><i class="material-icons">edit</i></a>
+                                        <td><a class="waves-effect waves-light modal-trigger btn-flat transparent black-text" title="Update" href="#update" style="padding: 0px;"><i class="material-icons">edit</i></a>
                                         <a class="waves-effect waves-light modal-trigger btn-flat transparent red-text text-accent-4" href="#delete" title="Deactivate"><i class="material-icons">delete</i></a>
                                         </td>
                                     </tr>
-                                  </c:forEach>
+
 
                                     
                                 </tbody>
@@ -151,7 +143,7 @@
 
                       <!-- Modal Structure -->
                         <div id="create" class="modal modal-fixed-footer">
-                        <form class="col s12" method="post" action="createEmployee" enctype="multipart/form-data">
+                        <form class="col s12">
                           <div class="modal-content">
                             <!-- <div class="container"> -->
                             <div class="row">
@@ -164,7 +156,7 @@
                                        <label class="red-text">(*) Indicates required field</label>
                                    </div>
                                    <div class="col s4 offset-s4">
-                                       <img name="image" id="employeeimg" class="circle z-depth-1" style="width: 150px; height: 150px;" src="./img/anon.jpg" alt=""/>
+                                       <img name="upload" id="employeeimg" class="circle z-depth-1" style="width: 150px; height: 150px;" src="./img/anon.jpg" alt=""/>
                                    </div>
                                 </div>
                                 <div class="input-field col s5 offset-s4">
@@ -174,13 +166,12 @@
                                             <input name="upload" type="file" accept="image/.jpg, image/.png" onchange="loadFile(event)">
                                           </div>
                                           <div class="file-path-wrapper">
-                                            <input name="path" value="image" class="file-path validate" type="text">
+                                            <input name="strPath" value="image" class="file-path validate" type="text">
                                           </div>
                                       </div>
                                 </div>
-                                <div class = "row">
                                 <div class="input-field col s4">
-                                    <input name="strEmpFirstName" d="strEmpFirstName" type="text" class="validate active" required>
+                                    <input nime="strEmpFirstName" d="strEmpFirstName" type="text" class="validate active" required>
                                     <label for="strEmpFirstName">First Name<span class="red-text">*</span></label>
                                 </div>
                                 <div class="input-field col s4">
@@ -191,42 +182,152 @@
                                     <input name="strEmpLastName" id="strEmpLastName" type="text" class="validate" required>
                                     <label for="strEmpLastName">Last Name<span class="red-text">*</span></label>
                                 </div>
-                                </div>
-                                <div class="input-field col s3">
-                                  <select required name="strMonth">
-                                    <option value="" disabled selected>Month</option>
-                                    <option value="1">January</option>
-                                    <option value="2">February</option>
-                                    <option value="3">March</option>
-                                    <option value="4">April</option>
-                                    <option value="5">May</option>
-                                    <option value="6">June</option>
-                                    <option value="7">July</option>
-                                    <option value="8">August</option>
-                                    <option value="9">September</option>
-                                    <option value="10">October</option>
-                                    <option value="11">November</option>
-                                    <option value="12">December</option>
-                                  </select>
-                                  <label>Birthday <span class="red-text">*</span></label>
-                                </div>
-                                <div class="input-field col s2">
-                                  <input type="text" maxlength="2" class="validate" required name="strDay" id="strDay">
-                                  <label for="strDay">Day</label>
-                                </div>
-                                <div class="input-field col s3">
-                                  <input type="text" maxlength="4" class="validate" required name="strYear" id="strYear">
-                                  <label for="strYear">Year</label>
-                                </div>
                                 <div class="input-field col s4">
-                                    <input type="text" class="validate" disabled value="" id="age">
-                                    <label style="color: #9e9e9e;">Age: </label>
+                                    <input type="date" class="datepicker" id="createBirthday" placeholder=" ">
+                                    <label for="createBirthday">Birthday <span class="red-text">*</span></label>
+                                </div>
+                                <div class="input-field col s4 offset-s4">
+                                    <label for="createAge">Age</label>
+                                    <input type="text" class="validate black-text" disabled id="createAge" placeholder="">
                                 </div>
                                 <div class="input-field col s12" style="margin-left: 5px; padding: 0px;">
                                     <p style="color:#9e9e9e;font-size:11px;">Gender<span class="red-text">*</span></p>
                                 </div>
                                 <div class="input-field col s5" style="margin-top: -1px;">
-                                    <select required class="browser-default" name="strEmpGender">
+                                    <select required class="browser-default">
+                                      <option value="" disabled selected></option>
+                                      <option value="1">Male</option>
+                                      <option value="2">Female</option>
+                                    </select>
+                                </div>
+                                <div class="input-field col s1 offset-s2" style="margin-top: -4px;">
+                                  <p style="margin-top: 12px; margin-left: -7px;">(+63)</p>
+                                </div>
+                                <div class="input-field col s4" style="margin-top: -4px;">
+                                    <input name="strEmpContactNo" type="text" id="contact" class="validate" maxlength="10">
+                                    <label for="contact">Contact Number</label>
+                                </div>
+                                <div class="input-field col s12">
+                                    <input name="strEmpAddress" type="text" id="address" class="validate" required>
+                                    <label for="address">Address <span class="red-text">*</span></label>
+                                </div>
+                                <div class="input-field col s12">
+                                    <p style="color:#9e9e9e;font-size:12px;">Position <span class="red-text">*</span></p>
+                                </div>
+                                <div class="input-field col s4">
+                                  <select class="browser-default" id="position">
+                                    <option value="" disabled selected>Choose...</option>
+                                  </select>
+                                </div>
+                                <div class="input-field col s2">
+                                  <button data-target="addOption" class="waves-effect waves-light btn-flat modal-option orange lighten-1">add</button>
+                                </div>
+                                <div class="input-field col s6">
+                                  <p class="center">
+                                        <input type="checkbox" id="access" name="access" />
+                                        <label for="access">Grant Access</label>
+                                  </p>
+                                </div>
+                              
+                            <!-- </div> -->
+                            </div>
+                          </div>
+                          <div class="modal-footer">
+                              <a href="#!" class=" modal-action modal-close waves-effect waves-orange transparent btn-flat">CANCEL</a>
+                              <button class="waves-effect waves-light orange darken-3 white-text btn-flat" type="submit" value="Submit">CREATE</button>
+                          </div>
+                          </form>
+                    </div>
+
+                        <!-- add option -->
+                        <div id="addOption" class="modal" style="margin-top: 30px;">
+                          <form>
+                            <div class="modal-content">
+                              <h4>Add Another Position</h4>
+                              <div class="row">
+                                <div class="col s12">
+                                  <div class="input-field col s8 offset-s2">
+                                    <select id="addOptionSelect" class="browser-default" size="10">
+                                      <option>Position Already in Database</option>
+                                    </select>
+                                  </div>
+                                  <div class="input-field col s8 offset-s2" style="margin-top: 20px;">
+                                    <input type="text" class="validate" id="addOptionName" name="addOptionName">
+                                    <label for="addOptionName">Position Name</label>
+                                  </div>
+                                  <div class="input-field col s8 offset-s2 center">
+                                    <a href="" onclick="addOption()" class="waves-effect waves-light orange darken-4 btn-flat white-text">SAVE</a>
+                                    <a href="" class="modal-close waves-effect waves-orange transparent btn-flat white">CANCEL</a>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </form>
+                        </div>
+
+                        <!-- add option end -->
+
+                        <div id="update" class="modal modal-fixed-footer">
+                        <form class="col s12">
+                          <div class="modal-content">
+                            <!-- <div class="container"> -->
+                            <div class="row">
+                              
+                                <div class="input-field col s12">
+                                  <h3 class="grey-text text-darken-1">Update Employee</h3>
+                                </div>
+                                <div class="input-field col s12">
+                                   <div class="col s4">
+                                       <label class="red-text">(*) Indicates required field</label>
+                                   </div>
+                                   <div class="col s4 offset-s4">
+                                       <img name="empupdatedImg" id="empupdatedImg" class="circle z-depth-1" style="width: 150px; height: 150px;" src="./img/anon.jpg" alt=""/>
+                                   </div>
+                                </div>
+                                <div class="input-field col s3">
+                                  <input type="text" disabled="disabled" name="empid" id="empid">
+                                  <label for="empid">ID</label>
+                                </div>
+                                <div class="input-field col s5 offset-s1">
+                                    <div class="file-field">
+                                          <div class="btn orange">
+                                            <span class="">Image</span>
+                                            <input name="upload" type="file" accept="image/.jpg, image/.png" onchange="loadUpdate(event)">
+                                          </div>
+                                          <div class="file-path-wrapper">
+                                            <input name="strPath" value="image" class="file-path validate" type="text">
+                                          </div>
+                                      </div>
+                                </div>
+                                <div class="input-field col s3">
+                                  <input type="text" disabled="disabled" name="empdoc" id="empdoc">
+                                  <label for="empdoc">Date of Creation</label>
+                                </div>
+                                <div class="input-field col s4">
+                                    <input nime="strEmpFirstName" d="strEmpFirstName" type="text" class="validate active" required>
+                                    <label for="strEmpFirstName">First Name<span class="red-text">*</span></label>
+                                </div>
+                                <div class="input-field col s4">
+                                    <input name="strEmpMiddleName" id="strEmpMiddleName" type="text" class="validate">
+                                    <label for="strEmpMiddleName">Middle Name</label>
+                                </div>
+                                <div class="input-field col s4">
+                                    <input name="strEmpLastName" id="strEmpLastName" type="text" class="validate" required>
+                                    <label for="strEmpLastName">Last Name<span class="red-text">*</span></label>
+                                </div>
+                                <div class="input-field col s4">
+                                    <input type="date" class="datepicker" id="updateBirthday" placeholder=" ">
+                                    <label>Birthday <span class="red-text">*</span></label>
+                                </div>
+                                <div class="input-field col s4 offset-s4">
+                                    <label for="updateAge">Age</label>
+                                    <input type="text" class="validate black-text" disabled value="" id="updateAge" placeholder="">
+                                </div>
+                                <div class="input-field col s12" style="margin-left: 5px; padding: 0px;">
+                                    <p style="color:#9e9e9e;font-size:11px;">Gender<span class="red-text">*</span></p>
+                                </div>
+                                <div class="input-field col s5" style="margin-top: -1px;">
+                                    <select required class="browser-default">
                                       <option value="" disabled selected></option>
                                       <option value="1">Male</option>
                                       <option value="2">Female</option>
@@ -273,144 +374,10 @@
                           </div>
                           <div class="modal-footer">
                               <a href="#!" class=" modal-action modal-close waves-effect waves-orange transparent btn-flat">CANCEL</a>
-                              <button class="waves-effect waves-light orange darken-3 white-text btn-flat" type="submit" value="Submit">CREATE</button>
-                          </div>
-                          </form>
-                    </div>
-
-
-                       <c:forEach items="${empList}" var="employee">  
-                        <div id="emp${employee.intEmpID}" class="modal modal-fixed-footer">
-                        <form class="col s12" method="post" action="updateEmployee" enctype="multipart/form-data">
-                          <div class="modal-content">
-                            <!-- <div class="container"> -->
-                            <div class="row">
-                              
-                                <div class="input-field col s12">
-                                  <h3 class="grey-text text-darken-1">Update Employee</h3>
-                                </div>
-                                <div class="input-field col s12">
-                                   <div class="col s4 offset-s4">
-                                       <img name="empupdatedImg" id="empupdatedImg" class="circle z-depth-1" style="width: 150px; height: 150px;" src="./img/anon.jpg" alt=""/>
-                                   </div>
-                                </div>
-                                <div class="input-field col s3">
-                                  <input type="text" value="${employee.intEmpID}" name="intEmpID" id="intEmpID">
-                                  <label for="intEmpID">ID</label>
-                                </div>
-                                <div class="input-field col s5 offset-s1">
-                                    <div class="file-field">
-                                          <div class="btn orange">
-                                            <span class="">Image</span>
-                                            <input name="upload" type="file" accept="image/.jpg, image/.png" onchange="loadUpdate(event)">
-                                          </div>
-                                          <div class="file-path-wrapper">
-                                            <input name="imageName" id="imageName" value="image" class="file-path validate" type="text">
-                                          </div>
-                                      </div>
-                                </div>
-                                <div class="input-field col s3">
-                                  <input type="text" disabled="disabled" name="empdoc" id="empdoc">
-                                  <label for="empdoc">Date of Creation</label>
-                                </div>
-                                <div class="input-field col s4">
-                                    <input value="${employee.strEmpFirstName}" name="strEmpFirstName" d="strEmpFirstName" type="text" class="validate active" required>
-                                    <label for="strEmpFirstName">First Name<span class="red-text">*</span></label>
-                                </div>
-                                <div class="input-field col s4">
-                                    <input value="${employee.strEmpMiddleName}" name="strEmpMiddleName" id="strEmpMiddleName" type="text" class="validate">
-                                    <label for="strEmpMiddleName">Middle Name</label>
-                                </div>
-                                <div class="input-field col s4">
-                                    <input value="${employee.strEmpLastName}" name="strEmpLastName" id="strEmpLastName" type="text" class="validate" required>
-                                    <label for="strEmpLastName">Last Name<span class="red-text">*</span></label>
-                                </div>
-                                <div class="input-field col s3">
-                                  <select required name="strMonth">
-                                    <option value="" disabled selected>Month</option>
-                                    <option value="1">January</option>
-                                    <option value="2">February</option>
-                                    <option value="3">March</option>
-                                    <option value="4">April</option>
-                                    <option value="5">May</option>
-                                    <option value="6">June</option>
-                                    <option value="7">July</option>
-                                    <option value="8">August</option>
-                                    <option value="9">September</option>
-                                    <option value="10">October</option>
-                                    <option value="11">November</option>
-                                    <option value="12">December</option>
-                                  </select>
-                                  <label>Birthday <span class="red-text">*</span></label>
-                                </div>
-                                <div class="input-field col s2">
-                                  <input type="text" maxlength="2" class="validate" required name="strDay" id="strDay">
-                                  <label for="strDay">Day</label>
-                                </div>
-                                <div class="input-field col s3">
-                                  <input type="text" maxlength="4" class="validate" required name="strYear" id="strYear">
-                                  <label for="strYear">Year</label>
-                                </div>
-                                <div class="input-field col s4">
-                                    <input type="text" class="validate" disabled value="" id="age">
-                                    <label style="color: #9e9e9e;">Age: </label>
-                                </div>
-                                <div class="input-field col s12" style="margin-left: 5px; padding: 0px;">
-                                    <p style="color:#9e9e9e;font-size:11px;">Gender<span class="red-text">*</span></p>
-                                </div>
-                                <div class="input-field col s5" style="margin-top: -1px;">
-                                    <select name="strEmpGender" required class="browser-default">
-                                      <option disabled selected></option>
-                                      <option value="M">Male</option>
-                                      <option value="F">Female</option>
-                                    </select>
-                                </div>
-                                <div class="input-field col s1 offset-s2" style="margin-top: -4px;">
-                                  <p style="margin-top: 12px; margin-left: -7px;">(+63)</p>
-                                </div>
-                                <div class="input-field col s4" style="margin-top: -4px;">
-                                    <input  name="strEmpContactNo" value="${employee.strEmpContactNo}" name="strEmpContactNo" type="text" id="contact" class="validate" maxlength="10">
-                                    <label for="contact">Contact Number</label>
-                                </div>
-                                <div class="input-field col s12">
-                                    <input  name="strEmpAddress" value="${employee.strEmpAddress}" name="strEmpAddress" type="text" id="address" class="validate" required>
-                                    <label for="address">Address <span class="red-text">*</span></label>
-                                </div>
-                                <div class="input-field col s12">
-                                    <p style="color:#9e9e9e;font-size:12px;">Position <span class="red-text">*</span></p>
-                                </div>
-                                <div class="input-field col s5" style="margin-top: -1px;">
-                                    <select class="browser-default" id="slct1" name="selectedJob" required>
-                                        <option value="" disabled selected> </option>
-                                        <c:forEach items="${empCategory}" var="name">
-                                          <option value="${name.strCategoryName}">${name.strCategoryName }</option>
-                                        </c:forEach>
-                                    </select>
-                                </div>
-                                <div class="input-field col s2" style="margin-top: -0.2px;">
-                                    <p style="margin-top: 5px;" class="center"><a id="optionadd" class="waves-effect waves-light orange-btn"><i class="material-icons small">add</i></a><a class="waves-effect waves-light orange-btn" onclick="removeopt()"><i class="material-icons small">remove</i></a></p>
-                                </div>
-                                <div class="input-field col s4" style="margin-top: -4px;">
-                                    <input type="text" id="add-optname" class="validate">
-                                    <label for="add-optname">Another position</label>
-                                </div>
-                                <div class="input-field col s12">
-                                  <p class="center">
-                                        <input type="checkbox" id="access" name="access" />
-                                        <label for="access">Grant Access</label>
-                                  </p>
-                                </div>
-                              
-                            <!-- </div> -->
-                            </div>
-                          </div>
-                          <div class="modal-footer">
-                              <a href="#!" class=" modal-action modal-close waves-effect waves-orange transparent btn-flat">CANCEL</a>
                               <button class="waves-effect waves-light orange darken-3 white-text btn-flat" type="submit" value="Submit">UPDATE</button>
                           </div>
                           </form>
                     </div>
-                  </c:forEach>
 
 
                           <div id="delete" class="modal">
@@ -440,6 +407,10 @@
   </div>
 
   <style type="text/css">
+  #addOptionSelect {
+    height: 150px !important;
+  }
+
   #create {
     width: 55% !important;
     height: 80% !important;
@@ -454,6 +425,11 @@
   #delete {
     width: 30% !important;
   }
+
+  #addOption {
+    width: 40% !important;
+  }
+
   </style>
 
   <!--Import jQuery before materialize.js-->

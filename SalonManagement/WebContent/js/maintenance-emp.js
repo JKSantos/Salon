@@ -11,7 +11,6 @@
           } );
       } );
 
-    $(document).ready(function(){
         // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
         $('.modal-trigger').leanModal({
               dismissible: false, // Modal can be dismissed by clicking outside of the modal
@@ -20,7 +19,6 @@
               out_duration: 400, // Transition out duration
             }
           );
-      });
 
 
   $('.modal-view').leanModal({
@@ -30,6 +28,18 @@
         out_duration: 200, // Transition out duration
       }
     );
+
+  $('.modal-option').leanModal({
+        dismissible: true, // Modal can be dismissed by clicking outside of the modal
+        opacity: .2, // Opacity of modal background
+        in_duration: 300, // Transition in duration
+        out_duration: 200, // Transition out duration
+      }
+    );
+
+  $('#addOptionSelect').click(function(){
+      $(this).siblings('select').css('width', $(this).outerWidth(true)).toggle();
+  });
 
 
 
@@ -125,3 +135,99 @@
 
           y.add(option);
       }
+
+
+      // add another option BEGIN
+      function addOption(){
+        // var newOpt = document.getElementById('addOptionName').val();
+        // var option = document.createElement("option");
+        // option.text = newOpt;
+
+        // var selectbox = document.getElementById('position');
+        // selectbox.addOption(option);
+
+      }
+      // add another option END
+
+
+      // bday BEGIN
+      $('.datepicker').pickadate({
+        selectYears: 40,
+        labelMonthNext: 'Next month',
+        labelMonthPrev: 'Previous month',
+        labelMonthSelect: 'Select a month',
+        labelYearSelect: 'Select a year',
+        monthsFull: [ 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December' ],
+        monthsShort: [ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec' ],
+        weekdaysFull: [ 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday' ],
+        weekdaysShort: [ 'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat' ],
+        weekdaysLetter: [ 'S', 'M', 'T', 'W', 'T', 'F', 'S' ],
+        today: 'Today',
+        clear: 'Clear',
+        close: 'Close',
+        format: 'mmmm/d/yyyy',
+        max: 'Today',
+        yearRange: "1970:Today"
+      });
+      // bday END
+
+      $(document).ready(function(){
+
+            $('#createBirthday').change(function(){
+
+            var today = new Date();
+            var dd = Number(today.getDate());
+            var mm = Number(today.getMonth()+1);
+
+            var yyyy = Number(today.getFullYear()); 
+
+            var myBD = $('#createBirthday').val();
+            var myBDM = Number(myBD.split("/")[0])
+            var myBDD = Number(myBD.split("/")[1])
+            var myBDY = Number(myBD.split("/")[2])
+            var age = yyyy - myBDY;
+
+                    if(mm < myBDM)
+                    {
+                    age = age - 1;      
+                    }
+                    else if(mm == myBDM && dd < myBDD)
+                    {
+                    age = age - 1;
+                    }
+
+                    $('#createAge').val(age);
+                });
+
+      });
+
+
+      $(document).ready(function(){
+
+            $('#updateBirthday').change(function(){
+
+            var today = new Date();
+            var dd = Number(today.getDate());
+            var mm = Number(today.getMonth()+1);
+
+            var yyyy = Number(today.getFullYear()); 
+
+            var myBD = $('#updateBirthday').val();
+            var myBDM = Number(myBD.split("/")[0])
+            var myBDD = Number(myBD.split("/")[1])
+            var myBDY = Number(myBD.split("/")[2])
+            var age = yyyy - myBDY;
+
+                    if(mm < myBDM)
+                    {
+                    age = age - 1;      
+                    }
+                    else if(mm == myBDM && dd < myBDD)
+                    {
+                    age = age - 1;
+                    }
+
+                    $('#updateAge').val(age);
+                });
+
+      });
