@@ -21,5 +21,7 @@ public interface EmployeeRepository {
 	public List<EmployeeCategory> getAllCategory();
 	
 	public List<Job> getEmployeeJob(int empID);
+	
+	public boolean deactivateEmployee(int empID);
 
 }

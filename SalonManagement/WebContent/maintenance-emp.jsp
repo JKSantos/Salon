@@ -4,6 +4,7 @@
   <%@ taglib uri="/struts-tags" prefix="s" %>
   <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
   <%@ page import="com.gss.model.Employee" %>
+  <%@ page import="com.gss.model.EmployeeCategory" %>
   <head>
   <link type="text/css" rel="stylesheet" href="./css/materialize.css"/>
   <link rel="stylesheet" href="./css/materialize.min.css"  media="screen,projection"/>
@@ -18,6 +19,14 @@
   </head>
 
   <body class="blue-grey lighten-5">
+  <%!
+      String month = null;
+      String gender = null;
+      String position = null;
+      String granAccess = null;
+  %>
+
+
   <div class="wrapper">
             <header class="headnav">
                 <ul id="slide-out" class="side-nav fixed z-depth-0">
@@ -131,6 +140,7 @@
                                     <%! String str=null; %>
                                     <% Employee emp = (Employee)pageContext.getAttribute("employee");
                                        str=String.valueOf(emp.getIntEmpID());
+                                       String de = str;
                                     %>
                                     <tr>
                                         <td>${employee.intEmpID}</td>
@@ -138,7 +148,7 @@
                                         <td>${employee.strJobQualification}</td>
                                         <td class="center">01/01/01</td>
                                         <td><a class="waves-effect waves-light modal-trigger btn-flat transparent black-text" title="Update" href="#emp<%=str%>" style="padding: 0px;"><i class="material-icons">edit</i></a>
-                                        <a class="waves-effect waves-light modal-trigger btn-flat transparent red-text text-accent-4" href="#delete" title="Deactivate"><i class="material-icons">delete</i></a>
+                                        <a class="waves-effect waves-light modal-trigger btn-flat transparent red-text text-accent-4" href="#de<%=de%>" title="Deactivate"><i class="material-icons">delete</i></a>
                                         </td>
                                     </tr>
                                   </c:forEach>
@@ -295,7 +305,7 @@
                                    </div>
                                 </div>
                                 <div class="input-field col s3">
-                                  <input type="text" value="${employee.intEmpID}" name="intEmpID" id="intEmpID">
+                                  <input type="hidden" value="${employee.intEmpID}" name="intEmpID" id="intEmpID">
                                   <label for="intEmpID">ID</label>
                                 </div>
                                 <div class="input-field col s5 offset-s1">
@@ -325,21 +335,36 @@
                                     <input value="${employee.strEmpLastName}" name="strEmpLastName" id="strEmpLastName" type="text" class="validate" required>
                                     <label for="strEmpLastName">Last Name<span class="red-text">*</span></label>
                                 </div>
+                                <%
+                                    Employee updateEmp = (Employee)pageContext.getAttribute("employee");
+                                    String gender = updateEmp.getStrEmpGender();
+                                    month = String.valueOf(updateEmp.getStrEmpGender());
+                                    String male = null;
+                                    String female = null;
+                                    String position = updateEmp.getStrJobQualification();
+
+                                    if(month.equals("M")){
+                                      male = "selected"; female="";
+                                    }
+                                    else{
+                                      female = "selected"; male="";
+                                    }
+                                %>
                                 <div class="input-field col s3">
                                   <select required name="strMonth">
-                                    <option value="" disabled selected>Month</option>
-                                    <option value="1">January</option>
-                                    <option value="2">February</option>
-                                    <option value="3">March</option>
-                                    <option value="4">April</option>
-                                    <option value="5">May</option>
-                                    <option value="6">June</option>
-                                    <option value="7">July</option>
-                                    <option value="8">August</option>
-                                    <option value="9">September</option>
-                                    <option value="10">October</option>
-                                    <option value="11">November</option>
-                                    <option value="12">December</option>
+                                    <option value="" disabled>Month</option>
+                                    <option value="1" >January</option>
+                                    <option value="2" >February</option>
+                                    <option value="3" >March</option>
+                                    <option value="4" >April</option>
+                                    <option value="5" >May</option>
+                                    <option value="6" >June</option>
+                                    <option value="7" >July</option>
+                                    <option value="8" >August</option>
+                                    <option value="9" >September</option>
+                                    <option value="10" >October</option>
+                                    <option value="11" >November</option>
+                                    <option value="12" >December</option>
                                   </select>
                                   <label>Birthday <span class="red-text">*</span></label>
                                 </div>
@@ -359,10 +384,11 @@
                                     <p style="color:#9e9e9e;font-size:11px;">Gender<span class="red-text">*</span></p>
                                 </div>
                                 <div class="input-field col s5" style="margin-top: -1px;">
-                                    <select name="strEmpGender" required class="browser-default">
+                                    <select name="strEmpGender" required class="browser-default" autocomplete="off">
                                       <option disabled selected></option>
-                                      <option value="M">Male</option>
-                                      <option value="F">Female</option>
+
+                                      <option value="M" <%out.println(male);%>>Male</option>
+                                      <option value="F" <%out.println(female);%>>Female</option>
                                     </select>
                                 </div>
                                 <div class="input-field col s1 offset-s2" style="margin-top: -4px;">
@@ -380,10 +406,22 @@
                                     <p style="color:#9e9e9e;font-size:12px;">Position <span class="red-text">*</span></p>
                                 </div>
                                 <div class="input-field col s5" style="margin-top: -1px;">
-                                    <select class="browser-default" id="slct1" name="selectedJob" required>
+                                    <select class="browser-default" id="slct1" name="selectedJob" required autocomplete="off">
                                         <option value="" disabled selected> </option>
                                         <c:forEach items="${empCategory}" var="name">
-                                          <option value="${name.strCategoryName}">${name.strCategoryName }</option>
+                                          <%
+                                              String empPosition = null;
+                                              EmployeeCategory cate = (EmployeeCategory)pageContext.getAttribute("name");
+                                              if(cate.getStrCategoryName().equals(position)){
+                                                  empPosition = "selected";
+                                              }
+                                              else{
+                                                  empPosition = "";
+                                              }
+
+
+                                          %>
+                                          <option value="${name.strCategoryName}" <%out.println(empPosition);%>>${name.strCategoryName }</option>
                                         </c:forEach>
                                     </select>
                                 </div>
@@ -412,13 +450,15 @@
                     </div>
                   </c:forEach>
 
-
-                          <div id="delete" class="modal">
+                  <c:forEach items="${empList}" var="employee">
+                      <div id="de${employee.intEmpID}" class="modal">
+                        <form method="get" action="deactivateEmployee">
                           <div class="container">
                             <div class="modal-content">
                               <div class="row">
                                 <h5 class="red-text">Warning!</h5>
                                 <p>Are you sure you want to deactivate this account?</p>
+                                <input type="hidden" size="10" name="intEmpID" value="${employee.intEmpID}">
                               </div>
                             </div>
                               <div class="col s12 center" style="margin-bottom: 30px;">
@@ -426,7 +466,9 @@
                                 <a href="#" class="modal-action modal-close waves-effect waves-light transparent btn-flat black-text">NO</a>
                               </div>
                             </div>
+                          </form>
                       </div>
+                    </c:forEach>
 <!--                     <div class="aside aside2 z-depth-barts">
                      
                     </div> -->

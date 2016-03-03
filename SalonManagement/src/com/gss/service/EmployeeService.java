@@ -20,5 +20,6 @@ public interface EmployeeService {
 	
 	public List<EmployeeCategory> getAllCategory();
 	
+	public boolean deactivateEmployee(int empID);
 
 }

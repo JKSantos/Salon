@@ -70,5 +70,9 @@
 			<result name="success">transactions-inventory.jsp</result>
 		</action>
 		
+		<action name="deactivateEmployee" class="com.gss.actions.DeactivateEmployeeAction" method="execute">
+			<result name="success">empMaintenanceRedirect.jsp</result>
+			<result name="failed">maintenance-emp.jsp</result>
+		</action>
 	</package>
 </struts>

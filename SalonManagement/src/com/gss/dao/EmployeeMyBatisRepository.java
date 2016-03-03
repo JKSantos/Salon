@@ -66,6 +66,12 @@ public class EmployeeMyBatisRepository implements EmployeeRepository{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public boolean deactivateEmployee(int empID) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 	
 	
 
