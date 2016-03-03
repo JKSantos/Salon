@@ -194,25 +194,25 @@
                                     <p style="color:#9e9e9e;font-size:12px;">Type <span class="red-text">*</span></p>
                                 </div>
                                 <div class="input-field col s8 offset-s2" style="margin-top: -1px;">
-                                  <select class="browser-default" required >
+                                  <select name="strItemCate" class="browser-default" required >
                                     <option value="" disabled="disabled" selected></option>
                                     <option value="service">Service</option>
                                     <option value="product">Product</option>
                                   </select>
                                 </div>
                                 <div class="input-field col s8 offset-s2">
-                                  <input type="text" class="validate" required id="prodsvcName" name="prodsvcName">
+                                  <input type="text" class="validate" required id="prodsvcName" name="strItemName">
                                   <label for="prodsvcName">Name <span class="red-text">*</span></label>
                                 </div>
                                 <div class="input-field col s8 offset-s2">
-                                  <textarea id="prodsvcDetail" name="prodsvcDetail" class="materialize-textarea"></textarea>
+                                  <textarea id="prodsvcDetail" name="strItemDetails" class="materialize-textarea"></textarea>
                                   <label for="prodsvcDetail">Details</label>
                                 </div>
                                 <div class="input-field col s8 offset-s2">
                                     <p style="color:#9e9e9e;font-size:12px;">Category <span class="red-text">*</span></p>
                                 </div>
                                 <div class="input-field col s8 offset-s2" style="margin-top: -1px;">
-                                    <select class="browser-default" id="slct1" name="selectedJob" required>
+                                    <select class="browser-default" id="slct1" name="strItemCategory" required>
                                         <option value="" disabled selected> </option>
                                         <c:forEach items="${productCategory}" var="product">
                                           <option value="${product}">${product}</option>
@@ -222,7 +222,7 @@
                                     </select>
                                 </div>
                                 <div class="input-field col s4 offset-s6" style="margin-top: 20px;">
-                                    <input type="text" class="validate right-align" id="prodsvcPrice" name="prodsvcPrice">
+                                    <input type="text" class="validate right-align" id="prodsvcPrice" name="dblItemPrice">
                                     <label for="prodsvcPrice">Price <span class="red-text">*</span></label>
                                 </div>
                               

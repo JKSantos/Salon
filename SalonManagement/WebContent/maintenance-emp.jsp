@@ -230,10 +230,13 @@
                                 <div class="input-field col s12">
                                     <p style="color:#9e9e9e;font-size:12px;">Position <span class="red-text">*</span></p>
                                 </div>
-                                <div class="input-field col s4">
-                                  <select class="browser-default" id="position">
-                                    <option value="" disabled selected>Choose...</option>
-                                  </select>
+                                <div class="input-field col s5" style="margin-top: -1px;">
+                                    <select class="browser-default" id="slct1" name="selectedJob" required>
+                                        <option value="" disabled selected> </option>
+                                        <c:forEach items="${empCategory}" var="name">
+                                          <option value="${name.strCategoryName}">${name.strCategoryName }</option>
+                                        </c:forEach>
+                                    </select>
                                 </div>
                                 <div class="input-field col s2">
                                   <button data-target="addOption" class="waves-effect waves-light btn-flat modal-option orange lighten-1">add</button>
