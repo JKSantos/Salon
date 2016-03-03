@@ -1,7 +1,14 @@
 <!DOCTYPE html>
 <html ng-app>
   
+<<<<<<< HEAD
 
+=======
+  <%@ taglib uri="/struts-tags" prefix="s" %>
+  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+  <%@ page import="com.gss.model.Employee" %>
+  <%@ page import="com.gss.model.EmployeeCategory" %>
+>>>>>>> bb0a7c0732bc68b6587c602161a4894c5e90bc9d
   <head>
   <link type="text/css" rel="stylesheet" href="./css/materialize.css"/>
   <link rel="stylesheet" href="./css/materialize.min.css"  media="screen,projection"/>
@@ -16,6 +23,14 @@
   </head>
 
   <body class="blue-grey lighten-5">
+  <%!
+      String month = null;
+      String gender = null;
+      String position = null;
+      String granAccess = null;
+  %>
+
+
   <div class="wrapper">
             <header class="headnav">
                 <ul id="slide-out" class="side-nav fixed z-depth-0">
@@ -124,13 +139,19 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                  <c:forEach items="${empList}" var="employee">
+                                    <%! String str=null; %>
+                                    <% Employee emp = (Employee)pageContext.getAttribute("employee");
+                                       str=String.valueOf(emp.getIntEmpID());
+                                       String de = str;
+                                    %>
                                     <tr>
                                         <td>1</td>
                                         <td>John Angelo Castillo</td>
                                         <td>Cashier</td>
                                         <td class="center">01/01/01</td>
-                                        <td><a class="waves-effect waves-light modal-trigger btn-flat transparent black-text" title="Update" href="#update" style="padding: 0px;"><i class="material-icons">edit</i></a>
-                                        <a class="waves-effect waves-light modal-trigger btn-flat transparent red-text text-accent-4" href="#delete" title="Deactivate"><i class="material-icons">delete</i></a>
+                                        <td><a class="waves-effect waves-light modal-trigger btn-flat transparent black-text" title="Update" href="#emp<%=str%>" style="padding: 0px;"><i class="material-icons">edit</i></a>
+                                        <a class="waves-effect waves-light modal-trigger btn-flat transparent red-text text-accent-4" href="#de<%=de%>" title="Deactivate"><i class="material-icons">delete</i></a>
                                         </td>
                                     </tr>
 
@@ -277,16 +298,13 @@
                                   <h3 class="grey-text text-darken-1">Update Employee</h3>
                                 </div>
                                 <div class="input-field col s12">
-                                   <div class="col s4">
-                                       <label class="red-text">(*) Indicates required field</label>
-                                   </div>
                                    <div class="col s4 offset-s4">
                                        <img name="empupdatedImg" id="empupdatedImg" class="circle z-depth-1" style="width: 150px; height: 150px;" src="./img/anon.jpg" alt=""/>
                                    </div>
                                 </div>
                                 <div class="input-field col s3">
-                                  <input type="text" disabled="disabled" name="empid" id="empid">
-                                  <label for="empid">ID</label>
+                                  <input type="hidden" value="${employee.intEmpID}" name="intEmpID" id="intEmpID">
+                                  <label for="intEmpID">ID</label>
                                 </div>
                                 <div class="input-field col s5 offset-s1">
                                     <div class="file-field">
@@ -305,7 +323,7 @@
                                 </div>
                                 <div class="input-field col s4">
                                     <input nime="strEmpFirstName" d="strEmpFirstName" type="text" class="validate active" required>
-                                    <label for="strEmpFirstName">First Name<span class="red-text">*</span></label>
+                                    <label for="strEmpFirstName">First Name</label>
                                 </div>
                                 <div class="input-field col s4">
                                     <input name="strEmpMiddleName" id="strEmpMiddleName" type="text" class="validate">
@@ -313,24 +331,39 @@
                                 </div>
                                 <div class="input-field col s4">
                                     <input name="strEmpLastName" id="strEmpLastName" type="text" class="validate" required>
-                                    <label for="strEmpLastName">Last Name<span class="red-text">*</span></label>
+                                    <label for="strEmpLastName">Last Name</label>
                                 </div>
+                                <%
+                                    Employee updateEmp = (Employee)pageContext.getAttribute("employee");
+                                    String gender = updateEmp.getStrEmpGender();
+                                    month = String.valueOf(updateEmp.getStrEmpGender());
+                                    String male = null;
+                                    String female = null;
+                                    String position = updateEmp.getStrJobQualification();
+
+                                    if(month.equals("M")){
+                                      male = "selected"; female="";
+                                    }
+                                    else{
+                                      female = "selected"; male="";
+                                    }
+                                %>
                                 <div class="input-field col s4">
                                     <input type="date" class="datepicker" id="updateBirthday" placeholder=" ">
-                                    <label>Birthday <span class="red-text">*</span></label>
+                                    <label>Birthday</label>
                                 </div>
                                 <div class="input-field col s4 offset-s4">
                                     <label for="updateAge">Age</label>
                                     <input type="text" class="validate black-text" disabled value="" id="updateAge" placeholder="">
                                 </div>
                                 <div class="input-field col s12" style="margin-left: 5px; padding: 0px;">
-                                    <p style="color:#9e9e9e;font-size:11px;">Gender<span class="red-text">*</span></p>
+                                    <p style="color:#9e9e9e;font-size:11px;">Gender</p>
                                 </div>
                                 <div class="input-field col s5" style="margin-top: -1px;">
-                                    <select required class="browser-default">
-                                      <option value="" disabled selected></option>
-                                      <option value="1">Male</option>
-                                      <option value="2">Female</option>
+                                    <select name="strEmpGender" required class="browser-default" autocomplete="off">
+                                      <option disabled selected></option>
+                                      <option value="M" <%out.println(male);%>>Male</option>
+                                      <option value="F" <%out.println(female);%>>Female</option>
                                     </select>
                                 </div>
                                 <div class="input-field col s1 offset-s2" style="margin-top: -4px;">
@@ -342,25 +375,35 @@
                                 </div>
                                 <div class="input-field col s12">
                                     <input name="strEmpAddress" type="text" id="address" class="validate" required>
-                                    <label for="address">Address <span class="red-text">*</span></label>
+                                    <label for="address">Address</label>
+                                </div>
+                                <div class="input-field col s12">
+                                    <p style="color:#9e9e9e;font-size:12px;">Position</p>
                                 </div>
                                 <div class="input-field col s12">
                                     <p style="color:#9e9e9e;font-size:12px;">Position <span class="red-text">*</span></p>
                                 </div>
-                                <div class="input-field col s5" style="margin-top: -1px;">
-                                    <select class="browser-default" id="slct1" name="selectedJob" required>
-                                        <option value="" disabled selected> </option>
-                                        <c:forEach items="${empCategory}" var="name">
-                                          <option value="${name.strCategoryName}">${name.strCategoryName }</option>
-                                        </c:forEach>
-                                    </select>
+                                <div class="input-field col s4">
+                                  <select class="browser-default" id="position" name="selectedJob" autocomplete="off">
+                                    <option value="" disabled selected>Choose...</option>
+                                    <c:forEach items="${empCategory}" var="name">
+                                          <%
+                                              String empPosition = null;
+                                              EmployeeCategory cate = (EmployeeCategory)pageContext.getAttribute("name");
+                                              if(cate.getStrCategoryName().equals(position)){
+                                                  empPosition = "selected";
+                                              }
+                                              else{
+                                                  empPosition = "";
+                                              }
+
+
+                                          %>
+                                          <option value="${name.strCategoryName}" <%out.println(empPosition);%>>${name.strCategoryName }</option>
+                                  </select>
                                 </div>
-                                <div class="input-field col s2" style="margin-top: -0.2px;">
-                                    <p style="margin-top: 5px;" class="center"><a id="optionadd" class="waves-effect waves-light orange-btn"><i class="material-icons small">add</i></a><a class="waves-effect waves-light orange-btn" onclick="removeopt()"><i class="material-icons small">remove</i></a></p>
-                                </div>
-                                <div class="input-field col s4" style="margin-top: -4px;">
-                                    <input type="text" id="add-optname" class="validate">
-                                    <label for="add-optname">Another position</label>
+                                <div class="input-field col s2">
+                                  <button data-target="addOption" class="waves-effect waves-light btn-flat modal-option orange lighten-1">add</button>
                                 </div>
                                 <div class="input-field col s12">
                                   <p class="center">
@@ -379,13 +422,15 @@
                           </form>
                     </div>
 
-
-                          <div id="delete" class="modal">
+                  <c:forEach items="${empList}" var="employee">
+                      <div id="de${employee.intEmpID}" class="modal">
+                        <form method="get" action="deactivateEmployee">
                           <div class="container">
                             <div class="modal-content">
                               <div class="row">
                                 <h5 class="red-text">Warning!</h5>
                                 <p>Are you sure you want to deactivate this account?</p>
+                                <input type="hidden" size="10" name="intEmpID" value="${employee.intEmpID}">
                               </div>
                             </div>
                               <div class="col s12 center" style="margin-bottom: 30px;">
@@ -393,7 +438,9 @@
                                 <a href="#" class="modal-action modal-close waves-effect waves-light transparent btn-flat black-text">NO</a>
                               </div>
                             </div>
+                          </form>
                       </div>
+                    </c:forEach>
 <!--                     <div class="aside aside2 z-depth-barts">
                      
                     </div> -->

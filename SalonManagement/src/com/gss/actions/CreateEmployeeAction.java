@@ -32,20 +32,31 @@ public class CreateEmployeeAction extends ActionSupport{
 	private String contentType;
 	private String filename;
 	private String selectedJob;
+	private boolean grantAccess;
 	
 	public String execute(){
 		
 		String strBirthDate = null;
 		String path = file.getAbsolutePath();
+		EmployeeServiceImpl empService;
+		Employee emp;
 		
 		System.out.println(path + " " + strYear + "-"+strMonth+"-" + strDay );
 		
 		strBirthDate = strYear + "-" + strMonth + "-" + strDay; 
 		this.datEmpBirthdate = DateHelper.parseDate(strBirthDate);
 		
-		Employee emp = new Employee(1, strEmpLastName, strEmpFirstName, strEmpMiddleName, datEmpBirthdate, strEmpGender, strEmpAddress, strEmpContactNo, "A", "no account", "NO ACCOUNT", path, null, selectedJob);
-		EmployeeServiceImpl empService = new EmployeeServiceImpl();
-		
+		if(grantAccess == true){
+			System.out.print(grantAccess);
+			emp = new Employee(1, strEmpLastName.trim().toUpperCase(), strEmpFirstName.trim().toUpperCase(), strEmpMiddleName.trim().toUpperCase(), datEmpBirthdate, strEmpGender, strEmpAddress.trim().toUpperCase(), strEmpContactNo, "A", "NO ACCESS", "NO ACCESS", path, null, selectedJob);
+			empService = new EmployeeServiceImpl();
+		}
+		else{
+			System.out.print(grantAccess);
+			emp = new Employee(1, strEmpLastName.trim().toUpperCase(), strEmpFirstName.trim().toUpperCase(), strEmpMiddleName.trim().toUpperCase(), datEmpBirthdate, strEmpGender, strEmpAddress.trim().toUpperCase(), strEmpContactNo, "A", "NO ACCESS", "NO ACCESS", path, null, selectedJob);
+			empService = new EmployeeServiceImpl();
+		}
+
 		if(empService.create(emp) == true)
 		{	
 			System.out.print("success");
@@ -200,5 +211,13 @@ public class CreateEmployeeAction extends ActionSupport{
 
 	public void setStrEmpBirthdate(String strEmpBirthdate) {
 		this.strEmpBirthdate = strEmpBirthdate;
+	}
+
+	public boolean isGrantAccess() {
+		return grantAccess;
+	}
+
+	public void setGrantAccess(boolean grantAccess) {
+		this.grantAccess = grantAccess;
 	}
 }

@@ -64,8 +64,16 @@ public class EmployeeJDBCRepository implements EmployeeRepository{
 				strEmpAddress = set.getString(8);
 				strEmpContactNo = set.getString(9);
 				strEmpStatus = set.getString(10);
-				strEmpUsername = set.getString(11);
-				strEmpPassword = set.getString(12);
+				if(set.getString(11) == null){
+					strEmpUsername = "NO ACCESS";
+					strEmpPassword = "NO ACCESS";	
+				}
+				else
+				{
+					strEmpUsername = set.getString(11);
+					strEmpPassword = set.getString(12);
+				}
+				
 				blobEmpPhoto = "Empty";
 				bytActualImage = set.getBytes(13);
 				
@@ -203,20 +211,8 @@ public class EmployeeJDBCRepository implements EmployeeRepository{
 			pre.setString(11, emp.getStrEmpPassword());
 			pre.setBinaryStream(12, (InputStream)fileInput, (int)imageFile.length());
 			
-			ResultSet set = pre.executeQuery();
-			while(set.next())
-				intEmpID = set.getInt(1);
+			pre.executeQuery();
 			pre.close();
-			
-//			for(int intCtr = 0; intCtr < jobList.size(); intCtr++){
-//				
-//				PreparedStatement pre2 = con.prepareStatement(strQuery2);
-//				pre2.setInt(1, intEmpID);
-//				pre2.setString(2, jobList.get(intCtr).getStrJobDesc());
-//				
-//				pre2.execute();
-//				pre2.close();
-//			}
 			con.close();
 			
 			return true;
@@ -364,6 +360,30 @@ public class EmployeeJDBCRepository implements EmployeeRepository{
 		catch(Exception e){
 			System.out.println(e.fillInStackTrace());
 			return null;
+		}
+	}
+
+	@Override
+	public boolean deactivateEmployee(int empID) {
+		
+		JDBCConnection jdbc = new JDBCConnection();
+		Connection con = jdbc.getConnection();
+		String query = "CALL deactivateEmployee(?)";
+		
+		try{
+			
+			PreparedStatement pre = con.prepareStatement(query);
+			pre.setInt(1, empID);
+			
+			pre.executeQuery();
+			pre.close();
+			con.close();
+			
+			return true;
+		}
+		catch(Exception e){
+			System.out.print(e.fillInStackTrace());
+			return false;
 		}
 	}
 
