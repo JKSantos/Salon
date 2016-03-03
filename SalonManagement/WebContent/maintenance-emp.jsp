@@ -1,14 +1,9 @@
 <!DOCTYPE html>
 <html ng-app>
-  
-<<<<<<< HEAD
-
-=======
   <%@ taglib uri="/struts-tags" prefix="s" %>
   <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
   <%@ page import="com.gss.model.Employee" %>
   <%@ page import="com.gss.model.EmployeeCategory" %>
->>>>>>> bb0a7c0732bc68b6587c602161a4894c5e90bc9d
   <head>
   <link type="text/css" rel="stylesheet" href="./css/materialize.css"/>
   <link rel="stylesheet" href="./css/materialize.min.css"  media="screen,projection"/>
@@ -155,7 +150,7 @@
                                         </td>
                                     </tr>
 
-
+									</c:forEach>
                                     
                                 </tbody>
                             </table>
@@ -400,6 +395,7 @@
 
                                           %>
                                           <option value="${name.strCategoryName}" <%out.println(empPosition);%>>${name.strCategoryName }</option>
+                                      </c:forEach>    
                                   </select>
                                 </div>
                                 <div class="input-field col s2">
