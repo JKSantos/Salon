@@ -133,8 +133,8 @@
                                         <td>${product.strProductName}</td>
                                         <td>Product</td>
                                         <td>${product.dblProductPrice}</td>
-                                        <td><a class="waves-effect waves-light modal-trigger btn-flat transparent black-text" title="Update" href="#prod<%=string%>" style="padding: 0px;"><i class="material-icons">edit</i></a>
                                         <td>01/01/01</td>
+                                        <td><a class="waves-effect waves-light modal-trigger btn-flat transparent black-text" title="Update" href="#prod<%=string%>" style="padding: 0px;"><i class="material-icons">edit</i></a>
                                         <a class="waves-effect waves-light modal-trigger btn-flat transparent red-text text-accent-4" href="#delete" title="Deactivate"><i class="material-icons">delete</i></a>
                                         </td>
                                     </tr>
@@ -149,8 +149,8 @@
                                         <td>${service.strServiceName}</td>
                                         <td>Service</td>
                                         <td>${service.dblServicePrice}</td>
-                                        <td><a class="waves-effect waves-light modal-trigger btn-flat transparent black-text" title="Update" href="#serv<%=strService%>" style="padding: 0px;"><i class="material-icons">edit</i></a>
                                         <td>01/01/01</td>
+                                        <td><a class="waves-effect waves-light modal-trigger btn-flat transparent black-text" title="Update" href="#serv<%=strService%>" style="padding: 0px;"><i class="material-icons">edit</i></a>
                                         <a class="waves-effect waves-light modal-trigger btn-flat transparent red-text text-accent-4" href="#delete" title="Deactivate"><i class="material-icons">delete</i></a>
                                         </td>
                                     </tr>
@@ -242,6 +242,7 @@
                         <%! String strProdID = null; %>
                         <% Product prodID = (Product)pageContext.getAttribute("product");
                            strProdID = String.valueOf(prodID.getIntProductID());
+                           String productCate = prodID.getStrProductCategory();
                         %>
                         <div id="prod<%=strProdID%>" class="modal modal-fixed-footer">
                         <form class="col s12">
@@ -270,6 +271,7 @@
                                       </div>
                                 </div>
                                 <div class="input-field col s8 offset-s2">
+                                  <input type="hidden" name="intProductId" value="${product.intProductID}">
                                   <select class="browser-default" required>
                                     <option value="service" >Service</option>
                                     <option value="product" selected>Product</option>
@@ -277,21 +279,33 @@
                                   
                                 </div>
                                 <div class="input-field col s8 offset-s2">
-                                  <input value="${product.intProductID}" type="text" class="validate" required id="prodsvcName" name="prodsvcName">
+                                  <input value="${product.strProductName}" type="text" class="validate" required id="prodsvcName" name="prodsvcName">
                                   <label for="prodsvcName">Name <span class="red-text">*</span></label>
                                 </div>
                                 <div class="input-field col s8 offset-s2">
-                                  <textarea value="${product.strProductName}" id="prodsvcDetail" name="prodsvcDetail" class="materialize-textarea"></textarea>
+                                  <textarea id="prodsvcDetail" name="prodsvcDetail" class="materialize-textarea">${product.strProductDesc}</textarea>
                                   <label for="prodsvcDetail">Details</label>
                                 </div>
                                 <div class="input-field col s8 offset-s2">
                                     <p style="color:#9e9e9e;font-size:12px;">Category <span class="red-text">*</span></p>
                                 </div>
                                 <div class="input-field col s8 offset-s2" style="margin-top: -1px;">
-                                    <select class="browser-default" id="slct1" name="selectedJob" required>
+                                    <select class="browser-default" id="slct1" name="selectedJob" required autocomplete="off">
                                         <option value="" disabled selected> </option>
                                         <c:forEach items="${productCategory}" var="cate">
-                                          <option value="${cate}">${cate}</option>
+                                          <%
+                                              String cate = (String)pageContext.getAttribute("cate");
+                                              String selectedProduct = null;
+                                              System.out.println(cate + "<<<<<<<<<<" + productCate);
+                                              if(productCate.equals(cate)){
+                                                  selectedProduct = "selected";
+                                                  System.out.print(selectedProduct + "<-------------");
+                                              }
+                                              else {
+                                                  selectedProduct = "";
+                                              }
+                                          %>
+                                          <option value="${cate}" <%out.println(selectedProduct);%>>${cate}</option>
                                         </c:forEach>
                                     </select>
                                 </div>
