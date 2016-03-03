@@ -245,7 +245,7 @@
                            String productCate = prodID.getStrProductCategory();
                         %>
                         <div id="prod<%=strProdID%>" class="modal modal-fixed-footer">
-                        <form class="col s12">
+                        <form class="col s12" method="get" action="updateItem">
                           <div class="modal-content">
                             <!-- <div class="container"> -->
                             <div class="row">
@@ -261,36 +261,36 @@
                                 </div>
                                 <div class="input-field col s5 offset-s4">
                                     <div class="file-field">
-                                                                  <div class="btn orange">
-                                                                    <span class="">Image</span>
-                                                                    <input name="upload" type="file" accept="image/*" onchange="ServiceImage(this)">
-                                                                  </div>
-                                                                  <div class="file-path-wrapper">
-                                                                    <input class="file-path validate" type="text">
-                                                                  </div>
-                                                              </div>
+                                      <div class="btn orange">
+                                        <span class="">Image</span>
+                                          <input name="productImage" type="file" accept="image/*" onchange="ServiceImage(this)">
+                                        </div>
+                                        <div class="file-path-wrapper">
+                                          <input name="imageName" class="file-path validate" type="text">
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="input-field col s8 offset-s2">
-                                  <input type="hidden" name="intProductId" value="${product.intProductID}">
-                                  <select class="browser-default" required>
+                                  <input type="hidden" name="intItemId" value="${product.intProductID}">
+                                  <select class="browser-default" name="strItemCate" required>
                                     <option value="service" >Service</option>
                                     <option value="product" selected>Product</option>
                                   </select>
                                   
                                 </div>
                                 <div class="input-field col s8 offset-s2">
-                                  <input value="${product.strProductName}" type="text" class="validate" required id="prodsvcName" name="prodsvcName">
+                                  <input value="${product.strProductName}" type="text" class="validate" required id="prodsvcName" name="strItemName">
                                   <label for="prodsvcName">Name <span class="red-text">*</span></label>
                                 </div>
                                 <div class="input-field col s8 offset-s2">
-                                  <textarea id="prodsvcDetail" name="prodsvcDetail" class="materialize-textarea">${product.strProductDesc}</textarea>
+                                  <textarea id="prodsvcDetail" name="strItemDetails" class="materialize-textarea">${product.strProductDesc}</textarea>
                                   <label for="prodsvcDetail">Details</label>
                                 </div>
                                 <div class="input-field col s8 offset-s2">
                                     <p style="color:#9e9e9e;font-size:12px;">Category <span class="red-text">*</span></p>
                                 </div>
                                 <div class="input-field col s8 offset-s2" style="margin-top: -1px;">
-                                    <select class="browser-default" id="slct1" name="selectedJob" required autocomplete="off">
+                                    <select class="browser-default" id="slct1" name="strItemCategory" required autocomplete="off">
                                         <option value="" disabled selected> </option>
                                         <c:forEach items="${productCategory}" var="cate">
                                           <%
@@ -308,7 +308,7 @@
                                     </select>
                                 </div>
                                 <div class="input-field col s4 offset-s6" style="margin-top: 20px;">
-                                    <input value="${product.dblProductPrice}" type="text" class="validate right-align" id="prodsvcPrice" name="prodsvcPrice">
+                                    <input value="${product.dblProductPrice}" type="text" class="validate right-align" id="prodsvcPrice" name="dblItemPrice">
                                     <label for="prodsvcPrice" >Price <span class="red-text">*</span></label>
                                 </div>
                               
@@ -317,16 +317,22 @@
                           </div>
                           <div class="modal-footer">
                               <a href="#!" class=" modal-action modal-close waves-effect waves-orange transparent btn-flat">CANCEL</a>
-                              <button class="waves-effect waves-light orange darken-3 white-text btn-flat" type="submit" value="Submit">CREATE</button>
+                              <button class="waves-effect waves-light orange darken-3 white-text btn-flat" type="submit" value="Submit">SAVE</button>
                           </div>
                           </form>
                     </div>
                   </c:forEach>
 
-                  <c:forEach items="${serviceList}" var="service">
-                        <div id="serv${service.intServiceID}" class="modal modal-fixed-footer">
-                        <form class="col s12">
+                 <c:forEach items="${serviceList}" var="service">
+                        <%! String serviceID = null; %>
+                        <% Service servID = (Service)pageContext.getAttribute("service");
+                           serviceID = String.valueOf(servID.getIntServiceID());
+                           String serviceCate = servID.getStrServiceCategory();
+                        %>
+                        <div id="serv<%=serviceID%>" class="modal modal-fixed-footer">
+                        <form class="col s12" method="get" action="updateItem" enctype="multipart/form-data">
                           <div class="modal-content">
+
                             <!-- <div class="container"> -->
                             <div class="row">
                               
@@ -334,51 +340,62 @@
                                   <h3 class="grey-text text-darken-1">Update Product/Service</h3>
                                 </div>
                                 <div class="col s12">
-                                    <img name="updateProdSvc" id="updateProdSvc" style="width: 150px; height: 150px; margin-top: 20px;" src="./img/packIcon.png" alt=""/>
+                                     <label class="red-text">(*) Indicates required field</label>
+                                </div>
+                                <div class="col s12">
+                                    <img name="upload" id="prodsvc" style="width: 150px; height: 150px; margin-top: 20px;" src="./img/packIcon.png" alt=""/>
                                 </div>
                                 <div class="input-field col s5 offset-s4">
-                                    <div class="file-field">
+                                     <div class="file-field">
                                           <div class="btn orange">
                                             <span class="">Image</span>
-                                            <input name="upload" type="file" accept="image/.jpg, image/.png" onchange="loadUpdateProdSvc(event)">
+                                            <input name="fileUpload" type="file" accept="image/.jpg, image/.png" onchange="ServiceImage(this)">
                                           </div>
                                           <div class="file-path-wrapper">
-                                            <input name="strPath" value="image" class="file-path validate" type="text">
+                                            <input name="imageName" value="image" class="file-path validate" type="text">
                                           </div>
                                       </div>
                                 </div>
                                 <div class="input-field col s8 offset-s2">
-                                    <p style="color:#9e9e9e;font-size:12px;">Type</p>
-                                </div>
-                                <div class="input-field col s8 offset-s2" style="margin-top: -1px;">
-                                  <select class="browser-default" required>
-                                    <option value="" disabled="disabled" selected></option>
-                                    <option value="service">Service</option>
+                                  <input type="hidden" name="intItemID" value="${service.intServiceID}">
+                                  <select name="strItemCate" class="browser-default" required autocomplete="off">
+                                    <option value="service" selected>Service</option>
                                     <option value="product">Product</option>
                                   </select>
+                                  
                                 </div>
                                 <div class="input-field col s8 offset-s2">
-                                  <input type="text" class="validate" required id="prodsvcName" name="prodsvcName">
-                                  <label for="prodsvcName">Name</label>
+                                  <input value="${service.strServiceName}" type="text" class="validate" required id="prodsvcName" name="strItemName">
+                                  <label for="prodsvcName">Name <span class="red-text">*</span></label>
                                 </div>
                                 <div class="input-field col s8 offset-s2">
-                                  <textarea id="prodsvcDetail" name="prodsvcDetail" class="materialize-textarea"></textarea>
+                                  <textarea id="prodsvcDetail" name="strItemDetails" class="materialize-textarea">${service.strServiceDesc}</textarea>
                                   <label for="prodsvcDetail">Details</label>
                                 </div>
                                 <div class="input-field col s8 offset-s2">
-                                    <p style="color:#9e9e9e;font-size:12px;">Category</p>
+                                    <p style="color:#9e9e9e;font-size:12px;">Category <span class="red-text">*</span></p>
                                 </div>
                                 <div class="input-field col s8 offset-s2" style="margin-top: -1px;">
-                                    <select class="browser-default" id="slct1" name="selectedJob" required>
+                                    <select class="browser-default" id="slct1" name="strItemCategory" required autocomplete="off">
                                         <option value="" disabled selected> </option>
-                                        <c:forEach items="${empCategory}" var="name">
-                                          <option value="${name.strCategoryName}">${name.strCategoryName }</option>
+                                        <c:forEach items="${productCategory}" var="cate">
+                                          <%
+                                              String cate2 = (String)pageContext.getAttribute("cate");
+                                              String selectedService = null;
+                                              if(serviceCate.equals(cate2)){
+                                                  selectedService = "selected";
+                                              }
+                                              else {
+                                                  selectedService = "";
+                                              }
+                                          %>
+                                          <option value="${cate}" <%out.println(selectedService);%>>${cate}</option>
                                         </c:forEach>
                                     </select>
                                 </div>
                                 <div class="input-field col s4 offset-s6" style="margin-top: 20px;">
-                                    <input type="text" class="validate right-align" id="prodsvcPrice" name="prodsvcPrice">
-                                    <label for="prodsvcPrice" >Price</label>
+                                    <input value="${service.dblServicePrice}" type="text" class="validate right-align" id="prodsvcPrice" name="dblItemPrice">
+                                    <label for="prodsvcPrice" >Price <span class="red-text">*</span></label>
                                 </div>
                               
                             <!-- </div> -->
@@ -386,7 +403,7 @@
                           </div>
                           <div class="modal-footer">
                               <a href="#!" class=" modal-action modal-close waves-effect waves-orange transparent btn-flat">CANCEL</a>
-                              <button class="waves-effect waves-light orange darken-3 white-text btn-flat" type="submit" value="Submit">CREATE</button>
+                              <button class="waves-effect waves-light orange darken-3 white-text btn-flat" type="submit" value="Submit">SAVE</button>
                           </div>
                           </form>
                     </div>

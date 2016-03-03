@@ -19,6 +19,7 @@ public class CreateServProdAction {
 	private String strItemDetails;
 	private String strItemCategory;
 	private Double dblItemPrice;
+	private String imageName;
 	
 	public String execute(){
 
@@ -115,6 +116,14 @@ public class CreateServProdAction {
 
 	public void setDblItemPrice(Double dblItemPrice) {
 		this.dblItemPrice = dblItemPrice;
+	}
+
+	public String getImageName() {
+		return imageName;
+	}
+
+	public void setImageName(String imageName) {
+		this.imageName = imageName;
 	}
 
 	
