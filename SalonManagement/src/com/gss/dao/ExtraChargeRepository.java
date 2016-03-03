@@ -11,5 +11,7 @@ public interface ExtraChargeRepository {
 	public List<ExtraCharge> getAllExtraCharges();
 	
 	public boolean updateExtraCharge(ExtraCharge extra);
+	
+	public boolean deactivateExtraCharge(int intExtraChargeID);
 
 }

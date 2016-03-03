@@ -35,10 +35,10 @@
                               <li><a href="maintenance-emp.jsp">Employee</a></li>
                               <li class="orange"><a href="maintenance-prodsvc.jsp">Product & Service</a></li>
                               <li><a href="maintenance-promo.jsp">Promo</a></li>
-                              <li><a href="#">Discount</a></li>
-                              <li><a href="#">Package</a></li>
-                              <li><a href="#">Catalogue</a></li>
-                              <li><a href="#">Extra Charge</a></li>
+                              <li><a href="maintenance-discount.jsp">Discount</a></li>
+                              <li><a href="maintenance-package.jsp">Package</a></li>
+                              <li><a href="maintenance-catalogue.jsp">Catalogue</a></li>
+                              <li><a href="maintenance-extra.jsp">Extra Charge</a></li>
                             </ul>
                           </div>
                       </li>
@@ -74,10 +74,10 @@
                                  <li><a href="maintenance-emp.jsp">Employee</a></li>
                                  <li class="orange"><a href="maintenance-prodsvc.jsp">Product & Service</a></li>
                                  <li><a href="maintenance-promo.jsp">Promo</a></li>
-                                 <li><a href="#">Discount</a></li>
-                                 <li><a href="#">Package</a></li>
-                                 <li><a href="#">Catalogue</a></li>
-                                 <li><a href="#">Extra Charge</a></li>
+                                 <li><a href="maintenance-discount.jsp">Discount</a></li>
+                                 <li><a href="maintenance-package.jsp">Package</a></li>
+                                 <li><a href="maintenance-catalogue.jsp">Catalogue</a></li>
+                                 <li><a href="maintenance-extra.jsp">Extra Charge</a></li>
                                </ul>
                              </div>
                          </li>
@@ -107,8 +107,8 @@
                     
                     </div> -->
 
-                    <div class="main z-depth-barts" style="margin-left: 50px; margin-right: 50px;">
-                        <div class="col s12" style="margin-left: 50px; margin-right: 50px;">
+                    <div class="main z-depth-barts" style="margin-left: 20px; margin-right: 20px;">
+                        <div class="col s12" style="margin-left: 20px; margin-right: 20px;">
                         <h3 class="grey-text text-darken-1">Product & Service Maintenance</h3>
                         <a class="waves-effect waves-light modal-trigger btn-flat orange darken-3 left white-text" href="#create" style="margin-top: 50px; margin-left: 15px;">CREATE</a>
                         <table id="example" class="display centered responsive-table highlight" cellspacing="0" width="100%" style="border: 1px solid #bdbdbd; padding: 10px;" rowspan="10">
@@ -211,15 +211,16 @@
                                 <div class="input-field col s8 offset-s2">
                                     <p style="color:#9e9e9e;font-size:12px;">Category <span class="red-text">*</span></p>
                                 </div>
-                                <div class="input-field col s8 offset-s2" style="margin-top: -1px;">
-                                    <select class="browser-default" id="slct1" name="strItemCategory" required>
+                                <div class="input-field col s6 offset-s2">
+                                    <select class="browser-default" id="category" name="strItemCategory" required>
                                         <option value="" disabled selected> </option>
                                         <c:forEach items="${productCategory}" var="product">
                                           <option value="${product}">${product}</option>
                                         </c:forEach>
-
-                                        
                                     </select>
+                                </div>
+                                <div class="input-field col s2">
+                                  <button data-target="addCategory" class="waves-effect waves-light btn-flat modal-category orange lighten-1">add</button>
                                 </div>
                                 <div class="input-field col s4 offset-s6" style="margin-top: 20px;">
                                     <input type="text" class="validate right-align" id="prodsvcPrice" name="dblItemPrice">
@@ -235,6 +236,33 @@
                           </div>
                           </form>
                     </div>
+
+                    <!-- add category BEGIN -->
+                          <div id="addCategory" class="modal" style="margin-top: 30px;">
+                            <form>
+                              <div class="modal-content">
+                                <h4>Add Another Category</h4>
+                                <div class="row">
+                                  <div class="col s12">
+                                    <div class="input-field col s8 offset-s2">
+                                      <select id="addCategorySelect" class="browser-default" size="10">
+                                        <option>Category Already in Database</option>
+                                      </select>
+                                    </div>
+                                    <div class="input-field col s8 offset-s2" style="margin-top: 20px;">
+                                      <input type="text" class="validate" id="addCategoryName" name="addCategoryName">
+                                      <label for="addCategoryName">Position Name</label>
+                                    </div>
+                                    <div class="input-field col s8 offset-s2 center">
+                                      <a href="" onclick="addCategory()" class="waves-effect waves-light orange darken-4 btn-flat white-text">SAVE</a>
+                                      <a href="" class="modal-close waves-effect waves-orange transparent btn-flat white">CANCEL</a>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </form>
+                          </div>
+                    <!-- add category END -->
 
 
 
@@ -261,12 +289,12 @@
                                 </div>
                                 <div class="input-field col s5 offset-s4">
                                     <div class="file-field">
-                                      <div class="btn orange">
-                                        <span class="">Image</span>
-                                          <input name="productImage" type="file" accept="image/*" onchange="ServiceImage(this)">
+                                        <div class="btn orange">
+                                            <span class="">Image</span>
+                                            <input name="upload" type="file" accept="image/*" onchange="ServiceImage(this)">
                                         </div>
                                         <div class="file-path-wrapper">
-                                          <input name="imageName" class="file-path validate" type="text">
+                                            <input class="file-path validate" type="text">
                                         </div>
                                     </div>
                                 </div>
@@ -306,6 +334,9 @@
                                           <option value="${cate}" <%out.println(selectedProduct);%>>${cate}</option>
                                         </c:forEach>
                                     </select>
+                                </div>
+                                <div class="input-field col s2">
+                                  <button data-target="addCategory" class="waves-effect waves-light btn-flat modal-updateCategory orange lighten-1">add</button>
                                 </div>
                                 <div class="input-field col s4 offset-s6" style="margin-top: 20px;">
                                     <input value="${product.dblProductPrice}" type="text" class="validate right-align" id="prodsvcPrice" name="dblItemPrice">
@@ -393,6 +424,9 @@
                                         </c:forEach>
                                     </select>
                                 </div>
+                                <div class="input-field col s2">
+                                  <button data-target="addCategory" class="waves-effect waves-light btn-flat modal-updateCategory orange lighten-1">add</button>
+                                </div>
                                 <div class="input-field col s4 offset-s6" style="margin-top: 20px;">
                                     <input value="${service.dblServicePrice}" type="text" class="validate right-align" id="prodsvcPrice" name="dblItemPrice">
                                     <label for="prodsvcPrice" >Price <span class="red-text">*</span></label>
@@ -414,7 +448,7 @@
                             <div class="modal-content">
                               <div class="row">
                                 <h5 class="red-text">Warning!</h5>
-                                <p>Are you sure you want to deactivate this product/service??</p>
+                                <p>Are you sure?</p>
                               </div>
                             </div>
                               <div class="col s12 center" style="margin-bottom: 30px;">
@@ -446,10 +480,22 @@
     height: 80% !important;
     max-height: 100% !important;
   }
-
   #delete {
     width: 30% !important;
   }
+  #addCategory {
+    width: 40% !important;
+  }
+  #addCategorySelect {
+    height: 150px !important;
+  }
+  #updateCategorySelect {
+    height: 150px !important;
+  }
+  #updateAddCategory {
+    width: 40% !important;
+  }
+
   </style>
 
   <!--Import jQuery before materialize.js-->

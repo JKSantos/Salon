@@ -43,11 +43,11 @@
                             <ul>
                               <li class="orange"><a href="maintenance-emp.jsp">Employee</a></li>
                                       <li><a href="maintenance-prodsvc.jsp">Product & Service</a></li>
-                                      <li><a href="#">Promo</a></li>
-                                      <li><a href="#">Discount</a></li>
-                                      <li><a href="#">Package</a></li>
-                                      <li><a href="#">Catalogue</a></li>
-                                      <li><a href="#">Extra Charge</a></li>
+                                      <li><a href="maintenance-promo.jsp">Promo</a></li>
+                                      <li><a href="maintenance-discount.jsp">Discount</a></li>
+                                      <li><a href="maintenance-package.jsp">Package</a></li>
+                                      <li><a href="maintenance-catalogue.jsp">Catalogue</a></li>
+                                      <li><a href="maintenance-extra.jsp">Extra Charge</a></li>
                             </ul>
                           </div>
                       </li>
@@ -85,11 +85,11 @@
                                <ul>
                                  <li class="orange"><a href="maintenance-emp.jsp">Employee</a></li>
                                  <li><a href="maintenance-prodsvc.jsp">Product & Service</a></li>
-                                 <li><a href="#">Promo</a></li>
-                                 <li><a href="#">Discount</a></li>
-                                 <li><a href="#">Package</a></li>
-                                 <li><a href="#">Catalogue</a></li>
-                                 <li><a href="#">Extra Charge</a></li>
+                                 <li><a href="maintenance-promo.jsp">Promo</a></li>
+                                 <li><a href="maintenance-discount.jsp">Discount</a></li>
+                                 <li><a href="maintenance-package.jsp">Package</a></li>
+                                 <li><a href="maintenance-catalogue.jsp">Catalogue</a></li>
+                                 <li><a href="maintenance-extra.jsp">Extra Charge</a></li>
                                </ul>
                              </div>
                          </li>
@@ -119,8 +119,8 @@
                     
                     </div> -->
 
-                    <div class="main z-depth-barts" style="margin-left: 50px; margin-right: 50px;">
-                        <div class="col s12" style="margin-left: 50px; margin-right: 50px;">
+                    <div class="main z-depth-barts" style="margin-left: 20px; margin-right: 20px;">
+                        <div class="col s12" style="margin-left: 20px; margin-right: 20px;">
                         <h3 class="grey-text text-darken-1">Employee Maintenance</h3>
                         <a class="waves-effect waves-light modal-trigger btn-flat orange darken-3 left white-text" href="#create" style="margin-top: 50px; margin-left: 15px;">CREATE</a>
                         <table id="example" class="display centered responsive-table highlight" cellspacing="0" width="100%" style="border: 1px solid #bdbdbd; padding: 10px;" rowspan="10">
@@ -320,7 +320,7 @@
                                   <label for="empdoc">Date of Creation</label>
                                 </div>
                                 <div class="input-field col s4">
-                                    <input value="${employee.strEmpFirstName}" name="strEmpFirstName" d="strEmpFirstName" type="text" class="validate active" required>
+                                    <input value="${employee.strEmpFirstName}" name="strEmpFirstName" id="strEmpFirstName" type="text" class="validate active" required>
                                     <label for="strEmpFirstName">First Name</label>
                                 </div>
                                 <div class="input-field col s4">
@@ -429,7 +429,7 @@
                             <div class="modal-content">
                               <div class="row">
                                 <h5 class="red-text">Warning!</h5>
-                                <p>Are you sure you want to deactivate this account?</p>
+                                <p>Are you sure?</p>
                                 <input type="hidden" size="10" name="intEmpID" value="${employee.intEmpID}">
                               </div>
                             </div>

@@ -33,7 +33,7 @@
                                       <li><a href="discountMaintenance.action">Discount</a></li>
                                       <li><a href="maintenance-package.jsp">Package</a></li>
                                       <li><a href="maintenance-catalogue.jsp">Catalogue</a></li>
-                                      <li><a href="extraChargeMaintenance.action">Extra Charge</a></li>
+                                      <li><a href="extraChargeMaintenance">Extra Charge</a></li>
                                     </ul>
                                   </div>
                               </li>

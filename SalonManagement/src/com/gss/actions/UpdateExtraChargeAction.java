@@ -1,17 +1,26 @@
-package com.gss.model;
+package com.gss.actions;
 
-public class ExtraCharge {
+import com.gss.model.ExtraCharge;
+import com.gss.service.ExtraChargeService;
+import com.gss.service.ExtraChargeServiceImpl;
+
+public class UpdateExtraChargeAction {
 	
 	private int intECID;
 	private String strECName;
 	private String strECDetails;
-	private int intECStatus;
 	
-	public ExtraCharge(int intECID, String strECName, String strECDetails, int intECStatus){
-		this.intECID = intECID;
-		this.strECName = strECName;
-		this.strECDetails = strECDetails;
-		this.intECStatus = intECStatus;
+	public String execute(){
+
+		ExtraChargeService service = new ExtraChargeServiceImpl();
+		
+		ExtraCharge extra = new ExtraCharge(intECID, strECName, strECDetails, 1);
+		
+		if(service.updateExtraCharge(extra) == true)
+			return "success";
+		else
+			return "failed";
+
 	}
 
 	public int getIntECID() {
@@ -37,13 +46,6 @@ public class ExtraCharge {
 	public void setStrECDetails(String strECDetails) {
 		this.strECDetails = strECDetails;
 	}
-
-	public int getIntECStatus() {
-		return intECStatus;
-	}
-
-	public void setIntECStatus(int intECStatus) {
-		this.intECStatus = intECStatus;
-	}
-
+	
+	
 }
