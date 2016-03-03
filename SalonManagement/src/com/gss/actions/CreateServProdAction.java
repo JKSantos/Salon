@@ -26,9 +26,9 @@ public class CreateServProdAction {
 		boolean isRecorded = false;
 		String path = file.getAbsolutePath();
 
-		if(strItemCate.equals("Product")){
+		if(strItemCate.equalsIgnoreCase("Product")){
 			
-			Product product = new Product(1, strItemName, strItemCategory, strItemDetails, 0, null, dblItemPrice, path);
+			Product product = new Product(1, strItemName, strItemCategory, strItemDetails, 0, null, dblItemPrice, path, 1);
 		
 			ProductService prodService = new ProductServiceImpl();
 		

@@ -14,4 +14,5 @@ public interface ProductService {
 	
 	public List<String> getAllCategory();
 
+	public boolean deactivateProduct(int intProductID);
 }

@@ -2,7 +2,10 @@ package com.gss.actions;
 
 import java.io.File;
 
+import com.gss.model.Product;
 import com.gss.model.Service;
+import com.gss.service.ProductService;
+import com.gss.service.ProductServiceImpl;
 import com.gss.service.ServiceService;
 import com.gss.service.ServiceServiceImpl;
 
@@ -18,16 +21,21 @@ public class UpdateItemAction {
 	private String strItemCategory;
 	private Double dblItemPrice;
 	private String imageName;
+	private int intItemQuantity;
 	
 	public String execute(){
 	
 		ServiceService service = new ServiceServiceImpl();
 		Service update;
+
+		ProductService prodServ = new ProductServiceImpl();
+		Product prod;
+
 		boolean isUpdated = false;
 		//System.out.println(fileUpload.getAbsolutePath());
 		
 		System.out.println(imageName);
-		if(strItemCate.equals("service")){
+		if(strItemCate.equalsIgnoreCase("service")){
 			
 			if(imageName.equalsIgnoreCase("image")){
 				update = new Service(intItemID, strItemName, strItemCategory, 1, strItemDetails, dblItemPrice, null, imageName);
@@ -39,6 +47,17 @@ public class UpdateItemAction {
 			}
 		}
 		else{
+
+			if(imageName.equalsIgnoreCase("image")){
+				
+				System.out.println(intItemID + " " + dblItemPrice);
+				prod = new Product(intItemID, strItemName, strItemCategory, strItemDetails, intItemQuantity, null, dblItemPrice, imageName, 1);
+				isUpdated = prodServ.updateProduct(prod);
+			}
+			else{
+				prod = new Product(intItemID, strItemName, strItemCategory, strItemDetails, intItemQuantity, null, dblItemPrice, fileUpload.getAbsolutePath(), 1);
+				isUpdated = prodServ.updateProduct(prod);
+			}
 			
 		}
 		
@@ -51,6 +70,14 @@ public class UpdateItemAction {
 		
 	}
 	
+	public int getIntItemQuantity() {
+		return intItemQuantity;
+	}
+
+	public void setIntItemQuantity(int intItemQuantity) {
+		this.intItemQuantity = intItemQuantity;
+	}
+
 	public File getFileUpload() {
 		return fileUpload;
 	}

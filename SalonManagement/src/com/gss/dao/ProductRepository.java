@@ -13,5 +13,7 @@ public interface ProductRepository {
 	public List<Product> getAllProducts();
 	
 	public List<String> getAllCategory();
+	
+	public boolean deactivateProduct(int intProductID);
 
 }

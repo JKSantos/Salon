@@ -135,7 +135,7 @@
                                         <td>${product.dblProductPrice}</td>
                                         <td>01/01/01</td>
                                         <td><a class="waves-effect waves-light modal-trigger btn-flat transparent black-text" title="Update" href="#prod<%=string%>" style="padding: 0px;"><i class="material-icons">edit</i></a>
-                                        <a class="waves-effect waves-light modal-trigger btn-flat transparent red-text text-accent-4" href="#delete" title="Deactivate"><i class="material-icons">delete</i></a>
+                                        <a class="waves-effect waves-light modal-trigger btn-flat transparent red-text text-accent-4" href="#del<%=string%>" title="Deactivate"><i class="material-icons">delete</i></a>
                                         </td>
                                     </tr>
                                   </c:forEach>
@@ -151,7 +151,7 @@
                                         <td>${service.dblServicePrice}</td>
                                         <td>01/01/01</td>
                                         <td><a class="waves-effect waves-light modal-trigger btn-flat transparent black-text" title="Update" href="#serv<%=strService%>" style="padding: 0px;"><i class="material-icons">edit</i></a>
-                                        <a class="waves-effect waves-light modal-trigger btn-flat transparent red-text text-accent-4" href="#delete" title="Deactivate"><i class="material-icons">delete</i></a>
+                                        <a class="waves-effect waves-light modal-trigger btn-flat transparent red-text text-accent-4" href="#del<%=strService%>" title="Deactivate"><i class="material-icons">delete</i></a>
                                         </td>
                                     </tr>
                                   </c:forEach>
@@ -294,12 +294,13 @@
                                             <input name="upload" type="file" accept="image/*" onchange="ServiceImage(this)">
                                         </div>
                                         <div class="file-path-wrapper">
-                                            <input class="file-path validate" type="text">
+                                            <input name="imageName" value="image" class="file-path validate" type="text">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="input-field col s8 offset-s2">
-                                  <input type="hidden" name="intItemId" value="${product.intProductID}">
+                                  <input type="text" name="intItemID" value="${product.intProductID}">
+                                  <input type="hidden" name="intItemQuantity" value="${product.intProductQuantity}">
                                   <select class="browser-default" name="strItemCate" required>
                                     <option value="service" >Service</option>
                                     <option value="product" selected>Product</option>
@@ -443,7 +444,13 @@
                     </div>
                   </c:forEach>
 
-                          <div id="delete" class="modal">
+                        <c:forEach items="${productList}" var="product">
+                        <%
+                            Product prod = (Product)pageContext.getAttribute("product");
+                            String prodID = String.valueOf(prod.getIntProductID());
+                        %>
+                          <div id="del<%=prodID%>" class="modal">
+                          <form action="deactivateItem" method="get">
                           <div class="container">
                             <div class="modal-content">
                               <div class="row">
@@ -452,12 +459,39 @@
                               </div>
                             </div>
                               <div class="col s12 center" style="margin-bottom: 30px;">
+                                <input type="hidden" name="intItemID" value="${product.intProductID}">
                                 <button class="waves-effect waves-light orange btn-flat white-text">YES</button>
                                 <a href="#" class="modal-action modal-close waves-effect waves-light transparent btn-flat black-text">NO</a>
                               </div>
                             </div>
+                          </form>
                       </div>
-<!--                     <div class="aside aside2 z-depth-barts">
+                    </c:forEach>
+
+                    <c:forEach items="${serviceList}" var="service">
+                        <%
+                            Service serv = (Service)pageContext.getAttribute("service");
+                            String servID = String.valueOf(serv.getIntServiceID());
+                        %>
+                          <div id="del<%=servID%>" class="modal">
+                          <form method="get">
+                          <div class="container">
+                            <div class="modal-content">
+                              <div class="row">
+                                <h5 class="red-text">Warning!</h5>
+                                <p>Are you sure?</p>
+                              </div>
+                            </div>
+                              <div class="col s12 center" style="margin-bottom: 30px;">
+                              <input type="hidden" name="intItemID" value="${service.intServiceID}">
+                                <button class="waves-effect waves-light orange btn-flat white-text">YES</button>
+                                <a href="#" class="modal-action modal-close waves-effect waves-light transparent btn-flat black-text">NO</a>
+                              </div>
+                            </div>
+                          </form>
+                      </div>
+                    </c:forEach>
+                    <!--                     <div class="aside aside2 z-depth-barts">
                      
                     </div> -->
                 </div>
