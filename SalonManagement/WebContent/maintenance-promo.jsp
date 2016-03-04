@@ -109,34 +109,31 @@
                         <h3 class="grey-text text-darken-1">Promo Maintenance</h3>
                         <a class="waves-effect waves-light modal-trigger btn-flat orange darken-3 left white-text" href="#create" style="margin-top: 50px; margin-left: 15px;">CREATE</a>
                         <table id="example" class="display centered responsive-table highlight" cellspacing="0" width="100%" style="border: 1px solid #bdbdbd; padding: 10px;" rowspan="10">
-                                <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Promo Name</th>
-                                        <th>Service/Product</th>
-                                        <th>Price</th>
-                                        <th>Expiration</th>
-                                        <th>Date of Creation</th>
-                                        <th>Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>New Year Promo</td>
-                                        <td><button data-target="viewProdSvc" class="waves-effect waves-orange modal-view btn-flat orange lighten-4">View</button></td>
-                                        <td>99.00</td>
-                                        <td>01/01/01</td>
-                                        <td>01/01/01</td>
-                                        <td><a class="waves-effect waves-light modal-trigger btn-flat transparent black-text" title="Update" href="#update" style="padding: 0px;"><i class="material-icons">edit</i></a>
-                                        <a class="waves-effect waves-light modal-trigger btn-flat transparent red-text text-accent-4" href="#delete" title="Deactivate"><i class="material-icons">delete</i></a>
-                                        </td>
-                                    </tr>
-
-
-                                    
-                                </tbody>
-                            </table>
+                              <thead>
+                                  <tr>
+                                      <th>ID</th>
+                                      <th>Promo Name</th>
+                                      <th>Service/Product</th>
+                                      <th>Price</th>
+                                      <th>Expiration</th>
+                                      <th>Date of Creation</th>
+                                      <th>Actions</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  <tr>
+                                      <td>1</td>
+                                      <td>New Year Promo</td>
+                                      <td><button data-target="viewProdSvc" class="waves-effect waves-orange modal-view btn-flat orange lighten-4">View</button></td>
+                                      <td>99.00</td>
+                                      <td>01/01/01</td>
+                                      <td>01/01/01</td>
+                                      <td><a class="waves-effect waves-light modal-trigger btn-flat transparent black-text" title="Update" href="#update" style="padding: 0px;"><i class="material-icons">edit</i></a>
+                                      <a class="waves-effect waves-light modal-trigger btn-flat transparent red-text text-accent-4" href="#delete" title="Deactivate"><i class="material-icons">delete</i></a>
+                                      </td>
+                                  </tr>                                  
+                              </tbody>
+                        </table>
 
                       </div>
 
