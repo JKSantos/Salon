@@ -94,52 +94,56 @@
 
         <article>
           <div class="wrapper">
-                    
-                    <div class="aside aside2 z-depth-barts">
-                    <div class="row">
-                      <h2 class="thin">Sales order</h2>
-                        <nav class="z-depth-0">
-                          <div class="nav-wrapper grey lighten-3 grey-text text-darken-4">
-                            <form>
-                              <div class="input-field col s12 z-depth-0">
-                                <input class="grey lighten-1" id="search" type="search" required>
-                                <label for="search"><i class="material-icons grey-text text-darken-3">search</i></label>
-                              </div>
-                            </form>
+            
+                    <div class="aside aside1 z-depth-barts"> <!--main aside1-->
+                          <header><h2 class="thin" style="margin-top: 30px;">Sales Order</h2></header>
+                          <div class="container">
+                          <div class="row">
+                              <form class="col s12" style="margin-top: 20px;">
+                                  <div class="input-field col s6">
+                                      <select id="ordertype" onchange="enableAddress(this);">
+                                            <option value="" disabled selected>Choose Order Type</option>
+                                            <option value="delivery">Delivery</option>
+                                            <option value="pickup">Pick-up</option>
+                                          </select>
+                                          <label>Order Type</label>
+                                  </div>
+                                  
+                                  <div class="input-field col s12">
+                                  		<input type="text" class="validate" id="order_name">
+                                  		<label for="order_name">Name</label>
+                                  </div>
+                                  
+                                  <div class="input-field col s12">
+                                      <input type="text" class="validate" id="order_address" disabled="disabled">
+                                      <label for="order_address">Address</label>
+                                  </div>
+                                  <div class="input-field col s8">
+                                      <select id="productlist" class="icons" onchange="enableQty(this);">
+                                            <option value="" disabled selected>Choose Product</option>
+                                            <c:forEach items="${productList}" var="product">
+                                                          <option value="${product.intProductID}">${product.strProductName}</option>
+                                             </c:forEach>
+                                                            </select>
+                                            
+                                      <label>Product List</label>
+                                  </div>
+                                  <div class="input-field col s4">
+                                    <input type="text" class="validate right-align" id="order_prodquantity" maxlength="5" disabled="disabled">
+                                    <label for="order_prodquantity">Quantity</label>
+                                  </div>
+                                  <div class="input-field col s4 offset-s8">
+                                      <input type="text" class="validate right-align" id="order_prodprice" maxlength="8" disabled="disabled">
+                                      <label for="order_prodprice">Total Price</label>
+                                  </div>
+                                  <div class="input-field col s12">
+                                      <button id="orderbtn" type="submit" value="Submit" class="waves-effect waves-light orange btn-flat">Order</button>
+                                      <button id="orderclear" type="reset" value="Reset" class="waves-effect waves-orange white btn-flat">CLEAR</button>
+                                  </div>
+                              </form>
                           </div>
-                        </nav>
-                      <!-- <div class="container"> -->
-                        <table class="centered highlight responsive-table">
-                          <thead>
-                            <tr>
-                                <th data-field="name">Item Name</th>
-                                <th data-field="quantity">Quantity</th>
-                                <th data-field="price">Item Price</th>
-                            </tr>
-                          </thead>
-
-                          <tbody>
-                          <c:forEach items="${productList}" var="product">
-                          	<tr>
-                            <td>${product.intProductID}</td>
-                                    <td>${product.strProductName}</td>
-                                
-                                    <td>${product.dblProductPrice}</td>
-                                    <td><a href="#update" style="padding: 0px;" class="waves-effect waves-orange modal-trigger transparent btn-flat"><i class="material-icons">edit</i></a><button style="padding: 0px; margin-left:15px;" class="waves-effect waves-orange transparent btn-flat"><i class="material-icons">delete</i></button></td>
-                                    </tr>
-                                  </c:forEach>
-                          </tbody>
-                        </table>
-                        <br>
-
-                        <div class="row right">
-                          <a class="btn-floating btn-large waves-effect waves-light orange darken-3" href="create-salesorder.jsp"><i class="material-icons">add</i></a>
-                        </div>
-                        </div>
-                      <!-- </div> -->
-                    </div>
-                  </div>
-               
+                          </div>
+                      </div>
         </article>
 
         

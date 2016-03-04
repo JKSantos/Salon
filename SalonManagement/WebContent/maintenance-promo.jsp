@@ -263,7 +263,7 @@
                                           <table class="centered">
                                             <thead>
                                               <tr>
-                                                <th>Type</th>
+                                                <th>Name</th>
                                                 <th>Qty</th>
                                                 <th>Action</th>
                                               </tr>
@@ -368,7 +368,7 @@
                                           <table class="centered">
                                             <thead>
                                               <tr>
-                                                <th>Type</th>
+                                                <th>Name</th>
                                                 <th>Qty</th>
                                                 <th>Action</th>
                                               </tr>

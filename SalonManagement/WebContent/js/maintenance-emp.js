@@ -128,12 +128,22 @@
           var promoQty = $("#promoServiceQty").val();
           var removeBtn = document.createElement('button');
          
-          var row = table.insertRow(0);
+          var rowCount = table.rows.length;
+          var row = table.insertRow(rowCount);
+          var i = rowCount;
           var cell1 = row.insertCell(0);
+            cell1.innerHTML = '<input type="text" value="'+promoType+'" id="createServPromType['+i+']" name="createServPromType['+i+']" disabled="disabled" style="color:black;"/>';
           var cell2 = row.insertCell(1);
-          var cell3 = row.insertCell(2); 
-          cell1.innerHTML = promoType;
-          cell2.innerHTML = promoQty;
+            var servPromQty = document.createElement("input");
+            servPromQty.type = "number";
+            servPromQty.name = "createServPromQty["+i+"]";
+            servPromQty.disabled = true;
+            servPromQty.style = "color: black";
+            servPromQty.value = promoQty;
+          cell2.appendChild(servPromQty);
+          var cell3 = row.insertCell(2);
+          // cell1.innerHTML = promoType;
+          // cell2.innerHTML = promoQty;
           cell3.innerHTML = '<input id="removeBtn" type="button" value="Remove" class="waves-effect waves-light btn red" onclick="deleteServPromo(this)" />';
           var x = document.getElementById("promoService");
               x.remove(x.selectedIndex);
@@ -141,9 +151,10 @@
 
       function deleteServPromo(row)
       {
-          var i=row.parentNode.parentNode.rowIndex;
-          var packageText = document.getElementById("promoTable").rows[i].cells[0].innerHTML;
-          document.getElementById('promoTable').deleteRow(i);
+          var x=row.parentNode.parentNode.rowIndex;
+          // var packageText = document.getElementById("promoTable").rows[i].cells[0].innerHTML;
+          var packageText = document.getElementById("promoTable").rows[x].cells[0].firstChild.value;
+          document.getElementById('promoTable').deleteRow(x);
           
           alert(packageText);
           var y = document.getElementById("promoService");
@@ -159,12 +170,22 @@
           var promoProdQty = $("#promoProductQty").val();
           var removeBtn = document.createElement('button');
          
-          var row = table.insertRow(0);
+           var rowCount = table.rows.length;
+          var row = table.insertRow(rowCount);
+          var i = rowCount;
           var cell1 = row.insertCell(0);
+            cell1.innerHTML = '<input type="text" value="'+promoProdType+'" id="createProdPromType['+i+']" name="createProdPromType['+i+']" disabled="disabled" style="color:black;"/>';
           var cell2 = row.insertCell(1);
-          var cell3 = row.insertCell(2); 
-          cell1.innerHTML = promoProdType;
-          cell2.innerHTML = promoProdQty;
+            var prodPromQty = document.createElement("input");
+            prodPromQty.type = "number";
+            prodPromQty.name = "createProdPromQty["+i+"]";
+            prodPromQty.disabled = true;
+            prodPromQty.style = "color: black";
+            prodPromQty.value = promoProdQty;
+          cell2.appendChild(prodPromQty);
+          var cell3 = row.insertCell(2);
+          // cell1.innerHTML = promoType;
+          // cell2.innerHTML = promoQty;
           cell3.innerHTML = '<input id="removeBtn" type="button" value="Remove" class="waves-effect waves-light btn red" onclick="deleteProdPromo(this)" />';
           var x = document.getElementById("promoProduct");
               x.remove(x.selectedIndex);
@@ -173,7 +194,7 @@
       function deleteProdPromo(row)
       {
           var i=row.parentNode.parentNode.rowIndex;
-          var packageText = document.getElementById("promoTable").rows[i].cells[0].innerHTML;
+          var packageText = document.getElementById("promoTable").rows[i].cells[0].firstChild.value;
           document.getElementById('promoTable').deleteRow(i);
           
           alert(packageText);
@@ -192,12 +213,22 @@
           var promoQty = $("#updatePromoSQty").val();
           var removeBtn = document.createElement('button');
          
-          var row = table.insertRow(0);
+          var rowCount = table.rows.length;
+          var row = table.insertRow(rowCount);
+          var i = rowCount;
           var cell1 = row.insertCell(0);
+            cell1.innerHTML = '<input type="text" value="'+promoType+'" id="updateServPromType['+i+']" name="updateServPromType['+i+']" disabled="disabled" style="color:black;"/>';
           var cell2 = row.insertCell(1);
-          var cell3 = row.insertCell(2); 
-          cell1.innerHTML = promoType;
-          cell2.innerHTML = promoQty;
+            var updateServPromQty = document.createElement("input");
+            updateServPromQty.type = "number";
+            updateServPromQty.name = "updateServPromQty["+i+"]";
+            updateServPromQty.disabled = true;
+            updateServPromQty.style = "color: black";
+            updateServPromQty.value = promoQty;
+          cell2.appendChild(updateServPromQty);
+          var cell3 = row.insertCell(2);
+          // cell1.innerHTML = promoType;
+          // cell2.innerHTML = promoQty;
           cell3.innerHTML = '<input id="removeBtn" type="button" value="Remove" class="waves-effect waves-light btn red" onclick="deleteUpdateSPromo(this)" />';
           var x = document.getElementById("updatePromoService");
               x.remove(x.selectedIndex);
@@ -206,7 +237,7 @@
       function deleteUpdateSPromo(row)
       {
           var i=row.parentNode.parentNode.rowIndex;
-          var packageText = document.getElementById("updatePromoTable").rows[i].cells[0].innerHTML;
+          var packageText = document.getElementById("updatePromoTable").rows[i].cells[0].firstChild.value;
           document.getElementById('updatePromoTable').deleteRow(i);
           
           alert(packageText);
@@ -223,21 +254,33 @@
           var promoProdQty = $("#updatePromoPQty").val();
           var removeBtn = document.createElement('button');
          
-          var row = table.insertRow(0);
+          var rowCount = table.rows.length;
+          var row = table.insertRow(rowCount);
+          var i = rowCount;
           var cell1 = row.insertCell(0);
+            cell1.innerHTML = '<input type="text" value="'+promoProdType+'" id="updateProdPromType['+i+']" name="updateProdPromType['+i+']" disabled="disabled" style="color:black;"/>';
           var cell2 = row.insertCell(1);
-          var cell3 = row.insertCell(2); 
-          cell1.innerHTML = promoProdType;
-          cell2.innerHTML = promoProdQty;
+            var updateProdPromQty = document.createElement("input");
+            updateProdPromQty.type = "number";
+            updateProdPromQty.name = "updateProdPromQty["+i+"]";
+            updateProdPromQty.disabled = true;
+            updateProdPromQty.style = "color: black";
+            updateProdPromQty.value = promoProdQty;
+          cell2.appendChild(updateProdPromQty);
+          var cell3 = row.insertCell(2);
+          // cell1.innerHTML = promoType;
+          // cell2.innerHTML = promoQty;
           cell3.innerHTML = '<input id="removeBtn" type="button" value="Remove" class="waves-effect waves-light btn red" onclick="deleteUpdatePPromo(this)" />';
           var x = document.getElementById("updatePromoProduct");
               x.remove(x.selectedIndex);
+
+
       }
 
       function deleteUpdatePPromo(row)
       {
           var i=row.parentNode.parentNode.rowIndex;
-          var packageText = document.getElementById("updatePromoTable").rows[i].cells[0].innerHTML;
+          var packageText = document.getElementById("updatePromoTable").rows[i].cells[0].firstChild.value;
           document.getElementById('updatePromoTable').deleteRow(i);
           
           alert(packageText);
@@ -253,16 +296,26 @@
       // add product/service in package BEGIN
         function createPackageService() {
             var table = document.getElementById("createPackageTable");
-            var promoType = $("#createPackageService").val();
-            var promoQty = $("#createPackageServiceQty").val();
+            var packageType = $("#createPackageService").val();
+            var packageQty = $("#createPackageServiceQty").val();
             var removeBtn = document.createElement('button');
            
-            var row = table.insertRow(0);
+            var rowCount = table.rows.length;
+            var row = table.insertRow(rowCount);
+            var i = rowCount;
             var cell1 = row.insertCell(0);
+              cell1.innerHTML = '<input type="text" value="'+packageType+'" id="createPackServType['+i+']" name="createPackServType['+i+']" disabled="disabled" style="color:black;"/>';
             var cell2 = row.insertCell(1);
-            var cell3 = row.insertCell(2); 
-            cell1.innerHTML = promoType;
-            cell2.innerHTML = promoQty;
+              var createPackServQty = document.createElement("input");
+              createPackServQty.type = "number";
+              createPackServQty.name = "createPackServQty["+i+"]";
+              createPackServQty.disabled = true;
+              createPackServQty.style = "color: black";
+              createPackServQty.value = packageQty;
+            cell2.appendChild(createPackServQty);
+            var cell3 = row.insertCell(2);
+            // cell1.innerHTML = promoType;
+            // cell2.innerHTML = promoQty;
             cell3.innerHTML = '<input id="removeBtn" type="button" value="Remove" class="waves-effect waves-light btn red" onclick="deleteCreateServPack(this)" />';
             var x = document.getElementById("createPackageService");
                 x.remove(x.selectedIndex);
@@ -271,7 +324,7 @@
         function deleteCreateServPack(row)
         {
             var i=row.parentNode.parentNode.rowIndex;
-            var packageText = document.getElementById("createPackageTable").rows[i].cells[0].innerHTML;
+            var packageText = document.getElementById("createPackageTable").rows[i].cells[0].firstChild.value;
             document.getElementById('createPackageTable').deleteRow(i);
             
             alert(packageText);
@@ -288,21 +341,31 @@
             var promoQty = $("#createPackageProductQty").val();
             var removeBtn = document.createElement('button');
            
-            var row = table.insertRow(0);
+            var rowCount = table.rows.length;
+            var row = table.insertRow(rowCount);
+            var i = rowCount;
             var cell1 = row.insertCell(0);
+            cell1.innerHTML = '<input type="text" value="'+promoType+'" id="createPackProdType['+i+']" name="createPackProdType['+i+']" disabled="disabled" style="color:black;"/>';
             var cell2 = row.insertCell(1);
-            var cell3 = row.insertCell(2); 
-            cell1.innerHTML = promoType;
-            cell2.innerHTML = promoQty;
-            cell3.innerHTML = '<input id="removeBtn" type="button" value="Remove" class="waves-effect waves-light btn red" onclick="deleteCreateProdPack(this)" />';
-            var x = document.getElementById("createPackageProduct");
-                x.remove(x.selectedIndex);
+            var createPackProdQty = document.createElement("input");
+            createPackProdQty.type = "number";
+            createPackProdQty.name = "createPackProdQty["+i+"]";
+            createPackProdQty.disabled = true;
+            createPackProdQty.style = "color: black";
+            createPackProdQty.value = promoQty;
+            cell2.appendChild(createPackProdQty);
+          var cell3 = row.insertCell(2);
+          // cell1.innerHTML = promoType;
+          // cell2.innerHTML = promoQty;
+          cell3.innerHTML = '<input id="removeBtn" type="button" value="Remove" class="waves-effect waves-light btn red" onclick="deleteCreateProdPack(this)" />';
+          var x = document.getElementById("createPackageProduct");
+              x.remove(x.selectedIndex);
         }
 
         function deleteCreateProdPack(row)
         {
             var i=row.parentNode.parentNode.rowIndex;
-            var packageText = document.getElementById("createPackageTable").rows[i].cells[0].innerHTML;
+            var packageText = document.getElementById("createPackageTable").rows[i].cells[0].firstChild.value;
             document.getElementById('createPackageTable').deleteRow(i);
             
             alert(packageText);
@@ -319,21 +382,31 @@
             var promoQty = $("#updatePackageServiceQty").val();
             var removeBtn = document.createElement('button');
            
-            var row = table.insertRow(0);
+            var rowCount = table.rows.length;
+            var row = table.insertRow(rowCount);
+            var i = rowCount;
             var cell1 = row.insertCell(0);
+            cell1.innerHTML = '<input type="text" value="'+promoType+'" id="updateServPackType['+i+']" name="updateServPackType['+i+']" disabled="disabled" style="color:black;"/>';
             var cell2 = row.insertCell(1);
-            var cell3 = row.insertCell(2); 
-            cell1.innerHTML = promoType;
-            cell2.innerHTML = promoQty;
+            var updateServPackQty = document.createElement("input");
+            updateServPackQty.type = "number";
+            updateServPackQty.name = "updateServPackQty["+i+"]";
+            updateServPackQty.disabled = true;
+            updateServPackQty.style = "color: black";
+            updateServPackQty.value = promoQty;
+            cell2.appendChild(updateServPackQty);
+            var cell3 = row.insertCell(2);
+          // cell1.innerHTML = promoType;
+          // cell2.innerHTML = promoQty;
             cell3.innerHTML = '<input id="removeBtn" type="button" value="Remove" class="waves-effect waves-light btn red" onclick="deleteUpdateServPack(this)" />';
             var x = document.getElementById("updatePackageService");
-                x.remove(x.selectedIndex);
+              x.remove(x.selectedIndex);
         }
 
         function deleteUpdateServPack(row)
         {
             var i=row.parentNode.parentNode.rowIndex;
-            var packageText = document.getElementById("updatePackageTable").rows[i].cells[0].innerHTML;
+            var packageText = document.getElementById("updatePackageTable").rows[i].cells[0].firstChild.value;
             document.getElementById('updatePackageTable').deleteRow(i);
             
             alert(packageText);
@@ -350,21 +423,31 @@
             var promoQty = $("#updatePackageProductQty").val();
             var removeBtn = document.createElement('button');
            
-            var row = table.insertRow(0);
+            var rowCount = table.rows.length;
+            var row = table.insertRow(rowCount);
+            var i = rowCount;
             var cell1 = row.insertCell(0);
+            cell1.innerHTML = '<input type="text" value="'+promoType+'" id="updateProdPackType['+i+']" name="updateProdPackType['+i+']" disabled="disabled" style="color:black;"/>';
             var cell2 = row.insertCell(1);
-            var cell3 = row.insertCell(2); 
-            cell1.innerHTML = promoType;
-            cell2.innerHTML = promoQty;
+            var updateProdPackQty = document.createElement("input");
+            updateProdPackQty.type = "number";
+            updateProdPackQty.name = "updateProdPackQty["+i+"]";
+            updateProdPackQty.disabled = true;
+            updateProdPackQty.style = "color: black";
+            updateProdPackQty.value = promoQty;
+            cell2.appendChild(updateProdPackQty);
+            var cell3 = row.insertCell(2);
+          // cell1.innerHTML = promoType;
+          // cell2.innerHTML = promoQty;
             cell3.innerHTML = '<input id="removeBtn" type="button" value="Remove" class="waves-effect waves-light btn red" onclick="deleteUpdateProdPack(this)" />';
             var x = document.getElementById("updatePackageProduct");
-                x.remove(x.selectedIndex);
+              x.remove(x.selectedIndex);
         }
 
         function deleteUpdateProdPack(row)
         {
             var i=row.parentNode.parentNode.rowIndex;
-            var packageText = document.getElementById("updatePackageTable").rows[i].cells[0].innerHTML;
+            var packageText = document.getElementById("updatePackageTable").rows[i].cells[0].firstChild.value;
             document.getElementById('updatePackageTable').deleteRow(i);
             
             alert(packageText);
