@@ -4,13 +4,15 @@ public class ServicePackage {
 	
 	private int intServicePackageID;
 	private Service service;
+	private int intQuantity;
 	private int intStatus;
 	
-	public ServicePackage(int intServicePackageID, Service service, int intStatus){
+	public ServicePackage(int intServicePackageID, Service service, int intQuantity, int intStatus){
 		
 		this.setIntServicePackageID(intServicePackageID);
 		this.service = service;
 		this.intStatus = intStatus;
+		this.setIntQuantity(intQuantity);
 		
 	}
 
@@ -36,6 +38,14 @@ public class ServicePackage {
 
 	public void setIntServicePackageID(int intServicePackageID) {
 		this.intServicePackageID = intServicePackageID;
+	}
+
+	public int getIntQuantity() {
+		return intQuantity;
+	}
+
+	public void setIntQuantity(int intQuantity) {
+		this.intQuantity = intQuantity;
 	}
 
 }

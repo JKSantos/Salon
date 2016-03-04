@@ -122,6 +122,33 @@
 
       // add product / service in table (PROMO)
 
+      // function addServPromo() {
+      //     var table = document.getElementById("promoTable");
+      //     var promoType = $("#promoService").val();
+      //     var promoQty = $("#promoServiceQty").val();
+      //     var removeBtn = document.createElement('button');
+         
+      //     var rowCount = table.rows.length;
+      //     var row = table.insertRow(rowCount);
+      //     var i = rowCount;
+      //     var cell1 = row.insertCell(0);
+      //       cell1.innerHTML = '<input type="text" value="'+promoType+'" id="createServPromType['+i+']" name="createServPromType['+i+']" readonly style="color:black;"/>';
+      //     var cell2 = row.insertCell(1);
+      //       var servPromQty = document.createElement("input");
+      //       servPromQty.type = "number";
+      //       servPromQty.name = "createServPromQty["+i+"]";
+      //       servPromQty.style = "color: black";
+      //       servPromQty.value = promoQty;
+      //     cell2.appendChild(servPromQty);
+      //     var cell3 = row.insertCell(2);
+      //     // cell1.innerHTML = promoType;
+      //     // cell2.innerHTML = promoQty;
+      //     cell3.innerHTML = '<input id="removeBtn" type="button" value="Remove" class="waves-effect waves-light btn red" onclick="deleteServPromo(this)" />';
+      //     var x = document.getElementById("promoService");
+      //         x.remove(x.selectedIndex);
+      // }
+
+
       function addServPromo() {
           var table = document.getElementById("promoTable");
           var promoType = $("#promoService").val();
@@ -132,12 +159,11 @@
           var row = table.insertRow(rowCount);
           var i = rowCount;
           var cell1 = row.insertCell(0);
-            cell1.innerHTML = '<input type="text" value="'+promoType+'" id="createServPromType['+i+']" name="createServPromType['+i+']" disabled="disabled" style="color:black;"/>';
+            cell1.innerHTML = '<input type="text" value="'+promoType+'" id="createServPromType['+i+']" name="createServPromType" readonly style="color:black;"/>';
           var cell2 = row.insertCell(1);
             var servPromQty = document.createElement("input");
             servPromQty.type = "number";
-            servPromQty.name = "createServPromQty["+i+"]";
-            servPromQty.disabled = true;
+            servPromQty.name = "createServPromQty";
             servPromQty.style = "color: black";
             servPromQty.value = promoQty;
           cell2.appendChild(servPromQty);
@@ -174,11 +200,11 @@
           var row = table.insertRow(rowCount);
           var i = rowCount;
           var cell1 = row.insertCell(0);
-            cell1.innerHTML = '<input type="text" value="'+promoProdType+'" id="createProdPromType['+i+']" name="createProdPromType['+i+']" disabled="disabled" style="color:black;"/>';
+            cell1.innerHTML = '<input type="text" value="'+promoProdType+'" id="createProdPromType['+i+']" name="createProdPromType" readonly style="color:black;"/>';
           var cell2 = row.insertCell(1);
             var prodPromQty = document.createElement("input");
             prodPromQty.type = "number";
-            prodPromQty.name = "createProdPromQty["+i+"]";
+            prodPromQty.name = "createProdPromQty";
             prodPromQty.disabled = true;
             prodPromQty.style = "color: black";
             prodPromQty.value = promoProdQty;
@@ -190,6 +216,33 @@
           var x = document.getElementById("promoProduct");
               x.remove(x.selectedIndex);
       }
+
+      // function addProdPromo() {
+      //     var table = document.getElementById("promoTable");
+      //     var promoProdType = $("#promoProduct").val();
+      //     var promoProdQty = $("#promoProductQty").val();
+      //     var removeBtn = document.createElement('button');
+         
+      //      var rowCount = table.rows.length;
+      //     var row = table.insertRow(rowCount);
+      //     var i = rowCount;
+      //     var cell1 = row.insertCell(0);
+      //       cell1.innerHTML = '<input type="text" value="'+promoProdType+'" id="createProdPromType['+i+']" name="createProdPromType['+i+']" disabled="disabled" style="color:black;"/>';
+      //     var cell2 = row.insertCell(1);
+      //       var prodPromQty = document.createElement("input");
+      //       prodPromQty.type = "number";
+      //       prodPromQty.name = "createProdPromQty["+i+"]";
+      //       prodPromQty.disabled = true;
+      //       prodPromQty.style = "color: black";
+      //       prodPromQty.value = promoProdQty;
+      //     cell2.appendChild(prodPromQty);
+      //     var cell3 = row.insertCell(2);
+      //     // cell1.innerHTML = promoType;
+      //     // cell2.innerHTML = promoQty;
+      //     cell3.innerHTML = '<input id="removeBtn" type="button" value="Remove" class="waves-effect waves-light btn red" onclick="deleteProdPromo(this)" />';
+      //     var x = document.getElementById("promoProduct");
+      //         x.remove(x.selectedIndex);
+      // }
 
       function deleteProdPromo(row)
       {

@@ -129,5 +129,14 @@
 			<result name="failed">redirect-maintenance-catalogue.jsp</result>
 		</action>
 		
+		<action name="createPromo" class="com.gss.actions.CreatePromoAction">
+			<result name="success">redirect-maintenance-promo.jsp</result>
+			<result name="failed">redirect-maintenance-promo.jsp</result>
+		</action>
+		
+		<action name="promoMaintenance" class="com.gss.actions.PromoMaintenanceAction">
+			<result name="success">maintenance-promo.jsp</result>
+		</action>
+		
 	</package>
 </struts>

@@ -3,6 +3,7 @@ package com.gss.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.gss.connection.JDBCConnection;
@@ -20,12 +21,14 @@ public class PromoJDBCRepository implements PromoRepository{
 		Connection con = jdbc.getConnection();
 		String strQuery1 = "CALL createPromo(?, ?, ?, ?, ?);";
 		String strQuery2 = "CALL createProductPromo(?, ?, ?);";
-		String strQuery3 = "CALL createServicePromo(?, ?);";
+		String strQuery3 = "CALL createServicePromo(?, ?, ?);";
 		ResultSet set1;
 		
 		int intID = 0;
 		
 		try{
+			
+			System.out.print(promo.getStrPromoAvailability() + " ...." + promo.getStrPromoName());
 			
 			PreparedStatement pre = con.prepareStatement(strQuery1);
 			pre.setString(1, promo.getStrPromoName());
@@ -61,6 +64,7 @@ public class PromoJDBCRepository implements PromoRepository{
 				ServicePackage service = promo.getServiceList().get(intCtr);
 				pre2.setInt(1, intID);
 				pre2.setInt(2, service.getService().getIntServiceID());
+				pre2.setInt(3, service.getIntQuantity());
 				
 				pre2.execute();
 				pre2.close();
@@ -83,8 +87,35 @@ public class PromoJDBCRepository implements PromoRepository{
 
 	@Override
 	public List<Promo> getAllPromo() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		List<Promo> promoList = new ArrayList<Promo>();
+		String query = "SELECT * FROM tblPromo;";
+		Connection con = jdbc.getConnection();
+		
+		try{
+			PreparedStatement pre = con.prepareStatement(query);
+			ResultSet set = pre.executeQuery();
+			
+			while(set.next()){
+				
+				int intID = set.getInt(1);
+				String name = set.getString(2);
+				String desc = set.getString(3);
+				int max = set.getInt(4);
+				double price = set.getDouble(5);
+				String avail = set.getString(6);
+				
+				Promo promo = new Promo(intID, name, desc, price, max, null, null, avail);
+				
+				promoList.add(promo);
+			}
+			
+			return promoList;
+		}
+		catch(Exception e){
+			System.out.println(e.fillInStackTrace());
+			return null;
+		}
 	}
 
 	

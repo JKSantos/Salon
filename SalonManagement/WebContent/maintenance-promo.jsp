@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html ng-app>
-  
+  <%@ taglib uri="/struts-tags" prefix="s" %>
+  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+  <%@ page import="com.gss.model.Product"%>
+  <%@ page import="com.gss.model.Service"%>
+  <%@ page import="com.gss.model.Promo"%>
 
   <head>
   <link type="text/css" rel="stylesheet" href="./css/materialize.css"/>
@@ -121,7 +125,7 @@
                                   </tr>
                               </thead>
                               <tbody>
-                                  <tr>
+                                  <!-- <tr>
                                       <td>1</td>
                                       <td>New Year Promo</td>
                                       <td><button data-target="viewProdSvc" class="waves-effect waves-orange modal-view btn-flat orange lighten-4">View</button></td>
@@ -131,7 +135,20 @@
                                       <td><a class="waves-effect waves-light modal-trigger btn-flat transparent black-text" title="Update" href="#update" style="padding: 0px;"><i class="material-icons">edit</i></a>
                                       <a class="waves-effect waves-light modal-trigger btn-flat transparent red-text text-accent-4" href="#delete" title="Deactivate"><i class="material-icons">delete</i></a>
                                       </td>
-                                  </tr>                                  
+                                  </tr>    -->
+                                <c:forEach items="${promoList}" var="promo">
+                                  <tr>
+                                      <td>${promo.intPromoID}</td>
+                                      <td>${promo.strPromoName}</td>
+                                      <td><button data-target="viewProdSvc" class="waves-effect waves-orange modal-view btn-flat orange lighten-4">View</button></td>
+                                      <td>${promo.dblPromoPrice}</td>
+                                      <td>${promo.strPromoAvailability}</td>
+                                      <td>2016-3-5</td>
+                                      <td><a class="waves-effect waves-light modal-trigger btn-flat transparent black-text" title="Update" href="#update" style="padding: 0px;"><i class="material-icons">edit</i></a>
+                                      <a class="waves-effect waves-light modal-trigger btn-flat transparent red-text text-accent-4" href="#delete" title="Deactivate"><i class="material-icons">delete</i></a>
+                                      </td>
+                                  </tr>
+                                </c:forEach>                                  
                               </tbody>
                         </table>
 
@@ -174,7 +191,7 @@
 
                       <!-- Modal Structure -->
                         <div id="create" class="modal modal-fixed-footer">
-                        <form class="col s12">
+                        <form class="col s12" action="createPromo" method="get">
                           <div class="modal-content">
                             <!-- <div class="container"> -->
                               <div class="wrapper">
@@ -191,30 +208,30 @@
                                             </div>
                                             <div class="input-field col s6">
                                             <p class="center">
-                                              <input type="checkbox" class="filled-in" id="unli">
+                                              <input type="checkbox" class="filled-in" id="unli" name="strNonExp">
                                               <label for="unli">Non-Expiry</label>
                                             </p>
                                             </div>
                                             <div class="input-field col s6">
-                                                 <input type="date" class="datepicker-promo" id="promoend" placeholder="Expiration"/>
+                                                 <input name="strExp" type="date" class="datepicker-promo" id="promoend" placeholder="Expiration"/>
                                             </div>
                                             <div class="input-field col s12">
-                                                <input type="text" class="validate" id="promoname" required>
+                                                <input name="strPromoName" type="text" class="validate" id="promoname" required>
                                                 <label for="promoname">Promo Name <span class="red-text">*</span></label>
                                             </div>
                                             <div class="input-field col s12">
-                                                <textarea id="promodetails" class="materialize-textarea" length="120"></textarea>
+                                                <textarea name="strPromoDesc" id="promodetails" class="materialize-textarea" length="120"></textarea>
                                                 <label for="promodetails">Description</label>
                                             </div>
                                             
                                             <div class="input-field col s5">
                                             <p class="center">
-                                                <input type="checkbox" class="filled-in" id="free"/>
+                                                <input name="strFree" type="checkbox" class="filled-in" id="free"/>
                                                 <label for="free">Free</label>
                                             </p>
                                             </div>
                                             <div class="input-field col s6 offset-s1">
-                                                <input type="text" class="validate right-align" id="promoprice" maxlength="8">
+                                                <input name="dblPromoPrice" type="text" class="validate right-align" id="promoprice" maxlength="8">
                                                 <label for="promoprice">Promo Price</label>
                                             </div>
                                     </div>
@@ -229,6 +246,9 @@
                                           <div class="input-field col s6" style="margin-top: -1px;">
                                               <select class="browser-default" id="promoService">
                                                     <option value="Choose..." disabled selected>Choose</option>
+                                                    <c:forEach items="${serviceList}" var="service">
+                                                      <option value="${service.strServiceName}">${service.strServiceName}</option>
+                                                    </c:forEach>
                                                 </select>
                                           </div>
                                           <div class="input-field col s3" style="margin-top: -1px;">
@@ -245,9 +265,9 @@
                                           <div class="input-field col s6" style="margin-top: -1px;">
                                               <select class="browser-default" id="promoProduct">
                                                     <option value="Choose..." disabled selected>Choose</option>
-                                                    <option value="Daasdasdadas">ASDADADADAD</option>
-                                                    <option value="E">E</option>
-                                                    <option value="F">F</option>
+                                                    <c:forEach items="${productList}" var="product">
+                                                      <option value="${product.strProductName}">${product.strProductName}</option>
+                                                    </c:forEach>
                                                 </select>
                                           </div>
                                           <div class="input-field col s3" style="margin-top: -1px;">
