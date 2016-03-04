@@ -165,7 +165,7 @@
 
                       <!-- Modal Structure -->
                         <div id="create" class="modal modal-fixed-footer">
-                        <form class="col s12" method="post" action="createProdServ">
+                        <form class="col s12" method="post" action="createProdServ" enctype="multipart/form-data">
                           <div class="modal-content">
                             <!-- <div class="container"> -->
                             <div class="row">
@@ -186,7 +186,7 @@
                                             <input name="upload" type="file" accept="image/.jpg, image/.png" onchange="loadProdSvc(event)">
                                           </div>
                                           <div class="file-path-wrapper">
-                                            <input name="strPath" value="image" class="file-path validate" type="text">
+                                            <input value="image" class="file-path validate" type="text">
                                           </div>
                                       </div>
                                 </div>
@@ -289,14 +289,14 @@
                                 </div>
                                 <div class="input-field col s5 offset-s4">
                                     <div class="file-field">
-                                          <div class="btn orange">
-                                            <span class="">Image</span>
-                                            <input name="upload" type="file" accept="image/.jpg, image/.png" onchange="loadFile(event)">
-                                          </div>
-                                          <div class="file-path-wrapper">
-                                            <input name="imageName" value="image" class="file-path validate" type="text">
-                                          </div>
-                                      </div>
+                                                                  <div class="btn orange">
+                                                                    <span class="">Image</span>
+                                                                    <input name="upload" type="file" accept="image/*" onchange="ServiceImage(this)">
+                                                                  </div>
+                                                                  <div class="file-path-wrapper">
+                                                                    <input class="file-path validate" type="text">
+                                                                  </div>
+                                                              </div>
                                 </div>
                                 <div class="input-field col s8 offset-s2">
                                   <input type="hidden" name="intProductId" value="${product.intProductID}">
@@ -324,10 +324,8 @@
                                           <%
                                               String cate = (String)pageContext.getAttribute("cate");
                                               String selectedProduct = null;
-                                              System.out.println(cate + "<<<<<<<<<<" + productCate);
                                               if(productCate.equals(cate)){
                                                   selectedProduct = "selected";
-                                                  System.out.print(selectedProduct + "<-------------");
                                               }
                                               else {
                                                   selectedProduct = "";

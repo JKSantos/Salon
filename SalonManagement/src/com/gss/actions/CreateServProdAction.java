@@ -42,11 +42,15 @@ public class CreateServProdAction {
 			isRecorded = servService.createService(service);
 		}
 
-		if(isRecorded == true)
-			return "success";
-		else
+		if(isRecorded == true){
+			
+			System.out.print("success");
+			return "success"; 
+		}
+		else{
+			System.out.print("failed");
 			return "failed";
-
+		}
 	}
 	
 	public File getUpload() {
@@ -69,8 +73,8 @@ public class CreateServProdAction {
 		return filename;
 	}
 
-	public void setUploadFilename(String filename) {
-		this.filename = filename;
+	public void setUploadFileName(String fileName) {
+		this.filename = fileName;
 	}
 
 	public String getStrItemCate() {

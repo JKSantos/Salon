@@ -92,7 +92,7 @@ public class ServiceJDBCRepository implements ServiceRepository{
 			pre1.setString(2, service.getStrServiceCategory());
 			pre1.setInt(3, service.getIntServiceStatus());
 			pre1.setString(4, service.getStrServiceDesc());
-			pre1.setBinaryStream(5, (InputStream)fis, (int)service.getStrPhotoPath().length());
+			pre1.setBinaryStream(5, (InputStream)fis, (int)file.length());
 			
 			ResultSet set = pre1.executeQuery();
 			while(set.next()){
