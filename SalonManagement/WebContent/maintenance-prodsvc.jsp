@@ -289,14 +289,14 @@
                                 </div>
                                 <div class="input-field col s5 offset-s4">
                                     <div class="file-field">
-                                                                  <div class="btn orange">
-                                                                    <span class="">Image</span>
-                                                                    <input name="upload" type="file" accept="image/*" onchange="ServiceImage(this)">
-                                                                  </div>
-                                                                  <div class="file-path-wrapper">
-                                                                    <input class="file-path validate" type="text">
-                                                                  </div>
-                                                              </div>
+                                        <div class="btn orange">
+                                            <span class="">Image</span>
+                                            <input name="upload" type="file" accept="image/*" onchange="ServiceImage(this)">
+                                        </div>
+                                        <div class="file-path-wrapper">
+                                            <input class="file-path validate" type="text">
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="input-field col s8 offset-s2">
                                   <input type="hidden" name="intProductId" value="${product.intProductID}">
