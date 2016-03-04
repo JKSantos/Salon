@@ -46,7 +46,7 @@
                                       <li><a href="maintenance-promo.jsp">Promo</a></li>
                                       <li><a href="maintenance-discount.jsp">Discount</a></li>
                                       <li><a href="#">Package</a></li>
-                                      <li><a href="#">Catalogue</a></li>
+                                      <li><a href="maintenance-catalogue.jsp">Catalogue</a></li>
                                       <li><a href="maintenance-extra.jsp">Extra Charge</a></li>
                             </ul>
                           </div>
@@ -88,7 +88,7 @@
                                  <li><a href="maintenance-promo.jsp">Promo</a></li>
                                  <li><a href="maintenance-discount.jsp">Discount</a></li>
                                  <li><a href="#">Package</a></li>
-                                 <li><a href="#">Catalogue</a></li>
+                                 <li><a href="maintenance-catalogue.jsp">Catalogue</a></li>
                                  <li><a href="maintenance-extra.jsp">Extra Charge</a></li>
                                </ul>
                              </div>
@@ -429,7 +429,7 @@
                             <div class="modal-content">
                               <div class="row">
                                 <h5 class="red-text">Warning!</h5>
-                                <p>Are you sure you want to deactivate this account?</p>
+                                <p>Are you sure?</p>
                                 <input type="hidden" size="10" name="intEmpID" value="${employee.intEmpID}">
                               </div>
                             </div>
