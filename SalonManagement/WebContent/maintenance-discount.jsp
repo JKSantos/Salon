@@ -36,7 +36,7 @@
                               <li class="orange"><a href="maintenance-discount.jsp">Discount</a></li>
                               <li><a href="#">Package</a></li>
                               <li><a href="#">Catalogue</a></li>
-                              <li><a href="#">Extra Charge</a></li>
+                              <li><a href="maintenance-extra.jsp">Extra Charge</a></li>
                             </ul>
                           </div>
                       </li>
@@ -75,7 +75,7 @@
                                  <li class="orange"><a href="maintenance-discount.jsp">Discount</a></li>
                                  <li><a href="#">Package</a></li>
                                  <li><a href="#">Catalogue</a></li>
-                                 <li><a href="#">Extra Charge</a></li>
+                                 <li><a href="maintenance-extra.jsp">Extra Charge</a></li>
                                </ul>
                              </div>
                          </li>
@@ -168,7 +168,7 @@
                                             </div>
                                             <div class="input-field col s4 offset-s1">
                                                 <input type="text" class="validate right-align" id="createDiscPrice" required name="createDiscPrice">
-                                                <label for="createDiscPrice">Discount Amount</label>
+                                                <label for="createDiscPrice">Discount Amount <span class="red-text">*</span></label>
                                             </div>
                                     </div>
                               </div>

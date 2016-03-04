@@ -35,7 +35,7 @@
                               <li><a href="maintenance-discount.jsp">Discount</a></li>
                               <li><a href="#">Package</a></li>
                               <li><a href="#">Catalogue</a></li>
-                              <li><a href="#">Extra Charge</a></li>
+                              <li><a href="maintenance-extra.jsp">Extra Charge</a></li>
                             </ul>
                           </div>
                       </li>
@@ -74,7 +74,7 @@
                                  <li><a href="maintenance-discount.jsp">Discount</a></li>
                                  <li><a href="#">Package</a></li>
                                  <li><a href="#">Catalogue</a></li>
-                                 <li><a href="#">Extra Charge</a></li>
+                                 <li><a href="maintenance-extra.jsp">Extra Charge</a></li>
                                </ul>
                              </div>
                          </li>
