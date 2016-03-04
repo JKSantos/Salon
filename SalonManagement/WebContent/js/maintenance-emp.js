@@ -45,7 +45,7 @@
       }
     );
 
-   $('.modal-category').leanModal({
+  $('.modal-category').leanModal({
         dismissible: true, // Modal can be dismissed by clicking outside of the modal
         opacity: .2, // Opacity of modal background
         in_duration: 300, // Transition in duration
@@ -174,6 +174,71 @@
       }
 
 
+      // add product/service in update BEGIN
+      function updateServPromo() {
+          var table = document.getElementById("updatePromoTable");
+          var promoType = $("#updatePromoService").val();
+          var promoQty = $("#updatePromoSQty").val();
+          var removeBtn = document.createElement('button');
+         
+          var row = table.insertRow(0);
+          var cell1 = row.insertCell(0);
+          var cell2 = row.insertCell(1);
+          var cell3 = row.insertCell(2); 
+          cell1.innerHTML = promoType;
+          cell2.innerHTML = promoQty;
+          cell3.innerHTML = '<input id="removeBtn" type="button" value="Remove" class="waves-effect waves-light btn red" onclick="deleteUpdateSPromo(this)" />';
+          var x = document.getElementById("updatePromoService");
+              x.remove(x.selectedIndex);
+      }
+
+      function deleteUpdateSPromo(row)
+      {
+          var i=row.parentNode.parentNode.rowIndex;
+          var packageText = document.getElementById("updatePromoTable").rows[i].cells[0].innerHTML;
+          document.getElementById('updatePromoTable').deleteRow(i);
+          
+          alert(packageText);
+          var y = document.getElementById("updatePromoService");
+          var option = document.createElement("option");
+          option.text = packageText;
+
+          y.add(option);
+      }
+
+      function updateProdPromo() {
+          var table = document.getElementById("updatePromoTable");
+          var promoProdType = $("#updatePromoProduct").val();
+          var promoProdQty = $("#updatePromoPQty").val();
+          var removeBtn = document.createElement('button');
+         
+          var row = table.insertRow(0);
+          var cell1 = row.insertCell(0);
+          var cell2 = row.insertCell(1);
+          var cell3 = row.insertCell(2); 
+          cell1.innerHTML = promoProdType;
+          cell2.innerHTML = promoProdQty;
+          cell3.innerHTML = '<input id="removeBtn" type="button" value="Remove" class="waves-effect waves-light btn red" onclick="deleteUpdatePPromo(this)" />';
+          var x = document.getElementById("updatePromoProduct");
+              x.remove(x.selectedIndex);
+      }
+
+      function deleteUpdatePPromo(row)
+      {
+          var i=row.parentNode.parentNode.rowIndex;
+          var packageText = document.getElementById("updatePromoTable").rows[i].cells[0].innerHTML;
+          document.getElementById('updatePromoTable').deleteRow(i);
+          
+          alert(packageText);
+          var y = document.getElementById("updatePromoProduct");
+          var option = document.createElement("option");
+          option.text = packageText;
+
+          y.add(option);
+      }
+      // add product/service in update END
+
+
       // add another option BEGIN
       function addOption(){
         // var newOpt = document.getElementById('addOptionName').val();
@@ -207,6 +272,27 @@
         yearRange: "1970:Today"
       });
       // bday END
+
+      // promo BEGIN
+      $('.datepicker-promo').pickadate({
+        selectYears: 10,
+        labelMonthNext: 'Next month',
+        labelMonthPrev: 'Previous month',
+        labelMonthSelect: 'Select a month',
+        labelYearSelect: 'Select a year',
+        monthsFull: [ 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December' ],
+        monthsShort: [ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec' ],
+        weekdaysFull: [ 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday' ],
+        weekdaysShort: [ 'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat' ],
+        weekdaysLetter: [ 'S', 'M', 'T', 'W', 'T', 'F', 'S' ],
+        today: 'Today',
+        clear: 'Clear',
+        close: 'Close',
+        format: 'mmmm/d/yyyy',
+        min: 'Today',
+        yearRange: "Today:2020"
+      });
+      // promo END
 
       $(document).ready(function(){
 

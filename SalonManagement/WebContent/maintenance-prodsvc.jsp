@@ -35,7 +35,7 @@
                               <li><a href="maintenance-emp.jsp">Employee</a></li>
                               <li class="orange"><a href="maintenance-prodsvc.jsp">Product & Service</a></li>
                               <li><a href="maintenance-promo.jsp">Promo</a></li>
-                              <li><a href="#">Discount</a></li>
+                              <li><a href="maintenance-discount.jsp">Discount</a></li>
                               <li><a href="#">Package</a></li>
                               <li><a href="#">Catalogue</a></li>
                               <li><a href="#">Extra Charge</a></li>
@@ -74,7 +74,7 @@
                                  <li><a href="maintenance-emp.jsp">Employee</a></li>
                                  <li class="orange"><a href="maintenance-prodsvc.jsp">Product & Service</a></li>
                                  <li><a href="maintenance-promo.jsp">Promo</a></li>
-                                 <li><a href="#">Discount</a></li>
+                                 <li><a href="maintenance-discount.jsp">Discount</a></li>
                                  <li><a href="#">Package</a></li>
                                  <li><a href="#">Catalogue</a></li>
                                  <li><a href="#">Extra Charge</a></li>
@@ -107,8 +107,8 @@
                     
                     </div> -->
 
-                    <div class="main z-depth-barts" style="margin-left: 50px; margin-right: 50px;">
-                        <div class="col s12" style="margin-left: 50px; margin-right: 50px;">
+                    <div class="main z-depth-barts" style="margin-left: 20px; margin-right: 20px;">
+                        <div class="col s12" style="margin-left: 20px; margin-right: 20px;">
                         <h3 class="grey-text text-darken-1">Product & Service Maintenance</h3>
                         <a class="waves-effect waves-light modal-trigger btn-flat orange darken-3 left white-text" href="#create" style="margin-top: 50px; margin-left: 15px;">CREATE</a>
                         <table id="example" class="display centered responsive-table highlight" cellspacing="0" width="100%" style="border: 1px solid #bdbdbd; padding: 10px;" rowspan="10">
