@@ -404,7 +404,7 @@
                                 <div class="input-field col s2">
                                   <button data-target="updateOption" class="waves-effect waves-light btn-flat modal-optionUpdate orange lighten-1">add</button>
                                 </div>
-                                <div class="input-field col s12">
+                                <div class="input-field col s6">
                                   <p class="center">
                                         <input type="checkbox" id="access" name="access" />
                                         <label for="access">Grant Access</label>
