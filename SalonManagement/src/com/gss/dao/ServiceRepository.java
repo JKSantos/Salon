@@ -13,5 +13,7 @@ public interface ServiceRepository {
 	public boolean updateService(Service service);
 	
 	public List<String> getAllCategory();
+	
+	public boolean deactivateService(int intServiceID);
 
 }

@@ -474,7 +474,7 @@
                             String servID = String.valueOf(serv.getIntServiceID());
                         %>
                           <div id="del<%=servID%>" class="modal">
-                          <form method="get">
+                          <form method="get" action="deactivateService">
                           <div class="container">
                             <div class="modal-content">
                               <div class="row">

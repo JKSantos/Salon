@@ -24,15 +24,16 @@ public class DeactivateItemAction {
 	
 	public String deactivateService(){
 		
-//		ServiceService service = new ServiceServiceImpl();
-//		
-//		if(service.deactivateService(intItemID) == true){
-//			return "success";
-//		}
-//		else{
-//			return "failed";
-//		}
-		return null;
+		ServiceService service = new ServiceServiceImpl();
+		
+		System.out.println(intItemID + ">>>>>>>>>>>>>>");
+
+		if(service.deactivateService(intItemID) == true){
+			return "success";
+		}
+		else{
+			return "failed";
+		}
 	}
 
 	public int getIntItemID() {

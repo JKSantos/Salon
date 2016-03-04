@@ -7,20 +7,34 @@ public class CreateDiscountAction {
 
 	private String strDiscountName;
 	private String strDiscountDetails;
-	private String strDiscountType;
+	private String strDiscountType1;
+	private String strDiscountType2;
 	private Double dblDiscountPrice;
 
 	public String execute(){
 
 		DiscountServiceImpl service = new DiscountServiceImpl();
-		System.out.println(strDiscountType);
+		Discount discount;
+		String result = "failed";
 		
-		Discount discount = new Discount(1, strDiscountName, strDiscountDetails, Integer.parseInt(strDiscountType), dblDiscountPrice);
-		
-		if(service.createDiscount(discount) == true)
-			return "success";
-		else
-			return "failed";
+		try{
+			if(strDiscountType1.equalsIgnoreCase("on")){
+				discount = new Discount(1, strDiscountName, strDiscountDetails, 1, dblDiscountPrice);
+				
+				if(service.createDiscount(discount) == true)
+					result = "success";
+			}
+				
+			return result;
+		}
+		catch(NullPointerException e){
+			discount = new Discount(1, strDiscountName, strDiscountDetails, 2, dblDiscountPrice);
+
+			if(service.createDiscount(discount) == true)
+				return "success";
+			else
+				return "failed";
+		}
 	}
 
 	public String getStrDiscountName() {
@@ -39,20 +53,28 @@ public class CreateDiscountAction {
 		this.strDiscountDetails = strDiscountDetails;
 	}
 
-	public String getStrDiscountType() {
-		return strDiscountType;
-	}
-
-	public void setStrDiscountType(String strDiscountType) {
-		this.strDiscountType = strDiscountType;
-	}
-
 	public Double getDblDiscountPrice() {
 		return dblDiscountPrice;
 	}
 
 	public void setDblDiscountPrice(Double dblDiscountPrice) {
 		this.dblDiscountPrice = dblDiscountPrice;
+	}
+
+	public String getStrDiscountType1() {
+		return strDiscountType1;
+	}
+
+	public void setStrDiscountType1(String strDiscountType1) {
+		this.strDiscountType1 = strDiscountType1;
+	}
+
+	public String getStrDiscountType2() {
+		return strDiscountType2;
+	}
+
+	public void setStrDiscountType2(String strDiscountType2) {
+		this.strDiscountType2 = strDiscountType2;
 	}
 
 }

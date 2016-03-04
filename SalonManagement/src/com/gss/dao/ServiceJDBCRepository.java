@@ -213,4 +213,27 @@ public class ServiceJDBCRepository implements ServiceRepository{
 		}
 	}
 
+	@Override
+	public boolean deactivateService(int intServiceID) {
+		
+		Connection con = new JDBCConnection().getConnection();
+		String query = "UPDATE tblService SET intServiceStatus = 0 WHERE intServiceID = ?;";
+		
+		try{
+			PreparedStatement pre = con.prepareStatement(query);
+			pre.setInt(1, intServiceID);
+			
+			pre.execute();
+			pre.close();
+			con.createStatement();
+			
+			return true;
+			
+		}
+		catch(Exception e){
+			System.out.println(e.fillInStackTrace());
+			return false;
+		}
+	}
+
 }

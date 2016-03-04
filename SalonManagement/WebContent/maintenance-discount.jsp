@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html ng-app>
-  
+  <%@ taglib uri="/struts-tags" prefix="s" %>
+  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+  <%@ page import="com.gss.model.Discount" %>
 
   <head>
   <meta charset="UTF-8">
@@ -47,7 +49,7 @@
                               <li><a href="#">Inventory</a></li>
                               <li><a href="#">Reservation</a></li>
                               <li><a href="#">VIP</a></li>
-                              <li><a href="#">Product Order</a></li>
+                              <li><a href="#">Product Order</a></li>        
                               <li><a href="#">Walk-In</a></li>
                             </ul>
                           </div>
@@ -120,15 +122,32 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                  <c:forEach items="${discountList}" var="discount">
+                                    <%
+                                        Discount discount1 = (Discount)pageContext.getAttribute("discount");
+                                        String id = String.valueOf(discount1.getIntDiscountID());
+                                        String percet = null; 
+                                        String fixed = null;
+
+                                        if(discount1.getIntDiscountType() == 1){
+                                            percet = "%";
+                                            fixed = "";
+                                        }
+                                        else{
+                                            fixed = "PHP ";
+                                            percet = "";
+                                        }
+                                    %>
                                     <tr>
-                                        <td>1</td>
-                                        <td>Senior Discount</td>
-                                        <td>99.00</td>
+                                        <td>${discount.intDiscountID}</td>
+                                        <td>${discount.strDiscountName}</td>
+                                        <td><%=fixed%>${discount.dblDiscountAmount}<%=percet%></td>
                                         <td>01/01/01</td>
-                                        <td><a class="waves-effect waves-light modal-trigger btn-flat transparent black-text" title="Update" href="#update" style="padding: 0px;"><i class="material-icons">edit</i></a>
+                                        <td><a class="waves-effect waves-light modal-trigger btn-flat transparent black-text" title="Update" href="#dis<%=id%>" style="padding: 0px;"><i class="material-icons">edit</i></a>
                                         <a class="waves-effect waves-light modal-trigger btn-flat transparent red-text text-accent-4" href="#delete" title="Deactivate"><i class="material-icons">delete</i></a>
                                         </td>
                                     </tr>
+                                  </c:forEach>
                                 </tbody>
                             </table>
 
@@ -136,7 +155,7 @@
 
                       <!-- Modal Structure -->
                         <div id="create" class="modal modal-fixed-footer">
-                        <form class="col s12">
+                        <form class="col s12" method="get" action="createDiscount">
                           <div class="modal-content">
                             <!-- <div class="container"> -->
                               <div class="wrapper">
@@ -146,11 +165,11 @@
                                                 <label class="red-text"> (*) Indicates required field</label>
                                             </div>
                                             <div class="input-field col s12">
-                                                <input type="text" class="validate" id="discountName" required>
+                                                <input type="text" name="strDiscountName" class="validate" id="discountName" required>
                                                 <label for="discountName">Discount Name <span class="red-text">*</span></label>
                                             </div>
                                             <div class="input-field col s12">
-                                                <textarea id="discountDesc" class="materialize-textarea" length="120"></textarea>
+                                                <textarea id="discountDesc" name="strDiscountDetails" class="materialize-textarea" length="120"></textarea>
                                                 <label for="discountDesc">Description</label>
                                             </div>
                                             <div class="input-field col s2">
@@ -158,16 +177,16 @@
                                             </div>
                                             <div class="input-field col s5">
                                                 <p>
-                                                   <input name="createDiscType" type="radio" id="createDiscPercent"/>
+                                                   <input type="radio" name="strDiscountType1" id="createDiscPercent"/>
                                                    <label for="createDiscPercent">Percentage</label>
                                                 </p>
                                                 <p>
-                                                   <input name="createDiscType" type="radio" id="createDiscAmount" />
+                                                   <input type="radio" name="strDiscountType2" id="createDiscAmount" />
                                                    <label for="createDiscAmount">Fixed Amount</label>
                                                 </p>
                                             </div>
                                             <div class="input-field col s4 offset-s1">
-                                                <input type="text" class="validate right-align" id="createDiscPrice" required name="createDiscPrice">
+                                                <input type="text" class="validate right-align" id="createDiscPrice" required name="dblDiscountPrice">
                                                 <label for="createDiscPrice">Discount Amount <span class="red-text">*</span></label>
                                             </div>
                                     </div>
@@ -180,7 +199,13 @@
                           </form>
                     </div>
 
-                        <div id="update" class="modal modal-fixed-footer">
+                      <c:forEach items="${discountList}" var="discount">
+                        <%
+                          Discount discount2 = (Discount)pageContext.getAttribute("discount");
+                          String id2 = String.valueOf(discount2.getIntDiscountID());
+
+                        %>
+                        <div id="dis<%=id2%>" class="modal modal-fixed-footer">
                         <form class="col s12">
                           <div class="modal-content">
                             <!-- <div class="container"> -->
@@ -188,11 +213,11 @@
                                   <h4 class="grey-text text-darken-1" style="margin-bottom: 50px;">Update Discount</h4>
                                     <div class="row">
                                             <div class="input-field col s12">
-                                                <input type="text" class="validate" id="discountName">
+                                                <input value="${discount.strDiscountName}" type="text" class="validate" id="discountName">
                                                 <label for="discountName">Discount Name</label>
                                             </div>
                                             <div class="input-field col s12">
-                                                <textarea id="discountDesc" class="materialize-textarea" length="120"></textarea>
+                                                <textarea id="discountDesc" class="materialize-textarea" length="120">${discount.strDiscountDesc}</textarea>
                                                 <label for="discountDesc">Description</label>
                                             </div>
                                             <div class="input-field col s2">
@@ -209,7 +234,7 @@
                                                 </p>
                                             </div>
                                             <div class="input-field col s4 offset-s1">
-                                                <input type="text" class="validate right-align" id="createDiscPrice"name="createDiscPrice">
+                                                <input type="text" value="${discount.dblDiscountAmount}" class="validate right-align" id="createDiscPrice"name="createDiscPrice">
                                                 <label for="createDiscPrice">Discount Amount</label>
                                             </div>
                                     </div>
@@ -221,7 +246,7 @@
                           </div>
                           </form>
                     </div>
-
+                  </c:forEach>
 
                           <div id="delete" class="modal">
                           <div class="container">

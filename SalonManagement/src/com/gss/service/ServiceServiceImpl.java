@@ -40,4 +40,13 @@ public class ServiceServiceImpl implements ServiceService{
 		return repo.getAllCategory();
 	}
 
+
+	@Override
+	public boolean deactivateService(int intServiceID) {
+
+		ServiceRepository repo = new ServiceJDBCRepository();
+		
+		return repo.deactivateService(intServiceID);
+	}
+
 }
