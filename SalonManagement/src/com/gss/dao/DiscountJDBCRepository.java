@@ -33,8 +33,9 @@ public class DiscountJDBCRepository implements DiscountRepository{
 				String strDesc = set.getString(3);
 				int intType = set.getInt(4);
 				double dblAmount = set.getDouble(5);
+				int status = set.getInt(6);
 				
-				Discount discount = new Discount(intID, strName, strDesc, intType, dblAmount);
+				Discount discount = new Discount(intID, strName, strDesc, intType, dblAmount, status);
 				discountList.add(discount);
 			}
 			
@@ -86,6 +87,29 @@ public class DiscountJDBCRepository implements DiscountRepository{
 			pre.setString(3, discount.getStrDiscountDesc());
 			pre.setInt(4, discount.getIntDiscountType());
 			pre.setDouble(5, discount.getDblDiscountAmount());
+			pre.execute();
+			pre.close();
+			con.close();
+			
+			return true;
+		}
+		catch(Exception e){
+			System.out.println(e.fillInStackTrace());
+			return false;
+		}
+	}
+
+	@Override
+	public boolean deactivateDiscount(int intDiscountID) {
+
+		Connection con = jdbc.getConnection();
+		String query = "UPDATE tblDiscount SET intStatus = 0 WHERE intDiscountID = ?";
+		
+		try{
+			
+			PreparedStatement pre = con.prepareStatement(query);
+			pre.setInt(1, intDiscountID);
+
 			pre.execute();
 			pre.close();
 			con.close();

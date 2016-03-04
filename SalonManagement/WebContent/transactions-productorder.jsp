@@ -96,7 +96,7 @@
           <div class="wrapper">
             
                     <div class="aside aside1 z-depth-barts"> <!--main aside1-->
-                          <header><h4 style="margin-top: 30px;">Order Product</h4></header>
+                          <header><h2 class="thin" style="margin-top: 30px;">Sales Order</h2></header>
                           <div class="container">
                           <div class="row">
                               <form class="col s12" style="margin-top: 20px;">

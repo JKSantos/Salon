@@ -1,5 +1,5 @@
 
-function myFunction() {
+function myFunction(){
     var table = document.getElementById("packageTable");
     var packageType = $("#package-list").val();
     var packageQuant = $("#package_quantity").val();
@@ -16,8 +16,7 @@ function myFunction() {
         x.remove(x.selectedIndex);
 }
 
-function deleteRow(row)
-{
+function deleteRow(row){
     var i=row.parentNode.parentNode.rowIndex;
     var packageText = document.getElementById("packageTable").rows[i].cells[0].innerHTML;
     document.getElementById('packageTable').deleteRow(i);

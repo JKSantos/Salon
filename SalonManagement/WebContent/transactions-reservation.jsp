@@ -1,13 +1,104 @@
 <!DOCTYPE html>
 <html>
-<%@ taglib uri="/struts-tags" prefix="s" %>
-  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
   <head>
   <link rel="stylesheet" href="./css/materialize.min.css"  media="screen,projection"/>
   <link type="text/css" rel="stylesheet" href="./css/materialize.css"/>
   <link type="text/css" rel="stylesheet" href="./css/mystyle.css"/>
+  <link rel="stylesheet" type="text/css" href="./css/datatables.min.css"/>
+  <link rel="stylesheet" type="text/css" href="./css/datatables.material.min.css"/>
+  <link rel="stylesheet" type="text/css" href="./css/material.min.css">
   <link type="text/css" rel="stylesheet" href="./css/trans-reservation.css"/><!--Let browser know website is optimized for mobile-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <!-- full calendar declrations -->
+  <link href='./css/fullcalendar.css' rel='stylesheet' />
+  <link href='./css/fullcalendar.print.css' rel='stylesheet' media='print' />
+  <script src='./js/moment.min.js'></script>
+  <script src='./js/jquery.min.js'></script>
+  <script src='./js/fullcalendar.min.js'></script>
+
+  <script>
+
+   $(document).ready(function() {
+     
+     $('#calendar').fullCalendar({
+       header: {
+         left: 'prev,next today',
+         center: 'title',
+         right: 'month,basicWeek,basicDay'
+       },
+       defaultDate: '2016-01-12',
+       editable: true,
+       eventLimit: true, // allow "more" link when too many events
+       events: [
+         {
+           title: 'All Day Event',
+           start: '2016-01-01'
+         },
+         {
+           title: 'Long Event',
+           start: '2016-01-07',
+           end: '2016-01-10'
+         },
+         {
+           id: 999,
+           title: 'Repeating Event',
+           start: '2016-01-09T16:00:00'
+         },
+         {
+           id: 999,
+           title: 'Repeating Event',
+           start: '2016-01-16T16:00:00'
+         },
+         {
+           title: 'Conference',
+           start: '2016-01-11',
+           end: '2016-01-13'
+         },
+         {
+           title: 'Meeting',
+           start: '2016-01-12T10:30:00',
+           end: '2016-01-12T12:30:00'
+         },
+         {
+           title: 'Lunch',
+           start: '2016-01-12T12:00:00'
+         },
+         {
+           title: 'Meeting',
+           start: '2016-01-12T14:30:00'
+         },
+         {
+           title: 'Happy Hour',
+           start: '2016-01-12T17:30:00'
+         },
+         {
+           title: 'Dinner',
+           start: '2016-01-12T20:00:00'
+         },
+         {
+           title: 'Birthday Party',
+           start: '2016-01-13T07:00:00'
+         },
+         {
+           title: 'Click for Google',
+           url: 'http://google.com/',
+           start: '2016-01-28'
+         }
+       ]
+     });
+     
+   });
+
+  </script>
+<style>
+
+  #calendar {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+</style>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   </head>
 
   <body class="blue-grey lighten-5">
@@ -42,7 +133,7 @@
                                       <li class="orange"><a href="transactions-reservation.jsp">Reservation</a></li>
                                       <li><a href="transactions-vip.jsp">VIP</a></li>
                                       <li><a href="transactions-productorder.jsp">Product Order</a></li>
-                                      <li><a href="transactions-walkin.jsp">Walk-In</a></li>
+                                      <li><a href="#!">Walk-In</a></li>
                                     </ul>
                                   </div>
                               </li>
@@ -93,214 +184,61 @@
 
         <article>
           <div class="wrapper">
+                  
                     <div class="aside aside1 z-depth-barts">
-                    <div class="container">
-                      <div class="row">
-                          <form class="col s12">
-                              <div class="input-field col s12">
-                                  <h4>Create Reservation</h4>
-                              </div>
-                              <div class="input-field col s12">
-                                <p class="red-text">(*) Includes required field</p>
-                              </div>
-                                <div class="input-field col s6">
-                                    <select id="reserve_eventhome" onchange="enableService(this);">
-                                          <option value="choose" disabled selected>Choose...</option>
-                                          <option value="event">Event</option>
-                                          <option value="home">Home Service</option>
-                                    </select>
-                                    <label>Service <span class="red-text">*</span></label>
-                                </div>
-                                <div class="input-field col s3">
-                                    <input type="date" class="datepicker" id="datetimestart" placeholder="Date Start" disabled="disabled">
-                                </div>
-                                <div class="input-field col s3">
-                                    <input type="date" class="datepicker" id="datetimeend" placeholder="Date End" disabled="disabled">
-                                </div>
-                              <div class="input-field col s6">
-                                  <select id="" onchange="enableVIP(this);">
-                                        <option value="vip1">VIP - Ainan Ongsip</option>
-                                        <option value="guest" selected>Guest</option>
-                                  </select>
-                                  <label>VIP List <span class="red-text">*</span></label>
-                              </div>
-                              <div class="input-field col s6">
-                                  <select id="guesttype" onchange="enableCompany(this);">
-                                    <option value="individual">Individual</option>
-                                    <option value="company">Company</option>
-                                  </select>
-                                  <label>Guest Type</label>
-                              </div>
-                              <div class="input-field col s12">
-                                  <input type="text" class="validate" name="reserve_companyname" id="reserve_companyname" disabled="disabled">
-                                  <label for="reserve_companyname">Company Name</label>
-                              </div>
-                              <div class="input-field col s12">
-                                  <input type="text" class="validate" required name="reserve_customername" id="reserve_customername">
-                                  <label for="reserve_customername">Name <span class="red-text">*</span></label>
-                              </div>
-                              <div class="input-field col s12">
-                                  <input type="text" class="validate" id="reserve_venue" required>
-                                  <label for="reserve_venue">Venue <span class="red-text">*</span></label>
-                              </div>
-                              <div class="input-field col s6">
-                                  <select id="package-list" class="browser-default">
-                                        <option value="" disabled selected>Choose your option</option>
-                                        <option value="Package 1">Package 1</option>
-                                        <option value="Package 2">Package 2</option>
-                                        <option value="Package 3">Package 3</option>
-                                        <option value="customize">Custom</option>
-                                  </select>
-                                  <!-- <label>Package Available</label> -->
-                              </div>
-                                  <div class="input-field col s6">
-                                      <input type="number" class="validate" id="package_quantity">
-                                      <label for="package_quantity">Quantity</label>
-                                  </div>
-
+                        <div class="row">
+                          <h2 class="thin center"> Reservations</h2>
+                          <br>
+                            <table id="example" class="mdl-data-table responsive-table" cellspacing="0" width="100%">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Date of Reservation</th>
+                                            <th>Venue</th>
+                                            <th>Detail</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>January 1, 2016</td>
+                                            <td>Manila Cathedral</td>
+                                            <th><button class="waves-effect waves-light orange btn-flat white-text">Details</button></th>
+                                            <td><a href="#update" class="modal-trigger"><i class="material-icons green-text">edit</i></a>
+                                            <a href="#!"><i class="material-icons red-text">delete</i></a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>January 1, 2016</td>
+                                            <td>Manila Cathedral</td>
+                                            <th><button class="waves-effect waves-light orange btn-flat white-text">Details</button></th>
+                                            <td><a href="#update" class="modal-trigger"><i class="material-icons green-text">edit</i></a>
+                                            <a href="#!"><i class="material-icons red-text">delete</i></a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>January 1, 2016</td>
+                                            <td>Manila Cathedral</td>
+                                            <th><button class="waves-effect waves-light orange btn-flat white-text">Details</button></th>
+                                            <td><a href="#update" class="modal-trigger"><i class="material-icons green-text">edit</i></a>
+                                            <a href="#!"><i class="material-icons red-text">delete</i></a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <br> <br>
+                                <div class="row ">
                                   <div class="col s12">
-                                    <button class="waves-effect waves-light btn" onclick="myFunction()">ADD</button>
+                                    <div class="right">
+                                      <a class="btn-floating btn-large waves-effect waves-light orange darken-3" href="calendar-view.jsp" target="_blank"><i class="material-icons">event</i></a>
+                                   <a class="btn-floating btn-large waves-effect waves-light orange darken-3" href="create-reservation.jsp"><i class="material-icons">add</i></a>
+                                    </div>                                  
                                   </div>
-
-                                  <div class="row">
-                                    <table class="center-aligned highlight" id="packageTable">
-
-                                    </table>
-                                  </div>
-                              
-                              <div class="input-field col s6" stype="margin-top: -10px;">
-                                  <select id="servicelist" disabled="disabled" multiple>
-                                        <option value="" disabled selected>Choose your option</option>
-                                        <c:forEach items="${productList}" var="product">
-                                        	<option value="${product.intProductName}">{product.intProductName}</option>
-                                        </c:forEach>
-                                  </select>
-                                  <label>Service Available</label>
-                              </div>
-                                  <div class="input-field col s6">
-                                      <input type="number" class="validate" id="package_quantity">
-                                      <label for="service_quantity">Quantity</label>
-                                  </div>
-
-                                  <div id="div1">
-                                    
-                                  </div>
-
-                                  <div class="col s12">
-                                    <a class="waves-effect waves-light btn">ADD</a>
-                                  </div>
-
-                                  <div class="row">
-                                    <table class="center highlight">
-                                            <tbody>
-                                              <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                              </tr>                                  
-                                            </tbody>
-                                          </table>
-                                    </div>
-                                    
-                              <div class="input-field col s12" stype="margin-top: -10px;">
-                                  <select id="stylistlist"  multiple required>
-                                        <option value="" disabled selected>Choose your option</option>
-                                        
-                                  </select>
-                                  <label>Stylist Available <span class="red-text">*</span></label>
-                              </div>
-                              
-                              <div class="input-field col s12">
-                                  <input type="number" class="validate" required id="reserve_headcount" maxlength="4">
-                                  <label for="reserve_headcount">Head Count <span class="red-text">*</span></label>
-                              </div>
-                          
-                              <div class="col s12">
-                                  <button id="reservetn" type="submit" value="Submit" class="waves-effect waves-light orange btn-flat modal-trigger" style="margin-top:10px;" data-target="summaryModal">CREATE</button>
-                                  <button id="reserveclear" type="reset" value="Reset" class="waves-effect waves-orange white btn-flat" style="margin-top:10px;">CLEAR</button>
-                              </div>
-
-                          </form>
-                      </div>
-                    </div>
-
-                     <div id="summaryModal" class="modal modal-fixed-footer">
-                        <form>
-                          <div class="modal-content">
-                            <h3 class="orange-text text-darken-3 thin">Summary of Reservation</h3>
-                            <div class="container">
-                              <div class="row">
-                                <table class="center highlight">
-                                        <thead>
-                                          <tr>
-                                              <th data-field="id">Service</th>
-                                              <th data-field="name">Descriptioin</th>
-                                              <th data-field="price">Service Price</th>
-                                          </tr>
-                                        </thead>
-
-                                        <tbody>
-                                          <tr>
-                                            <td>Haircut</td>
-                                            <td>Short</td>
-                                            <td>$0.87</td>
-                                          </tr>
-                                          <tr>
-                                            <td>Rebond</td>
-                                            <td>Hot oil</td>
-                                            <td>$3.76</td>
-                                          </tr>
-                                          <tr>
-                                            <td>Spa</td>
-                                            <td>Full body</td>
-                                            <td>$7.00</td>
-                                          </tr>
-                                        </tbody>
-                                      </table>
-                              </div>
-                              <div class="row">
-                                <h5 class="thin col s6">Total Amount: </h5>
-                                <h5 class="thin col s6">Php 2,500.00</h5>
-                              </div>   
-
-                               <div class="row">
-                                <form class="col s12">
-                                  <div class="input-field col s12">
-                                      <select>
-                                        <option value="" disabled selected>Choose your option</option>
-                                        <option value="1">Down Payment</option>
-                                        <option value="2">Full Payment</option>
-                                      </select>
-                                      <label>Payment Type</label>
-                                  </div>
-                                  <div class="input-field col s6 offset-s6">
-                                      <input type="text" class="validate right-align" id="reserve-amount" name="reserve-amount">
-                                      <label for="reserve-amount">Payment Amount</label>
-                                  </div>
-                                <!-- <h5 class="thin col s6">Down Payment: </h5>
-                                <h5 class="thin col s6">Php 1,250.00</h5> -->
-                                </form>
-                              </div>
-                                
-                            </div>
-                          </div>
-                         <div class="modal-footer">
-                            <a href="#" class="modal-action modal-close waves-orange btn-flat transparent">Cancel</a>
-                           <button class="modal-action waves-effect waves-light orange btn-flat ">Confirm</button>
-                           <a href="#!" class="waves-effect waves-orange transparent btn-flat left">Print Contract</a>
-                           <a href="#!" class="waves-effect waves-orange transparent btn-flat left">Print Receipt</a>
-                         </div>
-                         </form>
-                    </div>
-                    </div>
-
-
-                    <div class="aside aside2 z-depth-barts">
-                      <div class="row">
-                          <div class="input-field col s12">
-                              <a href="transactions-reservation-view.jsp" class="waves-effect waves-light orange btn">View</a>
-                          </div>
-                      </div>
+                                </div>
+                        </div>           
                     </div>
           </div>
         </article>
@@ -309,16 +247,42 @@
 
   <!--Import jQuery before materialize.js-->
     <script type="text/javascript" src="./js/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="./js/jquery-latest.min.js"></script>
     <script type="text/javascript" src="./js/materialize.min.js"></script>
+    <script type="text/javascript" src="./js/angular.min.js"></script>
+    <script type="text/javascript" src="./js/package.js"></script>
+    <script type="text/javascript" src="./js/datatables.min.js"></script>
+    <script type="text/javascript" src="./js/datatables.material.min.js"></script>
     <script type="text/javascript" src="./js/addPackage.js"></script>
 
-    <script type="text/javascript">
-      $( document ).ready(function(){
 
-        $(".button-collapse").sideNav();
-            
-        
-      });
+      <script type="text/javascript">
+        $(document).ready(function(){
+            // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+            $('.modal-trigger').leanModal();
+          }); 
+    </script>
+  
+
+    <script type="text/javascript">
+      $(document).ready(function() {
+          $('#example').DataTable( {
+            "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+              columnDefs: [
+                  {
+                      targets: [ 0, 1, 2 ],
+                      className: 'mdl-data-table__cell--non-numeric',
+
+                  },
+              ]
+          } );
+      } );
+    </script>
+
+    <script type="text/javascript">
+      $(document).ready(function() {
+          $('#example').DataTable();
+      } );
     </script>
 
     <script type="text/javascript">
@@ -333,6 +297,8 @@
        $('select').material_select();
      });
     </script>
+
+  
 
     <script type="text/javascript">
         function enableService(datetime){
@@ -354,23 +320,7 @@
           }
     </script>
 
- 
- <script type="text/javascript">
-     function enableCompany(selectcompany){
-       companyname = document.getElementById('reserve_companyname');
-       custname = document.getElementById('reserve_customername');
-
-       if(selectcompany.options[selectcompany.selectedIndex].value=='company'){
-         companyname.disabled = false;
-         custname.disabled = false;
-       }else{
-         companyname.disabled = true;
-         companyname.value = '';
-       }
-       return;
-     }
- </script>
-   
+    
 
     <script type="text/javascript">
         $(function(){
@@ -394,16 +344,12 @@
     <script type="text/javascript">
         function enableVIP(selectguest){
           guest = document.getElementById('reserve_customername');
-          guesttype = document.getElementById('guesttype');
 
           if(selectguest.options[selectguest.selectedIndex].value=='guest'){
             guest.disabled = false;
-            guesttype.disabled = false;
           }else{
             guest.disabled = true;
             guest.value = '';
-            guesttype.disabled = true;
-            guesttype.value = '';
           }
           return;
         }

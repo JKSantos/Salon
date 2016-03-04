@@ -32,7 +32,7 @@
                                       <li><a href="maintenance-promo.jsp">Promo</a></li>
                                       <li><a href="discountMaintenance.action">Discount</a></li>
                                       <li><a href="maintenance-package.jsp">Package</a></li>
-                                      <li><a href="maintenance-catalogue.jsp">Catalogue</a></li>
+                                      <li><a href="catalogueMaintenance">Catalogue</a></li>
                                       <li><a href="extraChargeMaintenance">Extra Charge</a></li>
                                     </ul>
                                   </div>

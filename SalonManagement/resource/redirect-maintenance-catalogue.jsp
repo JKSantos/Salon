@@ -8,7 +8,7 @@
 </head>
 <body>
 	<%
-		String action="extraChargeMaintenance.action";
+		String action="catalogueMaintenance";
     	response.sendRedirect(action);
 		
 	%>

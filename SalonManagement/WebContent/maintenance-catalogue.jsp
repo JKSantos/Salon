@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html ng-app>
-  
+  <%@ taglib uri="/struts-tags" prefix="s" %>
+  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+  <%@ page import="com.gss.model.Catalogue"%>
+  <%@ page import="com.gss.model.Service"%>
 
   <head>
   <link type="text/css" rel="stylesheet" href="./css/materialize.css"/>
@@ -114,14 +117,13 @@
                                         <th>ID</th>
                                         <th>Name</th>
                                         <th>Type</th>
-                                        <th>Description</th>
                                         <th>Price</th>
                                         <th>Date of Creation</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
+                                   <!--  <tr>
                                         <td>1</td>
                                         <td>Mohawk</td>
                                         <td>Senior Cut</td>
@@ -131,10 +133,23 @@
                                         <td><a class="waves-effect waves-light modal-trigger btn-flat transparent black-text" title="Update" href="#update" style="padding: 0px;"><i class="material-icons">edit</i></a>
                                         <a class="waves-effect waves-light modal-trigger btn-flat transparent red-text text-accent-4" href="#delete" title="Deactivate"><i class="material-icons">delete</i></a>
                                         </td>
-                                    </tr>
-
-
-                                    
+                                    </tr> -->
+                                  <c:forEach items="${catList}" var="cat">
+                                    <%
+                                        Catalogue cat1 = (Catalogue)pageContext.getAttribute("cat");
+                                        String cat1ID = String.valueOf(cat1.getIntCatalogueID());
+                                    %>
+                                    <tr>
+                                        <td>${cat.intCatalogueID}</td>
+                                        <td>${cat.strCatalogueName}</td>
+                                        <td>${cat.strCatalogueType}</td>
+                                        <td>Php ${cat.dblCataloguePrice}</td>
+                                        <td>01/01/01</td>
+                                        <td><a class="waves-effect waves-light modal-trigger btn-flat transparent black-text" title="Update" href="#cata<%=cat1ID%>" style="padding: 0px;"><i class="material-icons">edit</i></a>
+                                        <a class="waves-effect waves-light modal-trigger btn-flat transparent red-text text-accent-4" href="#dec<%=cat1ID%>" title="Deactivate"><i class="material-icons">delete</i></a>
+                                        </td>
+                                    </tr> 
+                                   </c:forEach>
                                 </tbody>
                             </table>
 
@@ -142,7 +157,7 @@
 
                       <!-- Modal Structure -->
                         <div id="create" class="modal modal-fixed-footer">
-                        <form class="col s12">
+                        <form class="col s12" method="post" action="createCatalogue" enctype="multipart/form-data">
                           <div class="modal-content">
                             <!-- <div class="container"> -->
                             <div class="row">
@@ -163,7 +178,7 @@
                                             <input name="upload" type="file" accept="image/.jpg, image/.png" onchange="loadCreateCatalogue(event)">
                                           </div>
                                           <div class="file-path-wrapper">
-                                            <input name="strPath" value="image" class="file-path validate" type="text">
+                                            <input name="strCataloguePath" value="image" class="file-path validate" type="text">
                                           </div>
                                       </div>
                                 </div>
@@ -171,36 +186,36 @@
                                     <p style="color:#9e9e9e;font-size:12px;">Type <span class="red-text">*</span></p>
                                 </div>
                                 <div class="input-field col s8 offset-s2" style="margin-top: -1px;">
-                                  <select class="browser-default" required >
+                                  <select class="browser-default" required name="strCatalogueCategoryID" >
                                     <option value="" disabled="disabled" selected></option>
+                                    <c:forEach items="${serviceList}" var="service">
+                                      <option value="${service.strServiceName}">${service.strServiceName}</option>
+                                    </c:forEach>
                                   </select>
                                 </div>
                                 <div class="input-field col s8 offset-s2">
-                                  <input type="text" class="validate" required id="prodsvcName" name="prodsvcName">
+                                  <input type="text" class="validate" required id="prodsvcName" name="strCatalogueName">
                                   <label for="prodsvcName">Name <span class="red-text">*</span></label>
-                                </div>
-                                <div class="input-field col s8 offset-s2">
-                                  <textarea id="prodsvcDetail" name="prodsvcDetail" class="materialize-textarea"></textarea>
-                                  <label for="prodsvcDetail">Details</label>
-                                </div>
-                                <div class="input-field col s3 offset-s7" style="margin-top: 20px;">
-                                    <input type="text" class="validate right-align" id="prodsvcPrice" name="prodsvcPrice">
-                                    <label for="prodsvcPrice">Price <span class="red-text">*</span></label>
-                                </div>
+                                </div> 
                               
                             <!-- </div> -->
                             </div>
                           </div>
                           <div class="modal-footer">
                               <a href="#!" class=" modal-action modal-close waves-effect waves-orange transparent btn-flat">CANCEL</a>
-                              <button class="waves-effect waves-light orange darken-3 white-text btn-flat" type="submit" value="Submit">CREATE</button>
+                              <button class="waves-effect waves-light orange darken-3 white-text btn-flat" type="submit" value="Submit">SAVE</button>
                           </div>
                           </form>
                     </div>
 
-                   
-                        <div id="update" class="modal modal-fixed-footer">
-                        <form class="col s12">
+                      <c:forEach items="${catList}" var="category">
+                        <%
+                            Catalogue cat3 = (Catalogue)pageContext.getAttribute("category");
+                            String catID2 = String.valueOf(cat3.getIntCatalogueID());
+                            String cateType = cat3.getStrCatalogueType();
+                        %>
+                        <div id="cata<%=catID2%>" class="modal modal-fixed-footer">
+                        <form class="col s12" method="post" action="updateCatalogue" enctype="multipart/form-data">
                           <div class="modal-content">
                             <!-- <div class="container"> -->
                             <div class="row">
@@ -213,12 +228,13 @@
                                 </div>
                                 <div class="input-field col s5 offset-s4">
                                     <div class="file-field">
+                                          <input type="hidden" name="intCatalogueID"value="${category.intCatalogueID}">
                                           <div class="btn orange">
                                             <span class="">Image</span>
-                                            <input name="upload" type="file" accept="image/.jpg, image/.png" onchange="loadUpdateCatalogue(event)">
+                                            <input name="upload" type="file" accept="image/.jpg, image/.png" onchange="loadCreateCatalogue(event)">
                                           </div>
                                           <div class="file-path-wrapper">
-                                            <input name="strPath" value="image" class="file-path validate" type="text">
+                                            <input name="strCataloguePath" value="image" class="file-path validate" type="text">
                                           </div>
                                       </div>
                                 </div>
@@ -226,22 +242,25 @@
                                     <p style="color:#9e9e9e;font-size:12px;">Type</p>
                                 </div>
                                 <div class="input-field col s8 offset-s2" style="margin-top: -1px;">
-                                  <select class="browser-default" required >
+                                  <select class="browser-default" required name="strCatalogueCategoryID">
                                     <option value="" disabled="disabled" selected></option>
+                                    <c:forEach items="${serviceList}" var="service">
+                                      <%
+                                          Service cat2 = (Service)pageContext.getAttribute("service");
+                                          String type = "";
+                                          if(cat2.getStrServiceName().equals(cateType)){
+                                              type = "selected";
+                                          }
+                                      %>
+                                      <option value="${service.strServiceName}" <%out.print(type);%>>${service.strServiceName}</option>
+                                    </c:forEach>
                                   </select>
                                 </div>
                                 <div class="input-field col s8 offset-s2">
-                                  <input type="text" class="validate" required id="prodsvcName" name="prodsvcName">
+                                  <input type="text" class="validate" required id="prodsvcName" name="strCatalogueName" value="${category.strCatalogueName}">
                                   <label for="prodsvcName">Name</label>
                                 </div>
-                                <div class="input-field col s8 offset-s2">
-                                  <textarea id="prodsvcDetail" name="prodsvcDetail" class="materialize-textarea"></textarea>
-                                  <label for="prodsvcDetail">Details</label>
-                                </div>
-                                <div class="input-field col s3 offset-s7" style="margin-top: 20px;">
-                                    <input type="text" class="validate right-align" id="prodsvcPrice" name="prodsvcPrice">
-                                    <label for="prodsvcPrice">Price</label>
-                                </div>
+                    
                               
                             <!-- </div> -->
                             </div>
@@ -252,13 +271,21 @@
                           </div>
                           </form>
                     </div>
+                  </c:forEach>
 
-                          <div id="delete" class="modal">
+                    <c:forEach items="${catList}" var="category">
+                      <%
+                          Catalogue cat5 = (Catalogue)pageContext.getAttribute("category");
+                          String catID4 = String.valueOf(cat5.getIntCatalogueID());
+                      %>
+                      <div id="dec<%=catID4%>" class="modal">
+                        <form method="get" action="deactivateCatalogue">      
                           <div class="container">
                             <div class="modal-content">
+                              <input type="hidden" name="intCatalogueID" value="${category.intCatalogueID}">
                               <div class="row">
                                 <h5 class="red-text">Warning!</h5>
-                                <p>Are you sure?</p>
+                                <p>Are you sure you want to deactivate ${category.strCatalogueName}?</p>
                               </div>
                             </div>
                               <div class="col s12 center" style="margin-bottom: 30px;">
@@ -266,9 +293,10 @@
                                 <a href="#" class="modal-action modal-close waves-effect waves-light transparent btn-flat black-text">NO</a>
                               </div>
                             </div>
+                         </form>
                       </div>
+                    </c:forEach>
 <!--                     <div class="aside aside2 z-depth-barts">
-                     
                     </div> -->
                 </div>
         </div>

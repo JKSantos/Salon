@@ -7,13 +7,15 @@ public class Discount {
 	private String strDiscountDesc;
 	private int intDiscountType;
 	private double dblDiscountAmount;
+	private int intDiscountStatus;
 	
-	public Discount(int intDiscountID, String strDiscountName, String strDiscountDesc, int intDiscountType, double dblDiscountAmount){
+	public Discount(int intDiscountID, String strDiscountName, String strDiscountDesc, int intDiscountType, double dblDiscountAmount, int intDiscountStatus){
 		this.setIntDiscountID(intDiscountID);
 		this.setStrDiscountName(strDiscountName);
 		this.setStrDiscountDesc(strDiscountDesc);
 		this.setIntDiscountType(intDiscountType);
 		this.setDblDiscountAmount(dblDiscountAmount);
+		this.setIntDiscountStatus(intDiscountStatus);
 	}
 
 	public int getIntDiscountID() {
@@ -54,6 +56,14 @@ public class Discount {
 
 	public void setDblDiscountAmount(double dblDiscountAmount) {
 		this.dblDiscountAmount = dblDiscountAmount;
+	}
+
+	public int getIntDiscountStatus() {
+		return intDiscountStatus;
+	}
+
+	public void setIntDiscountStatus(int intDiscountStatus) {
+		this.intDiscountStatus = intDiscountStatus;
 	}
 
 }

@@ -116,7 +116,7 @@
                                     <tr>
                                         <th>ID</th>
                                         <th>Discount Name</th>
-                                        <th>Price (₱/%)</th>
+                                        <th>Price (Php/%)</th>
                                         <th>Date of Creation</th>
                                         <th>Actions</th>
                                     </tr>
@@ -134,7 +134,7 @@
                                             fixed = "";
                                         }
                                         else{
-                                            fixed = "PHP ";
+                                            fixed = "Php ";
                                             percet = "";
                                         }
                                     %>
@@ -144,7 +144,7 @@
                                         <td><%=fixed%>${discount.dblDiscountAmount}<%=percet%></td>
                                         <td>01/01/01</td>
                                         <td><a class="waves-effect waves-light modal-trigger btn-flat transparent black-text" title="Update" href="#dis<%=id%>" style="padding: 0px;"><i class="material-icons">edit</i></a>
-                                        <a class="waves-effect waves-light modal-trigger btn-flat transparent red-text text-accent-4" href="#delete" title="Deactivate"><i class="material-icons">delete</i></a>
+                                        <a class="waves-effect waves-light modal-trigger btn-flat transparent red-text text-accent-4" href="#del<%=id%>" title="Deactivate"><i class="material-icons">delete</i></a>
                                         </td>
                                     </tr>
                                   </c:forEach>
@@ -206,35 +206,51 @@
 
                         %>
                         <div id="dis<%=id2%>" class="modal modal-fixed-footer">
-                        <form class="col s12">
+                        <form class="col s12" method="get" action="updateDiscount">
                           <div class="modal-content">
                             <!-- <div class="container"> -->
                               <div class="wrapper">
                                   <h4 class="grey-text text-darken-1" style="margin-bottom: 50px;">Update Discount</h4>
                                     <div class="row">
                                             <div class="input-field col s12">
-                                                <input value="${discount.strDiscountName}" type="text" class="validate" id="discountName">
+                                                <input type="hidden" name="intDiscountID" value="${discount.intDiscountID}">
+                                                <input value="${discount.strDiscountName}" name="strDiscountName" type="text" class="validate" id="discountName">
                                                 <label for="discountName">Discount Name</label>
                                             </div>
                                             <div class="input-field col s12">
-                                                <textarea id="discountDesc" class="materialize-textarea" length="120">${discount.strDiscountDesc}</textarea>
+                                                <textarea id="discountDesc" name="strDiscountDetails" class="materialize-textarea" length="120">${discount.strDiscountDesc}</textarea>
                                                 <label for="discountDesc">Description</label>
                                             </div>
                                             <div class="input-field col s2">
                                               <label for="select">Type</label>
                                             </div>
                                             <div class="input-field col s5">
+                                              <%
+                                                  Discount discount3 = (Discount)pageContext.getAttribute("discount");
+                                                  String type1 = null;
+                                                  String type2 = null;
+
+                                                  if(discount3.getIntDiscountType() == 1){
+                                                      type1 = "checked";
+                                                      type2 = "";
+                                                  }
+                                                  else{
+                                                      type1 = "";
+                                                      type2 = "checked";
+                                                  }
+
+                                              %>
                                                 <p>
-                                                   <input name="createDiscType" type="radio" id="createDiscPercent"/>
+                                                   <input name="strDiscountType1" type="radio" id="createDiscPercent" <%out.print(type1);%>/>
                                                    <label for="createDiscPercent">Percentage</label>
                                                 </p>
                                                 <p>
-                                                   <input name="createDiscType" type="radio" id="createDiscAmount" />
+                                                   <input name="strDiscountType2" type="radio" id="createDiscAmount" <%out.print(type2);%>/>
                                                    <label for="createDiscAmount">Fixed Amount</label>
                                                 </p>
                                             </div>
                                             <div class="input-field col s4 offset-s1">
-                                                <input type="text" value="${discount.dblDiscountAmount}" class="validate right-align" id="createDiscPrice"name="createDiscPrice">
+                                                <input type="text" value="${discount.dblDiscountAmount}" class="validate right-align" id="createDiscPrice"name="dblDiscountPrice">
                                                 <label for="createDiscPrice">Discount Amount</label>
                                             </div>
                                     </div>
@@ -248,20 +264,29 @@
                     </div>
                   </c:forEach>
 
-                          <div id="delete" class="modal">
+                      <c:forEach items="${discountList}" var="discount">
+                        <%
+                          Discount dis = (Discount)pageContext.getAttribute("discount");
+                          String disID = String.valueOf(dis.getIntDiscountID());
+                        %>
+                        <div id="del<%=disID%>" class="modal">
+                        <form action="deactivateDiscount" method="get">
                           <div class="container">
                             <div class="modal-content">
                               <div class="row">
                                 <h5 class="red-text">Warning!</h5>
-                                <p>Are you sure?</p>
+                                <p>Are you sure you want to deactivate ${discount.strDiscountName}?</p>
                               </div>
                             </div>
-                              <div class="col s12 center" style="margin-bottom: 30px;">
-                                <button class="waves-effect waves-light orange btn-flat white-text">YES</button>
-                                <a href="#" class="modal-action modal-close waves-effect waves-light transparent btn-flat black-text">NO</a>
-                              </div>
+                            <div class="col s12 center" style="margin-bottom: 30px;">
+                              <input type="hidden" value="${discount.intDiscountID}" name="intDiscountID">
+                              <button class="waves-effect waves-light orange btn-flat white-text">YES</button>
+                              <a href="#" class="modal-action modal-close waves-effect waves-light transparent btn-flat black-text">CANCEL</a>
                             </div>
-                      </div>
+                          </div>
+                          </form>
+                        </div>
+                      </c:forEach>
 <!--                     <div class="aside aside2 z-depth-barts">
                      
                     </div> -->

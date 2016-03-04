@@ -11,5 +11,7 @@ public interface DiscountService {
 	
 	public boolean updateDiscount(Discount discount);
 	
+	public boolean deactivateDiscount(int intDiscountID);
+	
 	
 }

@@ -3,8 +3,9 @@ package com.gss.actions;
 import com.gss.model.Discount;
 import com.gss.service.DiscountServiceImpl;
 
-public class CreateDiscountAction {
+public class UpdateDiscountAction {
 
+	private int intDiscountID;
 	private String strDiscountName;
 	private String strDiscountDetails;
 	private String strDiscountType1;
@@ -19,18 +20,18 @@ public class CreateDiscountAction {
 		
 		try{
 			if(strDiscountType1.equalsIgnoreCase("on")){
-				discount = new Discount(1, strDiscountName, strDiscountDetails, 1, dblDiscountPrice, 1);
+				discount = new Discount(intDiscountID, strDiscountName, strDiscountDetails, 1, dblDiscountPrice,1);
 				
-				if(service.createDiscount(discount) == true)
+				if(service.updateDiscount(discount) == true)
 					result = "success";
 			}
 				
 			return result;
 		}
 		catch(NullPointerException e){
-			discount = new Discount(1, strDiscountName, strDiscountDetails, 2, dblDiscountPrice, 1);
+			discount = new Discount(intDiscountID, strDiscountName, strDiscountDetails, 2, dblDiscountPrice, 1);
 
-			if(service.createDiscount(discount) == true)
+			if(service.updateDiscount(discount) == true)
 				return "success";
 			else
 				return "failed";
@@ -76,5 +77,14 @@ public class CreateDiscountAction {
 	public void setStrDiscountType2(String strDiscountType2) {
 		this.strDiscountType2 = strDiscountType2;
 	}
+
+	public int getIntDiscountID() {
+		return intDiscountID;
+	}
+
+	public void setIntDiscountID(int intDiscountID) {
+		this.intDiscountID = intDiscountID;
+	}
+
 
 }

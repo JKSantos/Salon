@@ -11,4 +11,6 @@ public interface DiscountRepository {
 	public boolean createDiscount(Discount discount);
 	
 	public boolean updateDiscount(Discount discount);
+	
+	public boolean deactivateDiscount(int intDiscountID);
 }

@@ -28,4 +28,12 @@ public class DiscountServiceImpl implements DiscountService{
 		
 		return repo.updateDiscount(discount);
 	}
+
+	@Override
+	public boolean deactivateDiscount(int intDiscountID) {
+
+		DiscountRepository repo = new DiscountJDBCRepository();
+		
+		return repo.deactivateDiscount(intDiscountID);
+	}
 }
