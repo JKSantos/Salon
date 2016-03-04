@@ -108,6 +108,17 @@
         updateProdSvc.src = URL.createObjectURL(event.target.files[0]);
       };
 
+      var loadCreateCatalogue = function(event) {
+        var createCatalogue = document.getElementById('createCatalogue');
+        createCatalogue.src = URL.createObjectURL(event.target.files[0]);
+      };
+
+      var loadUpdateCatalogue = function(event) {
+        var updateCatalogue = document.getElementById('updateCatalogue');
+        updateCatalogue.src = URL.createObjectURL(event.target.files[0]);
+      };
+
+
 
       // add product / service in table (PROMO)
 
@@ -237,6 +248,133 @@
           y.add(option);
       }
       // add product/service in update END
+
+
+      // add product/service in package BEGIN
+        function createPackageService() {
+            var table = document.getElementById("createPackageTable");
+            var promoType = $("#createPackageService").val();
+            var promoQty = $("#createPackageServiceQty").val();
+            var removeBtn = document.createElement('button');
+           
+            var row = table.insertRow(0);
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            var cell3 = row.insertCell(2); 
+            cell1.innerHTML = promoType;
+            cell2.innerHTML = promoQty;
+            cell3.innerHTML = '<input id="removeBtn" type="button" value="Remove" class="waves-effect waves-light btn red" onclick="deleteCreateServPack(this)" />';
+            var x = document.getElementById("createPackageService");
+                x.remove(x.selectedIndex);
+        }
+
+        function deleteCreateServPack(row)
+        {
+            var i=row.parentNode.parentNode.rowIndex;
+            var packageText = document.getElementById("createPackageTable").rows[i].cells[0].innerHTML;
+            document.getElementById('createPackageTable').deleteRow(i);
+            
+            alert(packageText);
+            var y = document.getElementById("createPackageService");
+            var option = document.createElement("option");
+            option.text = packageText;
+
+            y.add(option);
+        }
+
+        function createPackageProduct() {
+            var table = document.getElementById("createPackageTable");
+            var promoType = $("#createPackageProduct").val();
+            var promoQty = $("#createPackageProductQty").val();
+            var removeBtn = document.createElement('button');
+           
+            var row = table.insertRow(0);
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            var cell3 = row.insertCell(2); 
+            cell1.innerHTML = promoType;
+            cell2.innerHTML = promoQty;
+            cell3.innerHTML = '<input id="removeBtn" type="button" value="Remove" class="waves-effect waves-light btn red" onclick="deleteCreateProdPack(this)" />';
+            var x = document.getElementById("createPackageProduct");
+                x.remove(x.selectedIndex);
+        }
+
+        function deleteCreateProdPack(row)
+        {
+            var i=row.parentNode.parentNode.rowIndex;
+            var packageText = document.getElementById("createPackageTable").rows[i].cells[0].innerHTML;
+            document.getElementById('createPackageTable').deleteRow(i);
+            
+            alert(packageText);
+            var y = document.getElementById("createPackageProduct");
+            var option = document.createElement("option");
+            option.text = packageText;
+
+            y.add(option);
+        }
+
+        function updatePackageService() {
+            var table = document.getElementById("updatePackageTable");
+            var promoType = $("#updatePackageService").val();
+            var promoQty = $("#updatePackageServiceQty").val();
+            var removeBtn = document.createElement('button');
+           
+            var row = table.insertRow(0);
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            var cell3 = row.insertCell(2); 
+            cell1.innerHTML = promoType;
+            cell2.innerHTML = promoQty;
+            cell3.innerHTML = '<input id="removeBtn" type="button" value="Remove" class="waves-effect waves-light btn red" onclick="deleteUpdateServPack(this)" />';
+            var x = document.getElementById("updatePackageService");
+                x.remove(x.selectedIndex);
+        }
+
+        function deleteUpdateServPack(row)
+        {
+            var i=row.parentNode.parentNode.rowIndex;
+            var packageText = document.getElementById("updatePackageTable").rows[i].cells[0].innerHTML;
+            document.getElementById('updatePackageTable').deleteRow(i);
+            
+            alert(packageText);
+            var y = document.getElementById("updatePackageService");
+            var option = document.createElement("option");
+            option.text = packageText;
+
+            y.add(option);
+        }
+
+        function updatePackageProduct() {
+            var table = document.getElementById("updatePackageTable");
+            var promoType = $("#updatePackageProduct").val();
+            var promoQty = $("#updatePackageProductQty").val();
+            var removeBtn = document.createElement('button');
+           
+            var row = table.insertRow(0);
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            var cell3 = row.insertCell(2); 
+            cell1.innerHTML = promoType;
+            cell2.innerHTML = promoQty;
+            cell3.innerHTML = '<input id="removeBtn" type="button" value="Remove" class="waves-effect waves-light btn red" onclick="deleteUpdateProdPack(this)" />';
+            var x = document.getElementById("updatePackageProduct");
+                x.remove(x.selectedIndex);
+        }
+
+        function deleteUpdateProdPack(row)
+        {
+            var i=row.parentNode.parentNode.rowIndex;
+            var packageText = document.getElementById("updatePackageTable").rows[i].cells[0].innerHTML;
+            document.getElementById('updatePackageTable').deleteRow(i);
+            
+            alert(packageText);
+            var y = document.getElementById("updatePackageProduct");
+            var option = document.createElement("option");
+            option.text = packageText;
+
+            y.add(option);
+        }
+      // add product/service in package END
 
 
       // add another option BEGIN

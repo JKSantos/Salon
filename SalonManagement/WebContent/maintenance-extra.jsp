@@ -34,7 +34,7 @@
                               <li><a href="maintenance-prodsvc.jsp">Product & Service</a></li>
                               <li><a href="maintenance-promo.jsp">Promo</a></li>
                               <li><a href="maintenance-discount.jsp">Discount</a></li>
-                              <li><a href="#">Package</a></li>
+                              <li><a href="maintenance-package.jsp">Package</a></li>
                               <li><a href="maintenance-catalogue.jsp">Catalogue</a></li>
                               <li class="orange"><a href="maintenance-extra.jsp">Extra Charge</a></li>
                             </ul>
@@ -73,7 +73,7 @@
                                  <li><a href="maintenance-prodsvc.jsp">Product & Service</a></li>
                                  <li><a href="maintenance-promo.jsp">Promo</a></li>
                                  <li><a href="maintenance-discount.jsp">Discount</a></li>
-                                 <li><a href="#">Package</a></li>
+                                 <li><a href="maintenance-package.jsp">Package</a></li>
                                  <li><a href="maintenance-catalogue.jsp">Catalogue</a></li>
                                  <li class="orange"><a href="maintenance-extra.jsp">Extra Charge</a></li>
                                </ul>

@@ -33,7 +33,7 @@
                               <li><a href="maintenance-prodsvc.jsp">Product & Service</a></li>
                               <li class="orange"><a href="maintenance-promo.jsp">Promo</a></li>
                               <li><a href="maintenance-discount.jsp">Discount</a></li>
-                              <li><a href="#">Package</a></li>
+                              <li><a href="maintenance-package.jsp">Package</a></li>
                               <li><a href="maintenance-catalogue.jsp">Catalogue</a></li>
                               <li><a href="maintenance-extra.jsp">Extra Charge</a></li>
                             </ul>
@@ -72,7 +72,7 @@
                                  <li><a href="maintenance-prodsvc.jsp">Product & Service</a></li>
                                  <li class="orange"><a href="maintenance-promo.jsp">Promo</a></li>
                                  <li><a href="maintenance-discount.jsp">Discount</a></li>
-                                 <li><a href="#">Package</a></li>
+                                 <li><a href="maintenance-package.jsp">Package</a></li>
                                  <li><a href="maintenance-catalogue.jsp">Catalogue</a></li>
                                  <li><a href="maintenance-extra.jsp">Extra Charge</a></li>
                                </ul>
@@ -229,13 +229,10 @@
                                           <div class="input-field col s6" style="margin-top: -1px;">
                                               <select class="browser-default" id="promoService">
                                                     <option value="Choose..." disabled selected>Choose</option>
-                                                    <option value="A">A</option>
-                                                    <option value="B">B</option>
-                                                    <option value="C">C</option>
                                                 </select>
                                           </div>
                                           <div class="input-field col s3" style="margin-top: -1px;">
-                                              <input type="number" id="promoServiceQty" name="promoServiceQty" class="validate">
+                                              <input type="number" id="promoServiceQty" name="promoServiceQty" class="validate" min="0">
                                               <label for="promoServiceQty">Qty</label>
                                           </div>
                                           <div class="input-field col s3 left-align" style="margin-top: -1px;">
@@ -254,7 +251,7 @@
                                                 </select>
                                           </div>
                                           <div class="input-field col s3" style="margin-top: -1px;">
-                                              <input type="number" id="promoProductQty" name="promoServiceQty" class="validate">
+                                              <input type="number" id="promoProductQty" name="promoServiceQty" class="validate" min="0">
                                               <label for="promoProductQty">Qty</label>
                                           </div>
                                           <div class="input-field col s3 left-align" style="margin-top: -1px;">
@@ -343,7 +340,7 @@
                                                 </select>
                                           </div>
                                           <div class="input-field col s3" style="margin-top: -1px;">
-                                              <input type="number" id="updatePromoSQty" name="updatePromoSQty" class="validate">
+                                              <input type="number" id="updatePromoSQty" name="updatePromoSQty" class="validate" min="0">
                                               <label for="updatePromoSQty">Qty</label>
                                           </div>
                                           <div class="input-field col s3 left-align" style="margin-top: -1px;">
@@ -359,7 +356,7 @@
                                                 </select>
                                           </div>
                                           <div class="input-field col s3" style="margin-top: -1px;">
-                                              <input type="number" id="updatePromoPQty" name="updatePromoPQty" class="validate">
+                                              <input type="number" id="updatePromoPQty" name="updatePromoPQty" class="validate" min="0">
                                               <label for="updatePromoPQty">Qty</label>
                                           </div>
                                           <div class="input-field col s3 left-align" style="margin-top: -1px;">
