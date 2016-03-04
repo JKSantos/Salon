@@ -186,7 +186,6 @@
                                           </div>
                                       </div>
                                 </div>
-                                <div class = "row">
                                 <div class="input-field col s4">
                                     <input name="strEmpFirstName" d="strEmpFirstName" type="text" class="validate active" required>
                                     <label for="strEmpFirstName">First Name<span class="red-text">*</span></label>
@@ -199,36 +198,13 @@
                                     <input name="strEmpLastName" id="strEmpLastName" type="text" class="validate" required>
                                     <label for="strEmpLastName">Last Name<span class="red-text">*</span></label>
                                 </div>
-                                </div>
-                                <div class="input-field col s3">
-                                  <select required name="strMonth">
-                                    <option value="" disabled selected>Month</option>
-                                    <option value="1">January</option>
-                                    <option value="2">February</option>
-                                    <option value="3">March</option>
-                                    <option value="4">April</option>
-                                    <option value="5">May</option>
-                                    <option value="6">June</option>
-                                    <option value="7">July</option>
-                                    <option value="8">August</option>
-                                    <option value="9">September</option>
-                                    <option value="10">October</option>
-                                    <option value="11">November</option>
-                                    <option value="12">December</option>
-                                  </select>
-                                  <label>Birthday <span class="red-text">*</span></label>
-                                </div>
-                                <div class="input-field col s2">
-                                  <input type="text" maxlength="2" class="validate" required name="strDay" id="strDay">
-                                  <label for="strDay">Day</label>
-                                </div>
-                                <div class="input-field col s3">
-                                  <input type="text" maxlength="4" class="validate" required name="strYear" id="strYear">
-                                  <label for="strYear">Year</label>
-                                </div>
                                 <div class="input-field col s4">
-                                    <input type="text" class="validate" disabled value="" id="age">
-                                    <label style="color: #9e9e9e;">Age: </label>
+                                    <input type="date" class="datepicker" id="createBirthday" placeholder=" ">
+                                    <label for="createBirthday">Birthday <span class="red-text">*</span></label>
+                                </div>
+                                <div class="input-field col s4 offset-s4">
+                                    <label for="createAge">Age</label>
+                                    <input type="text" class="validate black-text" disabled id="createAge" placeholder="">
                                 </div>
                                 <div class="input-field col s12" style="margin-left: 5px; padding: 0px;">
                                     <p style="color:#9e9e9e;font-size:11px;">Gender<span class="red-text">*</span></p>
@@ -254,22 +230,15 @@
                                 <div class="input-field col s12">
                                     <p style="color:#9e9e9e;font-size:12px;">Position <span class="red-text">*</span></p>
                                 </div>
-                                <div class="input-field col s5" style="margin-top: -1px;">
-                                    <select class="browser-default" id="slct1" name="selectedJob" required>
-                                        <option value="" disabled selected> </option>
-                                        <c:forEach items="${empCategory}" var="name">
-                                          <option value="${name.strCategoryName}">${name.strCategoryName }</option>
-                                        </c:forEach>
-                                    </select>
+                                <div class="input-field col s4">
+                                  <select class="browser-default" id="position">
+                                    <option value="" disabled selected>Choose...</option>
+                                  </select>
                                 </div>
-                                <div class="input-field col s2" style="margin-top: -0.2px;">
-                                    <p style="margin-top: 5px;" class="center"><a id="optionadd" class="waves-effect waves-light orange-btn"><i class="material-icons small">add</i></a><a class="waves-effect waves-light orange-btn" onclick="removeopt()"><i class="material-icons small">remove</i></a></p>
+                                <div class="input-field col s2">
+                                  <button data-target="addOption" class="waves-effect waves-light btn-flat modal-option orange lighten-1">add</button>
                                 </div>
-                                <div class="input-field col s4" style="margin-top: -4px;">
-                                    <input type="text" id="add-optname" class="validate">
-                                    <label for="add-optname">Another position</label>
-                                </div>
-                                <div class="input-field col s12">
+                                <div class="input-field col s6">
                                   <p class="center">
                                         <input type="checkbox" id="access" name="access" />
                                         <label for="access">Grant Access</label>
@@ -349,7 +318,7 @@
                                 </div>
                                 <div class="input-field col s4">
                                     <input value="${employee.strEmpFirstName}" name="strEmpFirstName" d="strEmpFirstName" type="text" class="validate active" required>
-                                    <label for="strEmpFirstName">First Name<span class="red-text">*</span></label>
+                                    <label for="strEmpFirstName">First Name</label>
                                 </div>
                                 <div class="input-field col s4">
                                     <input value="${employee.strEmpMiddleName}" name="strEmpMiddleName" id="strEmpMiddleName" type="text" class="validate">
@@ -357,7 +326,7 @@
                                 </div>
                                 <div class="input-field col s4">
                                     <input value="${employee.strEmpLastName}" name="strEmpLastName" id="strEmpLastName" type="text" class="validate" required>
-                                    <label for="strEmpLastName">Last Name<span class="red-text">*</span></label>
+                                    <label for="strEmpLastName">Last Name</label>
                                 </div>
                                 <%
                                     Employee updateEmp = (Employee)pageContext.getAttribute("employee");
