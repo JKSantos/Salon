@@ -211,15 +211,16 @@
                                 <div class="input-field col s8 offset-s2">
                                     <p style="color:#9e9e9e;font-size:12px;">Category <span class="red-text">*</span></p>
                                 </div>
-                                <div class="input-field col s8 offset-s2" style="margin-top: -1px;">
-                                    <select class="browser-default" id="slct1" name="strItemCategory" required>
+                                <div class="input-field col s6 offset-s2">
+                                    <select class="browser-default" id="category" name="strItemCategory" required>
                                         <option value="" disabled selected> </option>
                                         <c:forEach items="${productCategory}" var="product">
                                           <option value="${product}">${product}</option>
                                         </c:forEach>
-
-                                        
                                     </select>
+                                </div>
+                                <div class="input-field col s2">
+                                  <button data-target="addCategory" class="waves-effect waves-light btn-flat modal-category orange lighten-1">add</button>
                                 </div>
                                 <div class="input-field col s4 offset-s6" style="margin-top: 20px;">
                                     <input type="text" class="validate right-align" id="prodsvcPrice" name="dblItemPrice">
@@ -236,6 +237,33 @@
                           </form>
                     </div>
 
+                    <!-- add category BEGIN -->
+                          <div id="addCategory" class="modal" style="margin-top: 30px;">
+                            <form>
+                              <div class="modal-content">
+                                <h4>Add Another Category</h4>
+                                <div class="row">
+                                  <div class="col s12">
+                                    <div class="input-field col s8 offset-s2">
+                                      <select id="addCategorySelect" class="browser-default" size="10">
+                                        <option>Category Already in Database</option>
+                                      </select>
+                                    </div>
+                                    <div class="input-field col s8 offset-s2" style="margin-top: 20px;">
+                                      <input type="text" class="validate" id="addCategoryName" name="addCategoryName">
+                                      <label for="addCategoryName">Position Name</label>
+                                    </div>
+                                    <div class="input-field col s8 offset-s2 center">
+                                      <a href="" onclick="addCategory()" class="waves-effect waves-light orange darken-4 btn-flat white-text">SAVE</a>
+                                      <a href="" class="modal-close waves-effect waves-orange transparent btn-flat white">CANCEL</a>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </form>
+                          </div>
+                    <!-- add category END -->
+
 
 
                       <c:forEach items="${productList}" var="product">
@@ -244,7 +272,7 @@
                            strProdID = String.valueOf(prodID.getIntProductID());
                            String productCate = prodID.getStrProductCategory();
                         %>
-                        <div id="prod<%=strProdID%>" class="modal modal-fixed-footer">
+                        <div id="prod<%=strProdID%>" class="modal modal-fixed-footer" style="width: 45% !important; height: 80% !important; max-height: 100% !important;">
                         <form class="col s12">
                           <div class="modal-content">
                             <!-- <div class="container"> -->
@@ -289,8 +317,8 @@
                                 <div class="input-field col s8 offset-s2">
                                     <p style="color:#9e9e9e;font-size:12px;">Category <span class="red-text">*</span></p>
                                 </div>
-                                <div class="input-field col s8 offset-s2" style="margin-top: -1px;">
-                                    <select class="browser-default" id="slct1" name="selectedJob" required autocomplete="off">
+                                <div class="input-field col s6 offset-s2">
+                                    <select class="browser-default" id="updateCategory" name="selectedJob" required autocomplete="off">
                                         <option value="" disabled selected> </option>
                                         <c:forEach items="${productCategory}" var="cate">
                                           <%
@@ -309,6 +337,9 @@
                                         </c:forEach>
                                     </select>
                                 </div>
+                                <div class="input-field col s2">
+                                  <button data-target="addCategory" class="waves-effect waves-light btn-flat modal-updateCategory orange lighten-1">add</button>
+                                </div>
                                 <div class="input-field col s4 offset-s6" style="margin-top: 20px;">
                                     <input value="${product.dblProductPrice}" type="text" class="validate right-align" id="prodsvcPrice" name="prodsvcPrice">
                                     <label for="prodsvcPrice" >Price <span class="red-text">*</span></label>
@@ -326,7 +357,7 @@
                   </c:forEach>
 
                   <c:forEach items="${serviceList}" var="service">
-                        <div id="serv${service.intServiceID}" class="modal modal-fixed-footer">
+                        <div id="serv${service.intServiceID}" class="modal modal-fixed-footer" style="width: 45% !important; height: 80% !important; max-height: 100% !important;">
                         <form class="col s12">
                           <div class="modal-content">
                             <!-- <div class="container"> -->
@@ -370,13 +401,16 @@
                                 <div class="input-field col s8 offset-s2">
                                     <p style="color:#9e9e9e;font-size:12px;">Category</p>
                                 </div>
-                                <div class="input-field col s8 offset-s2" style="margin-top: -1px;">
-                                    <select class="browser-default" id="slct1" name="selectedJob" required>
+                                <div class="input-field col s6 offset-s2">
+                                    <select class="browser-default" id="updateCategory" name="selectedJob" required>
                                         <option value="" disabled selected> </option>
                                         <c:forEach items="${empCategory}" var="name">
                                           <option value="${name.strCategoryName}">${name.strCategoryName }</option>
                                         </c:forEach>
                                     </select>
+                                </div>
+                                <div class="input-field col s2">
+                                  <button data-target="addCategory" class="waves-effect waves-light btn-flat modal-updateCategory orange lighten-1">add</button>
                                 </div>
                                 <div class="input-field col s4 offset-s6" style="margin-top: 20px;">
                                     <input type="text" class="validate right-align" id="prodsvcPrice" name="prodsvcPrice">
@@ -431,10 +465,22 @@
     height: 80% !important;
     max-height: 100% !important;
   }
-
   #delete {
     width: 30% !important;
   }
+  #addCategory {
+    width: 40% !important;
+  }
+  #addCategorySelect {
+    height: 150px !important;
+  }
+  #updateCategorySelect {
+    height: 150px !important;
+  }
+  #updateAddCategory {
+    width: 40% !important;
+  }
+
   </style>
 
   <!--Import jQuery before materialize.js-->
