@@ -100,86 +100,11 @@
 
         <article>
           <div class="wrapper">
-                    <div class="aside aside1 z-depth-barts">
-                      <header><h4>VIP Registration</h4><div class="divider"></div></header>
-
-                      <div class="row">
-                          <form class="col s12" action="createEmployee" onsubmit="return passvalidation()" method="post" enctype="multipart/form-data">
-                              <div class="row">
-                                  <div class="input-field col s12" style="margin-bottom: 40px;">
-                                      <label class="red-text">(*) Indicates required field</label>
-                                  </div>
-                                  <div class="input-field col s4" style="margin-top: 15px;">
-                                      <input name="strEmpFirstName" id="fname" type="text" class="validate active" required>
-                                      <label for="fname">First Name<span class="red-text">*</span></label>
-                                  </div>
-                                  <div class="input-field col s4" style="margin-top: 15px;">
-                                      <input name="strEmpMiddleName" id="mname" type="text" class="validate">
-                                      <label for="mname">Middle Name</label>
-                                  </div>
-                                  <div class="input-field col s4" style="margin-top: 15px;">
-                                      <input name="strEmpLastName" id="lname" type="text" class="validate" required>
-                                      <label for="lname">Last Name<span class="red-text">*</span></label>
-                                  </div>
-                                    <div class="input-field col s6" >
-                                      <select name="strEmpGender" required>
-                                        <option value="" disabled selected></option>
-                                        <option value="M">Male</option>
-                                        <option value="F">Female</option>
-                                      </select>
-                                      <label>Gender <span class="red-text">*</span></label>
-                                  </div>
-                                  <div class="input-field col s1">
-                                    <p style="margin-top: 12px; margin-left: -7px;">(+63)</p>
-                                  </div>
-                                  <div class="input-field col s5">
-                                      <input name="strEmpContactNo" type="text" id="contact" class="validate" maxlength="10">
-                                      <label for="contact">Contact Number</label>
-                                  </div>
-                                  <div class="input-field col s12">
-                                      <input name="strEmpAddress" type="text" id="address" class="validate">
-                                      <label for="address">Address <span class="red-text">*</span></label>
-                                  </div>
-                                  <div class="divider"></div>
-                                  <div class="input-field col s12">
-                                    <h4>VIP Account</h4>
-                                  </div>
-                                  <div class="input-field col s6 offset-s3">
-                                      <input name="strEmpUsername" type="text" class="validate" id="user" maxlength="15">
-                                      <label for="user">Username</label>
-                                  </div>
-                                  <div class="input-field col s6 offset-s3">
-                                      <input name="strEmpPassword" type="password" class="validate" id="pass" maxlength="20" onkeyup="checkPass(); return false;">
-                                      <label for="pass">Password <span id="pw1"></span></label>
-                                  </div>
-                                  <div class="input-field col s6 offset-s3">
-                                      <input name="strEmpPassword2" type="password" class="validate" id="conf-pass" maxlength="20" onkeyup="checkPass(); return false;">
-                                      <label for="conf-pass">Confirm Password <span id="pw2"></span></label>
-                                  </div>
-                                  <div class="input-field col s6 offset-s3">
-                                      <span id="confirmMsg" class="confirmMsg"></span>
-                                  </div>
-
-                                  <div class="input-field col s12"> 
-                                      <button class="waves-effect waves-white btn-flat orange" title="Create" type="submit" value="Submit" id="savebtn" disabled="disabled" onclick="success()">Create</button>
-                                      <button class="waves-effect waves-orange btn-flat white" type="reset" value="Reset" title="Clear">CLEAR</button>
-                                  </div>
-                              </div>
-
-
-                              <!-- ADD OPTION POSITION -->
-                                
-
-                          </form>
-                      </div>
-                    </div>
-
-
                     <div class="aside aside2 z-depth-barts">
                      <div class="row">
                          <div class="col s12">
                              <div class="row">
-                                    <h5>VIP List</h5>
+                                    <h2 class="thin">VIP List</h2>
                                       <table id="example" class="mdl-data-table" cellspacing="0" width="100%">
                                               <thead>
                                                   <tr>
@@ -199,7 +124,11 @@
                                                   </tr>
                                               </tbody>
                                           </table>
-
+                                      <br>
+                                      <br>
+                                      <div class="row right">
+                                        <a class="btn-floating btn-large waves-effect waves-light orange darken-3" href="create-vip.jsp"><i class="material-icons">add</i></a>
+                                      </div>
 
 
                                      <div id="update" class="modal modal-fixed-footer">
@@ -348,6 +277,12 @@
     <script type="text/javascript" src="./js/datatables.min.js"></script>
     <script type="text/javascript" src="./js/datatables.material.min.js"></script>
 
+    <script type="text/javascript">
+    $(document).ready(function(){
+        // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+        $('.modal-trigger').leanModal();
+      });
+    </script>
 
     <script type="text/javascript">
       $(document).ready(function() {
@@ -372,12 +307,7 @@
 
 
 
-    <script type="text/javascript">
-    $(document).ready(function(){
-        // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
-        $('.modal-trigger').leanModal();
-      });
-    </script>
+  
 
 
     
