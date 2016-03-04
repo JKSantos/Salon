@@ -51,8 +51,9 @@ public class ExtraChargeJDBCRepository implements ExtraChargeRepository{
 				int intID = set.getInt(1);
 				String name = set.getString(2);
 				String desc = set.getString(3);
+				int stat = set.getInt(4);
 				
-				ExtraCharge extra = new ExtraCharge(intID, name, desc);
+				ExtraCharge extra = new ExtraCharge(intID, name, desc, stat);
 				ecList.add(extra);
 			}
 			
@@ -72,8 +73,50 @@ public class ExtraChargeJDBCRepository implements ExtraChargeRepository{
 
 	@Override
 	public boolean updateExtraCharge(ExtraCharge extra) {
-		// TODO Auto-generated method stub
-		return false;
+		
+		Connection con = jdbc.getConnection();
+		String query = "UPDATE tblExtraCharges SET strExtraChargeName = ?, strExtraChargeDesc = ? WHERE intExtraChargeID = ?;";
+		
+		try{
+			PreparedStatement pre = con.prepareStatement(query);
+			pre.setString(1, extra.getStrECName());
+			pre.setString(2, extra.getStrECDetails());
+			pre.setInt(3, extra.getIntECID());
+			
+			pre.execute();
+			pre.close();
+			con.close();
+			
+			return true;
+		}
+		catch(Exception e)
+		{
+			System.out.println(e.fillInStackTrace());
+			return false;
+		}
+	}
+
+	@Override
+	public boolean deactivateExtraCharge(int intExtraChargeID) {
+		
+		Connection con = jdbc.getConnection();
+		String query = "UPDATE tblExtraCharges SET intStatus = 0 WHERE intExtraChargeID = ?;";
+		
+		try{
+			PreparedStatement pre = con.prepareStatement(query);
+			pre.setInt(1, intExtraChargeID);
+			
+			pre.execute();
+			pre.close();
+			con.close();
+			
+			return true;
+		}
+		catch(Exception e)
+		{
+			System.out.println(e.fillInStackTrace());
+			return false;
+		}
 	}
 
 }

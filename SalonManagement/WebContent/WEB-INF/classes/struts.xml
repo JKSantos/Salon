@@ -41,6 +41,16 @@
 		
 		<action name="createProdServ" class="com.gss.actions.CreateServProdAction" method="execute">
 			<result name="success">redirect-maintenance-product.jsp</result>
+			<result name="failed">redirect-maintenance-product.jsp</result>
+		</action>
+
+		<action name="updateItem" class="com.gss.actions.UpdateItemAction" method="execute">
+			<result name="success">redirect-maintenance-product.jsp</result>
+			<result name="failed">maintenance-prodsvc.jsp</result>
+		</action>
+		
+		<action name="deactivateItem" class="com.gss.actions.DeactivateItemAction" method="deactivateProduct">
+			<result name="success">redirect-maintenance-product.jsp</result>
 			<result name="failed">maintenance-prodsvc.jsp</result>
 		</action>
 		
@@ -61,6 +71,16 @@
 			<result name="success">redirect-maintenance-extra.jsp</result>
 			<result name="failed">redirect-maintenance-extra.jsp</result>
 		</action>
+
+		<action name="updateExtraCharge" class="com.gss.actions.UpdateExtraChargeAction" method="execute">
+			<result name="success">redirect-maintenance-extra.jsp</result>
+			<result name="failed">redirect-maintenance-extra.jsp</result>
+		</action>
+		
+		<action name="deactivateExtraCharge" class="com.gss.actions.DeactivateExtraChargeAction" method="execute">
+			<result name="success">redirect-maintenance-extra.jsp</result>
+			<result name="failed">redirect-maintenance-extra.jsp</result>
+		</action>
 		
 		<action name="getProducts" class="com.gss.actions.ReservationTransactionAction" method="execute">
 			<result name="success">transactions-productorder.jsp</result>
@@ -70,5 +90,9 @@
 			<result name="success">transactions-inventory.jsp</result>
 		</action>
 		
+		<action name="deactivateEmployee" class="com.gss.actions.DeactivateEmployeeAction" method="execute">
+			<result name="success">empMaintenanceRedirect.jsp</result>
+			<result name="failed">maintenance-emp.jsp</result>
+		</action>
 	</package>
 </struts>

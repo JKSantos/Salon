@@ -35,4 +35,12 @@ public class ExtraChargeServiceImpl implements ExtraChargeService{
 		return repo.updateExtraCharge(extra);
 	}
 
+	@Override
+	public boolean deactivateExtraCharge(int intExtraChargeID) {
+
+		ExtraChargeRepository repo = new ExtraChargeJDBCRepository();
+		
+		return repo.deactivateExtraCharge(intExtraChargeID);	
+	}
+
 }

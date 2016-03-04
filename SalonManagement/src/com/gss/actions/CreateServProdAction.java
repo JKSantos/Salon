@@ -19,15 +19,16 @@ public class CreateServProdAction {
 	private String strItemDetails;
 	private String strItemCategory;
 	private Double dblItemPrice;
+	private String imageName;
 	
 	public String execute(){
 
 		boolean isRecorded = false;
 		String path = file.getAbsolutePath();
 
-		if(strItemCate.equals("Product")){
+		if(strItemCate.equalsIgnoreCase("Product")){
 			
-			Product product = new Product(1, strItemName, strItemCategory, strItemDetails, 0, null, dblItemPrice, path);
+			Product product = new Product(1, strItemName, strItemCategory, strItemDetails, 0, null, dblItemPrice, path, 1);
 		
 			ProductService prodService = new ProductServiceImpl();
 		
@@ -42,11 +43,15 @@ public class CreateServProdAction {
 			isRecorded = servService.createService(service);
 		}
 
-		if(isRecorded == true)
-			return "success";
-		else
+		if(isRecorded == true){
+			
+			System.out.print("success");
+			return "success"; 
+		}
+		else{
+			System.out.print("failed");
 			return "failed";
-
+		}
 	}
 	
 	public File getUpload() {
@@ -69,8 +74,8 @@ public class CreateServProdAction {
 		return filename;
 	}
 
-	public void setUploadFilename(String filename) {
-		this.filename = filename;
+	public void setUploadFileName(String fileName) {
+		this.filename = fileName;
 	}
 
 	public String getStrItemCate() {
@@ -111,6 +116,14 @@ public class CreateServProdAction {
 
 	public void setDblItemPrice(Double dblItemPrice) {
 		this.dblItemPrice = dblItemPrice;
+	}
+
+	public String getImageName() {
+		return imageName;
+	}
+
+	public void setImageName(String imageName) {
+		this.imageName = imageName;
 	}
 
 	

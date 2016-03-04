@@ -92,7 +92,7 @@ public class ServiceJDBCRepository implements ServiceRepository{
 			pre1.setString(2, service.getStrServiceCategory());
 			pre1.setInt(3, service.getIntServiceStatus());
 			pre1.setString(4, service.getStrServiceDesc());
-			pre1.setBinaryStream(5, (InputStream)fis, (int)service.getStrPhotoPath().length());
+			pre1.setBinaryStream(5, (InputStream)fis, (int)file.length());
 			
 			ResultSet set = pre1.executeQuery();
 			while(set.next()){
@@ -132,18 +132,28 @@ public class ServiceJDBCRepository implements ServiceRepository{
 	
 		
 		try{
-			
-			File file = new File(service.getStrPhotoPath());
-			FileInputStream fis = new FileInputStream(file);
+			PreparedStatement pre1 = con.prepareStatement(strQuery1);
 			double price = 0.00;
 			
-			PreparedStatement pre1 = con.prepareStatement(strQuery1);
-			pre1.setInt(1, service.getIntServiceID());
-			pre1.setString(2, service.getStrServiceName());
-			pre1.setString(3, service.getStrServiceCategory());
-			pre1.setInt(4, service.getIntServiceStatus());
-			pre1.setString(5, service.getStrServiceDesc());
-			pre1.setBinaryStream(6, (InputStream)fis, (int)file.length());
+			if(!service.getStrPhotoPath().equalsIgnoreCase("image")){
+				File file = new File(service.getStrPhotoPath());
+				FileInputStream fis = new FileInputStream(file);
+				
+				pre1.setInt(1, service.getIntServiceID());
+				pre1.setString(2, service.getStrServiceName());
+				pre1.setString(3, service.getStrServiceCategory());
+				pre1.setInt(4, service.getIntServiceStatus());
+				pre1.setString(5, service.getStrServiceDesc());
+				pre1.setBinaryStream(6, (InputStream)fis, (int)file.length());
+			}
+			else{
+				pre1.setInt(1, service.getIntServiceID());
+				pre1.setString(2, service.getStrServiceName());
+				pre1.setString(3, service.getStrServiceCategory());
+				pre1.setInt(4, service.getIntServiceStatus());
+				pre1.setString(5, service.getStrServiceDesc());
+				pre1.setInt(6, 101);
+			}
 			
 			ResultSet set = pre1.executeQuery();
 			

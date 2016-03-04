@@ -73,22 +73,32 @@ public class ProductJDBCRepository implements ProductRepository{
 		
 		
 		try{
-			
-			File imageFile = new File(product.getStrPhotoPath());
-			FileInputStream fis = new FileInputStream(imageFile);
-			
 			PreparedStatement pre1 = con.prepareStatement(strQuery1);
-			pre1.setInt(1, product.getIntProductID());
-			pre1.setString(2, product.getStrProductCategory());
-			pre1.setString(3, product.getStrProductName());
-			pre1.setString(4, product.getStrProductDesc());
-			pre1.setBinaryStream(5, (InputStream)fis, (int)imageFile.length());	
 			
+			if(!product.getStrPhotoPath().equalsIgnoreCase("image")){
+				File imageFile = new File(product.getStrPhotoPath());
+				FileInputStream fis = new FileInputStream(imageFile);
+			
+				pre1.setInt(1, product.getIntProductID());
+				pre1.setString(2, product.getStrProductCategory());
+				pre1.setString(3, product.getStrProductName());
+				pre1.setString(4, product.getStrProductDesc());
+				pre1.setBinaryStream(5, (InputStream)fis, (int)imageFile.length());	
+			}
+			else{
+				pre1.setInt(1, product.getIntProductID());
+				pre1.setString(2, product.getStrProductCategory());
+				pre1.setString(3, product.getStrProductName());
+				pre1.setString(4, product.getStrProductDesc());
+				pre1.setInt(5, 101);
+			}
 			set = pre1.executeQuery();
 			
 			while(set.next()){
 				dblPrice = set.getDouble(1);
 			}
+			
+			System.out.println(dblPrice + " " + product.getDblProductPrice() + " " + product.getIntProductID());
 			
 			if(dblPrice != product.getDblProductPrice()){
 				PreparedStatement pre2 = con.prepareStatement(strQuery2);
@@ -140,6 +150,7 @@ public class ProductJDBCRepository implements ProductRepository{
 				String strProductDesc = set.getString(4);
 				int intProductQuan = set.getInt(5);
 				byte[] actualPhoto = set.getBytes(6);
+				int intStatus = set.getInt(7);
 				String strPhotoPath = "";
 				
 				PreparedStatement pre2 = con.prepareStatement(strQuery2);
@@ -149,7 +160,7 @@ public class ProductJDBCRepository implements ProductRepository{
 				
 				while(set2.next()){
 					double price = set2.getDouble(1);
-					product = new Product(intProductID, strProductName, strProductCate, strProductDesc, intProductQuan, actualPhoto, price, strPhotoPath);
+					product = new Product(intProductID, strProductName, strProductCate, strProductDesc, intProductQuan, actualPhoto, price, strPhotoPath, intStatus);
 				
 					productList.add(product);
 				}
@@ -196,6 +207,30 @@ public class ProductJDBCRepository implements ProductRepository{
 			return null;
 		}
 		
+	}
+
+	@Override
+	public boolean deactivateProduct(int intProductID) {
+		
+		Connection con = new JDBCConnection().getConnection();
+		String query = "UPDATE tblProduct SET intProdStatus = 0 WHERE intProductID = ?;";
+		
+		try{
+			
+			PreparedStatement pre = con.prepareStatement(query);
+			pre.setInt(1, intProductID);
+	
+			pre.execute();
+			pre.close();
+			con.close();
+			
+			return true;
+		}
+		catch(Exception e)
+		{
+			System.out.println(e.fillInStackTrace());
+			return false;
+		}
 	}
 
 }

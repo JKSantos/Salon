@@ -10,8 +10,9 @@ public class Product {
 	private byte[] productPhoto;
 	private double dblProductPrice;
 	private String strPhotoPath;
+	private int intProductStatus;
 	
-	public Product(int intProductID, String strProductName, String strProductCategory, String strProductDesc, int intProductQuantity, byte[] productPhoto, double dblProductPrice, String strPhotoPath){
+	public Product(int intProductID, String strProductName, String strProductCategory, String strProductDesc, int intProductQuantity, byte[] productPhoto, double dblProductPrice, String strPhotoPath, int intProductStatus){
 		
 		this.setIntProductID(intProductID);
 		this.strProductName = strProductName;
@@ -21,6 +22,7 @@ public class Product {
 		this.productPhoto = productPhoto;
 		this.dblProductPrice = dblProductPrice;
 		this.strPhotoPath = strPhotoPath;
+		this.setIntProductStatus(intProductStatus);
 	}
 
 	public int getIntProductID() {
@@ -86,4 +88,13 @@ public class Product {
 	public void setStrPhotoPath(String strPhotoPath) {
 		this.strPhotoPath = strPhotoPath;
 	}
+
+	public int getIntProductStatus() {
+		return intProductStatus;
+	}
+
+	public void setIntProductStatus(int intProductStatus) {
+		this.intProductStatus = intProductStatus;
+	}
+	
 }

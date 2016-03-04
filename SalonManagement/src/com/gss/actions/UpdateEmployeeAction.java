@@ -43,16 +43,17 @@ public class UpdateEmployeeAction extends ActionSupport{
 		EmployeeServiceImpl empService = new EmployeeServiceImpl();
 		Employee emp = null;
 		
+		strBirthDate = "1997-01-02";
 		
-		strBirthDate = strYear + "-" + strMonth + "-" + strDay; 
+		//strBirthDate = strYear + "-" + strMonth + "-" + strDay; 
 		this.datEmpBirthdate = DateHelper.parseDate(strBirthDate);
 		
 		if(imageName.equals("image")){
-			emp = new Employee(intEmpID, strEmpLastName, strEmpFirstName, strEmpMiddleName, datEmpBirthdate, strEmpGender, strEmpAddress, strEmpContactNo, "A", "NOT ASSIGNED", "NOT ASSIGNED", "Image", null, selectedJob);
+			emp = new Employee(intEmpID, strEmpLastName.trim().toUpperCase(), strEmpFirstName.trim().toUpperCase(), strEmpMiddleName.trim().toUpperCase(), datEmpBirthdate, strEmpGender, strEmpAddress.trim().toUpperCase(), strEmpContactNo, "A", "NOT ASSIGNED", "NOT ASSIGNED", "Image", null, selectedJob);
 		}
 		else{
 			imageName = file.getAbsolutePath();
-			emp = new Employee(intEmpID, strEmpLastName, strEmpFirstName, strEmpMiddleName, datEmpBirthdate, strEmpGender, strEmpAddress, strEmpContactNo, "A", "NOT ASSIGNED", "NOT ASSIGNED", imageName, null, selectedJob);
+			emp = new Employee(intEmpID, strEmpLastName.trim().toUpperCase(), strEmpFirstName.trim().toUpperCase(), strEmpMiddleName.trim().toUpperCase(), datEmpBirthdate, strEmpGender, strEmpAddress, strEmpContactNo, "A", "NOT ASSIGNED", "NOT ASSIGNED", imageName, null, selectedJob);
 		}
 		
 		if(empService.updateEmployee(emp) == true)

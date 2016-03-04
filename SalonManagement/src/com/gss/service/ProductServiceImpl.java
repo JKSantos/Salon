@@ -40,4 +40,13 @@ public class ProductServiceImpl implements ProductService{
 		return repo.getAllCategory();
 	}
 
+
+	@Override
+	public boolean deactivateProduct(int intProductID) {
+
+		ProductRepository repo = new ProductJDBCRepository();
+		
+		return repo.deactivateProduct(intProductID);
+	}
+
 }

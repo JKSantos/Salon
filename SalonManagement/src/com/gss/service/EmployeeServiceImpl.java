@@ -52,4 +52,12 @@ public class EmployeeServiceImpl implements EmployeeService{
 		return repo.getAllCategory();
 
 	}
+
+	@Override
+	public boolean deactivateEmployee(int empID) {
+		
+		EmployeeRepository repo = new EmployeeJDBCRepository();
+		
+		return repo.deactivateEmployee(empID);
+	}
 }

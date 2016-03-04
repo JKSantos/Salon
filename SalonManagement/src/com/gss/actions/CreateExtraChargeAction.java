@@ -5,7 +5,7 @@ import com.gss.service.ExtraChargeService;
 import com.gss.service.ExtraChargeServiceImpl;
 
 public class CreateExtraChargeAction {
-	
+
 	private String strECName;
 	private String strECDetails;
 	
@@ -13,7 +13,7 @@ public class CreateExtraChargeAction {
 		
 		ExtraChargeService service = new ExtraChargeServiceImpl();
 		
-		ExtraCharge extra = new ExtraCharge(1, strECName, strECDetails);
+		ExtraCharge extra = new ExtraCharge(1, strECName, strECDetails, 1);
 		
 		if(service.createExtraCharge(extra) == true)
 			return "success";
@@ -37,7 +37,5 @@ public class CreateExtraChargeAction {
 	public void setStrECDetails(String strECDetails) {
 		this.strECDetails = strECDetails;
 	}
-	
-	
 
 }
