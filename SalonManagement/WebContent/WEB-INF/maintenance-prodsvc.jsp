@@ -11,7 +11,7 @@
   <link type="text/css" rel="stylesheet" href="./css/mystyle.css"/>
   <link type="text/css" rel="stylesheet" href="./css/mtnc-emp.css"/>
 
-  <link rel="stylesheet" type="text/css" href="./css/bartstable.css"/>
+  <link rel="stylesheet" type="text/css" href="./css/dataTables.material.min.css"/>
   <link rel="stylesheet" type="text/css" href="./css/material.min.css"/>
 
     <!--Let browser know website is optimized for mobile-->
@@ -23,7 +23,7 @@
             <header class="headnav">
                 <ul id="slide-out" class="side-nav fixed z-depth-0">
                   <div class="center">
-                      <img src="./img/logo.png" class="circle" style="width: 100%; height: 100%; margin-top: 40px; margin-bottom: 20px;">
+                      <img src="./img/anon.jpg" class="circle" style="width: 150px; height: 150px; margin-top: 40px; margin-bottom: 20px;">
                     </div>
                   <li><a href="admin-home.jsp" class="waves-effect"><b>Home</b></a></li>
                  <!--  <li class="no-padding"> -->
@@ -32,13 +32,13 @@
                         <a class="collapsible-header active"><b>Maintenance</b></a>
                           <div class="collapsible-body">
                             <ul>
-                              <li><a href="employeeMaintenance">Employee</a></li>
-                                      <li class="orange"><a href="productServiceMaintenance">Product & Service</a></li>
-                                      <li><a href="promoMaintenance">Promo</a></li>
-                                      <li><a href="discountMaintenance">Discount</a></li>
-                                      <li><a href="maintenance-package.jsp">Package</a></li>
-                                      <li><a href="catalogueMaintenance">Catalogue</a></li>
-                                      <li><a href="extraChargeMaintenance">Extra Charge</a></li>
+                              <li><a href="maintenance-emp.jsp">Employee</a></li>
+                              <li class="orange"><a href="maintenance-prodsvc.jsp">Product & Service</a></li>
+                              <li><a href="maintenance-promo.jsp">Promo</a></li>
+                              <li><a href="maintenance-discount.jsp">Discount</a></li>
+                              <li><a href="maintenance-package.jsp">Package</a></li>
+                              <li><a href="maintenance-catalogue.jsp">Catalogue</a></li>
+                              <li><a href="maintenance-extra.jsp">Extra Charge</a></li>
                             </ul>
                           </div>
                       </li>
@@ -71,13 +71,13 @@
                            <a class="waves-effectcollapsible-header"><b>Maintenance</b></a>
                              <div class="collapsible-body">
                                <ul>
-                                 <li><a href="employeeMaintenance">Employee</a></li>
-                                      <li class="orange"><a href="productServiceMaintenance">Product & Service</a></li>
-                                      <li><a href="promoMaintenance">Promo</a></li>
-                                      <li><a href="discountMaintenance">Discount</a></li>
-                                      <li><a href="maintenance-package.jsp">Package</a></li>
-                                      <li><a href="catalogueMaintenance">Catalogue</a></li>
-                                      <li><a href="extraChargeMaintenance">Extra Charge</a></li>
+                                 <li><a href="maintenance-emp.jsp">Employee</a></li>
+                                 <li class="orange"><a href="maintenance-prodsvc.jsp">Product & Service</a></li>
+                                 <li><a href="maintenance-promo.jsp">Promo</a></li>
+                                 <li><a href="maintenance-discount.jsp">Discount</a></li>
+                                 <li><a href="maintenance-package.jsp">Package</a></li>
+                                 <li><a href="maintenance-catalogue.jsp">Catalogue</a></li>
+                                 <li><a href="maintenance-extra.jsp">Extra Charge</a></li>
                                </ul>
                              </div>
                          </li>
@@ -133,7 +133,7 @@
                                         <td>${product.intProductID}</td>
                                         <td>${product.strProductName}</td>
                                         <td>Product</td>
-                                        <td>Php ${product.dblProductPrice}</td>
+                                        <td>${product.dblProductPrice}</td>
                                         <td>01/01/01</td>
                                         <td>${product.intProductStatus}</td>
                                         <td><a class="waves-effect waves-light modal-trigger btn-flat transparent black-text" title="Update" href="#prod<%=string%>" style="padding: 0px;"><i class="material-icons">edit</i></a>
@@ -150,7 +150,7 @@
                                         <td>${service.intServiceID}</td>
                                         <td>${service.strServiceName}</td>
                                         <td>Service</td>
-                                        <td>Php ${service.dblServicePrice}</td>
+                                        <td>${service.dblServicePrice}</td>
                                         <td>01/01/01</td>
                                         <td>${service.intServiceStatus}</td>
                                         <td><a class="waves-effect waves-light modal-trigger btn-flat transparent black-text" title="Update" href="#serv<%=strService%>" style="padding: 0px;"><i class="material-icons">edit</i></a>
@@ -301,7 +301,7 @@
                                     </div>
                                 </div>
                                 <div class="input-field col s8 offset-s2">
-                                  <input type="hidden" name="intItemID" value="${product.intProductID}">
+                                  <input type="text" name="intItemID" value="${product.intProductID}">
                                   <input type="hidden" name="intItemQuantity" value="${product.intProductQuantity}">
                                   <select class="browser-default" name="strItemCate" required>
                                     <option value="service" >Service</option>
@@ -438,18 +438,18 @@
                                 <div class="input-field col s6 offset-s2">
                                     <select class="browser-default updateServCategory" id="updateServCategory" name="strItemCategory" autocomplete="off">
                                         <option value="" disabled selected> </option>
-                                        <c:forEach items="${serviceCategory}" var="service">
+                                        <c:forEach items="${productCategory}" var="cate">
                                           <%
-                                              String cate3 = (String)pageContext.getAttribute("service");
+                                              String cate2 = (String)pageContext.getAttribute("cate");
                                               String selectedService = null;
-                                              if(serviceCate.equals(cate3)){
+                                              if(serviceCate.equals(cate2)){
                                                   selectedService = "selected";
                                               }
                                               else {
                                                   selectedService = "";
                                               }
                                           %>
-                                          <option value="${service}" <%out.println(selectedService);%>>${service}</option>
+                                          <option value="${cate}" <%out.println(selectedService);%>>${cate}</option>
                                         </c:forEach>
                                     </select>
                                 </div>
@@ -457,7 +457,7 @@
                                   <button data-target="addUpdateServCategory" class="waves-effect waves-light btn-flat modal-updateCategory orange lighten-1">add</button>
                                 </div>
                                 <div class="input-field col s4 offset-s6" style="margin-top: 20px;">
-                                    <input type="text" value="${service.intServiceName}" class="validate right-align" id="prodsvcPrice" name="dblItemPrice"/>
+                                    <input value="${service.dblServicePrice}" type="text" class="validate right-align" id="prodsvcPrice" name="dblItemPrice">
                                     <label for="prodsvcPrice" >Price</label>
                                 </div>
                               
@@ -481,8 +481,8 @@
                                   <div class="col s12">
                                     <div class="input-field col s8 offset-s2">
                                       <select id="updateAddCatServSelect" class="browser-default" size="10">
-                                        <c:forEach items="${serviceCategory}" var="service">
-                                          <option value="${service}">${service}</option>
+                                        <c:forEach items="${productCategory}" var="product">
+                                          <option value="${product}">${product}</option>
                                         </c:forEach>
                                       </select>
                                     </div>
@@ -598,7 +598,7 @@
     <script type="text/javascript" src="./js/angular.min.js"></script>
     <script type="text/javascript" src="./js/maintenance-emp.js"></script>
     <script type="text/javascript" src="./js/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" src="./js/bartstable.js"></script>
+    <script type="text/javascript" src="./js/dataTables.material.min.js"></script>
   </body>
 
 

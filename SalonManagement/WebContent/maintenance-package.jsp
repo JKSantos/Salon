@@ -8,7 +8,7 @@
   <link type="text/css" rel="stylesheet" href="./css/mystyle.css"/>
   <link type="text/css" rel="stylesheet" href="./css/mtnc-promo.css"/>
 
-  <link rel="stylesheet" type="text/css" href="./css/dataTables.material.min.css"/>
+  <link rel="stylesheet" type="text/css" href="./css/bartstable.css"/>
   <link rel="stylesheet" type="text/css" href="./css/material.min.css"/>
 
     <!--Let browser know website is optimized for mobile-->
@@ -20,7 +20,7 @@
             <header class="headnav">
                 <ul id="slide-out" class="side-nav fixed z-depth-0">
                   <div class="center">
-                      <img src="./img/anon.jpg" class="circle" style="width: 150px; height: 150px; margin-top: 40px; margin-bottom: 20px;">
+                      <img src="./img/logo.png" class="circle" style="width: 100%; height: 100%; margin-top: 40px; margin-bottom: 20px;">
                     </div>
                   <li><a href="admin-home.jsp" class="waves-effect"><b>Home</b></a></li>
                  <!--  <li class="no-padding"> -->
@@ -29,13 +29,13 @@
                         <a class="collapsible-header active"><b>Maintenance</b></a>
                           <div class="collapsible-body">
                             <ul>
-                              <li><a href="maintenance-emp.jsp">Employee</a></li>
-                              <li><a href="maintenance-prodsvc.jsp">Product & Service</a></li>
-                              <li><a href="maintenance-promo.jsp">Promo</a></li>
-                              <li><a href="maintenance-discount.jsp">Discount</a></li>
-                              <li class="orange"><a href="maintenance-package.jsp">Package</a></li>
-                              <li><a href="maintenance-catalogue.jsp">Catalogue</a></li>
-                              <li><a href="maintenance-extra.jsp">Extra Charge</a></li>
+                              <li><a href="employeeMaintenance">Employee</a></li>
+                                      <li><a href="productServiceMaintenance">Product & Service</a></li>
+                                      <li><a href="promoMaintenance">Promo</a></li>
+                                      <li><a href="discountMaintenance">Discount</a></li>
+                                      <li class="orange"><a href="maintenance-package.jsp">Package</a></li>
+                                      <li><a href="catalogueMaintenance">Catalogue</a></li>
+                                      <li><a href="extraChargeMaintenance">Extra Charge</a></li>
                             </ul>
                           </div>
                       </li>
@@ -68,13 +68,13 @@
                            <a class="waves-effectcollapsible-header"><b>Maintenance</b></a>
                              <div class="collapsible-body">
                                <ul>
-                                 <li><a href="maintenance-emp.jsp">Employee</a></li>
-                                 <li><a href="maintenance-prodsvc.jsp">Product & Service</a></li>
-                                 <li><a href="maintenance-promo.jsp">Promo</a></li>
-                                 <li><a href="maintenance-discount.jsp">Discount</a></li>
-                                 <li class="orange"><a href="maintenance-package.jsp">Package</a></li>
-                                 <li><a href="maintenance-catalogue.jsp">Catalogue</a></li>
-                                 <li><a href="maintenance-extra.jsp">Extra Charge</a></li>
+                                 <li><a href="employeeMaintenance">Employee</a></li>
+                                      <li><a href="productServiceMaintenance">Product & Service</a></li>
+                                      <li><a href="promoMaintenance">Promo</a></li>
+                                      <li><a href="discountMaintenance">Discount</a></li>
+                                      <li class="orange"><a href="maintenance-package.jsp">Package</a></li>
+                                      <li><a href="catalogueMaintenance">Catalogue</a></li>
+                                      <li><a href="extraChargeMaintenance">Extra Charge</a></li>
                                </ul>
                              </div>
                          </li>
@@ -416,7 +416,7 @@
     <script type="text/javascript" src="./js/angular.min.js"></script>
     <script type="text/javascript" src="./js/maintenance-emp.js"></script>
     <script type="text/javascript" src="./js/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" src="./js/dataTables.material.min.js"></script>
+    <script type="text/javascript" src="./js/bartstable.js"></script>
   </body>
 
 

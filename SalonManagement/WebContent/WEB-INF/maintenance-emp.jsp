@@ -1,17 +1,16 @@
 <!DOCTYPE html>
+<html ng-app>
   <%@ taglib uri="/struts-tags" prefix="s" %>
   <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
   <%@ page import="com.gss.model.Employee" %>
   <%@ page import="com.gss.model.EmployeeCategory" %>
-
-<html ng-app>
   <head>
   <link type="text/css" rel="stylesheet" href="./css/materialize.css"/>
   <link rel="stylesheet" href="./css/materialize.min.css"  media="screen,projection"/>
   <link type="text/css" rel="stylesheet" href="./css/mystyle.css"/>
   <link type="text/css" rel="stylesheet" href="./css/mtnc-emp.css"/>
 
-  <link rel="stylesheet" type="text/css" href="./css/bartstable.css"/>
+  <link rel="stylesheet" type="text/css" href="./css/dataTables.material.min.css"/>
   <link rel="stylesheet" type="text/css" href="./css/material.min.css"/>
 
     <!--Let browser know website is optimized for mobile-->
@@ -31,7 +30,7 @@
             <header class="headnav">
                 <ul id="slide-out" class="side-nav fixed z-depth-0">
                   <div class="center">
-                      <img src="./img/logo.png" class="circle" style="width: 100%; height: 100%; margin-top: 40px; margin-bottom: 20px;">
+                      <img src="./img/anon.jpg" class="circle" style="width: 150px; height: 150px; margin-top: 40px; margin-bottom: 20px;">
                     </div>
                   <li>
                   <a href="admin-home.jsp" class="waves-effect"><b>Home</b></a>
@@ -42,13 +41,13 @@
                         <a class="collapsible-header active"><b>Maintenance</b></a>
                           <div class="collapsible-body">
                             <ul>
-                              <li class="orange"><a href="employeeMaintenance">Employee</a></li>
-                                      <li><a href="productServiceMaintenance">Product & Service</a></li>
-                                      <li><a href="promoMaintenance">Promo</a></li>
-                                      <li><a href="discountMaintenance">Discount</a></li>
+                              <li class="orange"><a href="maintenance-emp.jsp">Employee</a></li>
+                                      <li><a href="maintenance-prodsvc.jsp">Product & Service</a></li>
+                                      <li><a href="maintenance-promo.jsp">Promo</a></li>
+                                      <li><a href="maintenance-discount.jsp">Discount</a></li>
                                       <li><a href="maintenance-package.jsp">Package</a></li>
-                                      <li><a href="catalogueMaintenance">Catalogue</a></li>
-                                      <li><a href="extraChargeMaintenance">Extra Charge</a></li>
+                                      <li><a href="maintenance-catalogue.jsp">Catalogue</a></li>
+                                      <li><a href="maintenance-extra.jsp">Extra Charge</a></li>
                             </ul>
                           </div>
                       </li>
@@ -84,13 +83,13 @@
                           
                              <div class="collapsible-body">
                                <ul>
-                                 <li class="orange"><a href="employeeMaintenance">Employee</a></li>
-                                      <li><a href="productServiceMaintenance">Product & Service</a></li>
-                                      <li><a href="promoMaintenance">Promo</a></li>
-                                      <li><a href="discountMaintenance">Discount</a></li>
-                                      <li><a href="maintenance-package.jsp">Package</a></li>
-                                      <li><a href="catalogueMaintenance">Catalogue</a></li>
-                                      <li><a href="extraChargeMaintenance">Extra Charge</a></li>
+                                 <li class="orange"><a href="maintenance-emp.jsp">Employee</a></li>
+                                 <li><a href="maintenance-prodsvc.jsp">Product & Service</a></li>
+                                 <li><a href="maintenance-promo.jsp">Promo</a></li>
+                                 <li><a href="maintenance-discount.jsp">Discount</a></li>
+                                 <li><a href="maintenance-package.jsp">Package</a></li>
+                                 <li><a href="maintenance-catalogue.jsp">Catalogue</a></li>
+                                 <li><a href="maintenance-extra.jsp">Extra Charge</a></li>
                                </ul>
                              </div>
                          </li>
@@ -127,12 +126,12 @@
                         <table id="example" class="display centered responsive-table highlight" cellspacing="0" width="100%" style="border: 1px solid #bdbdbd; padding: 10px;" rowspan="10">
                                 <thead>
                                     <tr>
-                                        <th><center>ID</center></th>
-                                        <th><center>Name</center></th>
-                                        <th><center>Position</center></th>
-                                        <th><center>Date of Creation</center></th>
-                                        <th><center>Status</center></th>
-                                        <th><center>Actions</center></th>
+                                        <th>ID</th>
+                                        <th>Name</th>
+                                        <th>Position</th>
+                                        <th>Date of Creation</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -143,12 +142,12 @@
                                        String de = str;
                                     %>
                                     <tr>
-                                        <td><center>${employee.intEmpID}</center></td>
-                                        <td><center>${employee.strEmpFirstName} ${employee.strEmpLastName}</center></td>
-                                        <td><center>${employee.strJobQualification}</center></td>
+                                        <td>${employee.intEmpID}</td>
+                                        <td>${employee.strEmpFirstName} ${employee.strEmpLastName}</td>
+                                        <td>${employee.strJobQualification}</td>
                                         <td class="center">01/01/01</td>
-                                        <td class="center">${employee.strEmpStatus}</td>
-                                        <td class="center"><a class="waves-effect waves-light modal-trigger btn-flat transparent black-text" title="Update" href="#emp<%=str%>" style="padding: 0px;"><i class="material-icons">edit</i></a>
+                                        <td>${employee.strEmpStatus}</td>
+                                        <td><a class="waves-effect waves-light modal-trigger btn-flat transparent black-text" title="Update" href="#emp<%=str%>" style="padding: 0px;"><i class="material-icons">edit</i></a>
                                         <a class="waves-effect waves-light modal-trigger btn-flat transparent red-text text-accent-4" href="#de<%=de%>" title="Deactivate"><i class="material-icons">delete</i></a>
                                         </td>
                                     </tr>
@@ -306,7 +305,7 @@
                                    </div>
                                 </div>
                                 <div class="input-field col s3">
-                                  <input type="text" value="${employee.intEmpID}" name="intEmpID" id="intEmpID" style="color:black;">
+                                  <input type="text" value="${employee.intEmpID}" name="intEmpID" id="intEmpID" disabled style="color:black;">
                                   <label for="intEmpID">ID</label>
                                 </div>
                                 <div class="input-field col s5 offset-s1">
@@ -521,7 +520,7 @@
     <script type="text/javascript" src="./js/angular.min.js"></script>
     <script type="text/javascript" src="./js/maintenance-emp.js"></script>
     <script type="text/javascript" src="./js/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" src="./js/bartstable.js"></script>
+    <script type="text/javascript" src="./js/dataTables.material.min.js"></script>
   </body>
 
 

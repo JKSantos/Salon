@@ -18,7 +18,7 @@
         <header class="headnav">
                         <ul id="slide-out" class="side-nav fixed z-depth-0">
                           <div class="center">
-                              <img src="./img/anon.jpg" class="circle" style="width: 150px; height: 150px; margin-top: 40px; margin-bottom: 20px;">
+                              <img src="./img/logo.png" class="circle" style="width: 100%; height: 100%; margin-top: 40px; margin-bottom: 20px;">
                             </div>
                           <li><a href="admin-home.jsp" class="waves-effect"><b>Home</b></a></li>
                          <!--  <li class="no-padding"> -->

@@ -49,6 +49,8 @@ public class CreatePromoAction {
 		String[] serviceQty = createServPromQty.split(", ");
 		String[] productQty = createProdPromQty.split(", ");
 		
+		System.out.println(products[0] + "======" + productQty[0]);
+		
 		if(!services.equals("")){
 			
 			for(int i = 0; i < services.length; i++){
@@ -71,7 +73,7 @@ public class CreatePromoAction {
 					
 					Product product = refProduct.get(j);
 					
-					if(product.getStrProductName().equals(">>> "  + products[i])){
+					if(product.getStrProductName().equals(products[i])){
 						System.out.print(productQty[i]);
 						ProductPackage prod = new ProductPackage(1, product, Integer.parseInt(productQty[i]), 1);
 						productList.add(prod);

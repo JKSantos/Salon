@@ -42,7 +42,7 @@
                                       <li><a href="transactions-inventory.jsp">Inventory</a></li>
                                       <li><a href="transactions-reservation.jsp">Reservation</a></li>
                                       <li><a href="transactions-vip.jsp">VIP</a></li>
-                                      <li class="orange"><a href="transactions-productorder.jsp">Product Order</a></li>
+                                      <li class="orange"><a href="transactions-productorder.jsp">Product Sales</a></li>
                                       <li><a href="transactions-walkin.jsp">Walk-In</a></li>
                                     </ul>
                                   </div>
@@ -80,7 +80,7 @@
                                        <ul>
                                          <li><a href="transactions-inventory.jsp">Inventory</a></li>
                                          <li><a href="transactions-reservation.jsp">Reservation</a></li>
-                                         <li class="orange"><a href="transactions-productorder.jsp">Product Order</a></li>
+                                         <li class="orange"><a href="transactions-productorder.jsp">Product Sales</a></li>
                                          <li><a href="#!">Walk-In</a></li>
                                        </ul>
                                      </div>
@@ -97,7 +97,7 @@
                     
                     <div class="aside aside2 z-depth-barts">
                     <div class="row">
-                      <h2 class="thin">Sales order</h2>
+                      <h2 class="thin">Product Sales</h2>
                         <nav class="z-depth-0">
                           <div class="nav-wrapper grey lighten-3 grey-text text-darken-4">
                             <form>

@@ -48,6 +48,7 @@ public class PromoJDBCRepository implements PromoRepository{
 			
 			for(int intCtr = 0; intCtr < promo.getProductList().size(); intCtr++){
 				
+				System.out.println("----"+promo.getProductList().size()+"----");
 				PreparedStatement pre2 = con.prepareStatement(strQuery2);
 				ProductPackage product = promo.getProductList().get(intCtr);
 				pre2.setInt(1, intID);
@@ -90,6 +91,9 @@ public class PromoJDBCRepository implements PromoRepository{
 		
 		List<Promo> promoList = new ArrayList<Promo>();
 		String query = "SELECT * FROM tblPromo;";
+		String query2 = "SELECT * FROM tblServicePromo WHERE intPromoID = ? AND intPromoStatus = 1;";
+		String query3 = "SELECT * FROM tblServicePromo WHERE intPromoID = ? AND intPromoStatus = 1;";
+
 		Connection con = jdbc.getConnection();
 		
 		try{

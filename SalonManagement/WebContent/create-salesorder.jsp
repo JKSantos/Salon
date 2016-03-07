@@ -42,7 +42,7 @@
                                       <li><a href="transactions-inventory.jsp">Inventory</a></li>
                                       <li><a href="transactions-reservation.jsp">Reservation</a></li>
                                       <li><a href="transactions-vip.jsp">VIP</a></li>
-                                      <li class="orange"><a href="transactions-productorder.jsp">Product Order</a></li>
+                                      <li class="orange"><a href="transactions-productorder.jsp">Product Sales</a></li>
                                       <li><a href="transactions-walkin.jsp">Walk-In</a></li>
                                     </ul>
                                   </div>
@@ -96,7 +96,7 @@
           <div class="wrapper">
             
                     <div class="aside aside1 z-depth-barts"> <!--main aside1-->
-                          <header><h2 class="thin" style="margin-top: 30px;">Sales Order</h2></header>
+                          <header><h2 class="thin" style="margin-top: 30px;">Product Sales</h2></header>
                           <div class="container">
                           <div class="row">
                               <form class="col s12" style="margin-top: 20px;">
