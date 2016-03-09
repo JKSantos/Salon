@@ -39,12 +39,12 @@ public class EmployeeJDBCRepository implements EmployeeRepository{
 		String strEmpGender;
 		String strEmpAddress;
 		String strEmpContactNo;
+		String strEmpEmail;
 		String strEmpStatus;
 		String strEmpUsername;
 		String strEmpPassword;
 		String blobEmpPhoto;
 		byte[] bytActualImage;
-		List<Job> strJobQualification = new ArrayList<Job>();
 		
 		try{
 			
@@ -63,7 +63,8 @@ public class EmployeeJDBCRepository implements EmployeeRepository{
 				strEmpGender = set.getString(7);
 				strEmpAddress = set.getString(8);
 				strEmpContactNo = set.getString(9);
-				strEmpStatus = set.getString(10);
+				strEmpEmail = set.getString(10);
+				strEmpStatus = set.getString(11);
 				if(set.getString(11) == null){
 					strEmpUsername = "NO ACCESS";
 					strEmpPassword = "NO ACCESS";	
@@ -77,7 +78,7 @@ public class EmployeeJDBCRepository implements EmployeeRepository{
 				blobEmpPhoto = "Empty";
 				bytActualImage = set.getBytes(13);
 				
-				Employee emp = new Employee(intEmpID, strEmpLastName, strEmpFirstName, strEmpMiddleName, datEmpBirthdate, strEmpGender, strEmpAddress, strEmpContactNo, strEmpStatus, strEmpUsername, strEmpPassword, blobEmpPhoto, bytActualImage, job);
+				Employee emp = new Employee(intEmpID, strEmpLastName, strEmpFirstName, strEmpMiddleName, datEmpBirthdate, strEmpGender, strEmpAddress, strEmpContactNo, strEmpEmail, strEmpStatus, strEmpUsername, strEmpPassword, blobEmpPhoto, bytActualImage, job);
 				
 				empList.add(emp);
 			}
@@ -206,10 +207,11 @@ public class EmployeeJDBCRepository implements EmployeeRepository{
 			pre.setString(6, emp.getStrEmpGender());
 			pre.setString(7, emp.getStrEmpAddress());
 			pre.setString(8, emp.getStrEmpContactNo());
-			pre.setString(9, emp.getStrEmpStatus());
-			pre.setString(10, emp.getStrEmpUsername());
-			pre.setString(11, emp.getStrEmpPassword());
-			pre.setBinaryStream(12, (InputStream)fileInput, (int)imageFile.length());
+			pre.setString(9, emp.getStrEmpEmail());
+			pre.setString(10, emp.getStrEmpStatus());
+			pre.setString(11, emp.getStrEmpUsername());
+			pre.setString(12, emp.getStrEmpPassword());
+			pre.setBinaryStream(13, (InputStream)fileInput, (int)imageFile.length());
 			
 			pre.executeQuery();
 			pre.close();
@@ -253,10 +255,11 @@ public class EmployeeJDBCRepository implements EmployeeRepository{
 				pre.setString(7, emp.getStrEmpGender());
 				pre.setString(8, emp.getStrEmpAddress());
 				pre.setString(9, emp.getStrEmpContactNo());
-				pre.setString(10, emp.getStrEmpStatus());
-				pre.setString(11, emp.getStrEmpUsername());
-				pre.setString(12, emp.getStrEmpPassword());
-				pre.setInt(13, 101);
+				pre.setString(10, emp.getStrEmpEmail());
+				pre.setString(11, emp.getStrEmpStatus());
+				pre.setString(12, emp.getStrEmpUsername());
+				pre.setString(13, emp.getStrEmpPassword());
+				pre.setInt(14, 101);
 			}
 			else{
 				
@@ -272,10 +275,11 @@ public class EmployeeJDBCRepository implements EmployeeRepository{
 				pre.setString(7, emp.getStrEmpGender());
 				pre.setString(8, emp.getStrEmpAddress());
 				pre.setString(9, emp.getStrEmpContactNo());
-				pre.setString(10, emp.getStrEmpStatus());
-				pre.setString(11, emp.getStrEmpUsername());
-				pre.setString(12, emp.getStrEmpPassword());
-				pre.setBinaryStream(13, (InputStream)fileInput, (int)imageFile.length());
+				pre.setString(10, emp.getStrEmpEmail());
+				pre.setString(11, emp.getStrEmpStatus());
+				pre.setString(12, emp.getStrEmpUsername());
+				pre.setString(13, emp.getStrEmpPassword());
+				pre.setBinaryStream(14, (InputStream)fileInput, (int)imageFile.length());
 			}
 			
 			ResultSet set = pre.executeQuery();

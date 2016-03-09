@@ -9,6 +9,7 @@ import com.gss.model.Employee;
 import com.gss.model.Job;
 import com.gss.service.EmployeeServiceImpl;
 import com.gss.utilities.DateHelper;
+import com.gss.utilities.SendMail;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class CreateEmployeeAction extends ActionSupport{
@@ -17,13 +18,12 @@ public class CreateEmployeeAction extends ActionSupport{
 	private String strEmpLastName;
 	private String strEmpFirstName;
 	private String strEmpMiddleName;
-	private String strMonth;
-	private String strDay;
-	private String strYear;
+	private String strBirthdate;
 	private Date datEmpBirthdate;
 	private String strEmpGender;
 	private String strEmpAddress;
 	private String strEmpContactNo;
+	private String strEmpEmail;
 	private String strEmpStatus;
 	private String strEmpUsername;
 	private String strEmpPassword;
@@ -36,25 +36,25 @@ public class CreateEmployeeAction extends ActionSupport{
 	
 	public String execute(){
 		
-		String strBirthDate = null;
+		SendMail mail = new SendMail();
 		String path = file.getAbsolutePath();
 		EmployeeServiceImpl empService;
 		Employee emp;
 		
-		System.out.println(selectedJob);
+		String[] unConvertedDate = strBirthdate.split("/");
+		this.strBirthdate = new DateHelper().convert(unConvertedDate);
+		this.datEmpBirthdate = DateHelper.parseDate(strBirthdate);
 		
-		//strBirthDate = strYear + "-" + strMonth + "-" + strDay; 
-		strBirthDate = "1997-02-03";
-		this.datEmpBirthdate = DateHelper.parseDate(strBirthDate);
+		this.datEmpBirthdate = DateHelper.parseDate(strBirthdate);
 		
 		if(grantAccess == true){
 			System.out.print(grantAccess);
-			emp = new Employee(1, strEmpLastName.trim().toUpperCase(), strEmpFirstName.trim().toUpperCase(), strEmpMiddleName.trim().toUpperCase(), datEmpBirthdate, strEmpGender, strEmpAddress.trim().toUpperCase(), strEmpContactNo, "A", "NO ACCESS", "NO ACCESS", path, null, selectedJob);
+			emp = new Employee(1, strEmpLastName.trim().toUpperCase(), strEmpFirstName.trim().toUpperCase(), strEmpMiddleName.trim().toUpperCase(), datEmpBirthdate, strEmpGender, strEmpAddress.trim().toUpperCase(), strEmpContactNo, strEmpEmail, "A", "NO ACCESS", "NO ACCESS", path, null, selectedJob);
 			empService = new EmployeeServiceImpl();
 		}
 		else{
 			System.out.print(grantAccess);
-			emp = new Employee(1, strEmpLastName.trim().toUpperCase(), strEmpFirstName.trim().toUpperCase(), strEmpMiddleName.trim().toUpperCase(), datEmpBirthdate, strEmpGender, strEmpAddress.trim().toUpperCase(), strEmpContactNo, "A", "NO ACCESS", "NO ACCESS", path, null, selectedJob);
+			emp = new Employee(1, strEmpLastName.trim().toUpperCase(), strEmpFirstName.trim().toUpperCase(), strEmpMiddleName.trim().toUpperCase(), datEmpBirthdate, strEmpGender, strEmpAddress.trim().toUpperCase(), strEmpContactNo, strEmpEmail, "A", "NO ACCESS", "NO ACCESS", path, null, selectedJob);
 			empService = new EmployeeServiceImpl();
 		}
 
@@ -158,38 +158,6 @@ public class CreateEmployeeAction extends ActionSupport{
 		this.selectedJob = selectedJob;
 	}
 
-	public String getStrMonth() {
-		return strMonth;
-	}
-
-	public void setStrMonth(String strMonth) {
-		this.strMonth = strMonth;
-	}
-
-	public String getStrDay() {
-		return strDay;
-	}
-
-	public void setStrDay(String strDay) {
-		this.strDay = strDay;
-	}
-
-	public String getStrYear() {
-		return strYear;
-	}
-
-	public void setStrYear(String strYear) {
-		this.strYear = strYear;
-	}
-
-	public File getUpload() {
-		return file;
-	}
-
-	public void setUpload(File file) {
-		this.file = file;
-	}
-
 	public String getUploadContentType() {
 		return contentType;
 	}
@@ -220,5 +188,13 @@ public class CreateEmployeeAction extends ActionSupport{
 
 	public void setGrantAccess(boolean grantAccess) {
 		this.grantAccess = grantAccess;
+	}
+
+	public String getStrBirthdate() {
+		return strBirthdate;
+	}
+
+	public void setStrBirthdate(String strBirthdate) {
+		this.strBirthdate = strBirthdate;
 	}
 }

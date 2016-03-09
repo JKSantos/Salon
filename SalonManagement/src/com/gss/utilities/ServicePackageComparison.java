@@ -12,11 +12,11 @@ public class ServicePackageComparison {
 			
 			ServicePackage pack = serviceList.get(intCtr);
 				
-			if(servPack.getIntServicePackageID() == pack.getIntServicePackageID() && servPack.getService().getIntServiceID() == pack.getService().getIntServiceID() && servPack.getIntStatus() == pack.getIntStatus()){
+			if(servPack.getIntServicePackageID() == pack.getIntServicePackageID() && servPack.getService().getIntServiceID() == pack.getService().getIntServiceID() && servPack.getIntStatus() == pack.getIntStatus() && servPack.getIntQuantity() == pack.getIntQuantity()){
 				System.out.println(">>same " + servPack.getIntServicePackageID() + " " + pack.getIntServicePackageID());
 				return "same";
 			}
-			else if(servPack.getIntServicePackageID() == pack.getIntServicePackageID() && servPack.getService().getIntServiceID() != pack.getService().getIntServiceID() || servPack.getIntServicePackageID() == pack.getIntServicePackageID() && servPack.getIntStatus() != pack.getIntStatus()){
+			else if(servPack.getIntServicePackageID() == pack.getIntServicePackageID() && servPack.getService().getIntServiceID() != pack.getService().getIntServiceID() && servPack.getIntStatus() != pack.getIntStatus() || servPack.getIntServicePackageID() == pack.getIntServicePackageID() && servPack.getIntStatus() != pack.getIntStatus()){
 				System.out.println(">>update " + servPack.getIntServicePackageID() + " " + pack.getIntServicePackageID());
 				return "update";
 			}

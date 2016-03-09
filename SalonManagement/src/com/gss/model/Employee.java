@@ -13,6 +13,7 @@ public class Employee {
 	private String strEmpGender;
 	private String strEmpAddress;
 	private String strEmpContactNo;
+	private String strEmpEmail;
 	private String strEmpStatus;
 	private String strEmpUsername;
 	private String strEmpPassword;
@@ -21,7 +22,7 @@ public class Employee {
 	private String strJobQualification;
 	
 	
-	public Employee(int intEmpID, String strEmpLastName, String strEmpFirstName, String strEmpMiddleName, Date datBirthdate, String strEmpGender, String strAddress, String strEmpContactNo, String strEmpStatus, String strUsername, String strPassword, String empPhoto, byte[] bytActualPhoto, String strJobQualification)
+	public Employee(int intEmpID, String strEmpLastName, String strEmpFirstName, String strEmpMiddleName, Date datBirthdate, String strEmpGender, String strAddress, String strEmpContactNo, String strEmpEmail, String strEmpStatus, String strUsername, String strPassword, String empPhoto, byte[] bytActualPhoto, String strJobQualification)
 	{
 		this.setIntEmpID(intEmpID);
 		this.strEmpLastName = strEmpLastName;
@@ -35,6 +36,7 @@ public class Employee {
 		this.strEmpStatus = strEmpStatus;
 		this.strEmpContactNo = strEmpContactNo;
 		this.setBlobEmpPhoto(empPhoto);	
+		this.setStrEmpEmail(strEmpEmail);
 		this.setBytActualImage(bytActualPhoto);
 		this.setStrJobQualification(strJobQualification);
 	}
@@ -149,6 +151,14 @@ public class Employee {
 
 	public void setStrJobQualification(String strJobQualification2) {
 		this.strJobQualification = strJobQualification2;
+	}
+
+	public String getStrEmpEmail() {
+		return strEmpEmail;
+	}
+
+	public void setStrEmpEmail(String strEmpEmail) {
+		this.strEmpEmail = strEmpEmail;
 	}
 
 }

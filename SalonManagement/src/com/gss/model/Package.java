@@ -13,8 +13,9 @@ public class Package {
 	private double dblPackagePrice;
 	private List<ServicePackage> serviceList;
 	private List<ProductPackage> productList;
+	private int intPackageStatus;
 					//int			string					string					int					int					string							double					list							list
-	public Package(int intPackageID, String strPackageName, String strPackageDesc, int intPackageType, int intMaxHeadCount, String strPackageAvailability, double dblPackagePrice, List<ServicePackage> serviceList, List<ProductPackage> productList){
+	public Package(int intPackageID, String strPackageName, String strPackageDesc, int intPackageType, int intMaxHeadCount, String strPackageAvailability, double dblPackagePrice, List<ServicePackage> serviceList, List<ProductPackage> productList, int intPackageStatus){
 		
 		this.intPackageID = intPackageID;
 		this.strPackageName = strPackageName;
@@ -25,6 +26,7 @@ public class Package {
 		this.dblPackagePrice = dblPackagePrice;
 		this.serviceList = serviceList;
 		this.productList = productList;
+		this.setIntPackageStatus(intPackageStatus);
 	}
 
 	public int getIntPackageID() {
@@ -97,6 +99,14 @@ public class Package {
 
 	public void setIntMaxHeadCount(int intMaxHeadCount) {
 		this.intMaxHeadCount = intMaxHeadCount;
+	}
+
+	public int getIntPackageStatus() {
+		return intPackageStatus;
+	}
+
+	public void setIntPackageStatus(int intPackageStatus) {
+		this.intPackageStatus = intPackageStatus;
 	}
 
 }

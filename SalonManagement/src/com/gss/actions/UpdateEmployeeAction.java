@@ -18,13 +18,12 @@ public class UpdateEmployeeAction extends ActionSupport{
 	private String strEmpLastName;
 	private String strEmpFirstName;
 	private String strEmpMiddleName;
-	private String strMonth;
-	private String strDay;
-	private String strYear;
+	private String strBirthdate;
 	private Date datEmpBirthdate;
 	private String strEmpGender;
 	private String strEmpAddress;
 	private String strEmpContactNo;
+	private String strEmpEmail;
 	private String strEmpStatus;
 	private String strEmpUsername;
 	private String strEmpPassword;
@@ -37,34 +36,30 @@ public class UpdateEmployeeAction extends ActionSupport{
 	
 	public String execute(){
 		
-		String strBirthDate = null;
-		System.out.println(intEmpID);
-		
 		EmployeeServiceImpl empService = new EmployeeServiceImpl();
 		Employee emp = null;
+		String[] unConvertedDate = strBirthdate.split("/");
 		
-		strBirthDate = "1997-01-02";
-		
-		System.out.println("-----" + intEmpID + "------");
-		//strBirthDate = strYear + "-" + strMonth + "-" + strDay; 
-		this.datEmpBirthdate = DateHelper.parseDate(strBirthDate);
+		this.strBirthdate = new DateHelper().convert(unConvertedDate);
+
+		this.datEmpBirthdate = DateHelper.parseDate(strBirthdate);
 		
 		if(imageName.equals("image")){
-			emp = new Employee(intEmpID, strEmpLastName.trim().toUpperCase(), strEmpFirstName.trim().toUpperCase(), strEmpMiddleName.trim().toUpperCase(), datEmpBirthdate, strEmpGender, strEmpAddress.trim().toUpperCase(), strEmpContactNo, "A", "NO ACCESS", "NO ACCESS", "Image", null, selectedJob);
+			emp = new Employee(intEmpID, strEmpLastName.trim().toUpperCase(), strEmpFirstName.trim().toUpperCase(), strEmpMiddleName.trim().toUpperCase(), datEmpBirthdate, strEmpGender, strEmpAddress.trim().toUpperCase(), strEmpContactNo, strEmpEmail, "A", "NO ACCESS", "NO ACCESS", "Image", null, selectedJob);
 		}
 		else{
 			imageName = file.getAbsolutePath();
-			emp = new Employee(intEmpID, strEmpLastName.trim().toUpperCase(), strEmpFirstName.trim().toUpperCase(), strEmpMiddleName.trim().toUpperCase(), datEmpBirthdate, strEmpGender, strEmpAddress, strEmpContactNo, "A", "NO ACCESS", "NO ACCESS", imageName, null, selectedJob);
+			emp = new Employee(intEmpID, strEmpLastName.trim().toUpperCase(), strEmpFirstName.trim().toUpperCase(), strEmpMiddleName.trim().toUpperCase(), datEmpBirthdate, strEmpGender, strEmpAddress, strEmpContactNo, strEmpEmail, "A", "NO ACCESS", "NO ACCESS", imageName, null, selectedJob);
 		}
 		
 		if(empService.updateEmployee(emp) == true)
 		{	
-			System.out.print("success.............................");
+			System.out.println("EMPLOYEE WAS CREATED SUCCESSUFULLY");
 			return "success";
 		}
 		else
 		{	
-			System.out.print("failed");
+			System.out.println("PROBLEM ENCOUNTERED WHILE CREATING EMPLOYEE");
 			return "failed";
 		}
 	}
@@ -168,30 +163,6 @@ public class UpdateEmployeeAction extends ActionSupport{
 		this.selectedJob = selectedJob;
 	}
 
-	public String getStrMonth() {
-		return strMonth;
-	}
-
-	public void setStrMonth(String strMonth) {
-		this.strMonth = strMonth;
-	}
-
-	public String getStrDay() {
-		return strDay;
-	}
-
-	public void setStrDay(String strDay) {
-		this.strDay = strDay;
-	}
-
-	public String getStrYear() {
-		return strYear;
-	}
-
-	public void setStrYear(String strYear) {
-		this.strYear = strYear;
-	}
-
 	public File getUpload() {
 		return file;
 	}
@@ -222,5 +193,15 @@ public class UpdateEmployeeAction extends ActionSupport{
 
 	public void setImageName(String imageName) {
 		this.imageName = imageName;
+	}
+
+
+	public String getStrBirthdate() {
+		return strBirthdate;
+	}
+
+
+	public void setStrBirthdate(String strBirthdate) {
+		this.strBirthdate = strBirthdate;
 	}
 }

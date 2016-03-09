@@ -202,7 +202,7 @@
                                     <label for="strEmpLastName">Last Name<span class="red-text">*</span></label>
                                 </div>
                                 <div class="input-field col s4">
-                                    <input type="date" class="datepicker" id="createBirthday" placeholder=" ">
+                                    <input type="date" name="strBirthdate" class="datepicker" id="createBirthday" placeholder=" ">
                                     <label for="createBirthday">Birthday <span class="red-text">*</span></label>
                                 </div>
                                 <div class="input-field col s4 offset-s4">
@@ -352,7 +352,7 @@
                                     }
                                 %>
                                 <div class="input-field col s4">
-                                    <input type="date" class="datepicker" id="updateBirthday" placeholder=" ">
+                                    <input name="strBirthdate" type="date" class="datepicker" id="updateBirthday" placeholder=" ">
                                     <label>Birthday</label>
                                 </div>
                                 <div class="input-field col s4 offset-s4">
