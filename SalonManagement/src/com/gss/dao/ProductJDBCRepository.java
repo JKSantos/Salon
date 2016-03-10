@@ -185,7 +185,7 @@ public class ProductJDBCRepository implements ProductRepository{
 	
 		List<String> categoryList = new ArrayList<String>();
 		Connection con = new JDBCConnection().getConnection();
-		String query = "SELECT strProdCategory FROM tblProductCategory WHERE intProdStatus = 1;";
+		String query = "SELECT strProdCategory FROM tblProductCategory;";
 		
 		try{
 			

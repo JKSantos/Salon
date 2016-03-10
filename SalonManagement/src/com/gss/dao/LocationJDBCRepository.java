@@ -36,7 +36,7 @@ public class LocationJDBCRepository implements LocationRepository{
 
 	public boolean updateLocation(Location location) {
 		Connection con = jdbc.getConnection();
-		String query = "CALL createLocation(?, ?)";
+		String query = "CALL updateLocation(?, ?)";
 		
 		try{
 			

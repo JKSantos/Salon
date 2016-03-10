@@ -344,7 +344,7 @@
                                   <!-- first -->
                                     <div class="row">
                                       <div class="input-field col s12">
-                                           <img name="empupdatedImg" id="empupdatedImg" class="circle" style="width: 200px; height: 200px;" src="./img/anon.jpg" alt=""/>
+                                           <img name="empupdatedImg" id="empupdatedImg" class="circle" style="width: 200px; height: 200px;" src="<s:url action='getImage'><s:param name='ImageID'>${employee.intEmpID}</s:param><s:param name='type'>employee</s:param></s:url>" alt=""/>
                                        </div>
                                        <div class="input-field col s12">
                                            <div class="file-field">
@@ -508,7 +508,8 @@
                             <div class="modal-content">
                               <div class="row">
                                 <h5 class="red-text">Warning!</h5>
-                                <p class="center">Are you sure?</p>
+                                <p class="center">Are you sure you want to deactivate</p>
+                                <p class="center">${employee.strEmpFirstName} ${employee.strEmpLastName}?</p>
                                 <input type="hidden" size="10" name="intEmpID" value="${employee.intEmpID}">
                               </div>
                             </div>
