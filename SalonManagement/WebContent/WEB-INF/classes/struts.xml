@@ -144,7 +144,10 @@
 		</action>
 
 		<action name="getImage" class="com.gss.actions.GetImageAction">
-			
+		</action>
+		
+		<action name="locationMaintenance" class="com.gss.actions.LocationMaintenance">
+			<!-- <result name="success">maintenance-location.jsp</result>-->
 		</action>
 		
 	</package>
