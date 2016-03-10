@@ -10,18 +10,24 @@ public class ServicePackageComparison {
 		
 		for(int intCtr = 0; intCtr < serviceList.size(); intCtr++){
 			
-			ServicePackage pack = serviceList.get(intCtr);
+			ServicePackage newPack = servPack;
+			ServicePackage oldPack = serviceList.get(intCtr);
+			
+			int newID = newPack.getIntServicePackageID();
+			int oldID = oldPack.getIntServicePackageID();
+			int newQuantity = newPack.getIntQuantity();
+			int oldQuantity = oldPack.getIntQuantity();
 				
-			if(servPack.getIntServicePackageID() == pack.getIntServicePackageID() && servPack.getService().getIntServiceID() == pack.getService().getIntServiceID() && servPack.getIntStatus() == pack.getIntStatus() && servPack.getIntQuantity() == pack.getIntQuantity()){
-				System.out.println(">>same " + servPack.getIntServicePackageID() + " " + pack.getIntServicePackageID());
+			if(newID == oldID && newQuantity == oldQuantity){
+				System.out.println(">>same " + servPack.getIntServicePackageID() + " " + oldPack.getIntServicePackageID());
 				return "same";
 			}
-			else if(servPack.getIntServicePackageID() == pack.getIntServicePackageID() && servPack.getService().getIntServiceID() != pack.getService().getIntServiceID() && servPack.getIntStatus() != pack.getIntStatus() || servPack.getIntServicePackageID() == pack.getIntServicePackageID() && servPack.getIntStatus() != pack.getIntStatus()){
-				System.out.println(">>update " + servPack.getIntServicePackageID() + " " + pack.getIntServicePackageID());
+			else if(newID == oldID && newQuantity != oldQuantity && newID == oldID && newQuantity != oldQuantity){
+				System.out.println(">>update " + servPack.getIntServicePackageID() + " " + oldPack.getIntServicePackageID());
 				return "update";
 			}
 			else if(intCtr == (serviceList.size() - 1)){
-				System.out.println(">>new " + servPack.getIntServicePackageID() + " " + pack.getIntServicePackageID());
+				System.out.println(">>new " + servPack.getIntServicePackageID() + " " + oldPack.getIntServicePackageID());
 				return "new";
 			}
 			

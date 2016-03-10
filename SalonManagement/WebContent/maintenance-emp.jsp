@@ -302,7 +302,7 @@
                                 </div>
                                 <div class="input-field col s12">
                                    <div class="col s4 offset-s4">
-                                       <img name="empupdatedImg" id="empupdatedImg" class="circle z-depth-1" style="width: 150px; height: 150px;" src="./img/anon.jpg" alt=""/>
+                                       <img name="empupdatedImg" id="empupdatedImg" class="circle z-depth-1" style="width: 150px; height: 150px;" src="<s:url action='getImage'><s:param name='ImageID'>${employee.intEmpID}</s:param><s:param name='type'>employee</s:param></s:url>" alt=""/>
                                    </div>
                                 </div>
                                 <div class="input-field col s3">

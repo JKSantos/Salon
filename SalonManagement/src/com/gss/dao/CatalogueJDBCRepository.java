@@ -3,6 +3,7 @@ package com.gss.dao;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
+import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -38,13 +39,14 @@ public class CatalogueJDBCRepository implements CatalogueRepository{
 				int intID = set.getInt(1);
 				String serv = set.getString(2);
 				String cat = set.getString(3);
-				byte[] pic = set.getBytes(4);
+				Blob blob = set.getBlob(4);
+				int blobLength = (int)blob.length();
 				int status = set.getInt(5);
+				byte[] pic = blob.getBytes(1, blobLength);
 				double price = 0;
 				
 				for(int i = 0; i < serviceList.size(); i++){
 					Service s = serviceList.get(i);
-					System.out.println(intID + " " + s.getIntServiceID());
 					
 					if(s.getStrServiceName().equals(serv)){
 						price = s.getDblServicePrice();
@@ -80,7 +82,6 @@ public class CatalogueJDBCRepository implements CatalogueRepository{
 			File imageFile = new File(catalogue.getStrCataloguePath());
 			FileInputStream fis = new FileInputStream(imageFile);
 			
-			System.out.print(catalogue.getStrCatalogueType());
 			PreparedStatement pre = con.prepareStatement(query);
 			pre.setString(1, catalogue.getStrCatalogueType());
 			pre.setString(2, catalogue.getStrCatalogueName());
@@ -106,9 +107,7 @@ public class CatalogueJDBCRepository implements CatalogueRepository{
 		
 		try{
 			PreparedStatement pre = con.prepareStatement(query);
-			
-			System.out.print("====== "+catalogue.getIntCatalogueID() + " =======" + catalogue.getStrCatalogueName());
-			
+					
 			if(!catalogue.getStrCataloguePath().equalsIgnoreCase("image")){
 				File imageFile = new File(catalogue.getStrCataloguePath());
 				FileInputStream fis = new FileInputStream(imageFile);

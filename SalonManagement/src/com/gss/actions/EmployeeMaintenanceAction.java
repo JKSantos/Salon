@@ -18,9 +18,7 @@ public class EmployeeMaintenanceAction {
 		
 		EmployeeServiceImpl empService = new EmployeeServiceImpl();
 		this.empCategory = empService.getAllCategory();
-		this.empList = empService.getAllEmployees();
-	
-		System.out.print(empList.get(0).getDatEmpBirthdate().getMonth());		
+		this.empList = empService.getAllEmployees();	 	
 
 		return "success";
 	}

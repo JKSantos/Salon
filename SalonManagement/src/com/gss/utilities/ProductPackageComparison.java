@@ -12,18 +12,26 @@ public class ProductPackageComparison {
 		if(productList.size() > 0){
 			for(int intCtr = 0; intCtr < productList.size(); intCtr++ ){
 			
-				ProductPackage pack = productList.get(intCtr);
+				ProductPackage newProduct = prodPack;
+				ProductPackage oldProduct = productList.get(intCtr);
+				int newID = newProduct.getIntProductPackageID();
+				int oldID = oldProduct.getIntProductPackageID();
+				int newQuantity = newProduct.getIntProductQuantity();
+				int oldQuantity = oldProduct.getIntProductQuantity();
+				int newStatus = newProduct.getIntStatus();
+				int oldStatus = oldProduct.getIntStatus();
 			
-				if(prodPack.getIntProductPackageID() == pack.getIntProductPackageID() && prodPack.getProduct().getIntProductID() == pack.getProduct().getIntProductID() && prodPack.getIntProductQuantity() == pack.getIntProductQuantity() && prodPack.getIntStatus() == pack.getIntStatus()){
-					System.out.println("same " + prodPack.getIntProductPackageID() + " " + pack.getIntProductPackageID());
+				if(newID == oldID && newQuantity == oldQuantity){
+					System.out.println("--Same: " + newID + " " + oldID);
 					return "same";
 				}
-				else if(prodPack.getIntProductPackageID() == pack.getIntProductPackageID() && prodPack.getProduct().getIntProductID() != pack.getProduct().getIntProductID() || prodPack.getIntProductPackageID() == pack.getIntProductPackageID() && prodPack.getIntProductQuantity() != pack.getIntProductQuantity() || prodPack.getIntProductPackageID() == pack.getIntProductPackageID() && prodPack.getIntStatus() != pack.getIntStatus()){
-					System.out.println("update " + prodPack.getIntProductPackageID() + " " + pack.getIntProductPackageID());
+				else if(newID == oldID && newQuantity != oldQuantity || newID == oldID && newStatus != oldStatus){
+					System.out.println("--update: " + newID + " " + oldID);
+					System.out.println("--update: " + newQuantity + " " + oldQuantity);
 					return "update";
 				}
 				else if(intCtr == (productList.size() - 1)){
-					System.out.println("new " + prodPack.getIntProductPackageID() + " " + pack.getIntProductPackageID());
+					System.out.println("--new: " + newID + " " + oldID);
 					return "new";
 				}
 			}

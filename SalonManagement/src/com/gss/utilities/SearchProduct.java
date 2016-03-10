@@ -43,7 +43,6 @@ public class SearchProduct {
 			}
 		}
 		
-		
 		return deactivatedSet;
 	}
 }
