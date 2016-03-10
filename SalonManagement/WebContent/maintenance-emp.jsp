@@ -196,24 +196,24 @@
                                              <label class="red-text left">(*) Indicates required field</label>
                                         </div>
                                         <div class="input-field col s12">
-                                            <input name="strEmpFirstName" placeholder="Ex: Benigno" id="strEmpFirstName" type="text" class="validate" required>
+                                            <input name="strEmpFirstName" placeholder="Ex: Benigno" id="strEmpFirstName" type="text" class="validate tooltipped" required data-position="bottom" data-delay="30" data-tooltip="Ex: Benigno<br/>( Atleast 2 or more characters )" pattern="^[a-zA-Z\-'`\s]{2,}$" maxlength="15">
                                             <label for="strEmpFirstName">First Name<span class="red-text"><b>*</b></span></label>
                                         </div>
                                         <div class="input-field col s12">
-                                            <input name="strEmpMiddleName" placeholder="Ex: Cojuangco" id="strEmpMiddleName" type="text" class="validate">
+                                            <input name="strEmpMiddleName" placeholder="Ex: Cojuangco" id="strEmpMiddleName" type="text" class="validate tooltipped" data-position="bottom" data-delay="30" data-tooltip="Ex: Cojuangco <br/>( Atleast 2 or more characters)" pattern="^[a-zA-Z\-'`\s]{2,}$">
                                             <label for="strEmpMiddleName">Middle Name</label>
                                         </div>
                                         <div class="input-field col s12">
-                                            <input name="strEmpLastName" placeholder="Ex: Aquino" id="strEmpLastName" type="text" class="validate" required>
+                                            <input name="strEmpLastName" placeholder="Ex: Aquino" id="strEmpLastName" type="text" class="validate tooltipped" required data-position="bottom" data-delay="30" data-tooltip="Ex: Aquino<br/> ( Atleast 2 or more characters )" pattern="^[a-zA-Z\-'`\s]{2,}$">
                                             <label for="strEmpLastName">Last Name<span class="red-text"><b>*</b></span></label>
                                         </div>
                                         <div class="input-field col s12">
-                                            <input type="date" name="strBirthdate" placeholder="January 1, 1996" class="datepicker active" id="createBirthday" required>
+                                            <input type="date" name="strBirthdate" placeholder="January 1, 1996" class="datepicker active tooltipped" id="createBirthday" required data-position="bottom" data-delay="30" data-tooltip="Ex: January 1, 1996">
                                             <label for="createBirthday" class="active">Birthday<span class="red-text">*</span></label>
                                         </div>
                                         <div class="input-field col s12">
                                             <label for="createAge">Age</label>
-                                            <input type="text" class="validate black-text" disabled id="createAge" placeholder="Ex: 18">
+                                            <input type="text" class="validate black-text tooltipped" disabled id="createAge" placeholder="Ex: 18" data-position="bottom" data-delay="30" data-tooltip="Age 18 and above - Qualified<br/>Age 17 and below - Not Qualified">
                                         </div>
                                     </div>
                                   </div>
@@ -226,8 +226,8 @@
                                       <div class="input-field col s12" style="margin-top: 40px !important;">
                                           <select required class="browser-default" name="strEmpGender" id="strEmpGender">
                                             <option value="" disabled selected></option>
-                                            <option value="1">Male</option>
-                                            <option value="2">Female</option>
+                                            <option value="M">Male</option>
+                                            <option value="F">Female</option>
                                           </select>
                                           <label for="strEmpGender" class="active">Gender<span class="red-text">*</span></label>
                                       </div>
@@ -235,15 +235,16 @@
                                           <label style="margin-left: -3px; margin-top: 15px !important;" for="contact">(+63)</label>
                                       </div>
                                       <div class="input-field col s10" style="margin-top: 28px !important; margin-left: 10px;">
-                                          <input name="strEmpContactNo" placeholder="Ex: 9268806979" type="text" id="contact" class="validate" maxlength="10">
+                                          <input name="strEmpContactNo" placeholder="Ex: 9268806979" type="text" id="contact" class="validate tooltipped" maxlength="10" data-position="bottom" data-delay="30" data-tooltip="Ex: 9268806979<br/>( 10 numbers only )" pattern="^[0-9]{10,10}$">
                                           <label for="contact" style="margin-left: -35px;">Contact Number</label>
                                       </div>
                                       <div class="input-field col s12">
-                                          <input type="email" name="strEmpEmail" placeholder="Ex: indexsalon@yahoo.com" class="validate" required id="emailadd">
+                                          <input type="email" name="strEmpEmail"  placeholder="Ex: salon@yahoo.com" class="validate tooltipped" required id="emailadd" data-position="bottom" data-delay="30" data-tooltip="Ex: salon@yahoo.com">
+
                                           <label for="emailadd" class="active">Email<span class="red-text">*</span></label>
                                       </div>
                                       <div class="input-field col s12">
-                                          <input name="strEmpAddress" placeholder="Ex: #20 Julian Eymard St. Sto.Nino Meycauayan, Bulacan" type="text" id="address" class="validate" required>
+                                          <input name="strEmpAddress" placeholder="Ex: #20 Julian Eymard St. Sto.Nino Meycauayan, Bulacan" type="text" id="address" class="validate tooltipped" required data-position="bottom" data-delay="30" data-tooltip="Ex: #20 Julian Eymard St. Sto.Nino Meycauayan, Bulacan<br/>( Atleast 10 or more characters )" pattern="[#+A-Za-z0-9\s.,-]{10,}">
                                           <label for="address">Address<span class="red-text">*</span></label>
                                       </div>
                                       <div class="input-field col s8">
@@ -256,7 +257,7 @@
                                           <label for="slct1" class="active">Position<span class="red-text">*</span></label>
                                       </div>
                                       <div class="input-field col s4">
-                                        <button data-target="addOption" class="waves-effect waves-light btn-flat modal-option orange lighten-1">add</button>
+                                        <button data-target="addOption" class="waves-effect waves-light btn-flat modal-option purple darken-1 white-text"><i class="material-icons">add</i></button>
                                       </div>
                                       <div class="input-field col s12 left-align" style="margin-top: -4px;">
                                               <input type="checkbox" id="access" name="access" />
@@ -269,8 +270,8 @@
                                 </div>
                             </div>
                           <div class="modal-footer">
-                              <button type="reset" value="Reset" class=" modal-action modal-close waves-effect waves-orange transparent btn-flat">CANCEL</button>
-                              <button class="waves-effect waves-light orange darken-3 white-text btn-flat" type="submit" value="Submit">CREATE</button>
+                              <button type="reset" value="Reset" class=" modal-action modal-close waves-effect waves-purple transparent btn-flat">CANCEL</button>
+                              <button class="waves-effect waves-light purple darken-3 white-text btn-flat" type="submit" value="Submit">CREATE</button>
                           </div>
                           </form>
                     </div>
@@ -290,12 +291,12 @@
                                     </select>
                                   </div>
                                   <div class="input-field col s8 offset-s2" style="margin-top: 20px;">
-                                    <input type="text" class="validate" id="addOptionName" name="addOptionName">
-                                    <label for="addOptionName">Position Name</label>
+                                    <input type="text" class="validate tooltipped" placeholder="Ex: Cashier" id="addOptionName" name="addOptionName" data-position="bottom" data-delay="30" data-tooltip="Ex: Cashier<br/>( Atleast 5 or more characters )" pattern="^[A-Za-z-\s]{5,}$">
+                                    <label for="addOptionName" class="active">Position</label>
                                   </div>
                                   <div class="input-field col s8 offset-s2 center">
-                                    <a href="" id="createAddPosition" class="modal-close waves-effect waves-light orange darken-4 btn-flat white-text">SAVE</a>
-                                    <a href="" class="modal-close waves-effect waves-orange transparent btn-flat white">CANCEL</a>
+                                    <a href="" id="createAddPosition" class="modal-close waves-effect waves-light purple darken-3 btn-flat white-text">SAVE</a>
+                                    <a href="" class="modal-close waves-effect waves-purple transparent btn-flat white">CANCEL</a>
                                   </div>
                                 </div>
                               </div>
@@ -305,10 +306,12 @@
 
                         <!-- add option end -->
                       <c:forEach items="${empList}" var="employee">  
-                        <div id="emp${employee.intEmpID}" class="modal modal-fixed-footer">
+                        <div id="emp${employee.intEmpID}" class="modal modal-fixed-footer" style="width: 80% !important; height: 86% !important; max-height: 100% !important;">
                         <form class="col s12" method="post" action="updateEmployee" enctype="multipart/form-data">
-                          <div class="modal-content">
+                          <div class="modal-content" style="padding-bottom: 0px !important;">
                             <!-- <div class="container"> -->
+<!--  
+<<<<<<< HEAD
                             <div class="row">
                               
                                 <div class="input-field col s12">
@@ -332,105 +335,138 @@
                                           <div class="file-path-wrapper">
                                             <input name="imageName" id="imageName" value="image" class="file-path validate" type="text">
                                           </div>
-                                      </div>
-                                </div>
-                                <div class="input-field col s3">
-                                  <input type="text" disabled="disabled" name="empdoc" id="empdoc">
-                                  <label for="empdoc">Date of Creation</label>
-                                </div>
-                                <div class="input-field col s4">
-                                    <input value="${employee.strEmpFirstName}" name="strEmpFirstName" id="strEmpFirstName" type="text" class="validate active" required>
-                                    <label for="strEmpFirstName">First Name</label>
-                                </div>
-                                <div class="input-field col s4">
-                                    <input value="${employee.strEmpMiddleName}" name="strEmpMiddleName" id="strEmpMiddleName" type="text" class="validate">
-                                    <label for="strEmpMiddleName">Middle Name</label>
-                                </div>
-                                <div class="input-field col s4">
-                                    <input value="${employee.strEmpLastName}" name="strEmpLastName" id="strEmpLastName" type="text" class="validate" required>
-                                    <label for="strEmpLastName">Last Name</label>
-                                </div>
-                                <%
-                                    Employee updateEmp = (Employee)pageContext.getAttribute("employee");
-                                    String gender = updateEmp.getStrEmpGender();
-                                    month = String.valueOf(updateEmp.getStrEmpGender());
-                                    String male = null;
-                                    String female = null;
-                                    String position = updateEmp.getStrJobQualification();
-
-                                    if(month.equals("M")){
-                                      male = "selected"; female="";
-                                    }
-                                    else{
-                                      female = "selected"; male="";
-                                    }
-                                %>
-                                <div class="input-field col s4">
-                                    <input name="strBirthdate" type="date" class="datepicker" id="updateBirthday" placeholder=" ">
-                                    <label>Birthday</label>
-                                </div>
-                                <div class="input-field col s4 offset-s4">
-                                    <label for="updateAge">Age</label>
-                                    <input type="text" class="validate black-text" disabled value="" id="updateAge" placeholder="">
-                                </div>
-                                <div class="input-field col s12" style="margin-left: 5px; padding: 0px;">
-                                    <p style="color:#9e9e9e;font-size:11px;">Gender</p>
-                                </div>
-                                <div class="input-field col s5" style="margin-top: -1px;">
-                                    <select name="strEmpGender" required class="browser-default" autocomplete="off">
-                                      <option disabled selected></option>
-                                      <option value="M" <%out.println(male);%>>Male</option>
-                                      <option value="F" <%out.println(female);%>>Female</option>
-                                    </select>
-                                </div>
-                                <div class="input-field col s1 offset-s2" style="margin-top: -4px;">
-                                  <p style="margin-top: 12px; margin-left: -7px;">(+63)</p>
-                                </div>
-                                <div class="input-field col s4" style="margin-top: -4px;">
-                                    <input value="${employee.strEmpContactNo}" name="strEmpContactNo" type="text" id="contact" class="validate" maxlength="10">
-                                    <label for="contact">Contact Number</label>
-                                </div>
-                                <div class="input-field col s12">
-                                    <input value="${employee.strEmpAddress}" name="strEmpAddress" type="text" id="address" class="validate" required>
-                                    <label for="address">Address</label>
-                                </div>
-                                <div class="input-field col s12">
-                                    <p style="color:#9e9e9e;font-size:12px;">Position</p>
-                                </div>
-                                <div class="input-field col s4">
-                                  <select class="browser-default slct2" id="slct2" name="selectedJob">
-                                    <option value="" disabled selected>Choose...</option>
-                                    <c:forEach items="${empCategory}" var="name">
-                                          <%
-                                              String empPosition = null;
-                                              EmployeeCategory cate = (EmployeeCategory)pageContext.getAttribute("name");
-                                              if(cate.getStrCategoryName().equals(position)){
-                                                  empPosition = "selected";
-                                              }
-                                              else{
-                                                  empPosition = "";
-                                              }
-                                          %>
-                                          <option value="${name.strCategoryName}" <%out.println(empPosition);%>>${name.strCategoryName }</option>
-                                      </c:forEach>    
-                                  </select>
-                                </div>
-                                <div class="input-field col s2">
-                                  <button data-target="updateOption" class="waves-effect waves-light btn-flat modal-optionUpdate orange lighten-1">add</button>
-                                </div>
-                                <div class="input-field col s6">
-                                  <p class="center">
-                                        <input type="checkbox" id="access" name="access" />
-                                        <label for="access">Grant Access</label>
-                                  </p>
-                                </div>
-                              
-                            <!-- </div> -->
+=======-->
+                          <div class="wrapper">
+                            <div class="input-field col s12">
+                                  <h4 class="grey-text text-darken-1">Update Employee</h4>
                             </div>
-                          </div>
+                                  <div class="aside aside1 z-depth-0">
+                                  <!-- first -->
+                                    <div class="row">
+                                      <div class="input-field col s12">
+                                           <img name="empupdatedImg" id="empupdatedImg" class="circle" style="width: 200px; height: 200px;" src="./img/anon.jpg" alt=""/>
+                                       </div>
+                                       <div class="input-field col s12">
+                                           <div class="file-field">
+                                                 <div class="btn purple darken-1">
+                                                   <span class="">Image</span>
+                                                   <input name="upload" type="file" accept="image/.jpg, image/.png" onchange="loadUpdate(event)">
+                                                 </div>
+                                                 <div class="file-path-wrapper">
+                                                   <input name="imageName" id="imageName" value="image" class="file-path validate" type="text">
+                                                 </div>
+                                             </div>
+                                       </div>
+                                    </div>
+                                  </div>
+                                  <!-- END ASIDE 1 -->
+
+
+                                    <div class="aside aside2 z-depth-0">
+                                    <!-- second -->
+                                      <div class="row">
+                                        <div class="input-field col s12" style="margin-top: 39px !important;">
+                                            <input value="${employee.strEmpFirstName}" name="strEmpFirstName" placeholder="Ex: Benigno" id="strEmpFirstName" type="text" class="validate tooltipped" data-position="bottom" data-delay="30" data-tooltip="Ex: Benigno<br/>( Atleast 2 or more characters )" pattern="^[a-zA-Z\-'`\s]{2,}$" maxlength="20">
+                                            <label for="strEmpFirstName">First Name</label>
+                                        </div>
+                                        <div class="input-field col s12">
+                                            <input value="${employee.strEmpMiddleName}" name="strEmpMiddleName" placeholder="Ex: Cojuangco" id="strEmpMiddleName" type="text" class="validate tooltipped" data-position="bottom" data-delay="30" data-tooltip="Ex: Cojuangco <br/>( Atleast 2 or more characters)" pattern="^[a-zA-Z\-'`\s]{2,}$" maxlength="20">
+                                            <label for="strEmpMiddleName">Middle Name</label>
+                                        </div>
+                                        <div class="input-field col s12">
+                                            <input value="${employee.strEmpLastName}" name="strEmpLastName" placeholder="Ex: Aquino" id="strEmpLastName" type="text" class="validate tooltipped" data-position="bottom" data-delay="30" data-tooltip="Ex: Aquino<br/> ( Atleast 2 or more characters )" pattern="^[a-zA-Z\-'`\s]{2,}$">
+                                            <label for="strEmpLastName">Last Name</label>
+                                        </div>
+                                        <div class="input-field col s12">
+                                            <input type="date" name="strBirthdate" placeholder="January 1, 1996" class="datepicker active tooltipped" id="createBirthday" data-position="bottom" data-delay="30" data-tooltip="Ex: January 1, 1996">
+                                            <label for="createBirthday" class="active">Birthday</label>
+                                        </div>
+                                        <div class="input-field col s12">
+                                            <label for="updateAge">Age</label>
+                                            <input type="text" class="validate black-text tooltipped" disabled id="updateAge" placeholder="Ex: 18" data-position="bottom" data-delay="30" data-tooltip="Age 18 and above - Qualified<br/> Age 17 and below - Not Qualified">
+                                        </div>
+                                    </div>
+                                  </div>
+                                  <!-- END ASIDE 2 -->
+                                  <%
+                                      Employee updateEmp = (Employee)pageContext.getAttribute("employee");
+                                      String gender = updateEmp.getStrEmpGender();
+                                      month = String.valueOf(updateEmp.getStrEmpGender());
+                                      String male = null;
+                                      String female = null;
+                                      String position = updateEmp.getStrJobQualification();
+
+                                      if(month.equals("M")){
+                                        male = "selected"; female="";
+                                      }
+                                      else{
+                                        female = "selected"; male="";
+                                      }
+                                  %>
+
+                                  <div class="aside aside3 z-depth-0">
+                                  <!-- third -->
+                                    <div class="row">
+                                    
+                                      <div class="input-field col s12" style="margin-top: 40px !important;">
+                                          <select class="browser-default" name="strEmpGender" id="strEmpGender">
+                                            <option value="" disabled selected></option>
+                                            <option value="M" <%out.println(male);%>>Male</option>
+                                            <option value="F" <%out.println(female);%>>Female</option>
+                                          </select>
+                                          <label for="strEmpGender" class="active">Gender</label>
+<!--   >>>>>>> b2633a6b5ddcd994ad628d7876d08c54c233fe55-->
+                                      </div>
+                                      <div class="input-field col s1">
+                                          <label style="margin-left: -3px; margin-top: 15px !important;" for="contact">(+63)</label>
+                                      </div>
+                                      <div class="input-field col s10" style="margin-top: 28px !important; margin-left: 10px;">
+                                          <input value="${employee.strEmpContactNo}" name="strEmpContactNo" placeholder="Ex: 9268806979" type="text" id="contact" class="validate tooltipped" maxlength="10" data-position="bottom" data-delay="30" data-tooltip="Ex: 9268806979<br/>( 10 numbers only )" pattern="^[0-9]{10,10}$">
+                                          <label for="contact" style="margin-left: -35px;">Contact Number</label>
+                                      </div>
+                                      <div class="input-field col s12">
+                                          <input type="email" placeholder="Ex: salon@yahoo.com" class="validate tooltipped" id="emailadd" data-position="bottom" data-delay="30" data-tooltip="Ex: salon@yahoo.com">
+                                          <label for="emailadd" class="active">Email</label>
+                                      </div>
+                                      <div class="input-field col s12">
+                                          <input value="${employee.strEmpAddress}" name="strEmpAddress" placeholder="Ex: #20 Julian Eymard St. Sto.Nino Meycauayan, Bulacan" type="text" id="address" class="validate tooltipped" data-position="bottom" data-delay="30" data-tooltip="Ex: #20 Julian Eymard St. Sto.Nino Meycauayan, Bulacan<br/>( Atleast 10 or more characters )" pattern="[#+A-Za-z0-9\s.,-]{10,}">
+                                          <label for="address">Address</label>
+                                      </div>
+                                      <div class="input-field col s8">
+                                          <select class="browser-default slct2" id="slct2" name="selectedJob">
+                                              <option value="" disabled selected> </option>
+                                              <c:forEach items="${empCategory}" var="name">
+                                                    <%
+                                                        String empPosition = null;
+                                                        EmployeeCategory cate = (EmployeeCategory)pageContext.getAttribute("name");
+                                                        if(cate.getStrCategoryName().equals(position)){
+                                                            empPosition = "selected";
+                                                        }
+                                                        else{
+                                                            empPosition = "";
+                                                        }
+                                                    %>
+                                                    <option value="${name.strCategoryName}" <%out.println(empPosition);%>>${name.strCategoryName }</option>
+                                                </c:forEach> 
+                                          </select>
+                                          <label for="slct2" class="active">Position</label>
+                                      </div>
+                                      <div class="input-field col s4">
+                                        <button data-target="addOption" class="waves-effect waves-light btn-flat modal-option purple darken-1 white-text"><i class="material-icons">add</i></button>
+                                      </div>
+                                      <div class="input-field col s12 left-align" style="margin-top: -4px;">
+                                              <input type="checkbox" id="access" name="access" />
+                                              <label for="access">Grant Access</label>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <!-- END OF ASIDE3 -->
+
+                                </div>
+                            </div>
                           <div class="modal-footer">
-                              <button type="reset" value="Reset" class=" modal-action modal-close waves-effect waves-orange transparent btn-flat">CANCEL</button>
-                              <button class="waves-effect waves-light orange darken-3 white-text btn-flat" type="submit" value="Submit">UPDATE</button>
+                              <button type="reset" value="Reset" class=" modal-action modal-close waves-effect waves-purple transparent btn-flat">CANCEL</button>
+                              <button class="waves-effect waves-light purple darken-3 white-text btn-flat" type="submit" value="Submit">CREATE</button>
                           </div>
                           </form>
                     </div>
@@ -451,12 +487,12 @@
                                     </select>
                                   </div>
                                   <div class="input-field col s8 offset-s2" style="margin-top: 20px;">
-                                    <input type="text" class="validate" id="updateAddOptionName" name="updateAddOptionName">
-                                    <label for="updateAddOptionName">Position Name</label>
+                                    <input type="text" class="validate tooltipped" placeholder="Ex: Cashier" id="updateAddOptionName" name="updateAddOptionName" data-position="bottom" data-delay="30" data-tooltip="Ex: Cashier<br/>( Atleast 5 or more characters )" pattern="^[A-Za-z-\s]{5,}$">
+                                    <label for="updateAddOptionName" class="active">Position</label>
                                   </div>
                                   <div class="input-field col s8 offset-s2 center">
-                                    <a href="" id="updateAddPosition" class="modal-close waves-effect waves-light orange darken-4 btn-flat white-text">SAVE</a>
-                                    <button type="reset" value="Reset" class="modal-close waves-effect waves-orange transparent btn-flat white">CANCEL</button>
+                                    <a href="" id="updateAddPosition" class="modal-close waves-effect waves-light purple darken-3 btn-flat white-text">SAVE</a>
+                                    <button type="reset" value="Reset" class="modal-close waves-effect waves-purple transparent btn-flat white">CANCEL</button>
                                   </div>
                                 </div>
                               </div>
@@ -477,8 +513,8 @@
                               </div>
                             </div>
                               <div class="col s12 center" style="margin-bottom: 30px;">
-                                <button class="waves-effect waves-light orange btn-flat white-text">YES</button>
-                                <a href="#" class="modal-action modal-close waves-effect waves-light transparent btn-flat black-text">NO</a>
+                                <button class="waves-effect waves-light purple darken-3 btn-flat white-text">YES</button>
+                                <a href="#" class="modal-action modal-close waves-effect waves-purple transparent btn-flat black-text">NO</a>
                               </div>
                             </div>
                           </form>
@@ -511,8 +547,8 @@
     max-height: 100% !important;
   }
   #update{
-    width: 55% !important;
-    height: 80% !important;
+    width: 80% !important;
+    height: 86% !important;
     max-height: 100% !important;
   }
 
@@ -531,7 +567,7 @@
 
   <!--Import jQuery before materialize.js-->
     <script type="text/javascript" src="./js/jquery-2.1.1.min.js"></script>
-    <script type="text/javascript" src="./js/materialize.min.js"></script>
+    <script type="text/javascript" src="./js/materialize.js"></script>
     <script type="text/javascript" src="./js/angular.min.js"></script>
     <script type="text/javascript" src="./js/maintenance-emp.js"></script>
     <script type="text/javascript" src="./js/jquery.dataTables.min.js"></script>
