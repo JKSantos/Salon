@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<!--   <%@ taglib uri="/struts-tags" prefix="s" %>
+ <%@ taglib uri="/struts-tags" prefix="s" %>
   <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
   <%@ page import="com.gss.model.Employee" %>
   <%@ page import="com.gss.model.EmployeeCategory" %>
- -->
+ 
 <html ng-app>
   <head>
   <link type="text/css" rel="stylesheet" href="./css/materialize.css"/>
@@ -19,12 +19,12 @@
   </head>
 
   <body class="purple darken-2">
-<!--   <%!
+	<%! 
       String month = null;
       String gender = null;
       String position = null;
       String granAccess = null;
-  %> -->
+      %>
 
 
   <div class="wrapper">
