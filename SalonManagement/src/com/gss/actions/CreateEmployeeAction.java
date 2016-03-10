@@ -169,6 +169,14 @@ public class CreateEmployeeAction extends ActionSupport{
 	public String getUploadFilename() {
 		return filename;
 	}
+	
+	public void setUpload(File file){
+		this.file = file;
+	}
+	
+	public File getUpload(){
+		return this.file;
+	}
 
 	public void setUploadFilename(String filename) {
 		this.filename = filename;
@@ -197,4 +205,14 @@ public class CreateEmployeeAction extends ActionSupport{
 	public void setStrBirthdate(String strBirthdate) {
 		this.strBirthdate = strBirthdate;
 	}
+
+	public String getStrEmpEmail() {
+		return strEmpEmail;
+	}
+
+	public void setStrEmpEmail(String strEmpEmail) {
+		this.strEmpEmail = strEmpEmail;
+	}
+	
+	
 }

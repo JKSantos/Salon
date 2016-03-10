@@ -239,7 +239,7 @@
                                           <label for="contact" style="margin-left: -35px;">Contact Number</label>
                                       </div>
                                       <div class="input-field col s12">
-                                          <input type="email" placeholder="Ex: indexsalon@yahoo.com" class="validate" required id="emailadd">
+                                          <input type="email" name="strEmpEmail" placeholder="Ex: indexsalon@yahoo.com" class="validate" required id="emailadd">
                                           <label for="emailadd" class="active">Email<span class="red-text">*</span></label>
                                       </div>
                                       <div class="input-field col s12">

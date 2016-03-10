@@ -189,7 +189,7 @@ public class EmployeeJDBCRepository implements EmployeeRepository{
 	@Override
 	public boolean createEmployee(Employee emp) {
 		
-		String strQuery1 = "CALL `createEmp`(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		String strQuery1 = "CALL `createEmp`(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		String strQuery2 = "CALL `createJobQualification`(?, ?);";
 		
 				
