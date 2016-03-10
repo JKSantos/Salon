@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-  <%@ taglib uri="/struts-tags" prefix="s" %>
+<!--   <%@ taglib uri="/struts-tags" prefix="s" %>
   <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
   <%@ page import="com.gss.model.Employee" %>
   <%@ page import="com.gss.model.EmployeeCategory" %>
-
+ -->
 <html ng-app>
   <head>
   <link type="text/css" rel="stylesheet" href="./css/materialize.css"/>
@@ -18,13 +18,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   </head>
 
-  <body class="blue-grey lighten-5">
-  <%!
+  <body class="purple darken-2">
+<!--   <%!
       String month = null;
       String gender = null;
       String position = null;
       String granAccess = null;
-  %>
+  %> -->
 
 
   <div class="wrapper">
@@ -70,8 +70,8 @@
 
         
                <nav class="z-depth-0">
-                 <div class="nav-wrapper orange">
-                   <a href="#!" class="brand-logo white-text" style="margin-left: 30px;">Salon Management System</a>
+                 <div class="nav-wrapper purple darken-4">
+                   <a href="#!" class="brand-logo purple-text text-lighten-5" style="margin-left: 20px;">Salon Management System</a>
                  
                    <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
                    <ul class="side-nav" id="mobile-demo">
@@ -84,7 +84,7 @@
                           
                              <div class="collapsible-body">
                                <ul>
-                                 <li class="orange"><a href="employeeMaintenance">Employee</a></li>
+                                 <li class="blue"><a href="employeeMaintenance">Employee</a></li>
                                       <li><a href="productServiceMaintenance">Product & Service</a></li>
                                       <li><a href="promoMaintenance">Promo</a></li>
                                       <li><a href="discountMaintenance">Discount</a></li>
@@ -120,10 +120,10 @@
                     
                     </div> -->
 
-                    <div class="main z-depth-barts" style="margin-left: 20px; margin-right: 20px;">
+                    <div class="main z-depth-barts" style="margin-left: 20px; margin-right: 20px; border-radius: 10px;">
                         <div class="col s12" style="margin-left: 20px; margin-right: 20px;">
-                        <h3 class="grey-text text-darken-1">Employee Maintenance</h3>
-                        <a class="waves-effect waves-light modal-trigger btn-flat orange darken-3 left white-text" href="#create" style="margin-top: 50px; margin-left: 15px;">CREATE</a>
+                        <h3 class="thin">Employee Maintenance</h3>
+                        <a class="waves-effect waves-light modal-trigger btn-flat purple darken-2 left white-text" href="#create" style="margin-top: 50px; margin-left: 15px;">CREATE</a>
                         <table id="example" class="display centered responsive-table highlight" cellspacing="0" width="100%" style="border: 1px solid #bdbdbd; padding: 10px;" rowspan="10">
                                 <thead>
                                     <tr>
