@@ -8,7 +8,6 @@
 
   <head>
   <link type="text/css" rel="stylesheet" href="./css/materialize.css"/>
-  <link rel="stylesheet" href="./css/materialize.min.css"  media="screen,projection"/>
   <link type="text/css" rel="stylesheet" href="./css/mystyle.css"/>
   <link type="text/css" rel="stylesheet" href="./css/mtnc-promo.css"/>
 
@@ -19,7 +18,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   </head>
 
-  <body class="blue-grey lighten-5">
+  <body class="purple lighten-5">
   <div class="wrapper">
             <header class="headnav">
                 <ul id="slide-out" class="side-nav fixed z-depth-0">
@@ -35,7 +34,7 @@
                             <ul>
                               <li><a href="employeeMaintenance">Employee</a></li>
                                       <li><a href="productServiceMaintenance">Product & Service</a></li>
-                                      <li class="orange"><a href="promoMaintenance">Promo</a></li>
+                                      <li class="purple lighten-4"><a href="promoMaintenance">Promo</a></li>
                                       <li><a href="discountMaintenance">Discount</a></li>
                                       <li><a href="maintenance-package.jsp">Package</a></li>
                                       <li><a href="catalogueMaintenance">Catalogue</a></li>
@@ -61,8 +60,8 @@
 
         
                <nav class="z-depth-0">
-                 <div class="nav-wrapper orange">
-                   <a href="#!" class="brand-logo white-text" style="margin-left: 30px;">Salon Management System</a>
+                 <div class="nav-wrapper purple darken-4">
+                   <a href="#!" class="brand-logo purple-text text-lighten-5" style="margin-left: 30px;">Salon Management System</a>
                  
                    <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
                    <ul class="side-nav" id="mobile-demo">
@@ -74,7 +73,7 @@
                                <ul>
                                  <li><a href="employeeMaintenance">Employee</a></li>
                                       <li><a href="productServiceMaintenance">Product & Service</a></li>
-                                      <li class="orange"><a href="promoMaintenance">Promo</a></li>
+                                      <li class="purple lighten-4"><a href="promoMaintenance">Promo</a></li>
                                       <li><a href="discountMaintenance">Discount</a></li>
                                       <li><a href="maintenance-package.jsp">Package</a></li>
                                       <li><a href="catalogueMaintenance">Catalogue</a></li>
@@ -111,16 +110,13 @@
                     <div class="main z-depth-barts" style="margin-left: 20px; margin-right: 20px;">
                         <div class="col s12" style="margin-left: 20px; margin-right: 20px;">
                         <h3 class="grey-text text-darken-1">Promo Maintenance</h3>
-                        <a class="waves-effect waves-light modal-trigger btn-flat orange darken-3 left white-text" href="#create" style="margin-top: 50px; margin-left: 15px;">CREATE</a>
+                        <a class="waves-effect waves-light modal-trigger btn-flat purple darken-2 darken-3 left white-text" href="#create" style="margin-top: 50px; margin-left: 15px;">CREATE</a>
                         <table id="example" class="display centered responsive-table highlight" cellspacing="0" width="100%" style="border: 1px solid #bdbdbd; padding: 10px;" rowspan="10">
                               <thead>
                                   <tr>
-                                      <th>ID</th>
-                                      <th>Promo Name</th>
-                                      <th>Service/Product</th>
-                                      <th>Price</th>
-                                      <th>Expiration</th>
-                                      <th>Date of Creation</th>
+                                      <th><center>Promo Name</center></th>
+                                      <th><center>Price</center></th>
+                                      <th><center>Expiration</center></th>
                                       <th>Actions</th>
                                   </tr>
                               </thead>
@@ -138,14 +134,11 @@
                                   </tr>    -->
                                 <c:forEach items="${promoList}" var="promo">
                                   <tr>
-                                      <td>${promo.intPromoID}</td>
-                                      <td>${promo.strPromoName}</td>
-                                      <td><button data-target="viewProdSvc" class="waves-effect waves-orange modal-view btn-flat orange lighten-4">View</button></td>
-                                      <td>Php ${promo.dblPromoPrice}</td>
-                                      <td>${promo.strPromoAvailability}</td>
-                                      <td>2016-3-5</td>
-                                      <td><a class="waves-effect waves-light modal-trigger btn-flat transparent black-text" title="Update" href="#update" style="padding: 0px;"><i class="material-icons">edit</i></a>
-                                      <a class="waves-effect waves-light modal-trigger btn-flat transparent red-text text-accent-4" href="#delete" title="Deactivate"><i class="material-icons">delete</i></a>
+                                      <td><center>${promo.strPromoName}</center></td>
+                                      <td><center>Php ${promo.dblPromoPrice}</center></td>
+                                      <td><center>${promo.strPromoAvailability}</center></td>
+                                      <td style="padding-left:-50px; margin-left: -50px;"><button data-target="viewProdSvc" class="waves-effect waves-purple modal-view btn-flat transparent"><i class="material-icons">visibility</i></button><a class="waves-effect waves-purple modal-trigger btn-flat transparent black-text" title="Update" href="#update"><i class="material-icons">edit</i></a>
+                                      <a class="waves-effect waves-purple modal-trigger btn-flat transparent red-text text-accent-4" href="#delete" title="Deactivate"><i class="material-icons">delete</i></a>
                                       </td>
                                   </tr>
                                 </c:forEach>                                  
