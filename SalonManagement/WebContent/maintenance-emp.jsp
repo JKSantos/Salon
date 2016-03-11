@@ -166,7 +166,7 @@
 
                       <!-- Modal Structure -->
                        <div id="create" class="modal modal-fixed-footer">
-                        <form class="col s12" method="post" action="createEmployee" enctype="multipart/form-data">
+                        <form class="col s12" method="post" id="createEmpForm" action="createEmployee" enctype="multipart/form-data">
                           <div class="modal-content" style="padding-bottom: 0px !important;">
                             <!-- <div class="container"> -->
                           <div class="wrapper">
@@ -202,19 +202,19 @@
                                              <label class="red-text left">(*) Indicates required field</label>
                                         </div>
                                         <div class="input-field col s12">
-                                            <input name="strEmpFirstName" placeholder="Ex: Benigno" id="strEmpFirstName" type="text" class="validate tooltipped" required data-position="bottom" data-delay="30" data-tooltip="Ex: Benigno<br/>( Atleast 2 or more characters )" pattern="^[a-zA-Z\-'`\s]{2,}$" maxlength="15">
+                                            <input name="strEmpFirstName" placeholder="Ex: Benigno" id="strEmpFirstName" type="text" class="validate tooltipped" required data-position="bottom" data-delay="30" data-tooltip="Ex: Benigno<br/>( At least 2 or more characters )" pattern="^[a-zA-Z\-'`\s]{2,}$" maxlength="15">
                                             <label for="strEmpFirstName">First Name<span class="red-text"><b>*</b></span></label>
                                         </div>
                                         <div class="input-field col s12">
-                                            <input name="strEmpMiddleName" placeholder="Ex: Cojuangco" id="strEmpMiddleName" type="text" class="validate tooltipped" data-position="bottom" data-delay="30" data-tooltip="Ex: Cojuangco <br/>( Atleast 2 or more characters)" pattern="^[a-zA-Z\-'`\s]{2,}$">
+                                            <input name="strEmpMiddleName" placeholder="Ex: Cojuangco" id="strEmpMiddleName" type="text" class="validate tooltipped" data-position="bottom" data-delay="30" data-tooltip="Ex: Cojuangco <br/>( At least 2 or more characters)" pattern="^[a-zA-Z\-'`\s]{2,}$">
                                             <label for="strEmpMiddleName">Middle Name</label>
                                         </div>
                                         <div class="input-field col s12">
-                                            <input name="strEmpLastName" placeholder="Ex: Aquino" id="strEmpLastName" type="text" class="validate tooltipped" required data-position="bottom" data-delay="30" data-tooltip="Ex: Aquino<br/> ( Atleast 2 or more characters )" pattern="^[a-zA-Z\-'`\s]{2,}$">
+                                            <input name="strEmpLastName" placeholder="Ex: Aquino" id="strEmpLastName" type="text" class="validate tooltipped" required data-position="bottom" data-delay="30" data-tooltip="Ex: Aquino<br/> ( At least 2 or more characters )" pattern="^[a-zA-Z\-'`\s]{2,}$">
                                             <label for="strEmpLastName">Last Name<span class="red-text"><b>*</b></span></label>
                                         </div>
                                         <div class="input-field col s12">
-                                            <input type="date" name="strBirthdate" placeholder="January 1, 1996" class="datepicker active tooltipped" id="createBirthday" required data-position="bottom" data-delay="30" data-tooltip="Ex: January 1, 1996">
+                                            <input type="date" name="strBirthdate" placeholder="January 1, 1996" class="datepicker active tooltipped" id="createBirthday" required data-position="bottom" data-delay="30" data-tooltip="Ex: January/1/1996">
                                             <label for="createBirthday" class="active">Birthday<span class="red-text">*</span></label>
                                         </div>
                                         <div class="input-field col s12">
@@ -250,7 +250,7 @@
                                           <label for="emailadd" class="active">Email<span class="red-text">*</span></label>
                                       </div>
                                       <div class="input-field col s12">
-                                          <input name="strEmpAddress" placeholder="Ex: #20 Julian Eymard St. Sto.Nino Meycauayan, Bulacan" type="text" id="address" class="validate tooltipped" required data-position="bottom" data-delay="30" data-tooltip="Ex: #20 Julian Eymard St. Sto.Nino Meycauayan, Bulacan<br/>( Atleast 10 or more characters )" pattern="[#+A-Za-z0-9\s.,-]{10,}">
+                                          <input name="strEmpAddress" placeholder="Ex: #20 Julian Eymard St. Sto.Nino Meycauayan, Bulacan" type="text" id="address" class="validate tooltipped" required data-position="bottom" data-delay="30" data-tooltip="Ex: #20 Julian Eymard St. Sto.Nino Meycauayan, Bulacan<br/>( At least 10 or more characters )" pattern="[#+A-Za-z0-9\s.,-]{10,}">
                                           <label for="address">Address<span class="red-text">*</span></label>
                                       </div>
                                       <div class="input-field col s8">
@@ -277,7 +277,7 @@
                             </div>
                           <div class="modal-footer">
                               <button type="reset" value="Reset" class=" modal-action modal-close waves-effect waves-purple transparent btn-flat">CANCEL</button>
-                              <button class="waves-effect waves-light purple darken-3 white-text btn-flat" type="submit" value="Submit">CREATE</button>
+                              <button onclick="ajax()" class="waves-effect waves-light purple darken-3 white-text btn-flat" type="submit" value="Submit">CREATE</button>
                           </div>
                           </form>
                     </div>
@@ -297,7 +297,7 @@
                                     </select>
                                   </div>
                                   <div class="input-field col s8 offset-s2" style="margin-top: 20px;">
-                                    <input type="text" class="validate tooltipped" placeholder="Ex: Cashier" id="addOptionName" name="addOptionName" data-position="bottom" data-delay="30" data-tooltip="Ex: Cashier<br/>( Atleast 5 or more characters )" pattern="^[A-Za-z-\s]{5,}$">
+                                    <input type="text" class="validate tooltipped" placeholder="Ex: Cashier" id="addOptionName" name="addOptionName" data-position="bottom" data-delay="30" data-tooltip="Ex: Cashier<br/>( At least 5 or more characters )" pattern="^[A-Za-z-\s]{5,}$">
                                     <label for="addOptionName" class="active">Position</label>
                                   </div>
                                   <div class="input-field col s8 offset-s2 center">
@@ -346,19 +346,19 @@
                                     <!-- second -->
                                       <div class="row">
                                         <div class="input-field col s12" style="margin-top: 39px !important;">
-                                            <input value="${employee.strEmpFirstName}" name="strEmpFirstName" placeholder="Ex: Benigno" id="strEmpFirstName" type="text" class="validate tooltipped" data-position="bottom" data-delay="30" data-tooltip="Ex: Benigno<br/>( Atleast 2 or more characters )" pattern="^[a-zA-Z\-'`\s]{2,}$" maxlength="20">
+                                            <input value="${employee.strEmpFirstName}" name="strEmpFirstName" placeholder="Ex: Benigno" id="strEmpFirstName" type="text" class="validate tooltipped" data-position="bottom" data-delay="30" data-tooltip="Ex: Benigno<br/>( At least 2 or more characters )" pattern="^[a-zA-Z\-'`\s]{2,}$" maxlength="20">
                                             <label for="strEmpFirstName">First Name</label>
                                         </div>
                                         <div class="input-field col s12">
-                                            <input value="${employee.strEmpMiddleName}" name="strEmpMiddleName" placeholder="Ex: Cojuangco" id="strEmpMiddleName" type="text" class="validate tooltipped" data-position="bottom" data-delay="30" data-tooltip="Ex: Cojuangco <br/>( Atleast 2 or more characters)" pattern="^[a-zA-Z\-'`\s]{2,}$" maxlength="20">
+                                            <input value="${employee.strEmpMiddleName}" name="strEmpMiddleName" placeholder="Ex: Cojuangco" id="strEmpMiddleName" type="text" class="validate tooltipped" data-position="bottom" data-delay="30" data-tooltip="Ex: Cojuangco <br/>( At least 2 or more characters)" pattern="^[a-zA-Z\-'`\s]{2,}$" maxlength="20">
                                             <label for="strEmpMiddleName">Middle Name</label>
                                         </div>
                                         <div class="input-field col s12">
-                                            <input value="${employee.strEmpLastName}" name="strEmpLastName" placeholder="Ex: Aquino" id="strEmpLastName" type="text" class="validate tooltipped" data-position="bottom" data-delay="30" data-tooltip="Ex: Aquino<br/> ( Atleast 2 or more characters )" pattern="^[a-zA-Z\-'`\s]{2,}$">
+                                            <input value="${employee.strEmpLastName}" name="strEmpLastName" placeholder="Ex: Aquino" id="strEmpLastName" type="text" class="validate tooltipped" data-position="bottom" data-delay="30" data-tooltip="Ex: Aquino<br/> ( At least 2 or more characters )" pattern="^[a-zA-Z\-'`\s]{2,}$">
                                             <label for="strEmpLastName">Last Name</label>
                                         </div>
                                         <div class="input-field col s12">
-                                            <input type="date" name="strBirthdate" placeholder="January 1, 1996" class="datepicker active tooltipped" id="createBirthday" data-position="bottom" data-delay="30" data-tooltip="Ex: January 1, 1996">
+                                            <input type="date" name="strBirthdate" placeholder="January 1, 1996" class="datepicker active tooltipped" id="createBirthday" data-position="bottom" data-delay="30" data-tooltip="Ex: January/1/1996">
                                             <label for="createBirthday" class="active">Birthday</label>
                                         </div>
                                         <div class="input-field col s12">
@@ -408,7 +408,7 @@
                                           <label for="emailadd" class="active">Email</label>
                                       </div>
                                       <div class="input-field col s12">
-                                          <input value="${employee.strEmpAddress}" name="strEmpAddress" placeholder="Ex: #20 Julian Eymard St. Sto.Nino Meycauayan, Bulacan" type="text" id="address" class="validate tooltipped" data-position="bottom" data-delay="30" data-tooltip="Ex: #20 Julian Eymard St. Sto.Nino Meycauayan, Bulacan<br/>( Atleast 10 or more characters )" pattern="[#+A-Za-z0-9\s.,-]{10,}">
+                                          <input value="${employee.strEmpAddress}" name="strEmpAddress" placeholder="Ex: #20 Julian Eymard St. Sto.Nino Meycauayan, Bulacan" type="text" id="address" class="validate tooltipped" data-position="bottom" data-delay="30" data-tooltip="Ex: #20 Julian Eymard St. Sto.Nino Meycauayan, Bulacan<br/>( At least 10 or more characters )" pattern="[#+A-Za-z0-9\s.,-]{10,}">
                                           <label for="address">Address</label>
                                       </div>
                                       <div class="input-field col s8">
@@ -445,7 +445,7 @@
                             </div>
                           <div class="modal-footer">
                               <button type="reset" value="Reset" class=" modal-action modal-close waves-effect waves-purple transparent btn-flat">CANCEL</button>
-                              <button class="waves-effect waves-light purple darken-3 white-text btn-flat" type="submit" value="Submit">CREATE</button>
+                              <button class="waves-effect waves-light purple darken-3 white-text btn-flat" type="submit" value="Submit">UPDATE</button>
                           </div>
                           </form>
                     </div>
@@ -688,8 +688,25 @@
     <script type="text/javascript" src="./js/maintenance-emp.js"></script>
     <script type="text/javascript" src="./js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="./js/bartstable.js"></script>
+    <script type="text/javascript" src="./js/picker.date.js"></script>
+
+    <script type="text/javascript">
+    function(){
+        getForm().submit({
+        waitMsg:'Saving Data...',
+        success: function(form, action) {
+          Ext.Msg.alert('Success', 'OK');
+        },
+        failure: function(form, action) {
+          Ext.Msg.alert('Error', 'Not OK');
+        }
+      });
+    }
+    </script>
+
 
   </body>
+
 
 
 </html>

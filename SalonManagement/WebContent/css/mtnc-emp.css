@@ -1,13 +1,5 @@
 
 
-        .mntc {
-            padding: 0px 0px;
-        }
-
-        .input-field {
-          padding: 0px;
-        }
-        
 
         .headnav, main, footer, article {
               padding-left: 240px;
@@ -78,7 +70,6 @@
         @media all and (min-width: 600px) {
           .aside { flex: 1 auto; }
 
-          .input-field { flex: 1 100%;}
         }
 
         @media all and (min-width: 800px) {

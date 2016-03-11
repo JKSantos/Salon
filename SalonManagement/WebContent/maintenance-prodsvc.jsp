@@ -116,7 +116,6 @@
                                         <th><center>Name</center></th>
                                         <th><center>Category</center></th>
                                         <th><center>Price</center></th>
-                                        <th><center>Status</center></th>
                                         <th><center>Actions</center></th>
                                     </tr>
                                 </thead>
@@ -127,12 +126,19 @@
                                        string = String.valueOf(prod.getIntProductID());
                                     %>
                                     <tr>
-                                        <td><center>${product.strProductName}</center></td>
-                                        <td><center>Product</center></td>
-                                        <td><center>Php ${product.dblProductPrice}</center></td>
-                                        <td><center>${product.intProductStatus}</center></td>
-                                        <td style="padding:0; margin: 0;"><a class="waves-effect waves-light modal-trigger btn-flat transparent black-text" title="Update" href="#prod<%=string%>" style="padding: 0px;"><i class="material-icons">edit</i></a>
-                                        <a class="waves-effect waves-light modal-trigger btn-flat transparent red-text text-accent-4" href="#del<%=string%>" title="Deactivate"><i class="material-icons">delete</i></a>
+                                        <td style="padding:0; margin: 0;"><center>${product.strProductName}</center></td>
+                                        <td style="padding:0; margin: 0;"><center>Product</center></td>
+                                        <td style="padding:0; margin: 0;"><center>Php ${product.dblProductPrice}</center></td>
+                                        <td style="padding:0; margin: 0;">
+                                        <a data-delay="30" data-position="bottom" data-tooltip="View" class="tooltipped waves-effect waves-purple modal-viewall btn-flat transparent black-text" href="#viewprod<%=string%>" style="padding-left: 10px;padding-right:10px; margin: 5px;">
+                                        <i class="material-icons">visibility</i>
+                                        </a>
+                                        <a class="waves-effect waves-purple modal-trigger btn-flat transparent black-text" title="Update" href="#prod<%=string%>" style="padding-left: 10px;padding-right:10px; margin: 5px;">
+                                          <i class="material-icons">edit</i>
+                                        </a>
+                                        <a class="waves-effect waves-purple modal-trigger btn-flat transparent red-text text-accent-4" href="#del<%=string%>" title="Deactivate" style="padding-left: 10px;padding-right:10px; margin: 5px;">
+                                          <i class="material-icons">delete</i>
+                                        </a>
                                         </td>
                                     </tr>
                                   </c:forEach>
@@ -142,12 +148,19 @@
                                        strService = String.valueOf(serv.getIntServiceID());
                                     %>
                                     <tr>
-                                        <td><center>${service.strServiceName}</center></td>
-                                        <td><center>Service</center></td>
-                                        <td><center>Php ${service.dblServicePrice}</center></td>
-                                        <td><center>${service.intServiceStatus}</center></td>
-                                        <td><a class="waves-effect waves-light modal-trigger btn-flat transparent black-text" title="Update" href="#serv<%=strService%>" style="padding: 0px;"><i class="material-icons">edit</i></a>
-                                        <a class="waves-effect waves-light modal-trigger btn-flat transparent red-text text-accent-4" href="#del<%=strService%>" title="Deactivate"><i class="material-icons">delete</i></a>
+                                        <td style="padding:0; margin: 0;"><center>${service.strServiceName}</center></td>
+                                        <td style="padding:0; margin: 0;"><center>Service</center></td>
+                                        <td style="padding:0; margin: 0;"><center>Php ${service.dblServicePrice}</center></td>
+                                        <td style="padding:0; margin: 0;">
+                                        <a data-delay="30" data-position="bottom" data-tooltip="View" class="tooltipped waves-effect waves-purple modal-viewall btn-flat transparent black-text" href="#viewserv<%=strService%>" style="padding-left: 10px;padding-right:10px; margin: 5px;">
+                                        <i class="material-icons">visibility</i>
+                                        </a>
+                                        <a class="waves-effect waves-light modal-trigger btn-flat transparent black-text" title="Update" href="#serv<%=strService%>" style="padding-left: 10px;padding-right:10px; margin: 5px;">
+                                          <i class="material-icons">edit</i>
+                                        </a>
+                                        <a class="waves-effect waves-light modal-trigger btn-flat transparent red-text text-accent-4" href="#del<%=strService%>" title="Deactivate" style="padding-left: 10px;padding-right:10px; margin: 5px;">
+                                          <i class="material-icons">delete</i>
+                                        </a>
                                         </td>
                                     </tr>
                                   </c:forEach>
@@ -164,71 +177,79 @@
                         <form class="col s12" method="post" action="createProdServ" enctype="multipart/form-data">
                           <div class="modal-content">
                             <!-- <div class="container"> -->
-                            <div class="row">
-                              
-                                <div class="input-field col s12">
-                                  <h3 class="grey-text text-darken-1">Create Product/Service</h3>
+                            <div class="wrapper">
+                              <div class="input-field col s12">
+                                  <h4 class="grey-text text-darken-1">Create Product/Service</h4>
+                              </div>
+
+                              <div class="aside aside1 z-depth-0">
+                                <div class="row">
+                              <!-- 1st aside -->
+                                  <div class="col s12">
+                                      <img name="prodsvcCreate" id="prodsvcCreate" style="width: 200px; height: 200px; margin-top: 20px;" src="./img/packIcon.png" alt=""/>
+                                  </div>
+                                  <div class="input-field col s12">
+                                      <div class="file-field">
+                                            <div class="btn purple darken-3">
+                                              <span class="">Image</span>
+                                              <input name="upload" type="file" accept="image/.jpg, image/.png" onchange="loadProdSvc(event)">
+                                            </div>
+                                            <div class="file-path-wrapper">
+                                              <input value="image" class="file-path validate" type="text">
+                                            </div>
+                                        </div>
+                                  </div>
                                 </div>
-                                <div class="col s12">
-                                     <label class="red-text">(*) Indicates required field</label>
+                              </div>
+
+                              <div class="aside aside2 z-depth-0">
+                                <div class="row">
+                              <!-- 2nd aside -->
+                                    <div class="col s12">
+                                         <label class="red-text left">(*) Indicates required field</label>
+                                    </div>
+                                    <div class="input-field col s12">
+                                      <select name="strItemCate" class="browser-default" required id="strItemCate">
+                                        <option value="" disabled="disabled" selected></option>
+                                        <option value="service">Service</option>
+                                        <option value="product">Product</option>
+                                      </select>
+                                      <label for="strItemCate" class="active">Type<span class="red0text">*</span></label>
+                                    </div>
+                                    <div class="input-field col s12" style="margin-top: 28px !important;">
+                                      <input type="text" class="validate tooltipped" required id="prodsvcName" name="strItemName" placeholder="Product/Service Name" data-position="bottom" data-delay="30" data-tooltip="Ex: Item 1<br/> ( At least 3 or more characters )" pattern="^[a-zA-Z0-9\-\s]{3,}$" maxlength="15">
+                                      <label for="prodsvcName">Name<span class="red-text">*</span></label>
+                                    </div>
+                                    <div class="input-field col s12">
+                                      <textarea id="prodsvcDetail" name="strItemDetails" class="materialize-textarea tooltipped" placeholder="Details" data-position="bottom" data-delay="30" data-tooltip="Ex: This item is affordable.<br/> ( At least 5 or more characters )" pattern="^[a-zA-Z0-9.,`-\-\s]{5,}$" maxlength="25"></textarea>
+                                      <label for="prodsvcDetail" class="active">Details</label>
+                                    </div>
+                                    <div class="input-field col s8">
+                                        <select class="browser-default" id="createPSCategory" name="strItemCategory" required>
+                                            <option value="" disabled selected> </option>
+                                            <c:forEach items="${productCategory}" var="product">
+                                              <option value="${product}">${product}</option>
+                                            </c:forEach>
+                                        </select>
+                                        <label for="createPSCategory" class="active">Category<span class="red-text">*</span></label>
+                                    </div>
+                                    <div class="input-field col s4">
+                                      <button data-target="addCategory" class="waves-effect waves-light btn-flat modal-category purple lighten-1"><i class="material-icons white-text">add</i></button>
+                                    </div>
+                                    <div class="input-field col s6" style="margin-top: 28px !important;">
+                                        <input type="text" class="validate right-align tooltipped" id="prodsvcPrice" name="dblItemPrice" required placeholder="999.99" data-position="bottom" data-delay="30" data-tooltip="Ex: 999.99<br/>( Numbers only )">
+                                        <label for="prodsvcPrice" class="active">Price<span class="red-text">*</span></label>
+                                    </div>
                                 </div>
-                                <div class="col s12">
-                                    <img name="prodsvcCreate" id="prodsvcCreate" style="width: 150px; height: 150px; margin-top: 20px;" src="./img/packIcon.png" alt=""/>
-                                </div>
-                                <div class="input-field col s5 offset-s4">
-                                    <div class="file-field">
-                                          <div class="btn orange">
-                                            <span class="">Image</span>
-                                            <input name="upload" type="file" accept="image/.jpg, image/.png" onchange="loadProdSvc(event)">
-                                          </div>
-                                          <div class="file-path-wrapper">
-                                            <input value="image" class="file-path validate" type="text">
-                                          </div>
-                                      </div>
-                                </div>
-                                <div class="input-field col s8 offset-s2">
-                                    <p style="color:#9e9e9e;font-size:12px;">Type <span class="red-text">*</span></p>
-                                </div>
-                                <div class="input-field col s8 offset-s2" style="margin-top: -1px;">
-                                  <select name="strItemCate" class="browser-default" required >
-                                    <option value="" disabled="disabled" selected></option>
-                                    <option value="service">Service</option>
-                                    <option value="product">Product</option>
-                                  </select>
-                                </div>
-                                <div class="input-field col s8 offset-s2">
-                                  <input type="text" class="validate" required id="prodsvcName" name="strItemName">
-                                  <label for="prodsvcName">Name <span class="red-text">*</span></label>
-                                </div>
-                                <div class="input-field col s8 offset-s2">
-                                  <textarea id="prodsvcDetail" name="strItemDetails" class="materialize-textarea"></textarea>
-                                  <label for="prodsvcDetail">Details</label>
-                                </div>
-                                <div class="input-field col s8 offset-s2">
-                                    <p style="color:#9e9e9e;font-size:12px;">Category <span class="red-text">*</span></p>
-                                </div>
-                                <div class="input-field col s6 offset-s2">
-                                    <select class="browser-default" id="createPSCategory" name="strItemCategory" required>
-                                        <option value="" disabled selected> </option>
-                                        <c:forEach items="${productCategory}" var="product">
-                                          <option value="${product}">${product}</option>
-                                        </c:forEach>
-                                    </select>
-                                </div>
-                                <div class="input-field col s2">
-                                  <button data-target="addCategory" class="waves-effect waves-light btn-flat modal-category orange lighten-1">add</button>
-                                </div>
-                                <div class="input-field col s4 offset-s6" style="margin-top: 20px;">
-                                    <input type="text" class="validate right-align" id="prodsvcPrice" name="dblItemPrice">
-                                    <label for="prodsvcPrice">Price <span class="red-text">*</span></label>
-                                </div>
-                              
-                            <!-- </div> -->
+                              </div>
                             </div>
+
+
+                            
                           </div>
                           <div class="modal-footer">
-                              <button type="reset" value="Reset" class=" modal-action modal-close waves-effect waves-orange transparent btn-flat">CANCEL</button>
-                              <button class="waves-effect waves-light orange darken-3 white-text btn-flat" type="submit" value="Submit">CREATE</button>
+                              <button type="reset" value="Reset" class=" modal-action modal-close waves-effect waves-purple transparent btn-flat">CANCEL</button>
+                              <button class="waves-effect waves-light purple darken-3 white-text btn-flat" type="submit" value="Submit">CREATE</button>
                           </div>
                           </form>
                     </div>
@@ -248,12 +269,12 @@
                                       </select>
                                     </div>
                                     <div class="input-field col s8 offset-s2" style="margin-top: 20px;">
-                                      <input type="text" class="validate" id="createAddCategoryName" name="createAddCategoryName">
-                                      <label for="createAddCategoryName">Position Name</label>
+                                      <input type="text" class="validate tooltipped" id="createAddCategoryName" name="createAddCategoryName" placeholder="New Category" data-position="bottom" data-delay="30" data-tooltip="Ex: Hair Color<br/>( At least 3 or more characters )" pattern="^[a-zA-Z0-9-\-\s]{3,}$" required/>
+                                      <label for="createAddCategoryName" class="active">Category</label>
                                     </div>
                                     <div class="input-field col s8 offset-s2 center">
-                                      <a href="" id="createAddCatBtn" class="modal-close waves-effect waves-light orange darken-4 btn-flat white-text">SAVE</a>
-                                      <button type="reset" value="Reset" class="modal-close waves-effect waves-orange transparent btn-flat white">CANCEL</button>
+                                      <button id="createAddCatBtn" disabled="disabled" class="modal-close waves-effect waves-light purple darken-3 btn-flat white-text">SAVE</button>
+                                      <button type="reset" value="Reset" class="modal-close waves-effect waves-purple transparent btn-flat white">CANCEL</button>
                                     </div>
                                   </div>
                                 </div>
@@ -270,85 +291,186 @@
                            strProdID = String.valueOf(prodID.getIntProductID());
                            String productCate = prodID.getStrProductCategory();
                         %>
-                        <div id="prod<%=strProdID%>" class="modal modal-fixed-footer" style="width: 45% !important; height: 80% max-height: 100% !important;">
-                        <form class="col s12" method="get" action="updateItem">
+                        <div id="prod<%=strProdID%>" class="modal modal-fixed-footer" style="width: 60% !important; height: 80% !important; max-height: 100% !important;">
+                        <form class="col s12" method="get" action="updateItem" enctype="multipart/form-data">
                           <div class="modal-content">
                             <!-- <div class="container"> -->
-                            <div class="row">
-                              
-                                <div class="input-field col s12">
-                                  <h3 class="grey-text text-darken-1">Update Product/Service</h3>
-                                </div>
-                                <div class="col s12">
-                                    <img name="upload" id="prodsvc" style="width: 150px; height: 150px; margin-top: 20px;" src="<s:url action='getImage'><s:param name='ImageID'><%=strProdID%></s:param><s:param name='type'>product</s:param></s:url>" alt=""/>
-                                </div>
-                                <div class="input-field col s5 offset-s4">
-                                    <div class="file-field">
-                                        <div class="btn orange">
-                                            <span class="">Image</span>
-                                            <input name="upload" type="file" accept="image/*" onchange="ServiceImage(this)">
+                            <div class="wrapper">
+                              <div class="input-field col s12">
+                                  <h4 class="grey-text text-darken-1">Update Product/Service</h4>
+                              </div>
+
+                              <div class="aside aside1 z-depth-0">
+                                <div class="row">
+                              <!-- 1st aside -->
+                                  <div class="col s12">
+                                      <img name="prodsvcCreate" id="prodsvcCreate" style="width: 200px; height: 200px; margin-top: 20px;" src="<s:url action='getImage'><s:param name='ImageID'><%=strProdID%></s:param><s:param name='type'>product</s:param></s:url>" alt="${product.strProductName}"/>
+                                  </div>
+                                  <div class="input-field col s12">
+                                      <div class="file-field">
+                                            <div class="btn purple darken-3">
+                                              <span class="">Image</span>
+                                              <input name="upload" type="file" accept="image/.jpg, image/.png" onchange="ServiceImage(this)">
+                                            </div>
+                                            <div class="file-path-wrapper">
+                                              <input value="image" name="imageName" class="file-path validate" type="text">
+                                            </div>
                                         </div>
-                                        <div class="file-path-wrapper">
-                                            <input name="imageName" value="image" class="file-path validate" type="text">
-                                        </div>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div class="aside aside2 z-depth-0">
+                                <div class="row">
+                              <!-- 2nd aside -->
+                                    <div class="input-field col s12">
+                                      <select name="strItemCate" class="browser-default" id="strItemCate">
+                                        <option value="" disabled="disabled" selected></option>
+                                        <option value="service">Service</option>
+                                        <option value="product" selected>Product</option>
+                                      </select>
+                                      <label for="strItemCate" class="active">Type</label>
+                                    </div>
+                                    <div class="input-field col s12" style="margin-top: 28px !important;">
+                                      <input value="${product.strProductName}" type="text" class="validate tooltipped" id="prodsvcName" name="strItemName" placeholder="Product/Service Name" data-position="bottom" data-delay="30" data-tooltip="${product.strProductName}" pattern="^[a-zA-Z0-9\-\s]{3,}$" maxlength="15">
+                                      <label for="prodsvcName">Name</label>
+                                    </div>
+                                    <div class="input-field col s12">
+                                      <textarea id="prodsvcDetail" name="strItemDetails" class="materialize-textarea tooltipped" placeholder="Details" data-position="bottom" data-delay="30" data-tooltip="${product.strProductDesc}" pattern="^[a-zA-Z0-9.,`-\-\s]{5,}$" maxlength="25" style="margin-top: -10px;">${product.strProductDesc}</textarea>
+                                      <label for="prodsvcDetail" class="active">Details</label>
+                                    </div>
+                                    <div class="input-field col s8">
+                                        <select class="browser-default updateProdCategory" id="updateProdCategory" name="strItemCategory" required>
+                                            <option value="" disabled selected> </option>
+                                            <c:forEach items="${productCategory}" var="cate">
+                                              <%
+                                                  String cate = (String)pageContext.getAttribute("cate");
+                                                  String selectedProduct = null;
+                                                  if(productCate.equals(cate)){
+                                                      selectedProduct = "selected";
+                                                  }
+                                                  else {
+                                                      selectedProduct = "";
+                                                  }
+                                              %>
+                                              <option value="${cate}" <%out.println(selectedProduct);%>>${cate}</option>
+                                            </c:forEach>
+                                        </select>
+                                        <label for="createPSCategory" class="active">Category</label>
+                                    </div>
+                                    <div class="input-field col s4">
+                                      <button data-target="addUpdateProdCategory" class="waves-effect waves-light btn-flat modal-updateCategory purple lighten-1"><i class="material-icons white-text">add</i></button>
+                                    </div>
+                                    <div class="input-field col s6" style="margin-top: 28px !important;">
+                                        <input value="${product.dblProductPrice}" type="text" class="validate right-align tooltipped" id="updateprodPrice" name="dblItemPrice" required placeholder="999.99" data-position="bottom" data-delay="30" data-tooltip="${product.dblProductPrice}">
+                                        <label for="updateprodPrice" class="active">Price</label>
                                     </div>
                                 </div>
-                                <div class="input-field col s8 offset-s2">
-                                  <input type="hidden" name="intItemID" value="${product.intProductID}">
-                                  <input type="hidden" name="intItemQuantity" value="${product.intProductQuantity}">
-                                  <select class="browser-default" name="strItemCate" required>
-                                    <option value="service" >Service</option>
-                                    <option value="product" selected>Product</option>
-                                  </select>
-                                  
-                                </div>
-                                <div class="input-field col s8 offset-s2">
-                                  <input value="${product.strProductName}" type="text" class="validate" id="prodsvcName" name="strItemName">
-                                  <label for="prodsvcName">Name</label>
-                                </div>
-                                <div class="input-field col s8 offset-s2">
-                                  <textarea id="prodsvcDetail" name="strItemDetails" class="materialize-textarea">${product.strProductDesc}</textarea>
-                                  <label for="prodsvcDetail">Details</label>
-                                </div>
-                                <div class="input-field col s8 offset-s2">
-                                    <p style="color:#9e9e9e;font-size:12px;">Category</p>
-                                </div>
-                                <div class="input-field col s6 offset-s2">
-                                    <select class="browser-default updateProdCategory" id="updateProdCategory" name="strItemCategory" autocomplete="off">
-                                        <option value="" disabled selected> </option>
-                                        <c:forEach items="${productCategory}" var="cate">
-                                          <%
-                                              String cate = (String)pageContext.getAttribute("cate");
-                                              String selectedProduct = null;
-                                              if(productCate.equals(cate)){
-                                                  selectedProduct = "selected";
-                                              }
-                                              else {
-                                                  selectedProduct = "";
-                                              }
-                                          %>
-                                          <option value="${cate}" <%out.println(selectedProduct);%>>${cate}</option>
-                                        </c:forEach>
-                                    </select>
-                                </div>
-                                <div class="input-field col s2">
-                                  <button data-target="addUpdateProdCategory" class="waves-effect waves-light btn-flat modal-updateCategory orange lighten-1">add</button>
-                                </div>
-                                <div class="input-field col s4 offset-s6" style="margin-top: 20px;">
-                                    <input value="${product.dblProductPrice}" type="text" class="validate right-align" id="prodsvcPrice" name="dblItemPrice">
-                                    <label for="prodsvcPrice" >Price</label>
-                                </div>
-                              
-                            <!-- </div> -->
+                              </div>
                             </div>
+
+
+                            
                           </div>
                           <div class="modal-footer">
-                              <button type="reset" value="Reset" class=" modal-action modal-close waves-effect waves-orange transparent btn-flat">CANCEL</button>
-                              <button class="waves-effect waves-light orange darken-3 white-text btn-flat" type="submit" value="Submit">SAVE</button>
+                              <button type="reset" value="Reset" class=" modal-action modal-close waves-effect waves-purple transparent btn-flat">CANCEL</button>
+                              <button class="waves-effect waves-light purple darken-3 white-text btn-flat" type="submit" value="Submit">UPDATE</button>
                           </div>
                           </form>
                     </div>
                   </c:forEach>
+                    <!--  START VIEW PRODUCT -->
+                      <c:forEach items="${productList}" var="product">
+                        <%! String viewstrProdID = null; %>
+                        <% Product prodID = (Product)pageContext.getAttribute("product");
+                           viewstrProdID = String.valueOf(prodID.getIntProductID());
+                           String productCate = prodID.getStrProductCategory();
+                        %>
+                        <div id="viewprod<%=viewstrProdID%>" class="modal modal-fixed-footer" style="width: 60% !important; height: 80% !important; max-height: 100% !important;">
+                        <form class="col s12" enctype="multipart/form-data">
+                          <div class="modal-content">
+                            <!-- <div class="container"> -->
+                            <div class="wrapper">
+                              <div class="input-field col s12">
+                                  <h4 class="grey-text text-darken-1">Update Product/Service</h4>
+                              </div>
+
+                              <div class="aside aside1 z-depth-0">
+                                <div class="row">
+                              <!-- 1st aside -->
+                                  <div class="col s12">
+                                      <img name="prodsvcCreate" id="prodsvcCreate" style="width: 200px; height: 200px; margin-top: 20px;" src="<s:url action='getImage'><s:param name='ImageID'><%=strProdID%></s:param><s:param name='type'>product</s:param></s:url>" alt="${product.strProductName}"/>
+                                  </div>
+                                  <div class="input-field col s12">
+                                      <div class="file-field">
+                                            <div class="btn purple darken-3">
+                                              <span class="">Image</span>
+                                              <input disabled="disabled" name="upload" type="file" accept="image/.jpg, image/.png" onchange="ServiceImage(this)">
+                                            </div>
+                                            <div class="file-path-wrapper">
+                                              <input disabled="disabled" value="image" name="imageName" class="file-path validate" type="text">
+                                            </div>
+                                        </div>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div class="aside aside2 z-depth-0">
+                                <div class="row">
+                              <!-- 2nd aside -->
+                                    <div class="input-field col s12">
+                                      <select name="strItemCate" class="browser-default" id="strItemCate" disabled="disabled">
+                                        <option value="" disabled="disabled" selected></option>
+                                        <option value="service">Service</option>
+                                        <option value="product" selected>Product</option>
+                                      </select>
+                                      <label for="strItemCate" class="active">Type</label>
+                                    </div>
+                                    <div class="input-field col s12" style="margin-top: 28px !important;">
+                                      <input value="${product.strProductName}" type="text" class="tooltipped" id="prodsvcName" name="strItemName" placeholder="Product/Service Name" data-position="bottom" data-delay="30" data-tooltip="${product.strProductName}" readonly>
+                                      <label for="prodsvcName">Name</label>
+                                    </div>
+                                    <div class="input-field col s12">
+                                      <textarea id="prodsvcDetail" name="strItemDetails" class="materialize-textarea tooltipped" placeholder="Details" data-position="bottom" data-delay="30" data-tooltip="${product.strProductDesc}" readonly style="margin-top: -10px;">${product.strProductDesc}</textarea>
+                                      <label for="prodsvcDetail" class="active">Details</label>
+                                    </div>
+                                    <div class="input-field col s12">
+                                        <select class="browser-default updateProdCategory" id="updateProdCategory" name="strItemCategory" disabled="disabled">
+                                            <option value="" disabled selected> </option>
+                                            <c:forEach items="${productCategory}" var="cate">
+                                              <%
+                                                  String cate = (String)pageContext.getAttribute("cate");
+                                                  String selectedProduct = null;
+                                                  if(productCate.equals(cate)){
+                                                      selectedProduct = "selected";
+                                                  }
+                                                  else {
+                                                      selectedProduct = "";
+                                                  }
+                                              %>
+                                              <option value="${cate}" <%out.println(selectedProduct);%>>${cate}</option>
+                                            </c:forEach>
+                                        </select>
+                                        <label for="createPSCategory" class="active">Category</label>
+                                    </div>
+                                    <div class="input-field col s6" style="margin-top: 28px !important;">
+                                        <input value="${product.dblProductPrice}" type="text" class="right-align tooltipped" id="updateprodPrice" name="dblItemPrice" required placeholder="999.99" data-position="bottom" data-delay="30" data-tooltip="${product.dblProductPrice}" readonly>
+                                        <label for="updateprodPrice" class="active">Price</label>
+                                    </div>
+                                </div>
+                              </div>
+                            </div>
+
+
+                            
+                          </div>
+                          <div class="modal-footer">
+                              <button class="modal-action modal-close waves-effect waves-purple transparent btn-flat">BACK</button>
+                          </div>
+                          </form>
+                    </div>
+                  </c:forEach>
+                  <!-- end view product -->
 
                   <!-- add category BEGIN -->
                           <div id="addUpdateProdCategory" class="modal" style="margin-top: 30px;">
@@ -365,12 +487,12 @@
                                       </select>
                                     </div>
                                     <div class="input-field col s8 offset-s2" style="margin-top: 20px;">
-                                      <input type="text" class="validate" id="updateAddCatProdName" name="updateAddCatProdName">
-                                      <label for="updateAddCatProdName">Position Name</label>
+                                      <input type="text" class="validate tooltipped" id="updateAddCatProdName" name="updateAddCatProdName" placeholder="New Category" data-position="bottom" data-delay="30" data-tooltip="Ex: Hair Color<br/>( At least 3 or more characters )" pattern="^[a-zA-Z0-9-\-\s]{3,}$" required>
+                                      <label for="updateAddCatProdName">Category</label>
                                     </div>
                                     <div class="input-field col s8 offset-s2 center">
-                                      <a href="" id="updateAddProdCatBtn" class="modal-close waves-effect waves-light orange darken-4 btn-flat white-text">SAVE</a>
-                                      <button type="reset" value="Reset" class="modal-close waves-effect waves-orange transparent btn-flat white">CANCEL</button>
+                                      <button id="updateAddProdCatBtn" class="modal-close waves-effect waves-light purple darken-3 btn-flat white-text">SAVE</button>
+                                      <button type="reset" value="Reset" class="modal-close waves-effect waves-purple transparent btn-flat white">CANCEL</button>
                                     </div>
                                   </div>
                                 </div>
@@ -385,85 +507,187 @@
                            serviceID = String.valueOf(servID.getIntServiceID());
                            String serviceCate = servID.getStrServiceCategory();
                         %>
-                        <div id="serv<%=serviceID%>" class="modal modal-fixed-footer" style="width: 45% !important; height: 80% max-height: 100% !important;">
+                        <div id="serv<%=serviceID%>" class="modal modal-fixed-footer" style="width: 60% !important; height: 80% !important; max-height: 100% !important;">
                         <form class="col s12" method="get" action="updateItem" enctype="multipart/form-data">
                           <div class="modal-content">
-
                             <!-- <div class="container"> -->
-                            <div class="row">
-                              
-                                <div class="input-field col s12">
-                                  <h3 class="grey-text text-darken-1">Update Product/Service</h3>
+                            <div class="wrapper">
+                              <div class="input-field col s12">
+                                  <h4 class="grey-text text-darken-1">Update Product/Service</h4>
+                              </div>
+
+                              <div class="aside aside1 z-depth-0">
+                                <div class="row">
+                              <!-- 1st aside -->
+                                  <div class="col s12">
+                                      <img name="prodsvcCreate" id="prodsvcCreate" style="width: 200px; height: 200px; margin-top: 20px;" src="<s:url action='getImage'><s:param name='ImageID'><%=serviceID%></s:param><s:param name='type'>service</s:param></s:url>" alt="${product.strProductName}"/>
+                                  </div>
+                                  <div class="input-field col s12">
+                                      <div class="file-field">
+                                            <div class="btn purple darken-3">
+                                              <span class="">Image</span>
+                                              <input name="fileUpload" type="file" accept="image/.jpg, image/.png" onchange="ServiceImage(this)">
+                                            </div>
+                                            <div class="file-path-wrapper">
+                                              <input value="image" name="imageName" class="file-path validate" type="text">
+                                            </div>
+                                        </div>
+                                  </div>
                                 </div>
-                                <div class="col s12">
-                                    <img name="upload" id="prodsvc" style="width: 150px; height: 150px; margin-top: 20px;" src="<s:url action='getImage'><s:param name='ImageID'><%=serviceID%></s:param><s:param name='type'>service</s:param></s:url>" alt=""/>
+                              </div>
+
+                              <div class="aside aside2 z-depth-0">
+                                <div class="row">
+                              <!-- 2nd aside -->
+                                    <div class="input-field col s12">
+                                      <select name="strItemCate" class="browser-default" id="strItemCate">
+                                        <option value="" disabled="disabled" selected></option>
+                                        <option value="service" selected>Service</option>
+                                        <option value="product">Product</option>
+                                      </select>
+                                      <label for="strItemCate" class="active">Type</label>
+                                    </div>
+                                    <div class="input-field col s12" style="margin-top: 28px !important;">
+                                      <input value="${service.strServiceName}" type="text" class="validate tooltipped" id="prodsvcName" name="strItemName" placeholder="Product/Service Name" data-position="bottom" data-delay="30" data-tooltip="${service.strServiceName}" pattern="^[a-zA-Z0-9\-\s]{3,}$" maxlength="15">
+                                      <label for="prodsvcName">Name</label>
+                                    </div>
+                                    <div class="input-field col s12">
+                                      <textarea id="prodsvcDetail" name="strItemDetails" class="materialize-textarea tooltipped" placeholder="Details" data-position="bottom" data-delay="30" data-tooltip="${service.strServiceDesc}" pattern="^[a-zA-Z0-9.,`-\-\s]{5,}$" maxlength="25" style="margin-top: -10px;">${service.strServiceDesc}</textarea>
+                                      <label for="prodsvcDetail" class="active">Details</label>
+                                    </div>
+                                    <div class="input-field col s8">
+                                        <select class="browser-default updateServCategory" id="updateServCategory" name="strItemCategory">
+                                            <option value="" disabled selected> </option>
+                                            <c:forEach items="${serviceCategory}" var="service">
+                                              <%
+                                                  String cate3 = (String)pageContext.getAttribute("service");
+                                                  String selectedService = null;
+                                                  if(serviceCate.equals(cate3)){
+                                                      selectedService = "selected";
+                                                  }
+                                                  else {
+                                                      selectedService = "";
+                                                  }
+                                              %>
+                                              <option value="${service}" <%out.println(selectedService);%>>${service}</option>
+                                            </c:forEach>
+                                        </select>
+                                        <label for="updateServCategory" class="active">Category</label>
+                                    </div>
+                                    <div class="input-field col s4">
+                                      <button data-target="addUpdateServCategory" class="waves-effect waves-light btn-flat modal-updateCategory purple lighten-1"><i class="material-icons white-text">add</i></button>
+                                    </div>
+                                    <div class="input-field col s6" style="margin-top: 28px !important;">
+                                        <input value="${service.dblServicePrice}" type="text" class="validate right-align tooltipped" id="updateservPrice" name="dblItemPrice" required placeholder="999.99" data-position="bottom" data-delay="30" data-tooltip="${service.dblServicePrice}">
+                                        <label for="updateservPrice" class="active">Price</label>
+                                    </div>
                                 </div>
-                                <div class="input-field col s5 offset-s4">
-                                     <div class="file-field">
-                                          <div class="btn orange">
-                                            <span class="">Image</span>
-                                            <input name="fileUpload" type="file" accept="image/.jpg, image/.png" onchange="ServiceImage(this)">
-                                          </div>
-                                          <div class="file-path-wrapper">
-                                            <input name="imageName" value="image" class="file-path validate" type="text">
-                                          </div>
-                                      </div>
-                                </div>
-                                <div class="input-field col s8 offset-s2">
-                                  <input type="hidden" name="intItemID" value="${service.intServiceID}">
-                                  <select name="strItemCate" class="browser-default" required autocomplete="off">
-                                    <option value="service" selected>Service</option>
-                                    <option value="product">Product</option>
-                                  </select>
-                                  
-                                </div>
-                                <div class="input-field col s8 offset-s2">
-                                  <input value="${service.strServiceName}" type="text" class="validate" id="prodsvcName" name="strItemName">
-                                  <label for="prodsvcName">Name</label>
-                                </div>
-                                <div class="input-field col s8 offset-s2">
-                                  <textarea id="prodsvcDetail" name="strItemDetails" class="materialize-textarea">${service.strServiceDesc}</textarea>
-                                  <label for="prodsvcDetail">Details</label>
-                                </div>
-                                <div class="input-field col s8 offset-s2">
-                                    <p style="color:#9e9e9e;font-size:12px;">Category</p>
-                                </div>
-                                <div class="input-field col s6 offset-s2">
-                                    <select class="browser-default updateServCategory" id="updateServCategory" name="strItemCategory" autocomplete="off">
-                                        <option value="" disabled selected> </option>
-                                        <c:forEach items="${serviceCategory}" var="service">
-                                          <%
-                                              String cate3 = (String)pageContext.getAttribute("service");
-                                              String selectedService = null;
-                                              if(serviceCate.equals(cate3)){
-                                                  selectedService = "selected";
-                                              }
-                                              else {
-                                                  selectedService = "";
-                                              }
-                                          %>
-                                          <option value="${service}" <%out.println(selectedService);%>>${service}</option>
-                                        </c:forEach>
-                                    </select>
-                                </div>
-                                <div class="input-field col s2">
-                                  <button data-target="addUpdateServCategory" class="waves-effect waves-light btn-flat modal-updateCategory orange lighten-1">add</button>
-                                </div>
-                                <div class="input-field col s4 offset-s6" style="margin-top: 20px;">
-                                    <input type="text" value="${service.intServiceName}" class="validate right-align" id="prodsvcPrice" name="dblItemPrice"/>
-                                    <label for="prodsvcPrice" >Price</label>
-                                </div>
-                              
-                            <!-- </div> -->
+                              </div>
                             </div>
+
+
+                            
                           </div>
                           <div class="modal-footer">
-                              <button type="reset" value="Reset" class=" modal-action modal-close waves-effect waves-orange transparent btn-flat">CANCEL</button>
-                              <button class="waves-effect waves-light orange darken-3 white-text btn-flat" type="submit" value="Submit">SAVE</button>
+                              <button type="reset" value="Reset" class=" modal-action modal-close waves-effect waves-purple transparent btn-flat">CANCEL</button>
+                              <button class="waves-effect waves-light purple darken-3 white-text btn-flat" type="submit" value="Submit">UPDATE</button>
                           </div>
                           </form>
                     </div>
                   </c:forEach>
+
+                  <!-- VIEW SERVICE START -->
+                  <c:forEach items="${serviceList}" var="service">
+                         <%! String viewserviceID = null; %>
+                         <% Service servID = (Service)pageContext.getAttribute("service");
+                            viewserviceID = String.valueOf(servID.getIntServiceID());
+                            String serviceCate = servID.getStrServiceCategory();
+                         %>
+                         <div id="viewserv<%=viewserviceID%>" class="modal modal-fixed-footer" style="width: 60% !important; height: 80% !important; max-height: 100% !important;">
+                         <form class="col s12" enctype="multipart/form-data">
+                           <div class="modal-content">
+                             <!-- <div class="container"> -->
+                             <div class="wrapper">
+                               <div class="input-field col s12">
+                                   <h4 class="grey-text text-darken-1">Update Product/Service</h4>
+                               </div>
+
+                               <div class="aside aside1 z-depth-0">
+                                 <div class="row">
+                               <!-- 1st aside -->
+                                   <div class="col s12">
+                                       <img name="prodsvcCreate" id="prodsvcCreate" style="width: 200px; height: 200px; margin-top: 20px;" src="<s:url action='getImage'><s:param name='ImageID'><%=serviceID%></s:param><s:param name='type'>service</s:param></s:url>" alt="${product.strProductName}"/>
+                                   </div>
+                                   <div class="input-field col s12">
+                                       <div class="file-field">
+                                             <div class="btn purple darken-3">
+                                               <span class="">Image</span>
+                                               <input name="fileUpload" type="file" accept="image/.jpg, image/.png" onchange="ServiceImage(this)" disabled="disabled">
+                                             </div>
+                                             <div class="file-path-wrapper">
+                                               <input value="image" name="imageName" class="file-path validate" type="text" disabled="disabled">
+                                             </div>
+                                         </div>
+                                   </div>
+                                 </div>
+                               </div>
+
+                               <div class="aside aside2 z-depth-0">
+                                 <div class="row">
+                               <!-- 2nd aside -->
+                                     <div class="input-field col s12">
+                                       <select name="strItemCate" class="browser-default" id="strItemCate" disabled="disabled">
+                                         <option value="" disabled="disabled" selected></option>
+                                         <option value="service" selected>Service</option>
+                                         <option value="product">Product</option>
+                                       </select>
+                                       <label for="strItemCate" class="active">Type</label>
+                                     </div>
+                                     <div class="input-field col s12" style="margin-top: 28px !important;">
+                                       <input value="${service.strServiceName}" type="text" class="tooltipped" id="prodsvcName" name="strItemName" placeholder="Product/Service Name" data-position="bottom" data-delay="30" data-tooltip="${service.strServiceName}" readonly>
+                                       <label for="prodsvcName">Name</label>
+                                     </div>
+                                     <div class="input-field col s12">
+                                       <textarea id="prodsvcDetail" name="strItemDetails" class="materialize-textarea tooltipped" placeholder="Details" data-position="bottom" data-delay="30" data-tooltip="${service.strServiceDesc}" readonly style="margin-top: -10px;">${service.strServiceDesc}</textarea>
+                                       <label for="prodsvcDetail" class="active">Details</label>
+                                     </div>
+                                     <div class="input-field col s12">
+                                         <select class="browser-default updateServCategory" id="updateServCategory" name="strItemCategory" disabled="disabled">
+                                             <option value="" disabled selected> </option>
+                                             <c:forEach items="${serviceCategory}" var="service">
+                                               <%
+                                                   String cate3 = (String)pageContext.getAttribute("service");
+                                                   String selectedService = null;
+                                                   if(serviceCate.equals(cate3)){
+                                                       selectedService = "selected";
+                                                   }
+                                                   else {
+                                                       selectedService = "";
+                                                   }
+                                               %>
+                                               <option value="${service}" <%out.println(selectedService);%>>${service}</option>
+                                             </c:forEach>
+                                         </select>
+                                         <label for="updateServCategory" class="active">Category</label>
+                                     </div>
+                                     <div class="input-field col s6" style="margin-top: 28px !important;">
+                                         <input value="${service.dblServicePrice}" type="text" class="right-align tooltipped" id="updateservPrice" name="dblItemPrice" required placeholder="999.99" data-position="bottom" data-delay="30" data-tooltip="${service.dblServicePrice}" readonly>
+                                         <label for="updateservPrice" class="active">Price</label>
+                                     </div>
+                                 </div>
+                               </div>
+                             </div>
+
+
+                             
+                           </div>
+                           <div class="modal-footer">
+                               <button class=" modal-action modal-close waves-effect waves-purple transparent btn-flat">BACK</button>
+                           </div>
+                           </form>
+                     </div>
+                   </c:forEach>
+                  <!-- VIEW SERVICE END -->
 
                   <!-- add category BEGIN -->
                           <div id="addUpdateServCategory" class="modal" style="margin-top: 30px;">
@@ -480,12 +704,12 @@
                                       </select>
                                     </div>
                                     <div class="input-field col s8 offset-s2" style="margin-top: 20px;">
-                                      <input type="text" class="validate" id="updateAddCatServName" name="updateAddCatServName">
-                                      <label for="updateAddCatServName">Position Name</label>
+                                      <input type="text" class="validate tooltipped" id="updateAddCatServName" name="updateAddCatServName" placeholder="New Category" data-position="bottom" data-delay="30" data-tooltip="Ex: Hair Color<br/>( At least 3 or more characters )" pattern="^[a-zA-Z0-9-\-\s]{3,}$" required>
+                                      <label for="updateAddCatServName" class="active">Position Name</label>
                                     </div>
                                     <div class="input-field col s8 offset-s2 center">
-                                      <a href="" id="updateAddServCatBtn" class="modal-close waves-effect waves-light orange darken-4 btn-flat white-text">SAVE</a>
-                                      <button type="reset" value="Reset" class="modal-close waves-effect waves-orange transparent btn-flat white">CANCEL</button>
+                                      <button id="updateAddServCatBtn" class="modal-close waves-effect waves-light purple darken-3 btn-flat white-text">SAVE</button>
+                                      <button type="reset" value="Reset" class="modal-close waves-effect waves-purple transparent btn-flat white">CANCEL</button>
                                     </div>
                                   </div>
                                 </div>
@@ -510,8 +734,8 @@
                             </div>
                               <div class="col s12 center" style="margin-bottom: 30px;">
                                 <input type="hidden" name="intItemID" value="${product.intProductID}">
-                                <button class="waves-effect waves-light orange btn-flat white-text">YES</button>
-                                <a href="#" class="modal-action modal-close waves-effect waves-light transparent btn-flat black-text">NO</a>
+                                <button class="waves-effect waves-light purple btn-flat white-text">YES</button>
+                                <a href="#" class="modal-action modal-close waves-effect waves-purple transparent btn-flat black-text">NO</a>
                               </div>
                             </div>
                           </form>
@@ -534,8 +758,8 @@
                             </div>
                               <div class="col s12 center" style="margin-bottom: 30px;">
                               <input type="hidden" name="intItemID" value="${service.intServiceID}">
-                                <button class="waves-effect waves-light orange btn-flat white-text">YES</button>
-                                <a href="#" class="modal-action modal-close waves-effect waves-light transparent btn-flat black-text">NO</a>
+                                <button class="waves-effect waves-light purple btn-flat white-text">YES</button>
+                                <a href="#" class="modal-action modal-close waves-effect waves-purple transparent btn-flat black-text">NO</a>
                               </div>
                             </div>
                           </form>
@@ -555,12 +779,7 @@
 
   <style type="text/css">
   #create {
-    width: 45% !important;
-    height: 80% !important;
-    max-height: 100% !important;
-  }
-  #update{
-    width: 45% !important;
+    width: 60% !important;
     height: 80% !important;
     max-height: 100% !important;
   }
@@ -587,11 +806,43 @@
 
   <!--Import jQuery before materialize.js-->
     <script type="text/javascript" src="./js/jquery-2.1.1.min.js"></script>
-    <script type="text/javascript" src="./js/materialize.min.js"></script>
+    <script type="text/javascript" src="./js/materialize.js"></script>
     <script type="text/javascript" src="./js/angular.min.js"></script>
     <script type="text/javascript" src="./js/maintenance-emp.js"></script>
     <script type="text/javascript" src="./js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="./js/bartstable.js"></script>
+    <script type="text/javascript" src="./js/priceformat.js"></script>
+
+    <script type="text/javascript">
+    $('#prodsvcPrice').priceFormat({
+      prefix: '',
+      centsSeparator: '.',
+      centsLimit: 2,
+      limit: 8,
+      thousandsSeparator: ','
+    });
+    </script>
+
+    <script type="text/javascript">
+    $('#updateprodPrice').priceFormat({
+      prefix: '',
+      centsSeparator: '.',
+      centsLimit: 2,
+      limit: 8,
+      thousandsSeparator: ','
+    });
+
+    $('#updateservPrice').priceFormat({
+      prefix: '',
+      centsSeparator: '.',
+      centsLimit: 2,
+      limit: 8,
+      thousandsSeparator: ','
+    });
+    </script>
+
+
+
   </body>
 
 

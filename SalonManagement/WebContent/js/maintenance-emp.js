@@ -499,8 +499,26 @@ $('.tooltipped').tooltip({delay: 30});
       // EMPLOYEE END
 
       // PRODUCT AND SERVICE BEGIN
+      $(document).ready(function(){
+        $("#createAddCatBtn").prop('disabled',true);
+        $("#createAddCategoryName").keyup(function(){
+            if($(this).val().length <3)
+                  $('#createAddCatBtn').prop('disabled', true);            
+            else{
+                  $('#createAddCatBtn').prop('disabled',false);
+                  $("#createAddCatBtn").prop('disabled', this.value=="" ? true:false);
+            }
+        });
+      });  
+
       $("#createAddCatBtn").click(function () {
             var opt = $("#createAddCategoryName").val();
+            var length = $("#createAddCategoryName").val().length;
+
+            if(length<3){
+
+            }
+
             $('#createAddCategorySelect')
                 .append($("<option></option>")
                 .attr("value", opt)
@@ -513,6 +531,17 @@ $('.tooltipped').tooltip({delay: 30});
                 alert("Successful!");
         });
       // product
+      $("#updateAddProdCatBtn").prop('disabled',true);
+      $("#updateAddCatProdName").keyup(function(){
+          if($(this).val().length <3)
+                $('#updateAddProdCatBtn').prop('disabled', true);            
+          else{
+                $('#updateAddProdCatBtn').prop('disabled',false);
+                $("#updateAddProdCatBtn").prop('disabled', this.value=="" ? true:false);
+          }
+      });
+
+
       $("#updateAddProdCatBtn").click(function () {
             var opt = $("#updateAddCatProdName").val();
             $('#updateAddCatProdSelect')
@@ -527,6 +556,17 @@ $('.tooltipped').tooltip({delay: 30});
                 alert("Successful!");
         });
       // service
+
+      $("#updateAddServCatBtn").prop('disabled',true);
+      $("#updateAddCatServName").keyup(function(){
+          if($(this).val().length <3)
+                $('#updateAddServCatBtn').prop('disabled', true);            
+          else{
+                $('#updateAddServCatBtn').prop('disabled',false);
+                $("#updateAddServCatBtn").prop('disabled', this.value=="" ? true:false);
+          }
+      });
+
       $("#updateAddServCatBtn").click(function () {
             var opt = $("#updateAddCatServName").val();
             $('#updateAddCatProdSelect')
@@ -547,6 +587,7 @@ $('.tooltipped').tooltip({delay: 30});
       // bday BEGIN
       $('.datepicker').pickadate({
         selectYears: 40,
+        selectMonths: true,
         labelMonthNext: 'Next month',
         labelMonthPrev: 'Previous month',
         labelMonthSelect: 'Select a month',
@@ -561,13 +602,20 @@ $('.tooltipped').tooltip({delay: 30});
         close: 'Close',
         format: 'mmmm/d/yyyy',
         max: 'Today',
-        yearRange: "1970:Today"
+        yearRange: "1970:Today",
+        onSet: function( arg ){
+                if ( 'select' in arg ){ //prevent closing on selecting month/year
+                    this.close();
+                }
+            }
       });
       // bday END
 
       // promo BEGIN
       $('.datepicker-promo').pickadate({
+        changeMonth: true,
         selectYears: 10,
+        selectMonths: true,
         labelMonthNext: 'Next month',
         labelMonthPrev: 'Previous month',
         labelMonthSelect: 'Select a month',
@@ -577,7 +625,7 @@ $('.tooltipped').tooltip({delay: 30});
         weekdaysFull: [ 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday' ],
         weekdaysShort: [ 'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat' ],
         weekdaysLetter: [ 'S', 'M', 'T', 'W', 'T', 'F', 'S' ],
-        today: 'Today',
+        maxDate: '-18Y',
         clear: 'Clear',
         close: 'Close',
         format: 'mmmm/d/yyyy',
@@ -597,21 +645,37 @@ $('.tooltipped').tooltip({delay: 30});
             var yyyy = Number(today.getFullYear()); 
 
             var myBD = $('#createBirthday').val();
-            var myBDM = Number(myBD.split("/")[0])
-            var myBDD = Number(myBD.split("/")[1])
-            var myBDY = Number(myBD.split("/")[2])
-            var age = yyyy - myBDY;
+            var myBDM = Number(myBD.split("/")[0]);
+            var myBDD = Number(myBD.split("/")[1]);
+            var myBDY = Number(myBD.split("/")[2]);
+            var check = new Date();
 
-                    if(mm < myBDM)
-                    {
-                    age = age - 1;      
-                    }
-                    else if(mm == myBDM && dd < myBDD)
-                    {
-                    age = age - 1;
-                    }
+            var milliDay = 1000*60*60*24;
+            var ageInDays = (check - myBD)/milliDay;
+            var ageInDays = Math.floor(ageInDays/365);
+            var age = ageInDays/365;
+            if(ageInDays > 17){
+              $('#createAge').val(ageInDays);
+            }else{
+              $('#createAge').val('Not Qualified');
+            }
 
-                    $('#createAge').val(age);
+            // var age = yyyy - myBDY;
+            // var quali = $('Not Qualified').text();
+            //         if(mm < myBDM)
+            //         {
+            //         age = age - 1;      
+            //         }
+            //         else if(mm == myBDM && dd < myBDD)
+            //         {
+            //         age = age - 1;
+            //         }
+            //         if(age>17){
+            //           $('#createAge').val(age);
+            //         }else{
+            //           $('#createAge').val(quali);
+            //           $('#createAge').style()
+            //         }
                 });
 
       });
@@ -646,3 +710,9 @@ $('.tooltipped').tooltip({delay: 30});
                 });
 
       });
+
+$document.ready(function(){
+  $("#createEmpForm").ajaxForm(function() {
+    alert("thanks");
+  });
+});
