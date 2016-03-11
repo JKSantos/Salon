@@ -15,7 +15,7 @@ public class TrialSendEmail {
 
 	 public static void main(String[] args)
 	   {    
-	      String to = "santos.jeffrey0023@gmail.com";
+	      String to = "labidabssy.jeffrey23@yahoo.com";
 	      String from = "salon.management.system@gmail.com";
 	      
 	      Properties props = createConfiguration();

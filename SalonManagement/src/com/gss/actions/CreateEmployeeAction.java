@@ -37,30 +37,51 @@ public class CreateEmployeeAction extends ActionSupport{
 	public String execute(){
 		
 		SendMail mail = new SendMail();
-		String path = file.getAbsolutePath();
 		EmployeeServiceImpl empService;
 		Employee emp;
 		
+		String path = "";
+		
+		String concatenatedName = null;
 		String[] unConvertedDate = strBirthdate.split("/");
+		String[] name = this.strEmpFirstName.split(" ");
+		
+		for(int i = 0; i < name.length; i++){
+			concatenatedName += name[i];
+		}
+		
+		String strUser = concatenatedName;
+		concatenatedName = "";
+		name = this.strEmpLastName.split(" ");
+		
+		for(int i = 0; i < name.length; i++){
+			concatenatedName += name[i];
+		}
+		
+		String strPass = concatenatedName;
+		
 		this.strBirthdate = new DateHelper().convert(unConvertedDate);
 		this.datEmpBirthdate = DateHelper.parseDate(strBirthdate);
 		
 		this.datEmpBirthdate = DateHelper.parseDate(strBirthdate);
-		System.out.print(strEmpEmail + "asdfadf");
+		
 		if(grantAccess == true){
-			System.out.print(grantAccess);
-			emp = new Employee(1, strEmpLastName.trim().toUpperCase(), strEmpFirstName.trim().toUpperCase(), strEmpMiddleName.trim().toUpperCase(), datEmpBirthdate, strEmpGender, strEmpAddress.trim().toUpperCase(), strEmpContactNo, strEmpEmail, "A", "NO ACCESS", "NO ACCESS", path, null, selectedJob);
+			
+			
+			emp = new Employee(1, strEmpLastName.trim().toUpperCase(), strEmpFirstName.trim().toUpperCase(), strEmpMiddleName.trim().toUpperCase(), datEmpBirthdate, strEmpGender, strEmpAddress.trim().toUpperCase(), strEmpContactNo, strEmpEmail, "A", "NO ACCESS", "NO ACCESS", file.getAbsolutePath(), null, selectedJob);
 			empService = new EmployeeServiceImpl();
 		}
 		else{
-			System.out.print(grantAccess);
-			emp = new Employee(1, strEmpLastName.trim().toUpperCase(), strEmpFirstName.trim().toUpperCase(), strEmpMiddleName.trim().toUpperCase(), datEmpBirthdate, strEmpGender, strEmpAddress.trim().toUpperCase(), strEmpContactNo, strEmpEmail, "A", "NO ACCESS", "NO ACCESS", path, null, selectedJob);
+			
+			
+			emp = new Employee(1, strEmpLastName.trim().toUpperCase(), strEmpFirstName.trim().toUpperCase(), strEmpMiddleName.trim().toUpperCase(), datEmpBirthdate, strEmpGender, strEmpAddress.trim().toUpperCase(), strEmpContactNo, strEmpEmail, "A", "NO ACCESS", "NO ACCESS", file.getAbsolutePath(), null, selectedJob);
 			empService = new EmployeeServiceImpl();
 		}
 
 		if(empService.create(emp) == true)
 		{	
 			System.out.print("success");
+			mail.sendEmail(this.strEmpEmail, strUser, strPass);
 			return "success";
 		}
 		else
