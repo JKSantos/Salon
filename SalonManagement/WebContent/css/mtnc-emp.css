@@ -40,7 +40,7 @@
       
 
         .aside1 {
-          background: white;
+          background: transparent;
           border-radius: 1px;
           margin: 10px;
           text-align: center;
@@ -58,7 +58,16 @@
         }
 
         .aside2 {
-          background: white;
+          background: transparent;
+          border-radius: 1px;
+          margin: 10px;
+          text-align: center;
+          width: 30px;
+          height: 30%
+        }
+
+        .aside3 {
+          background: transparent;
           border-radius: 1px;
           margin: 10px;
           text-align: center;
@@ -80,7 +89,8 @@
           .main { flex: 2 0px; }
           
           .aside1 { order: 1; }
-          .main    { order: 2; }
-          .aside2 { order: 3; }
+          .aside2 { order: 2;}
+          .aside3 { order: 3;}
+          .main    { order: 4; }
           .footer  { order: 4; }
         }

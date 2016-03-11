@@ -7,7 +7,6 @@
 
   <head>
   <link type="text/css" rel="stylesheet" href="./css/materialize.css"/>
-  <link rel="stylesheet" href="./css/materialize.min.css"  media="screen,projection"/>
   <link type="text/css" rel="stylesheet" href="./css/mystyle.css"/>
   <link type="text/css" rel="stylesheet" href="./css/mtnc-emp.css"/>
 
@@ -18,7 +17,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   </head>
 
-  <body class="blue-grey lighten-5">
+  <body class="purple lighten-5">
   <div class="wrapper">
             <header class="headnav">
                 <ul id="slide-out" class="side-nav fixed z-depth-0">
@@ -33,7 +32,7 @@
                           <div class="collapsible-body">
                             <ul>
                               <li><a href="employeeMaintenance">Employee</a></li>
-                                      <li class="orange"><a href="productServiceMaintenance">Product & Service</a></li>
+                                      <li class="purple lighten-4"><a href="productServiceMaintenance">Product & Service</a></li>
                                       <li><a href="promoMaintenance">Promo</a></li>
                                       <li><a href="discountMaintenance">Discount</a></li>
                                       <li><a href="maintenance-package.jsp">Package</a></li>
@@ -60,8 +59,8 @@
 
         
                <nav class="z-depth-0">
-                 <div class="nav-wrapper orange">
-                   <a href="#!" class="brand-logo white-text" style="margin-left: 30px;">Salon Management System</a>
+                 <div class="nav-wrapper purple darken-4">
+                   <a href="#!" class="brand-logo purple-text text-lighten-5" style="margin-left: 30px;">Salon Management System</a>
                  
                    <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
                    <ul class="side-nav" id="mobile-demo">
@@ -72,7 +71,7 @@
                              <div class="collapsible-body">
                                <ul>
                                  <li><a href="employeeMaintenance">Employee</a></li>
-                                      <li class="orange"><a href="productServiceMaintenance">Product & Service</a></li>
+                                      <li class="purple lighten-4"><a href="productServiceMaintenance">Product & Service</a></li>
                                       <li><a href="promoMaintenance">Promo</a></li>
                                       <li><a href="discountMaintenance">Discount</a></li>
                                       <li><a href="maintenance-package.jsp">Package</a></li>
@@ -110,17 +109,15 @@
                     <div class="main z-depth-barts" style="margin-left: 20px; margin-right: 20px;">
                         <div class="col s12" style="margin-left: 20px; margin-right: 20px;">
                         <h3 class="grey-text text-darken-1">Product & Service Maintenance</h3>
-                        <a class="waves-effect waves-light modal-trigger btn-flat orange darken-3 left white-text" href="#create" style="margin-top: 50px; margin-left: 15px;">CREATE</a>
+                        <a class="waves-effect waves-light modal-trigger btn-flat purple darken-2 left white-text" href="#create" style="margin-top: 50px; margin-left: 15px;">CREATE</a>
                         <table id="example" class="display centered responsive-table highlight" cellspacing="0" width="100%" style="border: 1px solid #bdbdbd; padding: 10px;" rowspan="10">
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
-                                        <th>Name</th>
-                                        <th>Category</th>
-                                        <th>Price</th>
-                                        <th>Date of Creation</th>
-                                        <th>Status</th>
-                                        <th>Actions</th>
+                                        <th><center>Name</center></th>
+                                        <th><center>Category</center></th>
+                                        <th><center>Price</center></th>
+                                        <th><center>Status</center></th>
+                                        <th><center>Actions</center></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -130,13 +127,11 @@
                                        string = String.valueOf(prod.getIntProductID());
                                     %>
                                     <tr>
-                                        <td>${product.intProductID}</td>
-                                        <td>${product.strProductName}</td>
-                                        <td>Product</td>
-                                        <td>Php ${product.dblProductPrice}</td>
-                                        <td>01/01/01</td>
-                                        <td>${product.intProductStatus}</td>
-                                        <td><a class="waves-effect waves-light modal-trigger btn-flat transparent black-text" title="Update" href="#prod<%=string%>" style="padding: 0px;"><i class="material-icons">edit</i></a>
+                                        <td><center>${product.strProductName}</center></td>
+                                        <td><center>Product</center></td>
+                                        <td><center>Php ${product.dblProductPrice}</center></td>
+                                        <td><center>${product.intProductStatus}</center></td>
+                                        <td style="padding:0; margin: 0;"><a class="waves-effect waves-light modal-trigger btn-flat transparent black-text" title="Update" href="#prod<%=string%>" style="padding: 0px;"><i class="material-icons">edit</i></a>
                                         <a class="waves-effect waves-light modal-trigger btn-flat transparent red-text text-accent-4" href="#del<%=string%>" title="Deactivate"><i class="material-icons">delete</i></a>
                                         </td>
                                     </tr>
@@ -147,12 +142,10 @@
                                        strService = String.valueOf(serv.getIntServiceID());
                                     %>
                                     <tr>
-                                        <td>${service.intServiceID}</td>
-                                        <td>${service.strServiceName}</td>
-                                        <td>Service</td>
-                                        <td>Php ${service.dblServicePrice}</td>
-                                        <td>01/01/01</td>
-                                        <td>${service.intServiceStatus}</td>
+                                        <td><center>${service.strServiceName}</center></td>
+                                        <td><center>Service</center></td>
+                                        <td><center>Php ${service.dblServicePrice}</center></td>
+                                        <td><center>${service.intServiceStatus}</center></td>
                                         <td><a class="waves-effect waves-light modal-trigger btn-flat transparent black-text" title="Update" href="#serv<%=strService%>" style="padding: 0px;"><i class="material-icons">edit</i></a>
                                         <a class="waves-effect waves-light modal-trigger btn-flat transparent red-text text-accent-4" href="#del<%=strService%>" title="Deactivate"><i class="material-icons">delete</i></a>
                                         </td>
