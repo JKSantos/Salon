@@ -280,7 +280,7 @@
                                   <h3 class="grey-text text-darken-1">Update Product/Service</h3>
                                 </div>
                                 <div class="col s12">
-                                    <img name="upload" id="prodsvc" style="width: 150px; height: 150px; margin-top: 20px;" src="./img/packIcon.png" alt=""/>
+                                    <img name="upload" id="prodsvc" style="width: 150px; height: 150px; margin-top: 20px;" src="<s:url action='getImage'><s:param name='ImageID'><%=strProdID%></s:param><s:param name='type'>product</s:param></s:url>" alt=""/>
                                 </div>
                                 <div class="input-field col s5 offset-s4">
                                     <div class="file-field">
@@ -396,7 +396,7 @@
                                   <h3 class="grey-text text-darken-1">Update Product/Service</h3>
                                 </div>
                                 <div class="col s12">
-                                    <img name="upload" id="prodsvc" style="width: 150px; height: 150px; margin-top: 20px;" src="./img/packIcon.png" alt=""/>
+                                    <img name="upload" id="prodsvc" style="width: 150px; height: 150px; margin-top: 20px;" src="<s:url action='getImage'><s:param name='ImageID'><%=serviceID%></s:param><s:param name='type'>service</s:param></s:url>" alt=""/>
                                 </div>
                                 <div class="input-field col s5 offset-s4">
                                      <div class="file-field">

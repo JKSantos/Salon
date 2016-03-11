@@ -44,6 +44,7 @@ public class UpdateEmployeeAction extends ActionSupport{
 
 		this.datEmpBirthdate = DateHelper.parseDate(strBirthdate);
 		
+		System.out.println(strBirthdate);
 		if(imageName.equals("image")){
 			emp = new Employee(intEmpID, strEmpLastName.trim().toUpperCase(), strEmpFirstName.trim().toUpperCase(), strEmpMiddleName.trim().toUpperCase(), datEmpBirthdate, strEmpGender, strEmpAddress.trim().toUpperCase(), strEmpContactNo, strEmpEmail, "A", "NO ACCESS", "NO ACCESS", "Image", null, selectedJob);
 		}

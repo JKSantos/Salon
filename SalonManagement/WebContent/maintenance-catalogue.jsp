@@ -226,7 +226,7 @@
                                   <h3 class="grey-text text-darken-1">Update Catalogue</h3>
                                 </div>
                                 <div class="col s12">
-                                    <img name="updateCatalogue" id="updateCatalogue" style="width: 150px; height: 150px; margin-top: 20px;" src="./img/product.png" alt=""/>
+                                    <img name="updateCatalogue" id="updateCatalogue" style="width: 150px; height: 150px; margin-top: 20px;" src="<s:url action='getImage'><s:param name='ImageID'><%=catID2%></s:param><s:param name='type'>catalogue</s:param></s:url>" alt=""/>
                                 </div>
                                 <div class="input-field col s5 offset-s4">
                                     <div class="file-field">

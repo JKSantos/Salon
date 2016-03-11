@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<!--   <%@ taglib uri="/struts-tags" prefix="s" %>
+ <%@ taglib uri="/struts-tags" prefix="s" %>
   <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
   <%@ page import="com.gss.model.Employee" %>
   <%@ page import="com.gss.model.EmployeeCategory" %>
- -->
+ 
 <html ng-app>
   <head>
   <link type="text/css" rel="stylesheet" href="./css/materialize.css"/>
@@ -17,13 +17,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   </head>
 
+
   <body class="purple lighten-5">
-<!--   <%!
+   <%!
+
       String month = null;
       String gender = null;
       String position = null;
       String granAccess = null;
-  %> -->
+      %>
 
   <div class="wrapper">
             <header class="headnav">
@@ -237,7 +239,8 @@
                                           <label for="contact" style="margin-left: -35px;">Contact Number</label>
                                       </div>
                                       <div class="input-field col s12">
-                                          <input type="email" placeholder="Ex: salon@yahoo.com" class="validate tooltipped" required id="emailadd" data-position="bottom" data-delay="30" data-tooltip="Ex: salon@yahoo.com">
+                                          <input type="email" name="strEmpEmail"  placeholder="Ex: salon@yahoo.com" class="validate tooltipped" required id="emailadd" data-position="bottom" data-delay="30" data-tooltip="Ex: salon@yahoo.com">
+
                                           <label for="emailadd" class="active">Email<span class="red-text">*</span></label>
                                       </div>
                                       <div class="input-field col s12">
@@ -307,6 +310,32 @@
                         <form class="col s12" method="post" action="updateEmployee" enctype="multipart/form-data">
                           <div class="modal-content" style="padding-bottom: 0px !important;">
                             <!-- <div class="container"> -->
+<!--  
+<<<<<<< HEAD
+                            <div class="row">
+                              
+                                <div class="input-field col s12">
+                                  <h3 class="grey-text text-darken-1">Update Employee</h3>
+                                </div>
+                                <div class="input-field col s12">
+                                   <div class="col s4 offset-s4">
+                                       <img name="empupdatedImg" id="empupdatedImg" class="circle z-depth-1" style="width: 150px; height: 150px;" src="<s:url action='getImage'><s:param name='ImageID'>${employee.intEmpID}</s:param><s:param name='type'>employee</s:param></s:url>" alt=""/>
+                                   </div>
+                                </div>
+                                <div class="input-field col s3">
+                                  <input type="text" value="${employee.intEmpID}" name="intEmpID" id="intEmpID" style="color:black;">
+                                  <label for="intEmpID">ID</label>
+                                </div>
+                                <div class="input-field col s5 offset-s1">
+                                    <div class="file-field">
+                                          <div class="btn orange">
+                                            <span class="">Image</span>
+                                            <input name="upload" type="file" accept="image/.jpg, image/.png" onchange="loadUpdate(event)">
+                                          </div>
+                                          <div class="file-path-wrapper">
+                                            <input name="imageName" id="imageName" value="image" class="file-path validate" type="text">
+                                          </div>
+=======-->
                           <div class="wrapper">
                             <div class="input-field col s12">
                                   <h4 class="grey-text text-darken-1">Update Employee</h4>
@@ -315,7 +344,7 @@
                                   <!-- first -->
                                     <div class="row">
                                       <div class="input-field col s12">
-                                           <img name="empupdatedImg" id="empupdatedImg" class="circle" style="width: 200px; height: 200px;" src="./img/anon.jpg" alt=""/>
+                                           <img name="empupdatedImg" id="empupdatedImg" class="circle" style="width: 200px; height: 200px;" src="<s:url action='getImage'><s:param name='ImageID'>${employee.intEmpID}</s:param><s:param name='type'>employee</s:param></s:url>" alt=""/>
                                        </div>
                                        <div class="input-field col s12">
                                            <div class="file-field">
@@ -386,6 +415,7 @@
                                             <option value="F" <%out.println(female);%>>Female</option>
                                           </select>
                                           <label for="strEmpGender" class="active">Gender</label>
+<!--   >>>>>>> b2633a6b5ddcd994ad628d7876d08c54c233fe55-->
                                       </div>
                                       <div class="input-field col s1">
                                           <label style="margin-left: -3px; margin-top: 15px !important;" for="contact">(+63)</label>
@@ -478,7 +508,8 @@
                             <div class="modal-content">
                               <div class="row">
                                 <h5 class="red-text">Warning!</h5>
-                                <p class="center">Are you sure?</p>
+                                <p class="center">Are you sure you want to deactivate</p>
+                                <p class="center">${employee.strEmpFirstName} ${employee.strEmpLastName}?</p>
                                 <input type="hidden" size="10" name="intEmpID" value="${employee.intEmpID}">
                               </div>
                             </div>

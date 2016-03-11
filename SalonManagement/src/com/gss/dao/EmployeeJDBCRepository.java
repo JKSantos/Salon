@@ -18,6 +18,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.sql.Blob;
 import java.sql.Connection;
 public class EmployeeJDBCRepository implements EmployeeRepository{
 
@@ -45,6 +46,7 @@ public class EmployeeJDBCRepository implements EmployeeRepository{
 		String strEmpPassword;
 		String blobEmpPhoto;
 		byte[] bytActualImage;
+		Blob imageBlob;
 		
 		try{
 			
@@ -76,9 +78,12 @@ public class EmployeeJDBCRepository implements EmployeeRepository{
 				}
 				
 				blobEmpPhoto = "Empty";
-				bytActualImage = set.getBytes(13);
+				imageBlob = set.getBlob(13);
 				
-				Employee emp = new Employee(intEmpID, strEmpLastName, strEmpFirstName, strEmpMiddleName, datEmpBirthdate, strEmpGender, strEmpAddress, strEmpContactNo, strEmpEmail, strEmpStatus, strEmpUsername, strEmpPassword, blobEmpPhoto, bytActualImage, job);
+				int blobLength = (int) imageBlob.length();  
+				byte[] blobAsBytes = imageBlob.getBytes(1, blobLength);
+				
+				Employee emp = new Employee(intEmpID, strEmpLastName, strEmpFirstName, strEmpMiddleName, datEmpBirthdate, strEmpGender, strEmpAddress, strEmpContactNo, strEmpEmail, strEmpStatus, strEmpUsername, strEmpPassword, blobEmpPhoto, blobAsBytes, job);
 				
 				empList.add(emp);
 			}
@@ -184,7 +189,7 @@ public class EmployeeJDBCRepository implements EmployeeRepository{
 	@Override
 	public boolean createEmployee(Employee emp) {
 		
-		String strQuery1 = "CALL `createEmp`(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		String strQuery1 = "CALL `createEmp`(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		String strQuery2 = "CALL `createJobQualification`(?, ?);";
 		
 				

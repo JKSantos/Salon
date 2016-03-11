@@ -3,6 +3,7 @@ package com.gss.dao;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
+import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -98,8 +99,6 @@ public class ProductJDBCRepository implements ProductRepository{
 				dblPrice = set.getDouble(1);
 			}
 			
-			System.out.println(dblPrice + " " + product.getDblProductPrice() + " " + product.getIntProductID());
-			
 			if(dblPrice != product.getDblProductPrice()){
 				PreparedStatement pre2 = con.prepareStatement(strQuery2);
 				pre2.setInt(1, product.getIntProductID());
@@ -149,7 +148,9 @@ public class ProductJDBCRepository implements ProductRepository{
 				String strProductName = set.getString(3);
 				String strProductDesc = set.getString(4);
 				int intProductQuan = set.getInt(5);
-				byte[] actualPhoto = set.getBytes(6);
+				Blob blob = set.getBlob(6);
+				int blobLength = (int)blob.length();
+				byte[] actualPhoto = blob.getBytes(1, blobLength);
 				int intStatus = set.getInt(7);
 				String strPhotoPath = "";
 				
