@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html ng-app>
-  
+  <%@ taglib uri="/struts-tags" prefix="s" %>
+  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+  <%@ page import="com.gss.model.Package" %>
+  <%@ page import="com.gss.model.ProductPackage" %>
+  <%@ page import="com.gss.model.ServicePackage" %>
 
   <head>
   <link type="text/css" rel="stylesheet" href="./css/materialize.css"/>
@@ -33,7 +37,7 @@
                                       <li><a href="productServiceMaintenance">Product & Service</a></li>
                                       <li><a href="promoMaintenance">Promo</a></li>
                                       <li><a href="discountMaintenance">Discount</a></li>
-                                      <li class="orange"><a href="maintenance-package.jsp">Package</a></li>
+                                      <li class="orange"><a href="packageMaintenance">Package</a></li>
                                       <li><a href="catalogueMaintenance">Catalogue</a></li>
                                       <li><a href="extraChargeMaintenance">Extra Charge</a></li>
                             </ul>
@@ -116,22 +120,38 @@
                                         <th>Type</th>
                                         <th>Service/Product</th>
                                         <th>Description</th>
-                                        <th>Date of Creation</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                  <c:forEach items="${packageList}" var="pack">
+                                    <%
+                                        Package packge = (Package)pageContext.getAttribute("pack");
+                                        String type = "";
+                                        String packID = String.valueOf(packge.getIntPackageID());
+
+                                        if(packge.getIntPackageType() == 1){
+                                            type = "Event";
+                                        }
+                                        else if(packge.getIntPackageType() == 2){
+                                            type = "Home Service";
+                                        }
+                                        else{
+                                            type = "Walk-In";
+                                        }
+                                    %>
+
                                     <tr>
-                                        <td>1</td>
-                                        <td>Package 1</td>
-                                        <td>Event</td>
+                                        <td>${pack.intPackageID}</td>
+                                        <td>${pack.strPackageName}</td>
+                                        <td><%=type%></td>
                                         <td><button data-target="viewPackage" class="waves-effect waves-orange modal-view btn-flat orange lighten-4">View</button></td>
-                                        <td>description</td>
-                                        <td>01/01/01</td>
+                                        <td>${pack.strPackageDesc}</td>
                                         <td><button class="waves-effect waves-light btn-flat transparent black-text modal-trigger" title="Update" style="padding: 0px;" data-target="update" data-toggle="modal"><i class="material-icons">edit</i></button>
-                                        <a class="waves-effect waves-light modal-trigger btn-flat transparent red-text text-accent-4" href="#delete" title="Deactivate"><i class="material-icons">delete</i></a>
+                                        <a class="waves-effect waves-light modal-trigger btn-flat transparent red-text text-accent-4" href="#del<%=packID%>" title="Deactivate"><i class="material-icons">delete</i></a>
                                         </td>
                                     </tr>
+                                  </c:forEach>
                                 </tbody>
                             </table>
 
@@ -174,7 +194,7 @@
 
                       <!-- Modal Structure -->
                         <div id="create" class="modal modal-fixed-footer">
-                        <form class="col s12">
+                        <form class="col s12" method="get" action="createPackage">
                           <div class="modal-content">
                             <!-- <div class="container"> -->
                               <div class="wrapper">
@@ -186,23 +206,24 @@
                                                 <label class="red-text"> (*) Indicates required field</label>
                                             </div>
                                             <div class="input-field col s12">
-                                                <input type="text" class="validate" id="createPackageName" name="createPackageName" required>
+                                                <input type="text" class="validate" id="createPackageName" name="strPackageName" required>
                                                 <label for="createPackageName">Package Name <span class="red-text">*</span></label>
                                             </div>
                                             <div class="input-field col s12">
-                                                <textarea id="createPackageDesc" name="createPackageDesc" class="materialize-textarea" length="120"></textarea>
+                                                <textarea id="createPackageDesc" name="strPackageDesc" class="materialize-textarea" length="120"></textarea>
                                                 <label for="createPackageDesc">Description</label>
                                             </div>
                                             <div class="input-field col s6">
-                                              <select id="createPackageType">
+                                              <select id="createPackageType" name="intPackageType">
                                                 <option disabled selected>Choose</option>
-                                                <option value="event">Event</option>
-                                                <option value="home service">Home Service</option>
+                                                <option value="1">Event</option>
+                                                <option value="2">Home Service</option>
+                                                <option value="3">Walk-In</option>
                                               </select>
                                               <label for="createPackageType">Type <span class="red-text">*</span></label>
                                             </div>
-                                            <div class="input-field col s3 offset-s3">
-                                                <input type="text" class="validate right-align" id="createPackagePrice" name="createPackagePrice" required>
+                                            <div class="input-field col s3 offset-s3" >
+                                                <input name="dblPackagePrice" type="text" class="validate right-align" id="createPackagePrice" name="createPackagePrice" required>
                                                 <label for="createPackagePrice">Price <span class="red-text">*</span></label>
                                             </div>
                                     </div>
@@ -217,6 +238,9 @@
                                           <div class="input-field col s6" style="margin-top: -1px;">
                                               <select class="browser-default" id="createPackageService">
                                                     <option value="Choose..." disabled selected>Choose</option>
+                                                    <c:forEach items="${serviceList}" var="service">
+                                                        <option value="${service.strServiceName}">${service.strServiceName}</option>
+                                                    </c:forEach>
                                                 </select>
                                           </div>
                                           <div class="input-field col s3" style="margin-top: -1px;">
@@ -233,6 +257,9 @@
                                           <div class="input-field col s6" style="margin-top: -1px;">
                                               <select class="browser-default" id="createPackageProduct">
                                                     <option value="Choose..." disabled selected>Choose</option>
+                                                    <c:forEach items="${productList}" var="product">
+                                                        <option value="${product.strProductName}">${product.strProductName}</option>
+                                                    </c:forEach>
                                                 </select>
                                           </div>
                                           <div class="input-field col s3" style="margin-top: -1px;">
@@ -364,13 +391,18 @@
                           </form>
                     </div>
 
-
-                          <div id="delete" class="modal">
+                      <c:forEach items="${packageList}" var="pack">
+                          <%
+                              Package packss = (Package)pageContext.getAttribute("pack");
+                              int id = packss.getIntPackageID();
+                          %>
+                          <div id="del<%=id%>" class="modal">
                           <div class="container">
                             <div class="modal-content">
                               <div class="row">
                                 <h5 class="red-text">Warning!</h5>
-                                <p>Are you sure?</p>
+                                <p>Are you sure you want to deactivate</p>
+                                <p>${pack.strPackageName}</p>
                               </div>
                             </div>
                               <div class="col s12 center" style="margin-bottom: 30px;">
@@ -379,6 +411,7 @@
                               </div>
                             </div>
                       </div>
+                      </c:forEach>
 <!--                     <div class="aside aside2 z-depth-barts">
                      
                     </div> -->

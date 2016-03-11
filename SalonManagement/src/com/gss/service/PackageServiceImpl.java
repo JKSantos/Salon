@@ -29,4 +29,12 @@ public class PackageServiceImpl implements PackageService{
 		return repo.getAllPackage();
 	}
 
+	@Override
+	public boolean deactivatePackage(int packageID) {
+		
+		PackageRepository repo = new PackageJDBCRepository();
+		
+		return repo.deactivatePackage(packageID);
+	}
+
 }

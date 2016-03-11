@@ -36,7 +36,7 @@
                                       <li><a href="productServiceMaintenance">Product & Service</a></li>
                                       <li class="purple lighten-4"><a href="promoMaintenance">Promo</a></li>
                                       <li><a href="discountMaintenance">Discount</a></li>
-                                      <li><a href="maintenance-package.jsp">Package</a></li>
+                                      <li><a href="packageMaintenance">Package</a></li>
                                       <li><a href="catalogueMaintenance">Catalogue</a></li>
                                       <li><a href="extraChargeMaintenance">Extra Charge</a></li>
                             </ul>

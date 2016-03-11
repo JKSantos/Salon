@@ -30,13 +30,13 @@
                         <a class="collapsible-header"><b>Maintenance</b></a>
                           <div class="collapsible-body">
                             <ul>
-                              <li><a href="employeeMaintenance.action">Employee</a></li>
-                                      <li><a href="productServiceMaintenance.action">Product & Service</a></li>
-                                      <li><a href="maintenance-promo.jsp">Promo</a></li>
-                                      <li><a href="discountMaintenance.action">Discount</a></li>
-                                      <li><a href="maintenance-package.jsp">Package</a></li>
-                                      <li><a href="maintenance-catalogue.jsp">Catalogue</a></li>
-                                      <li><a href="extraChargeMaintenance.action">Extra Charge</a></li>
+                              <li><a href="employeeMaintenance">Employee</a></li>
+                                      <li><a href="productServiceMaintenance">Product & Service</a></li>
+                                      <li><a href="promoMaintenance">Promo</a></li>
+                                      <li><a href="discountMaintenance">Discount</a></li>
+                                      <li><a href="packageMaintenance">Package</a></li>
+                                      <li><a href="catalogueMaintenance">Catalogue</a></li>
+                                      <li><a href="extraChargeMaintenance">Extra Charge</a></li>
                             </ul>
                           </div>
                       </li>

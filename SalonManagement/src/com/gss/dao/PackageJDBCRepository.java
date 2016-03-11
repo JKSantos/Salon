@@ -326,4 +326,24 @@ public class PackageJDBCRepository implements PackageRepository{
 		}
 	}
 
+	@Override
+	public boolean deactivatePackage(int packageID) {
+		
+		Connection con = jdbc.getConnection();
+		String query = "Call deactivatePackage(?);";
+		
+		try{
+			
+			PreparedStatement pre = con.prepareStatement(query);
+			pre.setInt(1, packageID);
+			
+			pre.executeQuery();
+			return true;
+		}
+		catch(Exception e){
+			e.printStackTrace();
+			return false;
+		}
+	}
+
 }
