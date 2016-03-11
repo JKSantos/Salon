@@ -75,7 +75,6 @@
           height: 30%
         }
 
-
         @media all and (min-width: 600px) {
           .aside { flex: 1 auto; }
 
@@ -92,5 +91,5 @@
           .aside2 { order: 2;}
           .aside3 { order: 3;}
           .main    { order: 4; }
-          .footer  { order: 4; }
+          .footer  { order: 5; }
         }
