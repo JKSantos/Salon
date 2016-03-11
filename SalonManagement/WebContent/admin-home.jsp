@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
-  <link rel="stylesheet" href="./css/materialize.min.css"  media="screen,projection"/>
   <link type="text/css" rel="stylesheet" href="./css/materialize.css"/>
   <link type="text/css" rel="stylesheet" href="./css/mystyle.css"/>
   <link type="text/css" rel="stylesheet" href="./css/admin.css"/>
+
+  <link rel="stylesheet" type="text/css" href="./css/drag.css"/>
+  <link rel="stylesheet" type="text/css" href="./css/animate.css"/>
 
 <%@ taglib uri="/struts-tags" prefix="s" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -13,7 +15,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   </head>
 
-  <body class="blue-grey lighten-5">
+  <body class="purple lighten-5">
   <div class="wrapper">
         <header class="headnav">
                         <ul id="slide-out" class="side-nav fixed z-depth-0">
@@ -54,8 +56,8 @@
 
                 
                        <nav class="z-depth-0">
-                         <div class="nav-wrapper orange">
-                           <a href="#!" class="brand-logo white-text" style="margin-left: 30px;">Salon Management System</a>
+                         <div class="nav-wrapper purple darken-4">
+                           <a href="#!" class="brand-logo purple-text text-lighten-5" style="margin-left: 30px;">Salon Management System</a>
                          
                            <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
                            <ul class="side-nav" id="mobile-demo">
@@ -92,6 +94,13 @@
                          </div>
                        </nav>
                 </header>
+
+                <article>
+                <div class="wrapper">
+                  <div class="col s12 center" style="margin-top: 200px;">
+                    <button id="welcome" class="btn waves-effect waves-light purple darken-3 animated infinite rubberBand z-depth-3" style="width: 300px; height: 150px;font-size: 30px;">WELCOME</button>
+                  </div>
+                </div>
 
         <!-- <article>
           <div class="wrapper">
@@ -243,7 +252,19 @@
                     </div>
           </div>
         </article> -->
+        <div id="draggable" class="ui-widget-content fixed-action-btn horizontal transparent" style="border:0px !important; bottom: 45px; right: 24px; z-index: 1000px;">
+          <a class="btn-floating btn-large red">
+                <i class="large material-icons">mode_edit</i>
+              </a>
+              <ul>
+                <li><a class="btn-floating red"><i class="material-icons">insert_chart</i></a></li>
+                <li><a class="btn-floating yellow darken-1"><i class="material-icons">format_quote</i></a></li>
+                <li><a class="btn-floating green"><i class="material-icons">publish</i></a></li>
+                <li><a class="btn-floating blue"><i class="material-icons">attach_file</i></a></li>
+              </ul>
+        </div>
 
+        </article>
         
 
   </div>
@@ -256,63 +277,26 @@
   <!--Import jQuery before materialize.js-->
     <script type="text/javascript" src="./js/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="./js/materialize.min.js"></script>
+    <script type="text/javascript" src="./js/drag.js"></script>
     
     <script type="text/javascript">
       $( document ).ready(function(){
-
         $(".button-collapse").sideNav();
-            
-        
       });
     </script>
 
-    <!-- Upload image -->
-
-    <script text="text/javascript">
-      var loadFile = function(event) {
-        var output1 = document.getElementById('output1');
-        output1.src = URL.createObjectURL(event.target.files[0]);
-      };
-    </script>
-
-    <!-- Birthday -->
-
     <script>
-      $(document).ready(function() {
-          $('select').material_select();
-        });
+      $(function() {
+        $( "#draggable" ).draggable();
+      });
       </script>
 
-    <!--- Modal -->
+      <script type="text/javascript">
+      $('#welcome').addClass('animated infinite rubberBand');
+      </script>
 
-    <script type="text/javascript">
-        $(document).ready(function(){
-            // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
-            $('.modal-trigger').leanModal();
-          }); 
-    </script>
+    <!-- Upload image -->
 
-    <script type="text/javascript">
-          function checkPass(){
-            var pass1 = document.getElementById('password').value;
-            var pass2 = document.getElementById('conf-password').value;
-            var good = "#66cc66";
-            var bad = "#ff6666";
-
-            if(pass1 == pass2 && pass2 == pass1 && pass1 != null) {
-              document.getElementById('confirmMsg').style.color = good;
-              document.getElementById('confirmMsg').innerHTML = "Password Match!";
-              document.getElementById('savebtn').disabled = false;
-            }else{
-              document.getElementById('confirmMsg').style.color = bad;
-              document.getElementById('confirmMsg').style.color = bad;
-              document.getElementById('confirmMsg').innerHTML = "Password Do Not Match!";
-              document.getElementById('savebtn').disabled = true;
-            }
-          }
-    </script>
-   
- 
 
   </body>
 
