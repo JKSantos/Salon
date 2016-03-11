@@ -33,11 +33,12 @@
                             <ul>
                               <li><a href="employeeMaintenance">Employee</a></li>
                                       <li><a href="productServiceMaintenance">Product & Service</a></li>
+                                      <li><a href="maintenance-package.jsp">Package</a></li>
+                                      <li><a href="catalogueMaintenance">Catalogue</a></li>
                                       <li><a href="promoMaintenance">Promo</a></li>
                                       <li><a href="discountMaintenance">Discount</a></li>
-                                      <li><a href="packageMaintenance">Package</a></li>
-                                      <li><a href="catalogueMaintenance">Catalogue</a></li>
-                                      <li class="purple lighten-4"><a href="extraChargeMaintenance">Extra Charge</a></li>
+                                      <li><a href="extraChargeMaintenance">Charge</a></li>
+                                      <li class="purple lighten-4"><a href="maintenance-location.jsp">Location</a></li>
                             </ul>
                           </div>
                       </li>
@@ -72,11 +73,12 @@
                                <ul>
                                  <li><a href="employeeMaintenance">Employee</a></li>
                                       <li><a href="productServiceMaintenance">Product & Service</a></li>
-                                      <li><a href="promoMaintenance">Promo</a></li>
-                                      <li><a href="discountMaintenance">Discount</a></li>
                                       <li><a href="maintenance-package.jsp">Package</a></li>
                                       <li><a href="catalogueMaintenance">Catalogue</a></li>
-                                      <li class="purple lighten-4"><a href="extraChargeMaintenance">Extra Charge</a></li>
+                                      <li><a href="promoMaintenance">Promo</a></li>
+                                      <li><a href="discountMaintenance">Discount</a></li>
+                                      <li><a href="extraChargeMaintenance">Charge</a></li>
+                                      <li class="purple lighten-4"><a href="maintenance-location.jsp">Location</a></li>
                                </ul>
                              </div>
                          </li>
@@ -108,14 +110,14 @@
 
                     <div class="main z-depth-barts" style="margin-left: 20px; margin-right: 20px;">
                         <div class="col s12" style="margin-left: 20px; margin-right: 20px;">
-                        <h3 class="grey-text text-darken-1">Charge Maintenance</h3>
+                        <h3 class="grey-text text-darken-1">Location Maintenance</h3>
                         <a data-delay="30" data-position="bottom" data-tooltip="Create" class="waves-effect waves-light modal-trigger btn-flat purple darken-3 left white-text tooltipped" href="#create" style="margin-top: 50px; margin-left: 15px;"><i class="material-icons">add</i></a>
                         <a data-delay="30" data-position="bottom" data-tooltip="Archive" class="waves-effect waves-light modal-trigger btn-flat purple darken-3 left white-text tooltipped" href="#archive" style="margin-top: 50px; margin-left: 15px;"><i class="material-icons">archive</i></a>
                         <table id="example" class="display centered responsive-table highlight" cellspacing="0" width="100%" style="border: 1px solid #bdbdbd; padding: 10px;" rowspan="10">
                                 <thead>
                                     <tr>
-                                        <th><center>Charge Name</center></th>
-                                        <th><center>Description</center></th>
+                                        <th><center>Location</center></th>
+                                        <th><center>Price</center></th>
                                         <th><center>Status</center></th>
                                         <th><center>Action</center></th>
                                     </tr>
@@ -137,13 +139,13 @@
                                           String exID = String.valueOf(ext.getIntECID());
                                       %>
 
-                                        <td style="padding:0; margin:0;"><center>${extracharge.strECName}</center></td>
-                                        <td style="padding:0; margin:0;"><center>${extracharge.strECDetails}</center></td>
-                                        <td style="padding:0; margin:0;"><center>${extracharge.intECStatus}</center></td>
+                                        <td style="padding:0; margin:0;"><center>Location Name</center></td>
+                                        <td style="padding:0; margin:0;"><center>Price(Php)</center></td>
+                                        <td style="padding:0; margin:0;"><center>Location Status</center></td>
                                         <td class="center" style="padding:0; margin:0;">
-                                        <a data-delay="30" data-position="bottom" data-tooltip="View" class="tooltipped waves-effect waves-light modal-trigger btn-flat transparent black-text" href="#ec${extracharge.intECID}" style="padding-left: 10px;padding-right:10px; margin: 5px;">
+                                        <a data-delay="30" data-position="bottom" data-tooltip="View" class="tooltipped waves-effect waves-light modal-trigger btn-flat transparent black-text" href="#viewLocation" style="padding-left: 10px;padding-right:10px; margin: 5px;">
                                         <i class="material-icons">visibility</i></a>
-                                        <a data-delay="30" data-position="bottom" data-tooltip="Update" class="tooltipped waves-effect waves-light modal-trigger btn-flat transparent black-text" href="#ec${extracharge.intECID}" style="padding-left: 10px;padding-right:10px; margin: 5px;">
+                                        <a data-delay="30" data-position="bottom" data-tooltip="Update" class="tooltipped waves-effect waves-light modal-trigger btn-flat transparent black-text" href="#updateLocation" style="padding-left: 10px;padding-right:10px; margin: 5px;">
                                         <i class="material-icons">edit</i></a>
                                         <a data-delay="30" data-position="bottom" data-tooltip="Deactivate" class="tooltipped waves-effect waves-light modal-trigger btn-flat transparent red-text text-accent-4" href="#del<%=exID%>" style="padding-left: 10px;padding-right:10px; margin: 5px;">
                                         <i class="material-icons">delete</i></a>
@@ -161,18 +163,19 @@
                           <div class="modal-content">
                             <!-- <div class="container"> -->
                               <div class="wrapper">
-                                  <h4 class="grey-text text-darken-1" style="margin-bottom: 40px;">Create Charge</h4>
+                                  <h4 class="grey-text text-darken-1" style="margin-bottom: 40px;">Create Location</h4>
                                     <div class="row">
                                             <div class="input-field col s12" style="margin-bottom: 30px;">
                                                 <label class="red-text"> (*) Indicates required field</label>
                                             </div>
                                             <div class="input-field col s12" style="margin-top: 25px;">
-                                                <input type="text" class="validate tooltipped specialname" id="createEChargeName" name="strECName" required pattern="^[a-zA-Z\-'`\s]{5,}$" minlength="5" maxlength="15" data-delay="30" data-position="bottom" data-tooltip="Ex: Missing Equipments<br/>( At least 5 or more characters )" placeholder="Charge Name">
-                                                <label for="createEChargeName" class="active">Charge Name<span class="red-text">*</span></label>
+                                                <input type="text" class="validate tooltipped specialname" id="createLocationName"
+                                                name="strECName" required pattern="^[a-zA-Z\-.\s]{5,}$" minlength="5" maxlength="15" data-delay="30" data-position="bottom" data-tooltip="Ex: Sta. Mesa<br/>( At least 5 or more characters )" placeholder="LocationName">
+                                                <label for="createLocationName" class="active">Location Name<span class="red-text">*</span></label>
                                             </div>
-                                            <div class="input-field col s12">
-                                                <textarea id="createEChargeDesc" name="strECDetails" class="materialize-textarea tooltipped" maxlength="30" required minlength="5" data-delay="30" data-position="bottom" data-tooltip="Description" placeholder="Description"></textarea>
-                                                <label for="createEChargeDesc" class="active">Description<span class="red-text">*</span></label>
+                                            <div class="input-field col s6">
+                                                <input id="createEChargeDesc" name="strECDetails" class="materialize-textarea tooltipped" maxlength="15" required minlength="1" data-delay="30" data-position="bottom" data-tooltip="Base Price" placeholder="Price">
+                                                <label for="createEChargeDesc" class="active">Price<span class="red-text">*</span></label>
                                             </div>
                                     </div>
                               </div>
@@ -186,21 +189,21 @@
 
                       <c:forEach items="${ecList}" var="extra">
                         <div id="ec${extra.intECID}" class="modal modal-fixed-footer" style="width: 30% !important; height: 70% !important; max-height: 100% !important;">
-                        <form class="col s12" method="get" id="updateExtraForm" class="updateExtraForm" action="updateExtraCharge">
+                        <form class="col s12" method="get" id="updateLocationForm" class="updateExtraForm" action="updateExtraCharge">
                           <div class="modal-content">
                             <!-- <div class="container"> -->
                               <div class="wrapper">
-                                  <h4 class="grey-text text-darken-1" style="margin-bottom: 40px;">Update Charge</h4>
+                                  <h4 class="grey-text text-darken-1" style="margin-bottom: 40px;">Update Location</h4>
                                     <div class="row">
                                             <div class="input-field col s12">
                                                 <input type="hidden" name="intECID" value="${extra.intECID}">
 
-                                                <input id="updateEChargeName" name="strECName" type="text" value="${extra.strECName}" class="validate tooltipped specialname" pattern="^[a-zA-Z\-'`\s]{5,}$" placeholder="Charge Name" data-delay="30" data-position="bottom" data-tooltip="Ex: Missing Equipments<br/>( At least 5 or more characters )" minlength="5" maxlength="15">
-                                                <label for="updateEChargeName" class="active">Charge Name</label>
+                                                <input id="updateLocationName" name="strECName" type="text" value="${extra.strECName}" class="validate tooltipped specialname" pattern="^[a-zA-Z\-.\s]{5,}$" placeholder="Location Name" data-delay="30" data-position="bottom" data-tooltip="Ex: Sta. Mesa" minlength="5" maxlength="15">
+                                                <label for="updateLocationName" class="active">Location</label>
                                             </div>
-                                            <div class="input-field col s12">
-                                                <textarea id="updateEChargeDesc" name="strECDetails" class="materialize-textarea tooltipped" data-delay="30" data-position="bottom" data-tooltip="Description<br/>( At least 5 or more characters )" maxlength="30" minlength="5">${extra.strECDetails}</textarea>
-                                                <label for="updateEChargeDesc" class="active">Description</label>
+                                            <div class="input-field col s6">
+                                                <input id="updateLocationPrice" name="strECDetails" class="materialize-textarea tooltipped" data-delay="30" data-position="bottom" data-tooltip="Ex: 99.99" maxlength="30" minlength="5">
+                                                <label for="updateLocationPrice" class="active">Price</label>
                                             </div>
                                     </div>
                               </div>

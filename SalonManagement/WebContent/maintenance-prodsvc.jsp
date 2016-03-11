@@ -109,7 +109,7 @@
                     <div class="main z-depth-barts" style="margin-left: 20px; margin-right: 20px;">
                         <div class="col s12" style="margin-left: 20px; margin-right: 20px;">
                         <h3 class="grey-text text-darken-1">Product & Service Maintenance</h3>
-                        <a class="waves-effect waves-light modal-trigger btn-flat purple darken-2 left white-text tooltipped" href="#create" style="margin-top: 50px; margin-left: 15px;" data-delay="30" data-position="bottom" data-tiiltip="Create"><i class="material-icons">add</i></a>
+                        <a class="waves-effect waves-light modal-trigger btn-flat purple darken-2 left white-text tooltipped" href="#create" style="margin-top: 50px; margin-left: 15px;" data-delay="30" data-position="bottom" data-tooltip="Create"><i class="material-icons">add</i></a>
                         <a class="waves-effect waves-light modal-trigger btn-flat purple darken-2 left white-text tooltipped" href="#empArchive" style="margin-top: 50px; margin-left: 15px;" data-delay="30" data-position="bottom" data-tooltip="Archive"><i class="material-icons">archive</i></a>
                         <table id="example" class="display centered responsive-table highlight" cellspacing="0" width="100%" style="border: 1px solid #bdbdbd; padding: 10px;" rowspan="10">
                                 <thead>
@@ -235,7 +235,7 @@
 
                       <!-- Modal Structure -->
                         <div id="create" class="modal modal-fixed-footer">
-                        <form class="col s12" method="post" action="createProdServ" enctype="multipart/form-data">
+                        <form class="col s12" method="post" id="createProdSvcForm" action="createProdServ" enctype="multipart/form-data">
                           <div class="modal-content">
                             <!-- <div class="container"> -->
                             <div class="wrapper">
@@ -278,7 +278,7 @@
                                       <label for="strItemCate" class="active">Type<span class="red0text">*</span></label>
                                     </div>
                                     <div class="input-field col s12" style="margin-top: 28px !important;">
-                                      <input type="text" class="validate tooltipped" required id="prodsvcName" name="strItemName" placeholder="Product/Service Name" data-position="bottom" data-delay="30" data-tooltip="Ex: Item 1<br/> ( At least 3 or more characters )" pattern="^[a-zA-Z0-9\-\s]{3,}$" maxlength="15">
+                                      <input type="text" class="validate tooltipped specialprodsvc" required id="prodsvcName" name="strItemName" placeholder="Product/Service Name" data-position="bottom" data-delay="30" data-tooltip="Ex: Item 1<br/> ( At least 3 or more characters )" pattern="^[a-zA-Z0-9\-\s]{3,}$" maxlength="15">
                                       <label for="prodsvcName">Name<span class="red-text">*</span></label>
                                     </div>
                                     <div class="input-field col s12">
@@ -298,7 +298,7 @@
                                       <button data-target="addCategory" class="waves-effect waves-light btn-flat modal-category purple lighten-1"><i class="material-icons white-text">add</i></button>
                                     </div>
                                     <div class="input-field col s6" style="margin-top: 28px !important;">
-                                        <input type="text" class="validate right-align tooltipped" id="prodsvcPrice" name="dblItemPrice" required placeholder="999.99" data-position="bottom" data-delay="30" data-tooltip="Ex: 999.99<br/>( Numbers only )">
+                                        <input type="text" class="validate right-align tooltipped" id="prodsvcPrice" name="dblItemPrice" required placeholder="999.99" data-position="bottom" data-delay="30" data-tooltip="Ex: 99.99<br/>( Numbers only )">
                                         <label for="prodsvcPrice" class="active">Price<span class="red-text">*</span></label>
                                     </div>
                                 </div>
@@ -317,7 +317,7 @@
 
                     <!-- add category BEGIN -->
                           <div id="addCategory" class="modal" style="margin-top: 30px;">
-                            <form>
+                            <form id="createAddCat">
                               <div class="modal-content">
                                 <h4>Add Another Category</h4>
                                 <div class="row">
@@ -334,7 +334,7 @@
                                       <label for="createAddCategoryName" class="active">Category</label>
                                     </div>
                                     <div class="input-field col s8 offset-s2 center">
-                                      <button id="createAddCatBtn" disabled="disabled" class="modal-close waves-effect waves-light purple darken-3 btn-flat white-text">SAVE</button>
+                                      <button id="createAddCatBtn" class="waves-effect waves-light purple darken-3 btn-flat white-text">SAVE</button>
                                       <button type="reset" value="Reset" class="modal-close waves-effect waves-purple transparent btn-flat white">CANCEL</button>
                                     </div>
                                   </div>
@@ -353,7 +353,7 @@
                            String productCate = prodID.getStrProductCategory();
                         %>
                         <div id="prod<%=strProdID%>" class="modal modal-fixed-footer" style="width: 60% !important; height: 80% !important; max-height: 100% !important;">
-                        <form class="col s12" method="get" action="updateItem" enctype="multipart/form-data">
+                        <form class="col s12" id="updateProdForm" method="get" action="updateItem" enctype="multipart/form-data">
                           <div class="modal-content">
                             <!-- <div class="container"> -->
                             <div class="wrapper">
@@ -365,13 +365,14 @@
                                 <div class="row">
                               <!-- 1st aside -->
                                   <div class="col s12">
-                                      <img name="prodsvcCreate" id="prodsvcCreate" style="width: 200px; height: 200px; margin-top: 20px;" src="<s:url action='getImage'><s:param name='ImageID'><%=strProdID%></s:param><s:param name='type'>product</s:param></s:url>" alt="${product.strProductName}"/>
+                                  <input type="hidden" name="intItemID" value="${product.intProductID}">
+                                      <img name="updateProdImage" id="updateProdImage" style="width: 200px; height: 200px; margin-top: 20px;" src="<s:url action='getImage'><s:param name='ImageID'><%=strProdID%></s:param><s:param name='type'>product</s:param></s:url>" alt="${product.strProductName}"/>
                                   </div>
                                   <div class="input-field col s12">
                                       <div class="file-field">
                                             <div class="btn purple darken-3">
                                               <span class=""><i class="material-icons">add_a_photo</i></span>
-                                              <input name="upload" type="file" accept="image/.jpg, image/.png" onchange="ServiceImage(this)">
+                                              <input name="upload" type="file" accept="image/.jpg, image/.png" onchange="updateProdImg(event)">
                                             </div>
                                             <div class="file-path-wrapper">
                                               <input value="image" name="imageName" class="file-path validate" type="text">
@@ -394,9 +395,13 @@
                                       <label for="strItemCate" class="active">Type</label>
                                     </div>
                                     <div class="input-field col s12" style="margin-top: 28px !important;">
-                                    <input type="text" name="intItemID" value="${product.intProductID}">
+
+                                    <input type="hidden" name="intItemID" value="${product.intProductID}">
                                     
-                                      <input value="${product.strProductName}" type="text" class="validate tooltipped" id="prodsvcName" name="strItemName" placeholder="Product/Service Name" data-position="bottom" data-delay="30" data-tooltip="${product.strProductName}" pattern="^[a-zA-Z0-9\-\s]{3,}$" maxlength="15">
+<!--                                       <input value="${product.strProductName}" type="text" class="validate tooltipped" id="prodsvcName" name="strItemName" placeholder="Product/Service Name" data-position="bottom" data-delay="30" data-tooltip="${product.strProductName}" pattern="^[a-zA-Z0-9\-\s]{3,}$" maxlength="15">
+======= -->
+                                      <input value="${product.strProductName}" type="text" class="validate tooltipped specialprodsvc" id="prodsvcName" name="strItemName" placeholder="Product/Service Name" data-position="bottom" data-delay="30" data-tooltip="${product.strProductName}" pattern="^[a-zA-Z0-9\-\s]{3,}$" maxlength="15">
+
                                       <label for="prodsvcName">Name</label>
                                     </div>
                                     <div class="input-field col s12">
@@ -426,7 +431,7 @@
                                       <button data-target="addUpdateProdCategory" class="waves-effect waves-light btn-flat modal-updateCategory purple lighten-1"><i class="material-icons white-text">add</i></button>
                                     </div>
                                     <div class="input-field col s6" style="margin-top: 28px !important;">
-                                        <input value="${product.dblProductPrice}" type="text" class="validate right-align tooltipped" id="updateprodPrice" name="dblItemPrice" required placeholder="999.99" data-position="bottom" data-delay="30" data-tooltip="${product.dblProductPrice}">
+                                        <input value="${product.dblProductPrice}" type="text" class="validate right-align tooltipped specialprice" id="updateprodPrice" name="dblItemPrice" placeholder="999.99" data-position="bottom" data-delay="30" data-tooltip="${product.dblProductPrice}">
                                         <label for="updateprodPrice" class="active">Price</label>
                                     </div>
                                 </div>
@@ -464,17 +469,6 @@
                               <!-- 1st aside -->
                                   <div class="col s12">
                                       <img name="prodsvcCreate" id="prodsvcCreate" style="width: 200px; height: 200px; margin-top: 20px;" src="<s:url action='getImage'><s:param name='ImageID'><%=strProdID%></s:param><s:param name='type'>product</s:param></s:url>" alt="${product.strProductName}"/>
-                                  </div>
-                                  <div class="input-field col s12">
-                                      <div class="file-field">
-                                            <div class="btn purple darken-3">
-                                              <span class=""><i class="material-icons">add_a_photo</i></span>
-                                              <input disabled="disabled" name="upload" type="file" accept="image/.jpg, image/.png" onchange="ServiceImage(this)">
-                                            </div>
-                                            <div class="file-path-wrapper">
-                                              <input disabled="disabled" value="image" name="imageName" class="file-path validate" type="text">
-                                            </div>
-                                        </div>
                                   </div>
                                 </div>
                               </div>
@@ -573,7 +567,7 @@
                            String serviceCate = servID.getStrServiceCategory();
                         %>
                         <div id="serv<%=serviceID%>" class="modal modal-fixed-footer" style="width: 60% !important; height: 80% !important; max-height: 100% !important;">
-                        <form class="col s12" method="get" action="updateItem" enctype="multipart/form-data">
+                        <form class="col s12" method="get" id="updateServForm" action="updateItem" enctype="multipart/form-data">
                           <div class="modal-content">
                             <!-- <div class="container"> -->
                             <div class="wrapper">
@@ -585,13 +579,19 @@
                                 <div class="row">
                               <!-- 1st aside -->
                                   <div class="col s12">
+
                                       <img name="prodsvcCreate" id="prodsvcCreate" style="width: 200px; height: 200px; margin-top: 20px;" src="<s:url action='getImage'><s:param name='ImageID'><%=serviceID%></s:param><s:param name='type'>service</s:param></s:url>" alt="${service.strServiceName}"/>
+
+                                  <input type="hidden" name="intItemID" value="${service.intServiceID}">
+                                  <!-- <img name="updateSvcimg" id="updateSvcimg" style="width: 200px; height: 200px; margin-top: 20px;" src="<s:url action='getImage'><s:param name='ImageID'><%=serviceID%></s:param><s:param name='type'>service</s:param></s:url>" alt="${service.strServiceName}"/> -->
+
+<!-- >>>>>>> 769546141be516a2f7b753e00de41d578b9fe3f6 -->
                                   </div>
                                   <div class="input-field col s12">
                                       <div class="file-field">
                                             <div class="btn purple darken-3">
                                               <span class=""><i class="material-icons">add_a_photo</i></span>
-                                              <input name="fileUpload" type="file" accept="image/.jpg, image/.png" onchange="ServiceImage(this)">
+                                              <input name="upload" type="file" accept="image/.jpg, image/.png" onchange="LoadSvcImg(event)"/>
                                             </div>
                                             <div class="file-path-wrapper">
                                               <input value="image" name="imageName" class="file-path validate" type="text">
@@ -614,8 +614,11 @@
                                       <label for="strItemCate" class="active">Type</label>
                                     </div>
                                     <div class="input-field col s12" style="margin-top: 28px !important;">
+<!-- <<<<<<< HEAD
                                       <input type="text" name="intItemID" value="${service.intServiceID}">
                                       <input value="${service.strServiceName}" type="text" class="validate tooltipped" id="prodsvcName" name="strItemName" placeholder="Product/Service Name" data-position="bottom" data-delay="30" data-tooltip="${service.strServiceName}" pattern="^[a-zA-Z0-9\-\s]{3,}$" maxlength="15">
+======= -->
+                                      <input value="${service.strServiceName}" type="text" class="validate tooltipped specialprodsvc" id="prodsvcName" name="strItemName" placeholder="Product/Service Name" data-position="bottom" data-delay="30" data-tooltip="${service.strServiceName}" pattern="^[a-zA-Z0-9\-\s]{3,}$" maxlength="15">
                                       <label for="prodsvcName">Name</label>
                                     </div>
                                     <div class="input-field col s12">
@@ -645,7 +648,7 @@
                                       <button data-target="addUpdateServCategory" class="waves-effect waves-light btn-flat modal-updateCategory purple lighten-1"><i class="material-icons white-text">add</i></button>
                                     </div>
                                     <div class="input-field col s6" style="margin-top: 28px !important;">
-                                        <input value="${service.dblServicePrice}" type="text" class="validate right-align tooltipped" id="updateservPrice" name="dblItemPrice" required placeholder="999.99" data-position="bottom" data-delay="30" data-tooltip="${service.dblServicePrice}">
+                                        <input value="${service.dblServicePrice}" type="text" class="validate right-align tooltipped specialprice" id="updateservPrice" name="dblItemPrice" placeholder="999.99" data-position="bottom" data-delay="30" data-tooltip="${service.dblServicePrice}">
                                         <label for="updateservPrice" class="active">Price</label>
                                     </div>
                                 </div>
@@ -684,17 +687,6 @@
                                <!-- 1st aside -->
                                    <div class="col s12">
                                        <img name="prodsvcCreate" id="prodsvcCreate" style="width: 200px; height: 200px; margin-top: 20px;" src="<s:url action='getImage'><s:param name='ImageID'><%=serviceID%></s:param><s:param name='type'>service</s:param></s:url>" alt="${product.strProductName}"/>
-                                   </div>
-                                   <div class="input-field col s12">
-                                       <div class="file-field">
-                                             <div class="btn purple darken-3">
-                                               <span class=""><i class="material-icons">add_a_photo</i></span>
-                                               <input name="fileUpload" type="file" accept="image/.jpg, image/.png" onchange="ServiceImage(this)" disabled="disabled">
-                                             </div>
-                                             <div class="file-path-wrapper">
-                                               <input value="image" name="imageName" class="file-path validate" type="text" disabled="disabled">
-                                             </div>
-                                         </div>
                                    </div>
                                  </div>
                                </div>
@@ -869,6 +861,10 @@
     width: 40% !important;
   }
 
+  .error{
+    color: red;
+  }
+
   </style>
 
   <!--Import jQuery before materialize.js-->
@@ -879,6 +875,9 @@
     <script type="text/javascript" src="./js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="./js/bartstable.js"></script>
     <script type="text/javascript" src="./js/priceformat.js"></script>
+    <script type="text/javascript" src="./js/jquery.validate.js"></script>
+    <script type="text/javascript" src="./js/validation.js"></script>
+
 
     <script type="text/javascript">
     $('#prodsvcPrice').priceFormat({

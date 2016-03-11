@@ -12,6 +12,19 @@
       } );
 
     $(document).ready(function() {
+          $('#discArchTable').DataTable( {
+            "bLengthChange": false,
+            responsive: true,
+              columnDefs: [
+                  {
+                      targets: [ 0, 1, 2 ],
+                      className: 'mdl-data-table__cell--non-numeric'
+                  }
+              ]
+          } );
+      } );
+
+    $(document).ready(function() {
           $('#empArchiveTable').DataTable( {
             "bLengthChange": false,
             responsive: true,
@@ -26,6 +39,19 @@
 
     $(document).ready(function() {
           $('#prodsvcArchive').DataTable( {
+            "bLengthChange": false,
+            responsive: true,
+              columnDefs: [
+                  {
+                      targets: [ 0, 1, 2 ],
+                      className: 'mdl-data-table__cell--non-numeric'
+                  }
+              ]
+          } );
+      } );
+
+        $(document).ready(function() {
+          $('#carArchivetable').DataTable( {
             "bLengthChange": false,
             responsive: true,
               columnDefs: [
@@ -145,9 +171,14 @@ $('.tooltipped').tooltip({delay: 30});
         prodsvcCreate.src = URL.createObjectURL(event.target.files[0]);
       };
 
-      var loadUpdateProdSvc = function(event) {
-        var updateProdSvc = document.getElementById('updateProdSvc');
-        updateProdSvc.src = URL.createObjectURL(event.target.files[0]);
+      var updateProdImg = function(event) {
+        var updateProdImage = document.getElementById('updateProdImage');
+        updateProdImage.src = URL.createObjectURL(event.target.files[0]);
+      };
+
+      var LoadSvcImg = function(event) {
+        var updateSvcimg = document.getElementById('updateSvcimg');
+        updateSvcimg.src = URL.createObjectURL(event.target.files[0]);
       };
 
       var loadCreateCatalogue = function(event) {
@@ -499,67 +530,15 @@ $('.tooltipped').tooltip({delay: 30});
 
       // add another option BEGIN
       // EMPLOYEE BEGIN
-      $("#createAddPosition").click(function () {
-            var opt = $("#addOptionName").val();
-            $('#addOptionSelect')
-                .append($("<option></option>")
-                .attr("value", opt)
-                .text(opt));
+ 
 
-            $('#slct1')
-                .append($("<option selected></option>")
-                .attr("value", opt)
-                .text(opt));
-                alert("Successful!");
-        });
-
-      $("#updateAddPosition").click(function () {
-            var opt2 = $("#updateAddOptionName").val();
-            $('#updateAddOptionSelect')
-                .append($("<option></option>")
-                .attr("value", opt2)
-                .text(opt2));
-
-            $('.slct2')
-                .append($("<option selected></option>")
-                .attr("value", opt2)
-                .text(opt2));
-                alert("Successful!");
-        });
       // EMPLOYEE END
 
       // PRODUCT AND SERVICE BEGIN
-      $(document).ready(function(){
-        $("#createAddCatBtn").prop('disabled',true);
-        $("#createAddCategoryName").keyup(function(){
-            if($(this).val().length <3)
-                  $('#createAddCatBtn').prop('disabled', true);            
-            else{
-                  $('#createAddCatBtn').prop('disabled',false);
-                  $("#createAddCatBtn").prop('disabled', this.value=="" ? true:false);
-            }
-        });
-      });  
 
-      $("#createAddCatBtn").click(function () {
-            var opt = $("#createAddCategoryName").val();
-            var length = $("#createAddCategoryName").val().length;
-
-            if(length<3){
-
-            }
-
-            $('#createAddCategorySelect')
-                .append($("<option></option>")
-                .attr("value", opt)
-                .text(opt));
-
-            $('#createPSCategory')
-                .append($("<option selected></option>")
-                .attr("value", opt)
-                .text(opt));
-                alert("Successful!");
-        });
+      // $("#createAddCatBtn").click(function () {
+            
+      //   });
       // product
       $("#updateAddProdCatBtn").prop('disabled',true);
       $("#updateAddCatProdName").keyup(function(){

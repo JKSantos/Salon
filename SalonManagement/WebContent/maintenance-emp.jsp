@@ -123,8 +123,8 @@
                     <div class="main z-depth-barts" style="margin-left: 20px; margin-right: 20px;">
                         <div class="col s12" style="margin-left: 20px; margin-right: 20px;">
                         <h3 class="grey-text text-darken-1">Employee Maintenance</h3>
-                        <a class="waves-effect waves-light modal-trigger btn-flat purple darken-2 left white-text tooltipped" href="#create" style="margin-top: 50px; margin-left: 15px;" data-delay="30" data-position="bottom" data-tooltip="CREATE"><i class="material-icons">add</i></a>
-                        <a class="waves-effect waves-light modal-trigger btn-flat purple darken-2 left white-text tooltipped" href="#empArchive" style="margin-top: 50px; margin-left: 15px;" data-delay="30" data-position="bottom" data-tooltip="ARCHIVE"><i class="material-icons">archive</i></a>
+                        <a class="waves-effect waves-light modal-trigger btn-flat purple darken-2 left white-text tooltipped" href="#create" style="margin-top: 50px; margin-left: 15px;" data-delay="30" data-position="bottom" data-tooltip="Create"><i class="material-icons">add</i></a>
+                        <a class="waves-effect waves-light modal-trigger btn-flat purple darken-2 left white-text tooltipped" href="#empArchive" style="margin-top: 50px; margin-left: 15px;" data-delay="30" data-position="bottom" data-tooltip="Archive"><i class="material-icons">archive</i></a>
                         <table id="example" class="display centered responsive-table highlight" cellspacing="0" width="100%" style="border: 1px solid #bdbdbd; padding: 10px;" rowspan="10">
                                 <thead>
                                     <tr>
@@ -249,16 +249,16 @@
                                              <label class="red-text left">(*) Indicates required field</label>
                                         </div>
                                         <div class="input-field col s12">
-                                            <input name="strEmpFirstName" placeholder="Ex: Benigno" id="strEmpFirstName" type="text" class="validate tooltipped" required data-position="bottom" data-delay="30" data-tooltip="Ex: Benigno<br/>( At least 2 or more characters )" pattern="^[a-zA-Z\-'`\s]{2,}$" maxlength="15" minlength="2">
-                                            <label for="strEmpFirstName">First Name<span class="red-text"><b>*</b></span></label>
+                                            <input name="strEmpFirstName" placeholder="Ex: Benigno" id="strEmpFirstName" type="text" class="validate tooltipped specialname" required data-position="bottom" data-delay="30" data-tooltip="Ex: Benigno<br/>( At least 2 or more characters )" pattern="^[a-zA-Z\-'`\s]{2,}$" maxlength="15" minlength="2">
+                                            <label for="strEmpFirstName" class="active">First Name<span class="red-text"><b>*</b></span></label>
                                         </div>
                                         <div class="input-field col s12">
-                                            <input name="strEmpMiddleName" placeholder="Ex: Cojuangco" id="strEmpMiddleName" type="text" class="validate tooltipped" data-position="bottom" data-delay="30" data-tooltip="Ex: Cojuangco <br/>( At least 2 or more characters)" pattern="^[a-zA-Z\-'`\s]{2,}$" minlength="2">
-                                            <label for="strEmpMiddleName">Middle Name</label>
+                                            <input name="strEmpMiddleName" placeholder="Ex: Cojuangco" id="strEmpMiddleName" type="text" class="validate tooltipped specialname" data-position="bottom" data-delay="30" data-tooltip="Ex: Cojuangco <br/>( At least 2 or more characters)" pattern="^[a-zA-Z\-'`\s]{2,}$" minlength="2">
+                                            <label for="strEmpMiddleName" class="active">Middle Name</label>
                                         </div>
                                         <div class="input-field col s12">
-                                            <input name="strEmpLastName" placeholder="Ex: Aquino" id="strEmpLastName" type="text" class="validate tooltipped" required data-position="bottom" data-delay="30" data-tooltip="Ex: Aquino<br/> ( At least 2 or more characters )" pattern="^[a-zA-Z\-'`\s]{2,}$" minlength="2">
-                                            <label for="strEmpLastName">Last Name<span class="red-text"><b>*</b></span></label>
+                                            <input name="strEmpLastName" placeholder="Ex: Aquino" id="strEmpLastName" type="text" class="validate tooltipped specialname" required data-position="bottom" data-delay="30" data-tooltip="Ex: Aquino<br/> ( At least 2 or more characters )" pattern="^[a-zA-Z\-'`\s]{2,}$" minlength="2">
+                                            <label for="strEmpLastName" class="active">Last Name<span class="red-text"><b>*</b></span></label>
                                         </div>
                                         <div class="input-field col s12">
                                             <input type="date" name="strBirthdate" placeholder="January 1, 1996" class="datepicker active tooltipped" id="createBirthday" required data-position="bottom" data-delay="30" data-tooltip="Ex: January/1/1996">
@@ -296,8 +296,8 @@
                                           <label for="createEmail" class="active">Email<span class="red-text">*</span></label>
                                       </div>
                                       <div class="input-field col s12">
-                                          <input name="strEmpAddress" placeholder="Ex: #20 Julian Eymard St. Sto.Nino Meycauayan, Bulacan" type="text" id="createAddress" minlength="10" class="validate tooltipped" required data-position="bottom" data-delay="30" data-tooltip="Ex: #20 Julian Eymard St. Sto.Nino Meycauayan, Bulacan<br/>( At least 10 or more characters )" pattern="[#+A-Za-z0-9\s.,-]{10,}">
-                                          <label for="createAddress">Address<span class="red-text">*</span></label>
+                                          <input name="strEmpAddress" placeholder="Ex: #20 Julian Eymard St. Sto.Nino Meycauayan, Bulacan" type="text" id="createAddress" minlength="10" class="validate tooltipped specialaddress" required data-position="bottom" data-delay="30" data-tooltip="Ex: #20 Julian Eymard St. Sto.Nino Meycauayan, Bulacan<br/>( At least 10 or more characters )" pattern="^[#+A-Za-z0-9\s.,-]{10,}$">
+                                          <label for="createAddress" class="active">Address<span class="red-text">*</span></label>
                                       </div>
                                       <div class="input-field col s8">
                                           <select class="browser-default" id="slct1" name="selectedJob" required>
@@ -323,14 +323,14 @@
                             </div>
                           <div class="modal-footer">
                               <button type="reset" value="Reset" class=" modal-action modal-close waves-effect waves-purple transparent btn-flat">CANCEL</button>
-                              <button onclick="ajax()" class="waves-effect waves-light purple darken-3 white-text btn-flat" type="submit" value="Submit">CREATE</button>
+                              <button class="waves-effect waves-light purple darken-3 white-text btn-flat" type="submit" value="Submit">CREATE</button>
                           </div>
                           </form>
                     </div>
 
                         <!-- add option -->
                         <div id="addOption" class="modal" style="margin-top: 30px;">
-                          <form>
+                          <form id="createOption">
                             <div class="modal-content">
                               <h4>Add Another Position</h4>
                               <div class="row">
@@ -343,11 +343,11 @@
                                     </select>
                                   </div>
                                   <div class="input-field col s8 offset-s2" style="margin-top: 20px;">
-                                    <input type="text" class="validate tooltipped" placeholder="Ex: Cashier" id="addOptionName" name="addOptionName" data-position="bottom" data-delay="30" data-tooltip="Ex: Cashier<br/>( At least 5 or more characters )" pattern="^[A-Za-z-\s]{5,}$">
+                                    <input type="text" class="validate tooltipped specialoption" placeholder="Ex: Cashier" id="addOptionName" name="addOptionName" data-position="bottom" data-delay="30" data-tooltip="Ex: Cashier<br/>( At least 5 or more characters )" pattern="^[A-Za-z-\s]{5,}$">
                                     <label for="addOptionName" class="active">Position</label>
                                   </div>
                                   <div class="input-field col s8 offset-s2 center">
-                                    <a href="" id="createAddPosition" class="modal-close waves-effect waves-light purple darken-3 btn-flat white-text">SAVE</a>
+                                    <button type="submit" value="Submit" id="createAddPosition" class="waves-effect waves-light purple darken-3 btn-flat white-text">SAVE</button>
                                     <a href="" class="modal-close waves-effect waves-purple transparent btn-flat white">CANCEL</a>
                                   </div>
                                 </div>
@@ -393,15 +393,15 @@
                                       <div class="row">
                                         <div class="input-field col s12" style="margin-top: 39px !important;">
                                         <input type="hidden" name="intEmpID" value="${employee.intEmpID}">
-                                            <input value="${employee.strEmpFirstName}" name="strEmpFirstName" placeholder="Ex: Benigno" id="strEmpFirstName" type="text" class="validate tooltipped" data-position="bottom" data-delay="30" data-tooltip="Ex: Benigno<br/>( Atleast 2 or more characters )" pattern="^[a-zA-Z\-'`\s]{2,}$" maxlength="20">
+                                            <input value="${employee.strEmpFirstName}" name="strEmpFirstName" placeholder="Ex: Benigno" id="strEmpFirstName" type="text" class="validate tooltipped specialname" data-position="bottom" data-delay="30" data-tooltip="Ex: Benigno<br/>( Atleast 2 or more characters )" pattern="^[a-zA-Z\-'`\s]{2,}$" maxlength="20">
                                             <label for="strEmpFirstName">First Name</label>
                                         </div>
                                         <div class="input-field col s12">
-                                            <input value="${employee.strEmpMiddleName}" name="strEmpMiddleName" placeholder="Ex: Cojuangco" id="strEmpMiddleName" type="text" class="validate tooltipped" data-position="bottom" data-delay="30" data-tooltip="Ex: Cojuangco <br/>( At least 2 or more characters)" pattern="^[a-zA-Z\-'`\s]{2,}$" maxlength="20">
+                                            <input value="${employee.strEmpMiddleName}" name="strEmpMiddleName" placeholder="Ex: Cojuangco" id="strEmpMiddleName" type="text" class="validate tooltipped specialname" data-position="bottom" data-delay="30" data-tooltip="Ex: Cojuangco <br/>( At least 2 or more characters)" pattern="^[a-zA-Z\-'`\s]{2,}$" maxlength="20">
                                             <label for="strEmpMiddleName">Middle Name</label>
                                         </div>
                                         <div class="input-field col s12">
-                                            <input value="${employee.strEmpLastName}" name="strEmpLastName" placeholder="Ex: Aquino" id="strEmpLastName" type="text" class="validate tooltipped" data-position="bottom" data-delay="30" data-tooltip="Ex: Aquino<br/> ( At least 2 or more characters )" pattern="^[a-zA-Z\-'`\s]{2,}$">
+                                            <input value="${employee.strEmpLastName}" name="strEmpLastName" placeholder="Ex: Aquino" id="strEmpLastName" type="text" class="validate tooltipped specialname" data-position="bottom" data-delay="30" data-tooltip="Ex: Aquino<br/> ( At least 2 or more characters )" pattern="^[a-zA-Z\-'`\s]{2,}$">
                                             <label for="strEmpLastName">Last Name</label>
                                         </div>
                                         <div class="input-field col s12">
@@ -455,7 +455,7 @@
                                           <label for="updateEmail" class="active">Email</label>
                                       </div>
                                       <div class="input-field col s12">
-                                          <input value="${employee.strEmpAddress}" name="strEmpAddress" placeholder="Ex: #20 Julian Eymard St. Sto.Nino Meycauayan, Bulacan" type="text" id="updateAddress" class="validate tooltipped" data-position="bottom" data-delay="30" data-tooltip="Ex: #20 Julian Eymard St. Sto.Nino Meycauayan, Bulacan<br/>( At least 10 or more characters )" pattern="[#+A-Za-z0-9\s.,-]{10,}">
+                                          <input value="${employee.strEmpAddress}" name="strEmpAddress" placeholder="Ex: #20 Julian Eymard St. Sto.Nino Meycauayan, Bulacan" type="text" id="updateAddress" class="validate tooltipped specialaddress" data-position="bottom" data-delay="30" data-tooltip="Ex: #20 Julian Eymard St. Sto.Nino Meycauayan, Bulacan<br/>( At least 10 or more characters )" pattern="[#+A-Za-z0-9\s.,-]{10,}">
                                           <label for="updateAddress" class="active">Address</label>
                                       </div>
                                       <div class="input-field col s8">
@@ -463,22 +463,22 @@
                                               <option value="" disabled selected> </option>
                                               <c:forEach items="${empCategory}" var="name">
                                                     <%
-                                                        String empPosition = null;
+                                                        String empPosition1 = null;
                                                         EmployeeCategory cate = (EmployeeCategory)pageContext.getAttribute("name");
                                                         if(cate.getStrCategoryName().equals(position)){
-                                                            empPosition = "selected";
+                                                            empPosition1 = "selected";
                                                         }
                                                         else{
-                                                            empPosition = "";
+                                                            empPosition1 = "";
                                                         }
                                                     %>
-                                                    <option value="${name.strCategoryName}" <%out.println(empPosition);%>>${name.strCategoryName }</option>
+                                                    <option value="${name.strCategoryName}" <%out.println(empPosition1);%>>${name.strCategoryName }</option>
                                                 </c:forEach> 
                                           </select>
                                           <label for="slct2" class="active">Position</label>
                                       </div>
                                       <div class="input-field col s4">
-                                        <button data-target="addOption" class="waves-effect waves-light btn-flat modal-option purple darken-1 white-text"><i class="material-icons">add</i></button>
+                                        <button data-target="updateOption" class="waves-effect waves-light btn-flat modal-option purple darken-1 white-text"><i class="material-icons">add</i></button>
                                       </div>
                                       <div class="input-field col s12 left-align" style="margin-top: -4px;">
                                               <input type="checkbox" id="access" name="access" />
@@ -512,17 +512,6 @@
                                     <div class="row">
                                       <div class="input-field col s12">
                                            <img name="empupdatedImg" id="empupdatedImg" class="circle" style="width: 200px; height: 200px;" src="<s:url action='getImage'><s:param name='ImageID'>${employee.intEmpID}</s:param><s:param name='type'>employee</s:param></s:url>" alt=""/>
-                                       </div>
-                                       <div class="input-field col s12">
-                                           <div class="file-field">
-                                                 <div class="btn purple darken-1">
-                                                   <span class="">Image</span>
-                                                   <input disabled="disabled" name="upload" type="file" accept="image/.jpg, image/.png" onchange="loadUpdate(event)">
-                                                 </div>
-                                                 <div class="file-path-wrapper">
-                                                   <input disabled="disabled" name="imageName" id="imageName" value="image" class="file-path validate" type="text">
-                                                 </div>
-                                             </div>
                                        </div>
                                     </div>
                                   </div>
@@ -599,7 +588,7 @@
                                           <label for="address">Address</label>
                                       </div>
                                       <div class="input-field col s12">
-                                          <select class="browser-default slct2" id="slct2" name="selectedJob" disabled="disabled">
+                                          <select class="browser-default" id="slct3" name="selectedJob" disabled="disabled">
                                               <option value="" disabled selected> </option>
                                               <c:forEach items="${empCategory}" var="name">
                                                     <%
@@ -615,7 +604,7 @@
                                                     <option value="${name.strCategoryName}" <%out.println(empPosition);%>>${name.strCategoryName }</option>
                                                 </c:forEach> 
                                           </select>
-                                          <label for="slct2" class="active">Position</label>
+                                          <label for="slct3" class="active">Position</label>
                                       </div>
                                       <div class="input-field col s12 left-align" style="margin-top: -4px;">
                                               <input type="checkbox" id="access" name="access" readonly />
@@ -636,7 +625,7 @@
 
                   <!-- update add option -->
                   <div id="updateOption" class="modal" style="margin-top: 30px;">
-                          <form>
+                          <form id="updateOptionForm">
                             <div class="modal-content">
                               <h4>Add Another Position</h4>
                               <div class="row">
@@ -649,11 +638,11 @@
                                     </select>
                                   </div>
                                   <div class="input-field col s8 offset-s2" style="margin-top: 20px;">
-                                    <input type="text" class="validate tooltipped" placeholder="Ex: Cashier" id="updateAddOptionName" name="updateAddOptionName" data-position="bottom" data-delay="30" data-tooltip="Ex: Cashier<br/>( Atleast 5 or more characters )" pattern="^[A-Za-z-\s]{5,}$">
+                                    <input type="text" class="validate tooltipped specialoption" placeholder="Ex: Cashier" id="updateAddOptionName" name="updateAddOptionName" data-position="bottom" data-delay="30" data-tooltip="Ex: Cashier<br/>( Atleast 5 or more characters )" pattern="^[A-Za-z-\s]{5,}$">
                                     <label for="updateAddOptionName" class="active">Position</label>
                                   </div>
                                   <div class="input-field col s8 offset-s2 center">
-                                    <a href="" id="updateAddPosition" class="modal-close waves-effect waves-light purple darken-3 btn-flat white-text">SAVE</a>
+                                    <button type="submit" value="Submit" id="updateAddPosition" class="waves-effect waves-light purple darken-3 btn-flat white-text">SAVE</button>
                                     <button type="reset" value="Reset" class="modal-close waves-effect waves-purple transparent btn-flat white">CANCEL</button>
                                   </div>
                                 </div>
@@ -733,12 +722,8 @@
     width: 40% !important;
   }
   
-  .form fieldset p label span.error { color: red; }
-  form.form { width: 30em; }
-  form.form label {
-    width: auto;
-    display: block;
-    float: none;
+  .error{
+    color: red;
   }
   </style>
 
@@ -751,110 +736,13 @@
     <script type="text/javascript" src="./js/bartstable.js"></script>
     <script type="text/javascript" src="./js/picker.date.js"></script>
     <script type="text/javascript" src="./js/jquery.validate.js"></script>
+    <script type="text/javascript" src="./js/validation.js"></script>
 
 
-    <script>
-    // only for demo purposes
-    $.createValidator.setDefaults({
-      submitHandler: function() {
-        Materialize.toast('Successfully Created!', 5000, 'green');
-        $(form).ajaxSubmit();
-      }
-    });
-
-
-    $().ready(function() {
-      // validate the form when it is submitted
-      var createValidator = $("#createEmpForm").validate({
-        errorPlacement: function(error, element) {
-          // Append error within linked label
-          $( element )
-            .closest( "form" )
-              .find( "label[for='" + element.attr( "id" ) + "']" )
-                .append( error );
-        },
-        errorElement: "span",
-        messages: {
-          strEmpFirstName: {
-            required: " (required)",
-            minlength: " (must be at least 2 characters)"
-          },
-          strEmpMiddleName: {
-            minlength: " (must be at least 2 characters)",
-          },
-          strEmpLastName: {
-            required: " (required)",
-            minlength: " (must be at least 2 characters)"
-          },
-          strBirthdate: {
-            required: " (requried)",
-          },
-          strEmpGender: {
-            required: " (required)"
-          },
-          strEmpContactNo: {
-            minlength: " (10 numbers only)",
-            maxlength: " (10 numbers only)"
-          },
-          strEmpEmail: {
-            required: " (required)"
-          },
-          strEmpAddress: {
-            required: " (required)",
-            minlength: " (must be at least 10 characters)"
-          },
-          selectedJob: {
-            required: " (required)"
-          }
-        }
-      });
-    });
-    </script>
+    
 
 
 
-    <script>
-    // $.updateValidator.setDefaults({
-        
-    //     }
-    //   });
-
-    $().ready(function() {
-      // validate the form when it is submitted
-      var updateValidator = $("#updateForm").validate({
-        submitHandler: function() {
-          Materialize.toast('Successfully Updated!', 5000, 'green');
-          $(form).ajaxSubmit();
-        },
-        errorPlacement: function(error, element) {
-          // Append error within linked label
-          $( element )
-            .closest( "form" )
-              .find( "label[for='" + element.attr( "id" ) + "']" )
-                .append( error );
-        },
-        errorElement: "span",
-        messages: {
-          strEmpFirstName: {
-            minlength: " (must be at least 2 characters)"
-          },
-          strEmpMiddleName: {
-            minlength: " (must be at least 2 characters)"
-          },
-          strEmpLastName: {
-            minlength: " (must be at least 2 characters)"
-          },
-          strEmpContactNo: {
-            minlength: " (10 numbers only)",
-            maxlength: " (10 numbers only)"
-          },
-          strEmpAddress: {
-            minlength: " (must be at least 10 characters)"
-          }
-        }
-      });
-    });
-    </script>
 
     <script>
       $('#deleteEmpForm').validate({
