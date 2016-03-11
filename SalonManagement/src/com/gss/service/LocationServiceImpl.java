@@ -26,19 +26,18 @@ public class LocationServiceImpl implements LocationService{
 	}
 
 	@Override
-	public boolean deactivateLocation(Location location) {
-		
-		LocationRepository repo = new LocationJDBCRepository();
-		
-		return repo.deactivateLocation(location);
-	}
-
-	@Override
 	public List<Location> getAllLocation() {
 		
 		LocationRepository repo = new LocationJDBCRepository();
 		
 		return repo.getAllLocation();
+	}
+
+	@Override
+	public boolean deactivateLocation(int intLocationID) {
+LocationRepository repo = new LocationJDBCRepository();
+		
+		return repo.deactivateLocation(intLocationID);
 	}
 
 }

@@ -36,6 +36,7 @@
                                       <li><a href="packageMaintenance">Package</a></li>
                                       <li><a href="catalogueMaintenance">Catalogue</a></li>
                                       <li><a href="extraChargeMaintenance">Extra Charge</a></li>
+                                      <li><a href="locationMaintenance">Location</a></li>
                                     </ul>
                                   </div>
                               </li>

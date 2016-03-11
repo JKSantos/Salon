@@ -169,5 +169,24 @@
 			<result name="failed">maintenance-package.jsp</result>
 		</action>
 		
+		<action name="locationMaintenance" class="com.gss.actions.LocationMaintenanceAction" method="execute">
+			<result name="success">maintenance-location.jsp</result>
+		</action>
+		
+		<action name="createLocation" class="com.gss.actions.CreateLocationMaintenanceAction" method="execute">
+			<result name="success">redirect-maintenance-location.jsp</result>
+			<result name="failed">maintenance-location.jsp</result>
+		</action>
+		
+		<action name="updateLocation" class="com.gss.actions.UpdateLocationAction">
+			<result name="success">redirect-maintenance-location.jsp</result>
+			<result name="failed">maintenance-location.jsp</result>
+		</action>  
+		
+		<action name="deactivateLocation" class="com.gss.actions.DeactivateLocation">
+			<result name="success">redirect-maintenance-location.jsp</result>
+			<result name="failed">maintenance-location.jsp</result>
+		</action>  
+		
 	</package>
 </struts>
