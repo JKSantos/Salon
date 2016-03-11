@@ -42,7 +42,7 @@ public class CreateEmployeeAction extends ActionSupport{
 		
 		String path = "";
 		
-		String concatenatedName = null;
+		String concatenatedName = "";
 		String[] unConvertedDate = strBirthdate.split("/");
 		String[] name = this.strEmpFirstName.split(" ");
 		

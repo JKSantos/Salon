@@ -48,7 +48,7 @@ public class TrialSendEmail {
 				private static final long serialVersionUID = 1L;
 				{
 					  put("mail.transport.protocol", "smtp");     
-					  put("mail.host", "smtp.gmail.com");  
+					  put("mail.host", "smtp.mail.yahoo.com");  
 					  put("mail.smtp.auth", "true");  
 					  put("mail.smtp.port", "465");  
 					  put("mail.debug", "true");  

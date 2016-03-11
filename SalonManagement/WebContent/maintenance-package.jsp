@@ -147,7 +147,7 @@
                                         <td><%=type%></td>
                                         <td><button data-target="viewPackage" class="waves-effect waves-orange modal-view btn-flat orange lighten-4">View</button></td>
                                         <td>${pack.strPackageDesc}</td>
-                                        <td><button class="waves-effect waves-light btn-flat transparent black-text modal-trigger" title="Update" style="padding: 0px;" data-target="update" data-toggle="modal"><i class="material-icons">edit</i></button>
+                                        <td><button class="waves-effect waves-light btn-flat transparent black-text modal-trigger" title="Update" style="padding: 0px;" data-target="upd<%=packID%>" data-toggle="modal"><i class="material-icons">edit</i></button>
                                         <a class="waves-effect waves-light modal-trigger btn-flat transparent red-text text-accent-4" href="#del<%=packID%>" title="Deactivate"><i class="material-icons">delete</i></a>
                                         </td>
                                     </tr>
@@ -297,7 +297,13 @@
                           </form>
                     </div>
 
-                        <div id="update" class="modal modal-fixed-footer">
+                      <c:forEach items="${packageList}" var="pack">
+                      <%
+                          Package pg = (Package)pageContext.getAttribute("pack");
+                          int id = pg.getIntPackageID();
+
+                      %>
+                        <div id="upd<%=id%>" class="modal modal-fixed-footer">
                         <form class="col s12">
                           <div class="modal-content">
                             <!-- <div class="container"> -->
@@ -307,23 +313,42 @@
                                     <div class="row">
                                             <h5 class="grey-text text-darken-1">Package Information</h5>
                                             <div class="input-field col s12">
-                                                <input type="text" class="validate" id="updatePackageName" name="updatePackageName" required>
+                                                <input value="${pack.strPackageName}" type="text" class="validate" id="updatePackageName" name="updatePackageName" required>
                                                 <label for="updatePackageName">Package Name</label>
                                             </div>
                                             <div class="input-field col s12">
-                                                <textarea id="updatePackageDesc" name="updatePackageDesc" class="materialize-textarea" length="120"></textarea>
+                                                <textarea id="updatePackageDesc" name="updatePackageDesc" class="materialize-textarea" length="120">${pack.strPackageDesc}</textarea>
                                                 <label for="updatePackageDesc">Description</label>
                                             </div>
+                                            <%
+                                                Package packge = (Package)pageContext.getAttribute("pack");
+                                       
+                                                String type1 = "";
+                                                String type2 = "";
+                                                String type3 = "";
+                                                System.out.print(packge.getIntPackageType() + "<<<");
+
+                                                if(packge.getIntPackageType() == 1){
+                                                  type1 = "selected";
+                                                } 
+                                                else if(packge.getIntPackageType() == 2){
+                                                  type2 = "selected";
+                                                }
+                                                else if(packge.getIntPackageType() == 3){
+                                                  type3 = "selected";
+                                                }
+                                            %>
                                             <div class="input-field col s6">
-                                              <select id="updatePackageType">
-                                                <option disabled selected>Choose</option>
-                                                <option value="event">Event</option>
-                                                <option value="home service">Home Service</option>
+                                              <select id="updatePackageType" name="intPackageType" autocomplete="off">
+                                                <option disabled>Choose</option>
+                                                <option value="1" <%out.println(type1);%>>Event</option>
+                                                <option value="2" <%out.println(type2);%>>Home Service</option>
+                                                <option valie="3" <%out.println(type3);%>>Walk-In</option>
                                               </select>
                                               <label for="createPackageType">Type</label>
                                             </div>
                                             <div class="input-field col s3 offset-s3">
-                                                <input type="text" class="validate right-align" id="updatePackagePrice" name="updatePackagePrice" required>
+                                                <input type="text" value="${pack.dblPackagePrice}" class="validate right-align" id="updatePackagePrice" name="updatePackagePrice" required>
                                                 <label for="updatePackagePrice">Price</label>
                                             </div>
                                     </div>
@@ -338,6 +363,9 @@
                                           <div class="input-field col s6" style="margin-top: -1px;">
                                               <select class="browser-default" id="updatePackageService">
                                                     <option value="Choose..." disabled selected>Choose</option>
+                                                    <c:forEach items="${serviceList}" var="service">
+                                                        <option value="${service.strServiceName}">${service.strServiceName}</option>
+                                                    </c:forEach>
                                                 </select>
                                           </div>
                                           <div class="input-field col s3" style="margin-top: -1px;">
@@ -354,6 +382,9 @@
                                           <div class="input-field col s6" style="margin-top: -1px;">
                                               <select class="browser-default" id="updatePackageProduct">
                                                     <option value="Choose..." disabled selected>Choose</option>
+                                                    <c:forEach items="${productList}" var="product">
+                                                        <option value="${product.strProductName}">${product.strProductName}</option>
+                                                    </c:forEach>
                                                 </select>
                                           </div>
                                           <div class="input-field col s3" style="margin-top: -1px;">
@@ -376,8 +407,14 @@
                                             </thead>
                                             <table class="highlight centered responsive-table" id="updatePackageTable">
                                             </table>
+                                                  <c:forEach items="${pack.serviceList}" var="service">
+                                                    <tr>
+                                                        <td>alsdlfak</td>
+                                                        <td>asdfaskd</td>
+                                                        <td>lksadflakj</td>
+                                                    </tr>
+                                                  </c:forEach>
                                             </table>
-                                            
                                           </div>
                                         <!-- end table -->
                                       </div>
@@ -390,6 +427,7 @@
                           </div>
                           </form>
                     </div>
+                  </c:forEach>
 
                       <c:forEach items="${packageList}" var="pack">
                           <%

@@ -358,7 +358,7 @@
                             <!-- <div class="container"> -->
                             <div class="wrapper">
                               <div class="input-field col s12">
-                                  <h4 class="grey-text text-darken-1">Update Product/Service</h4>
+                                  <h4 class="grey-text text-darken-1">Update Product</h4>
                               </div>
 
                               <div class="aside aside1 z-depth-0">
@@ -385,6 +385,7 @@
                                 <div class="row">
                               <!-- 2nd aside -->
                                     <div class="input-field col s12">
+                                    	
                                       <select name="strItemCate" class="browser-default" id="strItemCate">
                                         <option value="" disabled="disabled" selected></option>
                                         <option value="service">Service</option>
@@ -393,6 +394,8 @@
                                       <label for="strItemCate" class="active">Type</label>
                                     </div>
                                     <div class="input-field col s12" style="margin-top: 28px !important;">
+                                    <input type="text" name="intItemID" value="${product.intProductID}">
+                                    
                                       <input value="${product.strProductName}" type="text" class="validate tooltipped" id="prodsvcName" name="strItemName" placeholder="Product/Service Name" data-position="bottom" data-delay="30" data-tooltip="${product.strProductName}" pattern="^[a-zA-Z0-9\-\s]{3,}$" maxlength="15">
                                       <label for="prodsvcName">Name</label>
                                     </div>
@@ -453,7 +456,7 @@
                             <!-- <div class="container"> -->
                             <div class="wrapper">
                               <div class="input-field col s12">
-                                  <h4 class="grey-text text-darken-1">View Product/Service</h4>
+                                  <h4 class="grey-text text-darken-1">View Product</h4>
                               </div>
 
                               <div class="aside aside1 z-depth-0">
@@ -488,6 +491,7 @@
                                       <label for="strItemCate" class="active">Type</label>
                                     </div>
                                     <div class="input-field col s12" style="margin-top: 28px !important;">
+                                     
                                       <input value="${product.strProductName}" type="text" class="tooltipped" id="prodsvcName" name="strItemName" placeholder="Product/Service Name" data-position="bottom" data-delay="30" data-tooltip="${product.strProductName}" readonly>
                                       <label for="prodsvcName">Name</label>
                                     </div>
@@ -574,14 +578,14 @@
                             <!-- <div class="container"> -->
                             <div class="wrapper">
                               <div class="input-field col s12">
-                                  <h4 class="grey-text text-darken-1">Update Product/Service</h4>
+                                  <h4 class="grey-text text-darken-1">Update Service</h4>
                               </div>
 
                               <div class="aside aside1 z-depth-0">
                                 <div class="row">
                               <!-- 1st aside -->
                                   <div class="col s12">
-                                      <img name="prodsvcCreate" id="prodsvcCreate" style="width: 200px; height: 200px; margin-top: 20px;" src="<s:url action='getImage'><s:param name='ImageID'><%=serviceID%></s:param><s:param name='type'>service</s:param></s:url>" alt="${product.strProductName}"/>
+                                      <img name="prodsvcCreate" id="prodsvcCreate" style="width: 200px; height: 200px; margin-top: 20px;" src="<s:url action='getImage'><s:param name='ImageID'><%=serviceID%></s:param><s:param name='type'>service</s:param></s:url>" alt="${service.strServiceName}"/>
                                   </div>
                                   <div class="input-field col s12">
                                       <div class="file-field">
@@ -601,6 +605,7 @@
                                 <div class="row">
                               <!-- 2nd aside -->
                                     <div class="input-field col s12">
+                                        
                                       <select name="strItemCate" class="browser-default" id="strItemCate">
                                         <option value="" disabled="disabled" selected></option>
                                         <option value="service" selected>Service</option>
@@ -609,6 +614,7 @@
                                       <label for="strItemCate" class="active">Type</label>
                                     </div>
                                     <div class="input-field col s12" style="margin-top: 28px !important;">
+                                      <input type="text" name="intItemID" value="${service.intServiceID}">
                                       <input value="${service.strServiceName}" type="text" class="validate tooltipped" id="prodsvcName" name="strItemName" placeholder="Product/Service Name" data-position="bottom" data-delay="30" data-tooltip="${service.strServiceName}" pattern="^[a-zA-Z0-9\-\s]{3,}$" maxlength="15">
                                       <label for="prodsvcName">Name</label>
                                     </div>
