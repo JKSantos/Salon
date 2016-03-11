@@ -137,3 +137,33 @@ html, body {
      box-shadow: 0 1px 0 0 #ef5350;
    }
   
+
+@media only screen and (min-width : 601px) and (max-width : 1260px) {
+.toast {
+width: 50% !important;
+height: 10% !important;
+border-radius: 0 !important;
+  }
+}
+
+@media only screen and (min-width : 1261px) {
+.toast {
+width: 50% !important;
+height: 10% !important;
+border-radius: 0 !important; } }
+
+@media only screen and (min-width : 601px) and (max-width : 1260px) {
+#toast-container {
+min-width: 50% !important;
+bottom: 0% !important;
+top: 5% !important;
+right: 40% !important;
+left: 0% !important;} }
+
+@media only screen and (min-width : 1261px) {
+#toast-container {
+min-width: 50% !important;
+bottom: 0% !important;
+top: 5% !important;
+right: 40% !important;
+left: 0% !important; } }
