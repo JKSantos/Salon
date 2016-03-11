@@ -67,18 +67,18 @@ public class EmployeeJDBCRepository implements EmployeeRepository{
 				strEmpContactNo = set.getString(9);
 				strEmpEmail = set.getString(10);
 				strEmpStatus = set.getString(11);
-				if(set.getString(11) == null){
+				if(set.getString(12) == null){
 					strEmpUsername = "NO ACCESS";
 					strEmpPassword = "NO ACCESS";	
 				}
 				else
 				{
-					strEmpUsername = set.getString(11);
-					strEmpPassword = set.getString(12);
+					strEmpUsername = set.getString(12);
+					strEmpPassword = set.getString(13);
 				}
 				
 				blobEmpPhoto = "Empty";
-				imageBlob = set.getBlob(13);
+				imageBlob = set.getBlob(14);
 				
 				int blobLength = (int) imageBlob.length();  
 				byte[] blobAsBytes = imageBlob.getBytes(1, blobLength);
@@ -235,9 +235,7 @@ public class EmployeeJDBCRepository implements EmployeeRepository{
 	@Override
 	public boolean updateEmployee(Employee emp) {
 		
-		String strQuery1 = "CALL updateEmployee(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
-		String strQuery2 = "CALL createJobQualification(?, ?);";
-		String strQuery3 = "CALL updateJobQualification(?, ?, ?);";
+		String strQuery1 = "CALL updateEmployee(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 		
 		JDBCConnection jdbc = new JDBCConnection();
 		Connection con = jdbc.getConnection();

@@ -44,7 +44,7 @@ public class UpdateEmployeeAction extends ActionSupport{
 
 		this.datEmpBirthdate = DateHelper.parseDate(strBirthdate);
 		
-		System.out.println(strBirthdate);
+		System.out.println(intEmpID + "............");
 		if(imageName.equals("image")){
 			emp = new Employee(intEmpID, strEmpLastName.trim().toUpperCase(), strEmpFirstName.trim().toUpperCase(), strEmpMiddleName.trim().toUpperCase(), datEmpBirthdate, strEmpGender, strEmpAddress.trim().toUpperCase(), strEmpContactNo, strEmpEmail, "A", "NO ACCESS", "NO ACCESS", "Image", null, selectedJob);
 		}
@@ -55,7 +55,7 @@ public class UpdateEmployeeAction extends ActionSupport{
 		
 		if(empService.updateEmployee(emp) == true)
 		{	
-			System.out.println("EMPLOYEE WAS CREATED SUCCESSUFULLY");
+			System.out.println("EMPLOYEE WAS UPDATED SUCCESSUFULLY");
 			return "success";
 		}
 		else
@@ -205,4 +205,15 @@ public class UpdateEmployeeAction extends ActionSupport{
 	public void setStrBirthdate(String strBirthdate) {
 		this.strBirthdate = strBirthdate;
 	}
+
+
+	public String getStrEmpEmail() {
+		return strEmpEmail;
+	}
+
+
+	public void setStrEmpEmail(String strEmpEmail) {
+		this.strEmpEmail = strEmpEmail;
+	}
+	
 }

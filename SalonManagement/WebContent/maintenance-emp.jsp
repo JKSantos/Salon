@@ -214,7 +214,7 @@
                                             <label for="strEmpLastName">Last Name<span class="red-text"><b>*</b></span></label>
                                         </div>
                                         <div class="input-field col s12">
-                                            <input type="date" name="strBirthdate" placeholder="January 1, 1996" class="datepicker active tooltipped" id="createBirthday" required data-position="bottom" data-delay="30" data-tooltip="Ex: January 1, 1996">
+                                            <input type="date" name="strBirthdate" placeholder="January 1, 1996" class="datepicker active tooltipped" id="createBirthday" required data-position="bottom" data-delay="30" data-tooltip="Ex: January 1, 1996" required>
                                             <label for="createBirthday" class="active">Birthday<span class="red-text">*</span></label>
                                         </div>
                                         <div class="input-field col s12">
@@ -346,6 +346,7 @@
                                     <!-- second -->
                                       <div class="row">
                                         <div class="input-field col s12" style="margin-top: 39px !important;">
+                                        <input type="hidden" name="intEmpID" value="${employee.intEmpID}">
                                             <input value="${employee.strEmpFirstName}" name="strEmpFirstName" placeholder="Ex: Benigno" id="strEmpFirstName" type="text" class="validate tooltipped" data-position="bottom" data-delay="30" data-tooltip="Ex: Benigno<br/>( Atleast 2 or more characters )" pattern="^[a-zA-Z\-'`\s]{2,}$" maxlength="20">
                                             <label for="strEmpFirstName">First Name</label>
                                         </div>
@@ -358,7 +359,7 @@
                                             <label for="strEmpLastName">Last Name</label>
                                         </div>
                                         <div class="input-field col s12">
-                                            <input type="date" name="strBirthdate" placeholder="January 1, 1996" class="datepicker active tooltipped" id="createBirthday" data-position="bottom" data-delay="30" data-tooltip="Ex: January 1, 1996">
+                                            <input type="date" name="strBirthdate" placeholder="January 1, 1996" class="datepicker active tooltipped" id="createBirthday" data-position="bottom" data-delay="30" data-tooltip="Ex: January 1, 1996" required>
                                             <label for="createBirthday" class="active">Birthday</label>
                                         </div>
                                         <div class="input-field col s12">
@@ -404,7 +405,7 @@
                                           <label for="contact" style="margin-left: -35px;">Contact Number</label>
                                       </div>
                                       <div class="input-field col s12">
-                                          <input type="email" placeholder="Ex: salon@yahoo.com" class="validate tooltipped" id="emailadd" data-position="bottom" data-delay="30" data-tooltip="Ex: salon@yahoo.com">
+                                          <input type="email" value="${employee.strEmpEmail}" name="strEmpEmail" placeholder="Ex: salon@yahoo.com" class="validate tooltipped" id="emailadd" data-position="bottom" name="strEmpEmail" data-delay="30" data-tooltip="Ex: salon@yahoo.com">
                                           <label for="emailadd" class="active">Email</label>
                                       </div>
                                       <div class="input-field col s12">
@@ -544,7 +545,7 @@
                                           <label for="contact" style="margin-left: -35px;">Contact Number</label>
                                       </div>
                                       <div class="input-field col s12">
-                                          <input type="email" placeholder="Ex: salon@yahoo.com" class="tooltipped" id="emailadd" data-position="bottom" data-delay="30" data-tooltip="Ex: salon@yahoo.com" readonly>
+                                          <input type="email" value="${employee.strEmpEmail}" placeholder="Ex: salon@yahoo.com" class="tooltipped" id="emailadd" data-position="bottom" data-delay="30" data-tooltip="Ex: salon@yahoo.com" readonly>
                                           <label for="emailadd" class="active">Email</label>
                                       </div>
                                       <div class="input-field col s12">
