@@ -20,6 +20,14 @@
             }
           );
 
+        $('.modal-viewall').leanModal({
+              dismissible: true, // Modal can be dismissed by clicking outside of the modal
+              opacity: .9, // Opacity of modal background
+              in_duration: 400, // Transition in duration
+              out_duration: 400, // Transition out duration
+            }
+          );
+
 
   $('.modal-view').leanModal({
         dismissible: true, // Modal can be dismissed by clicking outside of the modal

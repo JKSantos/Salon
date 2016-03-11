@@ -9487,7 +9487,7 @@ select.browser-default {
 }
 
 select:disabled {
-  color: rgba(0, 0, 0, 0.3);
+  color: #424242;
 }
 
 .select-wrapper input.select-dropdown:disabled {
