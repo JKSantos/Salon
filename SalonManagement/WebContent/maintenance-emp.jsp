@@ -689,21 +689,41 @@
     <script type="text/javascript" src="./js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="./js/bartstable.js"></script>
     <script type="text/javascript" src="./js/picker.date.js"></script>
+    <script type="text/javascript" src="./js/jquery.validate.js"></script>
 
-    <script type="text/javascript">
-    function(){
-        getForm().submit({
-        waitMsg:'Saving Data...',
-        success: function(form, action) {
-          Ext.Msg.alert('Success', 'OK');
+    <script>
+    // only for demo purposes
+    $.validator.setDefaults({
+      submitHandler: function() {
+        alert("submitted!");
+      }
+    });
+
+    $().ready(function() {
+      // validate the form when it is submitted
+      var validator = $("#createEmpForm").validate({
+        errorPlacement: function(error, element) {
+          // Append error within linked label
+          $( element )
+            .closest( "form" )
+              .find( "label[for='" + element.attr( "id" ) + "']" )
+                .append( error );
         },
-        failure: function(form, action) {
-          Ext.Msg.alert('Error', 'Not OK');
+        errorElement: "span",
+        messages: {
+          strEmpFirstName: {
+            required: " (required)",
+            minlength: " (must be at least 3 characters)"
+          },
+          password: {
+            required: " (required)",
+            minlength: " (must be between 5 and 12 characters)",
+            maxlength: " (must be between 5 and 12 characters)"
+          }
         }
       });
-    }
+    });
     </script>
-
 
   </body>
 

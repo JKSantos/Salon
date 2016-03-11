@@ -711,8 +711,3 @@ $('.tooltipped').tooltip({delay: 30});
 
       });
 
-$document.ready(function(){
-  $("#createEmpForm").ajaxForm(function() {
-    alert("thanks");
-  });
-});
