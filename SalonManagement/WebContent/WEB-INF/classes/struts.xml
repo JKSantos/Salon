@@ -182,7 +182,7 @@
 			<result name="success">redirect-maintenance-location.jsp</result>
 			<result name="failed">maintenance-location.jsp</result>
 		</action>  
-		
+	 
 		<action name="deactivateLocation" class="com.gss.actions.DeactivateLocation">
 			<result name="success">redirect-maintenance-location.jsp</result>
 			<result name="failed">maintenance-location.jsp</result>

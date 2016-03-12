@@ -407,13 +407,30 @@
                                             </thead>
                                             <table class="highlight centered responsive-table" id="updatePackageTable">
                                             </table>
-                                                  <c:forEach items="${pack.serviceList}" var="service">
+
+                                                  <%
+                                                      Package sample = (Package)pageContext.getAttribute("pack");
+
+                                                      for(int i = 0; i < sample.getServiceList().size(); i++){
+                                                        ServicePackage serv = sample.getServiceList().get(i);
+                                                        out.println("<tr>");
+                                                          out.println("<td>" + serv.getService().getStrServiceName() + "</td>");
+                                                          out.println("<td>" + serv.getIntQuantity() + "</td>");
+                                                          out.println("<td>" + "aksdjfl" + "</td>");
+                                                      out.println("</tr>");
+
+                                                      }
+                                                  %>
+
+
+
+                                                  <!-- <c:forEach items="${pack.serviceList}" var="service">
                                                     <tr>
-                                                        <td>alsdlfak</td>
+                                                        <td>service.</td>
                                                         <td>asdfaskd</td>
                                                         <td>lksadflakj</td>
                                                     </tr>
-                                                  </c:forEach>
+                                                  </c:forEach> -->
                                             </table>
                                           </div>
                                         <!-- end table -->
