@@ -4,7 +4,6 @@
 
   <head>
   <link type="text/css" rel="stylesheet" href="./css/materialize.css"/>
-  <link rel="stylesheet" href="./css/materialize.min.css"  media="screen,projection"/>
   <link type="text/css" rel="stylesheet" href="./css/mystyle.css"/>
   <link type="text/css" rel="stylesheet" href="./css/mtnc-promo.css"/>
 
@@ -15,7 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   </head>
 
-  <body class="blue-grey lighten-5">
+  <body class="purple lighten-5">
   <div class="wrapper">
             <header class="headnav">
                 <ul id="slide-out" class="side-nav fixed z-depth-0">
@@ -31,10 +30,10 @@
                             <ul>
                               <li><a href="employeeMaintenance">Employee</a></li>
                                       <li><a href="productServiceMaintenance">Product & Service</a></li>
+                                      <li class="purple lighten-4"><a href="maintenance-package.jsp">Package</a></li>
+                                      <li><a href="catalogueMaintenance">Catalogue</a></li>
                                       <li><a href="promoMaintenance">Promo</a></li>
                                       <li><a href="discountMaintenance">Discount</a></li>
-                                      <li class="orange"><a href="maintenance-package.jsp">Package</a></li>
-                                      <li><a href="catalogueMaintenance">Catalogue</a></li>
                                       <li><a href="extraChargeMaintenance">Extra Charge</a></li>
                             </ul>
                           </div>
@@ -57,8 +56,8 @@
 
         
                <nav class="z-depth-0">
-                 <div class="nav-wrapper orange">
-                   <a href="#!" class="brand-logo white-text" style="margin-left: 30px;">Salon Management System</a>
+                 <div class="nav-wrapper purple darken-4">
+                   <a href="#!" class="brand-logo purple-text text-lighten-5" style="margin-left: 30px;">Salon Management System</a>
                  
                    <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
                    <ul class="side-nav" id="mobile-demo">
@@ -70,10 +69,10 @@
                                <ul>
                                  <li><a href="employeeMaintenance">Employee</a></li>
                                       <li><a href="productServiceMaintenance">Product & Service</a></li>
+                                      <li class="purple lighten-4"><a href="maintenance-package.jsp">Package</a></li>
+                                      <li><a href="catalogueMaintenance">Catalogue</a></li>
                                       <li><a href="promoMaintenance">Promo</a></li>
                                       <li><a href="discountMaintenance">Discount</a></li>
-                                      <li class="orange"><a href="maintenance-package.jsp">Package</a></li>
-                                      <li><a href="catalogueMaintenance">Catalogue</a></li>
                                       <li><a href="extraChargeMaintenance">Extra Charge</a></li>
                                </ul>
                              </div>
@@ -107,29 +106,26 @@
                     <div class="main z-depth-barts" style="margin-left: 20px; margin-right: 20px;">
                         <div class="col s12" style="margin-left: 20px; margin-right: 20px;">
                         <h3 class="grey-text text-darken-1">Package Maintenance</h3>
-                        <a class="waves-effect waves-light modal-trigger btn-flat orange darken-3 left white-text" href="#create" style="margin-top: 50px; margin-left: 15px;">CREATE</a>
+                        <a data-delay="30" data-position="bottom" data-tooltip="Create" class="tooltipped waves-effect waves-light modal-trigger btn-flat purple darken-3 left white-text" href="#create" style="margin-top: 50px; margin-left: 15px;"><i class="material-icons">add</i></a>
+                        <a data-delay="30" data-position="bottom" data-tooltip="Archive" class="tooltipped waves-effect waves-light modal-trigger btn-flat purple darken-3 left white-text" href="#archivePackage" style="margin-top: 50px; margin-left: 15px;"><i class="material-icons">archive</i></a>
                         <table id="example" class="display centered responsive-table highlight" cellspacing="0" width="100%" style="border: 1px solid #bdbdbd; padding: 10px;" rowspan="10">
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
-                                        <th>Package Name</th>
-                                        <th>Type</th>
-                                        <th>Service/Product</th>
-                                        <th>Description</th>
-                                        <th>Date of Creation</th>
-                                        <th>Actions</th>
+                                        <th><center>Package Name</center></th>
+                                        <th><center>Type</center></th>
+                                        <th><center>Price</center></th>
+                                        <th><center>Actions</center></th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>1</td>
-                                        <td>Package 1</td>
-                                        <td>Event</td>
-                                        <td><button data-target="viewPackage" class="waves-effect waves-orange modal-view btn-flat orange lighten-4">View</button></td>
-                                        <td>description</td>
-                                        <td>01/01/01</td>
-                                        <td><button class="waves-effect waves-light btn-flat transparent black-text modal-trigger" title="Update" style="padding: 0px;" data-target="update" data-toggle="modal"><i class="material-icons">edit</i></button>
-                                        <a class="waves-effect waves-light modal-trigger btn-flat transparent red-text text-accent-4" href="#delete" title="Deactivate"><i class="material-icons">delete</i></a>
+                                        <td style="padding:0; margin:0;"><center>Package 1</center></td>
+                                        <td style="padding:0; margin:0;"><center>Event</center></td>
+                                        <td style="padding:0; margin:0;"><center>Price</center></td>
+                                        <td class="center" style="padding:0; margin:0;">
+                                        <a href="#viewPackage" data-delay="30" data-position="bottom" data-tooltip="View" class="tooltipped waves-effect waves-purple modal-view btn-flat"><i class="material-icons" style="padding-left: 10px;padding-right:10px; margin: 5px;">visibility</i></a>
+                                        <a href="#update" data-delay="30" data-position="bottom" data-tooltip="Update" class="tooltipped waves-effect waves-purple btn-flat transparent black-text modal-trigger"  style="padding-left: 10px;padding-right:10px; margin: 5px;"><i class="material-icons">edit</i></a>
+                                        <a data-delay="30" data-position="bottom" data-tooltip="Deactivate" class="tooltipped waves-effect waves-purple modal-trigger btn-flat transparent red-text text-accent-4" href="#delete" style="padding-left: 10px;padding-right:10px; margin: 5px;"><i class="material-icons">delete</i></a>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -412,7 +408,7 @@
 
   <!--Import jQuery before materialize.js-->
     <script type="text/javascript" src="./js/jquery-2.1.1.min.js"></script>
-    <script type="text/javascript" src="./js/materialize.min.js"></script>
+    <script type="text/javascript" src="./js/materialize.js"></script>
     <script type="text/javascript" src="./js/angular.min.js"></script>
     <script type="text/javascript" src="./js/maintenance-emp.js"></script>
     <script type="text/javascript" src="./js/jquery.dataTables.min.js"></script>
