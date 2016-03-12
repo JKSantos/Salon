@@ -410,7 +410,8 @@ $("#updateDiscountForm").validate({
   errorElement: "span",
   rules: {
     strDiscountName: {
-      minlength: 5
+      minlength: 5,
+      required: true
     },
     strDiscountDetails: {
       minlength: 5
@@ -418,7 +419,8 @@ $("#updateDiscountForm").validate({
   },
   messages: {
     strDiscountName: {
-      minlength: " (Must be at least 5 characters)"
+      minlength: " (Must be at least 5 characters)",
+      required: " (Please fill this field)"
     },
     strDiscountDetails: {
       minlength: " (Must be at least 5 characters)"
@@ -461,7 +463,7 @@ $("#createCatalogueForm").validate({
   }
   
 });
-
+// |||||||||||||||||||||
 $("#updateCataForm").validate({
 
   submitHandler: function() {
@@ -478,17 +480,99 @@ $("#updateCataForm").validate({
   errorElement: "span",
   rules: {
     strCatalogueName: {
+      required: true,
       minlength: 5
     }
   },
   messages: {
     strCatalogueName: {
+      required: " (Fill the empty field)",
       minlength: " (Must be at least 5 characters)"
     }
   }
   
 });
-// |||||||||||||||||||||
+
+// "||||||||||||||||||||"
+$("#createExtraForm").validate({
+
+  submitHandler: function() {
+    Materialize.toast('Successfully Updated!', 5000, 'green');
+    $(form).ajaxSubmit();
+  },
+  errorPlacement: function(error, element) {
+    // Append error within linked label
+    $( element )
+      .closest( "form" )
+        .find( "label[for='" + element.attr( "id" ) + "']" )
+          .append( error );
+  },
+  errorElement: "span",
+  rules: {
+    strECName: {
+      required: true,
+      minlength: 5
+    },
+    strECDetails: {
+      required: true,
+      minlength: 5
+    }
+  },
+  messages: {
+    strECName: {
+      required: " (Required)",
+      minlength: " (Must be at least 5 characters)"
+    },
+    strECDetails: {
+      required: " (Required)",
+      minlength: " (Must be at least 5 characters)"
+    }
+  },
+});
+
+
+// \\\\\\\\\\\\\\\\\\\\\\
+
+
+$("#updateExtraForm").validate({
+
+
+
+  submitHandler: function() {
+    Materialize.toast('Successfully Updated!', 5000, 'green');
+    $(form).ajaxSubmit();
+  },
+  errorPlacement: function(error, element) {
+    // Append error within linked label
+    $( element )
+      .closest( "form" )
+        .find( "label[for='" + element.attr( "id" ) + "']" )
+          .append( error );
+  },
+  errorElement: "span",
+  rules: {
+    strECName: {
+      minlength: 5,
+      required: true
+    },
+    strECDetails: {
+      minlength: 5,
+      required: true
+    }
+  },
+  messages: {
+    strDiscountName: {
+      minlength: " (Must be at least 5 characters)",
+      required: " (Please fill this field)"
+    },
+    strDiscountDetails: {
+      minlength: " (Must be at least 5 characters)",
+      required: " (Please fill this field)"
+    }
+  }
+  
+});
+// |||||||||||||||||
 
         jQuery.validator.addMethod("specialname", function(value, element) {
              return this.optional(element) || /([a-zA-Z-`'\s])$/.test(value);

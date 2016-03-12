@@ -331,7 +331,7 @@
                             String cateType = cat3.getStrCatalogueType();
                         %>
                         <div id="cata<%=catID2%>" class="modal modal-fixed-footer" style="margin-top:-10px !important; width: 38% !important; height: 89% !important; max-height: 100% !important;">
-                        <form class="col s12" method="post" action="updateCatalogue" enctype="multipart/form-data" id="updateCataForm">
+                        <form class="col s12" id="updateCataForm" method="post" action="updateCatalogue" enctype="multipart/form-data">
                     <div class="modal-content">
                                                         <!-- <div class="container"> -->
                         <div class="row">
