@@ -252,7 +252,7 @@
                     </div>
           </div>
         </article> -->
-        <div id="draggable" class="ui-widget-content fixed-action-btn horizontal transparent" style="border:0px !important; bottom: 45px; right: 24px; z-index: 1000px;">
+        <div id="draggable" class="ui-widget-content fixed-action-btn horizontal transparent" style="border:0px !important; bottom: 45px; right: 24px; z-index: 100000px;">
           <a class="btn-floating btn-large red">
                 <i class="large material-icons">mode_edit</i>
               </a>
