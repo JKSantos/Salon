@@ -118,14 +118,30 @@
 													</div>
 
 													<div class="row">
-															<p class="red-text">(*) Includes required field</p>
+															<p class="red-text col s6">(*) Includes required field</p>
+															<p id="notify" class="red-text col s6"></p>
 													</div>
-
-												 <div class="input-field col s12">
+												<div class="row">
+													<div class="input-field col s6">
 														 <input type="number" class="validate" required id="reserve_headcount" maxlength="4" onkeyup="notifyStylist()">
 														 <label for="reserve_headcount">Head Count <span class="red-text">*</span></label>
-												 </div>
-													
+												 	</div>
+
+												 	
+												 	 <div class="input-field col s6">
+												 		 <select id="stylistlist" multiple>
+												 					 <option value="" disabled selected>Choose your option</option>
+												 					 <option value="">stylist1</option>
+												 					 <option value="">stylist2</option>
+												 					 <option value="">stylist3</option>
+												 					 <option value="">stylist4</option>
+												 					 <option value="">stylist5</option>
+												 					 <option value="">stylist6</option>
+												 		 </select>
+												 		 <label>Stylist Available</label>
+												  </div>
+												</div>
+
 												 <div class="row">
 														 <div class="input-field col s6">
 																 <select id="reserve_eventhome" onchange="enableService(this);">
@@ -168,80 +184,148 @@
 														 <input type="text" class="validate" required name="reserve_customername" id="reserve_customername">
 														 <label for="reserve_customername">Name <span class="red-text">*</span></label>
 												 </div>
-												 <div class="input-field col s12">
-														 <input type="text" class="validate" id="reserve_venue" required>
-														 <label for="reserve_venue">Venue <span class="red-text">*</span></label>
+
+												 <h6>Venue</h6>
+
+												 <div class="row">
+												 	<div class="input-field col s3">
+												 	<input id="houseNO" type="text" class="validate" name="student.address.strHouseNo" required>
+												 	<label for="houseNO">Number</label>
+												 	</div>
+
+												 	<div class="input-field col s3">
+												 	<input id="street" type="text" class="validate" name="student.address.strStreet" required>
+												 	<label for="street">Street</label>
+												 	</div>
+
+												 	<div class="input-field col s3">
+												 	<input id="brgy" type="text" class="validate" name="student.address.strBarangay" required>
+												 	<label for="brgy">Barangay</label>
+												 	</div>
+
+												 	<div class="input-field col s3">
+												 	<input placeholder="(optional)"id="subd" type="text" class="validate" name="student.address.strSubdivision">
+												 	<label for="subd">Subdivision</label>
+												 	</div>
+
+
+												 	<div class="input-field col s6">
+												 	   <select>
+												 	     <option value="" disabled selected>Choose your option</option>
+												 	     <option value="1">NCR</option>
+												 	     <option value="1">Region 1</option>
+												 	     <option value="2">Region 2</option>
+												 	     <option value="3">Region 3</option>
+												 	   </select>
+												 	   <label>Region</label>
+												 	 </div>
+
+												 	<div class="input-field col s6">
+												 	   <select>
+												 	     <option value="" disabled selected>Choose your option</option>
+												 	     <option value="1">Manila</option>
+												 	     <option value="1">Quezon City</option>
+												 	     <option value="2">Caloocan City</option>
+												 	     <option value="3">Valenzuela City</option>
+												 	   </select>
+												 	   <label>City</label>
+												 	 </div>
+
 												 </div>
 
 												 <div class="row">
-														<div class="input-field col s4">
-														 <select id="package-list"  class="browser-default">
-																	 <option value="" disabled selected>Choose your option</option>
-																	 <option value="Package 1">Package 1</option>
-																	 <option value="Package 2">Package 2</option>
-																	 <option value="Package 3">Package 3</option>
-																	 <option value="customize">Custom</option>
-														 </select>
-														 <!-- <label>Package Available</label> -->
+												 	<div class="col s6">
+												 		<div class="row">
+												 			<h6>Packages</h6>
+										 			 		<div class="input-field col s6">
+										 					 <select id="package-list"  class="browser-default">
+										 								 <option value="" disabled selected>Choose your option</option>
+										 								 <option value="Package 1">Package 1</option>
+										 								 <option value="Package 2">Package 2</option>
+										 								 <option value="Package 3">Package 3</option>
+										 								 <option value="customize">Custom</option>
+										 					 </select>
+										 					 <!-- <label>Package Available</label> -->
+										 					</div>
+
+										 					<div class="input-field col s6">
+										 						 <input type="number" class="validate" id="package_quantity">
+										 						 <label for="package_quantity">Quantity</label>
+										 					</div>
+
+										 					<div class="col s12 center">
+										 						 <button class="waves-effect waves-light btn col s4 center" onclick="addPackageToTable()"><i class="material-icons">add</i></button>
+										 					</div>
+												 		</div>
+												 		
+														<div class="row">
+																<h6>Services</h6>
+														 		<div class="input-field col s6">
+																 <select id="package-list"  class="browser-default">
+																			 <option value="" disabled selected>Choose your option</option>
+																			 <option value="Package 1">Package 1</option>
+																			 <option value="Package 2">Package 2</option>
+																			 <option value="Package 3">Package 3</option>
+																			 <option value="customize">Custom</option>
+																 </select>
+																 <!-- <label>Package Available</label> -->
+																</div>
+
+																<div class="input-field col s6">
+																	 <input type="number" class="validate" id="package_quantity">
+																	 <label for="package_quantity">Quantity</label>
+																</div>
+
+																<div class="col s12 center">
+																	 <button class="waves-effect waves-light btn col s4 center" onclick="addPackageToTable()"><i class="material-icons">add</i></button>
+																</div>
 														</div>
 
-														<div class="input-field col s4">
-															 <input type="number" class="validate" id="package_quantity">
-															 <label for="package_quantity">Quantity</label>
-														</div>
+														<div class="row">
+															<h6>Extra Charges</h6>
+										 			 		<div class="input-field col s6">
+										 					 <select id="charge-list"  class="browser-default">
+										 								 <option value="" disabled selected>Choose your option</option>
+										 								 <option value="Charge 1">Charge 1</option>
+										 								 <option value="Charge 2">Charge 2</option>
+										 								 <option value="Charge 3">Charge 3</option>
+										 								 <option value="customize">Charge</option>
+										 					 </select>
+										 					 <!-- <label>Package Available</label> -->
+										 					</div>
 
-														<div class="col s4" align="middle">
-															 <button class="waves-effect waves-light btn col s4" onclick="myFunction()">ADD</button>
-														</div>
-												 </div>							 
+										 					<div class="input-field col s6">
+										 						 <input type="number" class="validate" id="charge_price">
+										 						 <label for="charge_price">Price</label>
+										 					</div>
 
-														 <div class="row">
-															 <table class="center-aligned highlight" id="packageTable">
+										 					<div class="col s12 center">
+										 						 <button class="waves-effect waves-light btn col s4 center" onclick="addChargesToTable()"><i class="material-icons">add</i></button>
+										 					</div>
+												 		</div>
+												 	</div>
+
+												 	<div class="col s6">
+												 		<div class="row center">
+												 			<table class="centered highlight">
+												 				<thead>
+											 				        <tr>
+											 				            <th data-field="id">Name</th>
+											 				            <th data-field="name">Amount</th>
+											 				            <th data-field="price">Action</th>
+											 				        </tr>
+											 				      </thead>
+												 			</table>
+															 <table class="centered highlight bordered" id="packageTable">
 
 															 </table>
 														 </div>
-												 
-												 <div class="row">
-														<div class="input-field col s4" stype="margin-top: -10px;">
-														 <select id="servicelist" disabled="disabled" multiple>
-																	 <option value="" disabled selected>Choose your option</option>
-																	 <c:forEach items="${productList}" var="product">
-																		<option value="${product.intProductName}">{product.intProductName}</option>
-																	 </c:forEach>
-														 </select>
-														 <label>Service Available</label>
-														</div>
-
-														 <div class="input-field col s4">
-																 <input type="number" class="validate" id="package_quantity">
-																 <label for="service_quantity">Quantity</label>
-														 </div>
-
-														 <div class="col s4">
-															 <a class="waves-effect waves-light btn">ADD</a>
-														 </div>
-												 </div>
+												 	</div>	
+												 </div>							 		 
+											 
 														 <div id="div1">
 															 
 														 </div>
-
-												<div class="row">
-													<p id="notify"></p>
-												</div>
-															 
-												 <div class="input-field col s12">
-														 <select id="stylistlist" multiple>
-																	 <option value="" disabled selected>Choose your option</option>
-																	 <option value="">stylist1</option>
-																	 <option value="">stylist2</option>
-																	 <option value="">stylist3</option>
-																	 <option value="">stylist4</option>
-																	 <option value="">stylist5</option>
-																	 <option value="">stylist6</option>
-														 </select>
-														 <!-- <label>Stylist Available<span class="red-text">*</span></label> -->
-												 </div>
-												 
 											
 												<div class="row col s12 center">
 													 <a href="transactions-reservation.jsp" class=" modal-action modal-close waves-effect waves-orange transparent btn-flat">CANCEL</a>
@@ -264,7 +348,13 @@
 		<script type="text/javascript" src="./js/package.js"></script>
 		<script type="text/javascript" src="./js/datatables.min.js"></script>
 		<script type="text/javascript" src="./js/datatables.material.min.js"></script>
-		<script type="text/javascript" src="./js/addPackage.js"></script>
+		<script type="text/javascript" src="./js/addToTable.js"></script>
+
+		<script type="text/javascript">
+			$(document).ready(function() {
+			  $('select').material_select();
+			});
+		</script>
 
 		<script type="text/javascript">	
 			$(function () {
@@ -334,12 +424,6 @@
 				selectMonths: true, // Creates a dropdown to control month
 				selectYears: 15 // Creates a dropdown of 15 years to control year
 			});
-		</script>
-
-		<script type="text/javascript">
-		$(document).ready(function() {
-		    $('select').material_select();
-		  });
 		</script>
 
 		<script type="text/javascript">

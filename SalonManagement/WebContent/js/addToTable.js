@@ -1,5 +1,5 @@
 
-function myFunction(){
+function addPackageToTable(){
     var table = document.getElementById("packageTable");
     var packageType = $("#package-list").val();
     var packageQuant = $("#package_quantity").val();
@@ -13,6 +13,23 @@ function myFunction(){
     cell2.innerHTML = packageQuant;
     cell3.innerHTML = '<input id="Button" type="button" value="Remove" class = "waves-effect waves-light btn red" onclick="deleteRow(this)" />';
     var x = document.getElementById("package-list");
+        x.remove(x.selectedIndex);
+}
+
+function addChargesToTable(){
+    var table = document.getElementById("packageTable");
+    var chargeType = $("#charge-list").val();
+    var chargeQuantity = $("#charge_price").val();
+    var removeBtn = document.createElement('button');
+   
+    var row = table.insertRow(0);
+    var cell1 = row.insertCell(0);
+    var cell2 = row.insertCell(1);
+    var cell3 = row.insertCell(2); 
+    cell1.innerHTML = chargeType;
+    cell2.innerHTML = chargeQuantity;
+    cell3.innerHTML = '<input id="Button" type="button" value="Remove" class = "waves-effect waves-light btn red" onclick="deleteRow(this)" />';
+    var x = document.getElementById("charge-list");
         x.remove(x.selectedIndex);
 }
 
