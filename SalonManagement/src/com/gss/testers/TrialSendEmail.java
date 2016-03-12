@@ -15,7 +15,7 @@ public class TrialSendEmail {
 
 	 public static void main(String[] args)
 	   {    
-	      String to = "santos.jeffrey0023@gmail.com";
+	      String to = "labidabssy.jeffrey23@yahoo.com";
 	      String from = "salon.management.system@gmail.com";
 	      
 	      Properties props = createConfiguration();
@@ -48,7 +48,7 @@ public class TrialSendEmail {
 				private static final long serialVersionUID = 1L;
 				{
 					  put("mail.transport.protocol", "smtp");     
-					  put("mail.host", "smtp.gmail.com");  
+					  put("mail.host", "smtp.mail.yahoo.com");  
 					  put("mail.smtp.auth", "true");  
 					  put("mail.smtp.port", "465");  
 					  put("mail.debug", "true");  

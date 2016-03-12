@@ -93,12 +93,15 @@ public class PackageJDBCRepository implements PackageRepository{
 		
 		Connection con = jdbc.getConnection();
 		String strQuery1 = "CALL updatePackage(?, ?, ?, ?, ?, ?, ?)";
-		String strQuery2 = "CALL updateServicePackage(?, ?, ?)";
-		String strQuery3 = "CALL updateProductPackage(?, ?, ?)";
+		//String strQuery2 = "CALL updateServicePackage(?, ?, ?)";
+		//String strQuery3 = "CALL updateProductPackage(?, ?, ?)";
 		String strQuery4 = "SELECT * FROM tblServicePackage WHERE intPackageID = ? AND intPackageServiceStatus = 1;";
 		String strQuery5 = "SELECT * FROM tblProductPackage WHERE intPackageID = ? AND intProductPackageStatus = 1;";
 		String strQuery6 = "CALL createServicePackage(?, ?, ?)";
 		String strQuery7 = "CALL createProductPackage(?, ?, ?)";
+		String prohibitedQuery = "CALL deletePackageDetails(?);";
+		String strQuery2 = "CALL createProductPackage(?, ?, ?)";
+		String strQuery3 = "CALL createServicePackage(?, ?, ?)";
 		
 		List<ServicePackage> servicePackage = new ArrayList<ServicePackage>();
 		List<ProductPackage> productPackage = new ArrayList<ProductPackage>();
@@ -146,129 +149,33 @@ public class PackageJDBCRepository implements PackageRepository{
 			pre1.execute();
 			pre1.close();
 			
-			PreparedStatement pre2 = con.prepareStatement(strQuery4);
+			PreparedStatement pre2 = con.prepareStatement(prohibitedQuery);
 			pre2.setInt(1, pack.getIntPackageID());
-			ResultSet serviceSet = pre2.executeQuery();
-			
-			while(serviceSet.next()){
-				
-				intServID = serviceSet.getInt(1);
-				intSerivcePackageID = serviceSet.getInt(2);
-				intServiceID = serviceSet.getInt(3);
-				intServicQuantity = serviceSet.getInt(4);
-				intServicePackageStatus = serviceSet.getInt(5);
-			
-				List<Service> serviceList = serv.getAllService();
-				service = searchService.search(intServiceID, serviceList);
-				
-				servPack = new ServicePackage(intServID, service, intServicQuantity, intServicePackageStatus);
-				
-				servicePackage.add(servPack);
-
-			}
-			pre2.close();
-			serviceSet.close();
-			
-			PreparedStatement pre3 = con.prepareStatement(strQuery5);
-			pre3.setInt(1, pack.getIntPackageID());
-			ResultSet productSet = pre3.executeQuery();
-			
-			while(productSet.next()){
-				
-				intProdID = productSet.getInt(1);
-				intProductPackageID = productSet.getInt(2);
-				intProductID = productSet.getInt(3);
-				intProductQuantity = productSet.getInt(4);
-				intProductPackageStatus = productSet.getInt(5);
-				
-				List<Product> prodList = prod.getAllProducts();
-				product = searchProduct.search(intProductID, prodList);
-				
-				prodPack = new ProductPackage(intProdID, product, intProductQuantity, intProductPackageStatus);
-				
-				productPackage.add(prodPack);
-			}
-			pre3.close();
-			
-			deactivatedServices = searchService.compareServices(pack.getServiceList(), servicePackage);
-			deactivatedProducts = searchProduct.compareProducts(pack.getProductList(), productPackage);
-			
-			System.out.println("Old Package size: " + servicePackage.size());
+			pre2.execute();
 			
 			for(int intCtr = 0; intCtr < pack.getServiceList().size(); intCtr++){
-
-				if(spc.compare(pack.getServiceList().get(intCtr), servicePackage).equalsIgnoreCase("same")){
-					//do nothing
-				}
-				else if(spc.compare(pack.getServiceList().get(intCtr), servicePackage).equalsIgnoreCase("update"))
-				{
-					
-					PreparedStatement pre4 = con.prepareStatement(strQuery2);
-					pre4.setInt(1, pack.getServiceList().get(intCtr).getIntServicePackageID());
-					pre4.setInt(2, pack.getServiceList().get(intCtr).getIntStatus());
-					pre4.setInt(3, pack.getServiceList().get(intCtr).getIntQuantity());
-					
-					pre4.execute();
-				}
-				else{
-					System.out.print(pack.getServiceList().get(intCtr).getService().getIntServiceID());
-					PreparedStatement pre4 = con.prepareStatement(strQuery6);
-					pre4.setInt(1, pack.getIntPackageID());
-					pre4.setInt(2, pack.getServiceList().get(intCtr).getService().getIntServiceID());
-					pre4.setInt(3, pack.getServiceList().get(intCtr).getIntQuantity());
-					pre4.execute();
-				}
+				ServicePackage servicePack = pack.getServiceList().get(intCtr);
+				Service service1 = servicePack.getService();
+				System.out.println(service1.getIntServiceID());
+				PreparedStatement pre21 = con.prepareStatement(strQuery3);
+				pre21.setInt(1, pack.getIntPackageID());
+				pre21.setInt(2, service1.getIntServiceID());
+				pre21.setInt(3, servicePack.getIntQuantity());
+				pre21.execute();
+				pre21.close();
 			}
 			
-						
 			for(int intCtr = 0; intCtr < pack.getProductList().size(); intCtr++){
+				ProductPackage productPack = pack.getProductList().get(intCtr);
+				Product product1 = productPack.getProduct();
 				
-				if(ppc.compare(pack.getProductList().get(intCtr), productPackage) == "same"){
-					//do nothing
+				PreparedStatement pre21 = con.prepareStatement(strQuery2);
+				pre21.setInt(1, pack.getIntPackageID());
+				pre21.setInt(2, product1.getIntProductID());
+				pre21.setInt(3, productPack.getIntProductQuantity());
+				pre21.execute();
+				pre21.close();
 			}
-				else if(ppc.compare(pack.getProductList().get(intCtr), productPackage) == "update")
-				{
-					PreparedStatement pre4 = con.prepareStatement(strQuery3);
-					pre4.setInt(1, pack.getProductList().get(intCtr).getIntProductPackageID());
-					pre4.setInt(2, pack.getProductList().get(intCtr).getIntProductQuantity());
-					pre4.setInt(3, pack.getProductList().get(intCtr).getIntStatus());
-					
-					pre4.execute();
-				}
-				else{
-					PreparedStatement pre4 = con.prepareStatement(strQuery7);
-					pre4.setInt(1, pack.getIntPackageID());
-					pre4.setInt(2, pack.getProductList().get(intCtr).getProduct().getIntProductID());
-					pre4.setInt(3, pack.getProductList().get(intCtr).getIntProductQuantity());
-					
-					pre4.execute();
-				}
-			}
-			
-//			System.out.println(deactivatedServices.size());
-//			
-//			for(int i = 0; i < deactivatedServices.size(); i++){
-//				
-//				PreparedStatement update = con.prepareStatement(strQuery2);
-//				update.setInt(1, pack.getIntPackageID());
-//				update.setInt(2, 0);
-//				update.setInt(3, deactivatedServices.get(i).getIntQuantity());
-//				
-//				update.execute();
-//				update.close();
-//			}	
-//			
-//			System.out.println(deactivatedProducts.size());
-//			
-//			for(int i = 0; i < deactivatedProducts.size(); i++){
-//				PreparedStatement update = con.prepareStatement(strQuery3);
-//				update.setInt(1, deactivatedProducts.get(i).getIntProductPackageID());
-//				update.setInt(2, deactivatedProducts.get(i).getIntProductQuantity());
-//				update.setInt(3, 0);
-//				
-//				update.execute();
-//				update.close();
-//			}	
 			
 			con.close();
 			return true;
@@ -323,6 +230,26 @@ public class PackageJDBCRepository implements PackageRepository{
 		catch(Exception e){
 			e.printStackTrace();
 			return null;
+		}
+	}
+
+	@Override
+	public boolean deactivatePackage(int packageID) {
+		
+		Connection con = jdbc.getConnection();
+		String query = "Call deactivatePackage(?);";
+		
+		try{
+			
+			PreparedStatement pre = con.prepareStatement(query);
+			pre.setInt(1, packageID);
+			
+			pre.executeQuery();
+			return true;
+		}
+		catch(Exception e){
+			e.printStackTrace();
+			return false;
 		}
 	}
 

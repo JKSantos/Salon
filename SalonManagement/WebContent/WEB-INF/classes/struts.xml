@@ -150,5 +150,43 @@
 			<!-- <result name="success">maintenance-location.jsp</result>-->
 		</action>
 		
+		<action name="packageMaintenance" class="com.gss.actions.PackageMaintenance" method="execute">
+			<result name="success">maintenance-package.jsp</result>
+		</action>
+		
+		<action name="createPackage" class="com.gss.actions.CreatePackageAction">
+			<result name="success">redirect-maintenance-package.jsp</result>
+			<result name="failed">maintenance-package.jsp</result>
+		</action>
+		
+		<action name="deactivatePackage" class="com.gss.actions.DeactivatePackageAction" method="execute">
+			<result name="success">redirect-maintenance-package.jsp</result>
+			<result name="failed">maintenance-package.jsp</result>
+		</action>
+		
+		<action name="updatePackage" class="com.gss.actions.UpdatePackageAction" method="execute">
+			<result name="success">redirect-maintenance-package.jsp</result>
+			<result name="failed">maintenance-package.jsp</result>
+		</action>
+		
+		<action name="locationMaintenance" class="com.gss.actions.LocationMaintenanceAction" method="execute">
+			<result name="success">maintenance-location.jsp</result>
+		</action>
+		
+		<action name="createLocation" class="com.gss.actions.CreateLocationMaintenanceAction" method="execute">
+			<result name="success">redirect-maintenance-location.jsp</result>
+			<result name="failed">maintenance-location.jsp</result>
+		</action>
+		
+		<action name="updateLocation" class="com.gss.actions.UpdateLocationAction">
+			<result name="success">redirect-maintenance-location.jsp</result>
+			<result name="failed">maintenance-location.jsp</result>
+		</action>  
+		
+		<action name="deactivateLocation" class="com.gss.actions.DeactivateLocation">
+			<result name="success">redirect-maintenance-location.jsp</result>
+			<result name="failed">maintenance-location.jsp</result>
+		</action>  
+		
 	</package>
 </struts>

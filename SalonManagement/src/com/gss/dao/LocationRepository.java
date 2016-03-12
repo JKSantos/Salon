@@ -10,7 +10,7 @@ public interface LocationRepository {
 	
 	public boolean updateLocation(Location location);
 	
-	public boolean deactivateLocation(Location location);
+	public boolean deactivateLocation(int intLocationID);
 	
 	public List<Location> getAllLocation();
 

@@ -92,7 +92,7 @@ public class PromoJDBCRepository implements PromoRepository{
 		List<Promo> promoList = new ArrayList<Promo>();
 		String query = "SELECT * FROM tblPromo;";
 		String query2 = "SELECT * FROM tblServicePromo WHERE intPromoID = ? AND intPromoStatus = 1;";
-		String query3 = "SELECT * FROM tblServicePromo WHERE intPromoID = ? AND intPromoStatus = 1;";
+		String query3 = "SELECT * FROM tblProductPromo WHERE intProductPromoID = ? AND intPromoStatus = 1;";
 
 		Connection con = jdbc.getConnection();
 		

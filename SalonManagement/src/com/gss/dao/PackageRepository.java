@@ -12,4 +12,6 @@ public interface PackageRepository {
 	
 	public List<Package> getAllPackage();
 	
+	public boolean deactivatePackage(int packageID);
+	
 }

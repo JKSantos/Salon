@@ -38,13 +38,14 @@ public class LocationJDBCRepository implements LocationRepository{
 
 	public boolean updateLocation(Location location) {
 		Connection con = jdbc.getConnection();
-		String query = "CALL updateLocation(?, ?)";
+		String query = "CALL updateLocation(?, ?, ?)";
 		
 		try{
 			
 			PreparedStatement pre = con.prepareStatement(query);
-			pre.setString(1, location.getStrLocationName());
-			pre.setDouble(2, location.getDblLocationPrice());
+			pre.setInt(1, location.getIntLocationID());
+			pre.setString(2, location.getStrLocationName());
+			pre.setDouble(3, location.getDblLocationPrice());
 			
 			pre.execute();
 			pre.close();
@@ -58,16 +59,16 @@ public class LocationJDBCRepository implements LocationRepository{
 		}
 	}
 
-	public boolean deactivateLocation(Location location) {
+	public boolean deactivateLocation(int locationID) {
 
 
 		Connection con = jdbc.getConnection();
-		String query = "UPDATE tblLocation SET intLocationStatus = 1 WHERE intLocationID = ?";
+		String query = "UPDATE tblLocation SET intLocationStatus = 0 WHERE intLocationID = ?";
 		
 		try{
 			
 			PreparedStatement pre = con.prepareStatement(query);
-			pre.setInt(1, location.getIntLocationID());
+			pre.setInt(1, locationID);
 	
 			pre.execute();
 			pre.close();
