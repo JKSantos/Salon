@@ -11,6 +11,19 @@
           } );
       } );
 
+    $(document).ready(function() {
+          $('#empArchiveTable').DataTable( {
+            "bLengthChange": false,
+            responsive: true,
+              columnDefs: [
+                  {
+                      targets: [ 0, 1, 2 ],
+                      className: 'mdl-data-table__cell--non-numeric'
+                  }
+              ]
+          } );
+      } );
+
         // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
         $('.modal-trigger').leanModal({
               dismissible: false, // Modal can be dismissed by clicking outside of the modal
@@ -19,6 +32,13 @@
               out_duration: 400, // Transition out duration
             }
           );
+
+        $('.modal-archive').leanModal({
+          dismissible: true,
+          opacity: .9,
+          in_duration: 400,
+          out_duration: 400
+        });
 
         $('.modal-viewall').leanModal({
               dismissible: true, // Modal can be dismissed by clicking outside of the modal

@@ -46,7 +46,7 @@ public class CreateEmployeeAction extends ActionSupport{
 		this.datEmpBirthdate = DateHelper.parseDate(strBirthdate);
 		
 		this.datEmpBirthdate = DateHelper.parseDate(strBirthdate);
-		
+		System.out.print(strEmpEmail + "asdfadf");
 		if(grantAccess == true){
 			System.out.print(grantAccess);
 			emp = new Employee(1, strEmpLastName.trim().toUpperCase(), strEmpFirstName.trim().toUpperCase(), strEmpMiddleName.trim().toUpperCase(), datEmpBirthdate, strEmpGender, strEmpAddress.trim().toUpperCase(), strEmpContactNo, strEmpEmail, "A", "NO ACCESS", "NO ACCESS", path, null, selectedJob);
