@@ -109,7 +109,8 @@
                     <div class="main z-depth-barts" style="margin-left: 20px; margin-right: 20px;">
                         <div class="col s12" style="margin-left: 20px; margin-right: 20px;">
                         <h3 class="grey-text text-darken-1">Product & Service Maintenance</h3>
-                        <a class="waves-effect waves-light modal-trigger btn-flat purple darken-2 left white-text" href="#create" style="margin-top: 50px; margin-left: 15px;">CREATE</a>
+                        <a class="waves-effect waves-light modal-trigger btn-flat purple darken-2 left white-text tooltipped" href="#create" style="margin-top: 50px; margin-left: 15px;" data-delay="30" data-position="bottom" data-tiiltip="Create"><i class="material-icons">add</i></a>
+                        <a class="waves-effect waves-light modal-trigger btn-flat purple darken-2 left white-text tooltipped" href="#empArchive" style="margin-top: 50px; margin-left: 15px;" data-delay="30" data-position="bottom" data-tooltip="Archive"><i class="material-icons">archive</i></a>
                         <table id="example" class="display centered responsive-table highlight" cellspacing="0" width="100%" style="border: 1px solid #bdbdbd; padding: 10px;" rowspan="10">
                                 <thead>
                                     <tr>
@@ -133,10 +134,10 @@
                                         <a data-delay="30" data-position="bottom" data-tooltip="View" class="tooltipped waves-effect waves-purple modal-viewall btn-flat transparent black-text" href="#viewprod<%=string%>" style="padding-left: 10px;padding-right:10px; margin: 5px;">
                                         <i class="material-icons">visibility</i>
                                         </a>
-                                        <a class="waves-effect waves-purple modal-trigger btn-flat transparent black-text" title="Update" href="#prod<%=string%>" style="padding-left: 10px;padding-right:10px; margin: 5px;">
+                                        <a class="waves-effect waves-purple modal-trigger btn-flat transparent black-text tooltipped" href="#prod<%=string%>" style="padding-left: 10px;padding-right:10px; margin: 5px;" data-delay="30" data-position="bottom" data-tooltip="Update">
                                           <i class="material-icons">edit</i>
                                         </a>
-                                        <a class="waves-effect waves-purple modal-trigger btn-flat transparent red-text text-accent-4" href="#del<%=string%>" title="Deactivate" style="padding-left: 10px;padding-right:10px; margin: 5px;">
+                                        <a class="waves-effect waves-purple modal-trigger btn-flat transparent red-text text-accent-4 tooltipped" href="#del<%=string%>" style="padding-left: 10px;padding-right:10px; margin: 5px;" data-delay="30" data-position="bottom" data-tooltip="Deactivate">
                                           <i class="material-icons">delete</i>
                                         </a>
                                         </td>
@@ -155,10 +156,10 @@
                                         <a data-delay="30" data-position="bottom" data-tooltip="View" class="tooltipped waves-effect waves-purple modal-viewall btn-flat transparent black-text" href="#viewserv<%=strService%>" style="padding-left: 10px;padding-right:10px; margin: 5px;">
                                         <i class="material-icons">visibility</i>
                                         </a>
-                                        <a class="waves-effect waves-light modal-trigger btn-flat transparent black-text" title="Update" href="#serv<%=strService%>" style="padding-left: 10px;padding-right:10px; margin: 5px;">
+                                        <a class="waves-effect waves-light modal-trigger btn-flat transparent black-text tooltipped" href="#serv<%=strService%>" style="padding-left: 10px;padding-right:10px; margin: 5px;" data-delay="30" data-position="bottom" data-tooltip="Update">
                                           <i class="material-icons">edit</i>
                                         </a>
-                                        <a class="waves-effect waves-light modal-trigger btn-flat transparent red-text text-accent-4" href="#del<%=strService%>" title="Deactivate" style="padding-left: 10px;padding-right:10px; margin: 5px;">
+                                        <a class="waves-effect waves-light modal-trigger btn-flat transparent red-text text-accent-4 tooltipped" href="#del<%=strService%>" style="padding-left: 10px;padding-right:10px; margin: 5px;" data-delay="30" data-position="bottom" data-tooltip="Deactivate">
                                           <i class="material-icons">delete</i>
                                         </a>
                                         </td>
@@ -171,6 +172,66 @@
                             </table>
 
                       </div>
+
+                      <!-- ARCHIVE BEGIN -->
+                      <div id="empArchive" class="modal modal-fixed-footer" style="width: 80% !important; height: 86% !important; max-height: 100% !important;">
+                          <div class="modal-content">
+                            <div class="col s12">
+                                  <h4 class="grey-text text-darken-1">Archive</h4>
+                                  <table id="prodsvcArchive" class="display centered responsive-table highlight" cellspacing="0" width="100%" style="border: 1px solid #bdbdbd; padding: 10px;" rowspan="10">
+                                                                  <thead>
+                                                                      <tr>
+                                                                          <th><center>Name</center></th>
+                                                                          <th><center>Category</center></th>
+                                                                          <th><center>Price</center></th>
+                                                                          <th><center>Action</center></th>
+                                                                      </tr>
+                                                                  </thead>
+                                                                  <tbody>
+                                                                    <c:forEach items="${productList}" var="product">
+                                                                      <%! String stringArch = null; %>
+                                                                      <% Product prod = (Product)pageContext.getAttribute("product");
+                                                                         stringArch = String.valueOf(prod.getIntProductID());
+                                                                      %>
+                                                                      <tr>
+                                                                          <td style="padding:0; margin: 0;"><center>${product.strProductName}</center></td>
+                                                                          <td style="padding:0; margin: 0;"><center>Product</center></td>
+                                                                          <td style="padding:0; margin: 0;"><center>Php ${product.dblProductPrice}</center></td>
+                                                                          <td style="padding:0; margin: 0;">
+                                                                          <a class="waves-effect waves-purple modal-trigger btn-flat transparent green-text text-accent-4 tooltipped" href="#del<%=stringArch%>" style="padding-left: 10px;padding-right:10px; margin: 5px;" data-delay="30" data-position="bottom" data-tooltip="Activate">
+                                                                            <i class="material-icons">check</i>
+                                                                          </a>
+                                                                          </td>
+                                                                      </tr>
+                                                                    </c:forEach>
+                                                                    <c:forEach items="${serviceList}" var="service">
+                                                                      <%! String strServiceArch =null; %>
+                                                                      <% Service serv = (Service)pageContext.getAttribute("service");
+                                                                         strServiceArch = String.valueOf(serv.getIntServiceID());
+                                                                      %>
+                                                                      <tr>
+                                                                          <td style="padding:0; margin: 0;"><center>${service.strServiceName}</center></td>
+                                                                          <td style="padding:0; margin: 0;"><center>Service</center></td>
+                                                                          <td style="padding:0; margin: 0;"><center>Php ${service.dblServicePrice}</center></td>
+                                                                          <td style="padding:0; margin: 0;">
+                                                                          <a class="waves-effect waves-light modal-trigger btn-flat transparent green-text text-accent-4 tooltipped" href="#del<%=strServiceArch%>" style="padding-left: 10px;padding-right:10px; margin: 5px;" data-delay="30" data-position="bottom" data-tooltip="Activate">
+                                                                            <i class="material-icons">check</i>
+                                                                          </a>
+                                                                          </td>
+                                                                      </tr>
+                                                                    </c:forEach>
+
+
+                                                                      
+                                                                  </tbody>
+                                                              </table>
+                            </div>
+                          </div>
+                          <div class="modal-footer">
+                            <a href="#!" class=" modal-action modal-close waves-effect waves-purple btn-flat">BACK</a>
+                          </div>
+                        </div>
+                      <!-- ARCHIVE END -->
 
                       <!-- Modal Structure -->
                         <div id="create" class="modal modal-fixed-footer">
@@ -191,7 +252,7 @@
                                   <div class="input-field col s12">
                                       <div class="file-field">
                                             <div class="btn purple darken-3">
-                                              <span class="">Image</span>
+                                              <span class=""><i class="material-icons">add_a_photo</i></span>
                                               <input name="upload" type="file" accept="image/.jpg, image/.png" onchange="loadProdSvc(event)">
                                             </div>
                                             <div class="file-path-wrapper">
@@ -309,7 +370,7 @@
                                   <div class="input-field col s12">
                                       <div class="file-field">
                                             <div class="btn purple darken-3">
-                                              <span class="">Image</span>
+                                              <span class=""><i class="material-icons">add_a_photo</i></span>
                                               <input name="upload" type="file" accept="image/.jpg, image/.png" onchange="ServiceImage(this)">
                                             </div>
                                             <div class="file-path-wrapper">
@@ -392,7 +453,7 @@
                             <!-- <div class="container"> -->
                             <div class="wrapper">
                               <div class="input-field col s12">
-                                  <h4 class="grey-text text-darken-1">Update Product/Service</h4>
+                                  <h4 class="grey-text text-darken-1">View Product/Service</h4>
                               </div>
 
                               <div class="aside aside1 z-depth-0">
@@ -404,7 +465,7 @@
                                   <div class="input-field col s12">
                                       <div class="file-field">
                                             <div class="btn purple darken-3">
-                                              <span class="">Image</span>
+                                              <span class=""><i class="material-icons">add_a_photo</i></span>
                                               <input disabled="disabled" name="upload" type="file" accept="image/.jpg, image/.png" onchange="ServiceImage(this)">
                                             </div>
                                             <div class="file-path-wrapper">
@@ -525,7 +586,7 @@
                                   <div class="input-field col s12">
                                       <div class="file-field">
                                             <div class="btn purple darken-3">
-                                              <span class="">Image</span>
+                                              <span class=""><i class="material-icons">add_a_photo</i></span>
                                               <input name="fileUpload" type="file" accept="image/.jpg, image/.png" onchange="ServiceImage(this)">
                                             </div>
                                             <div class="file-path-wrapper">
@@ -609,7 +670,7 @@
                              <!-- <div class="container"> -->
                              <div class="wrapper">
                                <div class="input-field col s12">
-                                   <h4 class="grey-text text-darken-1">Update Product/Service</h4>
+                                   <h4 class="grey-text text-darken-1">View Product/Service</h4>
                                </div>
 
                                <div class="aside aside1 z-depth-0">
@@ -621,7 +682,7 @@
                                    <div class="input-field col s12">
                                        <div class="file-field">
                                              <div class="btn purple darken-3">
-                                               <span class="">Image</span>
+                                               <span class=""><i class="material-icons">add_a_photo</i></span>
                                                <input name="fileUpload" type="file" accept="image/.jpg, image/.png" onchange="ServiceImage(this)" disabled="disabled">
                                              </div>
                                              <div class="file-path-wrapper">

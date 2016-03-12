@@ -814,16 +814,18 @@
 
 
     <script>
-    $.updateValidator.setDefaults({
-        submitHandler: function() {
-          Materialize.toast('Successfully Created!', 5000, 'green');
-          $(form).ajaxSubmit();
-        }
-      });
+    // $.updateValidator.setDefaults({
+        
+    //     }
+    //   });
 
     $().ready(function() {
       // validate the form when it is submitted
-      var updateValidator = $(".updateForm").validate({
+      var updateValidator = $("#updateForm").validate({
+        submitHandler: function() {
+          Materialize.toast('Successfully Updated!', 5000, 'green');
+          $(form).ajaxSubmit();
+        },
         errorPlacement: function(error, element) {
           // Append error within linked label
           $( element )
