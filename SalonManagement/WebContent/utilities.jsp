@@ -28,7 +28,8 @@
                                       <li><a href="maintenance-discount.jsp">Discount</a></li>
                                       <li><a href="maintenance-package.jsp">Package</a></li>
                                       <li><a href="maintenance-catalogue.jsp">Catalogue</a></li>
-                                      <li><a href="maintenance-extra.jsp">Extra Charge</a></li>
+                                      <li><a href="maintenance-extra.jsp">Charge</a></li>
+                                      <li><a href="locationMaintenance">Location</a></li>
                                     </ul>
                                   </div>
                               </li>
@@ -36,10 +37,11 @@
                                 <a class="collapsible-header"><b>Transaction</b></a>
                                   <div class="collapsible-body">
                                     <ul>
-                                      <li><a href="transactions-inventory.jsp">Inventory</a></li>
-                                      <li><a href="transactions-reservation.jsp">Reservation</a></li>
+                                      <li><a href="transactions-inventory.jsp">Monitor Product</a></li>
+                                      <li><a href="transactions-reservation.jsp">Manage Reservation</a></li>
                                       <li><a href="transactions-productorder.jsp">Product Order</a></li>
-                                      <li><a href="#!">Walk-In</a></li>
+                                      <li><a href="transactions-vip.jsp">VIP</a></li>
+                                      <li><a href="transactions-walkin.jsp">Walk In</a></li>
                                     </ul>
                                   </div>
                               </li>

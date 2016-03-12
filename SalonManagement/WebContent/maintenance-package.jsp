@@ -18,7 +18,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   </head>
 
-  <body class="purple lighten-5">
+  <body class="blue-grey lighten-5">
   <div class="wrapper">
             <header class="headnav">
                 <ul id="slide-out" class="side-nav fixed z-depth-0">
@@ -34,11 +34,12 @@
                             <ul>
                               <li><a href="employeeMaintenance">Employee</a></li>
                                       <li><a href="productServiceMaintenance">Product & Service</a></li>
-                                      <li class="purple lighten-4"><a href="maintenance-package.jsp">Package</a></li>
-                                      <li><a href="catalogueMaintenance">Catalogue</a></li>
                                       <li><a href="promoMaintenance">Promo</a></li>
                                       <li><a href="discountMaintenance">Discount</a></li>
-                                      <li><a href="extraChargeMaintenance">Extra Charge</a></li>
+                                      <li class="purple lighten-4"><a href="packageMaintenance">Package</a></li>
+                                      <li><a href="catalogueMaintenance">Catalogue</a></li>
+                                      <li><a href="extraChargeMaintenance">Charge</a></li>
+                                      <li><a href="locationMaintenance">Location</a></li>
                             </ul>
                           </div>
                       </li>
@@ -73,10 +74,10 @@
                                <ul>
                                  <li><a href="employeeMaintenance">Employee</a></li>
                                       <li><a href="productServiceMaintenance">Product & Service</a></li>
-                                      <li class="purple lighten-4"><a href="maintenance-package.jsp">Package</a></li>
-                                      <li><a href="catalogueMaintenance">Catalogue</a></li>
                                       <li><a href="promoMaintenance">Promo</a></li>
                                       <li><a href="discountMaintenance">Discount</a></li>
+                                      <li class="purple lighten-4"><a href="maintenance-package.jsp">Package</a></li>
+                                      <li><a href="catalogueMaintenance">Catalogue</a></li>
                                       <li><a href="extraChargeMaintenance">Extra Charge</a></li>
                                </ul>
                              </div>
@@ -85,11 +86,11 @@
                            <a class="waves-effectcollapsible-header"><b>Transaction</b></a>
                              <div class="collapsible-body">
                                <ul>
-                                 <li><a href="#">Inventory</a></li>
-                                 <li><a href="#">Reservation</a></li>
-                                 <li><a href="#">VIP</a></li>
-                                 <li><a href="#">Product Order</a></li>
-                                 <li><a href="#">Walk-In</a></li>
+                                 <li><a href="transactions-inventory.jsp">Monitor Product</a></li>
+                                 <li><a href="transactions-reservation.jsp">Manage Reservation</a></li>
+                                 <li><a href="transactions-productorder.jsp">Product Order</a></li>
+                                 <li><a href="transactions-vip.jsp">VIP</a></li>
+                                 <li><a href="transactions-walkin.jsp">Walk In</a></li>
                                </ul>
                              </div>
                          </li>
@@ -110,15 +111,15 @@
                     <div class="main z-depth-barts" style="margin-left: 20px; margin-right: 20px;">
                         <div class="col s12" style="margin-left: 20px; margin-right: 20px;">
                         <h3 class="grey-text text-darken-1">Package Maintenance</h3>
-                        <a data-delay="30" data-position="bottom" data-tooltip="Create" class="tooltipped waves-effect waves-light modal-trigger btn-flat purple darken-3 left white-text" href="#create" style="margin-top: 50px; margin-left: 15px;"><i class="material-icons">add</i></a>
-                        <a data-delay="30" data-position="bottom" data-tooltip="Archive" class="tooltipped waves-effect waves-light modal-trigger btn-flat purple darken-3 left white-text" href="#archivePackage" style="margin-top: 50px; margin-left: 15px;"><i class="material-icons">archive</i></a>
+                        <a class="waves-effect waves-light modal-trigger btn-flat purple darken-3 left white-text" href="#create" style="margin-top: 50px; margin-left: 15px;">CREATE</a>
                         <table id="example" class="display centered responsive-table highlight" cellspacing="0" width="100%" style="border: 1px solid #bdbdbd; padding: 10px;" rowspan="10">
                                 <thead>
                                     <tr>
+                                        <th><center>ID</center></th>
                                         <th><center>Package Name</center></th>
                                         <th><center>Type</center></th>
-                                        <th><center>Price</center></th>
-                                        <th><center>Actions</center></th>
+                                        <th><center>Description</center></th>
+                                        <th><center>Action</center></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -140,13 +141,14 @@
                                     %>
 
                                     <tr>
-                                        <td style="padding:0; margin:0;"><center>${pack.strPackageName}</center></td>
-                                        <td style="padding:0; margin:0;"><center><%=type%></center></td>
-                                        <td style="padding:0; margin:0;"><center>Price</center></td>
-                                        <td class="center" style="padding:0; margin:0;">
-                                        <a href="#viewPackage" data-delay="30" data-position="bottom" data-tooltip="View" class="tooltipped waves-effect waves-purple modal-view btn-flat"><i class="material-icons" style="padding-left: 10px;padding-right:10px; margin: 5px;">visibility</i></a>
-                                        <a href="#upd<%=packID%>" data-delay="30" data-position="bottom" data-tooltip="Update" class="tooltipped waves-effect waves-purple btn-flat transparent black-text modal-trigger"  style="padding-left: 10px;padding-right:10px; margin: 5px;"><i class="material-icons">edit</i></a>
-                                        <a data-delay="30" data-position="bottom" data-tooltip="Deactivate" class="tooltipped waves-effect waves-purple modal-trigger btn-flat transparent red-text text-accent-4" href="#del<%=packID%>" style="padding-left: 10px;padding-right:10px; margin: 5px;"><i class="material-icons">delete</i></a>
+                                        <td style="padding:0; margin: 0;"><center>${pack.intPackageID}</center></td>
+                                        <td style="padding:0; margin: 0;"><center>${pack.strPackageName}</center></td>
+                                        <td style="padding:0; margin: 0;"><center><%=type%></center></td>
+                                        <td style="padding:0; margin: 0;"><center>${pack.strPackageDesc}</center></td>
+                                        <td class="center" style="padding:0; margin: 0;">
+                                        <button data-target="view<%=packID%>" class="waves-effect waves-purple modal-view btn-flat transparent" style="padding-left: 10px;padding-right:10px; margin: 5px;"><i class="material-icons">visibility</i></button>
+                                        <button class="waves-effect waves-purple btn-flat transparent black-text modal-trigger" title="Update" style="padding: 0px;" data-target="upd<%=packID%>" data-toggle="modal" style="padding-left: 10px;padding-right:10px; margin: 5px;"><i class="material-icons">edit</i></button>
+                                        <a class="waves-effect waves-purple modal-trigger btn-flat transparent red-text text-accent-4" href="#del<%=packID%>" title="Deactivate" style="padding-left: 10px;padding-right:10px; margin: 5px;"><i class="material-icons">delete</i></a>
                                         </td>
                                     </tr>
                                   </c:forEach>
@@ -155,8 +157,13 @@
 
                       </div>
 
+                      <c:forEach items="${packageList}" var="pack">
+                        <%
+                            Package list = (Package)pageContext.getAttribute("pack");
+                            int id = list.getIntPackageID();
+                        %>
                       <!-- view product and service modal -->
-                          <div id="viewPackage" class="modal">
+                          <div id="view<%=id%>" class="modal">
                             <div class="modal-content">
                               <!-- <div class="container"> -->
                               <div class="row">
@@ -168,25 +175,46 @@
                                 <table class="centered responsive-table">
                                   <thead>
                                     <tr>
-                                        <th data-field="viewService">Service</th>
-                                        <th data-field="viewServiceQty">Qty</th>
-                                        <th data-field="viewProduct">Product</th>
+                                        
+                                        <th data-field="viewProduct">Product/Service</th>
                                         <th data-field="viewProductQty">Qty</th>
                                     </tr>
                                   </thead>
 
                                   <tbody>
-                                    <tr>
-                                      <td>Service 1</td>
-                                      <td>1</td>
-                                      <td>Product 1</td>
-                                      <td>1</td>
-                                    </tr>
+                                     <%
+                                                      Package sample = (Package)pageContext.getAttribute("pack");
+                                                        
+                                                      for(int i = 0; i < sample.getServiceList().size(); i++){
+                                                        ServicePackage serv = sample.getServiceList().get(i);
+
+                                                        if(serv.getIntPackageID() == id){
+                                                            out.println("<tr>");
+                                                            out.println("   <td>" + serv.getService().getStrServiceName() + "</td>");
+                                                            out.println("   <td>" + serv.getIntQuantity() + "</td>");
+                                                            
+                                                            out.println("</tr>");
+                                                        }
+                                                      }
+
+                                                      for(int i = 0; i < sample.getProductList().size(); i++){
+                                                        ProductPackage serv = sample.getProductList().get(i);
+                                                        System.out.println(serv.getIntPackageID() + ".." + id);
+                                                        if(serv.getIntPackageID() == id){
+                                                        System.out.println("SAME!!");
+                                                            
+                                                            out.println("   <td>" + serv.getProduct().getStrProductName() + "</td>");
+                                                            out.println("   <td>" + serv.getIntProductQuantity() + "</td>");
+                                                             out.println("</tr>");
+                                                        }
+                                                      }
+                                                  %>
                                   </tbody>
                                 </table>
                               </div>
                             </div>
                         </div>
+                      </c:forEach>
 
                       <!-- end view product and service modal -->
 
@@ -246,7 +274,7 @@
                                               <label for="createPackageServiceQty">Qty</label>
                                           </div>
                                           <div class="input-field col s3 left-align" style="margin-top: -1px;">
-                                              <a class="waves-effect waves-light btn-flat orange" id="createPackageAddSvc" onclick="createPackageService()"><i class="material-icons">add</i></a>
+                                              <a class="waves-effect waves-light btn-flat purple" id="createPackageAddSvc" onclick="createPackageService()"><i class="material-icons white-text">add</i></a>
                                           </div>
                                           <!--product  -->
                                           <div class="input-field col s8">
@@ -265,7 +293,7 @@
                                               <label for="createPackageProductQty">Qty</label>
                                           </div>
                                           <div class="input-field col s3 left-align" style="margin-top: -1px;">
-                                              <a class="waves-effect waves-light btn-flat orange" onclick="createPackageProduct()"><i class="material-icons">add</i></a>
+                                              <a class="waves-effect waves-light btn-flat purple" onclick="createPackageProduct()"><i class="material-icons white-text">add</i></a>
                                           </div>
                                         <!-- end -->
                                         <!-- start table -->
@@ -289,8 +317,8 @@
                               </div>
                           </div>
                           <div class="modal-footer">
-                              <a href="#!" class=" modal-action modal-close waves-effect waves-orange transparent btn-flat">CANCEL</a>
-                              <button class="waves-effect waves-light orange darken-3 white-text btn-flat" type="submit" value="Submit">CREATE</button>
+                              <a href="#!" class=" modal-action modal-close waves-effect waves-purple transparent btn-flat">CANCEL</a>
+                              <button class="waves-effect waves-light purple darken-3 white-text btn-flat" type="submit" value="Submit">CREATE</button>
                           </div>
                           </form>
                     </div>
@@ -301,8 +329,8 @@
                           int id = pg.getIntPackageID();
 
                       %>
-                        <div id="upd<%=id%>" class="modal modal-fixed-footer">
-                        <form class="col s12">
+                        <div id="upd<%=id%>" class="modal modal-fixed-footer" style="width: 75% !important; height: 92% !important; margin-top: -23px !important; max-height: 100% !important;">
+                        <form class="col s12" method="post" action="updatePackage">
                           <div class="modal-content">
                             <!-- <div class="container"> -->
                               <div class="wrapper">
@@ -311,11 +339,13 @@
                                     <div class="row">
                                             <h5 class="grey-text text-darken-1">Package Information</h5>
                                             <div class="input-field col s12">
-                                                <input value="${pack.strPackageName}" type="text" class="validate" id="updatePackageName" name="updatePackageName" required>
+                                                <input value="${pack.strPackageName}" type="text" class="validate" id="strPackageName" name="updatePackageName" required>
+                                                <input type="hidden" name="intPackageID" value="${pack.intPackageID}">
+                                               <!--  <input type="hidden" name="intPackageID" value="${pack.intPackageID}"> -->
                                                 <label for="updatePackageName">Package Name</label>
                                             </div>
                                             <div class="input-field col s12">
-                                                <textarea id="updatePackageDesc" name="updatePackageDesc" class="materialize-textarea" length="120">${pack.strPackageDesc}</textarea>
+                                                <textarea id="updatePackageDesc" name="strPackageDesc" class="materialize-textarea" length="120">${pack.strPackageDesc}</textarea>
                                                 <label for="updatePackageDesc">Description</label>
                                             </div>
                                             <%
@@ -324,7 +354,6 @@
                                                 String type1 = "";
                                                 String type2 = "";
                                                 String type3 = "";
-                                                System.out.print(packge.getIntPackageType() + "<<<");
 
                                                 if(packge.getIntPackageType() == 1){
                                                   type1 = "selected";
@@ -346,7 +375,7 @@
                                               <label for="createPackageType">Type</label>
                                             </div>
                                             <div class="input-field col s3 offset-s3">
-                                                <input type="text" value="${pack.dblPackagePrice}" class="validate right-align" id="updatePackagePrice" name="updatePackagePrice" required>
+                                                <input type="text" value="${pack.dblPackagePrice}" class="validate right-align" id="updatePackagePrice" name="dblPackagePrice" required>
                                                 <label for="updatePackagePrice">Price</label>
                                             </div>
                                     </div>
@@ -371,7 +400,7 @@
                                               <label for="updatePackageServiceQty">Qty</label>
                                           </div>
                                           <div class="input-field col s3 left-align" style="margin-top: -1px;">
-                                              <a class="waves-effect waves-light btn-flat orange" id="createPackageAddSvc" onclick="updatePackageService()"><i class="material-icons">add</i></a>
+                                              <a class="waves-effect waves-light btn-flat purple" id="createPackageAddSvc" onclick="updatePackageService()"><i class="material-icons white-text">add</i></a>
                                           </div>
                                           <!--product  -->
                                           <div class="input-field col s8">
@@ -390,7 +419,7 @@
                                               <label for="updatePackageProductQty">Qty</label>
                                           </div>
                                           <div class="input-field col s3 left-align" style="margin-top: -1px;">
-                                              <a class="waves-effect waves-light btn-flat orange" onclick="updatePackageProduct()"><i class="material-icons">add</i></a>
+                                              <a class="waves-effect waves-light btn-flat purple" onclick="updatePackageProduct()"><i class="material-icons white-text">add</i></a>
                                           </div>
                                         <!-- end -->
                                         <!-- start table -->
@@ -408,19 +437,29 @@
 
                                                   <%
                                                       Package sample = (Package)pageContext.getAttribute("pack");
-
+                                                        
                                                       for(int i = 0; i < sample.getServiceList().size(); i++){
                                                         ServicePackage serv = sample.getServiceList().get(i);
-                                                        out.println("<tr>");
-                                                          out.println("<td>" + serv.getService().getStrServiceName() + "</td>");
-                                                          out.println("<td>" + serv.getIntQuantity() + "</td>");
-                                                          out.println("<td>" + "aksdjfl" + "</td>");
-                                                      out.println("</tr>");
+                                                        
 
+                                                        if(serv.getIntPackageID() == id){
+                                                            out.println("<tr>");
+                                                              out.println("<td><input type='text' name='createPackageService' value='" + serv.getService().getStrServiceName() + "'></td>");
+                                                              out.println("<td><input type='text' name='createPackageServiceQty' value='" + serv.getIntQuantity() + "'></td>");
+                                                              out.println("<td><input id='removeBtn' type='button' value='Remove' class='waves-effect waves-light btn red' onclick='deleteCreateServPack(this)' /></td>");
+                                                            out.println("</tr>");
+
+
+
+                                                            /*out.println("<input type='hidden' id='createPackageService' name='any' value='serv.getService().getStrServiceName()'/>");
+
+                                                            out.println("<input type='hidden' id='createPackageServiceQty' name='any2' value='serv.getService().getStrServiceName()'/>");
+                                                  
+                                                            out.println("createPackageService()");
+                                                            out.print('<input type="text" value="'+ serv.getService().getStrServiceName() +'" id="createPackServType" name="createPackServType" readonly style="color:black;"/>');*/
+                                                        }
                                                       }
                                                   %>
-
-
 
                                                   <!-- <c:forEach items="${pack.serviceList}" var="service">
                                                     <tr>
@@ -437,8 +476,8 @@
                               </div>
                           </div>
                           <div class="modal-footer">
-                              <a href="#!" class=" modal-action modal-close waves-effect waves-orange transparent btn-flat">CANCEL</a>
-                              <button class="waves-effect waves-light orange darken-3 white-text btn-flat" type="submit" value="Submit">CREATE</button>
+                              <a href="#!" class=" modal-action modal-close waves-effect waves-purple transparent btn-flat">CANCEL</a>
+                              <button class="waves-effect waves-light purple darken-3 white-text btn-flat" type="submit" value="Submit">SAVE</button>
                           </div>
                           </form>
                     </div>
@@ -451,17 +490,20 @@
                           %>
                           <div id="del<%=id%>" class="modal">
                           <div class="container">
+                        <form method="post" action="deactivatePackage">
                             <div class="modal-content">
                               <div class="row">
                                 <h5 class="red-text">Warning!</h5>
                                 <p>Are you sure you want to deactivate</p>
                                 <p>${pack.strPackageName}</p>
+                                <input type="hidden" name="intPackageID" value="<%=id%>">
                               </div>
                             </div>
                               <div class="col s12 center" style="margin-bottom: 30px;">
-                                <button class="waves-effect waves-light orange btn-flat white-text">YES</button>
-                                <a href="#" class="modal-action modal-close waves-effect waves-light transparent btn-flat black-text">NO</a>
+                                <button class="waves-effect waves-light purple btn-flat white-text">YES</button>
+                                <a href="#" class="modal-action modal-close waves-effect waves-purple transparent btn-flat black-text">NO</a>
                               </div>
+                              </form>
                             </div>
                       </div>
                       </c:forEach>
@@ -480,7 +522,8 @@
   <style type="text/css">
   #create {
     width: 75% !important;
-    height: 80% !important;
+    height: 92% !important;
+    margin-top: -23px !important;
     max-height: 100% !important;
   }
   #update{

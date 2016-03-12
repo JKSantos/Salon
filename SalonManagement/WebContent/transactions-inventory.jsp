@@ -18,7 +18,7 @@
         <header class="headnav">
                         <ul id="slide-out" class="side-nav fixed z-depth-0">
                           <div class="center">
-                              <img src="./img/anon.jpg" class="circle" style="width: 150px; height: 150px; margin-top: 40px; margin-bottom: 20px;">
+                              <img src="./img/logo.png" class="circle" style="width: 100%; height: 100%; margin-top: 40px; margin-bottom: 20px;">
                             </div>
                           <li><a href="admin-home.jsp" class="waves-effect"><b>Home</b></a></li>
                          <!--  <li class="no-padding"> -->
@@ -33,7 +33,8 @@
                                       <li><a href="discountMaintenance">Discount</a></li>
                                       <li><a href="packageMaintenance">Package</a></li>
                                       <li><a href="catalogueMaintenance">Catalogue</a></li>
-                                      <li><a href="extraChargeMaintenance">Extra Charge</a></li>
+                                      <li><a href="extraChargeMaintenance">Charge</a></li>
+                                      <li><a href="locationMaintenance">Location</a></li>
                                     </ul>
                                   </div>
                               </li>
@@ -41,11 +42,11 @@
                                 <a class="collapsible-header active"><b>Transaction</b></a>
                                   <div class="collapsible-body">
                                     <ul>
-                                      <li class="orange"><a href="transactions-inventory.jsp">Inventory</a></li>
-                                      <li><a href="transactions-reservation.jsp">Reservation</a></li>
-                                      <li><a href="transactions-vip.jsp">VIP</a></li>
+                                      <li class="purple lighten-4"><a href="transactions-inventory.jsp">Monitor Product</a></li>
+                                      <li><a href="transactions-reservation.jsp">Manage Reservation</a></li>
                                       <li><a href="transactions-productorder.jsp">Product Order</a></li>
-                                      <li><a href="transaction-walkin.jsp">Walk-In</a></li>
+                                      <li><a href="transactions-vip.jsp">VIP</a></li>
+                                      <li><a href="transactions-walkin.jsp">Walk In</a></li>
                                     </ul>
                                   </div>
                               </li>
@@ -55,12 +56,12 @@
 
                 
                        <nav class="z-depth-0">
-                         <div class="nav-wrapper orange">
+                         <div class="nav-wrapper purple">
                            <a href="#!" class="brand-logo white-text" style="margin-left: 30px;">Salon Management System</a>
                          
                            <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
                            <ul class="side-nav" id="mobile-demo">
-                             <li><a href="admin-home.jsp" class="waves-effect waves-orange"><b>Home</b></a>
+                             <li><a href="admin-home.jsp" class="waves-effect waves-purple"><b>Home</b></a>
                                <ul class="collapsible collapsible-accordion">
                                  <li>
                                    <a class="collapsible-header"><b>Maintenance</b></a>
@@ -80,7 +81,7 @@
                                    <a class="collapsible-header active"><b>Transaction</b></a>
                                      <div class="collapsible-body">
                                        <ul>
-                                         <li class="orange"><a href="transactions-inventory.jsp">Inventory</a></li>
+                                         <li class="purple"><a href="transactions-inventory.jsp">Inventory</a></li>
                                          <li><a href="transactions-reservation.jsp">Reservation</a></li>
                                          <li><a href="transactions-productorder.jsp">Product Order</a></li>
                                          <li><a href="#!">Walk-In</a></li>
@@ -88,7 +89,7 @@
                                      </div>
                                  </li>
                                </ul>
-                             <li><a href="utilities.jsp" class="waves-effect waves-orange"><b>Utilities</b></a></li>
+                             <li><a href="utilities.jsp" class="waves-effect waves-purple"><b>Utilities</b></a></li>
                            </ul>
                          </div>
                        </nav>
@@ -100,10 +101,10 @@
                       <div class="aside aside2 z-depth-barts">
                           <h2 class="thin center">Inventory</h2>
                           <nav class="z-depth-0">
-                            <div class="nav-wrapper orange lighten-3 grey-text text-darken-4">
+                            <div class="nav-wrapper purple lighten-3 grey-text text-darken-4">
                               <form>
                                 <div class="input-field col s12 z-depth-0">
-                                  <input class="orange lighten-3" id="search" type="search" ng-model="name" placeholder="Search...">
+                                  <input class="purple lighten-3" id="search" type="search" ng-model="name" placeholder="Search...">
                                   <label for="search"><i class="material-icons grey-text text-darken-3">search</i></label>
                                 </div>
                               </form>
@@ -114,13 +115,13 @@
                                         <table class="ui sortable celled table" ng-init="inventory=[{id: '1',name: 'Razer', quantity: '38', markupprice: '100.00', sellingprice: '150.00', profit: '50.00'},{id: '2',name: 'AMD', quantity: '50', markupprice: '300.00', sellingprice: '450.00', profit: '150.00'},{id: '3',name: 'NVIDIA', quantity: '40', markupprice: '200.00', sellingprice: '520.00', profit: '320.00'}]" id="quantityTable">
                                           <thead>
                                             <tr>
-                                              <th data-sort="int" class="orange lighten-5">ID</th>
-                                              <th data-sort="string" class="orange lighten-5">Name</th>
-                                              <th data-sort="string" class="orange lighten-5">Quantity</th>
-                                              <th data-sort="int" class="orange lighten-5">Mark Up Price (Peso)</th>
-                                              <th data-sort="int" class="orange lighten-5">Selling Price (Peso)</th>
-                                              <th data-sort="int" class="orange lighten-5">Profit (Peso)</th>
-                                              <th class="no-sort orange lighten-5">Actions</th>
+                                              <th data-sort="int" class="purple lighten-5">ID</th>
+                                              <th data-sort="string" class="purple lighten-5">Name</th>
+                                              <th data-sort="string" class="purple lighten-5">Quantity</th>
+                                              <th data-sort="int" class="purple lighten-5">Mark Up Price (Peso)</th>
+                                              <th data-sort="int" class="purple lighten-5">Selling Price (Peso)</th>
+                                              <th data-sort="int" class="purple lighten-5">Profit (Peso)</th>
+                                              <th class="no-sort purple lighten-5">Actions</th>
                                             </tr>
                                           </thead>
                                             <tbody >
@@ -134,9 +135,9 @@
                                                             <td>${product.dblProductPrice}</td>
                                                             <td></td>
                                                             <td>
-                                                            <a style="padding: 0px;" class="waves-effect waves-orange modal-trigger transparent btn-flat" href="#editModal" onclick="editQuantity(this)"><i class="material-icons">edit</i>
+                                                            <a style="padding: 0px;" class="waves-effect waves-purple modal-trigger transparent btn-flat" href="#editModal" onclick="editQuantity(this)"><i class="material-icons">edit</i>
                                                             </a>
-                                                            <button style="padding: 0px; margin-left:15px;" class="waves-effect waves-orange transparent btn-flat"><i class="material-icons">delete</i>
+                                                            <button style="padding: 0px; margin-left:15px;" class="waves-effect waves-purple transparent btn-flat"><i class="material-icons">delete</i>
                                                             </button>
                                                           </td>
                                                          </tr> 
@@ -150,7 +151,7 @@
                                               <td>${employee.intEmpID}</td>
                                                 <td>${employee.strEmpFirstName} ${employee.strEmpLastName}</td>
                                                 <td>Cashier</td>
-                                                <td><a href="#update" style="padding: 0px;" class="waves-effect waves-orange modal-trigger transparent btn-flat"><i class="material-icons">edit</i></a><button style="padding: 0px; margin-left:15px;" class="waves-effect waves-orange transparent btn-flat"><i class="material-icons">delete</i></button></td>
+                                                <td><a href="#update" style="padding: 0px;" class="waves-effect waves-purple modal-trigger transparent btn-flat"><i class="material-icons">edit</i></a><button style="padding: 0px; margin-left:15px;" class="waves-effect waves-purple transparent btn-flat"><i class="material-icons">delete</i></button></td>
                                                 </tr>
                                               </c:forEach>  -->
                                             
@@ -158,7 +159,7 @@
 
                                         <ul class="pagination right">
                                               <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
-                                              <li class="active orange"><a href="#!">1</a></li>
+                                              <li class="active purple"><a href="#!">1</a></li>
                                               <li class="waves-effect"><a href="#!">2</a></li>
                                               <li class="waves-effect"><a href="#!">3</a></li>
                                               <li class="waves-effect"><a href="#!">4</a></li>
@@ -167,7 +168,7 @@
                                             </ul>  
                               </div>
                           </div>                      
-                            <a class="btn waves-effect waves-light orange darken-3">SAVE</a><br>
+                            <a class="btn waves-effect waves-light purple darken-3">SAVE</a><br>
                         </div>
         </article>
            <!-- Modal Structure -->
@@ -188,7 +189,7 @@
                     </div>
                     <div class="modal-footer">
                       <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
-                      <button class="btn orange darken-4 white-text" type="submit">SUBMIT</button>
+                      <button class="btn purple darken-4 white-text" type="submit">SUBMIT</button>
                     </div>
                   </form>
                 </div>

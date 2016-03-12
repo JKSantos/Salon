@@ -23,6 +23,7 @@ public class CreateProductServiceAction {
 		
 		this.productList = productService.getAllProducts();
 		this.serviceList = serviceService.getAllService();
+		
 		this.productCategory = productService.getAllCategory();
 		this.serviceCategory = serviceService.getAllCategory();
 		

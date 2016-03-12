@@ -38,13 +38,13 @@ public class UpdateEmployeeAction extends ActionSupport{
 		
 		EmployeeServiceImpl empService = new EmployeeServiceImpl();
 		Employee emp = null;
+		strBirthdate = "March/9/1996";
 		String[] unConvertedDate = strBirthdate.split("/");
 		
 		this.strBirthdate = new DateHelper().convert(unConvertedDate);
 
 		this.datEmpBirthdate = DateHelper.parseDate(strBirthdate);
 		
-		System.out.println(intEmpID + "............");
 		if(imageName.equals("image")){
 			emp = new Employee(intEmpID, strEmpLastName.trim().toUpperCase(), strEmpFirstName.trim().toUpperCase(), strEmpMiddleName.trim().toUpperCase(), datEmpBirthdate, strEmpGender, strEmpAddress.trim().toUpperCase(), strEmpContactNo, strEmpEmail, "A", "NO ACCESS", "NO ACCESS", "Image", null, selectedJob);
 		}

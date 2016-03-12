@@ -11,5 +11,7 @@ public interface PromoRepository {
 	public boolean updatePromo(Promo promo);
 	
 	public List<Promo> getAllPromo();
+	
+	public boolean deactivatePromo(int promoID);
 
 }

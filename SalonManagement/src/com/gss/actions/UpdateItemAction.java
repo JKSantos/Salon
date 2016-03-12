@@ -34,7 +34,6 @@ public class UpdateItemAction {
 		boolean isUpdated = false;
 		//System.out.println(fileUpload.getAbsolutePath());
 		
-		System.out.println(intItemID + "..........");
 		if(strItemCate.equalsIgnoreCase("service")){
 			
 			if(imageName.equalsIgnoreCase("image")){

@@ -45,11 +45,11 @@
                         <a class="collapsible-header"><b>Transaction</b></a>
                           <div class="collapsible-body">
                             <ul>
-                              <li><a href="#">Inventory</a></li>
-                              <li><a href="#">Reservation</a></li>
-                              <li><a href="#">VIP</a></li>
-                              <li><a href="#">Product Order</a></li>        
-                              <li><a href="#">Walk-In</a></li>
+                              <li><a href="transactions-inventory.jsp">Monitor Product</a></li>
+                              <li><a href="transactions-reservation.jsp">Manage Reservation</a></li>
+                              <li><a href="transactions-productorder.jsp">Product Order</a></li>
+                              <li><a href="transactions-vip.jsp">VIP</a></li>
+                              <li><a href="transactions-walkin.jsp">Walk In</a></li>
                             </ul>
                           </div>
                       </li>
@@ -76,7 +76,8 @@
                                       <li class="purple lighten-4"><a href="discountMaintenance">Discount</a></li>
                                       <li><a href="maintenance-package.jsp">Package</a></li>
                                       <li><a href="catalogueMaintenance">Catalogue</a></li>
-                                      <li><a href="extraChargeMaintenance">Extra Charge</a></li>
+                                      <li><a href="extraChargeMaintenance"> Charge</a></li>
+                                      <li><a href="locationMaintenance">Location</a></li>
                                </ul>
                              </div>
                          </li>
@@ -294,6 +295,16 @@
                         <%
                           Discount discount2 = (Discount)pageContext.getAttribute("discount");
                           String id2 = String.valueOf(discount2.getIntDiscountID());
+                          int type = discount2.getIntDiscountType();
+                          String type1 = "";
+                          String type2 = "";
+
+                          if(type == 1){
+                              type1 = "selected";
+                          }
+                          else{
+                              type1 = "selected";
+                          }
 
                         %>
                         <div id="dis<%=id2%>" class="modal modal-fixed-footer" style="width: 45% !important; height: 80% !important; max-height: 100% !important;">
@@ -313,11 +324,11 @@
                                                 <label for="discountDesc" class="active">Description</label>
                                             </div>
                                             <div class="input-field col s6">
-                                                <select class="browser-default" id="updateDiscAmtType">
-                                                  <option value="" selected disabled></option>
-                                                  <option value="percent">Percentage</option>
-                                                  <option value="fixed">Fixed Amount</option>
-                                                </select>
+                                                <select class="browser-default" required id="createDiscAmtType" name="strDiscountType">
+                                                    <option value="" selected disabled></option>
+                                                    <option value="1" <%out.print(type1);%>>Percentage</option>
+                                                    <option value="2" <%out.print(type2);%>>Fixed Amount</option>
+                                                  </select>
                                                 <label for="updateDiscAmtType" class="active">Type</label>
                                             </div>
                                             <div class="input-field col s4 offset-s2">

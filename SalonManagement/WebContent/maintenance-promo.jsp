@@ -38,7 +38,8 @@
                                       <li><a href="discountMaintenance">Discount</a></li>
                                       <li><a href="packageMaintenance">Package</a></li>
                                       <li><a href="catalogueMaintenance">Catalogue</a></li>
-                                      <li><a href="extraChargeMaintenance">Extra Charge</a></li>
+                                      <li><a href="extraChargeMaintenance">Charge</a></li>
+                                      <li><a href="locationMaintenance">Location</a></li>
                             </ul>
                           </div>
                       </li>
@@ -85,11 +86,11 @@
                            <a class="waves-effectcollapsible-header"><b>Transaction</b></a>
                              <div class="collapsible-body">
                                <ul>
-                                 <li><a href="#">Inventory</a></li>
-                                 <li><a href="#">Reservation</a></li>
-                                 <li><a href="#">VIP</a></li>
-                                 <li><a href="#">Product Order</a></li>
-                                 <li><a href="#">Walk-In</a></li>
+                                 <li><a href="transactions-inventory.jsp">Monitor Product</a></li>
+                                 <li><a href="transactions-reservation.jsp">Manage Reservation</a></li>
+                                 <li><a href="transactions-productorder.jsp">Product Order</a></li>
+                                 <li><a href="transactions-vip.jsp">VIP</a></li>
+                                 <li><a href="transactions-walkin.jsp">Walk In</a></li>
                                </ul>
                              </div>
                          </li>
@@ -124,7 +125,7 @@
                                   <!-- <tr>
                                       <td>1</td>
                                       <td>New Year Promo</td>
-                                      <td><button data-target="viewProdSvc" class="waves-effect waves-orange modal-view btn-flat orange lighten-4">View</button></td>
+                                      <td><button data-target="viewProdSvc" class="waves-effect waves-purple modal-view btn-flat purple lighten-4">View</button></td>
                                       <td>99.00</td>
                                       <td>01/01/01</td>
                                       <td>01/01/01</td>
@@ -249,7 +250,7 @@
                                               <label for="promoServiceQty">Qty</label>
                                           </div>
                                           <div class="input-field col s3 left-align" style="margin-top: -1px;">
-                                              <a class="waves-effect waves-light btn-flat orange" id="promoAddSvc" onclick="addServPromo()"><i class="material-icons">add</i></a>
+                                              <a class="waves-effect waves-light btn-flat purple" id="promoAddSvc" onclick="addServPromo()"><i class="material-icons">add</i></a>
                                           </div>
                                           <!--product  -->
                                           <div class="input-field col s8">
@@ -268,7 +269,7 @@
                                               <label for="promoProductQty">Qty</label>
                                           </div>
                                           <div class="input-field col s3 left-align" style="margin-top: -1px;">
-                                              <a class="waves-effect waves-light btn-flat orange" onclick="addProdPromo()"><i class="material-icons">add</i></a>
+                                              <a class="waves-effect waves-light btn-flat purple" onclick="addProdPromo()"><i class="material-icons">add</i></a>
                                           </div>
                                         <!-- end -->
                                         <!-- start table -->
@@ -292,8 +293,8 @@
                               </div>
                           </div>
                           <div class="modal-footer">
-                              <a href="#!" class=" modal-action modal-close waves-effect waves-orange transparent btn-flat">CANCEL</a>
-                              <button class="waves-effect waves-light orange darken-3 white-text btn-flat" type="submit" value="Submit">CREATE</button>
+                              <a href="#!" class=" modal-action modal-close waves-effect waves-purple transparent btn-flat">CANCEL</a>
+                              <button class="waves-effect waves-light purple darken-3 white-text btn-flat" type="submit" value="Submit">CREATE</button>
                           </div>
                           </form>
                     </div>
@@ -357,7 +358,7 @@
                                               <label for="updatePromoSQty">Qty</label>
                                           </div>
                                           <div class="input-field col s3 left-align" style="margin-top: -1px;">
-                                              <a class="waves-effect waves-light btn-flat orange" id="updatePromoAddSvc" onclick="updateServPromo()"><i class="material-icons">add</i></a>
+                                              <a class="waves-effect waves-light btn-flat purple" id="updatePromoAddSvc" onclick="updateServPromo()"><i class="material-icons">add</i></a>
                                           </div>
                                           <!--product  -->
                                           <div class="input-field col s8">
@@ -373,7 +374,7 @@
                                               <label for="updatePromoPQty">Qty</label>
                                           </div>
                                           <div class="input-field col s3 left-align" style="margin-top: -1px;">
-                                              <a class="waves-effect waves-light btn-flat orange" id="updatePromoaddProd" onclick="updateProdPromo()"><i class="material-icons">add</i></a>
+                                              <a class="waves-effect waves-light btn-flat purple" id="updatePromoaddProd" onclick="updateProdPromo()"><i class="material-icons">add</i></a>
                                           </div>
                                         <!-- end -->
                                         <!-- start table -->
@@ -397,8 +398,8 @@
                               </div>
                           </div>
                           <div class="modal-footer">
-                              <a href="#!" class=" modal-action modal-close waves-effect waves-orange transparent btn-flat">CANCEL</a>
-                              <button class="waves-effect waves-light orange darken-3 white-text btn-flat" type="submit" value="Submit">CREATE</button>
+                              <a href="#!" class=" modal-action modal-close waves-effect waves-purple transparent btn-flat">CANCEL</a>
+                              <button class="waves-effect waves-light purple darken-3 white-text btn-flat" type="submit" value="Submit">SAVE</button>
                           </div>
                           </form>
                     </div>
@@ -413,7 +414,7 @@
                               </div>
                             </div>
                               <div class="col s12 center" style="margin-bottom: 30px;">
-                                <button class="waves-effect waves-light orange btn-flat white-text">YES</button>
+                                <button class="waves-effect waves-light purple btn-flat white-text">YES</button>
                                 <a href="#" class="modal-action modal-close waves-effect waves-light transparent btn-flat black-text">NO</a>
                               </div>
                             </div>

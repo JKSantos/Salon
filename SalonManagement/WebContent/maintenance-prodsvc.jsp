@@ -37,7 +37,8 @@
                                       <li><a href="discountMaintenance">Discount</a></li>
                                       <li><a href="packageMaintenance">Package</a></li>
                                       <li><a href="catalogueMaintenance">Catalogue</a></li>
-                                      <li><a href="extraChargeMaintenance">Extra Charge</a></li>
+                                      <li><a href="extraChargeMaintenance">Charge</a></li>
+                                      <li><a href="locationMaintenance">Location</a></li>
                             </ul>
                           </div>
                       </li>
@@ -45,11 +46,11 @@
                         <a class="collapsible-header"><b>Transaction</b></a>
                           <div class="collapsible-body">
                             <ul>
-                              <li><a href="#">Inventory</a></li>
-                              <li><a href="#">Reservation</a></li>
-                              <li><a href="#">VIP</a></li>
-                              <li><a href="#">Product Order</a></li>
-                              <li><a href="#">Walk-In</a></li>
+                              <li><a href="transactions-inventory.jsp">Monitor Product</a></li>
+                              <li><a href="transactions-reservation.jsp">Manage Reservation</a></li>
+                              <li><a href="transactions-productorder.jsp">Product Order</a></li>
+                              <li><a href="transactions-vip.jsp">VIP</a></li>
+                              <li><a href="transactions-walkin.jsp">Walk In</a></li>
                             </ul>
                           </div>
                       </li>
@@ -365,7 +366,7 @@
                                 <div class="row">
                               <!-- 1st aside -->
                                   <div class="col s12">
-                                  <input type="hidden" name="intItemID" value="${product.intProductID}">
+                                  
                                       <img name="updateProdImage" id="updateProdImage" style="width: 200px; height: 200px; margin-top: 20px;" src="<s:url action='getImage'><s:param name='ImageID'><%=strProdID%></s:param><s:param name='type'>product</s:param></s:url>" alt="${product.strProductName}"/>
                                   </div>
                                   <div class="input-field col s12">
@@ -386,7 +387,7 @@
                                 <div class="row">
                               <!-- 2nd aside -->
                                     <div class="input-field col s12">
-                                    	
+                                    	<input type="hidden" name="intItemID" value="<%=strProdID%>">
                                       <select name="strItemCate" class="browser-default" id="strItemCate">
                                         <option value="" disabled="disabled" selected></option>
                                         <option value="service">Service</option>
@@ -396,8 +397,8 @@
                                     </div>
                                     <div class="input-field col s12" style="margin-top: 28px !important;">
 
-                                    <input type="hidden" name="intItemID" value="${product.intProductID}">
-                                    
+                                    <!-- <input type="hidden" name="intItemID" value="${product.intProductID}">
+ -->                                    
 <!--                                       <input value="${product.strProductName}" type="text" class="validate tooltipped" id="prodsvcName" name="strItemName" placeholder="Product/Service Name" data-position="bottom" data-delay="30" data-tooltip="${product.strProductName}" pattern="^[a-zA-Z0-9\-\s]{3,}$" maxlength="15">
 ======= -->
                                       <input value="${product.strProductName}" type="text" class="validate tooltipped specialprodsvc" id="prodsvcName" name="strItemName" placeholder="Product/Service Name" data-position="bottom" data-delay="30" data-tooltip="${product.strProductName}" pattern="^[a-zA-Z0-9\-\s]{3,}$" maxlength="15">
@@ -565,6 +566,7 @@
                         <% Service servID = (Service)pageContext.getAttribute("service");
                            serviceID = String.valueOf(servID.getIntServiceID());
                            String serviceCate = servID.getStrServiceCategory();
+                           double price = servID.getDblServicePrice();
                         %>
                         <div id="serv<%=serviceID%>" class="modal modal-fixed-footer" style="width: 60% !important; height: 80% !important; max-height: 100% !important;">
                         <form class="col s12" method="get" id="updateServForm" action="updateItem" enctype="multipart/form-data">
@@ -648,7 +650,7 @@
                                       <button data-target="addUpdateServCategory" class="waves-effect waves-light btn-flat modal-updateCategory purple lighten-1"><i class="material-icons white-text">add</i></button>
                                     </div>
                                     <div class="input-field col s6" style="margin-top: 28px !important;">
-                                        <input value="${service.dblServicePrice}" type="text" class="validate right-align tooltipped specialprice" id="updateservPrice" name="dblItemPrice" placeholder="999.99" data-position="bottom" data-delay="30" data-tooltip="${service.dblServicePrice}">
+                                        <input type="text" value="<%=price%>" class="validate right-align tooltipped specialprice" id="updateservPrice" name="dblItemPrice" placeholder="999.99" data-position="bottom" data-delay="30" data-tooltip="${service.dblServicePrice}">
                                         <label for="updateservPrice" class="active">Price</label>
                                     </div>
                                 </div>

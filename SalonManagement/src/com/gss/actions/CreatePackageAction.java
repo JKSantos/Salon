@@ -50,7 +50,7 @@ public class CreatePackageAction {
 					
 					Service sample = service.get(j);
 					if(selectedServices[i].equals(sample.getStrServiceName())){
-						serviceList.add(new ServicePackage(1, sample, Integer.parseInt(serviceCount[i]), 1));
+						serviceList.add(new ServicePackage(1, 1, sample, Integer.parseInt(serviceCount[i]), 1));
 					}
 				}
 			}
@@ -63,7 +63,7 @@ public class CreatePackageAction {
 					
 					Product sample = product.get(j);
 					if(selectedProducts[i].equals(sample.getStrProductName())){
-						productList.add(new ProductPackage(1, sample, Integer.parseInt(productCount[i]), 1));
+						productList.add(new ProductPackage(1, 1, sample, Integer.parseInt(productCount[i]), 1));
 					}
 				}
 			}

@@ -28,7 +28,6 @@ public class UpdateCatalogueAction {
 		List<Service> serviceList = ser.getAllService();
 		
 		boolean result = false;
-		System.out.print(intCatalogueID);
 		
 		if(strCataloguePath.equalsIgnoreCase("image")){
 			Catalogue catalogue = new Catalogue(intCatalogueID, strCatalogueName,strCatalogueCategoryID, priceHelper(serviceList, strCatalogueCategoryID), null, strCataloguePath, 1);

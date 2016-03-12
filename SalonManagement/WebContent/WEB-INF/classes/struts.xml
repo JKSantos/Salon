@@ -187,6 +187,5 @@
 			<result name="success">redirect-maintenance-location.jsp</result>
 			<result name="failed">maintenance-location.jsp</result>
 		</action>  
-		
 	</package>
 </struts>

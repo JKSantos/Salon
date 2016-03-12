@@ -18,7 +18,7 @@ public class DiscountJDBCRepository implements DiscountRepository{
 		
 		Connection con = jdbc.getConnection();
 		List<Discount> discountList = new ArrayList<Discount>();
-		String strQuery = "SELECT * FROM tblDiscount;";
+		String strQuery = "SELECT * FROM tblDiscount WHERE intStatus = 1;";
 		ResultSet set;
 		
 		try{

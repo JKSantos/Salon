@@ -33,7 +33,6 @@ public class PackageMaintenance {
 		
 		PackageService service = new PackageServiceImpl();
 		this.packageList = service.getAllPackage();
-		System.out.println("Package List Size: " + packageList.size());
 		
 		return "success";
 	}

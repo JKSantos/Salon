@@ -11,6 +11,8 @@ public class DeactivatePackageAction {
 		
 		PackageService service = new PackageServiceImpl();
 		
+		System.out.println(intPackageID + "-----------");
+		
 		if(service.deactivatePackage(intPackageID))
 			return "success";
 		else

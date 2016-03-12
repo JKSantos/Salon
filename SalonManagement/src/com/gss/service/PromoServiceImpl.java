@@ -29,4 +29,12 @@ public class PromoServiceImpl implements PromoService{
 		return repo.getAllPromo();
 	}
 
+	@Override
+	public boolean deactivatePromo(int promoID) {
+		
+		PromoRepository repo = new PromoJDBCRepository();
+		
+		return repo.deactivatePromo(promoID);
+	}
+
 }
