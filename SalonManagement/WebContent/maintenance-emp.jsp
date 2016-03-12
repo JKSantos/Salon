@@ -123,7 +123,8 @@
                     <div class="main z-depth-barts" style="margin-left: 20px; margin-right: 20px;">
                         <div class="col s12" style="margin-left: 20px; margin-right: 20px;">
                         <h3 class="grey-text text-darken-1">Employee Maintenance</h3>
-                        <a class="waves-effect waves-light modal-trigger btn-flat purple darken-2 left white-text" href="#create" style="margin-top: 50px; margin-left: 15px;">CREATE</a>
+                        <a class="waves-effect waves-light modal-trigger btn-flat purple darken-2 left white-text tooltipped" href="#create" style="margin-top: 50px; margin-left: 15px;" data-delay="30" data-position="bottom" data-tooltip="CREATE"><i class="material-icons">add</i></a>
+                        <a class="waves-effect waves-light modal-trigger btn-flat purple darken-2 left white-text tooltipped" href="#empArchive" style="margin-top: 50px; margin-left: 15px;" data-delay="30" data-position="bottom" data-tooltip="ARCHIVE"><i class="material-icons">archive</i></a>
                         <table id="example" class="display centered responsive-table highlight" cellspacing="0" width="100%" style="border: 1px solid #bdbdbd; padding: 10px;" rowspan="10">
                                 <thead>
                                     <tr>
@@ -164,9 +165,55 @@
 
                       </div>
 
+                      <!-- ARCHIVE BEGIN -->
+                      <div id="empArchive" class="modal modal-fixed-footer" style="width: 80% !important; height: 86% !important; max-height: 100% !important;">
+                          <div class="modal-content">
+                            <div class="col s12">
+                                  <h4 class="grey-text text-darken-1">Archive</h4>
+                                  <table id="empArchiveTable" class="display centered responsive-table highlight" cellspacing="0" width="100%" style="border: 1px solid #bdbdbd; padding: 10px;" rowspan="10">
+                                      <thead>
+                                        <tr>
+                                            <th><center>Name</center></th>
+                                            <th><center>Position</center></th>
+                                            <th><center>Date Employed</center></th>
+                                            <th><center>Status</center></th>
+                                            <th><center>Actions</center></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                      <c:forEach items="${empList}" var="employee">
+                                        <%! String str1=null; %>
+                                        <% Employee emp = (Employee)pageContext.getAttribute("employee");
+                                          str=String.valueOf(emp.getIntEmpID());
+                                          String de = str1;
+                                        %>
+                                        <tr>
+                                            <td style="padding:0; margin:0;"><center><img name="empupdatedImg" id="empupdatedImg" class="circle left" style="width: 30px; height: 30px; margin-left: 15px !important;" src="<s:url action='getImage'><s:param name='ImageID'>${employee.intEmpID}</s:param><s:param name='type'>employee</s:param></s:url>" alt="${employee.strEmpFirstName}" />${employee.strEmpFirstName} ${employee.strEmpLastName}</center></td>
+                                            <td style="padding:0; margin:0;"><center>${employee.strJobQualification}</center></td>
+                                            <td style="padding:0; margin:0;"><center>01/01/01</center></td>
+                                            <td style="padding:0; margin:0;"><center>${employee.strEmpStatus}</center></td>
+                                            <td class="center" style="padding:0; margin:0;">
+                                            <!-- ACTIVATE -->
+                                            <a data-delay="30" data-position="bottom" data-tooltip="Activate" class="tooltipped waves-effect waves-purple modal-trigger btn-flat transparent green-text text-accent-4" href="#de<%=de%>" style="padding-left: 10px;padding-right:10px; margin: 5px;"><i class="material-icons">check</i></a>
+                                            <!-- ACTIVATE END -->
+                                            </td>
+                                        </tr>
+
+                                    </c:forEach>
+                                                                  
+                                    </tbody>
+                                </table>
+                            </div>
+                          </div>
+                          <div class="modal-footer">
+                            <a href="#!" class=" modal-action modal-close waves-effect waves-purple btn-flat">BACK</a>
+                          </div>
+                        </div>
+                      <!-- ARCHIVE END -->
+
                       <!-- Modal Structure -->
                        <div id="create" class="modal modal-fixed-footer">
-                        <form class="col s12" method="post" action="createEmployee" enctype="multipart/form-data">
+                        <form class="col s12 form" method="post" id="createEmpForm" action="createEmployee" enctype="multipart/form-data">
                           <div class="modal-content" style="padding-bottom: 0px !important;">
                             <!-- <div class="container"> -->
                           <div class="wrapper">
@@ -182,7 +229,7 @@
                                        <div class="input-field col s12">
                                            <div class="file-field">
                                                  <div class="btn purple darken-1">
-                                                   <span class="">Image</span>
+                                                   <span class=""><i class="material-icons">add_a_photo</i></span>
                                                    <input name="upload" type="file" accept="image/.jpg, image/.png" onchange="loadFile(event)">
                                                  </div>
                                                  <div class="file-path-wrapper">
@@ -202,19 +249,19 @@
                                              <label class="red-text left">(*) Indicates required field</label>
                                         </div>
                                         <div class="input-field col s12">
-                                            <input name="strEmpFirstName" placeholder="Ex: Benigno" id="strEmpFirstName" type="text" class="validate tooltipped" required data-position="bottom" data-delay="30" data-tooltip="Ex: Benigno<br/>( Atleast 2 or more characters )" pattern="^[a-zA-Z\-'`\s]{2,}$" maxlength="15">
+                                            <input name="strEmpFirstName" placeholder="Ex: Benigno" id="strEmpFirstName" type="text" class="validate tooltipped" required data-position="bottom" data-delay="30" data-tooltip="Ex: Benigno<br/>( At least 2 or more characters )" pattern="^[a-zA-Z\-'`\s]{2,}$" maxlength="15" minlength="2">
                                             <label for="strEmpFirstName">First Name<span class="red-text"><b>*</b></span></label>
                                         </div>
                                         <div class="input-field col s12">
-                                            <input name="strEmpMiddleName" placeholder="Ex: Cojuangco" id="strEmpMiddleName" type="text" class="validate tooltipped" data-position="bottom" data-delay="30" data-tooltip="Ex: Cojuangco <br/>( Atleast 2 or more characters)" pattern="^[a-zA-Z\-'`\s]{2,}$">
+                                            <input name="strEmpMiddleName" placeholder="Ex: Cojuangco" id="strEmpMiddleName" type="text" class="validate tooltipped" data-position="bottom" data-delay="30" data-tooltip="Ex: Cojuangco <br/>( At least 2 or more characters)" pattern="^[a-zA-Z\-'`\s]{2,}$" minlength="2">
                                             <label for="strEmpMiddleName">Middle Name</label>
                                         </div>
                                         <div class="input-field col s12">
-                                            <input name="strEmpLastName" placeholder="Ex: Aquino" id="strEmpLastName" type="text" class="validate tooltipped" required data-position="bottom" data-delay="30" data-tooltip="Ex: Aquino<br/> ( Atleast 2 or more characters )" pattern="^[a-zA-Z\-'`\s]{2,}$">
+                                            <input name="strEmpLastName" placeholder="Ex: Aquino" id="strEmpLastName" type="text" class="validate tooltipped" required data-position="bottom" data-delay="30" data-tooltip="Ex: Aquino<br/> ( At least 2 or more characters )" pattern="^[a-zA-Z\-'`\s]{2,}$" minlength="2">
                                             <label for="strEmpLastName">Last Name<span class="red-text"><b>*</b></span></label>
                                         </div>
                                         <div class="input-field col s12">
-                                            <input type="date" name="strBirthdate" placeholder="January 1, 1996" class="datepicker active tooltipped" id="createBirthday" required data-position="bottom" data-delay="30" data-tooltip="Ex: January 1, 1996">
+                                            <input type="date" name="strBirthdate" placeholder="January 1, 1996" class="datepicker active tooltipped" id="createBirthday" required data-position="bottom" data-delay="30" data-tooltip="Ex: January/1/1996">
                                             <label for="createBirthday" class="active">Birthday<span class="red-text">*</span></label>
                                         </div>
                                         <div class="input-field col s12">
@@ -230,28 +277,27 @@
                                   <!-- third -->
                                     <div class="row">
                                       <div class="input-field col s12" style="margin-top: 40px !important;">
-                                          <select required class="browser-default" name="strEmpGender" id="strEmpGender">
+                                          <select required class="browser-default" name="strEmpGender" id="createGender">
                                             <option value="" disabled selected></option>
                                             <option value="M">Male</option>
                                             <option value="F">Female</option>
                                           </select>
-                                          <label for="strEmpGender" class="active">Gender<span class="red-text">*</span></label>
+                                          <label for="createGender" class="active">Gender<span class="red-text">*</span></label>
                                       </div>
                                       <div class="input-field col s1">
                                           <label style="margin-left: -3px; margin-top: 15px !important;" for="contact">(+63)</label>
                                       </div>
                                       <div class="input-field col s10" style="margin-top: 28px !important; margin-left: 10px;">
-                                          <input name="strEmpContactNo" placeholder="Ex: 9268806979" type="text" id="contact" class="validate tooltipped" maxlength="10" data-position="bottom" data-delay="30" data-tooltip="Ex: 9268806979<br/>( 10 numbers only )" pattern="^[0-9]{10,10}$">
-                                          <label for="contact" style="margin-left: -35px;">Contact Number</label>
+                                          <input name="strEmpContactNo" placeholder="Ex: 9268806979" type="text" id="createContact" class="validate tooltipped" minlength="10" maxlength="10" data-position="bottom" data-delay="30" data-tooltip="Ex: 9268806979<br/>( 10 numbers only )" pattern="^[0-9]{10,10}$">
+                                          <label for="createContact" style="margin-left: -35px;">Contact Number</label>
                                       </div>
                                       <div class="input-field col s12">
-                                          <input type="email" name="strEmpEmail"  placeholder="Ex: salon@yahoo.com" class="validate tooltipped" required id="emailadd" data-position="bottom" data-delay="30" data-tooltip="Ex: salon@yahoo.com">
-
-                                          <label for="emailadd" class="active">Email<span class="red-text">*</span></label>
+                                          <input type="email" name="strEmpEmail"  placeholder="Ex: salon@yahoo.com" class="validate tooltipped" required id="createEmail" data-position="bottom" data-delay="30" data-tooltip="Ex: salon@yahoo.com">
+                                          <label for="createEmail" class="active">Email<span class="red-text">*</span></label>
                                       </div>
                                       <div class="input-field col s12">
-                                          <input name="strEmpAddress" placeholder="Ex: #20 Julian Eymard St. Sto.Nino Meycauayan, Bulacan" type="text" id="address" class="validate tooltipped" required data-position="bottom" data-delay="30" data-tooltip="Ex: #20 Julian Eymard St. Sto.Nino Meycauayan, Bulacan<br/>( Atleast 10 or more characters )" pattern="[#+A-Za-z0-9\s.,-]{10,}">
-                                          <label for="address">Address<span class="red-text">*</span></label>
+                                          <input name="strEmpAddress" placeholder="Ex: #20 Julian Eymard St. Sto.Nino Meycauayan, Bulacan" type="text" id="createAddress" minlength="10" class="validate tooltipped" required data-position="bottom" data-delay="30" data-tooltip="Ex: #20 Julian Eymard St. Sto.Nino Meycauayan, Bulacan<br/>( At least 10 or more characters )" pattern="[#+A-Za-z0-9\s.,-]{10,}">
+                                          <label for="createAddress">Address<span class="red-text">*</span></label>
                                       </div>
                                       <div class="input-field col s8">
                                           <select class="browser-default" id="slct1" name="selectedJob" required>
@@ -277,7 +323,7 @@
                             </div>
                           <div class="modal-footer">
                               <button type="reset" value="Reset" class=" modal-action modal-close waves-effect waves-purple transparent btn-flat">CANCEL</button>
-                              <button class="waves-effect waves-light purple darken-3 white-text btn-flat" type="submit" value="Submit">CREATE</button>
+                              <button onclick="ajax()" class="waves-effect waves-light purple darken-3 white-text btn-flat" type="submit" value="Submit">CREATE</button>
                           </div>
                           </form>
                     </div>
@@ -297,7 +343,7 @@
                                     </select>
                                   </div>
                                   <div class="input-field col s8 offset-s2" style="margin-top: 20px;">
-                                    <input type="text" class="validate tooltipped" placeholder="Ex: Cashier" id="addOptionName" name="addOptionName" data-position="bottom" data-delay="30" data-tooltip="Ex: Cashier<br/>( Atleast 5 or more characters )" pattern="^[A-Za-z-\s]{5,}$">
+                                    <input type="text" class="validate tooltipped" placeholder="Ex: Cashier" id="addOptionName" name="addOptionName" data-position="bottom" data-delay="30" data-tooltip="Ex: Cashier<br/>( At least 5 or more characters )" pattern="^[A-Za-z-\s]{5,}$">
                                     <label for="addOptionName" class="active">Position</label>
                                   </div>
                                   <div class="input-field col s8 offset-s2 center">
@@ -313,7 +359,7 @@
                         <!-- add option end -->
                       <c:forEach items="${empList}" var="employee">  
                         <div id="emp${employee.intEmpID}" class="modal modal-fixed-footer" style="width: 80% !important; height: 86% !important; max-height: 100% !important;">
-                        <form class="col s12" method="post" action="updateEmployee" enctype="multipart/form-data">
+                        <form class="col s12 updateForm" id="updateForm" method="post" action="updateEmployee" enctype="multipart/form-data">
                           <div class="modal-content" style="padding-bottom: 0px !important;">
 
                           <div class="wrapper">
@@ -329,7 +375,7 @@
                                        <div class="input-field col s12">
                                            <div class="file-field">
                                                  <div class="btn purple darken-1">
-                                                   <span class="">Image</span>
+                                                   <span class=""><i class="material-icons">add_a_photo</i></span>
                                                    <input name="upload" type="file" accept="image/.jpg, image/.png" onchange="loadUpdate(event)">
                                                  </div>
                                                  <div class="file-path-wrapper">
@@ -346,20 +392,21 @@
                                     <!-- second -->
                                       <div class="row">
                                         <div class="input-field col s12" style="margin-top: 39px !important;">
+                                        <input type="hidden" name="intEmpID" value="${employee.intEmpID}">
                                             <input value="${employee.strEmpFirstName}" name="strEmpFirstName" placeholder="Ex: Benigno" id="strEmpFirstName" type="text" class="validate tooltipped" data-position="bottom" data-delay="30" data-tooltip="Ex: Benigno<br/>( Atleast 2 or more characters )" pattern="^[a-zA-Z\-'`\s]{2,}$" maxlength="20">
                                             <label for="strEmpFirstName">First Name</label>
                                         </div>
                                         <div class="input-field col s12">
-                                            <input value="${employee.strEmpMiddleName}" name="strEmpMiddleName" placeholder="Ex: Cojuangco" id="strEmpMiddleName" type="text" class="validate tooltipped" data-position="bottom" data-delay="30" data-tooltip="Ex: Cojuangco <br/>( Atleast 2 or more characters)" pattern="^[a-zA-Z\-'`\s]{2,}$" maxlength="20">
+                                            <input value="${employee.strEmpMiddleName}" name="strEmpMiddleName" placeholder="Ex: Cojuangco" id="strEmpMiddleName" type="text" class="validate tooltipped" data-position="bottom" data-delay="30" data-tooltip="Ex: Cojuangco <br/>( At least 2 or more characters)" pattern="^[a-zA-Z\-'`\s]{2,}$" maxlength="20">
                                             <label for="strEmpMiddleName">Middle Name</label>
                                         </div>
                                         <div class="input-field col s12">
-                                            <input value="${employee.strEmpLastName}" name="strEmpLastName" placeholder="Ex: Aquino" id="strEmpLastName" type="text" class="validate tooltipped" data-position="bottom" data-delay="30" data-tooltip="Ex: Aquino<br/> ( Atleast 2 or more characters )" pattern="^[a-zA-Z\-'`\s]{2,}$">
+                                            <input value="${employee.strEmpLastName}" name="strEmpLastName" placeholder="Ex: Aquino" id="strEmpLastName" type="text" class="validate tooltipped" data-position="bottom" data-delay="30" data-tooltip="Ex: Aquino<br/> ( At least 2 or more characters )" pattern="^[a-zA-Z\-'`\s]{2,}$">
                                             <label for="strEmpLastName">Last Name</label>
                                         </div>
                                         <div class="input-field col s12">
-                                            <input type="date" name="strBirthdate" placeholder="January 1, 1996" class="datepicker active tooltipped" id="createBirthday" data-position="bottom" data-delay="30" data-tooltip="Ex: January 1, 1996">
-                                            <label for="createBirthday" class="active">Birthday</label>
+                                            <input type="date" name="strBirthdate" placeholder="January 1, 1996" class="datepicker active tooltipped" id="updateBirthday" data-position="bottom" data-delay="30" data-tooltip="Ex: January/1/1996">
+                                            <label for="updateBirthday" class="active">Birthday</label>
                                         </div>
                                         <div class="input-field col s12">
                                             <label for="updateAge">Age</label>
@@ -400,16 +447,16 @@
                                           <label style="margin-left: -3px; margin-top: 15px !important;" for="contact">(+63)</label>
                                       </div>
                                       <div class="input-field col s10" style="margin-top: 28px !important; margin-left: 10px;">
-                                          <input value="${employee.strEmpContactNo}" name="strEmpContactNo" placeholder="Ex: 9268806979" type="text" id="contact" class="validate tooltipped" maxlength="10" data-position="bottom" data-delay="30" data-tooltip="Ex: 9268806979<br/>( 10 numbers only )" pattern="^[0-9]{10,10}$">
-                                          <label for="contact" style="margin-left: -35px;">Contact Number</label>
+                                          <input value="${employee.strEmpContactNo}" name="strEmpContactNo" placeholder="Ex: 9268806979" type="text" id="updateContact" class="validate tooltipped" maxlength="10" data-position="bottom" data-delay="30" data-tooltip="Ex: 9268806979<br/>( 10 numbers only )" pattern="^[0-9]{10,10}$">
+                                          <label for="updateContact" style="margin-left: -35px;">Contact Number</label>
                                       </div>
                                       <div class="input-field col s12">
-                                          <input type="email" placeholder="Ex: salon@yahoo.com" class="validate tooltipped" id="emailadd" data-position="bottom" data-delay="30" data-tooltip="Ex: salon@yahoo.com">
-                                          <label for="emailadd" class="active">Email</label>
+                                          <input type="email" value="${employee.strEmpEmail}" name="strEmpEmail" placeholder="Ex: salon@yahoo.com" class="validate tooltipped" id="updateEmail" data-position="bottom" name="strEmpEmail" data-delay="30" data-tooltip="Ex: salon@yahoo.com">
+                                          <label for="updateEmail" class="active">Email</label>
                                       </div>
                                       <div class="input-field col s12">
-                                          <input value="${employee.strEmpAddress}" name="strEmpAddress" placeholder="Ex: #20 Julian Eymard St. Sto.Nino Meycauayan, Bulacan" type="text" id="address" class="validate tooltipped" data-position="bottom" data-delay="30" data-tooltip="Ex: #20 Julian Eymard St. Sto.Nino Meycauayan, Bulacan<br/>( Atleast 10 or more characters )" pattern="[#+A-Za-z0-9\s.,-]{10,}">
-                                          <label for="address">Address</label>
+                                          <input value="${employee.strEmpAddress}" name="strEmpAddress" placeholder="Ex: #20 Julian Eymard St. Sto.Nino Meycauayan, Bulacan" type="text" id="updateAddress" class="validate tooltipped" data-position="bottom" data-delay="30" data-tooltip="Ex: #20 Julian Eymard St. Sto.Nino Meycauayan, Bulacan<br/>( At least 10 or more characters )" pattern="[#+A-Za-z0-9\s.,-]{10,}">
+                                          <label for="updateAddress" class="active">Address</label>
                                       </div>
                                       <div class="input-field col s8">
                                           <select class="browser-default slct2" id="slct2" name="selectedJob">
@@ -445,7 +492,7 @@
                             </div>
                           <div class="modal-footer">
                               <button type="reset" value="Reset" class=" modal-action modal-close waves-effect waves-purple transparent btn-flat">CANCEL</button>
-                              <button class="waves-effect waves-light purple darken-3 white-text btn-flat" type="submit" value="Submit">CREATE</button>
+                              <button class="waves-effect waves-light purple darken-3 white-text btn-flat" type="submit" value="Submit">UPDATE</button>
                           </div>
                           </form>
                     </div>
@@ -544,7 +591,7 @@
                                           <label for="contact" style="margin-left: -35px;">Contact Number</label>
                                       </div>
                                       <div class="input-field col s12">
-                                          <input type="email" placeholder="Ex: salon@yahoo.com" class="tooltipped" id="emailadd" data-position="bottom" data-delay="30" data-tooltip="Ex: salon@yahoo.com" readonly>
+                                          <input type="email" name="strEmpEmail" value="${employee.strEmpEmail}" placeholder="Ex: salon@yahoo.com" class="tooltipped" id="emailadd" data-position="bottom" data-delay="30" data-tooltip="Ex: salon@yahoo.com" readonly>
                                           <label for="emailadd" class="active">Email</label>
                                       </div>
                                       <div class="input-field col s12">
@@ -618,7 +665,7 @@
 
                   <c:forEach items="${empList}" var="employee">
                       <div id="de${employee.intEmpID}" class="modal" style="width: 30% !important;">
-                        <form method="get" action="deactivateEmployee">
+                        <form method="get" action="deactivateEmployee" id="deleteEmpForm">
                           <div class="container">
                             <div class="modal-content">
                               <div class="row">
@@ -636,9 +683,9 @@
                           </form>
                       </div>
                     </c:forEach>
-<!--                     <div class="aside aside2 z-depth-barts">
-                     
-                    </div> -->
+
+
+
                 </div>
         </div>
       <!-- </div> -->
@@ -662,6 +709,12 @@
     height: 86% !important;
     max-height: 100% !important;
   }
+  #empArchive {
+    widows: 80% !important;
+    height: 86% !important;
+    max-height: 100% !important;
+  }
+
   #update{
     width: 80% !important;
     height: 86% !important;
@@ -679,6 +732,14 @@
   #updateAddOption {
     width: 40% !important;
   }
+  
+  .form fieldset p label span.error { color: red; }
+  form.form { width: 30em; }
+  form.form label {
+    width: auto;
+    display: block;
+    float: none;
+  }
   </style>
 
   <!--Import jQuery before materialize.js-->
@@ -688,8 +749,124 @@
     <script type="text/javascript" src="./js/maintenance-emp.js"></script>
     <script type="text/javascript" src="./js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="./js/bartstable.js"></script>
+    <script type="text/javascript" src="./js/picker.date.js"></script>
+    <script type="text/javascript" src="./js/jquery.validate.js"></script>
+
+
+    <script>
+    // only for demo purposes
+    $.createValidator.setDefaults({
+      submitHandler: function() {
+        Materialize.toast('Successfully Created!', 5000, 'green');
+        $(form).ajaxSubmit();
+      }
+    });
+
+
+    $().ready(function() {
+      // validate the form when it is submitted
+      var createValidator = $("#createEmpForm").validate({
+        errorPlacement: function(error, element) {
+          // Append error within linked label
+          $( element )
+            .closest( "form" )
+              .find( "label[for='" + element.attr( "id" ) + "']" )
+                .append( error );
+        },
+        errorElement: "span",
+        messages: {
+          strEmpFirstName: {
+            required: " (required)",
+            minlength: " (must be at least 2 characters)"
+          },
+          strEmpMiddleName: {
+            minlength: " (must be at least 2 characters)",
+          },
+          strEmpLastName: {
+            required: " (required)",
+            minlength: " (must be at least 2 characters)"
+          },
+          strBirthdate: {
+            required: " (requried)",
+          },
+          strEmpGender: {
+            required: " (required)"
+          },
+          strEmpContactNo: {
+            minlength: " (10 numbers only)",
+            maxlength: " (10 numbers only)"
+          },
+          strEmpEmail: {
+            required: " (required)"
+          },
+          strEmpAddress: {
+            required: " (required)",
+            minlength: " (must be at least 10 characters)"
+          },
+          selectedJob: {
+            required: " (required)"
+          }
+        }
+      });
+    });
+    </script>
+
+
+
+    <script>
+    // $.updateValidator.setDefaults({
+        
+    //     }
+    //   });
+
+    $().ready(function() {
+      // validate the form when it is submitted
+      var updateValidator = $("#updateForm").validate({
+        submitHandler: function() {
+          Materialize.toast('Successfully Updated!', 5000, 'green');
+          $(form).ajaxSubmit();
+        },
+        errorPlacement: function(error, element) {
+          // Append error within linked label
+          $( element )
+            .closest( "form" )
+              .find( "label[for='" + element.attr( "id" ) + "']" )
+                .append( error );
+        },
+        errorElement: "span",
+        messages: {
+          strEmpFirstName: {
+            minlength: " (must be at least 2 characters)"
+          },
+          strEmpMiddleName: {
+            minlength: " (must be at least 2 characters)"
+          },
+          strEmpLastName: {
+            minlength: " (must be at least 2 characters)"
+          },
+          strEmpContactNo: {
+            minlength: " (10 numbers only)",
+            maxlength: " (10 numbers only)"
+          },
+          strEmpAddress: {
+            minlength: " (must be at least 10 characters)"
+          }
+        }
+      });
+    });
+    </script>
+
+    <script>
+      $('#deleteEmpForm').validate({
+          submitHandler: function() {
+            Materialize.toast('Successfully Deactivated!', 5000, 'green');
+            $(form).ajaxSubmit();
+          }
+        });
+    </script>
 
   </body>
+
 
 
 </html>

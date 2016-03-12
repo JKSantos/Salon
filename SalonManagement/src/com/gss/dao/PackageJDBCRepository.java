@@ -54,8 +54,6 @@ public class PackageJDBCRepository implements PackageRepository{
 			
 			pre1.close();
 			
-			System.out.println(intPackageID);
-			
 			for(int intCtr = 0; intCtr < pack.getServiceList().size(); intCtr++){
 				ServicePackage servicePack = pack.getServiceList().get(intCtr);
 				Service service = servicePack.getService();
@@ -67,7 +65,7 @@ public class PackageJDBCRepository implements PackageRepository{
 				pre2.execute();
 				pre2.close();
 			}
-			System.out.println("HERE 2");
+			
 			for(int intCtr = 0; intCtr < pack.getProductList().size(); intCtr++){
 				ProductPackage productPack = pack.getProductList().get(intCtr);
 				Product product = productPack.getProduct();
@@ -79,7 +77,7 @@ public class PackageJDBCRepository implements PackageRepository{
 				pre2.execute();
 				pre2.close();
 			}
-			System.out.println("HERE 3");
+
 			con.close();
 			return true;
 			
@@ -283,8 +281,49 @@ public class PackageJDBCRepository implements PackageRepository{
 
 	@Override
 	public List<Package> getAllPackage() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		Connection con = jdbc.getConnection();
+		String query = "SELECT * FROM tblPackage WHERE intPackageStatus = 1;";
+		List<Package> packageList = new ArrayList<Package>();
+		
+		try{
+			
+			PreparedStatement pre = con.prepareStatement(query);
+			ResultSet set = pre.executeQuery();
+			
+			while(set.next()){
+				
+				int intID = set.getInt(1);
+				String strName = set.getString(2);
+				String strDesc = set.getString(3);
+				int intType = set.getInt(4);
+				int max = set.getInt(5);
+				String strAvailability = set.getString(6);
+				int intStatus = set.getInt(7);
+				double price = 0;
+				
+				PreparedStatement pre2 = con.prepareStatement("CALL getPackagePrice(?);");
+				pre2.setInt(1, intID);
+				ResultSet set2 = pre2.executeQuery();
+				
+				while(set2.next()){
+					price = set2.getDouble(1);
+				}
+				
+				Package packagee = new Package(intID, strName, strDesc, intType, max, strAvailability, price, null, null, intStatus);
+				packageList.add(packagee);
+				pre2.close();
+			}
+			
+			pre.close();
+			con.close();
+			
+			return packageList;
+		}
+		catch(Exception e){
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 }
