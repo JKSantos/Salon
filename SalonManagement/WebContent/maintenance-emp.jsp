@@ -44,11 +44,12 @@
                             <ul>
                               <li class="purple lighten-4"><a href="employeeMaintenance">Employee</a></li>
                                       <li><a href="productServiceMaintenance">Product & Service</a></li>
-                                      <li><a href="promoMaintenance">Promo</a></li>
-                                      <li><a href="discountMaintenance">Discount</a></li>
-                                      <li><a href="packageMaintenance">Package</a></li>
                                       <li><a href="catalogueMaintenance">Catalogue</a></li>
-                                      <li><a href="extraChargeMaintenance">Extra Charge</a></li>
+                                      <li><a href="packageMaintenance">Package</a></li>
+                                      <li><a href="locationMaintenance">Delivery Charge</a></li>
+                                      <li><a href="extraChargeMaintenance">Other Chrage</a></li>
+                                      <li><a href="discountMaintenance">Discount</a></li>
+                                      <li><a href="promoMaintenance">Promo</a></li>
                             </ul>
                           </div>
                       </li>
@@ -56,15 +57,17 @@
                         <a class="collapsible-header"><b>Transaction</b></a>
                           <div class="collapsible-body">
                             <ul>
-                              <li><a href="#">Inventory</a></li>
-                              <li><a href="#">Reservation</a></li>
-                              <li><a href="#">VIP</a></li>
-                              <li><a href="#">Product Order</a></li>
-                              <li><a href="#">Walk-In</a></li>
+                              <li><a href="transactions-inventory.jsp">Inventory</a></li>
+                              <li><a href="transactions-reservation.jsp">Reservation</a></li>
+                              <li><a href="transactions-productorder.jsp">Product Order</a></li>
+                              <li><a href="transactions-vip.jsp">VIP</a></li>
+                              <li><a href="transactions-walkin.jsp">Walk In</a></li>
                             </ul>
                           </div>
                       </li>
                     </ul>
+                  <li><a href="queries.jsp"><b>Queries</b></a></li>
+                  <li><a href="reports.jsp"><b>Reports</b></a></li>
                   <li><a href="utilities.jsp" class="waves-effect"><b>Utilities</b></a></li>
                 </ul>
 
@@ -107,6 +110,8 @@
                              </div>
                          </li>
                        </ul>
+                      <li><a href="queries.jsp"><b>Queries</b></a></li>
+                      <li><a href="reports.jsp"><b>Reports</b></a></li>
                     <li><a href="utilities.jsp" class="waves-effect"><b>Utilities</b></a></li>
                    </ul>
                  </div>
@@ -131,7 +136,6 @@
                                         <th><center>Name</center></th>
                                         <th><center>Position</center></th>
                                         <th><center>Date Employed</center></th>
-                                        <th><center>Status</center></th>
                                         <th><center>Actions</center></th>
                                     </tr>
                                 </thead>
@@ -146,7 +150,6 @@
                                         <td style="padding:0; margin:0;"><center><img name="empupdatedImg" id="empupdatedImg" class="circle left" style="width: 30px; height: 30px; margin-left: 15px !important;" src="<s:url action='getImage'><s:param name='ImageID'>${employee.intEmpID}</s:param><s:param name='type'>employee</s:param></s:url>" alt="${employee.strEmpFirstName}" />${employee.strEmpFirstName} ${employee.strEmpLastName}</center></td>
                                         <td style="padding:0; margin:0;"><center>${employee.strJobQualification}</center></td>
                                         <td style="padding:0; margin:0;"><center>01/01/01</center></td>
-                                        <td style="padding:0; margin:0;"><center>${employee.strEmpStatus}</center></td>
                                         <td class="center" style="padding:0; margin:0;">
                                         <a data-delay="30" data-position="bottom" data-tooltip="View" class="tooltipped waves-effect waves-purple modal-viewall btn-flat transparent black-text" href="#view<%=str%>" style="padding-left: 10px;padding-right:10px; margin: 5px;">
                                         <i class="material-icons">visibility</i>
@@ -176,7 +179,6 @@
                                             <th><center>Name</center></th>
                                             <th><center>Position</center></th>
                                             <th><center>Date Employed</center></th>
-                                            <th><center>Status</center></th>
                                             <th><center>Actions</center></th>
                                         </tr>
                                     </thead>
@@ -191,7 +193,6 @@
                                             <td style="padding:0; margin:0;"><center><img name="empupdatedImg" id="empupdatedImg" class="circle left" style="width: 30px; height: 30px; margin-left: 15px !important;" src="<s:url action='getImage'><s:param name='ImageID'>${employee.intEmpID}</s:param><s:param name='type'>employee</s:param></s:url>" alt="${employee.strEmpFirstName}" />${employee.strEmpFirstName} ${employee.strEmpLastName}</center></td>
                                             <td style="padding:0; margin:0;"><center>${employee.strJobQualification}</center></td>
                                             <td style="padding:0; margin:0;"><center>01/01/01</center></td>
-                                            <td style="padding:0; margin:0;"><center>${employee.strEmpStatus}</center></td>
                                             <td class="center" style="padding:0; margin:0;">
                                             <!-- ACTIVATE -->
                                             <a data-delay="30" data-position="bottom" data-tooltip="Activate" class="tooltipped waves-effect waves-purple modal-trigger btn-flat transparent green-text text-accent-4" href="#de<%=de%>" style="padding-left: 10px;padding-right:10px; margin: 5px;"><i class="material-icons">check</i></a>
@@ -230,10 +231,10 @@
                                            <div class="file-field">
                                                  <div class="btn purple darken-1">
                                                    <span class=""><i class="material-icons">add_a_photo</i></span>
-                                                   <input name="upload" type="file" accept="image/.jpg, image/.png" onchange="loadFile(event)">
+                                                   <input type="file" name="upload" class="required" accept="image/.jpg, image/.png" onchange="loadFile(event)">
                                                  </div>
                                                  <div class="file-path-wrapper">
-                                                   <input name="path" value="image" class="file-path validate" type="text">
+                                                   <input type="text" name="path" id="path" class="required" value="image" class="file-path validate">
                                                  </div>
                                              </div>
                                        </div>
@@ -359,7 +360,7 @@
                         <!-- add option end -->
                       <c:forEach items="${empList}" var="employee">  
                         <div id="emp${employee.intEmpID}" class="modal modal-fixed-footer" style="width: 80% !important; height: 86% !important; max-height: 100% !important;">
-                        <form class="col s12 updateForm" id="updateForm" method="post" action="updateEmployee" enctype="multipart/form-data">
+                        <form class="col s12 updateEmpForm" id="updateEmpForm" method="post" action="updateEmployee" enctype="multipart/form-data">
                           <div class="modal-content" style="padding-bottom: 0px !important;">
 
                           <div class="wrapper">
@@ -393,16 +394,16 @@
                                       <div class="row">
                                         <div class="input-field col s12" style="margin-top: 39px !important;">
                                         <input type="hidden" name="intEmpID" value="${employee.intEmpID}">
-                                            <input value="${employee.strEmpFirstName}" name="strEmpFirstName" placeholder="Ex: Benigno" id="strEmpFirstName" type="text" class="validate tooltipped specialname" data-position="bottom" data-delay="30" data-tooltip="Ex: Benigno<br/>( Atleast 2 or more characters )" pattern="^[a-zA-Z\-'`\s]{2,}$" maxlength="20">
-                                            <label for="strEmpFirstName">First Name</label>
+                                            <input name="strEmpFirstName" value="${employee.strEmpFirstName}" placeholder="Ex: Benigno" id="strEmpFirstName" type="text" class="validate tooltipped specialname" data-position="bottom" data-delay="30" data-tooltip="Ex: Benigno<br/>( Atleast 2 or more characters )" pattern="^[a-zA-Z\-'`\s]{2,}$" maxlength="20">
+                                            <label for="strEmpFirstName" class="active">First Name</label>
                                         </div>
                                         <div class="input-field col s12">
                                             <input value="${employee.strEmpMiddleName}" name="strEmpMiddleName" placeholder="Ex: Cojuangco" id="strEmpMiddleName" type="text" class="validate tooltipped specialname" data-position="bottom" data-delay="30" data-tooltip="Ex: Cojuangco <br/>( At least 2 or more characters)" pattern="^[a-zA-Z\-'`\s]{2,}$" maxlength="20">
-                                            <label for="strEmpMiddleName">Middle Name</label>
+                                            <label for="strEmpMiddleName" class="active">Middle Name</label>
                                         </div>
                                         <div class="input-field col s12">
                                             <input value="${employee.strEmpLastName}" name="strEmpLastName" placeholder="Ex: Aquino" id="strEmpLastName" type="text" class="validate tooltipped specialname" data-position="bottom" data-delay="30" data-tooltip="Ex: Aquino<br/> ( At least 2 or more characters )" pattern="^[a-zA-Z\-'`\s]{2,}$">
-                                            <label for="strEmpLastName">Last Name</label>
+                                            <label for="strEmpLastName" class="active">Last Name</label>
                                         </div>
                                         <div class="input-field col s12">
                                             <input type="date" name="strBirthdate" placeholder="January 1, 1996" class="datepicker active tooltipped" id="updateBirthday" data-position="bottom" data-delay="30" data-tooltip="Ex: January/1/1996">
@@ -736,6 +737,7 @@
     <script type="text/javascript" src="./js/bartstable.js"></script>
     <script type="text/javascript" src="./js/picker.date.js"></script>
     <script type="text/javascript" src="./js/jquery.validate.js"></script>
+    <script type="text/javascript" src="./js/addvalidate.js"></script>
     <script type="text/javascript" src="./js/validation.js"></script>
 
 

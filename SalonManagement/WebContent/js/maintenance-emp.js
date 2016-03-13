@@ -11,6 +11,19 @@
           } );
       } );
 
+        $(document).ready(function() {
+          $('#promoArchiveTable').DataTable( {
+            "bLengthChange": false,
+            responsive: true,
+              columnDefs: [
+                  {
+                      targets: [ 0, 1, 2 ],
+                      className: 'mdl-data-table__cell--non-numeric'
+                  }
+              ]
+          } );
+      } );
+
     $(document).ready(function() {
           $('#discArchTable').DataTable( {
             "bLengthChange": false,
@@ -386,7 +399,7 @@ $('.tooltipped').tooltip({delay: 30});
             var cell3 = row.insertCell(2);
             // cell1.innerHTML = promoType;
             // cell2.innerHTML = promoQty;
-            cell3.innerHTML = '<input id="removeBtn" type="button" value="Remove" class="waves-effect waves-light btn red" onclick="deleteCreateServPack(this)" />';
+            cell3.innerHTML = '<input id="removeBtn" type="button" value="X" class="waves-effect waves-light btn red" onclick="deleteCreateServPack(this)" />';
             var x = document.getElementById("createPackageService");
                 x.remove(x.selectedIndex);
         }
@@ -426,7 +439,7 @@ $('.tooltipped').tooltip({delay: 30});
           var cell3 = row.insertCell(2);
           // cell1.innerHTML = promoType;
           // cell2.innerHTML = promoQty;
-          cell3.innerHTML = '<input id="removeBtn" type="button" value="Remove" class="waves-effect waves-light btn red" onclick="deleteCreateProdPack(this)" />';
+          cell3.innerHTML = '<input id="removeBtn" type="button" value="X" class="waves-effect waves-light btn red" onclick="deleteCreateProdPack(this)" />';
           var x = document.getElementById("createPackageProduct");
               x.remove(x.selectedIndex);
         }
@@ -466,7 +479,7 @@ $('.tooltipped').tooltip({delay: 30});
             var cell3 = row.insertCell(2);
           // cell1.innerHTML = promoType;
           // cell2.innerHTML = promoQty;
-            cell3.innerHTML = '<input id="removeBtn" type="button" value="Remove" class="waves-effect waves-light btn red" onclick="deleteUpdateServPack(this)" />';
+            cell3.innerHTML = '<input id="removeBtn" type="button" value="X" class="waves-effect waves-light btn red" onclick="deleteUpdateServPack(this)" />';
             var x = document.getElementById("updatePackageService");
               x.remove(x.selectedIndex);
         }
@@ -507,7 +520,7 @@ $('.tooltipped').tooltip({delay: 30});
             var cell3 = row.insertCell(2);
           // cell1.innerHTML = promoType;
           // cell2.innerHTML = promoQty;
-            cell3.innerHTML = '<input id="removeBtn" type="button" value="Remove" class="waves-effect waves-light btn red" onclick="deleteUpdateProdPack(this)" />';
+            cell3.innerHTML = '<input id="removeBtn" type="button" value="X" class="waves-effect waves-light btn red" onclick="deleteUpdateProdPack(this)" />';
             var x = document.getElementById("updatePackageProduct");
               x.remove(x.selectedIndex);
         }
@@ -619,6 +632,29 @@ $('.tooltipped').tooltip({delay: 30});
             }
       });
       // bday END
+
+      $('.datereport').pickadate({
+        selectYears: 20,
+        selectMonths: true,
+        labelMonthNext: 'Next month',
+        labelMonthPrev: 'Previous month',
+        labelMonthSelect: 'Select a month',
+        labelYearSelect: 'Select a year',
+        monthsFull: [ 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December' ],
+        monthsShort: [ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec' ],
+        weekdaysFull: [ 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday' ],
+        weekdaysShort: [ 'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat' ],
+        weekdaysLetter: [ 'S', 'M', 'T', 'W', 'T', 'F', 'S' ],
+        today: 'Today',
+        clear: 'Clear',
+        close: 'Close',
+        format: 'mmmm/d/yyyy',
+        onSet: function( arg ){
+                if ( 'select' in arg ){ //prevent closing on selecting month/year
+                    this.close();
+                }
+            }
+      });
 
       // promo BEGIN
       $('.datepicker-promo').pickadate({

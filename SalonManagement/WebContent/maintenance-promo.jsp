@@ -34,11 +34,12 @@
                             <ul>
                               <li><a href="employeeMaintenance">Employee</a></li>
                                       <li><a href="productServiceMaintenance">Product & Service</a></li>
-                                      <li class="purple lighten-4"><a href="promoMaintenance">Promo</a></li>
-                                      <li><a href="discountMaintenance">Discount</a></li>
-                                      <li><a href="packageMaintenance">Package</a></li>
                                       <li><a href="catalogueMaintenance">Catalogue</a></li>
-                                      <li><a href="extraChargeMaintenance">Extra Charge</a></li>
+                                      <li><a href="packageMaintenance">Package</a></li>
+                                      <li><a href="locationMaintenance">Delivery Charge</a></li>
+                                      <li><a href="extraChargeMaintenance">Other Charge</a></li>
+                                      <li><a href="discountMaintenance">Discount</a></li>
+                                      <li class="purple lighten-4"><a href="promoMaintenance">Promo</a></li>
                             </ul>
                           </div>
                       </li>
@@ -46,15 +47,17 @@
                         <a class="collapsible-header"><b>Transaction</b></a>
                           <div class="collapsible-body">
                             <ul>
-                              <li><a href="#">Inventory</a></li>
-                              <li><a href="#">Reservation</a></li>
-                              <li><a href="#">VIP</a></li>
-                              <li><a href="#">Product Order</a></li>
-                              <li><a href="#">Walk-In</a></li>
+                              <li><a href="transactions-inventory.jsp">Inventory</a></li>
+                              <li><a href="transactions-reservation.jsp">Reservation</a></li>
+                              <li><a href="transactions-productorder.jsp">Product Order</a></li>
+                              <li><a href="transactions-vip.jsp">VIP</a></li>
+                              <li><a href="transactions-walkin.jsp">Walk In</a></li>
                             </ul>
                           </div>
                       </li>
                     </ul>
+                  <li><a href="queries.jsp"><b>Queries</b></a></li>
+                  <li><a href="reports.jsp"><b>Reports</b></a></li>
                   <li><a href="utilities.jsp" class="waves-effect"><b>Utilities</b></a></li>
                 </ul>
 
@@ -94,6 +97,7 @@
                              </div>
                          </li>
                        </ul>
+                    <li><a href="queries.jsp"><b>Queries</b></a></li>
                     <li><a href="utilities.jsp" class="waves-effect"><b>Utilities</b></a></li>
                    </ul>
                  </div>
@@ -110,14 +114,15 @@
                     <div class="main z-depth-barts" style="margin-left: 20px; margin-right: 20px;">
                         <div class="col s12" style="margin-left: 20px; margin-right: 20px;">
                         <h3 class="grey-text text-darken-1">Promo Maintenance</h3>
-                        <a class="waves-effect waves-light modal-trigger btn-flat purple darken-2 darken-3 left white-text" href="#create" style="margin-top: 50px; margin-left: 15px;">CREATE</a>
+                        <a class="tooltipped waves-effect waves-light modal-trigger btn-flat purple darken-2 darken-3 left white-text" href="#create" style="margin-top: 50px; margin-left: 15px;" data-delay="30" data-position="bottom" data-tooltip="Create"><i class="material-icons">add</i></a>
+                        <a href="#promoArchive" class="waves-effect waves-light modal-trigger btn-flat purple darken-2 left white-text tooltipped" style="margin-top: 50px; margin-left: 15px;" data-delay="30" data-position="bottom" data-tooltip="Archive"><i class="material-icons">archive</i></a>
                         <table id="example" class="display centered responsive-table highlight" cellspacing="0" width="100%" style="border: 1px solid #bdbdbd; padding: 10px;" rowspan="10">
                               <thead>
                                   <tr>
                                       <th><center>Promo Name</center></th>
                                       <th><center>Price</center></th>
                                       <th><center>Expiration</center></th>
-                                      <th>Actions</th>
+                                      <th><center>Action</center></th>
                                   </tr>
                               </thead>
                               <tbody>
@@ -134,11 +139,19 @@
                                   </tr>    -->
                                 <c:forEach items="${promoList}" var="promo">
                                   <tr>
-                                      <td><center>${promo.strPromoName}</center></td>
-                                      <td><center>Php ${promo.dblPromoPrice}</center></td>
-                                      <td><center>${promo.strPromoAvailability}</center></td>
-                                      <td style="padding-left:-50px; margin-left: -50px;"><button data-target="viewProdSvc" class="waves-effect waves-purple modal-view btn-flat transparent"><i class="material-icons">visibility</i></button><a class="waves-effect waves-purple modal-trigger btn-flat transparent black-text" title="Update" href="#update"><i class="material-icons">edit</i></a>
-                                      <a class="waves-effect waves-purple modal-trigger btn-flat transparent red-text text-accent-4" href="#delete" title="Deactivate"><i class="material-icons">delete</i></a>
+                                      <td style="padding:0; margin:0;"><center>${promo.strPromoName}</center></td>
+                                      <td style="padding:0; margin:0;"><center>Php ${promo.dblPromoPrice}</center></td>
+                                      <td style="padding:0; margin:0;"><center>${promo.strPromoAvailability}</center></td>
+                                      <td style="padding:0; margin:0;" class="center">
+                                      <a href="#viewProdSvc" class="tooltipped waves-effect waves-purple modal-view btn-flat transparent" style="padding-left: 10px;padding-right:10px; margin: 5px;" data-delay="30" data-position="bottom" data-tooltip="View">
+                                      <i class="material-icons">visibility</i>
+                                      </a>
+                                      <a class="tooltipped waves-effect waves-purple modal-trigger btn-flat transparent black-text" title="Update" href="#update" style="padding-left: 10px;padding-right:10px; margin: 5px;" data-delay="30" data-position="bottom" data-tooltip="Update">
+                                      <i class="material-icons">edit</i>
+                                      </a>
+                                      <a class="tooltipped waves-effect waves-purple modal-trigger btn-flat transparent red-text text-accent-4" href="#delete" title="Deactivate" style="padding-left: 10px;padding-right:10px; margin: 5px;" data-delay="30" data-position="bottom" data-tooltip="Deactivate">
+                                      <i class="material-icons">delete</i>
+                                      </a>
                                       </td>
                                   </tr>
                                 </c:forEach>                                  
@@ -146,6 +159,51 @@
                         </table>
 
                       </div>
+
+                      <div id="promoArchive" class="modal modal-fixed-footer" style="width: 80% !important; height: 86% !important; max-height: 100% !important;">
+                          <div class="modal-content">
+                            <div class="col s12">
+                                  <h4 class="grey-text text-darken-1">Archive</h4>
+                                  <table id="promoArchiveTable" class="display centered responsive-table highlight" cellspacing="0" width="100%" style="border: 1px solid #bdbdbd; padding: 10px;" rowspan="10">
+                              <thead>
+                                  <tr>
+                                      <th><center>Promo Name</center></th>
+                                      <th><center>Price</center></th>
+                                      <th><center>Expiration</center></th>
+                                      <th><center>Action</center></th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  <!-- <tr>
+                                      <td>1</td>
+                                      <td>New Year Promo</td>
+                                      <td><button data-target="viewProdSvc" class="waves-effect waves-orange modal-view btn-flat orange lighten-4">View</button></td>
+                                      <td>99.00</td>
+                                      <td>01/01/01</td>
+                                      <td>01/01/01</td>
+                                      <td><a class="waves-effect waves-light modal-trigger btn-flat transparent black-text" title="Update" href="#update" style="padding: 0px;"><i class="material-icons">edit</i></a>
+                                      <a class="waves-effect waves-light modal-trigger btn-flat transparent red-text text-accent-4" href="#delete" title="Deactivate"><i class="material-icons">delete</i></a>
+                                      </td>
+                                  </tr>    -->
+                                <c:forEach items="${promoList}" var="promoArch">
+                                  <tr>
+                                      <td style="padding:0; margin:0;"><center>${promoArch.strPromoName}</center></td>
+                                      <td style="padding:0; margin:0;"><center>Php ${promoArch.dblPromoPrice}</center></td>
+                                      <td style="padding:0; margin:0;"><center>${promoArch.strPromoAvailability}</center></td>
+                                      <td style="padding:0; margin:0;" class="center">
+                                      <a class="tooltipped waves-effect waves-purple modal-trigger btn-flat transparent green-text text-accent-4" href="#delete" style="padding-left: 10px;padding-right:10px; margin: 5px;" data-delay="30" data-position="bottom" data-tooltip="Activate">
+                                      <i class="material-icons">check</i>
+                                      </a>
+                                      </td>
+                                  </tr>
+                                </c:forEach>                                  
+                              </tbody>
+                            </div>
+                          </div>
+                          <div class="modal-footer">
+                            <a href="#!" class=" modal-action modal-close waves-effect waves-purple btn-flat">BACK</a>
+                          </div>
+                        </div>
 
                       <!-- view product and service modal -->
                           <div id="viewProdSvc" class="modal">
@@ -157,7 +215,7 @@
                                   <input type="text" disabled="disabled" id="promoViewName" name="promoViewName">
                                   <label for="promoViewName">Promo Name</label>
                                 </div>
-                                <table class="centered responsive-table">
+                                <table class="centered responsive-table" id="tbl0">
                                   <thead>
                                     <tr>
                                         <th data-field="viewService">Service</th>
@@ -249,7 +307,7 @@
                                               <label for="promoServiceQty">Qty</label>
                                           </div>
                                           <div class="input-field col s3 left-align" style="margin-top: -1px;">
-                                              <a class="waves-effect waves-light btn-flat orange" id="promoAddSvc" onclick="addServPromo()"><i class="material-icons">add</i></a>
+                                              <a class="waves-effect waves-light btn-flat purple" id="promoAddSvc" onclick="addServPromo()"><i class="material-icons white-text">add</i></a>
                                           </div>
                                           <!--product  -->
                                           <div class="input-field col s8">
@@ -268,12 +326,12 @@
                                               <label for="promoProductQty">Qty</label>
                                           </div>
                                           <div class="input-field col s3 left-align" style="margin-top: -1px;">
-                                              <a class="waves-effect waves-light btn-flat orange" onclick="addProdPromo()"><i class="material-icons">add</i></a>
+                                              <a class="waves-effect waves-light btn-flat purple" onclick="addProdPromo()"><i class="material-icons white-text">add</i></a>
                                           </div>
                                         <!-- end -->
                                         <!-- start table -->
                                           <div class="input-field col s12">
-                                          <table class="centered">
+                                          <table class="centered" id="tbl1">
                                             <thead>
                                               <tr>
                                                 <th>Name</th>
@@ -292,8 +350,8 @@
                               </div>
                           </div>
                           <div class="modal-footer">
-                              <a href="#!" class=" modal-action modal-close waves-effect waves-orange transparent btn-flat">CANCEL</a>
-                              <button class="waves-effect waves-light orange darken-3 white-text btn-flat" type="submit" value="Submit">CREATE</button>
+                              <a href="#!" class=" modal-action modal-close waves-effect waves-purple transparent btn-flat">CANCEL</a>
+                              <button class="waves-effect waves-light purple darken-3 white-text btn-flat" type="submit" value="Submit">CREATE</button>
                           </div>
                           </form>
                     </div>
@@ -357,7 +415,7 @@
                                               <label for="updatePromoSQty">Qty</label>
                                           </div>
                                           <div class="input-field col s3 left-align" style="margin-top: -1px;">
-                                              <a class="waves-effect waves-light btn-flat orange" id="updatePromoAddSvc" onclick="updateServPromo()"><i class="material-icons">add</i></a>
+                                              <a class="waves-effect waves-light btn-flat purple" id="updatePromoAddSvc" onclick="updateServPromo()"><i class="material-icons white-text">add</i></a>
                                           </div>
                                           <!--product  -->
                                           <div class="input-field col s8">
@@ -373,7 +431,7 @@
                                               <label for="updatePromoPQty">Qty</label>
                                           </div>
                                           <div class="input-field col s3 left-align" style="margin-top: -1px;">
-                                              <a class="waves-effect waves-light btn-flat orange" id="updatePromoaddProd" onclick="updateProdPromo()"><i class="material-icons">add</i></a>
+                                              <a class="waves-effect waves-light btn-flat purple" id="updatePromoaddProd" onclick="updateProdPromo()"><i class="material-icons white-text">add</i></a>
                                           </div>
                                         <!-- end -->
                                         <!-- start table -->
@@ -397,8 +455,8 @@
                               </div>
                           </div>
                           <div class="modal-footer">
-                              <a href="#!" class=" modal-action modal-close waves-effect waves-orange transparent btn-flat">CANCEL</a>
-                              <button class="waves-effect waves-light orange darken-3 white-text btn-flat" type="submit" value="Submit">CREATE</button>
+                              <a href="#!" class=" modal-action modal-close waves-effect waves-purple transparent btn-flat">CANCEL</a>
+                              <button class="waves-effect waves-light purple darken-3 white-text btn-flat" type="submit" value="Submit">CREATE</button>
                           </div>
                           </form>
                     </div>
@@ -413,8 +471,8 @@
                               </div>
                             </div>
                               <div class="col s12 center" style="margin-bottom: 30px;">
-                                <button class="waves-effect waves-light orange btn-flat white-text">YES</button>
-                                <a href="#" class="modal-action modal-close waves-effect waves-light transparent btn-flat black-text">NO</a>
+                                <button class="waves-effect waves-light purple btn-flat white-text">YES</button>
+                                <a href="#" class="modal-action modal-close waves-effect waves-purple transparent btn-flat black-text">NO</a>
                               </div>
                             </div>
                       </div>

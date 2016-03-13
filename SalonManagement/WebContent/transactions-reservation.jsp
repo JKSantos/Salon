@@ -117,11 +117,12 @@
                                     <ul>
                                       <li><a href="employeeMaintenance">Employee</a></li>
                                       <li><a href="productServiceMaintenance">Product & Service</a></li>
-                                      <li><a href="promoMaintenance">Promo</a></li>
-                                      <li><a href="discountMaintenance">Discount</a></li>
-                                      <li><a href="packageMaintenance">Package</a></li>
                                       <li><a href="catalogueMaintenance">Catalogue</a></li>
-                                      <li><a href="extraChargeMaintenance">Extra Charge</a></li>
+                                      <li><a href="packageMaintenance">Package</a></li>
+                                      <li><a href="locationMaintenance">Delivery Charge</a></li>
+                                      <li><a href="extraChargeMaintenance">Other Charge</a></li>
+                                      <li><a href="discountMaintenance">Discount</a></li>
+                                      <li><a href="promoMaintenance">Promo</a></li>
                                     </ul>
                                   </div>
                               </li>
@@ -138,6 +139,7 @@
                                   </div>
                               </li>
                             </ul>
+                          <li><a href="queries.jsp"><b>Queries</b></a></li>
                           <li><a href="utilities.jsp" class="waves-effect"><b>Utilities</b></a></li>
                         </ul>
 
@@ -176,6 +178,7 @@
                                      </div>
                                  </li>
                                </ul>
+                              <li><a href="queries.jsp"><b>Queries</b></a></li>
                               <li><a href="utilities.jsp" class="waves-effect waves-orange"><b>Utilities</b></a></li>
                            </ul>
                          </div>

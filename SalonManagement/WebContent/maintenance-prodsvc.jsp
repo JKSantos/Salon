@@ -33,11 +33,12 @@
                             <ul>
                               <li><a href="employeeMaintenance">Employee</a></li>
                                       <li class="purple lighten-4"><a href="productServiceMaintenance">Product & Service</a></li>
-                                      <li><a href="promoMaintenance">Promo</a></li>
-                                      <li><a href="discountMaintenance">Discount</a></li>
-                                      <li><a href="packageMaintenance">Package</a></li>
                                       <li><a href="catalogueMaintenance">Catalogue</a></li>
-                                      <li><a href="extraChargeMaintenance">Extra Charge</a></li>
+                                      <li><a href="packageMaintenance">Package</a></li>
+                                      <li><a href="locationMaintenance">Delivery Charge</a></li>
+                                      <li><a href="extraChargeMaintenance">Other Charge</a></li>
+                                      <li><a href="discountMaintenance">Discount</a></li>
+                                      <li><a href="promoMaintenance">Promo</a></li>
                             </ul>
                           </div>
                       </li>
@@ -45,15 +46,17 @@
                         <a class="collapsible-header"><b>Transaction</b></a>
                           <div class="collapsible-body">
                             <ul>
-                              <li><a href="#">Inventory</a></li>
-                              <li><a href="#">Reservation</a></li>
-                              <li><a href="#">VIP</a></li>
-                              <li><a href="#">Product Order</a></li>
-                              <li><a href="#">Walk-In</a></li>
+                              <li><a href="transactions-inventory.jsp">Inventory</a></li>
+                              <li><a href="transactions-reservation.jsp">Reservation</a></li>
+                              <li><a href="transactions-productorder.jsp">Product Order</a></li>
+                              <li><a href="transactions-vip.jsp">VIP</a></li>
+                              <li><a href="transactions-walkin.jsp">Walk In</a></li>
                             </ul>
                           </div>
                       </li>
                     </ul>
+                  <li><a href="queries.jsp"><b>Queries</b></a></li>
+                  <li><a href="reports.jsp"><b>Reports</b></a></li>
                   <li><a href="utilities.jsp" class="waves-effect"><b>Utilities</b></a></li>
                 </ul>
 
@@ -93,6 +96,7 @@
                              </div>
                          </li>
                        </ul>
+                    <li><a href="queries.jsp"><b>Queries</b></a></li>
                     <li><a href="utilities.jsp" class="waves-effect"><b>Utilities</b></a></li>
                    </ul>
                  </div>
@@ -179,52 +183,52 @@
                             <div class="col s12">
                                   <h4 class="grey-text text-darken-1">Archive</h4>
                                   <table id="prodsvcArchive" class="display centered responsive-table highlight" cellspacing="0" width="100%" style="border: 1px solid #bdbdbd; padding: 10px;" rowspan="10">
-                                                                  <thead>
-                                                                      <tr>
-                                                                          <th><center>Name</center></th>
-                                                                          <th><center>Category</center></th>
-                                                                          <th><center>Price</center></th>
-                                                                          <th><center>Action</center></th>
-                                                                      </tr>
-                                                                  </thead>
-                                                                  <tbody>
-                                                                    <c:forEach items="${productList}" var="product">
-                                                                      <%! String stringArch = null; %>
-                                                                      <% Product prod = (Product)pageContext.getAttribute("product");
-                                                                         stringArch = String.valueOf(prod.getIntProductID());
-                                                                      %>
-                                                                      <tr>
-                                                                          <td style="padding:0; margin: 0;"><center>${product.strProductName}</center></td>
-                                                                          <td style="padding:0; margin: 0;"><center>Product</center></td>
-                                                                          <td style="padding:0; margin: 0;"><center>Php ${product.dblProductPrice}</center></td>
-                                                                          <td style="padding:0; margin: 0;">
-                                                                          <a class="waves-effect waves-purple modal-trigger btn-flat transparent green-text text-accent-4 tooltipped" href="#del<%=stringArch%>" style="padding-left: 10px;padding-right:10px; margin: 5px;" data-delay="30" data-position="bottom" data-tooltip="Activate">
-                                                                            <i class="material-icons">check</i>
-                                                                          </a>
-                                                                          </td>
-                                                                      </tr>
-                                                                    </c:forEach>
-                                                                    <c:forEach items="${serviceList}" var="service">
-                                                                      <%! String strServiceArch =null; %>
-                                                                      <% Service serv = (Service)pageContext.getAttribute("service");
-                                                                         strServiceArch = String.valueOf(serv.getIntServiceID());
-                                                                      %>
-                                                                      <tr>
-                                                                          <td style="padding:0; margin: 0;"><center>${service.strServiceName}</center></td>
-                                                                          <td style="padding:0; margin: 0;"><center>Service</center></td>
-                                                                          <td style="padding:0; margin: 0;"><center>Php ${service.dblServicePrice}</center></td>
-                                                                          <td style="padding:0; margin: 0;">
-                                                                          <a class="waves-effect waves-light modal-trigger btn-flat transparent green-text text-accent-4 tooltipped" href="#del<%=strServiceArch%>" style="padding-left: 10px;padding-right:10px; margin: 5px;" data-delay="30" data-position="bottom" data-tooltip="Activate">
-                                                                            <i class="material-icons">check</i>
-                                                                          </a>
-                                                                          </td>
-                                                                      </tr>
-                                                                    </c:forEach>
+                                  <thead>
+                                      <tr>
+                                          <th><center>Name</center></th>
+                                          <th><center>Category</center></th>
+                                          <th><center>Price</center></th>
+                                          <th><center>Action</center></th>
+                                       </tr>
+                                  </thead>
+                                  <tbody>
+                                    <c:forEach items="${productList}" var="product">
+                                       <%! String stringArch = null; %>
+                                      <% Product prod = (Product)pageContext.getAttribute("product");
+                                          stringArch = String.valueOf(prod.getIntProductID());
+                                      %>
+                                       <tr>
+                                           <td style="padding:0; margin: 0;"><center>${product.strProductName}</center></td>
+                                          <td style="padding:0; margin: 0;"><center>Product</center></td>
+                                           <td style="padding:0; margin: 0;"><center>Php ${product.dblProductPrice}</center></td>
+                                           <td style="padding:0; margin: 0;">
+                                           <a class="waves-effect waves-purple modal-trigger btn-flat transparent green-text text-accent-4 tooltipped" href="#del<%=stringArch%>" style="padding-left: 10px;padding-right:10px; margin: 5px;" data-delay="30" data-position="bottom" data-tooltip="Activate">
+                                            <i class="material-icons">check</i>
+                                          </a>
+                                          </td>
+                                       </tr>
+                                    </c:forEach>
+                                    <c:forEach items="${serviceList}" var="service">
+                                       <%! String strServiceArch =null; %>
+                                      <% Service serv = (Service)pageContext.getAttribute("service");
+                                         strServiceArch = String.valueOf(serv.getIntServiceID());
+                                      %>
+                                      <tr>
+                                          <td style="padding:0; margin: 0;"><center>${service.strServiceName}</center></td>
+                                          <td style="padding:0; margin: 0;"><center>Service</center></td>
+                                           <td style="padding:0; margin: 0;"><center>Php ${service.dblServicePrice}</center></td>
+                                          <td style="padding:0; margin: 0;">
+                                          <a class="waves-effect waves-light modal-trigger btn-flat transparent green-text text-accent-4 tooltipped" href="#del<%=strServiceArch%>" style="padding-left: 10px;padding-right:10px; margin: 5px;" data-delay="30" data-position="bottom" data-tooltip="Activate">
+                                            <i class="material-icons">check</i>
+                                          </a>
+                                          </td>
+                                       </tr>
+                                     </c:forEach>
 
 
                                                                       
-                                                                  </tbody>
-                                                              </table>
+                                  </tbody>
+                               </table>
                             </div>
                           </div>
                           <div class="modal-footer">
@@ -253,10 +257,10 @@
                                       <div class="file-field">
                                             <div class="btn purple darken-3">
                                               <span class=""><i class="material-icons">add_a_photo</i></span>
-                                              <input name="upload" type="file" accept="image/.jpg, image/.png" onchange="loadProdSvc(event)">
+                                              <input name="upload" type="file" class="required" accept="image/.jpg, image/.png" onchange="loadProdSvc(event)">
                                             </div>
                                             <div class="file-path-wrapper">
-                                              <input value="image" class="file-path validate" type="text">
+                                              <input value="image" class="file-path validate required" type="text">
                                             </div>
                                         </div>
                                   </div>
@@ -266,8 +270,8 @@
                               <div class="aside aside2 z-depth-0">
                                 <div class="row">
                               <!-- 2nd aside -->
-                                    <div class="col s12">
-                                         <label class="red-text left">(*) Indicates required field</label>
+                                    <div class="col s12" style="margin-top: -10px;">
+                                         <label class="red-text left" style="font-size: 12px;">(*) Indicates required field</label>
                                     </div>
                                     <div class="input-field col s12">
                                       <select name="strItemCate" class="browser-default" required id="strItemCate">
@@ -352,7 +356,7 @@
                            strProdID = String.valueOf(prodID.getIntProductID());
                            String productCate = prodID.getStrProductCategory();
                         %>
-                        <div id="prod<%=strProdID%>" class="modal modal-fixed-footer" style="width: 60% !important; height: 80% !important; max-height: 100% !important;">
+                        <div id="prod<%=strProdID%>" class="modal modal-fixed-footer" style="width: 60% !important; height: 93% !important; margin-top: -23px !important; max-height: 100% !important;">
                         <form class="col s12" id="updateProdForm" method="get" action="updateItem" enctype="multipart/form-data">
                           <div class="modal-content">
                             <!-- <div class="container"> -->
@@ -455,7 +459,7 @@
                            viewstrProdID = String.valueOf(prodID.getIntProductID());
                            String productCate = prodID.getStrProductCategory();
                         %>
-                        <div id="viewprod<%=viewstrProdID%>" class="modal modal-fixed-footer" style="width: 60% !important; height: 80% !important; max-height: 100% !important;">
+                        <div id="viewprod<%=viewstrProdID%>" class="modal modal-fixed-footer" style="width: 60% !important; height: 93% !important; margin-top: -23px !important; max-height: 100% !important;">
                         <form class="col s12" enctype="multipart/form-data">
                           <div class="modal-content">
                             <!-- <div class="container"> -->
@@ -566,7 +570,7 @@
                            serviceID = String.valueOf(servID.getIntServiceID());
                            String serviceCate = servID.getStrServiceCategory();
                         %>
-                        <div id="serv<%=serviceID%>" class="modal modal-fixed-footer" style="width: 60% !important; height: 80% !important; max-height: 100% !important;">
+                        <div id="serv<%=serviceID%>" class="modal modal-fixed-footer" style="width: 60% !important; height: 93% !important; margin-top: -23px !important; max-height: 100% !important;">
                         <form class="col s12" method="get" id="updateServForm" action="updateItem" enctype="multipart/form-data">
                           <div class="modal-content">
                             <!-- <div class="container"> -->
@@ -673,7 +677,7 @@
                             viewserviceID = String.valueOf(servID.getIntServiceID());
                             String serviceCate = servID.getStrServiceCategory();
                          %>
-                         <div id="viewserv<%=viewserviceID%>" class="modal modal-fixed-footer" style="width: 60% !important; height: 80% !important; max-height: 100% !important;">
+                         <div id="viewserv<%=viewserviceID%>" class="modal modal-fixed-footer" style="width: 60% !important; height: 93% !important; margin-top: -23px !important; max-height: 100% !important;">
                          <form class="col s12" enctype="multipart/form-data">
                            <div class="modal-content">
                              <!-- <div class="container"> -->
@@ -839,7 +843,8 @@
   <style type="text/css">
   #create {
     width: 60% !important;
-    height: 80% !important;
+    height: 93% !important;
+    margin-top: -23px !important;
     max-height: 100% !important;
   }
   #addCategory {

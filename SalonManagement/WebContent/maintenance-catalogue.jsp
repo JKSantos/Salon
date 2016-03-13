@@ -33,11 +33,12 @@
                             <ul>
                               <li><a href="employeeMaintenance">Employee</a></li>
                                       <li><a href="productServiceMaintenance">Product & Service</a></li>
-                                      <li><a href="promoMaintenance">Promo</a></li>
-                                      <li><a href="discountMaintenance">Discount</a></li>
-                                      <li><a href="packageMaintenance">Package</a></li>
                                       <li class="purple lighten-4"><a href="catalogueMaintenance">Catalogue</a></li>
-                                      <li><a href="extraChargeMaintenance">Extra Charge</a></li>
+                                      <li><a href="packageMaintenance">Package</a></li>
+                                      <li><a href="locationMaintenance">Delivery Charge</a></li>
+                                      <li><a href="extraChargeMaintenance">Other Charge</a></li>
+                                      <li><a href="discountMaintenance">Discount</a></li>
+                                      <li><a href="promoMaintenance">Promo</a></li>
                             </ul>
                           </div>
                       </li>
@@ -45,15 +46,17 @@
                         <a class="collapsible-header"><b>Transaction</b></a>
                           <div class="collapsible-body">
                             <ul>
-                              <li><a href="#">Inventory</a></li>
-                              <li><a href="#">Reservation</a></li>
-                              <li><a href="#">VIP</a></li>
-                              <li><a href="#">Product Order</a></li>
-                              <li><a href="#">Walk-In</a></li>
+                              <li><a href="transactions-inventory.jsp">Inventory</a></li>
+                              <li><a href="transactions-reservation.jsp">Reservation</a></li>
+                              <li><a href="transactions-productorder.jsp">Product Order</a></li>
+                              <li><a href="transactions-vip.jsp">VIP</a></li>
+                              <li><a href="transactions-walkin.jsp">Walk In</a></li>
                             </ul>
                           </div>
                       </li>
                     </ul>
+                  <li><a href="queries.jsp"><b>Queries</b></a></li>
+                  <li><a href="reports.jsp"><b>Reports</b></a></li>
                   <li><a href="utilities.jsp" class="waves-effect"><b>Utilities</b></a></li>
                 </ul>
 
@@ -93,6 +96,7 @@
                              </div>
                          </li>
                        </ul>
+                      <li><a href="queries.jsp"><b>Queries</b></a></li>
                     <li><a href="utilities.jsp" class="waves-effect"><b>Utilities</b></a></li>
                    </ul>
                  </div>
@@ -228,10 +232,10 @@
                                     <div class="file-field">
                                           <div class="btn purple">
                                             <span class=""><i class="material-icons">add_a_photo</i></span>
-                                            <input name="upload" type="file" accept="image/.jpg, image/.png" onchange="loadCreateCatalogue(event)">
+                                            <input name="upload" class="required" type="file" accept="image/.jpg, image/.png" onchange="loadCreateCatalogue(event)">
                                           </div>
                                           <div class="file-path-wrapper">
-                                            <input name="strCataloguePath" value="image" class="file-path validate" type="text">
+                                            <input name="strCataloguePath" value="image" class="file-path validate required" type="text">
                                           </div>
                                       </div>
                                 </div>

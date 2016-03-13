@@ -34,11 +34,12 @@
                             <ul>
                               <li><a href="employeeMaintenance">Employee</a></li>
                                       <li><a href="productServiceMaintenance">Product & Service</a></li>
-                                      <li class="purple lighten-4"><a href="maintenance-package.jsp">Package</a></li>
                                       <li><a href="catalogueMaintenance">Catalogue</a></li>
-                                      <li><a href="promoMaintenance">Promo</a></li>
+                                      <li class="purple lighten-4"><a href="maintenance-package.jsp">Package</a></li>
+                                      <li><a href="locationMaintenance">Delivery Charge</a></li>
+                                      <li><a href="extraChargeMaintenance">Other Charge</a></li>
                                       <li><a href="discountMaintenance">Discount</a></li>
-                                      <li><a href="extraChargeMaintenance">Extra Charge</a></li>
+                                      <li><a href="promoMaintenance">Promo</a></li>
                             </ul>
                           </div>
                       </li>
@@ -46,15 +47,17 @@
                         <a class="collapsible-header"><b>Transaction</b></a>
                           <div class="collapsible-body">
                             <ul>
-                              <li><a href="#">Inventory</a></li>
-                              <li><a href="#">Reservation</a></li>
-                              <li><a href="#">VIP</a></li>
-                              <li><a href="#">Product Order</a></li>
-                              <li><a href="#">Walk-In</a></li>
+                              <li><a href="transactions-inventory.jsp">Inventory</a></li>
+                              <li><a href="transactions-reservation.jsp">Reservation</a></li>
+                              <li><a href="transactions-productorder.jsp">Product Order</a></li>
+                              <li><a href="transactions-vip.jsp">VIP</a></li>
+                              <li><a href="transactions-walkin.jsp">Walk In</a></li>
                             </ul>
                           </div>
                       </li>
                     </ul>
+                  <li><a href="queries.jsp"><b>Queries</b></a></li>
+                  <li><a href="reports.jsp"><b>Reports</b></a></li>
                   <li><a href="utilities.jsp" class="waves-effect"><b>Utilities</b></a></li>
                 </ul>
 
@@ -94,6 +97,7 @@
                              </div>
                          </li>
                        </ul>
+                    <li><a href="queries.jsp"><b>Queries</b></a></li>
                     <li><a href="utilities.jsp" class="waves-effect"><b>Utilities</b></a></li>
                    </ul>
                  </div>
@@ -197,7 +201,7 @@
                             <!-- <div class="container"> -->
                               <div class="wrapper">
                                   <h4 class="grey-text text-darken-1">Create Package</h4>
-                                  <div class="aside aside1 z-depth-barts" style="padding: 10px;">
+                                  <div class="aside aside1 z-depth-0 transparent" style="padding: 10px;">
                                     <div class="row">
                                             <h5 class="grey-text text-darken-1">Package Information</h5>
                                             <div class="input-field col s12" style="margin-bottom: 30px;">
@@ -226,7 +230,7 @@
                                             </div>
                                     </div>
                                   </div>
-                                  <div class="aside aside2 z-depth-barts" style="padding: 10px;">
+                                  <div class="aside aside2 z-depth-0 transparent" style="padding: 10px;">
                                       <div class="row">
                                         <!-- service -->
                                           <h5 class="grey-text text-darken-1">Included Service/s and Product/s</h5>
@@ -246,7 +250,7 @@
                                               <label for="createPackageServiceQty">Qty</label>
                                           </div>
                                           <div class="input-field col s3 left-align" style="margin-top: -1px;">
-                                              <a class="waves-effect waves-light btn-flat orange" id="createPackageAddSvc" onclick="createPackageService()"><i class="material-icons">add</i></a>
+                                              <a class="waves-effect waves-light btn-flat purple" id="createPackageAddSvc" onclick="createPackageService()"><i class="material-icons white-text">add</i></a>
                                           </div>
                                           <!--product  -->
                                           <div class="input-field col s8">
@@ -265,7 +269,7 @@
                                               <label for="createPackageProductQty">Qty</label>
                                           </div>
                                           <div class="input-field col s3 left-align" style="margin-top: -1px;">
-                                              <a class="waves-effect waves-light btn-flat orange" onclick="createPackageProduct()"><i class="material-icons">add</i></a>
+                                              <a class="waves-effect waves-light btn-flat purple" onclick="createPackageProduct()"><i class="material-icons white-text">add</i></a>
                                           </div>
                                         <!-- end -->
                                         <!-- start table -->
@@ -289,8 +293,8 @@
                               </div>
                           </div>
                           <div class="modal-footer">
-                              <a href="#!" class=" modal-action modal-close waves-effect waves-orange transparent btn-flat">CANCEL</a>
-                              <button class="waves-effect waves-light orange darken-3 white-text btn-flat" type="submit" value="Submit">CREATE</button>
+                              <a href="#!" class=" modal-action modal-close waves-effect waves-purple transparent btn-flat">CANCEL</a>
+                              <button class="waves-effect waves-light purple darken-3 white-text btn-flat" type="submit" value="Submit">CREATE</button>
                           </div>
                           </form>
                     </div>
@@ -371,7 +375,7 @@
                                               <label for="updatePackageServiceQty">Qty</label>
                                           </div>
                                           <div class="input-field col s3 left-align" style="margin-top: -1px;">
-                                              <a class="waves-effect waves-light btn-flat orange" id="createPackageAddSvc" onclick="updatePackageService()"><i class="material-icons">add</i></a>
+                                              <a class="waves-effect waves-light btn-flat purple" id="createPackageAddSvc" onclick="updatePackageService()"><i class="material-icons white-text">add</i></a>
                                           </div>
                                           <!--product  -->
                                           <div class="input-field col s8">
@@ -390,7 +394,7 @@
                                               <label for="updatePackageProductQty">Qty</label>
                                           </div>
                                           <div class="input-field col s3 left-align" style="margin-top: -1px;">
-                                              <a class="waves-effect waves-light btn-flat orange" onclick="updatePackageProduct()"><i class="material-icons">add</i></a>
+                                              <a class="waves-effect waves-light btn-flat purple" onclick="updatePackageProduct()"><i class="material-icons white-text">add</i></a>
                                           </div>
                                         <!-- end -->
                                         <!-- start table -->
@@ -420,8 +424,8 @@
                               </div>
                           </div>
                           <div class="modal-footer">
-                              <a href="#!" class=" modal-action modal-close waves-effect waves-orange transparent btn-flat">CANCEL</a>
-                              <button class="waves-effect waves-light orange darken-3 white-text btn-flat" type="submit" value="Submit">CREATE</button>
+                              <a href="#!" class=" modal-action modal-close waves-effect waves-purple transparent btn-flat">CANCEL</a>
+                              <button class="waves-effect waves-light purple darken-3 white-text btn-flat" type="submit" value="Submit">CREATE</button>
                           </div>
                           </form>
                     </div>
@@ -442,8 +446,8 @@
                               </div>
                             </div>
                               <div class="col s12 center" style="margin-bottom: 30px;">
-                                <button class="waves-effect waves-light orange btn-flat white-text">YES</button>
-                                <a href="#" class="modal-action modal-close waves-effect waves-light transparent btn-flat black-text">NO</a>
+                                <button class="waves-effect waves-light purple btn-flat white-text">YES</button>
+                                <a href="#" class="modal-action modal-close waves-effect waves-purple transparent btn-flat black-text">NO</a>
                               </div>
                             </div>
                       </div>
