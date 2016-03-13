@@ -88,11 +88,11 @@
                            <a class="waves-effectcollapsible-header"><b>Transaction</b></a>
                              <div class="collapsible-body">
                                <ul>
-                                 <li><a href="#">Inventory</a></li>
-                                 <li><a href="#">Reservation</a></li>
-                                 <li><a href="#">VIP</a></li>
-                                 <li><a href="#">Product Order</a></li>
-                                 <li><a href="#">Walk-In</a></li>
+                                 <li><a href="transactions-inventory.jsp">Monitor Product</a></li>
+                                 <li><a href="transactions-reservation.jsp">Manage Reservation</a></li>
+                                 <li><a href="transactions-productorder.jsp">Product Order</a></li>
+                                 <li><a href="transactions-vip.jsp">VIP</a></li>
+                                 <li><a href="transactions-walkin.jsp">Walk In</a></li>
                                </ul>
                              </div>
                          </li>
@@ -129,7 +129,7 @@
                                   <!-- <tr>
                                       <td>1</td>
                                       <td>New Year Promo</td>
-                                      <td><button data-target="viewProdSvc" class="waves-effect waves-orange modal-view btn-flat orange lighten-4">View</button></td>
+                                      <td><button data-target="viewProdSvc" class="waves-effect waves-purple modal-view btn-flat purple lighten-4">View</button></td>
                                       <td>99.00</td>
                                       <td>01/01/01</td>
                                       <td>01/01/01</td>

@@ -106,7 +106,7 @@
         <header class="headnav">
                         <ul id="slide-out" class="side-nav fixed z-depth-0">
                           <div class="center">
-                              <img src="./img/anon.jpg" class="circle" style="width: 150px; height: 150px; margin-top: 40px; margin-bottom: 20px;">
+                             <img src="./img/logo.png" class="circle" style="width: 100%; height: 100%; margin-top: 40px; margin-bottom: 20px;">
                             </div>
                           <li><a href="admin-home.jsp" class="waves-effect"><b>Home</b></a></li>
                          <!--  <li class="no-padding"> -->
@@ -130,11 +130,11 @@
                                 <a class="collapsible-header active"><b>Transaction</b></a>
                                   <div class="collapsible-body">
                                     <ul>
-                                      <li><a href="transactions-inventory.jsp">Inventory</a></li>
-                                      <li class="orange"><a href="transactions-reservation.jsp">Reservation</a></li>
-                                      <li><a href="transactions-vip.jsp">VIP</a></li>
+                                      <li class="purple lighten-4"><a href="transactions-inventory.jsp">Monitor Product</a></li>
+                                      <li><a href="transactions-reservation.jsp">Manage Reservation</a></li>
                                       <li><a href="transactions-productorder.jsp">Product Order</a></li>
-                                      <li><a href="#!">Walk-In</a></li>
+                                      <li><a href="transactions-vip.jsp">VIP</a></li>
+                                      <li><a href="transactions-walkin.jsp">Walk In</a></li>
                                     </ul>
                                   </div>
                               </li>
@@ -145,15 +145,15 @@
 
                 
                        <nav class="z-depth-0">
-                         <div class="nav-wrapper orange">
+                         <div class="nav-wrapper purple">
                            <a href="#!" class="brand-logo white-text" style="margin-left: 30px;">Salon Management System</a>
                          
                            <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
                            <ul class="side-nav" id="mobile-demo">
-                             <li><a href="admin-home.jsp" class="waves-effect waves-orange"><b>Home</b></a>
+                             <li><a href="admin-home.jsp" class="waves-effect waves-purple"><b>Home</b></a>
                                <ul class="collapsible collapsible-accordion">
                                  <li>
-                                   <a class="waves-effect waves-orange collapsible-header"><b>Maintenance</b></a>
+                                   <a class="waves-effect waves-purple collapsible-header"><b>Maintenance</b></a>
                                      <div class="collapsible-body">
                                        <ul>
                                          <li><a href="maintenance-emp.jsp">Employee</a></li>
@@ -162,24 +162,25 @@
                                          <li><a href="maintenance-discount.jsp">Discount</a></li>
                                          <li><a href="maintenance-package.jsp">Package</a></li>
                                          <li><a href="maintenance-catalouge.jsp">Catalogue</a></li>
-                                         <li><a href="maintenance-extra.jsp">Extra Charge</a></li>
+                                         <li><a href="maintenance-extra.jsp">Charge</a></li>
+                                         <li><a href="locationMaintenance">Location</a></li>
                                        </ul>
                                      </div>
                                  </li>
                                  <li>
-                                   <a class="waves-effect waves-orange collapsible-header"><b>Transaction</b></a>
+                                   <a class="waves-effect waves-purple collapsible-header"><b>Transaction</b></a>
                                      <div class="collapsible-body">
                                        <ul>
-                                         <li><a href="transactions-inventory.jsp">Inventory</a></li>
-                                         <li class="orange"><a href="transactions-reservation.jsp">Reservation</a></li>
+                                         <li><a href="transactions-inventory.jsp">Monitor Product</a></li>
+                                         <li class="purple lighten-4"><a href="transactions-reservation.jsp">Manage Reservation</a></li>
                                          <li><a href="transactions-productorder.jsp">Product Order</a></li>
-                                         <li><a href="transactions-walkin.jsp">Walk-In</a></li>
+                                         <li><a href="transactions-vip.jsp">VIP</a></li>
+                                         <li><a href="transactions-walkin.jsp">Walk In</a></li>
                                        </ul>
                                      </div>
                                  </li>
                                </ul>
-                              <li><a href="queries.jsp"><b>Queries</b></a></li>
-                              <li><a href="utilities.jsp" class="waves-effect waves-orange"><b>Utilities</b></a></li>
+                              <li><a href="utilities.jsp" class="waves-effect waves-purple"><b>Utilities</b></a></li>
                            </ul>
                          </div>
                        </nav>
@@ -207,7 +208,7 @@
                                             <td>1</td>
                                             <td>January 1, 2016</td>
                                             <td>Manila Cathedral</td>
-                                            <th><button class="waves-effect waves-light orange btn-flat white-text">Details</button></th>
+                                            <th><button class="waves-effect waves-light purple btn-flat white-text">Details</button></th>
                                             <td><a href="#update" class="modal-trigger"><i class="material-icons green-text">edit</i></a>
                                             <a href="#!"><i class="material-icons red-text">delete</i></a>
                                             </td>
@@ -216,7 +217,7 @@
                                             <td>1</td>
                                             <td>January 1, 2016</td>
                                             <td>Manila Cathedral</td>
-                                            <th><button class="waves-effect waves-light orange btn-flat white-text">Details</button></th>
+                                            <th><button class="waves-effect waves-light purple btn-flat white-text">Details</button></th>
                                             <td><a href="#update" class="modal-trigger"><i class="material-icons green-text">edit</i></a>
                                             <a href="#!"><i class="material-icons red-text">delete</i></a>
                                             </td>
@@ -225,7 +226,7 @@
                                             <td>1</td>
                                             <td>January 1, 2016</td>
                                             <td>Manila Cathedral</td>
-                                            <th><button class="waves-effect waves-light orange btn-flat white-text">Details</button></th>
+                                            <th><button class="waves-effect waves-light purple btn-flat white-text">Details</button></th>
                                             <td><a href="#update" class="modal-trigger"><i class="material-icons green-text">edit</i></a>
                                             <a href="#!"><i class="material-icons red-text">delete</i></a>
                                             </td>
@@ -236,8 +237,8 @@
                                 <div class="row ">
                                   <div class="col s12">
                                     <div class="right">
-                                      <a class="btn-floating btn-large waves-effect waves-light orange darken-3" href="calendar-view.jsp" target="_blank"><i class="material-icons">event</i></a>
-                                   <a class="btn-floating btn-large waves-effect waves-light orange darken-3" href="create-reservation.jsp"><i class="material-icons">add</i></a>
+                                      <a class="btn-floating btn-large waves-effect waves-light purple darken-3" href="calendar-view.jsp" target="_blank"><i class="material-icons">event</i></a>
+                                   <a class="btn-floating btn-large waves-effect waves-light purple darken-3" href="create-reservation.jsp"><i class="material-icons">add</i></a>
                                     </div>                                  
                                   </div>
                                 </div>

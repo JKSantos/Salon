@@ -93,7 +93,8 @@
                                       <li><a href="discountMaintenance">Discount</a></li>
                                       <li><a href="maintenance-package.jsp">Package</a></li>
                                       <li><a href="catalogueMaintenance">Catalogue</a></li>
-                                      <li><a href="extraChargeMaintenance">Extra Charge</a></li>
+                                      <li><a href="extraChargeMaintenance">Charge</a></li>
+                                      <li><a href="locationMaintenance">Location</a></li>
                                </ul>
                              </div>
                          </li>
@@ -231,7 +232,7 @@
                                            <div class="file-field">
                                                  <div class="btn purple darken-1">
                                                    <span class=""><i class="material-icons">add_a_photo</i></span>
-                                                   <input type="file" name="upload" class="required" accept="image/.jpg, image/.png" onchange="loadFile(event)">
+                                                   <input name="upload" type="file" accept="image/.jpg, image/.png" onchange="loadFile(event)" required>
                                                  </div>
                                                  <div class="file-path-wrapper">
                                                    <input type="text" name="path" id="path" class="required" value="image" class="file-path validate">
@@ -262,7 +263,7 @@
                                             <label for="strEmpLastName" class="active">Last Name<span class="red-text"><b>*</b></span></label>
                                         </div>
                                         <div class="input-field col s12">
-                                            <input type="date" name="strBirthdate" placeholder="January 1, 1996" class="datepicker active tooltipped" id="createBirthday" required data-position="bottom" data-delay="30" data-tooltip="Ex: January/1/1996">
+                                            <input type="date" value="March/9/1996" name="strBirthdate" placeholder="January 1, 1996" class="datepicker active tooltipped" id="createBirthday" required data-position="bottom" data-delay="30" data-tooltip="Ex: January/1/1996">
                                             <label for="createBirthday" class="active">Birthday<span class="red-text">*</span></label>
                                         </div>
                                         <div class="input-field col s12">
@@ -312,10 +313,7 @@
                                       <div class="input-field col s4">
                                         <button data-target="addOption" class="waves-effect waves-light btn-flat modal-option purple darken-1 white-text"><i class="material-icons">add</i></button>
                                       </div>
-                                      <div class="input-field col s12 left-align" style="margin-top: -4px;">
-                                              <input type="checkbox" id="access" name="access" />
-                                              <label for="access">Grant Access</label>
-                                      </div>
+                                      
                                     </div>
                                   </div>
                                   <!-- END OF ASIDE3 -->
@@ -481,10 +479,7 @@
                                       <div class="input-field col s4">
                                         <button data-target="updateOption" class="waves-effect waves-light btn-flat modal-option purple darken-1 white-text"><i class="material-icons">add</i></button>
                                       </div>
-                                      <div class="input-field col s12 left-align" style="margin-top: -4px;">
-                                              <input type="checkbox" id="access" name="access" />
-                                              <label for="access">Grant Access</label>
-                                      </div>
+                                      
                                     </div>
                                   </div>
                                   <!-- END OF ASIDE3 -->
@@ -607,10 +602,7 @@
                                           </select>
                                           <label for="slct3" class="active">Position</label>
                                       </div>
-                                      <div class="input-field col s12 left-align" style="margin-top: -4px;">
-                                              <input type="checkbox" id="access" name="access" readonly />
-                                              <label for="access">Grant Access</label>
-                                      </div>
+                                      
                                     </div>
                                   </div>
                                   <!-- END OF ASIDE3 -->

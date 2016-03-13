@@ -16,7 +16,7 @@
         <header class="headnav">
                         <ul id="slide-out" class="side-nav fixed z-depth-0">
                           <div class="center">
-                              <img src="./img/anon.jpg" class="circle" style="width: 150px; height: 150px; margin-top: 40px; margin-bottom: 20px;">
+                              <img src="./img/logo.png" class="circle" style="width: 100%; height: 100%; margin-top: 40px; margin-bottom: 20px;">
                             </div>
                           <li><a href="admin-home.jsp" class="waves-effect"><b>Home</b></a></li>
                          <!--  <li class="no-padding"> -->
@@ -43,7 +43,7 @@
                                       <li><a href="transactions-inventory.jsp">Inventory</a></li>
                                       <li><a href="transactions-reservation.jsp">Reservation</a></li>
                                       <li><a href="transactions-vip.jsp">VIP</a></li>
-                                      <li class="orange"><a href="transactions-productorder.jsp">Product Sales</a></li>
+                                      <li class="purple lighten-4"><a href="transactions-productorder.jsp">Product Sales</a></li>
                                       <li><a href="transactions-walkin.jsp">Walk-In</a></li>
                                     </ul>
                                   </div>
@@ -55,15 +55,15 @@
 
                 
                        <nav class="z-depth-0">
-                         <div class="nav-wrapper orange">
+                         <div class="nav-wrapper purple">
                            <a href="#!" class="brand-logo white-text" style="margin-left: 30px;">Salon Management System</a>
                          
                            <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
                            <ul class="side-nav" id="mobile-demo">
-                             <li><a href="admin-home.jsp" class="waves-effect waves-orange"><b>Home</b></a>
+                             <li><a href="admin-home.jsp" class="waves-effect waves-purple"><b>Home</b></a>
                                <ul class="collapsible collapsible-accordion">
                                  <li>
-                                   <a class="waves-effect waves-orange collapsible-header"><b>Maintenance</b></a>
+                                   <a class="waves-effect waves-purple collapsible-header"><b>Maintenance</b></a>
                                      <div class="collapsible-body">
                                        <ul>
                                          <li><a href="maintenance-emp.jsp">Employee</a></li>
@@ -77,19 +77,18 @@
                                      </div>
                                  </li>
                                  <li>
-                                   <a class="waves-effect waves-orange collapsible-header"><b>Transaction</b></a>
+                                   <a class="waves-effect waves-purple collapsible-header"><b>Transaction</b></a>
                                      <div class="collapsible-body">
                                        <ul>
                                          <li><a href="transactions-inventory.jsp">Inventory</a></li>
                                          <li><a href="transactions-reservation.jsp">Reservation</a></li>
-                                         <li class="orange"><a href="transactions-productorder.jsp">Product Sales</a></li>
+                                         <li class="purple"><a href="transactions-productorder.jsp">Product Sales</a></li>
                                          <li><a href="#!">Walk-In</a></li>
                                        </ul>
                                      </div>
                                  </li>
                                </ul>
-                            <li><a href="queries.jsp"><b>Queries</b></a></li>
-                             <li><a href="utilities.jsp" class="waves-effect waves-orange"><b>Utilities</b></a></li>
+                             <li><a href="utilities.jsp" class="waves-effect waves-purple"><b>Utilities</b></a></li>
                            </ul>
                          </div>
                        </nav>
@@ -128,7 +127,7 @@
                                     <td>${product.strProductName}</td>
                                 
                                     <td>${product.dblProductPrice}</td>
-                                    <td><a href="#update" style="padding: 0px;" class="waves-effect waves-orange modal-trigger transparent btn-flat"><i class="material-icons">edit</i></a><button style="padding: 0px; margin-left:15px;" class="waves-effect waves-orange transparent btn-flat"><i class="material-icons">delete</i></button></td>
+                                    <td><a href="#update" style="padding: 0px;" class="waves-effect waves-purple modal-trigger transparent btn-flat"><i class="material-icons">edit</i></a><button style="padding: 0px; margin-left:15px;" class="waves-effect waves-purple transparent btn-flat"><i class="material-icons">delete</i></button></td>
                                     </tr>
                                   </c:forEach>
                           </tbody>
@@ -136,7 +135,7 @@
                         <br>
 
                         <div class="row right">
-                          <a class="btn-floating btn-large waves-effect waves-light orange darken-3" href="create-salesorder.jsp"><i class="material-icons">add</i></a>
+                          <a class="btn-floating btn-large waves-effect waves-light purple darken-3" href="create-salesorder.jsp"><i class="material-icons">add</i></a>
                         </div>
                         </div>
                       <!-- </div> -->
