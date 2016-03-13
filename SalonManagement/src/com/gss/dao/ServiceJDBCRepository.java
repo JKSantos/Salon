@@ -52,7 +52,7 @@ public class ServiceJDBCRepository implements ServiceRepository{
 					double price = set2.getDouble(1);
 					service = new Service(intServiceID, strServiceName, strServiceCate, intServiceStatus, strServiceDesc, price, actualPhoto, strPhotoPath);
 					serviceList.add(service);
-					System.out.println(service.getIntServiceID() + "....");
+					
 				}
 				
 				pre2.close();

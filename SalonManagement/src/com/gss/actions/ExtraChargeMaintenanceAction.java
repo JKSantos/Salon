@@ -15,7 +15,6 @@ public class ExtraChargeMaintenanceAction {
 		ExtraChargeService service = new ExtraChargeServiceImpl();
 		this.setEcList(service.getAllExtraCharges());
 		
-		System.out.println(ecList.get(0).getStrECName());
 		return "success";
 	}
 

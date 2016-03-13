@@ -16,8 +16,6 @@ public class DiscountMaintenanceAction {
 
 		DiscountService discountService = new DiscountServiceImpl();
 		this.setDiscountList(discountService.getAllDiscount());
-
-		System.out.println(discountList.size());
 		return "success";
 	}
 

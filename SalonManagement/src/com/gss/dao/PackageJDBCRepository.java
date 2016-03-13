@@ -12,7 +12,9 @@ import com.gss.model.Product;
 import com.gss.model.ProductPackage;
 import com.gss.model.Service;
 import com.gss.model.ServicePackage;
+import com.gss.service.ProductService;
 import com.gss.service.ProductServiceImpl;
+import com.gss.service.ServiceService;
 import com.gss.service.ServiceServiceImpl;
 import com.gss.utilities.ProductPackageComparison;
 import com.gss.utilities.SearchProduct;
@@ -149,34 +151,6 @@ public class PackageJDBCRepository implements PackageRepository{
 			pre1.execute();
 			pre1.close();
 			
-			PreparedStatement pre2 = con.prepareStatement(prohibitedQuery);
-			pre2.setInt(1, pack.getIntPackageID());
-			pre2.execute();
-			
-			for(int intCtr = 0; intCtr < pack.getServiceList().size(); intCtr++){
-				ServicePackage servicePack = pack.getServiceList().get(intCtr);
-				Service service1 = servicePack.getService();
-				System.out.println(service1.getIntServiceID());
-				PreparedStatement pre21 = con.prepareStatement(strQuery3);
-				pre21.setInt(1, pack.getIntPackageID());
-				pre21.setInt(2, service1.getIntServiceID());
-				pre21.setInt(3, servicePack.getIntQuantity());
-				pre21.execute();
-				pre21.close();
-			}
-			
-			for(int intCtr = 0; intCtr < pack.getProductList().size(); intCtr++){
-				ProductPackage productPack = pack.getProductList().get(intCtr);
-				Product product1 = productPack.getProduct();
-				
-				PreparedStatement pre21 = con.prepareStatement(strQuery2);
-				pre21.setInt(1, pack.getIntPackageID());
-				pre21.setInt(2, product1.getIntProductID());
-				pre21.setInt(3, productPack.getIntProductQuantity());
-				pre21.execute();
-				pre21.close();
-			}
-			
 			con.close();
 			return true;
 		}
@@ -192,6 +166,13 @@ public class PackageJDBCRepository implements PackageRepository{
 		Connection con = jdbc.getConnection();
 		String query = "SELECT * FROM tblPackage WHERE intPackageStatus = 1;";
 		List<Package> packageList = new ArrayList<Package>();
+		ServiceService serv = new ServiceServiceImpl();
+		ProductService prod = new ProductServiceImpl();
+		List<ServicePackage> servPack = new ArrayList<ServicePackage>();
+		List<ProductPackage> prodPack = new ArrayList<ProductPackage>();
+		
+		List<Product> productList = prod.getAllProducts();
+		List<Service> serviceList = serv.getAllService();
 		
 		try{
 			
@@ -213,11 +194,55 @@ public class PackageJDBCRepository implements PackageRepository{
 				pre2.setInt(1, intID);
 				ResultSet set2 = pre2.executeQuery();
 				
+				PreparedStatement pre5 = con.prepareStatement("SELECT * FROM tblServicePackage WHERE intPackageID = ? AND intPackageServiceStatus = 1");
+				pre5.setInt(1, intID);
+				ResultSet set4 = pre5.executeQuery();
+				
+				while(set4.next()){
+					
+					int intID1 = set4.getInt(1);
+					int intPackage = set4.getInt(2);
+					int intService = set4.getInt(3);
+					int intQuantity1 = set4.getInt(4);
+					
+					for(int i = 0; i < serviceList.size(); i++){
+						Service service1 = serviceList.get(i);
+						if(intService == service1.getIntServiceID()){
+							ServicePackage service2 = new ServicePackage(intID1, intPackage, service1, intQuantity1, 1);
+							servPack.add(service2);
+						}
+					}
+				}
+				
+				
+				
+				PreparedStatement pre6 = con.prepareStatement("SELECT * FROM tblProductPackage WHERE intProductPackageStatus = 1 AND intPackageID = ?");
+				pre6.setInt(1, intID);
+				ResultSet set10 = pre6.executeQuery();
+				
+				while(set10.next()){
+					
+					int intID1 = set10.getInt(1);
+					int intPackage = set10.getInt(2);
+					int intProduct = set10.getInt(3);
+					int intQuantity1 = set10.getInt(4);
+					
+					for(int i = 0; i < productList.size(); i++){
+						Product product1 = productList.get(i);
+						if(intProduct == product1.getIntProductID()){
+							ProductPackage service2 = new ProductPackage(intID1, intPackage, product1, intQuantity1, 1);
+							prodPack.add(service2);
+						}
+					}
+				}
+				
 				while(set2.next()){
 					price = set2.getDouble(1);
 				}
 				
-				Package packagee = new Package(intID, strName, strDesc, intType, max, strAvailability, price, null, null, intStatus);
+				
+				
+				Package packagee = new Package(intID, strName, strDesc, intType, max, strAvailability, price, servPack, prodPack, intStatus);
 				packageList.add(packagee);
 				pre2.close();
 			}
@@ -237,14 +262,14 @@ public class PackageJDBCRepository implements PackageRepository{
 	public boolean deactivatePackage(int packageID) {
 		
 		Connection con = jdbc.getConnection();
-		String query = "Call deactivatePackage(?);";
+		String query = "UPDATE tblPackage SET intPackageStatus = 0 WHERE intPackageID = ?;";
 		
 		try{
 			
 			PreparedStatement pre = con.prepareStatement(query);
 			pre.setInt(1, packageID);
 			
-			pre.executeQuery();
+			pre.execute();
 			return true;
 		}
 		catch(Exception e){

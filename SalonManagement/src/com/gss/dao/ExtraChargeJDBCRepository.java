@@ -40,7 +40,7 @@ public class ExtraChargeJDBCRepository implements ExtraChargeRepository{
 	public List<ExtraCharge> getAllExtraCharges() {
 		
 		Connection con = jdbc.getConnection();
-		String query = "SELECT * FROM tblExtraCharges;";
+		String query = "SELECT * FROM tblExtraCharges WHERE intStatus = 1;";
 		List<ExtraCharge> ecList = new ArrayList<ExtraCharge>();
 		
 		try{

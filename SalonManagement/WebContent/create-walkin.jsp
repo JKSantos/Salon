@@ -13,8 +13,7 @@
         <header class="headnav">
                         <ul id="slide-out" class="side-nav fixed z-depth-0">
                           <div class="center">
-                              <img src="./img/anon.jpg" class="circle" style="width: 150px; height: 150px; margin-top: 40px; margin-bottom: 20px;">
-                            </div>
+                             <img src="./img/logo.png" class="circle" style="width: 100%; height: 100%; margin-top: 40px; margin-bottom: 20px;"></div>
                           <li><a href="admin-home.jsp" class="waves-effect"><b>Home</b></a></li>
                          <!--  <li class="no-padding"> -->
                             <ul class="collapsible" data-collapsible="accordion">
@@ -39,7 +38,7 @@
                                       <li><a href="transactions-inventory.jsp">Inventory</a></li>
                                       <li><a href="transactions-reservation.jsp">Reservation</a></li>
                                       <li><a href="transactions-productorder.jsp">Product Order</a></li>
-                                      <li class="orange"><a href="transactions-walkin.jsp">Walk-In</a></li>
+                                      <li class="purple"><a href="transactions-walkin.jsp">Walk-In</a></li>
                                     </ul>
                                   </div>
                               </li>
@@ -49,15 +48,15 @@
 
                 
                        <nav class="z-depth-0">
-                         <div class="nav-wrapper orange">
+                         <div class="nav-wrapper purple">
                            <a href="#!" class="brand-logo white-text" style="margin-left: 30px;">Salon Management System</a>
                          
                            <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
                            <ul class="side-nav" id="mobile-demo">
-                             <li><a href="admin-home.jsp" class="waves-effect waves-orange"><b>Home</b></a>
+                             <li><a href="admin-home.jsp" class="waves-effect waves-purple"><b>Home</b></a>
                                <ul class="collapsible collapsible-accordion">
                                  <li>
-                                   <a class="waves-effect waves-orange collapsible-header"><b>Maintenance</b></a>
+                                   <a class="waves-effect waves-purple collapsible-header"><b>Maintenance</b></a>
                                      <div class="collapsible-body">
                                        <ul>
                                          <li><a href="maintenance-emp.jsp">Employee</a></li>
@@ -71,18 +70,21 @@
                                      </div>
                                  </li>
                                  <li>
-                                   <a class="waves-effect waves-orange collapsible-header"><b>Transactions</b></a>
+                                   <a class="waves-effect waves-purple collapsible-header"><b>Transactions</b></a>
                                      <div class="collapsible-body">
                                        <ul>
-                                         <li><a href="transactions-inventory.jsp">Inventory</a></li>
-                                         <li class="orange"><a href="transactions-reservation.jsp">Reservation</a></li>
+                                         <ul>
+                                         <li><a href="transactions-inventory.jsp">Monitor Product</a></li>
+                                         <li ><a href="transactions-reservation.jsp">Manage Reservation</a></li>
                                          <li><a href="transactions-productorder.jsp">Product Order</a></li>
-                                         <li><a href="transaction-walkin.jsp">Walk-In</a></li>
+                                         <li><a href="transactions-vip.jsp">VIP</a></li>
+                                         <li class="purple lighten-4"><a href="transactions-walkin.jsp">Walk In</a></li>
+                                       </ul>
                                        </ul>
                                      </div>
                                  </li>
                                </ul>
-                              <li><a href="utilities.jsp" class="waves-effect waves-orange"><b>Utilities</b></a></li>
+                              <li><a href="utilities.jsp" class="waves-effect waves-purple"><b>Utilities</b></a></li>
                            </ul>
                          </div>
                        </nav>
@@ -91,106 +93,142 @@
         <article>
           <div class="wrapper">
                     <div class="aside aside1 z-depth-barts">
-                    <div class="container">
-                      <div class="row">
-                          <form class="col s12">
-                              <div class="input-field col s12">
-                                  <h4>Walk-In</h4>
-                              </div>
-                                
-                             
-                              <div class="input-field col s6">
-                                  <select id="package-list">
-                                        <option value="" disabled selected>Choose your option</option>
-                                        <option value="1">Package 1</option>
-                                        <option value="2">Package 2</option>
-                                        <option value="3">Package 3</option>
-                                        <option value="customize">Custom</option>
-                                  </select>
-                                  <label>Package Available</label>
-                              </div>
-                              <div class="input-field col s6" stype="margin-top: -10px;">
-                                  <select id="servicelist"  multiple>
-                                        <option value="" disabled selected>Choose your option</option>
-                                        <option value="1">Service 1</option>
-                                        <option value="2">Service 2</option>
-                                        <option value="3">Service 3</option>
-                                  </select>
-                                  <label>Service Available</label>
-                              </div>
-                              
-                              <div class="input-field col s12" stype="margin-top: -10px;">
-                                  <select id="stylistlist"  multiple>
-                                        <option value="" disabled selected>Choose your option</option>
-                                        <option value="1">Service 1</option>
-                                        <option value="2">Service 2</option>
-                                        <option value="3">Service 3</option>
-                                  </select>
-                                  <label>Stylist Available</label>
-                              </div>
-                          
-                              <div class="col s12">
-                                  <button id="reservetn" type="submit" value="Submit" class="waves-effect waves-light orange btn-flat  modal-trigger" style="margin-top:10px;" data-target="summaryModal">CREATE</button>
-                                  <button id="reserveclear" type="reset" value="Reset" class="waves-effect waves-orange white btn-flat" style="margin-top:10px;">CLEAR</button>
-                              </div>
+                     <div class="container">
+                                            <form class="col s12" id="myForm">
 
-                          </form>
-                      </div>
-                    </div>
+                                              <div class="row center">
+                                                <div class="input-field col s12">
+                                                  <h2 class="thin">Walk in</h2>
+                                                </div>
+                                              </div>
 
-                     <div id="summaryModal" class="modal modal-fixed-footer">
-                        <form>
-                          <div class="modal-content">
-                            <h3 class="orange-text text-darken-3 thin">Summary of Reservation</h3>
-                            <div class="container">
-                              <div class="row">
-                                <table class="center highlight">
-                                        <thead>
-                                          <tr>
-                                              <th data-field="id">Service</th>
-                                              <th data-field="name">Descriptioin</th>
-                                              <th data-field="price">Service Price</th>
-                                          </tr>
-                                        </thead>
+                                              <div class="row">
+                                                  <p class="red-text col s6">(*) Includes required field</p>
+                                                  <p id="notify" class="red-text col s6"></p>
+                                              </div>
+                                            <div class="row">
+                                              <div class="input-field col s6">
+                                                 <input type="number" class="validate" required id="reserve_headcount" maxlength="4" onkeyup="notifyStylist()">
+                                                 <label for="reserve_headcount">Head Count <span class="red-text">*</span></label>
+                                              </div>
 
-                                        <tbody>
-                                          <tr>
-                                            <td>Haircut</td>
-                                            <td>Short</td>
-                                            <td>$0.87</td>
-                                          </tr>
-                                          <tr>
-                                            <td>Rebond</td>
-                                            <td>Hot oil</td>
-                                            <td>$3.76</td>
-                                          </tr>
-                                          <tr>
-                                            <td>Spa</td>
-                                            <td>Full body</td>
-                                            <td>$7.00</td>
-                                          </tr>
-                                        </tbody>
-                                      </table>
-                              </div>
-                              <div class="row">
-                                <h5 class="thin col s6">Total Amount: </h5>
-                                <h5 class="thin col s6">Php 2,500.00</h5>
-                              </div>   
+                                              
+                                               <div class="input-field col s6">
+                                                 <select id="stylistlist" multiple>
+                                                       <option value="" disabled selected>Choose your option</option>
+                                                       <option value="">stylist1</option>
+                                                       <option value="">stylist2</option>
+                                                       <option value="">stylist3</option>
+                                                       <option value="">stylist4</option>
+                                                       <option value="">stylist5</option>
+                                                       <option value="">stylist6</option>
+                                                 </select>
+                                                 <label>Stylist Available</label>
+                                              </div>
+                                            </div>
 
-                               <div class="row">
-                                <h5 class="thin col s6">Down Payment: </h5>
-                                <h5 class="thin col s6">Php 1,250.00</h5>
-                              </div>
-        
-                            </div>
-                          </div>
-                         <div class="modal-footer">
-                            <a href="#" class="modal-action modal-close waves-orange btn-flat transparent">Cancel</a>
-                           <button class="modal-action waves-effect waves-light orange btn-flat ">Confirm</button>
-                         </div>
-                         </form>
-                    </div>
-                  </div>
+
+                                             <div class="row">
+                                              <div class="col s6">
+                                                <div class="row">
+                                                  <h6>Packages</h6>
+                                                  <div class="input-field col s6">
+                                                   <select id="package-list"  class="browser-default">
+                                                         <option value="" disabled selected>Choose your option</option>
+                                                         <option value="Package 1">Package 1</option>
+                                                         <option value="Package 2">Package 2</option>
+                                                         <option value="Package 3">Package 3</option>
+                                                         <option value="customize">Custom</option>
+                                                   </select>
+                                                   <!-- <label>Package Available</label> -->
+                                                  </div>
+
+                                                  <div class="input-field col s6">
+                                                     <input type="number" class="validate" id="package_quantity">
+                                                     <label for="package_quantity">Quantity</label>
+                                                  </div>
+
+                                                  <div class="col s12 center">
+                                                     <button class="waves-effect waves-light btn col s4 center" onclick="addPackageToTable()"><i class="material-icons">add</i></button>
+                                                  </div>
+                                                </div>
+                                                
+                                                <div class="row">
+                                                    <h6>Services</h6>
+                                                    <div class="input-field col s6">
+                                                     <select id="package-list"  class="browser-default">
+                                                           <option value="" disabled selected>Choose your option</option>
+                                                           <option value="Package 1">Package 1</option>
+                                                           <option value="Package 2">Package 2</option>
+                                                           <option value="Package 3">Package 3</option>
+                                                           <option value="customize">Custom</option>
+                                                     </select>
+                                                     <!-- <label>Package Available</label> -->
+                                                    </div>
+
+                                                    <div class="input-field col s6">
+                                                       <input type="number" class="validate" id="package_quantity">
+                                                       <label for="package_quantity">Quantity</label>
+                                                    </div>
+
+                                                    <div class="col s12 center">
+                                                       <button class="waves-effect waves-light btn col s4 center" onclick="addPackageToTable()"><i class="material-icons">add</i></button>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row">
+                                                  <h6>Extra Charges</h6>
+                                                  <div class="input-field col s6">
+                                                   <select id="charge-list"  class="browser-default">
+                                                         <option value="" disabled selected>Choose your option</option>
+                                                         <option value="Charge 1">Charge 1</option>
+                                                         <option value="Charge 2">Charge 2</option>
+                                                         <option value="Charge 3">Charge 3</option>
+                                                         <option value="customize">Charge</option>
+                                                   </select>
+                                                   <!-- <label>Package Available</label> -->
+                                                  </div>
+
+                                                  <div class="input-field col s6">
+                                                     <input type="number" class="validate" id="charge_price">
+                                                     <label for="charge_price">Price</label>
+                                                  </div>
+
+                                                  <div class="col s12 center">
+                                                     <button class="waves-effect waves-light btn col s4 center" onclick="addChargesToTable()"><i class="material-icons">add</i></button>
+                                                  </div>
+                                                </div>
+                                              </div>
+
+                                              <div class="col s6">
+                                                <div class="row center">
+                                                  <table class="centered highlight">
+                                                    <thead>
+                                                          <tr>
+                                                              <th data-field="id">Name</th>
+                                                              <th data-field="name">Amount</th>
+                                                              <th data-field="price">Action</th>
+                                                          </tr>
+                                                        </thead>
+                                                  </table>
+                                                   <table class="centered highlight bordered" id="packageTable">
+
+                                                   </table>
+                                                 </div>
+                                              </div>  
+                                             </div>                  
+                                           
+                                                 <div id="div1">
+                                                   
+                                                 </div>
+                                          
+                                            <div class="row col s12 center">
+                                               <a href="transactions-reservation.jsp" class=" modal-action modal-close waves-effect waves-purple transparent btn-flat">CANCEL</a>
+                                                 <button class="waves-effect waves-light purple darken-3 white-text btn-flat" type="submit" value="Submit">CREATE</button>   
+                                            </div>
+                                                                
+                                              </form>
+                                            </div>
 
           </div>
         </article>
@@ -200,6 +238,13 @@
   <!--Import jQuery before materialize.js-->
     <script type="text/javascript" src="./js/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="./js/materialize.min.js"></script>
+    <script type="text/javascript" src="./js/addToTable.js"></script>
+
+    <script type="text/javascript">
+      $(document).ready(function() {
+        $('select').material_select();
+      });
+    </script>
 
     <script type="text/javascript">
       $( document ).ready(function(){
@@ -215,12 +260,6 @@
         selectMonths: true, // Creates a dropdown to control month
         selectYears: 15 // Creates a dropdown of 15 years to control year
       });
-    </script>
-
-    <script type="text/javascript">
-    $(document).ready(function() {
-       $('select').material_select();
-     });
     </script>
 
     <script type="text/javascript">

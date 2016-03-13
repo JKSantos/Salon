@@ -103,12 +103,12 @@
 
   <body class="blue-grey lighten-5">
     <nav class="z-depth-0">
-      <div class="nav-wrapper orange">
+      <div class="nav-wrapper purple">
         <a href="#!" class="brand-logo white-text" style="margin-left: 30px;">Salon Management System</a>
       </div>
     </nav>
     <div class="container white z-depth-barts">
-      <h1 class="thin center orange-text text-darken-4">
+      <h1 class="thin center purple-text text-darken-4">
         Calendar View
       </h1>
       <div class="wrapper">

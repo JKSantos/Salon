@@ -19,7 +19,6 @@ public class EmployeeMaintenanceAction {
 		EmployeeServiceImpl empService = new EmployeeServiceImpl();
 		this.empCategory = empService.getAllCategory();
 		this.empList = empService.getAllEmployees();
-		System.out.print(this.empList.size());
 
 		return "success";
 	}

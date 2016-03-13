@@ -73,8 +73,8 @@ public class UpdatePackageAction {
 //				}
 //			}
 //		}
-//		
-//		Package packagee = new Package(1, strPackageName.toUpperCase().trim(), strPackageDesc.toUpperCase().trim(), intPackageType, 1, "NON-EXPIRY", dblPackagePrice, serviceList, productList, 1);
+		
+//		Package packagee = new Package(1, strPackageName.toUpperCase().trim(), strPackageDesc.toUpperCase().trim(), intPackageType, 1, "NON-EXPIRY", dblPackagePrice, null, null, 1);
 //		
 //		if(packageService.createPackage(packagee)){
 //			System.out.println("success");
@@ -85,6 +85,7 @@ public class UpdatePackageAction {
 //		}	
 		
 		return "success";
+		
 	}
 
 	public String getIntPackageID() {

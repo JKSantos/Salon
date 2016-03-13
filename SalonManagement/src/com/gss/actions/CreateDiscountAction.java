@@ -7,8 +7,7 @@ public class CreateDiscountAction {
 
 	private String strDiscountName;
 	private String strDiscountDetails;
-	private String strDiscountType1;
-	private String strDiscountType2;
+	private String strDiscountType;
 	private Double dblDiscountPrice;
 
 	public String execute(){
@@ -18,12 +17,11 @@ public class CreateDiscountAction {
 		String result = "failed";
 		
 		try{
-			if(strDiscountType1.equalsIgnoreCase("on")){
-				discount = new Discount(1, strDiscountName, strDiscountDetails, 1, dblDiscountPrice, 1);
+				discount = new Discount(1, strDiscountName, strDiscountDetails, Integer.parseInt(strDiscountType), dblDiscountPrice, 1);
 				
 				if(service.createDiscount(discount) == true)
 					result = "success";
-			}
+			
 				
 			return result;
 		}
@@ -61,20 +59,12 @@ public class CreateDiscountAction {
 		this.dblDiscountPrice = dblDiscountPrice;
 	}
 
-	public String getStrDiscountType1() {
-		return strDiscountType1;
+	public String getStrDiscountType() {
+		return strDiscountType;
 	}
 
-	public void setStrDiscountType1(String strDiscountType1) {
-		this.strDiscountType1 = strDiscountType1;
-	}
-
-	public String getStrDiscountType2() {
-		return strDiscountType2;
-	}
-
-	public void setStrDiscountType2(String strDiscountType2) {
-		this.strDiscountType2 = strDiscountType2;
+	public void setStrDiscountType(String strDiscountType) {
+		this.strDiscountType = strDiscountType;
 	}
 
 }
