@@ -8,12 +8,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   </head>
 
-  <body class="purple lighten-5">
+  <body class="blue-grey lighten-5">
   <div class="wrapper">
         <header class="headnav">
                         <ul id="slide-out" class="side-nav fixed z-depth-0">
                           <div class="center">
-                              <img src="./img/logo.png" class="circle" style="width: 200px; height: 200px; margin-top: 40px; margin-bottom: 20px;">
+                              <img src="./img/anon.jpg" class="circle" style="width: 150px; height: 150px; margin-top: 40px; margin-bottom: 20px;">
                             </div>
                           <li><a href="admin-home.jsp" class="waves-effect"><b>Home</b></a></li>
                          <!--  <li class="no-padding"> -->
@@ -22,14 +22,14 @@
                                 <a class="collapsible-header"><b>Maintenance</b></a>
                                   <div class="collapsible-body">
                                     <ul>
-                                      <li><a href="employeeMaintenance">Employee</a></li>
-                                      <li><a href="productServiceMaintenance">Product & Service</a></li>
-                                      <li><a href="catalogueMaintenance">Catalogue</a></li>
-                                      <li><a href="packageMaintenance">Package</a></li>
-                                      <li><a href="locationMaintenance">Delivery Charge</a></li>
-                                      <li><a href="extraChargeMaintenance">Other Charge</a></li>
-                                      <li><a href="discountMaintenance">Discount</a></li>
-                                      <li><a href="promoMaintenance">Promo</a></li>
+                                      <li><a href="maintenance-emp.jsp">Employee</a></li>
+                                      <li><a href="maintenance-prodsvc.jsp">Product & Service</a></li>
+                                      <li><a href="maintenance-promo.jsp">Promo</a></li>
+                                      <li><a href="maintenance-discount.jsp">Discount</a></li>
+                                      <li><a href="maintenance-package.jsp">Package</a></li>
+                                      <li><a href="maintenance-catalogue.jsp">Catalogue</a></li>
+                                      <li><a href="maintenance-extra.jsp">Charge</a></li>
+                                      <li><a href="locationMaintenance">Location</a></li>
                                     </ul>
                                   </div>
                               </li>
@@ -46,15 +46,13 @@
                                   </div>
                               </li>
                             </ul>
-                              <li><a href="queries.jsp"><b>Queries</b></a></li>
-                              <li><a href="reports.jsp"><b>Reports</b></a></li>
                           <li><a href="utilities.jsp" class="waves-effect"><b>Utilities</b></a></li>
                         </ul>
 
                 
                        <nav class="z-depth-0">
-                         <div class="nav-wrapper purple darken-4">
-                           <a href="#!" class="brand-logo purple-text text-lighten-5" style="margin-left: 30px;">Salon Management System</a>
+                         <div class="nav-wrapper orange">
+                           <a href="#!" class="brand-logo white-text" style="margin-left: 30px;">Generic Salon System</a>
                          
                            <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
                            <ul class="side-nav" id="mobile-demo">
@@ -86,9 +84,7 @@
                                      </div>
                                  </li>
                                </ul>
-                              <li><a href="queries.jsp"><b>Queries</b></a></li>
-                              <li><a href="reports.jsp"><b>Reports</b></a></li>
-                              <li><a href="utilities.jsp"><b>Utilities</b></a></li>
+                              <li><a href="utilities.jsp" class="waves-effect waves-orange"><b>Utilities</b></a></li>
                            </ul>
                          </div>
                        </nav>
@@ -98,7 +94,7 @@
                     <div class="wrapper">
                     <div class="aside aside1 z-depth-barts"> <!--main aside1-->
                         <div class="row">
-                          <div class="col s12 purple darken-2">
+                          <div class="col s12 orange darken-2">
                             <div class="container">
                               <div class="col s12">
                                 <h1 class="white-text left" style="font-weight: 100;">About</h1>

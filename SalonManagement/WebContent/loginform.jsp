@@ -15,7 +15,7 @@
             <nav class="white z-depth-barts">
               <div class="container">
                   <div class="nav-wrapper">
-                    <a href="#" class="brand-logo purple-text">Salon Management System</a>
+                    <a href="#" class="brand-logo grey-text">Generic Salon System</a>
                     <ul class="right hide-on-med-and-down">
                     </ul>
                   </div>
@@ -34,15 +34,15 @@
                                 </div>
                                 <div class="input-field col s8 offset-s2">
                                   <input type="text" name="username" id="username" class="validate">
-                                  <label for="username">Username</label>
+                                  <label for="id">Username</label>
                                 </div>
                                 <div class="input-field col s8 offset-s2">
                                   <input type="password" name="pass" id="pass" class="validate">
                                   <label for="pass">Password</label>
                                 </div>
                                 <div class="col s12" style="margin-top: 50px;">
-                                  <button class="waves-effect waves-light purple btn-flat white-text" type="submit" value="Submit" id="submitbtn">Login</button>
-                                  <a href="#" class="waves-effect waves-purple btn-flat" onclick="loginform.jsp">Back</a>
+                                  <button class="waves-effect waves-light orange btn-flat" type="submit" value="Submit" id="submitbtn">Login</button>
+                                  <a href="#" class="waves-effect waves-orange btn-flat" onclick="loginform.jsp">Back</a>
                                 </div>
                             </div>
                         </form>
@@ -54,9 +54,10 @@
               <div class="row">
                 <div class="col s12" style="margin-top: 50px;">
                     <h1>Welcome</h1>
+                    <p>MEHEHEHE</p>
                 </div>
                 <div class="col s12" style="margin-top: 50px; margin-bottom: 60px;">
-                    <a href="#" class="waves-effect waves-light purple btn z-depth-2">Continue as Guest</a>
+                    <a href="#" class="waves-effect waves-light orange btn">Continue as Guest</a>
                 </div>
               </div>
             </aside>
@@ -144,24 +145,24 @@
         <div class="container">
             <div class="row">
               <div class="col l6 s12">
-              <h5 class="purple-text text-darken-3">Follow us!</h5>
-              <p class="purple-text text-darken-3">Like, share, learn!</p>
+              <h5 class="orange-text text-darken-3">Follow us!</h5>
+              <p class="orange-text text-darken-3">Like, share, learn!</p>
               </div>
               <div class="col l4 offset-l2 s12">
               <h5>Links</h5>
               <ul>
-                <li><a class="purple-text text-darken-3" href="#!">www.facebook.com/GenericSalonSystem</a></li>
-                <li><a class="purple-text text-darken-3" href="#!">www.twitter.com/@GenericSalonSystem</a></li>
-                <li><a class="purple-text text-darken-3" href="#!">www.GenericSalonSystem.com</a></li>
-                <li><a class="purple-text text-darken-3" href="#!">www.instagram.com/@GenericSalonSystem</a></li>
+                <li><a class="orange-text text-darken-3" href="#!">www.facebook.com/GenericSalonSystem</a></li>
+                <li><a class="orange-text text-darken-3" href="#!">www.twitter.com/@GenericSalonSystem</a></li>
+                <li><a class="orange-text text-darken-3" href="#!">www.GenericSalonSystem.com</a></li>
+                <li><a class="orange-text text-darken-3" href="#!">www.instagram.com/@GenericSalonSystem</a></li>
               </ul>
               </div>
             </div>
             </div>
             <div class="footer-copyright">
             <div class="container">
-            <span class="purple-text text-darken-3">(c) 2015 Copyright</span>
-            <a class="purple-text text-darken-3 right" href="#!">More Links</a>
+            <span class="orange-text text-darken-3">(c) 2015 Copyright</span>
+            <a class="orange-text text-darken-3 right" href="#!">More Links</a>
             </div>
           </div>
       </div>

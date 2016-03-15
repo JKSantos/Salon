@@ -31,12 +31,12 @@
                                     <ul>
                                       <li><a href="employeeMaintenance">Employee</a></li>
                                       <li><a href="productServiceMaintenance">Product & Service</a></li>
-                                      <li><a href="catalogueMaintenance">Catalogue</a></li>
-                                      <li><a href="packageMaintenance">Package</a></li>
-                                      <li><a href="locationMaintenance">Delivery Charge</a></li>
-                                      <li><a href="extraChargeMaintenance">Other Charge</a></li>
-                                      <li><a href="discountMaintenance">Discount</a></li>
                                       <li><a href="promoMaintenance">Promo</a></li>
+                                      <li><a href="discountMaintenance">Discount</a></li>
+                                      <li><a href="packageMaintenance">Package</a></li>
+                                      <li><a href="catalogueMaintenance">Catalogue</a></li>
+                                      <li><a href="extraChargeMaintenance">Charge</a></li>
+                                      <li><a href="locationMaintenance">Location</a></li>
                                     </ul>
                                   </div>
                               </li>
@@ -44,8 +44,8 @@
                                 <a class="collapsible-header"><b>Transaction</b></a>
                                   <div class="collapsible-body">
                                     <ul>
-                                      <li><a href="transactions-inventory.jsp">Inventory</a></li>
-                                      <li><a href="transactions-reservation.jsp">Reservation</a></li>
+                                      <li><a href="getInventory">Monitor Product</a></li>
+                                      <li><a href="getProducts">Manage Reservation</a></li>
                                       <li><a href="transactions-productorder.jsp">Product Order</a></li>
                                       <li><a href="transactions-vip.jsp">VIP</a></li>
                                       <li><a href="transactions-walkin.jsp">Walk In</a></li>
@@ -53,8 +53,6 @@
                                   </div>
                               </li>
                             </ul>
-                          <li><a href="queries.jsp"><b>Queries</b></a></li>
-                          <li><a href="reports.jsp"><b>Reports</b></a></li>
                           <li><a href="utilities.jsp" class="waves-effect"><b>Utilities</b></a></li>
                         </ul>
 
@@ -93,8 +91,6 @@
                                      </div>
                                  </li>
                                </ul>
-                              <li><a href="queries.jsp"><b>Queries</b></a></li>
-                              <li><a href="reports.jsp"><b>Reports</b></a></li>
                               <li><a href="utilities.jsp" class="waves-effect waves-orange"><b>Utilities</b></a></li>
                            </ul>
                          </div>
@@ -258,6 +254,17 @@
                     </div>
           </div>
         </article> -->
+        <div id="draggable" class="ui-widget-content fixed-action-btn horizontal transparent" style="border:0px !important; bottom: 45px; right: 24px; z-index: 100000px;">
+          <a class="btn-floating btn-large red">
+                <i class="large material-icons">mode_edit</i>
+              </a>
+              <ul>
+                <li><a class="btn-floating red"><i class="material-icons">insert_chart</i></a></li>
+                <li><a class="btn-floating yellow darken-1"><i class="material-icons">format_quote</i></a></li>
+                <li><a class="btn-floating green"><i class="material-icons">publish</i></a></li>
+                <li><a class="btn-floating blue"><i class="material-icons">attach_file</i></a></li>
+              </ul>
+        </div>
 
         </article>
         

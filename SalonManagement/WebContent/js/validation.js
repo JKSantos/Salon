@@ -223,82 +223,9 @@ $().ready(function(){
           }
           
         });
-      });
-
-// ||||||||||||||||||||||||||||||||||||
-  // validate the form when it is submitted
-  $('#updateEmpForm').validate({
-
-    submitHandler: function() {
-      Materialize.toast('Successfully Created!', 5000, 'green');
-      $(form).ajaxSubmit();
-    },
-    errorPlacement: function(error, element) {
-      // Append error within linked label
-      $( element )
-        .closest( "form" )
-          .find( "label[for='" + element.attr( "id" ) + "']" )
-            .append( error );
-    },
-    errorElement: "span",
-    rules: {
-      strEmpFirstName: {
-        required: true,
-        minlength: 2
-      },
-      strEmpMiddleName: {
-        minlength: 2
-      },
-      strBirthdate: {
-        required: true
-      },
-      strEmpGender: {
-        required: true
-      },
-      strEmpEmail: {
-        email: true,
-        required: true
-      },
-      strEmpAddress: {
-        required: true,
-        minlength: 10
-      },
-      selectedJob: {
-        required: true
-      }
-    },
-    messages: {
-      strEmpFirstName: {
-        required: " (Please fill this field)",
-        minlength: " (Must be at least 2 characters)"
-      },
-      strEmpMiddleName: {
-        minlength: " (Must be at least 2 characters)"
-      },
-      strBirthdate: {
-        required: " (Please fill this field)"
-      },
-      strEmpGender: {
-        required: " (Please fill this field)"
-      },
-      strEmpEmail: {
-        email: " (Not Valid Email)",
-        required: " (Please fill this field)"
-      },
-      strEmpAddress: {
-        required: true,
-        minlength: " (Must be at least 10 characters)"
-      },
-      selectedJob: {
-        required: " (Please fill this field)"
-      }
-    }
-    
-  });
-// ||||||||||||||||||||||||||||||||||||
 
         // SERVICE AND PRODUCT
-        $().ready(function() {
+
         $("#createProdSvcForm").validate({
 
           submitHandler: function() {
@@ -351,11 +278,9 @@ $().ready(function(){
           }
           
         });
-    });
 
 
 // -----------------------------
-$().ready(function() {
 $("#updateProdForm").validate({
 
   submitHandler: function() {
@@ -388,9 +313,7 @@ $("#updateProdForm").validate({
   }
   
 });
-});
 // -------------------------------
-$().ready(function() {
 $("#updateServForm").validate({
 
   submitHandler: function() {
@@ -423,9 +346,7 @@ $("#updateServForm").validate({
   }
   
 });
-});
 // ======================
-$().ready(function() {
 $("#createDiscountForm").validate({
 
   submitHandler: function() {
@@ -472,9 +393,7 @@ $("#createDiscountForm").validate({
   }
   
 });
-});
 // =====================
-$().ready(function() {
 $("#updateDiscountForm").validate({
 
   submitHandler: function() {
@@ -509,9 +428,7 @@ $("#updateDiscountForm").validate({
   }
   
 });
-});
 // ||||||||||||||||||||||
-$().ready(function() {
 $("#createCatalogueForm").validate({
 
   submitHandler: function() {
@@ -546,9 +463,7 @@ $("#createCatalogueForm").validate({
   }
   
 });
-});
 // |||||||||||||||||||||
-$().ready(function() {
 $("#updateCataForm").validate({
 
   submitHandler: function() {
@@ -577,10 +492,8 @@ $("#updateCataForm").validate({
   }
   
 });
-});
 
 // "||||||||||||||||||||"
-$().ready(function() {
 $("#createExtraForm").validate({
 
   submitHandler: function() {
@@ -616,12 +529,11 @@ $("#createExtraForm").validate({
     }
   },
 });
-});
 
 
 // \\\\\\\\\\\\\\\\\\\\\\
 
-$().ready(function() {
+
 $("#updateExtraForm").validate({
 
 
@@ -660,44 +572,7 @@ $("#updateExtraForm").validate({
   }
   
 });
-});
 // |||||||||||||||||
-$().ready(function() {
-$("#createLForm").validate({
-
-  submitHandler: function() {
-    Materialize.toast('Successfully Updated!', 5000, 'green');
-    $(form).ajaxSubmit();
-  },
-  errorPlacement: function(error, element) {
-    // Append error within linked label
-    $( element )
-      .closest( "form" )
-        .find( "label[for='" + element.attr( "id" ) + "']" )
-          .append( error );
-  },
-  errorElement: "span",
-  rules: {
-    strLocationName: {
-      required: true,
-      minlength: 5
-    },
-    dblLocationPrice: {
-      required: true
-    }
-  },
-  messages: {
-    strLocationName: {
-      required: " (Required)",
-      minlength: " (Must be at least 5 characters)"
-    },
-    dblLocationPrice: {
-      required: " (Required)"
-    }
-  }
-});
-});
-// \\|||||||||||||||
 
         jQuery.validator.addMethod("specialname", function(value, element) {
              return this.optional(element) || /([a-zA-Z-`'\s])$/.test(value);
@@ -718,3 +593,4 @@ $("#createLForm").validate({
         jQuery.validator.addMethod("specialoption", function(value, element) {
              return this.optional(element) || /([a-zA-Z\s])$/.test(value);
           },"<span class='red-text'> (Letters and spaces are allowed)</span>");
+      });

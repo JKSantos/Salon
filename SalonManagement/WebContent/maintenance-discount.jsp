@@ -33,12 +33,11 @@
                             <ul>
                               <li><a href="employeeMaintenance">Employee</a></li>
                                       <li><a href="productServiceMaintenance">Product & Service</a></li>
-                                      <li><a href="catalogueMaintenance">Catalogue</a></li>
-                                      <li><a href="packageMaintenance">Package</a></li>
-                                      <li><a href="locationMaintenance">Delivery Charge</a></li>
-                                      <li><a href="extraChargeMaintenance">Other Charge</a></li>
-                                      <li class="purple lighten-4"><a href="discountMaintenance">Discount</a></li>
                                       <li><a href="promoMaintenance">Promo</a></li>
+                                      <li class="purple lighten-4"><a href="discountMaintenance">Discount</a></li>
+                                      <li><a href="packageMaintenance">Package</a></li>
+                                      <li><a href="catalogueMaintenance">Catalogue</a></li>
+                                      <li><a href="extraChargeMaintenance">Extra Charge</a></li>
                             </ul>
                           </div>
                       </li>
@@ -46,8 +45,8 @@
                         <a class="collapsible-header"><b>Transaction</b></a>
                           <div class="collapsible-body">
                             <ul>
-                              <li><a href="transactions-inventory.jsp">Inventory</a></li>
-                              <li><a href="transactions-reservation.jsp">Reservation</a></li>
+                              <li><a href="transactions-inventory.jsp">Monitor Product</a></li>
+                              <li><a href="transactions-reservation.jsp">Manage Reservation</a></li>
                               <li><a href="transactions-productorder.jsp">Product Order</a></li>
                               <li><a href="transactions-vip.jsp">VIP</a></li>
                               <li><a href="transactions-walkin.jsp">Walk In</a></li>
@@ -55,8 +54,6 @@
                           </div>
                       </li>
                     </ul>
-                  <li><a href="queries.jsp"><b>Queries</b></a></li>
-                  <li><a href="reports.jsp"><b>Reports</b></a></li>
                   <li><a href="utilities.jsp" class="waves-effect"><b>Utilities</b></a></li>
                 </ul>
 
@@ -97,7 +94,6 @@
                              </div>
                          </li>
                        </ul>
-                    <li><a href="queries.jsp"><b>Queries</b></a></li>
                     <li><a href="utilities.jsp" class="waves-effect"><b>Utilities</b></a></li>
                    </ul>
                  </div>

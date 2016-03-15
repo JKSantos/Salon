@@ -33,12 +33,12 @@
                             <ul>
                               <li><a href="employeeMaintenance">Employee</a></li>
                                       <li><a href="productServiceMaintenance">Product & Service</a></li>
-                                      <li><a href="catalogueMaintenance">Catalogue</a></li>
-                                      <li><a href="packageMaintenance">Package</a></li>
-                                      <li><a href="locationMaintenance">Delivery Charge</a></li>
-                                      <li class="purple lighten-4"><a href="extraChargeMaintenance">Other Charge</a></li>
-                                      <li><a href="discountMaintenance">Discount</a></li>
                                       <li><a href="promoMaintenance">Promo</a></li>
+                                      <li><a href="discountMaintenance">Discount</a></li>
+                                      <li><a href="packageMaintenance">Package</a></li>
+                                      <li><a href="catalogueMaintenance">Catalogue</a></li>
+                                      <li class="purple lighten-4"><a href="extraChargeMaintenance">Charge</a></li>
+                                      <li><a href="locationMaintenance">Location</a></li>
                             </ul>
                           </div>
                       </li>
@@ -46,8 +46,8 @@
                         <a class="collapsible-header"><b>Transaction</b></a>
                           <div class="collapsible-body">
                             <ul>
-                              <li><a href="transactions-inventory.jsp">Inventory</a></li>
-                              <li><a href="transactions-reservation.jsp">Reservation</a></li>
+                              <li><a href="transactions-inventory.jsp">Monitor Product</a></li>
+                              <li><a href="transactions-reservation.jsp">Manage Reservation</a></li>
                               <li><a href="transactions-productorder.jsp">Product Order</a></li>
                               <li><a href="transactions-vip.jsp">VIP</a></li>
                               <li><a href="transactions-walkin.jsp">Walk In</a></li>
@@ -55,8 +55,6 @@
                           </div>
                       </li>
                     </ul>
-                  <li><a href="queries.jsp"><b>Queries</b></a></li>
-                  <li><a href="reports.jsp"><b>Reports</b></a></li>
                   <li><a href="utilities.jsp" class="waves-effect"><b>Utilities</b></a></li>
                 </ul>
 
@@ -96,7 +94,6 @@
                              </div>
                          </li>
                        </ul>
-                    <li><a href="queries.jsp"><b>Queries</b></a></li>
                     <li><a href="utilities.jsp" class="waves-effect"><b>Utilities</b></a></li>
                    </ul>
                  </div>
@@ -112,7 +109,7 @@
 
                     <div class="main z-depth-barts" style="margin-left: 20px; margin-right: 20px;">
                         <div class="col s12" style="margin-left: 20px; margin-right: 20px;">
-                        <h3 class="grey-text text-darken-1">Other Charge Maintenance</h3>
+                        <h3 class="grey-text text-darken-1">Charge Maintenance</h3>
                         <a data-delay="30" data-position="bottom" data-tooltip="Create" class="waves-effect waves-light modal-trigger btn-flat purple darken-3 left white-text tooltipped" href="#create" style="margin-top: 50px; margin-left: 15px;"><i class="material-icons">add</i></a>
                         <a data-delay="30" data-position="bottom" data-tooltip="Archive" class="waves-effect waves-light modal-trigger btn-flat purple darken-3 left white-text tooltipped" href="#archive" style="margin-top: 50px; margin-left: 15px;"><i class="material-icons">archive</i></a>
                         <table id="example" class="display centered responsive-table highlight" cellspacing="0" width="100%" style="border: 1px solid #bdbdbd; padding: 10px;" rowspan="10">
@@ -145,7 +142,7 @@
                                         <td style="padding:0; margin:0;"><center>${extracharge.strECDetails}</center></td>
                                         <td style="padding:0; margin:0;"><center>${extracharge.intECStatus}</center></td>
                                         <td class="center" style="padding:0; margin:0;">
-                                        <a data-delay="30" data-position="bottom" data-tooltip="View" class="tooltipped waves-effect waves-light modal-trigger btn-flat transparent black-text" href="#ecview${extracharge.intECID}" style="padding-left: 10px;padding-right:10px; margin: 5px;">
+                                        <a data-delay="30" data-position="bottom" data-tooltip="View" class="tooltipped waves-effect waves-light modal-trigger btn-flat transparent black-text" href="#ec${extracharge.intECID}" style="padding-left: 10px;padding-right:10px; margin: 5px;">
                                         <i class="material-icons">visibility</i></a>
                                         <a data-delay="30" data-position="bottom" data-tooltip="Update" class="tooltipped waves-effect waves-light modal-trigger btn-flat transparent black-text" href="#ec${extracharge.intECID}" style="padding-left: 10px;padding-right:10px; margin: 5px;">
                                         <i class="material-icons">edit</i></a>
@@ -212,34 +209,6 @@
                           <div class="modal-footer">
                               <button type="reset" value="Reset" class="modal-action modal-close waves-effect waves-purple transparent btn-flat">CANCEL</button>
                               <button class="waves-effect waves-light purple darken-3 white-text btn-flat" type="submit" value="Submit">UPDATE</button>
-                          </div>
-                          </form>
-                    </div>
-                  </c:forEach>
-
-                      <c:forEach items="${ecList}" var="extra">
-                        <div id="ecview${extra.intECID}" class="modal modal-fixed-footer" style="width: 30% !important; height: 70% !important; max-height: 100% !important;">
-                        <form class="col s12">
-                          <div class="modal-content">
-                            <!-- <div class="container"> -->
-                              <div class="wrapper">
-                                  <h4 class="grey-text text-darken-1" style="margin-bottom: 40px;">View Charge</h4>
-                                    <div class="row">
-                                            <div class="input-field col s12">
-                                                <input type="hidden" name="intECID" value="${extra.intECID}">
-
-                                                <input id="updateEChargeName" name="strECName" type="text" value="${extra.strECName}" class="tooltipped specialname" pattern="^[a-zA-Z\-'`\s]{5,}$" placeholder="Charge Name" data-delay="30" data-position="bottom" data-tooltip="Ex: Missing Equipments<br/>( At least 5 or more characters )" readonly minlength="5" maxlength="15">
-                                                <label for="updateEChargeName" class="active">Charge Name</label>
-                                            </div>
-                                            <div class="input-field col s12">
-                                                <textarea id="updateEChargeDesc" readonly name="strECDetails" class="materialize-textarea tooltipped" data-delay="30" data-position="bottom" data-tooltip="Description<br/>( At least 5 or more characters )" maxlength="30" minlength="5">${extra.strECDetails}</textarea>
-                                                <label for="updateEChargeDesc" class="active">Description</label>
-                                            </div>
-                                    </div>
-                              </div>
-                          </div>
-                          <div class="modal-footer">
-                              <button type="reset" value="Reset" class="modal-action modal-close waves-effect waves-purple transparent btn-flat">BACK</button>
                           </div>
                           </form>
                     </div>
