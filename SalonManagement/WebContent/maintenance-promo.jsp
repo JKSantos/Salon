@@ -33,13 +33,13 @@
                           <div class="collapsible-body">
                             <ul>
                               <li><a href="employeeMaintenance">Employee</a></li>
-                                      <li><a href="productServiceMaintenance">Product & Service</a></li>
-                                      <li class="purple lighten-4"><a href="promoMaintenance">Promo</a></li>
-                                      <li><a href="discountMaintenance">Discount</a></li>
-                                      <li><a href="packageMaintenance">Package</a></li>
-                                      <li><a href="catalogueMaintenance">Catalogue</a></li>
-                                      <li><a href="extraChargeMaintenance">Charge</a></li>
-                                      <li><a href="locationMaintenance">Location</a></li>
+                              <li><a href="productServiceMaintenance">Product & Service</a></li>
+                              <li><a href="catalogueMaintenance">Catalogue</a></li>
+                              <li><a href="packageMaintenance">Package</a></li>
+                              <li><a href="locationMaintenance">Delivery Charge</a></li>
+                              <li><a href="extraChargeMaintenance">Other Charge</a></li>
+                              <li class="purple lighten-4"><a href="promoMaintenance">Promo</a></li>
+                              <li><a href="discountMaintenance">Discount</a></li>
                             </ul>
                           </div>
                       </li>
@@ -47,11 +47,11 @@
                         <a class="collapsible-header"><b>Transaction</b></a>
                           <div class="collapsible-body">
                             <ul>
-                              <li><a href="#">Inventory</a></li>
-                              <li><a href="#">Reservation</a></li>
-                              <li><a href="#">VIP</a></li>
-                              <li><a href="#">Product Order</a></li>
-                              <li><a href="#">Walk-In</a></li>
+                              <li><a href="transactions-inventory.jsp">Inventory</a></li>
+                              <li><a href="transactions-reservation.jsp">Reservation</a></li>
+                              <li><a href="transactions-vip.jsp">VIP</a></li>
+                              <li><a href="transactions-productorder.jsp">Product Order</a></li>
+                              <li><a href="transactions-walkin.jsp">Walk-In</a></li>
                             </ul>
                           </div>
                       </li>
@@ -135,11 +135,12 @@
                                   </tr>    -->
                                 <c:forEach items="${promoList}" var="promo">
                                   <tr>
-                                      <td><center>${promo.strPromoName}</center></td>
-                                      <td><center>Php ${promo.dblPromoPrice}</center></td>
-                                      <td><center>${promo.strPromoAvailability}</center></td>
-                                      <td style="padding-left:-50px; margin-left: -50px;"><button data-target="viewProdSvc" class="waves-effect waves-purple modal-view btn-flat transparent"><i class="material-icons">visibility</i></button><a class="waves-effect waves-purple modal-trigger btn-flat transparent black-text" title="Update" href="#update"><i class="material-icons">edit</i></a>
-                                      <a class="waves-effect waves-purple modal-trigger btn-flat transparent red-text text-accent-4" href="#delete" title="Deactivate"><i class="material-icons">delete</i></a>
+                                      <td style="padding:0; margin:0;"><center>${promo.strPromoName}</center></td>
+                                      <td style="padding:0; margin:0;"><center>Php ${promo.dblPromoPrice}</center></td>
+                                      <td style="padding:0; margin:0;"><center>${promo.strPromoAvailability}</center></td>
+                                      <td class="center" style="padding:0; margin:0;"><button data-target="viewProdSvc" class="waves-effect waves-purple modal-view btn-flat transparent" style="padding-left: 10px;padding-right:10px; margin: 5px;"><i class="material-icons">visibility</i></button>
+                                      <a class="waves-effect waves-purple modal-trigger btn-flat transparent black-text" title="Update" href="#update" style="padding-left: 10px;padding-right:10px; margin: 5px;"><i class="material-icons">edit</i></a>
+                                      <a class="waves-effect waves-purple modal-trigger btn-flat transparent red-text text-accent-4" href="#delete" title="Deactivate" style="padding-left: 10px;padding-right:10px; margin: 5px;"><i class="material-icons">delete</i></a>
                                       </td>
                                   </tr>
                                 </c:forEach>                                  
@@ -185,7 +186,7 @@
 
                       <!-- Modal Structure -->
                         <div id="create" class="modal modal-fixed-footer">
-                        <form class="col s12" action="createPromo" method="get">
+                        <form class="col s12" action="createPromo" method="get" id="createPromoForm">
                           <div class="modal-content">
                             <!-- <div class="container"> -->
                               <div class="wrapper">
@@ -202,31 +203,31 @@
                                             </div>
                                             <div class="input-field col s6">
                                             <p class="center">
-                                              <input type="checkbox" class="filled-in" id="unli" name="strNonExp">
+                                              <input type="checkbox" class="filled-in nonexpiry filltwo" id="unli" name="strNonExp">
                                               <label for="unli">Non-Expiry</label>
                                             </p>
                                             </div>
                                             <div class="input-field col s6">
-                                                 <input name="strExp" type="date" class="datepicker-promo" id="promoend" placeholder="Expiration"/>
+                                                 <input name="strExp" type="date" class="datepicker-promo expiration filltwo" id="promoend" placeholder="Expiration"/>
                                             </div>
                                             <div class="input-field col s12">
-                                                <input name="strPromoName" type="text" class="validate" id="promoname" required>
-                                                <label for="promoname">Promo Name <span class="red-text">*</span></label>
+                                                <input name="strPromoName" type="text" class="validate specialname noSpace" id="promoname" required placeholder="Promo Name">
+                                                <label for="promoname" class="active">Promo Name<span class="red-text">*</span></label>
                                             </div>
                                             <div class="input-field col s12">
-                                                <textarea name="strPromoDesc" id="promodetails" class="materialize-textarea" length="120"></textarea>
-                                                <label for="promodetails">Description</label>
+                                                <textarea name="strPromoDesc" id="promodetails" class="materialize-textarea noSpace" minlength="5" placeholder="Description"></textarea>
+                                                <label for="promodetails" class="active">Description</label>
                                             </div>
                                             
                                             <div class="input-field col s5">
                                             <p class="center">
-                                                <input name="strFree" type="checkbox" class="filled-in" id="free"/>
+                                                <input name="strFree" type="checkbox" class="filled-in free fillone" id="free"/>
                                                 <label for="free">Free</label>
                                             </p>
                                             </div>
                                             <div class="input-field col s6 offset-s1">
-                                                <input name="dblPromoPrice" type="text" class="validate right-align" id="promoprice" maxlength="8">
-                                                <label for="promoprice">Promo Price</label>
+                                                <input name="dblPromoPrice" type="text" class="validate right-align price amountFormat noSpace fillone" id="promoprice" maxlength="8" placeholder="Amount">
+                                                <label for="promoprice" class="active">Price</label>
                                             </div>
                                     </div>
                                   </div>
@@ -238,7 +239,7 @@
                                               <p style="color:#9e9e9e;font-size:12px;">Service </p>
                                           </div>
                                           <div class="input-field col s6" style="margin-top: -1px;">
-                                              <select class="browser-default" id="promoService">
+                                              <select class="browser-default fillthree" id="promoService">
                                                     <option value="Choose..." disabled selected>Choose</option>
                                                     <c:forEach items="${serviceList}" var="service">
                                                       <option value="${service.strServiceName}">${service.strServiceName}</option>
@@ -250,14 +251,14 @@
                                               <label for="promoServiceQty">Qty</label>
                                           </div>
                                           <div class="input-field col s3 left-align" style="margin-top: -1px;">
-                                              <a class="waves-effect waves-light btn-flat purple" id="promoAddSvc" onclick="addServPromo()"><i class="material-icons">add</i></a>
+                                              <a class="waves-effect waves-light btn-flat purple" id="promoAddSvc" onclick="addServPromo()"><i class="material-icons white-text">add</i></a>
                                           </div>
                                           <!--product  -->
                                           <div class="input-field col s8">
                                               <p style="color:#9e9e9e;font-size:12px;">Product </p>
                                           </div>
                                           <div class="input-field col s6" style="margin-top: -1px;">
-                                              <select class="browser-default" id="promoProduct">
+                                              <select class="browser-default fillthree" id="promoProduct">
                                                     <option value="Choose..." disabled selected>Choose</option>
                                                     <c:forEach items="${productList}" var="product">
                                                       <option value="${product.strProductName}">${product.strProductName}</option>
@@ -269,7 +270,7 @@
                                               <label for="promoProductQty">Qty</label>
                                           </div>
                                           <div class="input-field col s3 left-align" style="margin-top: -1px;">
-                                              <a class="waves-effect waves-light btn-flat purple" onclick="addProdPromo()"><i class="material-icons">add</i></a>
+                                              <a class="waves-effect waves-light btn-flat purple" onclick="addProdPromo()"><i class="material-icons white-text">add</i></a>
                                           </div>
                                         <!-- end -->
                                         <!-- start table -->
@@ -448,6 +449,9 @@
   #viewProdSvc {
     width: 40% !important;
   }
+  .error {
+    color: red;
+  }
   </style>
 
   <!--Import jQuery before materialize.js-->
@@ -457,6 +461,21 @@
     <script type="text/javascript" src="./js/maintenance-emp.js"></script>
     <script type="text/javascript" src="./js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="./js/bartstable.js"></script>
+    <script type="text/javascript" src="./js/priceformat.js"></script>
+    <script type="text/javascript" src="./js/jquery.validate.js"></script>
+    <script type="text/javascript" src="./js/additional-methods.js"></script>
+    <script type="text/javascript" src="./js/validation.js"></script>
+
+    <script type="text/javascript">
+    $('.amountFormat').priceFormat({
+      prefix: '',
+      centsSeparator: '.',
+      centsLimit: 2,
+      limit: 8,
+      thousandsSeparator: ','
+    });
+    </script>
+
   </body>
 
 

@@ -540,58 +540,6 @@ $('.tooltipped').tooltip({delay: 30});
             
       //   });
       // product
-      $("#updateAddProdCatBtn").prop('disabled',true);
-      $("#updateAddCatProdName").keyup(function(){
-          if($(this).val().length <3)
-                $('#updateAddProdCatBtn').prop('disabled', true);            
-          else{
-                $('#updateAddProdCatBtn').prop('disabled',false);
-                $("#updateAddProdCatBtn").prop('disabled', this.value=="" ? true:false);
-          }
-      });
-
-
-      $("#updateAddProdCatBtn").click(function () {
-            var opt = $("#updateAddCatProdName").val();
-            $('#updateAddCatProdSelect')
-                .append($("<option></option>")
-                .attr("value", opt)
-                .text(opt));
-
-            $('.updateProdCategory')
-                .append($("<option selected></option>")
-                .attr("value", opt)
-                .text(opt));
-                alert("Successful!");
-        });
-      // service
-
-      $("#updateAddServCatBtn").prop('disabled',true);
-      $("#updateAddCatServName").keyup(function(){
-          if($(this).val().length <3)
-                $('#updateAddServCatBtn').prop('disabled', true);            
-          else{
-                $('#updateAddServCatBtn').prop('disabled',false);
-                $("#updateAddServCatBtn").prop('disabled', this.value=="" ? true:false);
-          }
-      });
-
-      $("#updateAddServCatBtn").click(function () {
-            var opt = $("#updateAddCatServName").val();
-            $('#updateAddCatProdSelect')
-                .append($("<option></option>")
-                .attr("value", opt)
-                .text(opt));
-
-            $('.updateServCategory')
-                .append($("<option selected></option>")
-                .attr("value", opt)
-                .text(opt));
-                alert("Successful!");
-        });
-      // PRODUCT AND SERVICE END
-      // add another option END
-
 
       // bday BEGIN
       $('.datepicker').pickadate({
@@ -657,42 +605,33 @@ $('.tooltipped').tooltip({delay: 30});
             var myBDM = Number(myBD.split("/")[0]);
             var myBDD = Number(myBD.split("/")[1]);
             var myBDY = Number(myBD.split("/")[2]);
-            var check = new Date();
+            var age = yyyy - myBDY;
 
-            var milliDay = 1000*60*60*24;
-            var ageInDays = (check - myBD)/milliDay;
-            var ageInDays = Math.floor(ageInDays/365);
-            var age = ageInDays/365;
-            if(ageInDays > 17){
-              $('#createAge').val(ageInDays);
-            }else{
-              $('#createAge').val('Not Qualified');
-            }
+                    if(mm < myBDM)
+                    {
+                    age = age - 1;  
+                      
+                    }
+                    else if(mm == myBDM && dd < myBDD)
+                    {
+                    age = age - 1;
+                    }
 
-            // var age = yyyy - myBDY;
-            // var quali = $('Not Qualified').text();
-            //         if(mm < myBDM)
-            //         {
-            //         age = age - 1;      
-            //         }
-            //         else if(mm == myBDM && dd < myBDD)
-            //         {
-            //         age = age - 1;
-            //         }
-            //         if(age>17){
-            //           $('#createAge').val(age);
-            //         }else{
-            //           $('#createAge').val(quali);
-            //           $('#createAge').style()
-            //         }
+                    if(age>17){
+                        $('#updateAge').val(age);
+                      }else{
+                        $('#updateAge').val(" ");
+                      }  
+
+                    
                 });
 
       });
 
 
-      $(document).ready(function(){
+      $('#updateBirthday').each(function(){
 
-            $('#updateBirthday').change(function(){
+            $(this).change(function(){
 
             var today = new Date();
             var dd = Number(today.getDate());
@@ -720,3 +659,28 @@ $('.tooltipped').tooltip({delay: 30});
 
       });
 
+$(document).ready(function(){
+      $(".nonexpiry").click(function () {
+          if ($(".nonexpiry").is(":checked")) {
+              $(".expiration")
+                  .attr("disabled", "disabled");
+          }
+          else {
+              $(".expiration")
+                  .removeAttr("disabled");
+          }
+      });
+  });
+
+$(document).ready(function(){
+      $(".free").click(function () {
+          if ($(".free").is(":checked")) {
+              $(".price")
+                  .attr("disabled", "disabled");
+          }
+          else {
+              $(".price")
+                  .removeAttr("disabled");
+          }
+      });
+  });

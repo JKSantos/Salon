@@ -32,13 +32,13 @@
                           <div class="collapsible-body">
                             <ul>
                               <li><a href="employeeMaintenance">Employee</a></li>
-                                      <li class="purple lighten-4"><a href="productServiceMaintenance">Product & Service</a></li>
-                                      <li><a href="promoMaintenance">Promo</a></li>
-                                      <li><a href="discountMaintenance">Discount</a></li>
-                                      <li><a href="packageMaintenance">Package</a></li>
-                                      <li><a href="catalogueMaintenance">Catalogue</a></li>
-                                      <li><a href="extraChargeMaintenance">Charge</a></li>
-                                      <li><a href="locationMaintenance">Location</a></li>
+                              <li class="purple lighten-4"><a href="productServiceMaintenance">Product & Service</a></li>
+                              <li><a href="catalogueMaintenance">Catalogue</a></li>
+                              <li><a href="packageMaintenance">Package</a></li>
+                              <li><a href="locationMaintenance">Delivery Charge</a></li>
+                              <li><a href="extraChargeMaintenance">Other Charge</a></li>
+                              <li><a href="promoMaintenance">Promo</a></li>
+                              <li><a href="discountMaintenance">Discount</a></li>
                             </ul>
                           </div>
                       </li>
@@ -46,8 +46,8 @@
                         <a class="collapsible-header"><b>Transaction</b></a>
                           <div class="collapsible-body">
                             <ul>
-                              <li><a href="transactions-inventory.jsp">Monitor Product</a></li>
-                              <li><a href="transactions-reservation.jsp">Manage Reservation</a></li>
+                              <li><a href="transactions-inventory.jsp">Inventory</a></li>
+                              <li><a href="transactions-reservation.jsp">Reservation</a></li>
                               <li><a href="transactions-productorder.jsp">Product Order</a></li>
                               <li><a href="transactions-vip.jsp">VIP</a></li>
                               <li><a href="transactions-walkin.jsp">Walk In</a></li>
@@ -276,14 +276,14 @@
                                         <option value="service">Service</option>
                                         <option value="product">Product</option>
                                       </select>
-                                      <label for="strItemCate" class="active">Type<span class="red0text">*</span></label>
+                                      <label for="strItemCate" class="active">Type<span class="red-text">*</span></label>
                                     </div>
                                     <div class="input-field col s12" style="margin-top: 28px !important;">
-                                      <input type="text" class="validate tooltipped specialprodsvc" required id="prodsvcName" name="strItemName" placeholder="Product/Service Name" data-position="bottom" data-delay="30" data-tooltip="Ex: Item 1<br/> ( At least 3 or more characters )" pattern="^[a-zA-Z0-9\-\s]{3,}$" maxlength="15">
+                                      <input type="text" class="validate tooltipped specialprodsvc noSpace" required id="prodsvcName" name="strItemName" placeholder="Product/Service Name" data-position="bottom" data-delay="30" data-tooltip="Ex: Item 1<br/> ( At least 3 or more characters )" pattern="^[a-zA-Z0-9\-\s]{3,}$" maxlength="15">
                                       <label for="prodsvcName">Name<span class="red-text">*</span></label>
                                     </div>
                                     <div class="input-field col s12">
-                                      <textarea id="prodsvcDetail" name="strItemDetails" class="materialize-textarea tooltipped" placeholder="Details" data-position="bottom" data-delay="30" data-tooltip="Ex: This item is affordable.<br/> ( At least 5 or more characters )" pattern="^[a-zA-Z0-9.,`-\-\s]{5,}$" maxlength="25"></textarea>
+                                      <textarea id="prodsvcDetail" name="strItemDetails" class="materialize-textarea tooltipped noSpace" placeholder="Details" data-position="bottom" data-delay="30" data-tooltip="Ex: This item is affordable.<br/> ( At least 5 or more characters )" pattern="^[a-zA-Z0-9.,`-\-\s]{5,}$" maxlength="25"></textarea>
                                       <label for="prodsvcDetail" class="active">Details</label>
                                     </div>
                                     <div class="input-field col s8">
@@ -299,7 +299,7 @@
                                       <button data-target="addCategory" class="waves-effect waves-light btn-flat modal-category purple lighten-1"><i class="material-icons white-text">add</i></button>
                                     </div>
                                     <div class="input-field col s6" style="margin-top: 28px !important;">
-                                        <input type="text" class="validate right-align tooltipped" id="prodsvcPrice" name="dblItemPrice" required placeholder="999.99" data-position="bottom" data-delay="30" data-tooltip="Ex: 99.99<br/>( Numbers only )">
+                                        <input type="text" class="validate right-align tooltipped amountFormat" id="prodsvcPrice" name="dblItemPrice" required placeholder="999.99" data-position="bottom" data-delay="30" data-tooltip="Ex: 99.99<br/>( Numbers only )">
                                         <label for="prodsvcPrice" class="active">Price<span class="red-text">*</span></label>
                                     </div>
                                 </div>
@@ -331,7 +331,7 @@
                                       </select>
                                     </div>
                                     <div class="input-field col s8 offset-s2" style="margin-top: 20px;">
-                                      <input type="text" class="validate tooltipped" id="createAddCategoryName" name="createAddCategoryName" placeholder="New Category" data-position="bottom" data-delay="30" data-tooltip="Ex: Hair Color<br/>( At least 3 or more characters )" pattern="^[a-zA-Z0-9-\-\s]{3,}$" required/>
+                                      <input type="text" class="validate tooltipped noSpace specialoption" id="createAddCategoryName" name="createAddCategoryName" placeholder="New Category" data-position="bottom" data-delay="30" data-tooltip="Ex: Hair Color<br/>( At least 3 or more characters )" pattern="^[a-zA-Z0-9-\-\s]{3,}$" required/>
                                       <label for="createAddCategoryName" class="active">Category</label>
                                     </div>
                                     <div class="input-field col s8 offset-s2 center">
@@ -354,7 +354,7 @@
                            String productCate = prodID.getStrProductCategory();
                         %>
                         <div id="prod<%=strProdID%>" class="modal modal-fixed-footer" style="width: 60% !important; height: 80% !important; max-height: 100% !important;">
-                        <form class="col s12" id="updateProdForm" method="get" action="updateItem" enctype="multipart/form-data">
+                        <form class="col s12 updateProdForm" id="updateProdForm" method="get" action="updateItem" enctype="multipart/form-data">
                           <div class="modal-content">
                             <!-- <div class="container"> -->
                             <div class="wrapper">
@@ -401,12 +401,12 @@
  -->                                    
 <!--                                       <input value="${product.strProductName}" type="text" class="validate tooltipped" id="prodsvcName" name="strItemName" placeholder="Product/Service Name" data-position="bottom" data-delay="30" data-tooltip="${product.strProductName}" pattern="^[a-zA-Z0-9\-\s]{3,}$" maxlength="15">
 ======= -->
-                                      <input value="${product.strProductName}" type="text" class="validate tooltipped specialprodsvc" id="prodsvcName" name="strItemName" placeholder="Product/Service Name" data-position="bottom" data-delay="30" data-tooltip="${product.strProductName}" pattern="^[a-zA-Z0-9\-\s]{3,}$" maxlength="15">
+                                      <input value="${product.strProductName}" type="text" class="validate tooltipped specialprodsvc noSpace" id="prodsvcName" name="strItemName" placeholder="Product/Service Name" data-position="bottom" data-delay="30" data-tooltip="${product.strProductName}" pattern="^[a-zA-Z0-9\-\s]{3,}$" maxlength="15">
 
                                       <label for="prodsvcName">Name</label>
                                     </div>
                                     <div class="input-field col s12">
-                                      <textarea id="prodsvcDetail" name="strItemDetails" class="materialize-textarea tooltipped" placeholder="Details" data-position="bottom" data-delay="30" data-tooltip="${product.strProductDesc}" pattern="^[a-zA-Z0-9.,`-\-\s]{5,}$" maxlength="25" style="margin-top: -10px;">${product.strProductDesc}</textarea>
+                                      <textarea id="prodsvcDetail" name="strItemDetails" class="materialize-textarea tooltipped noSpace" placeholder="Details" data-position="bottom" data-delay="30" data-tooltip="${product.strProductDesc}" pattern="^[a-zA-Z0-9.,`-\-\s]{5,}$" maxlength="25" style="margin-top: -10px;">${product.strProductDesc}</textarea>
                                       <label for="prodsvcDetail" class="active">Details</label>
                                     </div>
                                     <div class="input-field col s8">
@@ -432,7 +432,7 @@
                                       <button data-target="addUpdateProdCategory" class="waves-effect waves-light btn-flat modal-updateCategory purple lighten-1"><i class="material-icons white-text">add</i></button>
                                     </div>
                                     <div class="input-field col s6" style="margin-top: 28px !important;">
-                                        <input value="${product.dblProductPrice}" type="text" class="validate right-align tooltipped specialprice" id="updateprodPrice" name="dblItemPrice" placeholder="999.99" data-position="bottom" data-delay="30" data-tooltip="${product.dblProductPrice}">
+                                        <input value="${product.dblProductPrice}" type="text" class="validate right-align tooltipped specialprice noSpace amountFormat" id="updateprodPrice" name="dblItemPrice" placeholder="999.99" data-position="bottom" data-delay="30" data-tooltip="${product.dblProductPrice}">
                                         <label for="updateprodPrice" class="active">Price</label>
                                     </div>
                                 </div>
@@ -534,7 +534,7 @@
 
                   <!-- add category BEGIN -->
                           <div id="addUpdateProdCategory" class="modal" style="margin-top: 30px;">
-                            <form>
+                            <form id="prodAddCatForm" class="prodAddCatForm">
                               <div class="modal-content">
                                 <h4>Add Another Category</h4>
                                 <div class="row">
@@ -547,11 +547,11 @@
                                       </select>
                                     </div>
                                     <div class="input-field col s8 offset-s2" style="margin-top: 20px;">
-                                      <input type="text" class="validate tooltipped" id="updateAddCatProdName" name="updateAddCatProdName" placeholder="New Category" data-position="bottom" data-delay="30" data-tooltip="Ex: Hair Color<br/>( At least 3 or more characters )" pattern="^[a-zA-Z0-9-\-\s]{3,}$" required>
+                                      <input type="text" class="validate tooltipped specialoption noSpace" id="updateAddCatProdName" name="updateAddCatProdName" placeholder="New Category" data-position="bottom" data-delay="30" data-tooltip="Ex: Hair Color<br/>( At least 3 or more characters )" pattern="^[a-zA-Z0-9-\-\s]{3,}$" required>
                                       <label for="updateAddCatProdName">Category</label>
                                     </div>
                                     <div class="input-field col s8 offset-s2 center">
-                                      <button id="updateAddProdCatBtn" class="modal-close waves-effect waves-light purple darken-3 btn-flat white-text">SAVE</button>
+                                      <button id="updateAddProdCatBtn" class="waves-effect waves-light purple darken-3 btn-flat white-text">SAVE</button>
                                       <button type="reset" value="Reset" class="modal-close waves-effect waves-purple transparent btn-flat white">CANCEL</button>
                                     </div>
                                   </div>
@@ -569,7 +569,7 @@
                            double price = servID.getDblServicePrice();
                         %>
                         <div id="serv<%=serviceID%>" class="modal modal-fixed-footer" style="width: 60% !important; height: 80% !important; max-height: 100% !important;">
-                        <form class="col s12" method="get" id="updateServForm" action="updateItem" enctype="multipart/form-data">
+                        <form class="col s12 updateServForm" method="get" id="updateServForm" action="updateItem" enctype="multipart/form-data">
                           <div class="modal-content">
                             <!-- <div class="container"> -->
                             <div class="wrapper">
@@ -620,11 +620,11 @@
                                       <input type="text" name="intItemID" value="${service.intServiceID}">
                                       <input value="${service.strServiceName}" type="text" class="validate tooltipped" id="prodsvcName" name="strItemName" placeholder="Product/Service Name" data-position="bottom" data-delay="30" data-tooltip="${service.strServiceName}" pattern="^[a-zA-Z0-9\-\s]{3,}$" maxlength="15">
 ======= -->
-                                      <input value="${service.strServiceName}" type="text" class="validate tooltipped specialprodsvc" id="prodsvcName" name="strItemName" placeholder="Product/Service Name" data-position="bottom" data-delay="30" data-tooltip="${service.strServiceName}" pattern="^[a-zA-Z0-9\-\s]{3,}$" maxlength="15">
+                                      <input value="${service.strServiceName}" type="text" class="validate tooltipped specialprodsvc noSpace" id="prodsvcName" name="strItemName" placeholder="Product/Service Name" data-position="bottom" data-delay="30" data-tooltip="${service.strServiceName}" pattern="^[a-zA-Z0-9\-\s]{3,}$" maxlength="15">
                                       <label for="prodsvcName">Name</label>
                                     </div>
                                     <div class="input-field col s12">
-                                      <textarea id="prodsvcDetail" name="strItemDetails" class="materialize-textarea tooltipped" placeholder="Details" data-position="bottom" data-delay="30" data-tooltip="${service.strServiceDesc}" pattern="^[a-zA-Z0-9.,`-\-\s]{5,}$" maxlength="25" style="margin-top: -10px;">${service.strServiceDesc}</textarea>
+                                      <textarea id="prodsvcDetail" name="strItemDetails" class="materialize-textarea tooltipped noSpace" placeholder="Details" data-position="bottom" data-delay="30" data-tooltip="${service.strServiceDesc}" pattern="^[a-zA-Z0-9.,`-\-\s]{5,}$" maxlength="25" style="margin-top: -10px;">${service.strServiceDesc}</textarea>
                                       <label for="prodsvcDetail" class="active">Details</label>
                                     </div>
                                     <div class="input-field col s8">
@@ -650,7 +650,7 @@
                                       <button data-target="addUpdateServCategory" class="waves-effect waves-light btn-flat modal-updateCategory purple lighten-1"><i class="material-icons white-text">add</i></button>
                                     </div>
                                     <div class="input-field col s6" style="margin-top: 28px !important;">
-                                        <input type="text" value="<%=price%>" class="validate right-align tooltipped specialprice" id="updateservPrice" name="dblItemPrice" placeholder="999.99" data-position="bottom" data-delay="30" data-tooltip="${service.dblServicePrice}">
+                                        <input type="text" value="<%=price%>" class="validate right-align tooltipped specialprice noSpace amountFormat" id="updateservPrice" name="dblItemPrice" placeholder="999.99" data-position="bottom" data-delay="30" data-tooltip="${service.dblServicePrice}">
                                         <label for="updateservPrice" class="active">Price</label>
                                     </div>
                                 </div>
@@ -732,7 +732,7 @@
                                          <label for="updateServCategory" class="active">Category</label>
                                      </div>
                                      <div class="input-field col s6" style="margin-top: 28px !important;">
-                                         <input value="${service.dblServicePrice}" type="text" class="right-align tooltipped" id="updateservPrice" name="dblItemPrice" required placeholder="999.99" data-position="bottom" data-delay="30" data-tooltip="${service.dblServicePrice}" readonly>
+                                         <input value="${service.dblServicePrice}" type="text" class="right-align tooltipped amountFormat" id="updateservPrice" name="dblItemPrice" required placeholder="999.99" data-position="bottom" data-delay="30" data-tooltip="${service.dblServicePrice}" readonly>
                                          <label for="updateservPrice" class="active">Price</label>
                                      </div>
                                  </div>
@@ -752,7 +752,7 @@
 
                   <!-- add category BEGIN -->
                           <div id="addUpdateServCategory" class="modal" style="margin-top: 30px;">
-                            <form>
+                            <form class="updateAddCatServ">
                               <div class="modal-content">
                                 <h4>Add Another Category</h4>
                                 <div class="row">
@@ -765,11 +765,11 @@
                                       </select>
                                     </div>
                                     <div class="input-field col s8 offset-s2" style="margin-top: 20px;">
-                                      <input type="text" class="validate tooltipped" id="updateAddCatServName" name="updateAddCatServName" placeholder="New Category" data-position="bottom" data-delay="30" data-tooltip="Ex: Hair Color<br/>( At least 3 or more characters )" pattern="^[a-zA-Z0-9-\-\s]{3,}$" required>
+                                      <input type="text" class="validate tooltipped specialoption noSpace" id="updateAddCatServName" name="updateAddCatServName" placeholder="New Category" data-position="bottom" data-delay="30" data-tooltip="Ex: Hair Color<br/>( At least 3 or more characters )" pattern="^[a-zA-Z0-9-\-\s]{3,}$" required>
                                       <label for="updateAddCatServName" class="active">Position Name</label>
                                     </div>
                                     <div class="input-field col s8 offset-s2 center">
-                                      <button id="updateAddServCatBtn" class="modal-close waves-effect waves-light purple darken-3 btn-flat white-text">SAVE</button>
+                                      <button id="updateAddServCatBtn" class="waves-effect waves-light purple darken-3 btn-flat white-text">SAVE</button>
                                       <button type="reset" value="Reset" class="modal-close waves-effect waves-purple transparent btn-flat white">CANCEL</button>
                                     </div>
                                   </div>
@@ -882,7 +882,7 @@
 
 
     <script type="text/javascript">
-    $('#prodsvcPrice').priceFormat({
+    $('.amountFormat').priceFormat({
       prefix: '',
       centsSeparator: '.',
       centsLimit: 2,
@@ -892,21 +892,15 @@
     </script>
 
     <script type="text/javascript">
-    $('#updateprodPrice').priceFormat({
+    $("#updateprodPrice").each(function() {
+    $(this).priceFormat({
       prefix: '',
       centsSeparator: '.',
       centsLimit: 2,
       limit: 8,
       thousandsSeparator: ','
     });
-
-    $('#updateservPrice').priceFormat({
-      prefix: '',
-      centsSeparator: '.',
-      centsLimit: 2,
-      limit: 8,
-      thousandsSeparator: ','
-    });
+  });
     </script>
 
 
