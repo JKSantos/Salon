@@ -9,6 +9,7 @@ import com.gss.model.Employee;
 import com.gss.model.Job;
 import com.gss.service.EmployeeServiceImpl;
 import com.gss.utilities.DateHelper;
+import com.gss.utilities.JobQualificationHelper;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class UpdateEmployeeAction extends ActionSupport{
@@ -31,7 +32,7 @@ public class UpdateEmployeeAction extends ActionSupport{
 	private File file;
 	private String contentType;
 	private String filename;
-	private String selectedJob;
+	private List<String> selectedJob;
 	private String imageName;
 	
 	public String execute(){
@@ -41,16 +42,18 @@ public class UpdateEmployeeAction extends ActionSupport{
 		strBirthdate = "March/9/1996";
 		String[] unConvertedDate = strBirthdate.split("/");
 		
+		List<Job> jobList = new JobQualificationHelper().convertToJob(this.selectedJob);
+		
 		this.strBirthdate = new DateHelper().convert(unConvertedDate);
 
 		this.datEmpBirthdate = DateHelper.parseDate(strBirthdate);
 		
 		if(imageName.equals("image")){
-			emp = new Employee(intEmpID, strEmpLastName.trim().toUpperCase(), strEmpFirstName.trim().toUpperCase(), strEmpMiddleName.trim().toUpperCase(), datEmpBirthdate, strEmpGender, strEmpAddress.trim().toUpperCase(), strEmpContactNo, strEmpEmail, "A", "NO ACCESS", "NO ACCESS", "Image", null, selectedJob);
+			emp = new Employee(intEmpID, strEmpLastName.trim().toUpperCase(), strEmpFirstName.trim().toUpperCase(), strEmpMiddleName.trim().toUpperCase(), datEmpBirthdate, strEmpGender, strEmpAddress.trim().toUpperCase(), strEmpContactNo, strEmpEmail, "A", "NO ACCESS", "NO ACCESS", "Image", null, jobList);
 		}
 		else{
 			imageName = file.getAbsolutePath();
-			emp = new Employee(intEmpID, strEmpLastName.trim().toUpperCase(), strEmpFirstName.trim().toUpperCase(), strEmpMiddleName.trim().toUpperCase(), datEmpBirthdate, strEmpGender, strEmpAddress, strEmpContactNo, strEmpEmail, "A", "NO ACCESS", "NO ACCESS", imageName, null, selectedJob);
+			emp = new Employee(intEmpID, strEmpLastName.trim().toUpperCase(), strEmpFirstName.trim().toUpperCase(), strEmpMiddleName.trim().toUpperCase(), datEmpBirthdate, strEmpGender, strEmpAddress, strEmpContactNo, strEmpEmail, "A", "NO ACCESS", "NO ACCESS", imageName, null, jobList);
 		}
 		
 		if(empService.updateEmployee(emp) == true)
@@ -156,11 +159,11 @@ public class UpdateEmployeeAction extends ActionSupport{
 		this.strEmpPassword = strEmpPassword;
 	}
 
-	public String getSelectedJob() {
+	public List<String> getSelectedJob() {
 		return selectedJob;
 	}
 
-	public void setSelectedJob(String selectedJob) {
+	public void setSelectedJob(List<String> selectedJob) {
 		this.selectedJob = selectedJob;
 	}
 

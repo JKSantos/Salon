@@ -1,8 +1,13 @@
 package com.gss.model;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * @author hp pavilion
+ *
+ */
 public class Employee {
 	
 	private int intEmpID;
@@ -19,10 +24,10 @@ public class Employee {
 	private String strEmpPassword;
 	private String blobEmpPhoto;
 	private byte[] bytActualImage;
-	private String strJobQualification;
+	private List<Job> jobQualification = new ArrayList<Job>();
 	
 	
-	public Employee(int intEmpID, String strEmpLastName, String strEmpFirstName, String strEmpMiddleName, Date datBirthdate, String strEmpGender, String strAddress, String strEmpContactNo, String strEmpEmail, String strEmpStatus, String strUsername, String strPassword, String empPhoto, byte[] bytActualPhoto, String strJobQualification)
+	public Employee(int intEmpID, String strEmpLastName, String strEmpFirstName, String strEmpMiddleName, Date datBirthdate, String strEmpGender, String strAddress, String strEmpContactNo, String strEmpEmail, String strEmpStatus, String strUsername, String strPassword, String empPhoto, byte[] bytActualPhoto, List<Job> jobQualification)
 	{
 		this.setIntEmpID(intEmpID);
 		this.strEmpLastName = strEmpLastName;
@@ -38,7 +43,7 @@ public class Employee {
 		this.setBlobEmpPhoto(empPhoto);	
 		this.setStrEmpEmail(strEmpEmail);
 		this.setBytActualImage(bytActualPhoto);
-		this.setStrJobQualification(strJobQualification);
+		this.setJobQualification(jobQualification);
 	}
 
 	public String getStrEmpLastName() {
@@ -145,12 +150,14 @@ public class Employee {
 		this.bytActualImage = bytActualImage;
 	}
 
-	public String getStrJobQualification() {
-		return strJobQualification;
+	
+
+	public List<Job> getJobQualification() {
+		return jobQualification;
 	}
 
-	public void setStrJobQualification(String strJobQualification2) {
-		this.strJobQualification = strJobQualification2;
+	public void setJobQualification(List<Job> jobQualification) {
+		this.jobQualification = jobQualification;
 	}
 
 	public String getStrEmpEmail() {

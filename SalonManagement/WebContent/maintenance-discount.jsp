@@ -32,12 +32,13 @@
                           <div class="collapsible-body">
                             <ul>
                               <li><a href="employeeMaintenance">Employee</a></li>
-                                      <li><a href="productServiceMaintenance">Product & Service</a></li>
-                                      <li><a href="promoMaintenance">Promo</a></li>
-                                      <li class="purple lighten-4"><a href="discountMaintenance">Discount</a></li>
-                                      <li><a href="packageMaintenance">Package</a></li>
-                                      <li><a href="catalogueMaintenance">Catalogue</a></li>
-                                      <li><a href="extraChargeMaintenance">Extra Charge</a></li>
+                              <li><a href="productServiceMaintenance">Product & Service</a></li>
+                              <li><a href="catalogueMaintenance">Catalogue</a></li>
+                              <li><a href="packageMaintenance">Package</a></li>
+                              <li><a href="locationMaintenance">Delivery Charge</a></li>
+                              <li><a href="extraChargeMaintenance">Other Charge</a></li>
+                              <li><a href="promoMaintenance">Promo</a></li>
+                              <li class="purple lighten-4"><a href="discountMaintenance">Discount</a></li>
                             </ul>
                           </div>
                       </li>
@@ -45,8 +46,8 @@
                         <a class="collapsible-header"><b>Transaction</b></a>
                           <div class="collapsible-body">
                             <ul>
-                              <li><a href="transactions-inventory.jsp">Monitor Product</a></li>
-                              <li><a href="transactions-reservation.jsp">Manage Reservation</a></li>
+                              <li><a href="transactions-inventory.jsp">Inventory</a></li>
+                              <li><a href="transactions-reservation.jsp">Reservation</a></li>
                               <li><a href="transactions-productorder.jsp">Product Order</a></li>
                               <li><a href="transactions-vip.jsp">VIP</a></li>
                               <li><a href="transactions-walkin.jsp">Walk In</a></li>
@@ -117,7 +118,6 @@
                                     <tr>
                                         <th><center>Discount Name</center></th>
                                         <th><center>Price (Php/%)</center></th>
-                                        <th><center>Status</center></th>
                                         <th><center>Action</center></th>
                                     </tr>
                                 </thead>
@@ -141,13 +141,12 @@
                                     <tr>
                                         <td style="padding:0; margin:0;"><center>${discount.strDiscountName}</center></td>
                                         <td style="padding:0; margin:0;"><center><%=fixed%>${discount.dblDiscountAmount}<%=percet%></center></td>
-                                        <td style="padding:0; margin:0;"><center>${discount.intDiscountStatus}</center></td>
-                                        <td class="center" style="padding:0; margin:0;">
+                                        <td class="center" style="padding:0; margin:0;"><center>
                                         <a data-delay="30" data-position="bottom" data-tooltip="View" class="tooltipped waves-effect waves-purple modal-viewall btn-flat transparent black-text" href="#discountView<%=id%>" style="padding-left: 10px;padding-right:10px; margin: 5px;">
                                         <i class="material-icons">visibility</i>
                                         </a>
                                         <a class="tooltipped waves-effect waves-light modal-trigger btn-flat transparent black-text" title="Update" href="#dis<%=id%>" style="padding-left: 10px;padding-right:10px; margin: 5px;" data-delay="30" data-position="bottom" data-tooltip="Update"><i class="material-icons">edit</i></a>
-                                        <a class="tooltipped waves-effect waves-light modal-trigger btn-flat transparent red-text text-accent-4" data-delay="30" data-position="bottom" data-tooltip="Deactivate" href="#del<%=id%>" title="Deactivate" style="padding-left: 10px;padding-right:10px; margin: 5px;"><i class="material-icons">delete</i></a>
+                                        <a class="tooltipped waves-effect waves-light modal-trigger btn-flat transparent red-text text-accent-4" data-delay="30" data-position="bottom" data-tooltip="Deactivate" href="#del<%=id%>" title="Deactivate" style="padding-left: 10px;padding-right:10px; margin: 5px;"><i class="material-icons">delete</i></a></center>
                                         </td>
                                     </tr>
                                   </c:forEach>
@@ -165,7 +164,6 @@
                                             <tr>
                                                 <th><center>Discount Name</center></th>
                                                 <th><center>Price (Php/%)</center></th>
-                                                <th><center>Status</center></th>
                                                 <th><center>Action</center></th>
                                             </tr>
                                         </thead>
@@ -189,7 +187,6 @@
                                             <tr>
                                                 <td style="padding:0; margin:0;"><center>${discount.strDiscountName}</center></td>
                                                 <td style="padding:0; margin:0;"><center><%=fixed%>${discount.dblDiscountAmount}<%=percet%></center></td>
-                                                <td style="padding:0; margin:0;"><center>${discount.intDiscountStatus}</center></td>
                                                 <td class="center" style="padding:0; margin:0;">
                                                 <a class="tooltipped waves-effect waves-light modal-trigger btn-flat transparent green-text text-accent-4" data-delay="30" data-position="bottom" data-tooltip="Activate" href="#del<%=id%>" style="padding-left: 10px;padding-right:10px; margin: 5px;"><i class="material-icons">check</i></a>
                                                 </td>
@@ -216,11 +213,11 @@
                                                 <label class="red-text"> (*) Indicates required field</label>
                                             </div>
                                             <div class="input-field col s12" style="margin-top: 20px !important;">
-                                                <input type="text" name="strDiscountName" class="validate tooltipped specialname" id="discountName" required data-delay="30" data-position="bottom" data-tooltip="Ex: Student Discount<br/>( At least 5 or more characters )" pattern="^[a-zA-Z\-'`\s]{5,}$" minlength="5" maxlength="20" placeholder="Discount Name">
+                                                <input type="text" name="strDiscountName" class="validate tooltipped specialname noSpace" id="discountName" required data-delay="30" data-position="bottom" data-tooltip="Ex: Student Discount<br/>( At least 5 or more characters )" pattern="^[a-zA-Z\-'`\s]{5,}$" minlength="5" maxlength="20" placeholder="Discount Name">
                                                 <label for="discountName" class="active">Discount Name<span class="red-text">*</span></label>
                                             </div>
                                             <div class="input-field col s12">
-                                                <textarea id="discountDesc" name="strDiscountDetails" class="tooltipped materialize-textarea" maxlength="30" data-delay="30" data-position="bottom" data-tooltip="Ex: Valid ID is required<br/>( At least 5 or more characters )" minlength="5" placeholder="Description"></textarea>
+                                                <textarea id="discountDesc" name="strDiscountDetails" class="tooltipped materialize-textarea noSpace" maxlength="30" data-delay="30" data-position="bottom" data-tooltip="Ex: Valid ID is required<br/>( At least 5 or more characters )" minlength="5" placeholder="Description"></textarea>
                                                 <label for="discountDesc">Description</label>
                                             </div>
                                             <div class="input-field col s6">
@@ -232,7 +229,7 @@
                                                   <label for="createDiscAmtType" class="active">Type<span class="red-text">*</span></label>
                                             </div>
                                             <div class="input-field col s4 offset-s2">
-                                                <input type="text" class="validate right-align tooltipped specialprice" id="createDiscPrice" required name="dblDiscountPrice" data-delay="30" data-position="bottom" data-tooltip="Ex: 99.99<br/>( Numbers only )" placeholder="Discount Amount" pattern="^[0-9]$" maxlength="10">
+                                                <input type="text" class="validate right-align tooltipped specialprice noSpace amountFormat" id="createDiscPrice" required name="dblDiscountPrice" data-delay="30" data-position="bottom" data-tooltip="Ex: 99.99<br/>( Numbers only )" placeholder="Discount Amount" pattern="^[0-9]$" maxlength="10">
                                                 <label for="createDiscPrice">Amount<span class="red-text">*</span></label>
                                             </div>
                                     </div>
@@ -308,7 +305,7 @@
 
                         %>
                         <div id="dis<%=id2%>" class="modal modal-fixed-footer" style="width: 45% !important; height: 80% !important; max-height: 100% !important;">
-                        <form class="col s12" method="get" action="updateDiscount" id="updateDiscountForm">
+                        <form class="col s12 updateDiscountForm" method="get" action="updateDiscount" id="updateDiscountForm">
                           <div class="modal-content">
                             <!-- <div class="container"> -->
                               <div class="wrapper">
@@ -316,11 +313,11 @@
                                     <div class="row">
                                             <div class="input-field col s12">
                                                 <input type="hidden" name="intDiscountID" value="${discount.intDiscountID}">
-                                                <input value="${discount.strDiscountName}" name="strDiscountName" type="text" class="validate tooltipped specialname" id="discountName" data-delay="30" data-position="bottom" data-tooltip="Ex: Student Discount<br/>( At least 5 or more characters )" pattern="^[a-zA-Z\-'`\s]{5,}$" minlength="5" maxlength="20" placeholder="Discount Name">
+                                                <input value="${discount.strDiscountName}" name="strDiscountName" type="text" class="validate tooltipped specialname noSpace" id="discountName" data-delay="30" data-position="bottom" data-tooltip="Ex: Student Discount<br/>( At least 5 or more characters )" pattern="^[a-zA-Z\-'`\s]{5,}$" minlength="5" maxlength="20" placeholder="Discount Name">
                                                 <label for="discountName" class="active">Discount Name</label>
                                             </div>
                                             <div class="input-field col s12">
-                                                <textarea id="discountDesc" name="strDiscountDetails" class="materialize-textarea tooltipped" maxlength="30" data-delay="30" data-position="bottom" data-tooltip="Ex: Valid ID is required<br/>( At least 5 or more characters )" minlength="5" placeholder="Description">${discount.strDiscountDesc}</textarea>
+                                                <textarea id="discountDesc" name="strDiscountDetails" class="materialize-textarea tooltipped noSpace" maxlength="30" data-delay="30" data-position="bottom" data-tooltip="Ex: Valid ID is required<br/>( At least 5 or more characters )" minlength="5" placeholder="Description">${discount.strDiscountDesc}</textarea>
                                                 <label for="discountDesc" class="active">Description</label>
                                             </div>
                                             <div class="input-field col s6">
@@ -332,8 +329,8 @@
                                                 <label for="updateDiscAmtType" class="active">Type</label>
                                             </div>
                                             <div class="input-field col s4 offset-s2">
-                                                <input type="text" value="${discount.dblDiscountAmount}" class="validate right-align tooltipped specialprice" id="createDiscPrice"name="dblDiscountPrice"  data-delay="30" data-position="bottom" data-tooltip="${discount.dblDiscountAmount}" placeholder="Discount Amount">
-                                                <label for="createDiscPrice">Discount Amount</label>
+                                                <input type="text" value="${discount.dblDiscountAmount}" class="validate right-align tooltipped specialprice noSpace amountFormat" id="updateDiscPrice"name="dblDiscountPrice"  data-delay="30" data-position="bottom" data-tooltip="${discount.dblDiscountAmount}" placeholder="Discount Amount">
+                                                <label for="createDiscPrice">Amount</label>
                                             </div>
                                     </div>
                               </div>
@@ -413,8 +410,31 @@
     <script type="text/javascript" src="./js/maintenance-emp.js"></script>
     <script type="text/javascript" src="./js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="./js/bartstable.js"></script>
+
+    <script type="text/javascript" src="./js/priceformat.js"></script>
     <script type="text/javascript" src="./js/jquery.validate.js"></script>
     <script type="text/javascript" src="./js/validation.js"></script>
+
+    <script type="text/javascript">
+    $('.amountFormat').priceFormat({
+      prefix: '',
+      centsSeparator: '.',
+      centsLimit: 2,
+      limit: 8,
+      thousandsSeparator: ','
+    });
+    </script>
+
+    <script type="text/javascript">
+    $('#updateDiscPrice').priceFormat({
+      prefix: '',
+      centsSeparator: '.',
+      centsLimit: 2,
+      limit: 8,
+      thousandsSeparator: ','
+    });
+    </script>
+
 
   </body>
 

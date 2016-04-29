@@ -30,6 +30,7 @@ public class EmployeeJDBCRepository implements EmployeeRepository{
 		JDBCConnection jdbc = new JDBCConnection();
 		Connection con = jdbc.getConnection();
 		List<Employee> empList = new ArrayList<Employee>();
+		List<Job> jobs = new ArrayList<Job>(); 
 		
 		int intEmpID;
 		String strJobDesc;
@@ -57,33 +58,45 @@ public class EmployeeJDBCRepository implements EmployeeRepository{
 			
 			while(set.next()){
 				intEmpID = set.getInt(1);
-				String job = set.getString(2);
-				strEmpLastName = set.getString(3);
-				strEmpFirstName = set.getString(4);
-				strEmpMiddleName = set.getString(5);
-				datEmpBirthdate = set.getDate(6);
-				strEmpGender = set.getString(7);
-				strEmpAddress = set.getString(8);
-				strEmpContactNo = set.getString(9);
-				strEmpEmail = set.getString(10);
-				strEmpStatus = set.getString(11);
-				if(set.getString(12) == null){
+				strEmpLastName = set.getString(2);
+				strEmpFirstName = set.getString(3);
+				strEmpMiddleName = set.getString(4);
+				datEmpBirthdate = set.getDate(5);
+				strEmpGender = set.getString(6);
+				strEmpAddress = set.getString(7);
+				strEmpContactNo = set.getString(8);
+				strEmpEmail = set.getString(9);
+				strEmpStatus = set.getString(10);
+				if(set.getString(11) == null){
 					strEmpUsername = "NO ACCESS";
 					strEmpPassword = "NO ACCESS";	
 				}
 				else
 				{
-					strEmpUsername = set.getString(12);
-					strEmpPassword = set.getString(13);
+					strEmpUsername = set.getString(11);
+					strEmpPassword = set.getString(12);
 				}
 				
 				blobEmpPhoto = "Empty";
-				imageBlob = set.getBlob(14);
+				imageBlob = set.getBlob(13);
 				
 				int blobLength = (int) imageBlob.length();  
 				byte[] blobAsBytes = imageBlob.getBytes(1, blobLength);
 				
-				Employee emp = new Employee(intEmpID, strEmpLastName, strEmpFirstName, strEmpMiddleName, datEmpBirthdate, strEmpGender, strEmpAddress, strEmpContactNo, strEmpEmail, strEmpStatus, strEmpUsername, strEmpPassword, blobEmpPhoto, blobAsBytes, job);
+				
+				PreparedStatement getJobs = con.prepareStatement(strQuery2);
+				getJobs.setInt(1, intEmpID);
+				ResultSet jobSet = getJobs.executeQuery();
+				
+				while(jobSet.next()){
+					String jobDesc = jobSet.getString(1);
+					int jobStatus = jobSet.getInt(2);
+					
+					Job job = new Job(jobDesc, jobStatus);
+					jobs.add(job);
+				}
+				
+				Employee emp = new Employee(intEmpID, strEmpLastName, strEmpFirstName, strEmpMiddleName, datEmpBirthdate, strEmpGender, strEmpAddress, strEmpContactNo, strEmpEmail, strEmpStatus, strEmpUsername, strEmpPassword, blobEmpPhoto, blobAsBytes, jobs);
 				
 				empList.add(emp);
 			}
@@ -189,44 +202,58 @@ public class EmployeeJDBCRepository implements EmployeeRepository{
 	@Override
 	public boolean createEmployee(Employee emp) {
 		
-		String strQuery1 = "CALL `createEmp`(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		String strQuery1 = "CALL `createEmp`(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		String strQuery2 = "CALL `createJobQualification`(?, ?);";
+		List<Job> job = emp.getJobQualification();
 		
 				
 		JDBCConnection jdbc = new JDBCConnection();
 		Connection con = jdbc.getConnection();
+		
 		int intEmpID = 0;
 		
 		try{
+			
 			java.sql.Date sqlDate = new java.sql.Date(emp.getDatEmpBirthdate().getTime());
 			
 			File imageFile = new File(emp.getBlobEmpPhoto());
 			FileInputStream fileInput = new FileInputStream(imageFile);
 			
+			PreparedStatement createJob = con.prepareStatement(strQuery2);
 			PreparedStatement pre = con.prepareStatement(strQuery1);
-			pre.setString(1, emp.getStrJobQualification());
-			pre.setString(2, emp.getStrEmpLastName());
-			pre.setString(3, emp.getStrEmpFirstName());
-			pre.setString(4, emp.getStrEmpMiddleName());
-			pre.setDate(5, sqlDate);
-			pre.setString(6, emp.getStrEmpGender());
-			pre.setString(7, emp.getStrEmpAddress());
-			pre.setString(8, emp.getStrEmpContactNo());
-			pre.setString(9, emp.getStrEmpEmail());
-			pre.setString(10, emp.getStrEmpStatus());
-			pre.setString(11, emp.getStrEmpUsername());
-			pre.setString(12, emp.getStrEmpPassword());
-			pre.setBinaryStream(13, (InputStream)fileInput, (int)imageFile.length());
+			pre.setString(1, emp.getStrEmpLastName());
+			pre.setString(2, emp.getStrEmpFirstName());
+			pre.setString(3, emp.getStrEmpMiddleName());
+			pre.setDate(4, sqlDate);
+			pre.setString(5, emp.getStrEmpGender());
+			pre.setString(6, emp.getStrEmpAddress());
+			pre.setString(7, emp.getStrEmpContactNo());
+			pre.setString(8, emp.getStrEmpEmail());
+			pre.setString(9, emp.getStrEmpStatus());
+			pre.setString(10, emp.getStrEmpUsername());
+			pre.setString(11, emp.getStrEmpPassword());
+			pre.setBinaryStream(12, (InputStream)fileInput, (int)imageFile.length());
 			
-			pre.executeQuery();
+			ResultSet setEmpID = pre.executeQuery();
+			while(setEmpID.next()){
+				intEmpID = setEmpID.getInt(1);
+			}
+			setEmpID.close();
 			pre.close();
+			
+			for(int i = 0; i < job.size(); i++){
+				createJob.setInt(1, intEmpID);
+				createJob.setString(2, job.get(i).getStrJobDesc());
+				createJob.execute();
+			}
+			createJob.close();
 			con.close();
 			
 			return true;
 		}
 		catch(SQLException | FileNotFoundException e){
 			//Error
-			System.out.print(e);
+			e.printStackTrace();
 			
 			return false;
 		}
@@ -235,7 +262,8 @@ public class EmployeeJDBCRepository implements EmployeeRepository{
 	@Override
 	public boolean updateEmployee(Employee emp) {
 		
-		String strQuery1 = "CALL updateEmployee(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+		String strQuery1 = "CALL updateEmployee( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+		String updateJob = "CALL updateJob(?, ?)";
 		
 		JDBCConnection jdbc = new JDBCConnection();
 		Connection con = jdbc.getConnection();
@@ -250,19 +278,18 @@ public class EmployeeJDBCRepository implements EmployeeRepository{
 			System.out.println(emp.getBlobEmpPhoto() + " " + emp.getStrEmpGender());
 			if(emp.getBlobEmpPhoto().equalsIgnoreCase("image")){
 				pre.setInt(1, emp.getIntEmpID());
-				pre.setString(2, emp.getStrJobQualification());
-				pre.setString(3, emp.getStrEmpLastName());
-				pre.setString(4, emp.getStrEmpFirstName());
-				pre.setString(5, emp.getStrEmpMiddleName());
-				pre.setDate(6, sqlDate);
-				pre.setString(7, emp.getStrEmpGender());
-				pre.setString(8, emp.getStrEmpAddress());
-				pre.setString(9, emp.getStrEmpContactNo());
-				pre.setString(10, emp.getStrEmpEmail());
-				pre.setString(11, emp.getStrEmpStatus());
-				pre.setString(12, emp.getStrEmpUsername());
-				pre.setString(13, emp.getStrEmpPassword());
-				pre.setInt(14, 101);
+				pre.setString(2, emp.getStrEmpLastName());
+				pre.setString(3, emp.getStrEmpFirstName());
+				pre.setString(4, emp.getStrEmpMiddleName());
+				pre.setDate(5, sqlDate);
+				pre.setString(6, emp.getStrEmpGender());
+				pre.setString(7, emp.getStrEmpAddress());
+				pre.setString(8, emp.getStrEmpContactNo());
+				pre.setString(9, emp.getStrEmpEmail());
+				pre.setString(10, emp.getStrEmpStatus());
+				pre.setString(11, emp.getStrEmpUsername());
+				pre.setString(12, emp.getStrEmpPassword());
+				pre.setInt(13, 101);
 			}
 			else{
 				
@@ -270,28 +297,32 @@ public class EmployeeJDBCRepository implements EmployeeRepository{
 				FileInputStream fileInput = new FileInputStream(imageFile);
 				
 				pre.setInt(1, emp.getIntEmpID());
-				pre.setString(2, emp.getStrJobQualification());
-				pre.setString(3, emp.getStrEmpLastName());
-				pre.setString(4, emp.getStrEmpFirstName());
-				pre.setString(5, emp.getStrEmpMiddleName());
-				pre.setDate(6, sqlDate);
-				pre.setString(7, emp.getStrEmpGender());
-				pre.setString(8, emp.getStrEmpAddress());
-				pre.setString(9, emp.getStrEmpContactNo());
-				pre.setString(10, emp.getStrEmpEmail());
-				pre.setString(11, emp.getStrEmpStatus());
-				pre.setString(12, emp.getStrEmpUsername());
-				pre.setString(13, emp.getStrEmpPassword());
-				pre.setBinaryStream(14, (InputStream)fileInput, (int)imageFile.length());
+				pre.setString(2, emp.getStrEmpLastName());
+				pre.setString(3, emp.getStrEmpFirstName());
+				pre.setString(4, emp.getStrEmpMiddleName());
+				pre.setDate(5, sqlDate);
+				pre.setString(6, emp.getStrEmpGender());
+				pre.setString(7, emp.getStrEmpAddress());
+				pre.setString(8, emp.getStrEmpContactNo());
+				pre.setString(9, emp.getStrEmpEmail());
+				pre.setString(10, emp.getStrEmpStatus());
+				pre.setString(11, emp.getStrEmpUsername());
+				pre.setString(12, emp.getStrEmpPassword());
+				pre.setBinaryStream(13, (InputStream)fileInput, (int)imageFile.length());
 			}
 			
-			ResultSet set = pre.executeQuery();
-			while(set.next()){
-				String strJobDesc = set.getString(1);
-				int strJobStatus = set.getInt(2);
-				Job job = new Job(strJobDesc, strJobStatus);
-				oldJobList.add(job);
+			pre.execute();
+			
+			List<Job> jobList = emp.getJobQualification();
+			
+			for(int i = 0; i < jobList.size(); i++){
+				PreparedStatement update = con.prepareStatement(updateJob);
+				update.setString(1, jobList.get(i).getStrJobDesc());
+				update.setInt(2,  emp.getIntEmpID());
+				update.execute();
+				update.close();
 			}
+			
 			pre.close();
 			con.close();
 			

@@ -9,6 +9,7 @@ import com.gss.model.Employee;
 import com.gss.model.Job;
 import com.gss.service.EmployeeServiceImpl;
 import com.gss.utilities.DateHelper;
+import com.gss.utilities.JobQualificationHelper;
 import com.gss.utilities.SendMail;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -31,7 +32,7 @@ public class CreateEmployeeAction extends ActionSupport{
 	private File file;
 	private String contentType;
 	private String filename;
-	private String selectedJob;
+	private List<String> selectedJob;
 	private boolean grantAccess;
 	
 	public String execute(){
@@ -39,6 +40,8 @@ public class CreateEmployeeAction extends ActionSupport{
 		SendMail mail = new SendMail();
 		EmployeeServiceImpl empService;
 		Employee emp;
+		
+		List<Job> selectedJob = new JobQualificationHelper().convertToJob(this.selectedJob);
 		
 		String path = "";
 		
@@ -171,11 +174,11 @@ public class CreateEmployeeAction extends ActionSupport{
 		this.strEmpPassword = strEmpPassword;
 	}
 
-	public String getSelectedJob() {
+	public List<String> getSelectedJob() {
 		return selectedJob;
 	}
 
-	public void setSelectedJob(String selectedJob) {
+	public void setSelectedJob(List<String> selectedJob) {
 		this.selectedJob = selectedJob;
 	}
 

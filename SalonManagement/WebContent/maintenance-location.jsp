@@ -32,13 +32,13 @@
                           <div class="collapsible-body">
                             <ul>
                               <li><a href="employeeMaintenance">Employee</a></li>
-                                      <li><a href="productServiceMaintenance">Product & Service</a></li>
-                                      <li><a href="maintenance-package.jsp">Package</a></li>
-                                      <li><a href="catalogueMaintenance">Catalogue</a></li>
-                                      <li><a href="promoMaintenance">Promo</a></li>
-                                      <li><a href="discountMaintenance">Discount</a></li>
-                                      <li><a href="extraChargeMaintenance">Charge</a></li>
-                                      <li class="purple lighten-4"><a href="maintenance-location.jsp">Location</a></li>
+                              <li><a href="productServiceMaintenance">Product & Service</a></li>
+                              <li><a href="catalogueMaintenance">Catalogue</a></li>
+                              <li><a href="packageMaintenance">Package</a></li>
+                              <li class="purple lighten-4"><a href="locationMaintenance">Delivery Charge</a></li>
+                              <li><a href="extraChargeMaintenance">Other Charge</a></li>
+                              <li><a href="promoMaintenance">Promo</a></li>
+                              <li><a href="discountMaintenance">Discount</a></li>
                             </ul>
                           </div>
                       </li>
@@ -46,11 +46,12 @@
                         <a class="collapsible-header"><b>Transaction</b></a>
                           <div class="collapsible-body">
                             <ul>
-                              <li><a href="transactions-inventory.jsp">Monitor Product</a></li>
-                              <li><a href="transactions-reservation.jsp">Manage Reservation</a></li>
+                              <li><a href="transactions-inventory.jsp">Inventory</a></li>
+                              <li><a href="transactions-reservation.jsp">Reservation</a></li>
                               <li><a href="transactions-productorder.jsp">Product Order</a></li>
                               <li><a href="transactions-vip.jsp">VIP</a></li>
-                              <li><a href="transactions-walkin.jsp">Walk In</a></li>                            </ul>
+                              <li><a href="transactions-walkin.jsp">Walk In</a></li>
+                              </ul>
                           </div>
                       </li>
                     </ul>
@@ -85,11 +86,11 @@
                            <a class="waves-effectcollapsible-header"><b>Transaction</b></a>
                              <div class="collapsible-body">
                                <ul>
-                                 <li><a href="#">Inventory</a></li>
-                                 <li><a href="#">Reservation</a></li>
-                                 <li><a href="#">VIP</a></li>
-                                 <li><a href="#">Product Order</a></li>
-                                 <li><a href="#">Walk-In</a></li>
+                                 <li><a href="transactions-inventory.jsp">Inventory</a></li>
+                                 <li><a href="transactions-reservation.jsp">Reservation</a></li>
+                                 <li><a href="transactions-vip.jsp">VIP</a></li>
+                                 <li><a href="transactions-productorder.jsp">Product Order</a></li>
+                                 <li><a href="transactions-walkin.jsp">Walk-In</a></li>
                                </ul>
                              </div>
                          </li>
@@ -109,7 +110,7 @@
 
                     <div class="main z-depth-barts" style="margin-left: 20px; margin-right: 20px;">
                         <div class="col s12" style="margin-left: 20px; margin-right: 20px;">
-                        <h3 class="grey-text text-darken-1">Location Maintenance</h3>
+                        <h3 class="grey-text text-darken-1">Delivery Charge Maintenance</h3>
                         <a data-delay="30" data-position="bottom" data-tooltip="Create" class="waves-effect waves-light modal-trigger btn-flat purple darken-3 left white-text tooltipped" href="#create" style="margin-top: 50px; margin-left: 15px;"><i class="material-icons">add</i></a>
                         <a data-delay="30" data-position="bottom" data-tooltip="Archive" class="waves-effect waves-light modal-trigger btn-flat purple darken-3 left white-text tooltipped" href="#archive" style="margin-top: 50px; margin-left: 15px;"><i class="material-icons">archive</i></a>
                         <table id="example" class="display centered responsive-table highlight" cellspacing="0" width="100%" style="border: 1px solid #bdbdbd; padding: 10px;" rowspan="10">
@@ -139,13 +140,13 @@
 
                                         <td style="padding:0; margin:0;"><center>${loc.strLocationName}</center></td>
                                         <td style="padding:0; margin:0;"><center>Php ${loc.dblLocationPrice}</center></td>
-                                        <td class="center" style="padding:0; margin:0;">
+                                        <td class="center" style="padding:0; margin:0;"><center>
                                         <!-- <a data-delay="30" data-position="bottom" data-tooltip="View" class="tooltipped waves-effect waves-light modal-trigger btn-flat transparent black-text" href="#viewLocation" style="padding-left: 10px;padding-right:10px; margin: 5px;">
                                         <i class="material-icons">visibility</i></a> -->
                                         <a data-delay="30" data-position="bottom" data-tooltip="Update" class="tooltipped waves-effect waves-light modal-trigger btn-flat transparent black-text" href="#upd<%=id%>" style="padding-left: 10px;padding-right:10px; margin: 5px;">
                                         <i class="material-icons">edit</i></a>
                                         <a data-delay="30" data-position="bottom" data-tooltip="Deactivate" class="tooltipped waves-effect waves-light modal-trigger btn-flat transparent red-text text-accent-4" href="#del<%=id%>" style="padding-left: 10px;padding-right:10px; margin: 5px;">
-                                        <i class="material-icons">delete</i></a>
+                                        <i class="material-icons">delete</i></a></center>
                                         </td>
                                       </tr>
                                     </c:forEach>

@@ -32,13 +32,13 @@
                           <div class="collapsible-body">
                             <ul>
                               <li><a href="employeeMaintenance">Employee</a></li>
-                                      <li><a href="productServiceMaintenance">Product & Service</a></li>
-                                      <li><a href="promoMaintenance">Promo</a></li>
-                                      <li><a href="discountMaintenance">Discount</a></li>
-                                      <li><a href="packageMaintenance">Package</a></li>
-                                      <li class="purple lighten-4"><a href="catalogueMaintenance">Catalogue</a></li>
-                                      <li><a href="extraChargeMaintenance">Charge</a></li>
-                                      <li><a href="locationMaintenance">Location</a></li>
+                              <li><a href="productServiceMaintenance">Product & Service</a></li>
+                              <li class="purple lighten-4"><a href="catalogueMaintenance">Catalogue</a></li>
+                              <li><a href="packageMaintenance">Package</a></li>
+                              <li><a href="locationMaintenance">Delivery Charge</a></li>
+                              <li><a href="extraChargeMaintenance">Other Charge</a></li>
+                              <li><a href="promoMaintenance">Promo</a></li>
+                              <li><a href="discountMaintenance">Discount</a></li>
                             </ul>
                           </div>
                       </li>
@@ -46,8 +46,8 @@
                         <a class="collapsible-header"><b>Transaction</b></a>
                           <div class="collapsible-body">
                             <ul>
-                              <li><a href="transactions-inventory.jsp">Monitor Product</a></li>
-                              <li><a href="transactions-reservation.jsp">Manage Reservation</a></li>
+                              <li><a href="transactions-inventory.jsp">Inventory</a></li>
+                              <li><a href="transactions-reservation.jsp">Reservation</a></li>
                               <li><a href="transactions-productorder.jsp">Product Order</a></li>
                               <li><a href="transactions-vip.jsp">VIP</a></li>
                               <li><a href="transactions-walkin.jsp">Walk In</a></li>
@@ -246,7 +246,7 @@
                                   <label for="createCataCateg" class="active">Type<span class="red-text">*</span></label>
                                 </div>
                                 <div class="input-field col s10 offset-s1" style="margin-top: 25px !important;">
-                                  <input type="text" class="validate tooltipped specialname" required id="prodsvcName" name="strCatalogueName" data-delay="30" data-position="bottom" placeholder="Catalogue Name" data-tooltip="Ex: Under Cut<br/>( At least 5 or more characters )" pattern="^[a-zA-Z\-'`\s]{5,15}$" minlength="5" maxlength="15">
+                                  <input type="text" class="validate tooltipped specialname noSpace" required id="prodsvcName" name="strCatalogueName" data-delay="30" data-position="bottom" placeholder="Catalogue Name" data-tooltip="Ex: Under Cut<br/>( At least 5 or more characters )" pattern="^[a-zA-Z\-'`\s]{5,15}$" minlength="5" maxlength="15">
                                   <label for="prodsvcName" class="active">Name<span class="red-text">*</span></label>
                                 </div> 
                               
@@ -332,7 +332,7 @@
                             String cateType = cat3.getStrCatalogueType();
                         %>
                         <div id="cata<%=catID2%>" class="modal modal-fixed-footer" style="margin-top:-10px !important; width: 38% !important; height: 89% !important; max-height: 100% !important;">
-                        <form class="col s12" id="updateCataForm" method="post" action="updateCatalogue" enctype="multipart/form-data">
+                        <form class="col s12 updateCataForm" id="updateCataForm" method="post" action="updateCatalogue" enctype="multipart/form-data">
                     <div class="modal-content">
                                                         <!-- <div class="container"> -->
                         <div class="row">
@@ -371,7 +371,7 @@
                                  <label for="createCataCateg" class="active">Type</label>
                                 </div>
                                 <div class="input-field col s10 offset-s1" style="margin-top: 25px !important;">
-                                 <input type="text" class="validate tooltipped specialname" id="updateProdSvcName" name="strCatalogueName" data-delay="30" data-position="bottom" placeholder="Catalogue Name" data-tooltip="Ex: Under Cut<br/>( At least 5 or more characters )" pattern="^[a-zA-Z\-'`\s]{5,15}$" minlength="5" maxlength="15" value="${category.strCatalogueName}">
+                                 <input type="text" class="validate tooltipped specialname noSpace" id="updateProdSvcName" name="strCatalogueName" data-delay="30" data-position="bottom" placeholder="Catalogue Name" data-tooltip="Ex: Under Cut<br/>( At least 5 or more characters )" pattern="^[a-zA-Z\-'`\s]{5,15}$" minlength="5" maxlength="15" value="${category.strCatalogueName}">
                                  <label for="updateProdSvcName" class="active">Name</label>
                                 </div> 
                                                           

@@ -33,13 +33,13 @@
                           <div class="collapsible-body">
                             <ul>
                               <li><a href="employeeMaintenance">Employee</a></li>
-                                      <li><a href="productServiceMaintenance">Product & Service</a></li>
-                                      <li><a href="promoMaintenance">Promo</a></li>
-                                      <li><a href="discountMaintenance">Discount</a></li>
-                                      <li class="purple lighten-4"><a href="packageMaintenance">Package</a></li>
-                                      <li><a href="catalogueMaintenance">Catalogue</a></li>
-                                      <li><a href="extraChargeMaintenance">Charge</a></li>
-                                      <li><a href="locationMaintenance">Location</a></li>
+                              <li><a href="productServiceMaintenance">Product & Service</a></li>
+                              <li><a href="catalogueMaintenance">Catalogue</a></li>
+                              <li class="purple lighten-4"><a href="packageMaintenance">Package</a></li>
+                              <li><a href="locationMaintenance">Delivery Charge</a></li>
+                              <li><a href="extraChargeMaintenance">Other Charge</a></li>
+                              <li><a href="promoMaintenance">Promo</a></li>
+                              <li><a href="discountMaintenance">Discount</a></li>
                             </ul>
                           </div>
                       </li>
@@ -47,11 +47,11 @@
                         <a class="collapsible-header"><b>Transaction</b></a>
                           <div class="collapsible-body">
                             <ul>
-                              <li><a href="#">Inventory</a></li>
-                              <li><a href="#">Reservation</a></li>
-                              <li><a href="#">VIP</a></li>
-                              <li><a href="#">Product Order</a></li>
-                              <li><a href="#">Walk-In</a></li>
+                              <li><a href="transactions-inventory.jsp">Inventory</a></li>
+                              <li><a href="transactions-reservation.jsp">Reservation</a></li>
+                              <li><a href="transactions-vip.jsp">VIP</a></li>
+                              <li><a href="transactions-productorder.jsp">Product Order</a></li>
+                              <li><a href="transactions-walkin.jsp">Walk-In</a></li>
                             </ul>
                           </div>
                       </li>
@@ -220,7 +220,7 @@
 
                       <!-- Modal Structure -->
                         <div id="create" class="modal modal-fixed-footer">
-                        <form class="col s12" method="get" action="createPackage">
+                        <form class="col s12" id="createPackageForm" method="get" action="createPackage">
                           <div class="modal-content">
                             <!-- <div class="container"> -->
                               <div class="wrapper">
@@ -232,25 +232,25 @@
                                                 <label class="red-text"> (*) Indicates required field</label>
                                             </div>
                                             <div class="input-field col s12">
-                                                <input type="text" class="validate" id="createPackageName" name="strPackageName" required>
-                                                <label for="createPackageName">Package Name <span class="red-text">*</span></label>
+                                                <input type="text" class="validate noSpace" id="createPackageName" name="strPackageName" required placeholder="Package Name">
+                                                <label for="createPackageName" class="active">Package Name<span class="red-text">*</span></label>
                                             </div>
                                             <div class="input-field col s12">
-                                                <textarea id="createPackageDesc" name="strPackageDesc" class="materialize-textarea" length="120"></textarea>
-                                                <label for="createPackageDesc">Description</label>
+                                                <textarea id="createPackageDesc" name="strPackageDesc" class="materialize-textarea noSpace" length="120" placeholder="Description"></textarea>
+                                                <label for="createPackageDesc" class="active">Description</label>
                                             </div>
                                             <div class="input-field col s6">
-                                              <select id="createPackageType" name="intPackageType">
-                                                <option disabled selected>Choose</option>
+                                              <select id="createPackageType" name="intPackageType" required class="browser-default">
+                                                <option disabled selected></option>
                                                 <option value="1">Event</option>
                                                 <option value="2">Home Service</option>
                                                 <option value="3">Walk-In</option>
                                               </select>
-                                              <label for="createPackageType">Type <span class="red-text">*</span></label>
+                                              <label for="createPackageType">Type<span class="red-text">*</span></label>
                                             </div>
                                             <div class="input-field col s3 offset-s3" >
-                                                <input name="dblPackagePrice" type="text" class="validate right-align" id="createPackagePrice" name="createPackagePrice" required>
-                                                <label for="createPackagePrice">Price <span class="red-text">*</span></label>
+                                                <input name="dblPackagePrice" type="text" class="validate right-align amountFormat noSpace" id="createPackagePrice" required placeholder="99.99">
+                                                <label for="createPackagePrice" class="active">Price<span class="red-text">*</span></label>
                                             </div>
                                     </div>
                                   </div>
@@ -262,7 +262,7 @@
                                               <p style="color:#9e9e9e;font-size:12px;">Service</p>
                                           </div>
                                           <div class="input-field col s6" style="margin-top: -1px;">
-                                              <select class="browser-default" id="createPackageService">
+                                              <select class="browser-default fillone" id="createPackageService">
                                                     <option value="Choose..." disabled selected>Choose</option>
                                                     <c:forEach items="${serviceList}" var="service">
                                                         <option value="${service.strServiceName}">${service.strServiceName}</option>
@@ -281,7 +281,7 @@
                                               <p style="color:#9e9e9e;font-size:12px;">Product </p>
                                           </div>
                                           <div class="input-field col s6" style="margin-top: -1px;">
-                                              <select class="browser-default" id="createPackageProduct">
+                                              <select class="browser-default fillone" id="createPackageProduct">
                                                     <option value="Choose..." disabled selected>Choose</option>
                                                     <c:forEach items="${productList}" var="product">
                                                         <option value="${product.strProductName}">${product.strProductName}</option>
@@ -537,6 +537,9 @@
   #viewPackage {
     width: 40% !important;
   }
+  .error{
+    color: red;
+  }
   </style>
 
   <!--Import jQuery before materialize.js-->
@@ -546,6 +549,23 @@
     <script type="text/javascript" src="./js/maintenance-emp.js"></script>
     <script type="text/javascript" src="./js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="./js/bartstable.js"></script>
+
+    <script type="text/javascript" src="./js/priceformat.js"></script>
+    <script type="text/javascript" src="./js/jquery.validate.js"></script>
+    <script type="text/javascript" src="./js/additional-methods.js"></script>
+    <script type="text/javascript" src="./js/validation.js"></script>
+
+
+
+    <script type="text/javascript">
+    $('.amountFormat').priceFormat({
+      prefix: '',
+      centsSeparator: '.',
+      centsLimit: 2,
+      limit: 8,
+      thousandsSeparator: ','
+    });
+    </script>
   </body>
 
 

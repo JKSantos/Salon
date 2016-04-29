@@ -108,4 +108,15 @@ public class JobQualificationHelper {
 		return updatedList;
 	}
 
+	public List<Job> convertToJob(List<String> stringJob){
+		List<Job> jobList = new ArrayList<Job>();
+		
+		for(int i = 0; i < stringJob.size(); i++){
+			
+			jobList.add(new Job(stringJob.get(i), 1));
+			
+		}
+		
+		return jobList;
+	}
 }
