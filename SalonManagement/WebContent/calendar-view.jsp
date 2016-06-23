@@ -111,6 +111,9 @@
       <h1 class="thin center purple-text text-darken-4">
         Calendar View
       </h1>
+      <div class="col s3" style="margin-left: 28px; margin-bottom: 5px;">
+      <a href="transactions-reservation.jsp" class=" z-depth-barts waves-effect waves-light purple btn-flat white-text">Back</a>
+      </div>
       <div class="wrapper">
                  <div id='calendar'></div>  
           </div>

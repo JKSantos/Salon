@@ -186,6 +186,17 @@
 		<action name="deactivateLocation" class="com.gss.actions.DeactivateLocation">
 			<result name="success">redirect-maintenance-location.jsp</result>
 			<result name="failed">maintenance-location.jsp</result>
+		</action>
+		
+		<action name="createTag" class="com.gss.actions.CreateTagAction">
+			<result name="success">redirect-transaction-inventory.jsp</result>
+			<result name="failed">transactions-inventory.jsp</result>
+		</action>
+		
+		<action name="updateStock" class="com.gss.actions.UpdateStockAction">
+			<result name="success">redirect-transaction-inventory.jsp</result>
+			<result name="failed">transactions-inventory.jsp</result>
 		</action>  
+		   
 	</package>
 </struts>

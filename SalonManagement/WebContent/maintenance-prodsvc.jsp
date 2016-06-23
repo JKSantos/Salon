@@ -469,7 +469,8 @@
                                 <div class="row">
                               <!-- 1st aside -->
                                   <div class="col s12">
-                                      <img name="prodsvcCreate" id="prodsvcCreate" style="width: 200px; height: 200px; margin-top: 20px;" src="<s:url action='getImage'><s:param name='ImageID'><%=strProdID%></s:param><s:param name='type'>product</s:param></s:url>" alt="${product.strProductName}"/>
+                                      <img name="prodsvcCreate" id="prodsvcCreate" style="width: 200px; height: 200px; margin-top: 20px;" src="<s:url action='getImage'><s:param name='ImageID'><%=viewstrProdID%></s:param><s:param name='type'>product</s:param></s:url>" alt="${product.strProductName}"/>
+
                                   </div>
                                 </div>
                               </div>

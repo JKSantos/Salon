@@ -169,7 +169,7 @@
                               <div class="row">
                                 <h5 class="grey-text text-darken-1">Services & Products Included</h5>
                                 <div class="input-field col s8 offset-s2">
-                                  <input type="text" disabled="disabled" id="packageViewName" name="packageViewName">
+                                  <input type="text" readonly="true" id="packageViewName" name="packageViewName" value="${pack.strPackageName}">
                                   <label for="packageViewName">Package Name</label>
                                 </div>
                                 <table class="centered responsive-table">
@@ -240,15 +240,20 @@
                                                 <label for="createPackageDesc" class="active">Description</label>
                                             </div>
                                             <div class="input-field col s6">
-                                              <select id="createPackageType" name="intPackageType" required class="browser-default">
-                                                <option disabled selected></option>
+                                              <select id="createPackageType" name="intPackageType" required multiple>
+                                                <option disabled selected>Choose your option</option>
                                                 <option value="1">Event</option>
                                                 <option value="2">Home Service</option>
                                                 <option value="3">Walk-In</option>
                                               </select>
                                               <label for="createPackageType">Type<span class="red-text">*</span></label>
                                             </div>
-                                            <div class="input-field col s3 offset-s3" >
+                                            
+                                            <div class="input-field col s6" >
+                                                <input name="dblPackagePrice" type="text" class="validate right-align amountFormat noSpace" id="createPackagePrice" required placeholder="99.99" readonly>
+                                                <label for="createPackagePrice" class="active">Total Accumulated Price<span class="red-text">*</span></label>
+                                            </div>
+                                            <div class="input-field col s3 offset-s9" >
                                                 <input name="dblPackagePrice" type="text" class="validate right-align amountFormat noSpace" id="createPackagePrice" required placeholder="99.99">
                                                 <label for="createPackagePrice" class="active">Price<span class="red-text">*</span></label>
                                             </div>
@@ -341,7 +346,7 @@
                                             <div class="input-field col s12">
                                                 <input value="${pack.strPackageName}" type="text" class="validate" id="strPackageName" name="updatePackageName" required>
                                                 <input type="hidden" name="intPackageID" value="${pack.intPackageID}">
-                                               <!--  <input type="hidden" name="intPackageID" value="${pack.intPackageID}"> -->
+                                               <input type="hidden" name="intPackageID" value="${pack.intPackageID}">
                                                 <label for="updatePackageName">Package Name</label>
                                             </div>
                                             <div class="input-field col s12">
@@ -400,7 +405,7 @@
                                               <label for="updatePackageServiceQty">Qty</label>
                                           </div>
                                           <div class="input-field col s3 left-align" style="margin-top: -1px;">
-                                              <a class="waves-effect waves-light btn-flat purple" id="createPackageAddSvc" onclick="updatePackageService()"><i class="material-icons white-text">add</i></a>
+                                              <a class="waves-effect waves-light btn-flat purple" id="createPackageAddSvc" onclick="createPackageService()"><i class="material-icons white-text">add</i></a>
                                           </div>
                                           <!--product  -->
                                           <div class="input-field col s8">

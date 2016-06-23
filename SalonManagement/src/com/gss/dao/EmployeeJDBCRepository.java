@@ -30,7 +30,7 @@ public class EmployeeJDBCRepository implements EmployeeRepository{
 		JDBCConnection jdbc = new JDBCConnection();
 		Connection con = jdbc.getConnection();
 		List<Employee> empList = new ArrayList<Employee>();
-		List<Job> jobs = new ArrayList<Job>(); 
+		
 		
 		int intEmpID;
 		String strJobDesc;
@@ -50,13 +50,13 @@ public class EmployeeJDBCRepository implements EmployeeRepository{
 		Blob imageBlob;
 		
 		try{
+			PreparedStatement st = con.prepareStatement(strQuery1);
 			
-			ResultSet set = null;
-			Statement st = con.createStatement();
-			
-			set = st.executeQuery(strQuery1);
-			
+			ResultSet set = st.executeQuery(strQuery1);
+
 			while(set.next()){
+				
+				List<Job> jobs = new ArrayList<Job>(); 
 				intEmpID = set.getInt(1);
 				strEmpLastName = set.getString(2);
 				strEmpFirstName = set.getString(3);
@@ -109,6 +109,7 @@ public class EmployeeJDBCRepository implements EmployeeRepository{
 		catch(Exception e){
 			
 			System.out.print(e.getMessage());
+			System.out.print("Null Pointer");
 			return null;
 		}
 	}

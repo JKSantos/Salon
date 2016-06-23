@@ -11,19 +11,13 @@ import com.gss.service.ServiceServiceImpl;
 public class InventoryTransactionAction {
 
 	private List<Product> productList;
-	private List<Service> serviceList;
-	private List<String> productCategory;
-	private List<String> serviceCategory;
 
 	public String execute(){
 		
 		ProductService productService = new ProductServiceImpl();
-		ServiceService serviceService = new ServiceServiceImpl();
 		
 		this.productList = productService.getAllProducts();
-		this.serviceList = serviceService.getAllService();
-		this.productCategory = productService.getAllCategory();
-		this.serviceCategory = serviceService.getAllCategory();
+		System.out.println(productList.size());
 		
 		return "success";
 	}
@@ -35,31 +29,5 @@ public class InventoryTransactionAction {
 	public void setProductList(List<Product> productList) {
 		this.productList = productList;
 	}
-
-	public List<Service> getServiceList() {
-		return serviceList;
-	}
-
-	public void setServiceList(List<Service> serviceList) {
-		this.serviceList = serviceList;
-	}
-
-	public List<String> getProductCategory() {
-		return productCategory;
-	}
-
-	public void setProductCategory(List<String> productCategory) {
-		this.productCategory = productCategory;
-	}
-
-	public List<String> getServiceCategory() {
-		return serviceCategory;
-	}
-
-	public void setServiceCategory(List<String> serviceCategory) {
-		this.serviceCategory = serviceCategory;
-	}
-	
-	
 }
 

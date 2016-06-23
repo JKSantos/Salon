@@ -300,7 +300,7 @@
                                           <label for="createAddress" class="active">Address<span class="red-text">*</span></label>
                                       </div>
                                       <div class="input-field col s8">
-                                          <select class="browser-default" id="slct1" name="selectedJob" required multiple="multiple">
+                                          <select id="slct1" name="selectedJob" required multiple="multiple">
                                               <option value="" disabled selected> </option>
                                               <c:forEach items="${empCategory}" var="name">
                                                 <option value="${name.strCategoryName}">${name.strCategoryName }</option>
@@ -456,7 +456,7 @@
                                           <label for="updateAddress" class="active">Address</label>
                                       </div>
                                       <div class="input-field col s8">
-                                          <select class="browser-default slct2" id="slct2" name="selectedJob" multiple="multiple">
+                                          <select class="slct2" id="slct2" name="selectedJob" multiple="multiple">
                                               <option value="" disabled> </option>
                                               <c:forEach items="${empCategory}" var="name">
                                                     <%

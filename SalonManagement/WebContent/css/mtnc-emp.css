@@ -55,7 +55,7 @@
           margin: 10px;
           text-align: center;
           width: 30px;
-          height: 30%
+          height: 30%;
         }
 
         .aside3 {
@@ -64,7 +64,7 @@
           margin: 10px;
           text-align: center;
           width: 30px;
-          height: 30%
+          height: 30%;
         }
 
         @media all and (min-width: 600px) {

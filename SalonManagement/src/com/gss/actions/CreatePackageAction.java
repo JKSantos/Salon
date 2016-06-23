@@ -3,6 +3,7 @@ package com.gss.actions;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.gss.utilities.PackageHelper;
 import com.gss.model.Package;
 import com.gss.model.Product;
 import com.gss.model.ProductPackage;
@@ -19,7 +20,7 @@ public class CreatePackageAction {
 	
 	private String strPackageName;
 	private String strPackageDesc;
-	private int intPackageType;
+	private List<Integer> intPackageType = new ArrayList<Integer>();
 	private double dblPackagePrice;
 	private String createPackServType = "";
 	private String createPackProdType = "";
@@ -68,10 +69,9 @@ public class CreatePackageAction {
 				}
 			}
 		}
+
 		
-		
-		
-		Package packagee = new Package(1, strPackageName.toUpperCase().trim(), strPackageDesc.toUpperCase().trim(), intPackageType, 1, "NON-EXPIRY", dblPackagePrice, serviceList, productList, 1);
+		Package packagee = new Package(1, strPackageName.toUpperCase().trim(), strPackageDesc.toUpperCase().trim(), PackageHelper.convertToSingleInt(intPackageType), 1, "NON-EXPIRY", dblPackagePrice, serviceList, productList, 1);
 		
 		
 		if(packageService.createPackage(packagee)){
@@ -99,11 +99,11 @@ public class CreatePackageAction {
 		this.strPackageDesc = strPackageDesc;
 	}
 
-	public int getIntPackageType() {
+	public List<Integer> getIntPackageType() {
 		return intPackageType;
 	}
 
-	public void setIntPackageType(int intPackageType) {
+	public void setIntPackageType(List<Integer> intPackageType) {
 		this.intPackageType = intPackageType;
 	}
 
