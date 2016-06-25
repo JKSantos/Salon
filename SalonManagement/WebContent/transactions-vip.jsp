@@ -31,7 +31,7 @@
                                     <ul>
                                       <li><a href="employeeMaintenance">Employee</a></li>
                                       <li><a href="productServiceMaintenance">Product & Service</a></li>
-                                      <li><a href="catalogueMaintenance">Catalogue</a></li>
+                      
                                       <li><a href="packageMaintenance">Package</a></li>
                                       <li><a href="locationMaintenance">Delivery Charge</a></li>
                                       <li><a href="extraChargeMaintenance">Other Charge</a></li>

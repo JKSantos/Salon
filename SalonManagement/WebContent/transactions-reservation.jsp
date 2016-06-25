@@ -30,7 +30,7 @@
                                     <ul>
                                       <li><a href="employeeMaintenance">Employee</a></li>
                                       <li><a href="productServiceMaintenance">Product & Service</a></li>
-                                      <li><a href="catalogueMaintenance">Catalogue</a></li>
+                        
                                       <li><a href="packageMaintenance">Package</a></li>
                                       <li><a href="locationMaintenance">Delivery Charge</a></li>
                                       <li><a href="extraChargeMaintenance">Other Charge</a></li>
@@ -46,7 +46,7 @@
                                       <li><a href="transactions-inventory.jsp">Inventory</a></li>
                                       <li class="purple lighten-4"><a href="transactions-reservation.jsp">Reservation</a></li>
                                       <li><a href="transactions-productorder.jsp">Product Order</a></li>
-                                      <li><a href="transactions-vip.jsp">Payment</a></li>
+           
                                       <li><a href="transactions-walkin.jsp">Walk In</a></li>
                                     </ul>
                                   </div>
@@ -270,40 +270,7 @@
                                         </table>
                                       </div>
                                     </div>
-                                    <div class="aside asideC z-depth-0">
-                                      <div class="row">
-                                      <h4>Other Charges</h4>
-                                        <div class="col s12" style="margin-top: 10px !important;">
-                                          <div class="input-field col s6">
-                                            <select class="multiple" id="homecname">
-                                              <option disabled selected>Charge Name...</option>
-                                            </select>
-                                            <label for="homecname">Charge Name</label>
-                                          </div>
-                                          <div class="input-field col s3">
-                                            <input type="number" min="0" value="1" id="homeprice">
-                                            <label for="homeprice">Price</label>
-                                          </div>
-                                          <div class="input-field col s3">
-                                            <button class="waves-effect waves-light btn-flat purple white-text"><i class="material-icons">add</i></button>
-                                          </div>
-                                        </div>
-                                        <table>
-                                          <thead>
-                                            <tr>
-                                              <th>Charge Name</th>
-                                              <th>Price</th>
-                                            </tr>
-                                          </thead>
-                                        </table>
-                                        <div class="col s12" style="margin-top: 230px;">
-                                          <div class="input-field col s6 offset-s6">
-                                            <input type="number" id="homereserveamount">
-                                            <label for="homereserveamount" class="active">Total Amount</label>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
+
                                   </div>
                                   </div>
 
@@ -447,45 +414,7 @@
                                         </table>
                                       </div>
                                     </div>
-                                    <div class="aside asideC z-depth-0">
-                                      <div class="row">
-                                      <h4>Other Charges</h4>
-                                        <div class="col s12" style="margin-top: 10px !important;">
-                                          <div class="input-field col s6">
-                                            <select class="multiple" id="chargename">
-                                              <option disabled selected>Charge Name...</option>
-                                            </select>
-                                            <label for="chargename">Charge Name</label>
-                                          </div>
-                                          <div class="input-field col s3">
-                                            <input type="number" min="0" value="1" id="eventprice">
-                                            <label for="eventprice">Price</label>
-                                          </div>
-                                          <div class="input-field col s3">
-                                            <button class="waves-effect waves-light btn-flat purple white-text"><i class="material-icons">add</i></button>
-                                          </div>
-                                        </div>
-                                        <table>
-                                          <thead>
-                                            <tr>
-                                              <th>Charge Name</th>
-                                              <th>Price</th>
-                                            </tr>
-                                          </thead>
-                                        </table>
-                                        <div class="col s12" style="margin-top: 230px;">
-                                          <div class="input-field col s6">
-                                            <select class="multiple">
-                                              <option selected disabled>Payment Type...</option>
-                                            </select>
-                                          </div>
-                                          <div class="input-field col s6">
-                                            <input type="number" id="homeamount">
-                                            <label for="homeamount" class="active">Total Amount</label>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
+
                                   </div>
                                   </div>
 

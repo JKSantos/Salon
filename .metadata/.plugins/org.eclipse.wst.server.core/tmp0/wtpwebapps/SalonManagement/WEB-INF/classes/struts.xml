@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<constant name="struts.enable.DynamicMethodInvocation"
+		value="true" />
+	<constant name="struts.devMode" value="true" />
+	<constant name="struts.custom.i18n.resources"
+		value="ApplicationResources"/>
+
+	<package name="default" extends="struts-default" namespace="/">
+		<result-types>
+			<result-type name="imageResult"
+				class="com.gss.actions.CustomImageBytesResult"/>
+		</result-types>
+	
+		<action name="login" class="com.gss.actions.LogInAction" method="execute">
+			<result name="success">admin-home.jsp</result>
+			<result name="failed">loginform.jsp</result>
+		</action>
+		
+		<action name="employeeMaintenance" class="com.gss.actions.EmployeeMaintenanceAction" method="execute">
+			<result name="success">maintenance-emp.jsp</result>
+		</action>
+		
+		<action name="employeeList" class="com.gss.actions.employeeListAction" method="execute">
+		</action>
+		
+		<action name="createEmployee" class="com.gss.actions.CreateEmployeeAction" method="execute">
+			<result name="success">empMaintenanceRedirect.jsp</result>
+			<result name="failed">maintenance-emp.jsp</result>
+			<result name="input">empMaintenanceRedirect.jsp</result>
+		</action>
+
+		<action name="updateEmployee" class="com.gss.actions.UpdateEmployeeAction" method="execute">
+			<result name="success">empMaintenanceRedirect.jsp</result>
+			<result name="failed">maintenance-emp.jsp</result>
+		</action>
+		
+		
+		<action name="productServiceMaintenance" class="com.gss.actions.CreateProductServiceAction" method="execute">
+			<result name="success">maintenance-prodsvc.jsp</result>
+		</action>
+		
+		<action name="createProdServ" class="com.gss.actions.CreateServProdAction" method="execute">
+			<result name="success">redirect-maintenance-product.jsp</result>
+			<result name="failed">redirect-maintenance-product.jsp</result>
+		</action>
+
+		<action name="updateItem" class="com.gss.actions.UpdateItemAction" method="execute">
+			<result name="success">redirect-maintenance-product.jsp</result>
+			<result name="failed">maintenance-prodsvc.jsp</result>
+		</action>
+		
+		<action name="deactivateItem" class="com.gss.actions.DeactivateItemAction" method="deactivateProduct">
+			<result name="success">redirect-maintenance-product.jsp</result>
+			<result name="failed">maintenance-prodsvc.jsp</result>
+		</action>
+
+		<action name="deactivateService" class="com.gss.actions.DeactivateItemAction" method="deactivateService">
+			<result name="success">redirect-maintenance-product.jsp</result>
+			<result name="failed">maintenance-prodsvc.jsp</result>
+		</action>
+		
+		<action name="discountMaintenance" class="com.gss.actions.DiscountMaintenanceAction" method="execute">
+			<result name="success">maintenance-discount.jsp</result>
+		</action>
+
+		<action name="createDiscount" class="com.gss.actions.CreateDiscountAction" method="execute">
+			<result name="success">redirect-maintenance-discount.jsp</result>
+			<result name="failed">redirect-maintenance-discount.jsp</result>
+		</action>
+		
+		<action name="updateDiscount" class="com.gss.actions.UpdateDiscountAction" method="execute">
+			<result name="success">redirect-maintenance-discount.jsp</result>
+			<result name="failed">redirect-maintenance-discount.jsp</result>
+		</action>
+		
+		<action name="deactivateDiscount" class="com.gss.actions.DeactivateDiscountAction" method="execute">
+			<result name="success">redirect-maintenance-discount.jsp</result>
+			<result name="failed">redirect-maintenance-discount.jsp</result>
+		</action>
+
+		<action name="extraChargeMaintenance" class="com.gss.actions.ExtraChargeMaintenanceAction" method="execute">
+			<result name="success">maintenance-extra.jsp</result>
+		</action>
+
+		<action name="createExtraCharge" class="com.gss.actions.CreateExtraChargeAction" method="execute">
+			<result name="success">redirect-maintenance-extra.jsp</result>
+			<result name="failed">redirect-maintenance-extra.jsp</result>
+		</action>
+
+		<action name="updateExtraCharge" class="com.gss.actions.UpdateExtraChargeAction" method="execute">
+			<result name="success">redirect-maintenance-extra.jsp</result>
+			<result name="failed">redirect-maintenance-extra.jsp</result>
+		</action>
+		
+		<action name="deactivateExtraCharge" class="com.gss.actions.DeactivateExtraChargeAction" method="execute">
+			<result name="success">redirect-maintenance-extra.jsp</result>
+			<result name="failed">redirect-maintenance-extra.jsp</result>
+		</action>
+		
+		<action name="getProducts" class="com.gss.actions.ReservationTransactionAction" method="execute">
+			<result name="success">transactions-productorder.jsp</result>
+		</action>
+		
+		<action name="getInventory" class="com.gss.actions.InventoryTransactionAction" method="execute">
+			<result name="success">transactions-inventory.jsp</result>
+		</action>
+		
+		<action name="deactivateEmployee" class="com.gss.actions.DeactivateEmployeeAction" method="execute">
+			<result name="success">empMaintenanceRedirect.jsp</result>
+			<result name="failed">maintenance-emp.jsp</result>
+		</action>
+		
+		<action name="catalogueMaintenance" class="com.gss.actions.CatalogueMaintenanceAction" method="execute">
+			<result name="success">maintenance-catalogue.jsp</result>
+		</action>
+		
+		<action name="createCatalogue" class="com.gss.actions.CreateCatalogueMaintenance" method="execute">
+			<result name="success">redirect-maintenance-catalogue.jsp</result>
+			<result name="failed">redirect-maintenance-catalogue.jsp</result>
+		</action>
+		
+		<action name="updateCatalogue" class="com.gss.actions.UpdateCatalogueAction" method="execute">
+			<result name="success">redirect-maintenance-catalogue.jsp</result>
+			<result name="failed">redirect-maintenance-catalogue.jsp</result>
+		</action>
+		
+		<action name="deactivateCatalogue" class="com.gss.actions.DeactivateCatalogueAction" method="execute">
+			<result name="success">redirect-maintenance-catalogue.jsp</result>
+			<result name="failed">redirect-maintenance-catalogue.jsp</result>
+		</action>
+		
+		<action name="createPromo" class="com.gss.actions.CreatePromoAction">
+			<result name="success">redirect-maintenance-promo.jsp</result>
+			<result name="failed">redirect-maintenance-promo.jsp</result>
+		</action>
+		
+		<action name="promoMaintenance" class="com.gss.actions.PromoMaintenanceAction">
+			<result name="success">maintenance-promo.jsp</result>
+		</action>
+
+		<action name="getImage" class="com.gss.actions.GetImageAction">
+		</action>
+		
+		<action name="locationMaintenance" class="com.gss.actions.LocationMaintenance">
+			<!-- <result name="success">maintenance-location.jsp</result>-->
+		</action>
+		
+		<action name="packageMaintenance" class="com.gss.actions.PackageMaintenance" method="execute">
+			<result name="success">maintenance-package.jsp</result>
+		</action>
+		
+		<action name="createPackage" class="com.gss.actions.CreatePackageAction">
+			<result name="success">redirect-maintenance-package.jsp</result>
+			<result name="failed">maintenance-package.jsp</result>
+		</action>
+		
+		<action name="deactivatePackage" class="com.gss.actions.DeactivatePackageAction" method="execute">
+			<result name="success">redirect-maintenance-package.jsp</result>
+			<result name="failed">maintenance-package.jsp</result>
+		</action>
+		
+		<action name="updatePackage" class="com.gss.actions.UpdatePackageAction" method="execute">
+			<result name="success">redirect-maintenance-package.jsp</result>
+			<result name="failed">maintenance-package.jsp</result>
+		</action>
+		
+		<action name="locationMaintenance" class="com.gss.actions.LocationMaintenanceAction" method="execute">
+			<result name="success">maintenance-location.jsp</result>
+		</action>
+		
+		<action name="createLocation" class="com.gss.actions.CreateLocationMaintenanceAction" method="execute">
+			<result name="success">redirect-maintenance-location.jsp</result>
+			<result name="failed">maintenance-location.jsp</result>
+		</action>
+		
+		<action name="updateLocation" class="com.gss.actions.UpdateLocationAction">
+			<result name="success">redirect-maintenance-location.jsp</result>
+			<result name="failed">maintenance-location.jsp</result>
+		</action>  
+	 
+		<action name="deactivateLocation" class="com.gss.actions.DeactivateLocation">
+			<result name="success">redirect-maintenance-location.jsp</result>
+			<result name="failed">maintenance-location.jsp</result>
+		</action>
+		
+		<action name="createTag" class="com.gss.actions.CreateTagAction">
+			<result name="success">redirect-transaction-inventory.jsp</result>
+			<result name="failed">transactions-inventory.jsp</result>
+		</action>
+		
+		<action name="updateStock" class="com.gss.actions.UpdateStockAction">
+			<result name="success">redirect-transaction-inventory.jsp</result>
+			<result name="failed">transactions-inventory.jsp</result>
+		</action>  
+		   
+	</package>
+</struts>

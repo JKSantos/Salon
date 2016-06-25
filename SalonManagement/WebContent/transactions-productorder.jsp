@@ -31,7 +31,7 @@
                                     <ul>
                                       <li><a href="employeeMaintenance">Employee</a></li>
                                       <li><a href="productServiceMaintenance">Product & Service</a></li>
-                                      <li><a href="catalogueMaintenance">Catalogue</a></li>
+                 
                                       <li><a href="packageMaintenance">Package</a></li>
                                       <li><a href="locationMaintenance">Delivery Charge</a></li>
                                       <li><a href="extraChargeMaintenance">Other Charge</a></li>
@@ -47,7 +47,7 @@
                                       <li><a href="transactions-inventory.jsp">Inventory</a></li>
                                       <li><a href="transactions-reservation.jsp">Reservation</a></li>
                                       <li class="purple lighten-4"><a href="transactions-productorder.jsp">Product Sales</a></li>
-                                      <li><a href="transactions-vip.jsp">Payment</a></li>
+                               
                                       <li><a href="transactions-walkin.jsp">Walk In</a></li>
                                     </ul>
                                   </div>

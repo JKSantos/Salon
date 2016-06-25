@@ -31,7 +31,7 @@
                                     <ul>
                                       <li><a href="employeeMaintenance">Employee</a></li>
                                       <li><a href="productServiceMaintenance">Product & Service</a></li>
-                                      <li><a href="catalogueMaintenance">Catalogue</a></li>
+                                
                                       <li><a href="packageMaintenance">Package</a></li>
                                       <li><a href="locationMaintenance">Delivery Charge</a></li>
                                       <li><a href="extraChargeMaintenance">Other Charge</a></li>
@@ -47,7 +47,7 @@
                                       <li class="purple lighten-4"><a href="transactions-inventory.jsp">Inventory</a></li>
                                       <li><a href="transactions-reservation.jsp">Reservation</a></li>
                                       <li><a href="transactions-productorder.jsp">Product Order</a></li>
-                                      <li><a href="transactions-vip.jsp">Payment</a></li>
+                              
                                       <li><a href="transactions-walkin.jsp">Walk In</a></li>
                                     </ul>
                                   </div>
@@ -103,15 +103,30 @@
                       <div class="aside aside2 z-depth-barts">
                              <div class="col s12" style="margin-left: 20px; margin-right: 20px;">
                              <h3 class="grey-text text-darken-1">Inventory</h3>
+                             <div class="row">
+                               <div class="input-field col s4">
+                               <h4 class="thin">Filter by:</h4>
+                                 <select name="categoty" required>
+                                   <option value="" disabled selected>Inventory category</option>  
+                                     <option value="}">Expired</option>
+                                     <option value="}">Lost</option>
+                                     <option value="}">Defect</option>
+                                 </select>
+                               </div>
+                             </div>
+                             
                              <a class="tooltipped waves-effect waves-light modal-trigger btn-flat purple darken-3 left white-text" href="#defectiveitem" style="margin-top: 50px; margin-left: 15px;" data-delay="30" data-position="bottom" data-tooltip="Defective Item"><i class="material-icons">broken_image</i></a>
                              <a class="tooltipped waves-effect waves-light modal-trigger btn-flat purple darken-3 left white-text" href="#lostitem" style="margin-top: 50px; margin-left: 15px;" data-delay="30" data-position="bottom" data-tooltip="Lost Item"><i class="material-icons">search</i></a>
                              <a class="tooltipped waves-effect waves-light modal-trigger btn-flat purple darken-3 left white-text" href="#expireditem" style="margin-top: 50px; margin-left: 15px;" data-delay="30" data-position="bottom" data-tooltip="Expired Item"><i class="material-icons">event_busy</i></a>
+                             <a class="tooltipped waves-effect waves-light modal-trigger btn-flat purple darken-3 left white-text" href="#archive" style="margin-top: 50px; margin-left: 15px;" data-delay="30" data-position="bottom" data-tooltip="Expired Item"><i class="material-icons">system_update_alt</i></a>
+
                              <table id="example" class="display centered responsive-table highlight" cellspacing="0" width="100%" style="border: 1px solid #bdbdbd; padding: 10px;" rowspan="10">
                                      <thead>
                                          <tr>
                                              <th><center>Name</center></th>
                                              <th><center>Selling Price</center></th>
                                              <th><center>Stock</center></th>
+                                             <th><center>Date/Time</center></th>
                                              <th><center>Actions</center></th>
                                          </tr>
                                      </thead>
@@ -121,6 +136,7 @@
                                              <td style="padding:0; margin:0;"><center>${product.strProductName}</center></td>
                                              <td style="padding:0; margin:0;"><center>${product.dblProductPrice}</center></td>
                                              <td style="padding:0; margin:0;"><center>${product.intProductQuantity}</center></td>
+                                             <td style="padding:0; margin:0;"><center>${product.intProductQuantity}</center></td>
                                              <td class="center" style="padding:0; margin:0;"><center>
                                              <a class="tooltipped waves-effect waves-light modal-trigger btn-flat transparent black-text" title="Update" href="#inventoryedit${product.intProductID}" style="padding-left: 10px;padding-right:10px; margin: 5px;" data-delay="30" data-position="bottom" data-tooltip="Update"><i class="material-icons">edit</i></a></center>
                                              </td>
@@ -129,6 +145,45 @@
                                      </tbody>
                                  </table>
                            </div>                    
+                        </div>
+
+                        <div id="archive" class="modal modal-fixed-footer" style="width: 90% !important; margin-bottom: 0px !important; height: 50% !important; max-height: 100% !important;">
+                          <form class="col s12" name="DamagedForm" method="post" action="createTag">
+                              <div class="modal-content">
+                                <div class="wrapper">
+                                  <h4 class="grey-text text-darken-1"><center>Archive</center></h4>
+                                  <div class="row">
+                                      <table id="example" class="display centered responsive-table highlight" cellspacing="0" width="100%" style="border: 1px solid #bdbdbd; padding: 10px;" rowspan="10">
+                                              <thead>
+                                                  <tr>
+                                                      <th><center>Name</center></th>
+                                                      <th><center>Selling Price</center></th>
+                                                      <th><center>Quantity</center></th>
+                                                      <th><center>Date/Time</center></th>
+                                                      <th><center>Actions</center></th>
+                                                  </tr>
+                                              </thead>
+                                              <tbody>
+                                               
+                                                  <tr>
+                                                      <td style="padding:0; margin:0;"><center>Wax</center></td>
+                                                      <td style="padding:0; margin:0;"><center>P200/center></td>
+                                                      <td style="padding:0; margin:0;"><center>35</center></td>
+                                                      <td style="padding:0; margin:0;"><center>12/23/17</center></td>
+                                                      <td class="center" style="padding:0; margin:0;"><center>
+                                                      <a class="tooltipped waves-effect waves-light modal-trigger btn-flat transparent black-text" title="Update" href="#inventoryedit${product.intProductID}" style="padding-left: 10px;padding-right:10px; margin: 5px;" data-delay="30" data-position="bottom" data-tooltip="Update"><i class="material-icons">edit</i></a></center>
+                                                      </td>
+                                                  </tr>
+                                                
+                                              </tbody>
+                                          </table>
+                                  </div>
+                              </div>
+                              <div class="modal-footer">
+                                <button type="submit" class="waves-effect waves-white btn-flat purple white-text">SAVE</button>
+                                <a href="#!" class="modal-action modal-close waves-effect waves-purple btn-flat ">CANCEL</a>
+                              </div>
+                          </form>
                         </div>
 
                         <div id="defectiveitem" class="modal modal-fixed-footer" style="width: 30% !important; margin-bottom: 0px !important; height: 50% !important; max-height: 100% !important;">
