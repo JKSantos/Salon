@@ -52,6 +52,10 @@
           height: 30%
         }
 
+        .services td{
+          height: 14px;
+        }
+
 
         @media all and (min-width: 600px) {
           .aside { flex: 1 auto; }

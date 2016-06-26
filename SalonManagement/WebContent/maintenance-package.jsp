@@ -262,7 +262,7 @@
                                       <div class="row">
                                         <!-- service -->
                                           <h5 class="grey-text text-darken-1">Included Service/s and Product/s</h5>
-                                          <div class="input-field col s8">
+                                          <!--<div class="input-field col s8">
                                               <p style="color:#9e9e9e;font-size:12px;">Service</p>
                                           </div>
                                           <div class="input-field col s6" style="margin-top: -1px;">
@@ -279,9 +279,9 @@
                                           </div>
                                           <div class="input-field col s3 left-align" style="margin-top: -1px;">
                                               <a class="waves-effect waves-light btn-flat purple" id="createPackageAddSvc" onclick="createPackageService()"><i class="material-icons white-text">add</i></a>
-                                          </div>
+                                          </div> -->
                                           <!--product  -->
-                                          <div class="input-field col s8">
+                                          <!--<div class="input-field col s8">
                                               <p style="color:#9e9e9e;font-size:12px;">Product </p>
                                           </div>
                                           <div class="input-field col s6" style="margin-top: -1px;">
@@ -298,23 +298,62 @@
                                           </div>
                                           <div class="input-field col s3 left-align" style="margin-top: -1px;">
                                               <a class="waves-effect waves-light btn-flat purple" onclick="createPackageProduct()"><i class="material-icons white-text">add</i></a>
-                                          </div>
-                                        <!-- end -->
-                                        <!-- start table -->
-                                          <div class="input-field col s12">
-                                          <table class="centered">
-                                            <thead>
-                                              <tr>
-                                                <th>Name</th>
-                                                <th>Qty</th>
-                                                <th>Action</th>
-                                              </tr>
-                                            </thead>
-                                            <table class="highlight centered responsive-table" id="createPackageTable">
-                                            </table>
-                                            </table>
+                                          </div>-->
+
+
+                                          <ul class="collapsible popout" data-collapsible="accordion">
+                                            <li>
+                                              <div class="collapsible-header"><i class="material-icons">shopping_cart</i>Services</div>
+                                              <div class="collapsible-body">
+                                                <div class="highlight centered responsive-table">
+                                                  <table class="centered striped services">
+                                                    <thead>
+                                                        <th>Select</th>
+                                                        <th>Name</th>
+                                                        <th>Price</th>
+                                                        <th>Quantity</th>
+                                                    </thead>
+                                                      <c:forEach items="${serviceList}" var="service"> 
+                                                        <tr>
+                                                          <td><input type="checkbox"></td>
+                                                          <td>${service.strServiceName}</td>
+                                                          <td>${service.dblServicePrice}</td>
+                                                          <td><input type="number" name="servicesQuantity" style="width: 75px"></td>
+                                                        </tr>
+                                                      </c:forEach>
+                                                  </table>  
+                                                </div>
+                                              </div>
+                                            </li>
                                             
-                                          </div>
+                                            <li>
+                                              <div class="collapsible-header"><i class="material-icons">shopping_cart</i>Products</div>
+                                                <div class="collapsible-body">
+                                                  <div class="highlight centered responsive-table">
+                                                    <table class="centered striped services">
+                                                      <thead>
+                                                          <th>Select</th>
+                                                         <th>Name</th>
+                                                          <th>Price</th>
+                                                         <th>Quantity</th>
+                                                      </thead>
+                                                       <c:forEach items="${productList}" var="products"> 
+                                                         <tr>
+                                                           <td><input type="checkbox"></td>
+                                                           <td>${products.strProductName}</td>
+                                                           <td>${products.dblProductPrice}</td>
+                                                           <td><input type="number" name="servicesQuantity" style="width: 75px"></td>
+                                                         </tr>
+                                                        </c:forEach>
+                                                    </table>  
+                                                  </div>
+                                                </div>
+                                            </li>
+
+                                        <!-- end -->
+
+                                        <!-- start table -->
+                                          
                                         <!-- end table -->
                                       </div>
                                   </div>
