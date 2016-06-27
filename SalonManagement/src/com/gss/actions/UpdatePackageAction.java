@@ -15,18 +15,20 @@ import com.gss.service.ProductServiceImpl;
 import com.gss.service.ServiceService;
 import com.gss.service.ServiceServiceImpl;
 import com.gss.utilities.PackageHelper;
+import com.gss.utilities.PackageItemsDecoder;
 
 public class UpdatePackageAction {
 	
-	private String intPackageID;
-	private String strPackageName;
-	private String strPackageDesc;
-	private List<Integer> intPackageType;
-	private double dblPackagePrice;
-	private String createPackServType = "";
-	private String createPackProdType = "";
-	private String createPackServQty = "";
-	private String createPackProdQty = "";
+	private String intUpdatePackageID;
+	PackageItemsDecoder decode = new PackageItemsDecoder();
+	private String strUpdatePackageName;
+	private String strUpdatePackageDesc;
+	private List<Integer> intUpdatePackageType = new ArrayList<Integer>();
+	private double dblUpdatePackagePrice;
+	private String updatePackServType = "";
+	private String updatePackProdType = "";
+	private String updatePackServQty = "";
+	private String updatePackProdQty = "";
 	
 	public String execute(){		
 		
@@ -40,91 +42,129 @@ public class UpdatePackageAction {
 		List<ServicePackage> serviceList = new ArrayList<ServicePackage>();
 		List<ProductPackage> productList = new ArrayList<ProductPackage>();
 		
-		String[] selectedServices = this.createPackServType.split(", ");
-		String[] selectedProducts = this.createPackProdType.split(", ");
-		String[] serviceCount = this.createPackServQty.split(", ");
-		String[] productCount = this.createPackProdQty.split(", ");
+		String[] selectedServices = this.updatePackServType.split(", ");
+		String[] selectedProducts = this.updatePackProdType.split(", ");
+		String[] serviceCount = this.updatePackServQty.split(", ");
+		String[] productCount = this.updatePackProdQty.split(", ");
 		
-		System.out.print(this.createPackProdType);
-		System.out.print(this.createPackServType);
-		System.out.print(this.createPackProdQty);
-		System.out.print(this.createPackServQty);
+		System.out.println("PACKAGE ID: " + intUpdatePackageID);
 		
-		if(!createPackServType.equals("")){
+		if(!updatePackServType.equals("")){
+			
+			String[] serviceOrder = decode.serviceOrderByChecked(service, selectedServices);
+			String[] serviceQuantity = decode.getServiceQuantity(serviceOrder, serviceCount);
 			
 			for(int i = 0; i < selectedServices.length; i++){
 				for(int j = 0; j < service.size(); j++){
 					
 					Service sample = service.get(j);
-					if(selectedServices[i].equals(sample.getStrServiceName())){
-						serviceList.add(new ServicePackage(1, Integer.parseInt(intPackageID), sample, Integer.parseInt(serviceCount[i]), 1));
+					if(Integer.parseInt(selectedServices[i]) == sample.getIntServiceID()){
+						serviceList.add(new ServicePackage(1, 1, sample, Integer.parseInt(serviceQuantity[i]), 1));
 					}
 				}
 			}
 		}
 		
-		if(!createPackProdType.equals("")){
+		if(!updatePackProdType.equals("")){
+			
+			String[] productOrder = decode.productOrderByChecked(product, selectedProducts);
+			
+			String[] productQuantity = decode.getProductQuantity(productOrder, productCount);
 			
 			for(int i = 0; i < selectedProducts.length; i++){
 				for(int j = 0; j < product.size(); j++){
 					
 					Product sample = product.get(j);
-					if(selectedProducts[i].equals(sample.getStrProductName())){
-						productList.add(new ProductPackage(1, Integer.parseInt(intPackageID), sample, Integer.parseInt(productCount[i]), 1));
+					if(Integer.parseInt(selectedProducts[i]) == sample.getIntProductID()){
+						productList.add(new ProductPackage(1, 1, sample, Integer.parseInt(productQuantity[i]), 1));
 					}
 				}
 			}
 		}
 
-		Package packagee = new Package(1, strPackageName.toUpperCase().trim(), strPackageDesc.toUpperCase().trim(), PackageHelper.convertToSingleInt(intPackageType), 1, "NON-EXPIRY", dblPackagePrice, null, null, 1);
 		
-		if(packageService.createPackage(packagee)){
+		Package packagee = new Package(Integer.parseInt(intUpdatePackageID), strUpdatePackageName.toUpperCase().trim(), strUpdatePackageDesc.toUpperCase().trim(), PackageHelper.convertToSingleInt(intUpdatePackageType), 1, "NON-EXPIRY", getDblUpdatePackagePrice(), serviceList, productList, 1);
+	
+		if(packageService.updatePackage(packagee)){
 			System.out.println("success");
 			return "success";
 		}else{
 			System.out.println("failed");
 			return "failed";
-		}	
+		}
 	}
 
-	public String getIntPackageID() {
-		return intPackageID;
+	public String getIntUpdatePackageID() {
+		return intUpdatePackageID;
 	}
 
-	public void setIntPackageID(String intPackageID) {
-		this.intPackageID = intPackageID;
+	public void setIntUpdatePackageID(String intUpdatePackageID) {
+		this.intUpdatePackageID = intUpdatePackageID;
 	}
 
-	public String getStrPackageName() {
-		return strPackageName;
+	public String getStrUpdatePackageName() {
+		return strUpdatePackageName;
 	}
 
-	public void setStrPackageName(String strPackageName) {
-		this.strPackageName = strPackageName;
+	public void setStrUpdatePackageName(String strUpdatePackageName) {
+		this.strUpdatePackageName = strUpdatePackageName;
 	}
 
-	public String getStrPackageDesc() {
-		return strPackageDesc;
+	public String getStrUpdatePackageDesc() {
+		return strUpdatePackageDesc;
 	}
 
-	public void setStrPackageDesc(String strPackageDesc) {
-		this.strPackageDesc = strPackageDesc;
+	public void setStrUpdatePackageDesc(String strUpdatePackageDesc) {
+		this.strUpdatePackageDesc = strUpdatePackageDesc;
 	}
 
-	public double getDblPackagePrice() {
-		return dblPackagePrice;
+	public List<Integer> getIntUpdatePackageType() {
+		return intUpdatePackageType;
 	}
 
-	public void setDblPackagePrice(double dblPackagePrice) {
-		this.dblPackagePrice = dblPackagePrice;
+	public void setIntUpdatePackageType(List<Integer> intUpdatePackageType) {
+		this.intUpdatePackageType = intUpdatePackageType;
 	}
 
-	public List<Integer> getIntPackageType() {
-		return intPackageType;
+	public double getDblUpdatePackagePrice() {
+		return dblUpdatePackagePrice;
 	}
 
-	public void setIntPackageType(List<Integer> intPackageType) {
-		this.intPackageType = intPackageType;
+	public void setDblUpdatePackagePrice(double dblUpdatePackagePrice) {
+		this.dblUpdatePackagePrice = dblUpdatePackagePrice;
 	}
+
+	public String getUpdatePackServType() {
+		return updatePackServType;
+	}
+
+	public void setUpdatePackServType(String updatePackServType) {
+		this.updatePackServType = updatePackServType;
+	}
+
+	public String getUpdatePackProdType() {
+		return updatePackProdType;
+	}
+
+	public void setUpdatePackProdType(String updatePackProdType) {
+		this.updatePackProdType = updatePackProdType;
+	}
+
+	public String getUpdatePackServQty() {
+		return updatePackServQty;
+	}
+
+	public void setUpdatePackServQty(String updatePackServQty) {
+		this.updatePackServQty = updatePackServQty;
+	}
+
+	public String getUpdatePackProdQty() {
+		return updatePackProdQty;
+	}
+
+	public void setUpdatePackProdQty(String updatePackProdQty) {
+		this.updatePackProdQty = updatePackProdQty;
+	}
+
 }
 

@@ -5,6 +5,9 @@
   <%@ page import="com.gss.model.Package" %>
   <%@ page import="com.gss.model.ProductPackage" %>
   <%@ page import="com.gss.model.ServicePackage" %>
+  <%@ page import="com.gss.model.Service" %>
+  <%@ page import="com.gss.model.Product" %>
+  <%@ page import="java.util.List" %>
 
   <head>
   <link type="text/css" rel="stylesheet" href="./css/materialize.css"/>
@@ -146,7 +149,7 @@
                                         <td style="padding:0; margin: 0;"><center>${pack.strPackageDesc}</center></td>
                                         <td class="center" style="padding:0; margin: 0;">
                                         <button data-target="view<%=packID%>" class="waves-effect waves-purple modal-view btn-flat transparent" style="padding-left: 10px;padding-right:10px; margin: 5px;"><i class="material-icons">visibility</i></button>
-                                        <button class="waves-effect waves-purple btn-flat transparent black-text modal-trigger" title="Update" style="padding: 0px;" data-target="upd<%=packID%>" data-toggle="modal" style="padding-left: 10px;padding-right:10px; margin: 5px;"><i class="material-icons">edit</i></button>
+                                        <button class="waves-effect waves-purple btn-flat transparent black-text modal-trigger" title="Update" style="padding: 0px;" data-target="update<%=packID%>" data-toggle="modal" style="padding-left: 10px;padding-right:10px; margin: 5px;"><i class="material-icons">edit</i></button>
                                         <a class="waves-effect waves-purple modal-trigger btn-flat transparent red-text text-accent-4" href="#del<%=packID%>" title="Deactivate" style="padding-left: 10px;padding-right:10px; margin: 5px;"><i class="material-icons">delete</i></a>
                                         </td>
                                     </tr>
@@ -249,8 +252,8 @@
                                             </div>
                                             
                                             <div class="input-field col s6" >
-                                                <input name="dblPackagePrice" type="text" class="validate right-align amountFormat noSpace" id="createPackagePrice" required placeholder="99.99" readonly>
-                                                <label for="createPackagePrice" class="active">Total Accumulated Price<span class="red-text">*</span></label>
+                                                <input type="text" class="validate right-align amountFormat noSpace" id="createPackagePrice" placeholder="99.99" readonly>
+                                                <label for="createPackagePrice" class="active">Total Accumulated Price</label>
                                             </div>
                                             <div class="input-field col s3 offset-s9" >
                                                 <input name="dblPackagePrice" type="text" class="validate right-align amountFormat noSpace" id="createPackagePrice" required placeholder="99.99">
@@ -315,10 +318,10 @@
                                                     </thead>
                                                       <c:forEach items="${serviceList}" var="service"> 
                                                         <tr>
-                                                          <td><input type="checkbox"></td>
+                                                          <td><input type="checkbox" name="createPackServType" id="myCheckBox${service.intServiceID}" value="${service.intServiceID}"><label for="myCheckBox${service.intServiceID}"></label></td>
                                                           <td>${service.strServiceName}</td>
                                                           <td>${service.dblServicePrice}</td>
-                                                          <td><input type="number" name="servicesQuantity" style="width: 75px"></td>
+                                                          <td><input type="number" name="createPackServQty" style="width: 75px" min="1" max="99" value="1"></td>
                                                         </tr>
                                                       </c:forEach>
                                                   </table>  
@@ -339,10 +342,10 @@
                                                       </thead>
                                                        <c:forEach items="${productList}" var="products"> 
                                                          <tr>
-                                                           <td><input type="checkbox"></td>
+                                                           <td><input type="checkbox" name="createPackProdType" id="prodCheck${products.intProductID}" value="${products.intProductID}"><label for="prodCheck${products.intProductID}"></label></td>
                                                            <td>${products.strProductName}</td>
                                                            <td>${products.dblProductPrice}</td>
-                                                           <td><input type="number" name="servicesQuantity" style="width: 75px"></td>
+                                                           <td><input type="number" name="createPackProdQty" style="width: 75px" min="1" max="99" value="1"></td>
                                                          </tr>
                                                         </c:forEach>
                                                     </table>  
@@ -372,7 +375,7 @@
                           int id = pg.getIntPackageID();
 
                       %>
-                        <div id="upd<%=id%>" class="modal modal-fixed-footer" style="width: 75% !important; height: 92% !important; margin-top: -23px !important; max-height: 100% !important;">
+                        <div id="update<%=id%>" class="modal modal-fixed-footer" style="width: 75% !important; height: 92% !important; margin-top: -23px !important; max-height: 100% !important;">
                         <form class="col s12" method="post" action="updatePackage">
                           <div class="modal-content">
                             <!-- <div class="container"> -->
@@ -380,15 +383,18 @@
                                   <h4 class="grey-text text-darken-1">Update Package</h4>
                                   <div class="aside aside1 z-depth-barts" style="padding: 10px;">
                                     <div class="row">
-                                            <h5 class="grey-text text-darken-1">Package Information</h5>
-                                            <div class="input-field col s12">
-                                                <input value="${pack.strPackageName}" type="text" class="validate" id="strPackageName" name="updatePackageName" required>
-                                                <input type="hidden" name="intPackageID" value="${pack.intPackageID}">
-                                               <input type="hidden" name="intPackageID" value="${pack.intPackageID}">
-                                                <label for="updatePackageName">Package Name</label>
+                                          
+                                          <h5 class="grey-text text-darken-1">Package Information</h5>
+                                            <div class="input-field col s12" style="margin-bottom: 30px;">
+                                                <label class="red-text"> (*) Indicates required field</label>
                                             </div>
                                             <div class="input-field col s12">
-                                                <textarea id="updatePackageDesc" name="strPackageDesc" class="materialize-textarea" length="120">${pack.strPackageDesc}</textarea>
+                                                <input value="${pack.strPackageName}" type="text" class="validate" id="strPackageName" name="strUpdatePackageName" required>
+                                               <input type="hidden" name="intUpdatePackageID" value="${pack.intPackageID}">
+                                                <label for="strPackageName">Package Name<span class="red-text">*</span></label>
+                                            </div>
+                                            <div class="input-field col s12">
+                                                <textarea id="updatePackageDesc" name="strUpdatePackageDesc" class="materialize-textarea" length="120">${pack.strPackageDesc}</textarea>
                                                 <label for="updatePackageDesc">Description</label>
                                             </div>
                                             <%
@@ -407,19 +413,40 @@
                                                 else if(packge.getIntPackageType() == 3){
                                                   type3 = "selected";
                                                 }
+                                                else if(packge.getIntPackageType() == 4){
+                                                  type1 = "selected";
+                                                  type2 = "selected";
+                                                }
+                                                else if(packge.getIntPackageType() == 5){
+                                                  type1 = "selected";
+                                                  type3 = "selected";
+                                                }
+                                                else if(packge.getIntPackageType() == 6){
+                                                  type2 = "selected";
+                                                  type3 = "selected";
+                                                }
+                                                else if(packge.getIntPackageType() == 7){
+                                                  type1 = "selected";
+                                                  type2 = "selected";
+                                                  type3 = "selected";
+                                                }
                                             %>
                                             <div class="input-field col s6">
-                                              <select id="updatePackageType" name="intPackageType" autocomplete="off">
+                                              <select id="updatePackageType" name="intUpdatePackageType" autocomplete="off" multiple>
                                                 <option disabled>Choose</option>
                                                 <option value="1" <%out.println(type1);%>>Event</option>
                                                 <option value="2" <%out.println(type2);%>>Home Service</option>
                                                 <option valie="3" <%out.println(type3);%>>Walk-In</option>
                                               </select>
-                                              <label for="createPackageType">Type</label>
+                                              <label for="updatePackageType">Type</label>
                                             </div>
-                                            <div class="input-field col s3 offset-s3">
-                                                <input type="text" value="${pack.dblPackagePrice}" class="validate right-align" id="updatePackagePrice" name="dblPackagePrice" required>
-                                                <label for="updatePackagePrice">Price</label>
+                                            <div class="input-field col s6" >
+                                                <input type="text" class="validate right-align amountFormat noSpace" id="createPackagePrice" placeholder="99.99" readonly>
+                                                <label for="createPackagePrice" class="active">Total Accumulated Price</label>
+                                            </div>
+                                            <div class="input-field col s3 offset-s9">
+                                                <input type="text" value="${pack.dblPackagePrice}" class="validate right-align" id="updatePackagePrice" name="dblUpdatePackagePrice" required>
+                                                <label for="updatePackagePrice">Price<span class="red-text">*</span></label>
                                             </div>
                                     </div>
                                   </div>
@@ -427,93 +454,96 @@
                                       <div class="row">
                                         <!-- service -->
                                           <h5 class="grey-text text-darken-1">Included Service/s and Product/s</h5>
-                                          <div class="input-field col s8">
-                                              <p style="color:#9e9e9e;font-size:12px;">Service</p>
-                                          </div>
-                                          <div class="input-field col s6" style="margin-top: -1px;">
-                                              <select class="browser-default" id="updatePackageService">
-                                                    <option value="Choose..." disabled selected>Choose</option>
-                                                    <c:forEach items="${serviceList}" var="service">
-                                                        <option value="${service.strServiceName}">${service.strServiceName}</option>
-                                                    </c:forEach>
-                                                </select>
-                                          </div>
-                                          <div class="input-field col s3" style="margin-top: -1px;">
-                                              <input type="number" id="updatePackageServiceQty" name="updatePackageServiceQty" class="validate" min="0">
-                                              <label for="updatePackageServiceQty">Qty</label>
-                                          </div>
-                                          <div class="input-field col s3 left-align" style="margin-top: -1px;">
-                                              <a class="waves-effect waves-light btn-flat purple" id="createPackageAddSvc" onclick="createPackageService()"><i class="material-icons white-text">add</i></a>
-                                          </div>
-                                          <!--product  -->
-                                          <div class="input-field col s8">
-                                              <p style="color:#9e9e9e;font-size:12px;">Product </p>
-                                          </div>
-                                          <div class="input-field col s6" style="margin-top: -1px;">
-                                              <select class="browser-default" id="updatePackageProduct">
-                                                    <option value="Choose..." disabled selected>Choose</option>
-                                                    <c:forEach items="${productList}" var="product">
-                                                        <option value="${product.strProductName}">${product.strProductName}</option>
-                                                    </c:forEach>
-                                                </select>
-                                          </div>
-                                          <div class="input-field col s3" style="margin-top: -1px;">
-                                              <input type="number" id="updatePackageProductQty" name="updatePackageProductQty" class="validate" min="0">
-                                              <label for="updatePackageProductQty">Qty</label>
-                                          </div>
-                                          <div class="input-field col s3 left-align" style="margin-top: -1px;">
-                                              <a class="waves-effect waves-light btn-flat purple" onclick="updatePackageProduct()"><i class="material-icons white-text">add</i></a>
-                                          </div>
-                                        <!-- end -->
-                                        <!-- start table -->
-                                          <div class="input-field col s12">
-                                          <table class="centered">
-                                            <thead>
-                                              <tr>
-                                                <th>Name</th>
-                                                <th>Qty</th>
-                                                <th>Action</th>
-                                              </tr>
-                                            </thead>
-                                            <table class="highlight centered responsive-table" id="updatePackageTable">
-                                            </table>
+                                            <ul class="collapsible popout updates<%=id%>" data-collapsible="accordion">
+                                            <li>
+                                              <div class="collapsible-header"><i class="material-icons">shopping_cart</i>Services</div>
+                                              <div class="collapsible-body">
+                                                <div class="highlight centered responsive-table">
+                                                  <table class="centered striped services">
+                                                    <thead>
+                                                        <th>Select</th>
+                                                        <th>Name</th>
+                                                        <th>Price</th>
+                                                        <th>Quantity</th>
+                                                    </thead>
+                                                      <c:forEach items="${serviceList}" var="service"> 
+                                                      	<%
+                                                              String servChecked = "";
+                                                              
+                                                      		    int servQuantity = 1;
+                                                              Service service = (Service)pageContext.getAttribute("service");
+                                                              Package servicePackage = (Package)pageContext.getAttribute("pack");
+                                                              List<ServicePackage> servicePack = servicePackage.getServiceList();
 
-                                                  <%
-                                                      Package sample = (Package)pageContext.getAttribute("pack");
-                                                        
-                                                      for(int i = 0; i < sample.getServiceList().size(); i++){
-                                                        ServicePackage serv = sample.getServiceList().get(i);
-                                                        
+                                                              int serviceID = service.getIntServiceID();
+    
+ 
+                                                               for(int intCtr = 0; intCtr < servicePack.size(); intCtr++){
+                                                            	  System.out.println("Current Services On Package: " + servicePack.get(intCtr).getService().getIntServiceID());
+                                                                  if(servicePack.get(intCtr).getService().getIntServiceID() == service.getIntServiceID()){
+                                                                	  servChecked = "checked";
+                                                                	  servQuantity = servicePack.get(intCtr).getIntQuantity();
+                                                                      break;
+                                                                  }
+                                                                  else
+                                                                	  continue;
 
-                                                        if(serv.getIntPackageID() == id){
-                                                            out.println("<tr>");
-                                                              out.println("<td><input type='text' name='createPackageService' value='" + serv.getService().getStrServiceName() + "'></td>");
-                                                              out.println("<td><input type='text' name='createPackageServiceQty' value='" + serv.getIntQuantity() + "'></td>");
-                                                              out.println("<td><input id='removeBtn' type='button' value='Remove' class='waves-effect waves-light btn red' onclick='deleteCreateServPack(this)' /></td>");
-                                                            out.println("</tr>");
+                                                              }
+                                                         %>
+                                                        <tr>
+                                                          <td><input type="checkbox" name="updatePackServType" id="updateServCheckBox${pack.intPackageID}<%=serviceID%>" value="${service.intServiceID}" <%out.println(servChecked);%>><label for="updateServCheckBox${pack.intPackageID}<%=serviceID%>"></label></td>
+                                                          <td>${service.strServiceName}</td>
+                                                          <td>${service.dblServicePrice}</td>
+                                                          <td><input type="number" name="updatePackServQty" style="width: 75px" min="1" max="99" value="<%=servQuantity%>"></td>
+                                                        </tr>
+                                                      </c:forEach>
+                                                  </table>  
+                                                </div>
+                                              </div>
+                                            </li>
+                                            
+                                            <li>
+                                              <div class="collapsible-header"><i class="material-icons">shopping_cart</i>Products</div>
+                                                <div class="collapsible-body">
+                                                  <div class="highlight centered responsive-table">
+                                                    <table class="centered striped services">
+                                                      <thead>
+                                                          <th>Select</th>
+                                                         <th>Name</th>
+                                                          <th>Price</th>
+                                                         <th>Quantity</th>
+                                                      </thead>
+                                                       <c:forEach items="${productList}" var="products">
+                                                       	 <%
+                                                              String prodChecked = "";
+                                                      		  int prodQuantity = 1;
+                                                              Product product = (Product)pageContext.getAttribute("products");
+                                                              Package productPackage = (Package)pageContext.getAttribute("pack");
+                                                              List<ProductPackage> productPack = productPackage.getProductList();             
+                                                              
+                                                              for(int intCtr = 0; intCtr < productPack.size(); intCtr++){
+                                                            	  System.out.println("Current Services On Package: " + productPack.get(intCtr).getProduct().getIntProductID());
+                                                                  if(productPack.get(intCtr).getProduct().getIntProductID() == product.getIntProductID()){
+                                                                	  prodChecked = "checked";
+                                                                	  prodQuantity = productPack.get(intCtr).getIntProductQuantity();
+                                                                      break;
+                                                                  }
+                                                                  else
+                                                                	  continue;
 
-
-
-                                                            /*out.println("<input type='hidden' id='createPackageService' name='any' value='serv.getService().getStrServiceName()'/>");
-
-                                                            out.println("<input type='hidden' id='createPackageServiceQty' name='any2' value='serv.getService().getStrServiceName()'/>");
-                                                  
-                                                            out.println("createPackageService()");
-                                                            out.print('<input type="text" value="'+ serv.getService().getStrServiceName() +'" id="createPackServType" name="createPackServType" readonly style="color:black;"/>');*/
-                                                        }
-                                                      }
-                                                  %>
-
-                                                  <!-- <c:forEach items="${pack.serviceList}" var="service">
-                                                    <tr>
-                                                        <td>service.</td>
-                                                        <td>asdfaskd</td>
-                                                        <td>lksadflakj</td>
-                                                    </tr>
-                                                  </c:forEach> -->
-                                            </table>
-                                          </div>
-                                        <!-- end table -->
+                                                              }
+                                                         %>
+                                                         <tr>
+                                                           <td><input type="checkbox" name="updatePackProdType" id="updateProdCheck${pack.intPackageID}${products.intProductID}" value="${products.intProductID}" <%out.println(prodChecked);%>><label for="updateProdCheck${pack.intPackageID}${products.intProductID}"></label></td>
+                                                           <td>${products.strProductName}</td>
+                                                           <td>${products.dblProductPrice}</td>
+                                                           <td><input type="number" name="updatePackProdQty" style="width: 75px" min="1" max="99" value="<%=prodQuantity%>"></td>
+                                                         </tr>
+                                                        </c:forEach>
+                                                    </table>  
+                                                  </div>
+                                                </div>
+                                            </li>
                                       </div>
                                   </div>
                               </div>

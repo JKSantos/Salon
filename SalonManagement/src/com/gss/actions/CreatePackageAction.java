@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.gss.utilities.PackageHelper;
+import com.gss.utilities.PackageItemsDecoder;
 import com.gss.model.Package;
 import com.gss.model.Product;
 import com.gss.model.ProductPackage;
@@ -18,6 +19,7 @@ import com.gss.service.ServiceServiceImpl;
 
 public class CreatePackageAction {
 	
+	PackageItemsDecoder decode = new PackageItemsDecoder();
 	private String strPackageName;
 	private String strPackageDesc;
 	private List<Integer> intPackageType = new ArrayList<Integer>();
@@ -46,12 +48,15 @@ public class CreatePackageAction {
 		
 		if(!createPackServType.equals("")){
 			
+			String[] serviceOrder = decode.serviceOrderByChecked(service, selectedServices);
+			String[] serviceQuantity = decode.getServiceQuantity(serviceOrder, serviceCount);
+			
 			for(int i = 0; i < selectedServices.length; i++){
 				for(int j = 0; j < service.size(); j++){
 					
 					Service sample = service.get(j);
-					if(selectedServices[i].equals(sample.getStrServiceName())){
-						serviceList.add(new ServicePackage(1, 1, sample, Integer.parseInt(serviceCount[i]), 1));
+					if(Integer.parseInt(selectedServices[i]) == sample.getIntServiceID()){
+						serviceList.add(new ServicePackage(1, 1, sample, Integer.parseInt(serviceQuantity[i]), 1));
 					}
 				}
 			}
@@ -59,12 +64,16 @@ public class CreatePackageAction {
 		
 		if(!createPackProdType.equals("")){
 			
+			String[] productOrder = decode.productOrderByChecked(product, selectedProducts);
+			
+			String[] productQuantity = decode.getProductQuantity(productOrder, productCount);
+			
 			for(int i = 0; i < selectedProducts.length; i++){
 				for(int j = 0; j < product.size(); j++){
 					
 					Product sample = product.get(j);
-					if(selectedProducts[i].equals(sample.getStrProductName())){
-						productList.add(new ProductPackage(1, 1, sample, Integer.parseInt(productCount[i]), 1));
+					if(Integer.parseInt(selectedProducts[i]) == sample.getIntProductID()){
+						productList.add(new ProductPackage(1, 1, sample, Integer.parseInt(productQuantity[i]), 1));
 					}
 				}
 			}

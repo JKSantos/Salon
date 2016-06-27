@@ -107,7 +107,7 @@ public class PackageJDBCRepository implements PackageRepository{
 			pre1.setInt(4, pack.getIntPackageType());
 			pre1.setInt(5, pack.getIntMaxHeadCount());
 			pre1.setString(6, pack.getStrPackageAvailability());
-			pre1.setDouble(8, pack.getDblPackagePrice());
+			pre1.setDouble(7, pack.getDblPackagePrice());
 			
 			pre1.execute();
 			pre1.close();
@@ -157,13 +157,6 @@ public class PackageJDBCRepository implements PackageRepository{
 		Connection con = jdbc.getConnection();
 		String query = "SELECT * FROM tblPackage WHERE intPackageStatus = 1;";
 		List<Package> packageList = new ArrayList<Package>();
-		ServiceService serv = new ServiceServiceImpl();
-		ProductService prod = new ProductServiceImpl();
-		List<ServicePackage> servPack = new ArrayList<ServicePackage>();
-		List<ProductPackage> prodPack = new ArrayList<ProductPackage>();
-		
-		List<Product> productList = prod.getAllProducts();
-		List<Service> serviceList = serv.getAllService();
 		
 		try{
 			
@@ -171,6 +164,14 @@ public class PackageJDBCRepository implements PackageRepository{
 			ResultSet set = pre.executeQuery();
 			
 			while(set.next()){
+				
+				ServiceService serv = new ServiceServiceImpl();
+				ProductService prod = new ProductServiceImpl();
+				List<ServicePackage> servPack = new ArrayList<ServicePackage>();
+				List<ProductPackage> prodPack = new ArrayList<ProductPackage>();
+				
+				List<Product> productList = prod.getAllProducts();
+				List<Service> serviceList = serv.getAllService();
 				
 				int intID = set.getInt(1);
 				String strName = set.getString(2);
